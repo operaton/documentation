@@ -14,7 +14,7 @@ By clicking on the number or a section of the pie chart, you are forwarded to th
 
 On the right hand side, you see an overview of deployed process definitions, decision definitions, case definitions and the total number of deployments.
 
-Additional [plugins](../webapps/cockpit/extend/plugins.md) can be added to the dashboard.
+Additional [plugins](../cockpit/extend/plugins.md) can be added to the dashboard.
 
 # Metrics
 

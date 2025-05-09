@@ -60,12 +60,12 @@ When starting activities with a multi-instance flag, there is the option to eith
 
 ![Example img](./../img/cockpit-modification-review.png)Modification Review
 
-At any point during the creation of the modification, you can show the payload of the modification by clicking the eye button. This will show the request payload that will be sent via the [REST API](../reference/rest/index.md).
+At any point during the creation of the modification, you can show the payload of the modification by clicking the eye button. This will show the request payload that will be sent via the [REST API](../../../reference/rest/index.md).
 
 To perform the modification, you have to click on *Apply modifications*. Then you have a last chance to review the changes you are about to make and also review the request payload. You have an option to execute an *Asynchronous* modification and to add an annotation which will be added to the user operation log. After confirming the change, the modification is executed and the page is updated with the new execution state of the process instance.
 
 :::warning[Semantics of Process Instance Modification]">}}
-  The exact semantics of process instance modification as well as the underlying REST and Java API can be read about in the [Process Instance Modification section](../user-guide/process-engine/process-instance-modification.md) of the user guide.
+  The exact semantics of process instance modification as well as the underlying REST and Java API can be read about in the [Process Instance Modification section](../../../user-guide/process-engine/process-instance-modification.md) of the user guide.
 :::
 
 # Perform a Batch Modification

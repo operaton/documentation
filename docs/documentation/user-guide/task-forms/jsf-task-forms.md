@@ -13,11 +13,11 @@ menu:
 # Adding JSF Forms to your Process Application
 
 :::note[Heads-up!]
-The required CDI beans for this functionality are currently not available in <a href="../user-guide/quarkus-integration/cdi-integration.md#task-form-beans">Quarkus applications</a> out of the box.
+The required CDI beans for this functionality are currently not available in [Quarkus applications](../quarkus-integration/cdi-integration.md#task-form-beans) out of the box.
 :::
 
 If you add JSF forms as described below, you can easily use them as <br/>
-[external task forms](../user-guide/task-forms/index.md#external-task-forms).
+[external task forms](../task-forms/index.md#external-task-forms).
 
 A working example can be found in the [examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/usertask/task-form-external-jsf).
 
@@ -91,7 +91,7 @@ If the user clicks on "Start to work on task" ![Example img](./img/start-task-bu
 
  *   starts a conversation,
  *   remembers the callback URL
- *   starts the User Task in the process engine, meaning the bean sets the start date and assigns the task to the CDI business process scope (see [CDI Integration](../user-guide/cdi-java-ee-integration/index.md) for details).
+ *   starts the User Task in the process engine, meaning the bean sets the start date and assigns the task to the CDI business process scope (see [CDI Integration](../cdi-java-ee-integration/index.md) for details).
 
 For that, you just need to add this code block to the beginning of your JSF view:
 

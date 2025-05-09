@@ -97,7 +97,7 @@ export default {
   }
 };
 ```
-This file can also be included standalone as a [custom script](../webapps/cockpit/extend/configuration.md#custom-scripts).
+This file can also be included standalone as a [custom script](../../cockpit/extend/configuration.md#custom-scripts).
 
 :::note[Important notes about the structure]
  1. The default export is either one plugin or an array of plugins. Only the default export will be considered in Cockpit.
@@ -588,7 +588,7 @@ This additional data is passed into the render function:
 
 **Name:** `cockpit.report`
 
-See the [Reports](../webapps/cockpit/reporting.md) section for an example report plugin.
+See the [Reports](../../cockpit/reporting.md) section for an example report plugin.
 
 This plugin points properties contain the attribute `label`, which will be rendered in the navigation even when the plugin is not selected.
 

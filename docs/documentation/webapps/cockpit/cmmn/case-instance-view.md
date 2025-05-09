@@ -62,5 +62,5 @@ Edit variables in the list of variables by using the pencil symbol. This feature
 In the case instance view you can terminate a single case instance. Hit the remove button on the right side.
 
 
-[case-definition-view]: ../webapps/cockpit/cmmn/case-definition-view.md
-[case-instance-view]: ../webapps/cockpit/cmmn/case-instance-view.md
+[case-definition-view]: ../cmmn/case-definition-view.md
+[case-instance-view]: ../cmmn/case-instance-view.md

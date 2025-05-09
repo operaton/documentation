@@ -41,7 +41,7 @@ When you click into the text input field, you can choose a message name from a l
 You can also enter another message name that is not present in the list of suggestions, e.g., it is
 resolved via an expression and not present in the list. You can also leave the message name empty.
 
-To proceed, click on the "Open Batch Operation" button. The correlate message [batch operation](../webapps/cockpit/batch/batch-operation.md) page
+To proceed, click on the "Open Batch Operation" button. The correlate message [batch operation](../batch/batch-operation.md) page
 opens prefilled with the previously selected message name. Depending on whether you are on the process 
 definition or instance page, a filter criterion defines the process definition or instance id.
 
@@ -60,5 +60,5 @@ in the list of message name suggestions in the modal dialog.
 This is the case when (1) a flow-node is a process instance Start Event or (2) the message name contains an EL expression.
 :::
 
-[Message Correlation]: ../reference/bpmn20/events/message-events.md#message-api
-[Batch Operation]: ../user-guide/process-engine/batch-operations.md#correlate-messages-to-process-instances
+[Message Correlation]: ../../../reference/bpmn20/events/message-events.md#message-api
+[Batch Operation]: ../../../user-guide/process-engine/batch-operations.md#correlate-messages-to-process-instances

@@ -86,7 +86,7 @@ available, add it to the list of available locales in the configuration file.
 # Custom Scripts
 
 Cockpit allows you to include arbitrary JavaScript files. This allows you to extend Cockpit with custom code. The script file might contain a
-custom frontend module as described in [Cockpit Plugins - Structure of a Frontend Module](/webapps/cockpit/extend/plugins.md#structure-of-a-frontend-module).
+custom frontend module as described in [Cockpit Plugins - Structure of a Frontend Module](../extend/plugins.md#structure-of-a-frontend-module).
 
 Add your files to the `customScripts` property of the `app/cockpit/scripts/config.js` file:
 
@@ -100,31 +100,6 @@ export default {
 This includes a `custom-module/module.js` file. The path is relative to the `app/cockpit` folder in the Operaton webapp .war file.
 
 You can find a complete example about how to use `customScripts` to develop a Cockpit Plugin in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-cats).
-
-## Legacy Custom Scripts
-
-Custom Scripts created for Operaton.13 or earlier can be included using the `requireJsConfig` property to the `app/cockpit/scripts/config.js`. You can include these custom scripts using the custom [requireJS configuration](https://requirejs.org/docs/api.html#config).
-
-```Javascript
-export default {
-  // …
-  requireJsConfig: {
-    // names of angular modules defined in your custom script files.
-    // will be added to the 'cam.cockpit.custom' as dependencies
-    ngDeps: ['my.custom.module'],
-
-    // RequireJS modules to load.
-    deps: ['custom-ng-module'],
-
-    // RequreJS path definitions
-    paths: {
-      'custom-ng-module': '../custom-ng-module/script'
-    }
-  }
-}
-```
-
-For more details about legacy Plugins, check out the legacy [Plugin documentation](https://docs.operaton.org/manual/7.13/webapps/cockpit/extend/plugins/). Please note that this link will take you to the documentation of Operaton**7.13** .
 
 # BPMN Diagram Viewer (bpmn.js)
 
@@ -249,7 +224,7 @@ export default = {
 };
 ```
 
-**Note:** Please make sure to change the CSRF cookie name also on [server-side](/webapps/shared-options/csrf-prevention.md#cookie-name).
+**Note:** Please make sure to change the CSRF cookie name also on [server-side](../../shared-options/csrf-prevention.md#cookie-name).
 
 # Disable Welcome Message for new Users
 
@@ -274,7 +249,7 @@ export default = {
 };
 ```
 
-**Note:** This does only affect the Cockpit Operation Log. For the Admin Operation Log, check out the [Admin Configuration](/webapps/admin/configuration.md#user-operation-log-annotation-length).
+**Note:** This does only affect the Cockpit Operation Log. For the Admin Operation Log, check out the [Admin Configuration](../../admin/configuration.md#user-operation-log-annotation-length).
 
 # Preview Deployed Embedded Forms
 You can view a preview of embedded forms and other HTML files in the Cockpit deployment view. If the HTML has embedded `<script>` tags, they will be executed, which may have unintended side-effects. You can disable this feature if you don't trust your deployed HTML files in the `config.js` file as follows:

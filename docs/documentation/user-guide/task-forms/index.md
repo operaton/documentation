@@ -35,7 +35,7 @@ Form keys that are used in Tasklist have the structure `FORM-TYPE:LOCATION:FORM.
     <td>
       Can be either <code>deployment</code> or <code>app</code>:
       <ul>
-        <li><em>deployment</em>: The file is part of your deployment (e.g., <a href="../reference/deployment-descriptors/tags/process-archive.md">by adding it to your process archive</a> or <a href="https://docs.operaton.org/get-started/quick-start/deploy/#use-the-camunda-modeler-to-deploy-the-process">by deploying from the Camunda Modeler</a>), which means that it is stored in the Operaton database. It can then be loaded from there. Note that this allows versioning of your form alongside the process model.</li>
+        <li><em>deployment</em>: The file is part of your deployment (e.g., <a href="../../reference/deployment-descriptors/tags/process-archive.md">by adding it to your process archive</a> or <a href="/get-started/quick-start/deploy/#use-the-camunda-modeler-to-deploy-the-process">by deploying from the Camunda Modeler</a>), which means that it is stored in the Operaton database. It can then be loaded from there. Note that this allows versioning of your form alongside the process model.</li>
         <li><em>app</em>: Add the file to your development project in a folder <code>src/main/webapp/forms</code>. The form file will be packaged into your deployment artifact (typically a WAR archive). During runtime it will be loaded from there.</li>
       </ul>
     </td>
@@ -57,7 +57,7 @@ To configure the form in your process, open the process with the [Camunda Modele
 
 # Embedded Task Forms
 
-Embedded task forms are HTML and JavaScript forms. We provide more information about the creation of embedded forms in our [Embedded Task Forms Reference](../reference/forms/embedded-forms/index.md).
+Embedded task forms are HTML and JavaScript forms. We provide more information about the creation of embedded forms in our [Embedded Task Forms Reference](../../reference/forms/embedded-forms/index.md).
 
 To add an embedded form to your application, simply create an HTML file and refer to it from a [UserTask][user-tasks] or a [StartEvent][start-event] in your process model. For example, you can create a `FORM_NAME.html` file containing the relevant content for your form, e.g., a simple form with two input fields:
 
@@ -83,9 +83,9 @@ The form key for this file could be `embedded:deployment:FORM_NAME.html` or `emb
 
 # Operaton Forms
 
-Operaton Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in `.form` files.  You can find out how to build Operaton Forms in the [Camunda Modeler documentation](../modeler/forms.md) or refer to the [Operaton Forms Reference](https://docs.camunda.io/docs/guides/utilizing-forms/) to explore all configuration options for form elements.
+Operaton Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in `.form` files.  You can find out how to build Operaton Forms in the [Camunda Modeler documentation](https://docs.camunda.org/manual/latest/modeler/forms/) to explore all configuration options for form elements.
 
-[Process variables](../user-guide/process-engine/variables.md) are mapped to form fields where the field's key matches the variable name.
+[Process variables](../../user-guide/process-engine/variables.md) are mapped to form fields where the field's key matches the variable name.
 
 :::warning[Process variables access]
 Defining forms does not introduce any permissions on process variables.
@@ -128,7 +128,7 @@ The attributes `operaton:formRef` and `operaton:formRefVersion` can be specified
 
 ## Form Key
 
-Aa an alternative to `formRef` you can reference a Operaton Form file with a `deployment` or `app` [form key](../user-guide/task-forms/index.md#form-key-details):
+Aa an alternative to `formRef` you can reference a Operaton Form file with a `deployment` or `app` [form key](../../user-guide/task-forms/index.md#form-key-details):
 
 * `operaton-forms:deployment:FORM_NAME.form`
 * `operaton-forms:app:forms/FORM_NAME.form`
@@ -189,9 +189,9 @@ If you are about to prototype your application, you can also use the shortcut fo
 If you want to include your Operaton Form as part of the `deployment`, then you need to deploy the `.form` file in the same deployment as the respective `.bpmn` diagram - for example using the Camunda Modeler (since Modeler Version 5.0.0).
 
 :::warning[Automatic deployment]
-Operaton Forms are not automatically deployed as part of a [process archive](../reference/deployment-descriptors/tags/process-archive.md) by default.
+Operaton Forms are not automatically deployed as part of a [process archive](../../reference/deployment-descriptors/tags/process-archive.md) by default.
 You need to configure it accordingly by adding it as a resource directly or by adding `form` to the list of `additionalResourceSuffixes`.
-Using [Operaton Run](../user-guide/operaton-bpm-run.md#starting-with-operaton-platform-run), all additional resources - including Operaton Forms -
+Using [Operaton Run](../../user-guide/operaton-bpm-run.md#starting-with-operaton-run), all additional resources - including Operaton Forms -
 placed inside the `configuration/resources/` directory are automatically deployed.
 :::
 
@@ -221,7 +221,7 @@ Tasklist creates the URL by the pattern:
 When you have completed the task, the call back URL will be called.
 
 :::note[How To]
-  [How to add JSF Forms to your process application](../user-guide/task-forms/jsf-task-forms.md)
+  [How to add JSF Forms to your process application](../../user-guide/task-forms/jsf-task-forms.md)
 :::
 
 
@@ -241,9 +241,9 @@ After hitting the *Complete* button, the process instance contains the entered v
 You can also retrieve already existing variables of the process instance by clicking the *Load Variables* button.
 
 
-[user-tasks]: ../reference/bpmn20/tasks/user-task.md
-[start-event]: ../reference/bpmn20/events/start-events.md
-[jsf-task-forms]: ../user-guide/task-forms/jsf-task-forms.md
+[user-tasks]: ../../reference/bpmn20/tasks/user-task.md
+[start-event]: ../../reference/bpmn20/events/start-events.md
+[jsf-task-forms]: ../../user-guide/task-forms/jsf-task-forms.md
 
 ## Generated Task Forms
 

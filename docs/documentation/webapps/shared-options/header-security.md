@@ -157,11 +157,9 @@ the config property <code>hstsValue</code>.
 
 Choose a container from the list and learn where to configure the HTTP Security Headers:
 
-* [Tomcat](../installation/full/tomcat/configuration.md#security-related-http-headers-in-webapps)
-* [JBoss EAP & Wildfly](../installation/full/jboss/configuration.md#security-related-http-headers-in-webapps)
-* [IBM WebSphere Application Server](../installation/full/was/configuration.md#security-related-http-headers-in-webapps)
-* [Oracle WebLogic Server](../installation/full/wls/configuration.md#security-related-http-headers-in-webapps)
-* [Spring Boot](../user-guide/spring-boot-integration/configuration.md#header-security)
+* [Tomcat](../../installation/full/tomcat/configuration.md#security-related-http-headers-in-webapps)
+* [Wildfly](../../installation/full/wildfly/configuration.md#security-related-http-headers-in-webapps)
+* [Spring Boot](../../user-guide/spring-boot-integration/configuration.md#header-security)
 
 ## How to Configure?
 

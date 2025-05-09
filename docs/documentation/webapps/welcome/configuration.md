@@ -74,7 +74,6 @@ export default {
 # Localization
 
 Welcome can be localized. Operaton maintains English and German translation files.
-You can find and download community maintained translation files at the [Operaton webapp translations repository](https://github.com/operaton-community-hub/operaton-webapp-translations).
 
 The localization of the Welcome application is contained in the `app/welcome/locales/` directory. This
 directory contains a separate localization file for every available language. The file name
@@ -114,7 +113,7 @@ export default {
 };
 ```
 
-**Note:** Please make sure to change the CSRF cookie name also on [server-side](/webapps/shared-options/csrf-prevention.md#cookie-name).
+**Note:** Please make sure to change the CSRF cookie name also on [server-side](../shared-options/csrf-prevention.md#cookie-name).
 
 # Disable Welcome Message for new Users
 

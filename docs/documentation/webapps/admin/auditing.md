@@ -10,7 +10,7 @@ menu:
 
 ---
 
-It is often desired to inspect which user performed which operation for auditing purposes. Admin operations are logged in the [user operation log](../user-guide/process-engine/history/user-operation-log.md) that is part of the process engine's history. The log allows to understand
+It is often desired to inspect which user performed which operation for auditing purposes. Admin operations are logged in the [user operation log](../../user-guide/process-engine/history/user-operation-log.md) that is part of the process engine's history. The log allows to understand
 
 * which operation was performed
 * which user performed an operation
@@ -18,7 +18,7 @@ It is often desired to inspect which user performed which operation for auditing
 * which entities (process instances, tasks, etc.) were involved
 * which changes were made
 
-Please see the [complete table](../user-guide/process-engine/history/user-operation-log.md#accessing-the-user-operation-log) of APIs that produce User Operation Logs.
+Please see the [complete table](../../user-guide/process-engine/history/user-operation-log.md#access-the-user-operation-log) of APIs that produce User Operation Logs.
 
 # Operation Log in Admin
 ![Example img](./img/admin-system-audit.png)Operation Log
