@@ -12,7 +12,7 @@ menu:
 
 ---
 
-DMN tables can be changed directly in Cockpit. Clicking on the Edit button will open a dialog which contains an editable version of the DMN table. This button is only available for DMN resources. The edit dialog can also be opened by clicking on the icon on the [DMN definition page](../webapps/cockpit/dmn/decision-definition-view.md).
+DMN tables can be changed directly in Cockpit. Clicking on the Edit button will open a dialog which contains an editable version of the DMN table. This button is only available for DMN resources. The edit dialog can also be opened by clicking on the icon on the [DMN definition page](../dmn/decision-definition-view.md).
 
 ![Example img](./../img/cockpit-edit-dmn-dialog.png)Cockpit Edit DMN Dialog
 

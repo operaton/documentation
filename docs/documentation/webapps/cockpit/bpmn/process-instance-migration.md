@@ -29,7 +29,7 @@ Performing a migration consists of four steps:
 
 # Create a Migration Plan
 
-When accessing the migration page from the process definition or instance page, an appropriate source and target definition key and version is already set. Otherwise you can set the process definition key and version for both the source and target at the top of the page. After selecting a source and a target, the diagrams for these process definition versions are displayed. Also, a first draft of a migration plan is [generated](../user-guide/process-engine/process-instance-migration.md#generating-a-migration-plan) and successfully mapped activities are highlighted with a green checkmark symbol <span class="badge" style="border: 1px solid #4cae4c; background-color: #5cb85c;"><span class="glyphicon glyphicon-ok"></span></span>. Hovering over an activity highlights the corresponding source and target activities for the mapping.
+When accessing the migration page from the process definition or instance page, an appropriate source and target definition key and version is already set. Otherwise you can set the process definition key and version for both the source and target at the top of the page. After selecting a source and a target, the diagrams for these process definition versions are displayed. Also, a first draft of a migration plan is [generated](../../../user-guide/process-engine/process-instance-migration.md#generating-a-migration-plan) and successfully mapped activities are highlighted with a green checkmark symbol <span class="badge" style="border: 1px solid #4cae4c; background-color: #5cb85c;"><span class="glyphicon glyphicon-ok"></span></span>. Hovering over an activity highlights the corresponding source and target activities for the mapping.
 
 Activities that have running instances, but are not mapped to a target activity, have a yellow warning marker <span class="badge" style="background-color: #f0ad4e; border: 1px solid #eea236;"><span class="glyphicon glyphicon-warning-sign"></span></span>. If you plan to migrate these instances, you have to create a mapping for these activities, otherwise the migration will fail.
 
@@ -61,7 +61,7 @@ If you create a mapping that is incorrect, a red error indicator <span class="ba
 
 ## Set Update Event Trigger flag
 
-To set the [update event trigger flag](../user-guide/process-engine/process-instance-migration.md#events) for events, first create a mapping for the event. Then click on the green checkmark indicator to open the details tooltip. The opened popup contains a checkbox to update the event trigger.
+To set the [update event trigger flag](../../../user-guide/process-engine/process-instance-migration.md#events) for events, first create a mapping for the event. Then click on the green checkmark indicator to open the details tooltip. The opened popup contains a checkbox to update the event trigger.
 
 :::warning[Heads Up!]
 By default, the update event trigger flag in cockpit migration is set for activities with message references.
@@ -127,7 +127,7 @@ By clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-eye-
 
 ![Example img](./../img/migration/step5_batch.png)Executing migration asynchronously
 
-After clicking `Execute Migration`, the result screen is displayed. If the migration was performed successfully, that is indicated on this page. For asynchronous migrations, a link to the [batch page](../webapps/cockpit/batch/monitoring.md) is displayed where the progress of the batch can be observed.
+After clicking `Execute Migration`, the result screen is displayed. If the migration was performed successfully, that is indicated on this page. For asynchronous migrations, a link to the [batch page](../batch/monitoring.md) is displayed where the progress of the batch can be observed.
 
 ## Error: Migration Plan invalid
 

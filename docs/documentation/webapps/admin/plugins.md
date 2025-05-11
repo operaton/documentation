@@ -17,7 +17,7 @@ menu:
 
 Admin uses the concept of plugins to add own functionality without having to extend or hack the Admin web application.
 
-For further details about the concepts behind plugins, please read the [Cockpit plugins section](../webapps/cockpit/extend/plugins.md).
+For further details about the concepts behind plugins, please read the [Cockpit plugins section](../cockpit/extend/plugins.md).
 
 :::warning[Difference between Cockpit and Admin plugins:]">}}
   * To publish the plugin with Admin, its class name must be put into a file called ```org.operaton.bpm.admin.plugin.spi.AdminPlugin``` that resides in the directory ```META-INF/services```.
@@ -46,7 +46,7 @@ properties: {
 
 ![Example img](./img/admin-start-page-view.png)Dashboard
 
-With Operaton.5, the Admin webapp gets a dashboard based on plugins similar to the [Cockpit dashboard ones](../webapps/cockpit/extend/plugins.md#dashboard).
+With Operaton.5, the Admin webapp gets a dashboard based on plugins similar to the [Cockpit dashboard ones](../cockpit/extend/plugins.md#dashboard).
 
 This plugin points properties contain the attributes `label` and `pagePath`, which are the heading of the new Section as well as the linked sub-page of the heading. If `pagePath` is `undefined`, the label will not be rendered as a link.
 

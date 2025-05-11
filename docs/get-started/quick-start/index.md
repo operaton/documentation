@@ -24,7 +24,7 @@ Deploy the Process to Operaton and start your first process instance.
 ## [Involve Humans](./user-task.md)
 Learn the basics of integrating user tasks into a Process and how to build forms with Operaton.
 
-## [Make It Dynamic](./gateways.md)
+## [Make It Dynamic](./gateway.md)
 Learn how to make your Process more dynamic by adding Gateways to the Process.
 
 ## [Decision Automation](./decision-automation.md)

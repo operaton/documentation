@@ -6,7 +6,7 @@ sidebar_position: 90
 ---
 
 You can use the open tasks dashboard to see how the open tasks are distributed by individual factors.
-Refer to the [Cockpit Plugins](../webapps/cockpit/extend/plugins.md) section for information about
+Refer to the [Cockpit Plugins](../cockpit/extend/plugins.md) section for information about
 adding a custom open task dashboard plugin.
 
 ![Example img](./img/task-dashboard.png)Open Task Dashboard

@@ -44,4 +44,4 @@ If you installed the default Operaton webapps and demo content, Operaton was con
 
 # Administrator Account
 
-Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user- and groupmanagement, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](../webapps/admin/authorization-management.md) for more details.
+Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user- and groupmanagement, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](authorization-management.md) for more details.

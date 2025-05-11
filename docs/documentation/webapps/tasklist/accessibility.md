@@ -49,4 +49,4 @@ To make working with the Tasklist easier, you can use keyboard shortcuts to jump
   </tr>
 </table>
 
-All these shortcuts can be modified or removed using the [Tasklist configuration file](../webapps/tasklist/configuration.md). You can access a list of all available shortcuts via the _Keyboard Shortcuts_ link at the top of the Tasklist page.
+All these shortcuts can be modified or removed using the [Tasklist configuration file](../tasklist/configuration.md). You can access a list of all available shortcuts via the _Keyboard Shortcuts_ link at the top of the Tasklist page.

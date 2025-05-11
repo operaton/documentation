@@ -25,7 +25,7 @@ To add an instruction, hover over an activity in the process diagram. By using t
 
 In the top-left corner of the activity, a badge will appear, indicating the restart (3).
 
-At any point during the creation of the restart, you can show the payload by clicking the eye button. This will show the request payload that will be sent via the [REST API](../reference/rest/index.md).
+At any point during the creation of the restart, you can show the payload by clicking the eye button. This will show the request payload that will be sent via the [REST API](../../../reference/rest/index.md).
 
 
 ## Restart Instructions
