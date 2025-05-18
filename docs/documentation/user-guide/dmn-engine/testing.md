@@ -1,6 +1,6 @@
 ---
 
-title: "Testing Decisions with the DMN Engine"
+title: "Testing"
 sidebar_position: 50
 
 menu:
