@@ -1,7 +1,7 @@
 ---
 
-title: "Data Types in the DMN Engine"
-sidebar_position: 40
+title: "Data Types"
+sidebar_position: 45
 
 menu:
   main:

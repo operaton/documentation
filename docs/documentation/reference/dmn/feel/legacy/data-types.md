@@ -1,16 +1,8 @@
 ---
 
 title: 'FEEL Data Types'
-sidebar_position: 10
+sidebar_position: 20
 
-menu:
-  main:
-    name: "Data Types"
-    identifier: "dmn-ref-feel-data-types"
-    parent: "dmn-ref-feel-legacy"
-    description: "Supported Data Types in FEEL"
-
-aliases: [reference/dmn11/feel/legacy/data-types/]
 ---
 
 :::note[Heads Up!]
