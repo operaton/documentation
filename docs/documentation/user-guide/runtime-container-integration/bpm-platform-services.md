@@ -22,6 +22,6 @@ The <a class="javadocref" href="org/operaton/bpm/ProcessEngineService.html">Proc
 
 The <a class="javadocref" href="org/operaton/bpm/ProcessApplicationService.html">ProcessApplicationService</a> is accessible via `BpmPlatform.getProcessApplicationService()`. It provides details on the process application deployments made on the application server it is running on. That means that it does not provide a global view across all nodes in a cluster.
 
-Given a process application name, a `ProcessApplicationInfo` object can be retrieved that contains details on the deployments made by this process application. These correspond to the process archives declared in [processes.xml](../user-guide/process-applications/the-processes-xml-deployment-descriptor.md).
+Given a process application name, a `ProcessApplicationInfo` object can be retrieved that contains details on the deployments made by this process application. These correspond to the process archives declared in [processes.xml](../process-applications/the-processes-xml-deployment-descriptor.md).
 
 Furthermore, application-specific properties can be retrieved such as the servlet context path in case of a servlet process application.

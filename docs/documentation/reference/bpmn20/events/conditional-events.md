@@ -42,7 +42,7 @@ To specify when a conditional event should be triggered, a `condition` element m
 ```
 
 The specified condition can be an EL expression and has access to the process instance variables.
-For information about EL expressions, see the [Expression Language](../user-guide/process-engine/expression-language.md">}})
+For information about EL expressions, see the [Expression Language](../user-guide/process-engine/expression-language.md)
 section. A condition is evaluated every time a variable changes, see the [Trigger Conditional Events](#trigger-conditional-events) section for details.
 
 To prevent the continuous evaluation of a condition, the evaluation can be restricted to specific variable changes.
@@ -174,7 +174,7 @@ That is the case if a variable is created, updated or deleted.
 
 ### Set Variable From Outside
 
-Variables can be changed from the outside with the help of the [variable API](../user-guide/process-engine/variables.md">}}).
+Variables can be changed from the outside with the help of the [variable API](../user-guide/process-engine/variables.md).
 See the following example how to set a variable on the variable scope of the process instance:
 
 ```java
@@ -186,7 +186,7 @@ This statement triggers the evaluation of all applicable conditional events. For
 
 ### Set Variable From Delegation Code
 
-Variables can not only be set from outside, but also also from within a process instance via [delegation code](../user-guide/process-engine/delegation-code.md">}}).
+Variables can not only be set from outside, but also also from within a process instance via [delegation code](../user-guide/process-engine/delegation-code.md).
 
 For example:
 
@@ -233,14 +233,14 @@ See the following BPMN process model:
 
 <div data-bpmn-diagram="../bpmn/conditionalEventScopes" ></div>
 
-If we have started the process above and `UserTask B` and `UserTask A` are active, then the [activity instance](../user-guide/process-engine/process-engine-concepts.md#activity-instances">}}) hierarchy is:
+If we have started the process above and `UserTask B` and `UserTask A` are active, then the [activity instance](../user-guide/process-engine/process-engine-concepts.md#activity-instances) hierarchy is:
 
     ProcessInstance
        UserTask A
        SubProcess
          UserTask B
 
-If a variable is set in the context of the `SubProcess` instance, then only the conditional boundary event of `UserTask B` is evaluated. The boundary event of `UserTask A` cannot trigger as the variable is not *visible* in its context. The user guide section on [variable scopes and variable visibility](../user-guide/process-engine/variables.md#variable-scopes-and-variable-visibility">}}) provides details on the general concept.
+If a variable is set in the context of the `SubProcess` instance, then only the conditional boundary event of `UserTask B` is evaluated. The boundary event of `UserTask A` cannot trigger as the variable is not *visible* in its context. The user guide section on [variable scopes and variable visibility](../user-guide/process-engine/variables.md#variable-scopes-and-variable-visibility) provides details on the general concept.
 
 # Operaton Extensions
 

@@ -208,8 +208,8 @@ You can audit the evaluated decision definitions in the [Cockpit] webapp.
 
 
 
-[Cockpit]: ../webapps/cockpit/dmn/index.md
-[History and Audit Event Log]: ../user-guide/process-engine/history/history-configuration.md
-[DMN 1.3 reference]: ../reference/dmn/decision-table/hit-policy.md
-[BPMN business rule task]: ../reference/bpmn20/tasks/business-rule-task.md#using-operaton-dmn-engine
-[CMMN decision task]: ../reference/cmmn11/tasks/decision-task.md
+[Cockpit]: ../../../webapps/cockpit/dmn/index.md
+[History and Audit Event Log]: ../../process-engine/history/history-configuration.md
+[DMN 1.3 reference]: ../../../reference/dmn/decision-table/hit-policy.md
+[BPMN business rule task]: ../../../reference/bpmn20/tasks/business-rule-task.md#using-operaton-dmn-engine
+[CMMN decision task]: ../../../reference/cmmn11/tasks/decision-task.md

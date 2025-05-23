@@ -80,9 +80,9 @@ List<SchemaLogEntry> entries = managementService.createSchemaLogQuery().list();
 
 The `ACT_RU_METER_LOG` table contains a collection of runtime metrics that can help draw conclusions about usage, load
 and performance of Operaton. Metrics are reported as numbers in the Java `long` range and count the occurrence of
-specific events. Please find detailed information about how metrics are collected in the [Metrics User Guide](../user-guide/process-engine/metrics.md">}}).
+specific events. Please find detailed information about how metrics are collected in the [Metrics User Guide](../../process-engine/metrics.md).
 
-The default configuration of the [MetricsReporter](../user-guide/process-engine/metrics.md#metrics-reporter">}}) will create one row per [metric](../user-guide/process-engine/metrics.md#built-in-metrics">}}) in `ACT_RU_METER_LOG` every 15 minutes.
+The default configuration of the [MetricsReporter](../../process-engine/metrics.md#metrics-reporter) will create one row per [metric](../../process-engine/metrics.md#built-in-metrics) in `ACT_RU_METER_LOG` every 15 minutes.
 
 :::warning[Heads Up!]
 If you are an enterprise customer, your license agreement might require you to report some metrics annually. Please store `root-process-instance-start`, `activity-instance-start`, `executed-decision-instances` and `executed-decision-elements` metrics for at least 18 months until they were reported.
@@ -91,7 +91,7 @@ If you are an enterprise customer, your license agreement might require you to r
 ## Task Metrics Log (ACT_RU_TASK_METER_LOG)
 
 The `ACT_RU_TASK_METER_LOG` table contains a collection of task related metrics that can help draw conclusions about usage, load
-and performance of the BPM platform. Task metrics contain a pseudonymized and fixed-length value of task assignees and their time of appearance. Please find detailed information about how task metrics are collected in the [Metrics User Guide](../user-guide/process-engine/metrics.md">}}).
+and performance of the BPM platform. Task metrics contain a pseudonymized and fixed-length value of task assignees and their time of appearance. Please find detailed information about how task metrics are collected in the [Metrics User Guide](../../process-engine/metrics.md).
 
 Every assignment of a task to an assignee will create one row in `ACT_RU_TASK_METER_LOG`.
 

@@ -162,7 +162,7 @@ Be assured that we have the loop marker in our backlog to be added to the engine
 
 ## JSON Collections with Multi-Instance Collections
 
-JSON Arrays created with [Operaton SPIN](../reference/spin/index.md">}}) can be used as a collection for multi-instance activities.
+JSON Arrays created with [Operaton SPIN](../reference/spin/index.md) can be used as a collection for multi-instance activities.
 Consider the following JavaScript example that initializes execution variable `collection`:
 
 ```javascript
@@ -170,7 +170,7 @@ var collection = S('{ "collection" : ["System 1", "System 3"] }');
 execution.setVariable("collection", collection);
 ```
 
-This script can be injected in the model in several ways, e.g. using [Script task] (../reference/bpmn20/tasks/script-task.md">}}).
+This script can be injected in the model in several ways, e.g. using [Script task] (../reference/bpmn20/tasks/script-task.md).
 
 We can now use `collection` variable in multi-instance activity's `operaton:collection` extension element.
 

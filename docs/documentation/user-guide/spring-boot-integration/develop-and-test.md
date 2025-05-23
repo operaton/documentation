@@ -93,7 +93,7 @@ Here, the `camunda.bpm.process-engine-name=foo` will set (a unique name) "foo" a
 
 ## Operaton Assertions
 
-The [Operaton Assertions](/user-guide/testing/index.md#operaton-assertions) library is
+The [Operaton Assertions](../testing/index.md#operaton-assertions) library is
 integrated with the Operaton Spring Boot Starter in
 order to make testing processes in your Spring Boot application easier.
 

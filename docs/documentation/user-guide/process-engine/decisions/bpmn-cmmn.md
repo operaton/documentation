@@ -383,7 +383,7 @@ Beans cannot be accessed when using FEEL as expression language.
 
 :::warning[Use of Internal API]
 
-These APIs are **not** part of the [public API](../introduction/public-api.md) and may change in later releases.
+These APIs are **not** part of the [public API](../../../introduction/public-api.md) and may change in later releases.
 
 :::
 
@@ -406,17 +406,17 @@ This can be done, for example, by creating a [process engine plugin].
 Please **note** that these functions are available in all JUEL expressions
 in the platform, not only in DMN decisions.
 
-[decision table]: ../reference/dmn/decision-table/index.md
-[decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
-[deployed]: ../user-guide/process-engine/decisions/repository.md
-[business rule task]: ../reference/bpmn20/tasks/business-rule-task.md
-[decision task]: ../reference/cmmn11/tasks/decision-task.md
-[Typed Value API]: ../user-guide/process-engine/variables.md#typed-value-api
-[object value serialization]: ../user-guide/process-engine/variables.md#object-value-serialization
-[output variable mapping]: ../user-guide/process-engine/variables.md#input-output-variable-mapping
-[execution listener]: ../user-guide/process-engine/delegation-code.md#execution-listener
-[expression languages]: ../user-guide/dmn-engine/expressions-and-scripts.md
-[FEEL]: ../reference/dmn/feel/index.md
-[Spring]: ../user-guide/spring-framework-integration/index.md#expression-resolving
-[CDI]: ../user-guide/cdi-java-ee-integration/expression-resolving.md
-[process engine plugin]: ../user-guide/process-engine/process-engine-plugins.md
+[decision table]: ../../../reference/dmn/decision-table/index.md
+[decision literal expression]: ../../../reference/dmn/index.md
+[deployed]: ../../process-engine/decisions/repository.md
+[business rule task]: ../../../reference/bpmn20/tasks/business-rule-task.md
+[decision task]: ../../../reference/cmmn11/tasks/decision-task.md
+[Typed Value API]: ../../process-engine/variables.md#typed-value-api
+[object value serialization]: ../../process-engine/variables.md#object-value-serialization
+[output variable mapping]: ../../process-engine/variables.md#input-output-variable-mapping
+[execution listener]: ../../process-engine/delegation-code.md#execution-listener
+[expression languages]: ../../dmn-engine/expressions-and-scripts.md
+[FEEL]: ../../../reference/dmn/feel/index.md
+[Spring]: ../../spring-framework-integration/index.md#expression-resolving
+[CDI]: ../../cdi-java-ee-integration/expression-resolving.md
+[process engine plugin]: ../../process-engine/process-engine-plugins.md

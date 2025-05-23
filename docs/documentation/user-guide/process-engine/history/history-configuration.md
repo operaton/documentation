@@ -38,7 +38,7 @@ The history level controls the amount of data the process engine provides via th
 
 If you need to customize the amount of history events logged, you can provide a custom implementation <a class="javadocref" href="org/operaton/bpm/engine/impl/history/producer/HistoryEventProducer.html">HistoryEventProducer</a> and wire it in the process engine configuration.
 
-In case of specific needs, you can also create a [custom history level](../user-guide/process-engine/history/custom-implementation.md#implement-a-custom-history-level">}}).
+In case of specific needs, you can also create a [custom history level](../history/custom-implementation.md#implement-a-custom-history-level).
 
 ## Set the history level
 
@@ -60,7 +60,7 @@ It can also be set using Spring XML or a deployment descriptor (bpm-platform.xml
 Note that when using the default history backend, the history level is stored in the database and cannot be changed later.
 
 :::note[History levels and Cockpit]
-[Operaton Cockpit](../webapps/cockpit/index.md) web application works best with History Level set to `FULL`. "Lower" History Levels will disable certain history-related features.
+[Operaton Cockpit](../../../webapps/cockpit/index.md) web application works best with History Level set to `FULL`. "Lower" History Levels will disable certain history-related features.
 :::
 
 
