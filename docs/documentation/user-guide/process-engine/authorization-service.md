@@ -403,7 +403,7 @@ The following table gives an overview for which resources they are available:
   </tbody>
 </table>
 
-To execute an operation [asynchronously](../user-guide/process-engine/batch.md">}}), only a **Create** permission on the Batch Resource is required. However, when executing the same operation synchronously, the specific permissions (e.g. **Delete** on **Process Instance Resource**) are checked.
+To execute an operation [asynchronously](../process-engine/batch.md), only a **Create** permission on the Batch Resource is required. However, when executing the same operation synchronously, the specific permissions (e.g. **Delete** on **Process Instance Resource**) are checked.
 
 For example, a user without the **Update** permission on the **Process Instance Resource** and granted **Create** permission on the **Batch Resource** can modify multiple process instances asynchronously by creating a batch. However, the user can't execute this operation synchronously.
 
@@ -1038,4 +1038,4 @@ On these databases, revoke authorizations are effectively unusable.
 Also see the [Configuration Options](#check-revoke-authorizations) section on this page.
 
 [hist-inst-perm-config-flag]: ../reference/deployment-descriptors/tags/process-engine.md#enable-historic-instance-permissions
-[Removal-Time-based History Cleanup Strategy]: ../user-guide/process-engine/history/history-cleanup.md#removal-time-based-strategy
+[Removal-Time-based History Cleanup Strategy]: ../process-engine/history/history-cleanup.md#removal-time-based-strategy

@@ -8,26 +8,26 @@ sidebar_position: 160
 
 The process engine is a piece of passive Java code which works in the Thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's http-thread-pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
 
-On any such *external* trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed *later*, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an *internal* trigger. That is why the engine also needs an active component, the [job executor](../user-guide/process-engine/the-job-executor.md), which is able to fetch registered jobs and process them asynchronously.
+On any such *external* trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed *later*, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an *internal* trigger. That is why the engine also needs an active component, the [job executor](../process-engine/the-job-executor.md), which is able to fetch registered jobs and process them asynchronously.
 
 
 # Wait States
 
  We talked about wait states as transaction boundaries where the process state is stored to the database, the thread returns to the client and the transaction is committed. The following BPMN elements are always wait states:
 
-[![](./img/bpmn-elements/receive-task.svg)](../reference/bpmn20/tasks/receive-task.md)
-[![](./img/bpmn-elements/user-task.svg)](../reference/bpmn20/tasks/user-task.md)
-[![](./img/bpmn-elements/message-event.svg) Message Event](../reference/bpmn20/events/message-events.md)
-[![](./img/bpmn-elements/timer-event.svg) Timer Event](../reference/bpmn20/events/timer-events.md)
-[![](./img/bpmn-elements/signal-event.svg) Signal Event](../reference/bpmn20/events/signal-events.md)
+[![](./img/bpmn-elements/receive-task.svg)](../../reference/bpmn20/tasks/receive-task.md)
+[![](./img/bpmn-elements/user-task.svg)](../../reference/bpmn20/tasks/user-task.md)
+[![](./img/bpmn-elements/message-event.svg) Message Event](../../reference/bpmn20/events/message-events.md)
+[![](./img/bpmn-elements/timer-event.svg) Timer Event](../../reference/bpmn20/events/timer-events.md)
+[![](./img/bpmn-elements/signal-event.svg) Signal Event](../../reference/bpmn20/events/signal-events.md)
 
-The [Event Based Gateway](../reference/bpmn20/gateways/event-based-gateway.md):
+The [Event Based Gateway](../../reference/bpmn20/gateways/event-based-gateway.md):
 
 ![](./bpmn/event-based-gateway.bpmn)
 
 <div data-bpmn-diagram="../bpmn/event-based-gateway"></div>
 
-A special type of the [Service Task](../reference/bpmn20/tasks/service-task.md">}}): [External Task](../user-guide/process-engine/external-tasks.md)
+A special type of the [Service Task](../../reference/bpmn20/tasks/service-task.md): [External Task](../process-engine/external-tasks.md)
 
 <a href="../external-tasks">bpmn-symbol service-task</a>
 
@@ -84,7 +84,7 @@ Asynchronous instantiation of a process instance is enabled using the `operaton:
 extension attribute on a process-level start event.
 On instantiation, the process instance will be created and persisted in the database, but execution
 will be deferred. Also, execution listeners will not be invoked synchronously. This can be helpful
-in various situations such as [heterogeneous clusters](../user-guide/process-engine/the-job-executor.md#cluster-setups),
+in various situations such as [heterogeneous clusters](../process-engine/the-job-executor.md#cluster-setups),
 when the execution listener class is not available on the node that instantiates the process.
 
 ```xml
@@ -94,7 +94,7 @@ when the execution listener class is not available on the node that instantiates
 
 ## Asynchronous Continuations of Multi-Instance Activities
 
-A [multi-instance activity](../reference/bpmn20/tasks/task-markers.md#multiple-instances) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
+A [multi-instance activity](../../reference/bpmn20/tasks/task-markers.md#multiple-instances) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
 
 Additionally, the inner activity can also be configured for asynchronous continuation using the `operaton:asyncBefore` and `operaton:asyncAfter` extension attributes on the `multiInstanceLoopCharacteristics` element:
 
@@ -122,7 +122,7 @@ executed:
 1. The "TAKE" listeners are invoked on the sequence flow entering the activity.
 2. The "START" listeners are invoked on the activity itself.
 3. The behavior of the activity is executed: the actual behavior depends on the type of the
-   activity: in case of a `Service Task` the behavior consists of invoking [Delegation Code](../user-guide/process-engine/delegation-code.md), in case of a `User Task`, the behavior consists of creating a `Task` instance in the task list etc...
+   activity: in case of a `Service Task` the behavior consists of invoking [Delegation Code](../process-engine/delegation-code.md), in case of a `User Task`, the behavior consists of creating a `Task` instance in the task list etc...
 4. The "END" listeners are invoked on the activity.
 5. The "TAKE" listeners of the outgoing sequence flow are invoked.
 
@@ -146,7 +146,7 @@ continuation before or after an activity creates a transaction boundary before o
 ![Example img](./img/process-engine-async-transactions.png)
 
 What's more, asynchronous continuations are always executed by the [Job
-Executor](../user-guide/process-engine/the-job-executor.md).
+Executor](../process-engine/the-job-executor.md).
 
 
 # Rollback on Exception
@@ -228,8 +228,8 @@ integrate with
 :::
 
 
-[tx-spring]: ../user-guide/spring-framework-integration/transactions.md
-[tx-jta]: ../user-guide/cdi-java-ee-integration/jta-transaction-integration.md
+[tx-spring]: ../spring-framework-integration/transactions.md
+[tx-jta]: ../cdi-java-ee-integration/jta-transaction-integration.md
 
 ## Transactions and the Process Engine Context
 

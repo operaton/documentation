@@ -67,7 +67,7 @@ The fluent process instance restart builder offers the following instructions to
 * `startTransition(String transitionId)`
 
 For information about the instruction types, please refer to the similar
- [modification instruction types](../user-guide/process-engine/process-instance-modification.md#modification-instruction-types) section.
+ [modification instruction types](../process-engine/process-instance-modification.md#modification-instruction-types) section.
 
 ## Selecting process instances to restart
 
@@ -178,7 +178,7 @@ runtimeService.restartProcessInstances(processDefinition.getId())
 ## Execution
 
 The restart can either be executed synchronously (blocking) or asynchronously
-(non-blocking) by using a [batch](../user-guide/process-engine/batch.md) .
+(non-blocking) by using a [batch](../process-engine/batch.md) .
 
 The following are some reasons to prefer either one or the other:
 
@@ -230,7 +230,7 @@ Batch batch = runtimeService.restartProcessInstances(processDefinition.getId())
 
 Using a batch, the process instance restart is split into several jobs which
 are executed asynchronously. These batch jobs are executed by the job executor.
-See the [batch](../user-guide/process-engine/batch.md) section for more 
+See the [batch](../process-engine/batch.md) section for more 
 information. A batch is completed if all batch execution jobs are successfully 
 completed. However, in contrast to the synchronous execution, it is not guaranteed 
 that either all or no process instances are restarted. As the restart is split into

@@ -96,14 +96,14 @@ For creating initial authorizations in your application, you have the following 
        lastName: Demo
    ```
 
-  - See [Operaton Engine Properties](../user-guide/spring-boot-integration/configuration#operaton-engine-properties) documentation for more details.
-2. The [Administrator Authorization Plugin](../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin)
+  - See [Operaton Engine Properties](../spring-boot-integration/configuration#operaton-engine-properties) documentation for more details.
+2. The [Administrator Authorization Plugin](../process-engine/authorization-service.md#the-administrator-authorization-plugin)
 to grant administrator authorizations for a particular OAuth2 user or group.
 
 # OAuth2 Identity Provider
 
 Additionally to the OAuth2 login, Operaton also provides support to use groups from OAuth2.
-This is achieved with a custom [identity service](../user-guide/process-engine/identity-service.md), called <a class="javadocref" href="org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OAuth2IdentityProvider.html">OAuth2IdentityProvider</a>.
+This is achieved with a custom [identity service](../process-engine/identity-service.md), called <a class="javadocref" href="org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OAuth2IdentityProvider.html">OAuth2IdentityProvider</a>.
 
 This is a read-only identity provider that configures user's groups from the [Spring Security's granted authorities][Authorities].
 This identity provider also supports the default Operaton Database Identity Service as a fallback for authentications for the REST API.

@@ -18,7 +18,7 @@ It is used to configure Operaton in the following distributions:
 *   [IBM WebSphere Application Server](../installation/full/was/index.md)
 *   [Oracle WebLogic Application Server](../installation/full/wls/index.md)
 
-:::warning[Wildfly]">}}
+:::warning[Wildfly]
 The <code>bpm-platform.xml</code> file is not used in the Operaton distribution for Wildfly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="../user-guide/runtime-container-integration/jboss.md">The Operaton Wildfly Subsystem</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
 :::
 

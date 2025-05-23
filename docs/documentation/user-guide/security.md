@@ -82,7 +82,7 @@ Note that changing the time to live to a lower value can harm the performance of
 #### Enable authentication logging in the Operaton web apps
 
 It is generally recommended to enable logging of log in attempts (successful and failed) as well as log out events.
-In Operaton, you can enable authentication logging in the Operaton web apps by setting the `webappsAuthenticationLoggingEnabled` process engine [configuration flag](../reference/deployment-descriptors/tags/process-engine.md#webappsAuthenticationLoggingEnabled) to true. All user-initiated log in and log out events will then be logged to the application log using the `org.operaton.bpm.webapp` [logger](../user-guide/logging.md#process-engine">}}).
+In Operaton, you can enable authentication logging in the Operaton web apps by setting the `webappsAuthenticationLoggingEnabled` process engine [configuration flag](../reference/deployment-descriptors/tags/process-engine.md#webappsAuthenticationLoggingEnabled) to true. All user-initiated log in and log out events will then be logged to the application log using the `org.operaton.bpm.webapp` [logger](../user-guide/logging.md#process-engine).
 
 The following events produce log statements:
 
@@ -245,7 +245,7 @@ To gain the full feature set of the Webapps, and not suffer any UX degradation d
 :::
 
 Please see the User Guide to learn more about the
-[Query Maximum Results Limit](../user-guide/process-engine/process-engine-api.md#query-maximum-results-limit">}}).
+[Query Maximum Results Limit](../user-guide/process-engine/process-engine-api.md#query-maximum-results-limit).
 
 ## CSRF Prevention in the Webapps
 A CSRF filter is enabled by default, validating each modifying request performed through the webapps.
@@ -317,7 +317,7 @@ the `ACT_HI_OP_LOG` table. The amount of table entries depends on the number of 
 
 Using the process engine configuration flag `logEntriesPerSyncOperationLimit`, the number of created entries to the user operation log can be limited for synchronous API calls. By default, one operation log entry is written per API call, regardless of how many entities were affected (default property value is `1`).
 If you choose to change `logEntriesPerSyncOperationLimit`, select a value that you are certain your system can handle.
-For more information about the possible values for `logEntriesPerSyncOperationLimit`, visit the [configuration documentation](..reference/deployment-descriptors/tags/process-engine.md#logEntriesPerSyncOperationLimit).
+For more information about the possible values for `logEntriesPerSyncOperationLimit`, visit the [configuration documentation](../reference/deployment-descriptors/tags/process-engine.md#logEntriesPerSyncOperationLimit).
 
 Currently, the following APIs are affected:
 

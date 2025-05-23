@@ -40,7 +40,7 @@ When you click on **Select Instances**, a modal opens. Initially, all instances 
 You can use the filter bar above the list of instances to filter the displayed instances.
 You can select specific instances or click on the **Query** radio button to select all instances matching the filter.
 
-:::warning[Warning]">}}
+:::warning[Warning]
 Selecting all instances might create a high load on the database and application runtime/server if the query has a high number of results.
 :::
 

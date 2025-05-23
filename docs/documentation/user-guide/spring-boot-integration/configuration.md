@@ -29,7 +29,7 @@ Sets the process engine name and automatically adds all `ProcessEnginePlugin` be
 
 ### `DefaultDatasourceConfiguration`
 
-Configures the Operaton data source and enables [transaction integration](../user-guide/spring-framework-integration/transactions.md). By default, the primary `DataSource` and `PlatformTransactionManager` beans are wired with the process engine configuration.
+Configures the Operaton data source and enables [transaction integration](../spring-framework-integration/transactions.md). By default, the primary `DataSource` and `PlatformTransactionManager` beans are wired with the process engine configuration.
 
 If you want to [configure more than one datasource](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-two-datasources)
 and don't want to use the `@Primary` one for the process engine, then you can create a separate
@@ -73,7 +73,7 @@ public PlatformTransactionManager camundaTransactionManager(@Qualifier("camundaB
 
 ### `DefaultHistoryConfiguration`
 
-Applies the history configuration to the process engine. If not configured, the history level [FULL](../user-guide/process-engine/history/history-configuration.md#choose-a-history-level) is used.
+Applies the history configuration to the process engine. If not configured, the history level [FULL](../process-engine/history/history-configuration.md#choose-a-history-level) is used.
 If you want to use a custom `HistoryEventHandler`, you just have to provide a bean implementing the interface.
 
 ```java
@@ -909,7 +909,7 @@ server:
 ```
 
 Further details of the session cookie like the `SameSite` flag can be configured via
-[camunda.bpm.webapp.session-cookie](../user-guide/spring-boot-integration/configuration.md#session-cookie) in the `application.yaml`.
+[camunda.bpm.webapp.session-cookie](../spring-boot-integration/configuration.md#session-cookie) in the `application.yaml`.
 
 # Configuring Spin DataFormats
 
@@ -930,7 +930,7 @@ The Spin Jackson Json DataFormat auto-configuration is disabled when using
 `operaton-spin-dataformat-all` as a dependency. The `operaton-spin-dataformat-all` artifact shades the
 Jackson libraries, which breaks compatibility with the regular Jackson modules. If usage of
 `operaton-spin-dataformat-all` is necessary, please use the standard method for
-[Spin Custom DataFormat configuration](../reference/spin/extending-spin.md#custom-dataformats).
+[Spin Custom DataFormat configuration](../../reference/spin/extending-spin.md#custom-dataformats).
 :::
 
 For example, to provide support for Java 8 Date/time types in Spin, the following dependencies, with their

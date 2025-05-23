@@ -14,7 +14,7 @@ menu:
 :::note[Installation Guide]
   If you [download a full distribution](http://operaton.org/download/), the Operaton Wildfly subsystem is readily installed into the application server.
 
-  [Read the installation guide](../installation/full/jboss/index.md) to learn how to install the Operaton Wildfly subsystem into your Wildfly Server.
+  [Read the installation guide](../../installation/full/wildfly/index.md) to learn how to install the Operaton Wildfly subsystem into your Wildfly Server.
 :::
 
 Operaton provides advanced integration for Wildfly in the form of a custom [Wildfly Subsystem](https://docs.wildfly.org/23/Extending_WildFly.html).
@@ -46,7 +46,7 @@ Optional configuration elements are:
 
 Shown values are the default ones.
 
-For a complete list of all configuration options, please refer to the [Job Executor Configuration](../reference/deployment-descriptors/tags/job-executor.md).
+For a complete list of all configuration options, please refer to the [Job Executor Configuration](../../reference/deployment-descriptors/tags/job-executor.md).
 
 # Configure a Process Engine in standalone.xml/domain.xml
 
@@ -88,7 +88,7 @@ It should be easy to see that the configuration consists of a single process eng
 
 If you start up your Wildfly server with this configuration, it will automatically create the corresponding services and expose them through the management model.
 
-For a complete list of all configuration options, please refer to the [Process Engine Configuration](../reference/deployment-descriptors/tags/process-engine.md).
+For a complete list of all configuration options, please refer to the [Process Engine Configuration](../../reference/deployment-descriptors/tags/process-engine.md).
 
 
 # Provide a Custom Process Engine Configuration Class
@@ -193,7 +193,7 @@ System properties may be set via command line (`-D`option). Read more on express
 
 # Look Up a Process Engine in JNDI
 
-The Operaton Wildfly subsystem provides the same [JNDI bindings for the ProcessApplicationService and the ProcessEngineService](../user-guide/runtime-container-integration/jndi-bindings-for-bpmn-platform-services.md) as provided on other containers. In addition, the Operaton Wildfly subsystem creates JNDI Bindings for all managed process engines, allowing us to look them up directly.
+The Operaton Wildfly subsystem provides the same [JNDI bindings for the ProcessApplicationService and the ProcessEngineService](../runtime-container-integration/jndi-bindings-for-bpmn-platform-services.md) as provided on other containers. In addition, the Operaton Wildfly subsystem creates JNDI Bindings for all managed process engines, allowing us to look them up directly.
 
 The global JNDI bindings for process engines follow the pattern
 
@@ -304,7 +304,7 @@ The JConsole plugin allows you to inspect the management model graphically and b
 # Manage Classpath Dependencies
 
 :::note[Implicit Module Dependencies]
-   Classpath dependencies are automatically managed for you if you use the [Process Application API](../user-guide/process-applications/index.md).
+   Classpath dependencies are automatically managed for you if you use the [Process Application API](../process-applications/index.md).
 :::
 
 When using the Operaton Wildfly subsystem, the process engine classes are deployed as WildFly module. The module is named
@@ -348,7 +348,7 @@ As a result, the Application Service will add the process engine module to the c
 # Manage Service Dependencies
 
 :::note[Implicit Service Dependencies]
-   Service dependencies are automatically managed for you if you use the [Process Application API](../user-guide/process-applications/index.md).
+   Service dependencies are automatically managed for you if you use the [Process Application API](../process-applications/index.md).
 :::
 
 The Operaton Wildfly subsystem manages process engines as JBoss Services in the JBoss Module Service Container. For the Module Service Container to provide the process engine service(s) to the deployed applications, it is important that the dependencies are known. Consider the following example:

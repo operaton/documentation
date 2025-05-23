@@ -51,4 +51,4 @@ Note that for this to work, you need to define a <a class="javadocref" href="org
 </bean>
 ```
 
-[Testing Scopes]: ../user-guide/testing/index.md#scoping-tests
+[Testing Scopes]: ../testing/index.md#scoping-tests

@@ -20,7 +20,7 @@ It deletes:
 * Historic case instances plus all related historic data (e.g., historic variable instances, historic task instances, etc.)
 * Historic batches plus all related historic data (historic incidents and job logs)
 
-History cleanup can be triggered manually or scheduled on a regular basis. Only [operaton-admins](../user-guide/process-engine/authorization-service.md#the-operaton-admin-group">}}) have permissions to execute history cleanup manually.
+History cleanup can be triggered manually or scheduled on a regular basis. Only [operaton-admins](../../process-engine/authorization-service.md#the-operaton-admin-group) have permissions to execute history cleanup manually.
 
 ## Use case example
 
@@ -44,7 +44,7 @@ The following elements of Operaton history are cleanable:
 Note that cleaning one such instance always removes all dependent history data along with it. For example, cleaning a process instance removes the historic process instance as well as all historic activity instances, historic task instances, etc.
 
 :::note[Note]
-The history clean up job does not delete historic [timer-start-event](../reference/bpmn20/events/timer-events.md#timer-start-event) jobs. The reason being that the responsibility of timer-start-event job is to start a process instance, i.e. it does not belong to a process instance.
+The history clean up job does not delete historic [timer-start-event](../../../reference/bpmn20/events/timer-events.md#timer-start-event) jobs. The reason being that the responsibility of timer-start-event job is to start a process instance, i.e. it does not belong to a process instance.
 :::
 
 ### History Time To Live (TTL)
@@ -100,7 +100,7 @@ Strengths:
 Limitations:
 
 * Can only remove data for which a removal time is set. This is especially not the case for data which has been created with Operaton versions < 7.10.0.
-* Changing the TTL of a definition only applies to history data that is created in the future. It does not dynamically update the removal time of already written history data. However, it is possible to [Set a Removal Time via Batch Operations](../user-guide/process-engine/batch-operations.md#set-a-removal-time">}}).
+* Changing the TTL of a definition only applies to history data that is created in the future. It does not dynamically update the removal time of already written history data. However, it is possible to [Set a Removal Time via Batch Operations](../../process-engine/batch-operations.md#set-a-removal-time).
 * History data of case instances is not cleaned up.
 
 ### End-time-based strategy
@@ -116,12 +116,12 @@ Limitations:
 
 * End time is only stored in the instances tables (`ACT_HI_PROCINST`, `ACT_HI_CASEINST`, `ACT_HI_DECINST` and `ACT_HI_BATCH`). To delete data from all history tables, the cleanable instances are first fetched via a `SELECT` statement. Based on that, `DELETE` statements are made for each history table. These statements can involve joins. This is less efficient than removal-time-based history cleanup.
 * Instance hierarchies are not cleaned up atomically. Since the individual instances have different end times, they are going to be cleaned up at different times. In consequence, hierarchies can appear partially removed.
-* [Historic Instance Permissions](../user-guide/process-engine/authorization-service.md#historic-instance-permissions) are not cleaned up.
-* [History Cleanup Jobs](../user-guide/process-engine/history/history-cleanup.md#historycleanupjobs-in-the-historic-job-log">}}) are not removed from the historic job log.
+* [Historic Instance Permissions](../../process-engine/authorization-service.md#historic-instance-permissions) are not cleaned up.
+* [History Cleanup Jobs](../../process-engine/history/history-cleanup.md#historycleanupjobs-in-the-historic-job-log) are not removed from the historic job log.
 
 ## Cleanup internals
 
-History cleanup is implemented via jobs and performed by the [job executor](../user-guide/process-engine/the-job-executor.md">}}). It therefore competes for execution resources with other jobs, e.g. triggering of BPMN timer events.
+History cleanup is implemented via jobs and performed by the [job executor](../../process-engine/the-job-executor.md). It therefore competes for execution resources with other jobs, e.g. triggering of BPMN timer events.
 
 Cleanup execution can be controlled in three ways:
 
@@ -133,7 +133,7 @@ See the [Cleanup configuration section](#configuration) for how to set each of t
 
 If there is no cleanable data left, the cleanup job performs exponential backoff between runs to reduce system load. This backoff is limited to a maximum of one hour. Backoff does not apply to manual cleanup runs.
 
-If cleanup fails, the job executor's [retry mechanism](../user-guide/process-engine/the-job-executor.md#failed-jobs">}}) applies. Once the cleanup job has run out of retries, it is not executed again until one of the following actions is performed:
+If cleanup fails, the job executor's [retry mechanism](../../process-engine/the-job-executor.md#failed-jobs) applies. Once the cleanup job has run out of retries, it is not executed again until one of the following actions is performed:
 
 * History cleanup is triggered manually
 * The process engine is restarted (this resets the number of job retries to the default value)
@@ -147,12 +147,12 @@ The history cleanup jobs can be found via the API method `HistoryService#findHis
 
 #### Required property
 
-The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via [process engine configuration](../reference/deployment-descriptors/tags/process-engine.md#enforceHistoryTimeToLive">}}). To define a default TTL for process definitions and decision definitions if no other value is defined check [historyTimeToLive configuration](../reference/deployment-descriptors/tags/process-engine.md#historyTimeToLive">}}).
+The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via [process engine configuration](../../../reference/deployment-descriptors/tags/process-engine.md#enforceHistoryTimeToLive). To define a default TTL for process definitions and decision definitions if no other value is defined check [historyTimeToLive configuration](../../../reference/deployment-descriptors/tags/process-engine.md#historyTimeToLive).
 
 #### Process/decision/case definitions
 
 Process instances are only cleaned up if their corresponding definition has a valid time to live (TTL).
-Use the ["historyTimeToLive" extension attribute](../reference/bpmn20/custom-extensions/extension-attributes.md#historytimetolive">}}) of the process definition to define the TTL for all its instances:
+Use the ["historyTimeToLive" extension attribute](../../../reference/bpmn20/custom-extensions/extension-attributes.md#historytimetolive) of the process definition to define the TTL for all its instances:
 
 ```xml
 <process id="oneTaskProcess" name="The One Task Process" isExecutable="true" operaton:historyTimeToLive="5">
@@ -179,7 +179,7 @@ Setting the value to `null` clears the TTL. The same can be done via restref pag
 For decision and case definitions, TTL can be defined in a similar way.
 
 In case you want to provide an engine-wide default TTL for all process, decision and case definitions,
-use the ["historyTimeToLive" attribute](../reference/deployment-descriptors/tags/process-engine.md#historytimetolive">}})
+use the ["historyTimeToLive" attribute](../../../reference/deployment-descriptors/tags/process-engine.md#historytimetolive)
 of the process engine configuration. This value is applied as the default whenever new definitions without TTL are deployed. Note that it therefore does not change the TTL of already deployed definitions. Use the API method given above to change TTL in this case.
 
 #### Batches
@@ -191,7 +191,7 @@ TTL for batches can be defined via attribute of the process engine configuration
 <property name="batchOperationHistoryTimeToLive">P5D</property>
 ```
 
-The `batchOperationsForHistoryCleanup` property can be configured in Spring based application or via custom [Process Engine Plugins](../user-guide/process-engine/process-engine-plugins.md">}}). It defines history time to live for each specific historic batch operation.
+The `batchOperationsForHistoryCleanup` property can be configured in Spring based application or via custom [Process Engine Plugins](../../process-engine/process-engine-plugins.md). It defines history time to live for each specific historic batch operation.
 
 ```xml
 <!-- specific TTL for each operation type -->
@@ -222,7 +222,7 @@ If the specific TTL is not set for a batch operation type, then the option `batc
 
 A history cleanup is always performed by executing a history cleanup job. As with all other jobs, the history cleanup job
 will produce events that are logged in the historic job log. By default, those entries will stay in the log indefinitely
-and cleanup must be configured explicitly. Please note that this only works for the [removal-time based history cleanup strategy](../user-guide/process-engine/history/history-cleanup.md#removal-time-strategy">}}).
+and cleanup must be configured explicitly. Please note that this only works for the [removal-time based history cleanup strategy](../../process-engine/history/history-cleanup.md#removal-time-strategy).
 
 The `historyCleanupJobLogTimeToLive` property can be used to define a TTL for historic job log entries produced by
 history cleanup jobs. The property accepts values in the ISO-8601 date format. Note that only the notation to define a number of days is allowed.
@@ -233,7 +233,7 @@ history cleanup jobs. The property accepts values in the ISO-8601 date format. N
 
 #### Task metrics
 
-The process engine reports [runtime metrics](../user-guide/process-engine/metrics.md">}}) to the database that can help draw conclusions about usage, load, and performance of the BPM platform.
+The process engine reports [runtime metrics](../../process-engine/metrics.md) to the database that can help draw conclusions about usage, load, and performance of the BPM platform.
 With every assignment of a user task, the related task worker is stored as a pseudonymized, fixed-length value in the `ACT_RU_TASK_METER_LOG` table together with a timestamp. Cleanup for this data needs to
 be configured explicitly if needed.
 
@@ -348,4 +348,4 @@ related to the cleanup execution since the particular node ignores them.
 **Please Note:** The history cleanup configuration properties that are unrelated to the cleanup execution (e.g.,
 time to live, removal time strategy) still need to be defined among all nodes.
 
-[configuration-options]: ../reference/deployment-descriptors/tags/process-engine.md#history-cleanup-configuration-parameters">}}
+[configuration-options]: ../../../reference/deployment-descriptors/tags/process-engine.md#history-cleanup-configuration-parameters

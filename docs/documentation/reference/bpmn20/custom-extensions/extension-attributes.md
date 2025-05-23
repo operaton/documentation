@@ -1295,7 +1295,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the history time to live (in days) for the process definition. It is used within <a href="../user-guide/process-engine/history/history-cleanup.md">}}">History cleanup</a>.
+      The attribute specifies the history time to live (in days) for the process definition. It is used within <a href="../user-guide/process-engine/history/history-cleanup.md">History cleanup</a>.
     </td>
   </tr>
   <tr>

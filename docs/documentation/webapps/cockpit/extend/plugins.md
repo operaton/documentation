@@ -80,7 +80,7 @@ As runtime relevant resource it defines
 8. a js file that exports a frontend module. This file must be named `plugin.js` and be located in the `app` directory of the plugin asset directory
 9. a css file that contains the style definitions for the client-side plugin. This file must be named `plugin.css` and be located in the `app` directory of the plugin asset directory
 
-:::note[Related Example]">}}
+:::note[Related Example]
   [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes)
 :::
 

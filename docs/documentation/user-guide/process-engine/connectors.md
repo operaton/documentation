@@ -97,7 +97,7 @@ This artifact contains the HTTP and SOAP connectors as well as their dependencie
 
 ## Configure the Process Engine Plugin
 
-`operaton-engine-plugin-connect` contains a class called `org.operaton.connect.plugin.impl.ConnectProcessEnginePlugin` that can be registered with a process engine using the [plugin mechanism](../user-guide/process-engine/process-engine-plugins.md). For example, a `bpm-platform.xml` file with the plugin enabled would look as follows:
+`operaton-engine-plugin-connect` contains a class called `org.operaton.connect.plugin.impl.ConnectProcessEnginePlugin` that can be registered with a process engine using the [plugin mechanism](../process-engine/process-engine-plugins.md). For example, a `bpm-platform.xml` file with the plugin enabled would look as follows:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -124,7 +124,7 @@ This artifact contains the HTTP and SOAP connectors as well as their dependencie
 
 # Use Connectors
 
-To use a connector, you have to add the Operaton extension element [connector](../reference/bpmn20/custom-extensions/extension-elements.md#operaton-connector). The connector is configured by a unique [connectorId](../reference/bpmn20/custom-extensions/extension-elements.md#operaton-connectorid), which specifies the used connector implementation. The ids of the currently supported connectors can be found at the beginning of this section. Additionally, an [input/output mapping](../user-guide/process-engine/variables.md#input-output-variable-mapping) is used to configure the connector. The required input parameters and the available output parameters depend on the connector implementation. Additional input parameters can also be provided to be used within the connector.
+To use a connector, you have to add the Operaton extension element [connector](../reference/bpmn20/custom-extensions/extension-elements.md#operaton-connector). The connector is configured by a unique [connectorId](../reference/bpmn20/custom-extensions/extension-elements.md#operaton-connectorid), which specifies the used connector implementation. The ids of the currently supported connectors can be found at the beginning of this section. Additionally, an [input/output mapping](../process-engine/variables.md#input-output-variable-mapping) is used to configure the connector. The required input parameters and the available output parameters depend on the connector implementation. Additional input parameters can also be provided to be used within the connector.
 
 As an example, a shortened configuration of the Operaton SOAP connector implementation is shown. A complete [example](https://github.com/operaton/operaton-bpm-examples/tree/master/servicetask/soap-service) can be found in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples) on GitHub.
 

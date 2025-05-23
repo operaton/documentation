@@ -19,7 +19,7 @@ Admin uses the concept of plugins to add own functionality without having to ext
 
 For further details about the concepts behind plugins, please read the [Cockpit plugins section](../cockpit/extend/plugins.md).
 
-:::warning[Difference between Cockpit and Admin plugins:]">}}
+:::warning[Difference between Cockpit and Admin plugins:]
   * To publish the plugin with Admin, its class name must be put into a file called ```org.operaton.bpm.admin.plugin.spi.AdminPlugin``` that resides in the directory ```META-INF/services```.
   * The plugin mechanism of Admin does not allow to provide additional SQL queries by using [MyBatis](http://www.mybatis.org/) mappings.
 :::

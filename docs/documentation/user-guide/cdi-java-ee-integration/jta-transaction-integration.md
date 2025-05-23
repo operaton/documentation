@@ -22,7 +22,7 @@ To use transaction manager integration, you need to use the
 The process engine requires access to an implementation of `javax.transaction.TransactionManager` or `jakarta.transaction.TransactionManager` respectively.
 Not all application servers provide such an implementation. Most notably, IBM WebSphere and Oracle WebLogic historically did not provide this  implementation.
 To achieve JTA transaction integration on these containers, users should use the Spring Framework Abstraction and configure the process engine using the
-[SpringProcessEngineConfiguration](../user-guide/spring-framework-integration/index.md">}}).
+[SpringProcessEngineConfiguration](../user-guide/spring-framework-integration/index.md).
 
 :::warning[]
   When you configure a transaction manager, make sure that it actually manages the data source that
