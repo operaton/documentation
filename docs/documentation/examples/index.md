@@ -6,7 +6,7 @@ sidebar_position: 70
 ---
 # Examples
 
-Completed the <a href="/get-started">Getting Started Guides</a>? Now discover what you can build with Operaton.
+Completed the [Getting Started Guides](../../get-started/index.md)? Now discover what you can build with Operaton.
 
 This page collects links to hands-on examples around Operaton.
 

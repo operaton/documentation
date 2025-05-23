@@ -3,11 +3,6 @@
 title: 'Time zones'
 sidebar_position: 255
 
-menu:
-  main:
-    identifier: "time-zones"
-    parent: "user-guide-process-engine"
-
 ---
 
 ## Process engine
