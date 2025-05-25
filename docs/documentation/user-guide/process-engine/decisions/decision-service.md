@@ -124,7 +124,7 @@ List<HistoricDecisionInstance> historicDecisions = processEngine
 For more information about this, please refer to the [History for DMN Decisions].
 
 [decision table]: ../../../reference/dmn/decision-table/index.md
-[decision literal expression]: ../../../reference/dmn/index.md
+[decision literal expression]: ../../../reference/dmn/decision-literal-expression/index.md
 [Services API]: ../../process-engine/process-engine-api.md#services-api
 [DMN 1.3 reference]: ../../../reference/dmn/decision-table/index.md
 [Versioning of Decisions]: ../../process-engine/decisions/repository.md#versioning-of-decisions
