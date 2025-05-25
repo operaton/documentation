@@ -64,7 +64,7 @@ At any point during the creation of the modification, you can show the payload o
 
 To perform the modification, you have to click on *Apply modifications*. Then you have a last chance to review the changes you are about to make and also review the request payload. You have an option to execute an *Asynchronous* modification and to add an annotation which will be added to the user operation log. After confirming the change, the modification is executed and the page is updated with the new execution state of the process instance.
 
-:::warning[Semantics of Process Instance Modification]">}}
+:::warning[Semantics of Process Instance Modification]
   The exact semantics of process instance modification as well as the underlying REST and Java API can be read about in the [Process Instance Modification section](../../../user-guide/process-engine/process-instance-modification.md) of the user guide.
 :::
 
@@ -86,7 +86,7 @@ However, to get to the **Apply Modifications** modal, first click **Select Insta
 
 Initially, all instances are displayed. You can use the filter bar above the list of instances to filter the displayed instances. You can select specific instances or click on the **Query** radio button to select all instances matching the filter.
 
-:::warning[Warning]">}}
+:::warning[Warning]
 Selecting all instances might create a high load on the database and application runtime/server if the query has a high number of results.
 :::
 

@@ -73,7 +73,7 @@ usage of EL.
   </tr>
   <tr>
     <td>
-      <a href="../user-guide/process-engine/the-job-executor.md#specifying-priorities-in-bpmn-xml">
+      <a href="../process-engine/the-job-executor.md#specifying-priorities-in-bpmn-xml">
         All Flow Nodes, Process Definition
       </a>
     </td>
@@ -88,7 +88,7 @@ usage of EL.
 
 Besides Java code, Operaton also supports the evaluation of expressions as delegation code. For
 general information about delegation code, see the corresponding
-[section](../user-guide/process-engine/delegation-code.md).
+[section](../process-engine/delegation-code.md).
 
 Two types of expressions are currently supported: `operaton:expression` and
 `operaton:delegateExpression`.
@@ -195,10 +195,10 @@ a bean.
 ## External Task Error Handling
 
 For External Tasks it is possible to define
-[operaton:errorEventDefinition](../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition)
+[operaton:errorEventDefinition](../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition)
 elements which can be provided with a JUEL expression. The expression is evaluated on `ExternalTaskService#complete` and
 `ExternalTaskService#handleFailure`. If the expression evaluates to `true`, a BPMN error is thrown which can be caught by an
-[Error Boundary Event](../reference/bpmn20/events/error-events.md#error-boundary-event).
+[Error Boundary Event](../../reference/bpmn20/events/error-events.md#error-boundary-event).
 
 In the scope of an External Task, expressions have access to the <a class="javadocref" href="org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a> object via the key `externalTask` which provides getter methods for `errorMessage`, `errorDetails`, `workerId`, `retries` and more.
 
@@ -224,7 +224,7 @@ How to match an error message:
 </bpmn:serviceTask>
 ```
 
-For further details on the functionality of error event definitions in the context of external tasks, consult the [External Tasks Guide](../user-guide/process-engine/external-tasks.md#error-event-definitions).
+For further details on the functionality of error event definitions in the context of external tasks, consult the [External Tasks Guide](../process-engine/external-tasks.md#error-event-definitions).
 
 ## Value
 
@@ -278,7 +278,7 @@ evaluating expressions:
     <tr>
       <td><code>externalTask</code></td>
       <td><code><a class="javadocref" href="org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a></code></td>
-      <td>Available during an external task context activity (e.g. in <a href="../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
+      <td>Available during an external task context activity (e.g. in <a href="../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
     </tr>
     <tr>
       <td><code>caseExecution</code></td>
@@ -390,8 +390,8 @@ If the Operaton Spin process engine plugin is activated, the Spin functions `S`,
 [JUEL](http://juel.sourceforge.net/)
 [official documentation](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html)
 [variables](#availability-of-variables-and-functions-inside-expression-language)
-[Spring](../user-guide/spring-framework-integration/index.md#expression-resolving)
-[CDI](../user-guide/cdi-java-ee-integration/expression-resolving.md)
-[BPMN](../reference/bpmn20/index.md)
-[CMMN](../reference/cmmn11/index.md)
-[spin-section](../user-guide/data-formats/index.md)
+[Spring](../spring-framework-integration/index.md#expression-resolving)
+[CDI](../cdi-java-ee-integration/expression-resolving.md)
+[BPMN](../../reference/bpmn20/index.md)
+[CMMN](../../reference/cmmn11/index.md)
+[spin-section](../data-formats/index.md)

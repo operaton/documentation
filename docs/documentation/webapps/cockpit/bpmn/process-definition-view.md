@@ -24,7 +24,7 @@ Click on the name to display the process in the process definition view.
 Please note that a filter called Parent is automatically set for the process so that you only see the instances that belong to the parent process.
 In the *Activity* column you can select the instance that is calling the child process.
 
-The `Job Definitions` tab displays the job definitions that are linked to this process definition. Observe the name of the activity, the type of job, the configuration and the state thereof. You can also suspend and re-activate the job definition (see [Job Definition Suspension][job-definition-suspension] for more information). It is also possible to [set the priority of jobs](../bpmn/process-definition-view.md#set-job-priority">}}).
+The `Job Definitions` tab displays the job definitions that are linked to this process definition. Observe the name of the activity, the type of job, the configuration and the state thereof. You can also suspend and re-activate the job definition (see [Job Definition Suspension][job-definition-suspension] for more information). It is also possible to [set the priority of jobs](../bpmn/process-definition-view.md#set-job-priority).
 
 [call-activity-navigation]: ../bpmn/process-definition-view.md#call-activity-navigation
 [failed-activities]: ../bpmn/failed-jobs.md

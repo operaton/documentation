@@ -12,7 +12,7 @@ menu:
 
 
 The process engine configuration can be extended through process engine plugins. A process engine plugin is an
-extension to the [process engine configuration](../user-guide/process-engine/process-engine-bootstrapping.md).
+extension to the [process engine configuration](../process-engine/process-engine-bootstrapping.md).
 
 A plugin must provide an implementation of the
 <a class="javadocref" href="org/operaton/bpm/engine/impl/cfg/ProcessEnginePlugin.html">ProcessEnginePlugin</a> interface.
@@ -22,10 +22,10 @@ A plugin must provide an implementation of the
 
 Process engine plugins can be configured
 
-* in the [Operaton Deployment Descriptors](../reference/deployment-descriptors/index.md) (bpm-platform.xml/processes.xml),
-* in the [Wildfly configuration file](../user-guide/runtime-container-integration/jboss.md) (standalone.xml/domain.xml),
-* using [Spring Beans XML](../user-guide/spring-framework-integration/index.md#configure-a-process-engine-plugin-in-spring),
-* in the [Operaton Run YAML configuration files](../user-guide/operaton-bpm-run.md#process-engine-plugin-registration)
+* in the [Operaton Deployment Descriptors](../../reference/deployment-descriptors/index.md) (bpm-platform.xml/processes.xml),
+* in the [Wildfly configuration file](../runtime-container-integration/jboss.md) (standalone.xml/domain.xml),
+* using [Spring Beans XML](../spring-framework-integration/index.md#configure-a-process-engine-plugin-in-spring),
+* in the [Operaton Run YAML configuration files](../operaton-bpm-run.md#process-engine-plugin-registration)
 * programatically.
 
 The following is an example of how to configure a process engine plugin in a bpm-platform.xml file:
@@ -67,6 +67,6 @@ A process engine plugin class must be visible to the classloader which loads the
 
 The following is a list of built-in process engine plugins:
 
-* [LDAP Identity Service Plugin](../user-guide/process-engine/identity-service.md#the-ldap-identity-service)
-* [Administrator Authorization Plugin](../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin)
-* [Process Application Event Listener Plugin](../user-guide/process-applications/process-application-event-listeners.md)
+* [LDAP Identity Service Plugin](../process-engine/identity-service.md#the-ldap-identity-service)
+* [Administrator Authorization Plugin](../process-engine/authorization-service.md#the-administrator-authorization-plugin)
+* [Process Application Event Listener Plugin](../process-applications/process-application-event-listeners.md)

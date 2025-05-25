@@ -21,13 +21,13 @@ In the context of the process engine, errors are normally raised as Java excepti
 
 ## Transaction Rollbacks
 
-The standard handling strategy is that exceptions are thrown to the client, meaning that the current transaction is rolled back. This means that the process state is rolled back to the last wait state. This behavior is described in detail in the [Transactions in Processes](../user-guide/process-engine/transactions-in-processes.md) section of the [User Guide](../user-guide/index.md). Error handling is delegated to the client by the engine.
+The standard handling strategy is that exceptions are thrown to the client, meaning that the current transaction is rolled back. This means that the process state is rolled back to the last wait state. This behavior is described in detail in the [Transactions in Processes](../process-engine/transactions-in-processes.md) section of the [User Guide](../index.md). Error handling is delegated to the client by the engine.
 
 Let's show this in a concrete example: the user gets an error dialog on the frontend stating that the stock management software is currently not reachable due to network errors. To perform a retry, the user might have to click the same button again. Even if this is often not desired it is still a simple strategy applicable in a lot of situations.
 
 ## Async and Failed Jobs
 
-If you don't want the exception being shown to the user, one option is to make service calls, which might cause an error, async (as described in [Transactions in Processes](../user-guide/process-engine/transactions-in-processes.md)). In that case the exception is stored in the process engine database and the [Job](../user-guide/process-engine/the-job-executor.md) in the background is marked as failed (to be more precise, the exception is stored and some retry counter is decremented).
+If you don't want the exception being shown to the user, one option is to make service calls, which might cause an error, async (as described in [Transactions in Processes](../process-engine/transactions-in-processes.md)). In that case the exception is stored in the process engine database and the [Job](../process-engine/the-job-executor.md) in the background is marked as failed (to be more precise, the exception is stored and some retry counter is decremented).
 
 In the example above this means that the user will not see an error but an "everything successful" dialog. The exception is stored on the job. Now either a clever retry strategy will automatically re-trigger the job later on (when the network is available again) or an operator needs to have a look at the error and trigger an additional retry. This is shown later in more detail.
 
@@ -52,11 +52,11 @@ The BPMN 2.0 error event gives you the possibility to explicitly model errors, t
 ![Example img](./img/bpmn.boundary.error.event.png)Error Boundary Event
 
 
-See the [Error Events](../reference/bpmn20/events/error-events.md) section of the [BPMN 2.0 Implementation Reference](../reference/bpmn20/index.md) and the [Throwing Errors from Delegation Code](../user-guide/process-engine/delegation-code.md#throw-bpmn-errors-from-delegation-code) section of the [User Guide](../user-guide/index.md) for more information.
+See the [Error Events](../../reference/bpmn20/events/error-events.md) section of the [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) and the [Throwing Errors from Delegation Code](../process-engine/delegation-code.md#throw-bpmn-errors-from-delegation-code) section of the [User Guide](../index.md) for more information.
 
 ## BPMN 2.0 Compensation and Business Transactions
 
-BPMN 2.0 transactions and compensations allow you to model business transaction boundaries (however, not in a technical ACID manner) and make sure already executed actions are compensated during a rollback. Compensation means to make the effect of the action invisible, e.g. book in goods if you have previously booked out the goods. See the [BPMN Compensation event](../reference/bpmn20/events/cancel-and-compensation-events.md) and the [BPMN Transaction Subprocess](../reference/bpmn20/subprocesses/transaction-subprocess.md) sections of the [BPMN 2.0 Implementation Reference](../reference/bpmn20/index.md) for details.
+BPMN 2.0 transactions and compensations allow you to model business transaction boundaries (however, not in a technical ACID manner) and make sure already executed actions are compensated during a rollback. Compensation means to make the effect of the action invisible, e.g. book in goods if you have previously booked out the goods. See the [BPMN Compensation event](../../reference/bpmn20/events/cancel-and-compensation-events.md) and the [BPMN Transaction Subprocess](../../reference/bpmn20/subprocesses/transaction-subprocess.md) sections of the [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) for details.
 
 
 # Monitoring and Recovery Strategies
@@ -69,9 +69,9 @@ As mentioned above, the simplest error handling strategy is to throw the excepti
 
 ## Retry Failed Jobs
 
-If you use Jobs (`async`), you can leverage Cockpit as monitoring tool to handle failed jobs, in this case no end user sees the exception. Then you normally see failures in cockpit when the retries are depleted (see the [Failed Jobs](../user-guide/process-engine/the-job-executor.md#failed-jobs) section of the [Web Applications](../webapps/cockpit/index.md) for more information).
+If you use Jobs (`async`), you can leverage Cockpit as monitoring tool to handle failed jobs, in this case no end user sees the exception. Then you normally see failures in cockpit when the retries are depleted (see the [Failed Jobs](../process-engine/the-job-executor.md#failed-jobs) section of the [Web Applications](../../webapps/cockpit/index.md) for more information).
 
-See the [Failed Jobs in Cockpit](../webapps/cockpit/bpmn/failed-jobs.md) section of the [Web Applications](../webapps/cockpit/index.md) for more details.
+See the [Failed Jobs in Cockpit](../../webapps/cockpit/bpmn/failed-jobs.md) section of the [Web Applications](../../webapps/cockpit/index.md) for more details.
 
 If you don't want to use Cockpit, you can also find the failed jobs via the API yourself:
 
@@ -125,7 +125,7 @@ evaluating exception messages in an automated way is not a good idea since:
 This is why we introduced static exception codes your business logic can rely on to determine specific
 problems and react accordingly.
 
-You can access error codes via Java as well as [REST API](../reference/rest/overview/index.md#exception-codes).
+You can access error codes via Java as well as [REST API](../../reference/rest/overview/index.md#exception-codes).
 
 ## Built-in codes
 
@@ -139,11 +139,11 @@ You can either define custom codes from delegation code or by [registering your 
 
 ### Delegation code
 
-Learn more on how to assign a custom error code to an exception in the documentation about [Delegation Code](../user-guide/process-engine/delegation-code.md#exception-codes).
+Learn more on how to assign a custom error code to an exception in the documentation about [Delegation Code](../process-engine/delegation-code.md#exception-codes).
 
 ## Configuration
 
-You can configure the exception error codes feature in your [process engine configuration](../reference/deployment-descriptors/tags/process-engine.md#exception-codes):
+You can configure the exception error codes feature in your [process engine configuration](../../reference/deployment-descriptors/tags/process-engine.md#exception-codes):
 
 * To disable the exception codes feature entirely, set the flag <code>disableExceptionCode</code>
   in your process engine configuration to <code>true</code>.
@@ -153,7 +153,7 @@ You can configure the exception error codes feature in your [process engine conf
 
 ### Register a Custom Code Provider
 
-With the help of a [`ProcessEnginePlugin`](../user-guide/process-engine/process-engine-plugins.md) you can register a custom `<a class="javadocref" href="org/operaton/bpm/engine/impl/errorcode/ExceptionCodeProvider.html">ExceptionCodeProvider</a>`:
+With the help of a [`ProcessEnginePlugin`](../process-engine/process-engine-plugins.md) you can register a custom `<a class="javadocref" href="org/operaton/bpm/engine/impl/errorcode/ExceptionCodeProvider.html">ExceptionCodeProvider</a>`:
 
 ```java
 engineConfig.setCustomExceptionCodeProvider(new ExceptionCodeProvider() {

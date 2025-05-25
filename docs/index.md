@@ -346,7 +346,7 @@ If the process bpmn resource cannot be parsed during deployment, the deployment 
 
 ## Query Maximum Results Limit Exceptions
 
-When the [maximum results limit of a query](./documentation/user-guide/process-engine/process-engine-api.md#query-maximum-results-limit">}})
+When the [maximum results limit of a query](./documentation/user-guide/process-engine/process-engine-api.md#query-maximum-results-limit)
 is exceeded, an exception is thrown which results in an HTTP status code 400.
 
 ## Exception codes
