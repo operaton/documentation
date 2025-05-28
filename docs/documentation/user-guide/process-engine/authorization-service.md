@@ -880,7 +880,7 @@ Operaton has no explicit concept of "administrator" beyond it being a user who h
 
 When downloading the Operaton distribution, the invoice example application creates a group with id `operaton-admin` and grants all authorizations on all resources to this group.
 
-In absense of the demo application, this task is performed by the [Operaton Admin Web Application](../webapps/admin/user-management.md#initial-user-setup). If the Operaton webapplication is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
+In absense of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton webapplication is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
 
 :::note[LDAP]
 The group "operaton-admin" is not created when using LDAP (since LDAP is only accessed in a read-only way). Also see the below section on the administrator authorization plugin.
@@ -1016,7 +1016,7 @@ authorizationService.saveAuthorization(authProcessInstance);
 ```
 # Operaton Admin Webapp
 
-The Operaton Admin Webapplication provides an out of the box [UI for configuring Authorizations](../webapps/admin/authorization-management.md).
+The Operaton Admin Webapplication provides an out of the box [UI for configuring Authorizations](../../webapps/admin/authorization-management.md).
 
 # Performance Considerations
 
@@ -1037,5 +1037,5 @@ On these databases, revoke authorizations are effectively unusable.
 
 Also see the [Configuration Options](#check-revoke-authorizations) section on this page.
 
-[hist-inst-perm-config-flag]: ../reference/deployment-descriptors/tags/process-engine.md#enable-historic-instance-permissions
+[hist-inst-perm-config-flag]: ../../reference/deployment-descriptors/tags/process-engine.md#enable-historic-instance-permissions
 [Removal-Time-based History Cleanup Strategy]: ../process-engine/history/history-cleanup.md#removal-time-based-strategy

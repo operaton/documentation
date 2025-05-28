@@ -62,7 +62,7 @@ menu:
     </ul>
   </li>
   <li>
-    Finally, the form is completed. Triggering an [BPMN error or escalation event](../reference/bpmn20/tasks/user-task.md#reporting-bpmn-error) will submit the form .<br/>
+    Finally, the form is completed. Triggering an [BPMN error or escalation event](../../../reference/bpmn20/tasks/user-task.md#reporting-bpmn-error) will submit the form .<br/>
     <em>Events:</em>
     <ul>
       <li><code>submit</code>, <code>error</code> or <code>escalation</code> is fired <strong>before</strong> the submit request is sent to the server. An event handler may
@@ -76,7 +76,7 @@ menu:
 
 # Event Listeners
 
-Event listeners can be registered from [custom JavaScript](../reference/forms/embedded-forms/javascript/index.md):
+Event listeners can be registered from [custom JavaScript](../../../reference/forms/embedded-forms/javascript):
 
 ```html
 <form role="form" name="form">

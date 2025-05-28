@@ -134,7 +134,7 @@ DMN engine are as follows:
 
 :::note[Legacy Behavior]
 You can find how to go back to the legacy behavior, where `JUEL` was used for input expressions,
-output entries and literal expressions [here](../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior).
+output entries and literal expressions [here](../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior).
 :::
 
 The default language can be changed by setting it directly in the DMN 1.3 XML as global expression language with the `expressionLanguage` attribute of
@@ -201,13 +201,13 @@ the JSR-223 script engine resolving, for example if you want to configure
 the script engine before using it.
 
 
-[decision table]: ../reference/dmn/decision-table/index.md
-[decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
+[decision table]: ../../reference/dmn/decision-table/index.md
+[decision literal expression]: ../../reference/dmn/index.md
 [juel]: http://juel.sourceforge.net/
 [EL]: https://jakarta.ee/specifications/expression-language/4.0/
 [DMN 1.2]: http://www.omg.org/spec/DMN/
 [Rhino]: https://developer.mozilla.org/de/docs/Rhino
 [Nashhorn]: https://blogs.oracle.com/nashorn/
 [JSR-223]: https://www.jcp.org/en/jsr/detail?id=223
-[default EL]: ../user-guide/dmn-engine/embed.md#change-default-expression-languages
-[configure EL]: ../user-guide/dmn-engine/embed.md#customize-expression-and-script-resolving
+[default EL]: ../../user-guide/dmn-engine/embed.md#change-default-expression-languages
+[configure EL]: ../../user-guide/dmn-engine/embed.md#customize-expression-and-script-resolving

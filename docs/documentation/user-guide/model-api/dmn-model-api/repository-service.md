@@ -11,7 +11,7 @@ menu:
 ---
 
 
-It is also possible to access the DMN model instance by the decision definition id using the [Repository Service](../user-guide/process-engine/process-engine-api.md#services-api), as the following incomplete test sample code shows:
+It is also possible to access the DMN model instance by the decision definition id using the [Repository Service](../../../user-guide/process-engine/process-engine-api.md#services-api), as the following incomplete test sample code shows:
 
 ```java
 public void testRepositoryService() {

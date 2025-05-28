@@ -102,7 +102,7 @@ The start scripts (`start.bat` for Windows, `start.sh` for Linux/Mac) accept the
       <td><code>--oauth2</code></td>
       <td>
         Enables Spring Security OAuth2 integration.
-        See dedicated <a href="../user-guide/spring-boot-integration/spring-security.md">Spring Security OAuth2 Integration</a> documentation for details.
+        See dedicated <a href="./spring-boot-integration/spring-security.md">Spring Security OAuth2 Integration</a> documentation for details.
       </td>
       <td><code>false</code></td>
   </tr>
@@ -145,7 +145,7 @@ restref page="deleteDeployment" text="REST API" tag="Deployment, or by cleaning 
 Operaton Run ships with two different configuration files which are both located in the `configuration` folder.
 
 * The `default.yml` configuration only contains necessary configuration like the H2 database, a demo user and [CORS](#cross-origin-resource-sharing) for REST calls from a client application.
-* The `production.yml` configuration is intended to provide the recommended properties according to the [Security Instructions](../user-guide/security.md).
+* The `production.yml` configuration is intended to provide the recommended properties according to the [Security Instructions](./security.md).
   When using Operaton Run in a production environment, make sure to base your custom configuration on this one and carefully read through the security instructions.
 
 By default, Run launches with the `default.yml` configuration. To enable the `production.yml` configuration, execute the start script with the `--production` property.
@@ -171,19 +171,13 @@ You can reference forms and scripts in the BPMN diagram with `embedded:deploymen
 
 Deployments via the restref page="createDeployment" text="REST API" tag="Deployment are still possible.
 
-## Automatic License Pickup
-
-If you downloaded the enterprise version of Operaton Run, you will need a license key to enable the enterprise
-features. Please see the [dedicated License section](../user-guide/license-use.md#with-the-operaton-spring-boot-starter-operaton-run)
-of the docs, to learn more.
-
 # Configure Operaton Run
 
 Just like all the other distros, you can tailor Operaton Run to your needs. To do this, you only have to edit one of the [configuration files](#choose-between-default-and-production-configuration) that you can find in the configuration folder.
 
 :::note[Note:]
 Operaton Run is based on the [Operaton Spring Boot Starter](https://github.com/operaton/operaton-bpm-platform/tree/master/spring-boot-starter).
-All [configuration properties](../user-guide/spring-boot-integration/configuration.md#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
+All [configuration properties](spring-boot-integration/configuration.md#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
 :::
 
 ## Database
@@ -337,10 +331,10 @@ Operaton Run also supports configuration options for customizing the deployment.
 
 ## LDAP Identity Service
 
-Operaton can manage users and authorizations on its own, but if you want to use an existing LDAP authentication database you can enable the [LDAP Identity Service Plugin](../user-guide/process-engine/identity-service.md#the-ldap-identity-service)
+Operaton can manage users and authorizations on its own, but if you want to use an existing LDAP authentication database you can enable the [LDAP Identity Service Plugin](process-engine/identity-service.md#the-ldap-identity-service)
 which provides read-only access to the LDAP repository.
 
-Find all available configuration properties in the [LDAP Plugin Guide](../user-guide/process-engine/identity-service.md#configuration-properties-of-the-ldap-plugin)
+Find all available configuration properties in the [LDAP Plugin Guide](process-engine/identity-service.md#configuration-properties-of-the-ldap-plugin)
 
 <table class="table desc-table">
   <tr>
@@ -359,9 +353,9 @@ Find all available configuration properties in the [LDAP Plugin Guide](../user-g
 
 ### LDAP Administrator Authorization
 
-You can also use the [Administrator Authorization plugin](../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin)
+You can also use the [Administrator Authorization plugin](process-engine/authorization-service.md#the-administrator-authorization-plugin)
 to ensure the appropriate LDAP user or group gains administrative access. Review all the available
-configuration options in the [Administrator Authorization plugin section](../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin)
+configuration options in the [Administrator Authorization plugin section](process-engine/authorization-service.md#the-administrator-authorization-plugin)
 of our documentation.
 
 In the table below, observe the Operaton Run-specific properties for the Administrator Authorization plugin.
@@ -570,7 +564,7 @@ After starting Operaton Run, you can access the webapps via https://localhost:84
 
 ## Logging
 
-Operaton provides fine-grained and customizable logging. An overview of the available logging categories can be found in the [Logging User Guide](../user-guide/logging.md#process-engine).
+Operaton provides fine-grained and customizable logging. An overview of the available logging categories can be found in the [Logging User Guide](logging.md#process-engine).
 To configure the logging behavior in Operaton Run, customize your configuration file with the following properties.
 
 For more information on logging configuration visit the [Spring Boot Logging Guide](https://docs.spring.io/spring-boot/docs/2.4.0/reference/html/spring-boot-features.html#boot-features-logging).

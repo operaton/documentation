@@ -145,6 +145,6 @@ The table displays:
 \* Since the FEEL Engine is based on the [Scala Library], a Scala-specific implementation type for
 `Map` and `List` is used
 
-[Supported Data Types in DMN]: ../user-guide/dmn-engine/data-types.md#supported-data-types
-[FEEL Engine Spin Integration]: ../user-guide/dmn-engine/feel/spin-integration.md
+[Supported Data Types in DMN]: ../../../user-guide/dmn-engine/data-types.md#supported-data-types
+[FEEL Engine Spin Integration]: ../../../user-guide/dmn-engine/feel/spin-integration.md
 [Scala Library]: https://www.scala-lang.org/

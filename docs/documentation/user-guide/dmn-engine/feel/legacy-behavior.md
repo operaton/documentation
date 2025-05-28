@@ -27,11 +27,10 @@ methods
 
 :::note[Heads Up!]
 By using the legacy FEEL Engine, the Operaton DMN Engine **only** supports `FEEL` for
-<a href="../reference/dmn/decision-table/rule.md#input-entry-condition">Input Entries</a> of a decision table – this corresponds to FEEL
+<a href="../../../reference/dmn/decision-table/rule.md#input-entry-condition">Input Entries</a> of a decision table – this corresponds to FEEL
 simple unary tests.
 :::
 
-[Migration Guide]: ../update/minor/712-to-713/index.md#entirely-replaced-feel-engine
-[legacy behavior flag]: ../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior
+[legacy behavior flag]: ../../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior
 [fluent feel flag setter]: ../org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#enableFeelLegacyBehavior
 [feel flag setter](org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#setEnableFeelLegacyBehavior)
