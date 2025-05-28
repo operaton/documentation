@@ -88,7 +88,7 @@ DmnDecision decision = dmnEngine.parseDecision("second-decision", inputStream);
 
 ## Parse Decision Requirements Graph
 
-In addition to parsing all contained decisions of a [decision requirements graph](../reference/dmn/drg/index.md) (DRG), the DMN engine can also parse the DRG itself from an `InputStream` or a `DmnModelInstance`.
+In addition to parsing all contained decisions of a [decision requirements graph](../../reference/dmn/index.md) (DRG), the DMN engine can also parse the DRG itself from an `InputStream` or a `DmnModelInstance`.
 
 ```java
 // parse the drg from an input stream
@@ -287,11 +287,11 @@ The [hit policy] of a required decision can affect the result that is passed as 
 
 In case of a hit policy with multiple matched rules (i.e., [COLLECT] without aggregator or [RULE ORDER]), the output variable is mapped to a list of output values, even if only one rule matched.
 
-[decision table]: ../reference/dmn/decision-table/index.md
-[decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
-[decision requirements graph]: ../reference/dmn/drg/index.md
-[decision requirements diagram]: ../reference/dmn/drg/index.md
-[required decisions]: ../reference/dmn/drg/index.md#required-decisions
-[hit policy]: ../reference/dmn/decision-table/hit-policy.md
-[COLLECT]: ../reference/dmn/decision-table/hit-policy.md#collect-hit-policy
-[RULE ORDER]: ../reference/dmn/decision-table/hit-policy.md#rule-order-hit-policy
+[decision table]: ../../reference/dmn/decision-table/index.md
+[decision literal expression]: ../../reference/dmn/index.md
+[decision requirements graph]: ../../reference/dmn/index.md
+[decision requirements diagram]: ../../reference/dmn/index.md
+[required decisions]: ../../reference/dmn/index.md#required-decisions
+[hit policy]: ../../reference/dmn/decision-table/hit-policy.md
+[COLLECT]: ../../reference/dmn/decision-table/hit-policy.md#collect-hit-policy
+[RULE ORDER]: ../../reference/dmn/decision-table/hit-policy.md#rule-order-hit-policy

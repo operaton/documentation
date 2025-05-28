@@ -11,8 +11,8 @@ menu:
 ---
 
 
-[Custom extensions](../reference/dmn/custom-extensions/index.md) are a standardized way to extend the DMN model.
-The [Operaton extension attributes](../reference/dmn/custom-extensions/operaton-attributes.md) are fully implemented in the DMN model API.
+[Custom extensions](../../../reference/dmn/custom-extensions/index.md) are a standardized way to extend the DMN model.
+The [Operaton extension attributes](../../../reference/dmn/custom-extensions/operaton-attributes.md) are fully implemented in the DMN model API.
 
 Every DMN `Decision` element can have the attributes `historyTimeToLive` and `versionTag`.
 To access the extension attributes, you have to call the `Decision#getOperatonHistoryTimeToLiveString()` and

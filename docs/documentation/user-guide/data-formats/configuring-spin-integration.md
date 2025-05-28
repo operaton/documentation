@@ -83,7 +83,7 @@ Depending on the application and process engine setup, it is recommended to use 
 
 ## Embedded Process Engine
 
-If your application manages its own process engine, then using `operaton-engine-plugin-spin` with `operaton-spin-core` is the recommended approach. Declare the dependencies in the `compile` scope so that the Spin libraries and their dependencies are added to your application when you bundle it. Configure `org.operaton.spin.plugin.impl.SpinProcessEnginePlugin` as a process engine plugin according to the [process engine plugin documentation](../user-guide/process-engine/process-engine-plugins.md).
+If your application manages its own process engine, then using `operaton-engine-plugin-spin` with `operaton-spin-core` is the recommended approach. Declare the dependencies in the `compile` scope so that the Spin libraries and their dependencies are added to your application when you bundle it. Configure `org.operaton.spin.plugin.impl.SpinProcessEnginePlugin` as a process engine plugin according to the [process engine plugin documentation](../../user-guide/process-engine/process-engine-plugins.md).
 
 ## Application with Operaton Spring Boot Starter
 
@@ -92,7 +92,7 @@ The Spin process engine plugin will be automatically registered with the process
 
 ## Shared Process Engine
 
-If you use a shared process engine, Spin is usually installed as a shared library in the application server. Check the [installation guide](../installation/full/index.md) for your application server for how to set up Spin with a shared engine. When using a pre-built distribution of Operaton, Spin is already pre-configured.
+If you use a shared process engine, Spin is usually installed as a shared library in the application server. Check the [installation guide](../../installation/full/index.md) for your application server for how to set up Spin with a shared engine. When using a pre-built distribution of Operaton, Spin is already pre-configured.
 
 Depending on the type of application server, `operaton-engine-plugin-spin` should be used with either `operaton-spin-core` or `operaton-spin-dataformat-all`. In the pre-packaged distributions, the following artifacts are used:
 

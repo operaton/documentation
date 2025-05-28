@@ -22,7 +22,7 @@ To use transaction manager integration, you need to use the
 The process engine requires access to an implementation of `javax.transaction.TransactionManager` or `jakarta.transaction.TransactionManager` respectively.
 Not all application servers provide such an implementation. Most notably, IBM WebSphere and Oracle WebLogic historically did not provide this  implementation.
 To achieve JTA transaction integration on these containers, users should use the Spring Framework Abstraction and configure the process engine using the
-[SpringProcessEngineConfiguration](../user-guide/spring-framework-integration/index.md).
+[SpringProcessEngineConfiguration](../../user-guide/spring-framework-integration/index.md).
 
 :::warning[]
   When you configure a transaction manager, make sure that it actually manages the data source that
@@ -69,6 +69,3 @@ job and decrease the job retry count.
 
 As a workaround, you can throw a `RuntimeException` after invoking the `UserTransaction#setRollbackOnly()`. The Operaton
 process engine will catch this `Exception` and handle the transaction rollback inside a job correctly.
-
-For more details on the WebSphere Liberty Operaton integration, check
-out the [WebSphere Liberty installation guide](../installation/full/was/manual-liberty.md) section.

@@ -132,4 +132,4 @@ FEEL context:
 
 
 [type doc]: https://camunda.github.io/feel-scala/1.11/feel-data-types
-[spin plugin]: ../user-guide/data-formats/configuring-spin-integration.md#operaton-engine-plugin-spin
+[spin plugin]: ../../../user-guide/data-formats/configuring-spin-integration.md#operaton-engine-plugin-spin
