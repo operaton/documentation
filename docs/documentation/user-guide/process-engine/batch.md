@@ -329,7 +329,7 @@ You can configure the property in three ways:
 [job prioritization]: ../process-engine/the-job-executor.md#job-prioritization
 [job-definition-priority]: ../process-engine/the-job-executor.md#override-priority-by-job-definition
 [job-priority]: ../process-engine/the-job-executor.md#set-job-priorities-via-managementservice-api
-[invoc-per-batch-job-batch-type]: ../reference/deployment-descriptors/tags/process-engine.md#invocations-per-batch-job-by-batch-type
+[invoc-per-batch-job-batch-type]: ../../reference/deployment-descriptors/tags/process-engine.md#invocations-per-batch-job-by-batch-type
 [Process Engine Plugin]: ../process-engine/process-engine-plugins.md
 [spring-xml-config]: ../spring-framework-integration/configuration.md
 [spring-boot-config]: ../spring-boot-integration/configuration.md#operaton-engine-properties

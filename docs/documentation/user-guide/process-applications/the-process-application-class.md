@@ -56,7 +56,7 @@ Notice the `@ProcessApplication` annotation. This annotation fulfills two purpos
 This means that in case you deploy to a Servlet 3.0 compliant container (such as Apache Tomcat) annotating your class with `@ProcessApplication` is sufficient.
 
 :::note
-  There is a [project template for Maven](../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a servlet process application.
+  There is a [project template for Maven](../../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a servlet process application.
 :::
 
 ## Using Servlet process applications inside an EJB/Jakarta EE/Java EE container such as Wildfly
@@ -140,7 +140,7 @@ You could of course use something like the maven shade plugin for adding the cla
 :::note
   We always recommend using the Operaton EJB Client over deploying a custom `EjbProcessApplication` class unless you want to customize the behavior of the `EjbProcessApplication`.
 
-  There is a [project template for Maven](../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a Java EE servlet process application.
+  There is a [project template for Maven](../../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a Java EE servlet process application.
 :::
 
 
@@ -173,7 +173,7 @@ public class MyEjbProcessApplication extends EjbProcessApplication {
 
 ## Expose Servlet Context Path Using a Custom EJB process application
 
-If your application is a `WAR` (or a `WAR` inside an `EAR`) and you want to use [embedded forms](../user-guide/task-forms/index.md#embedded-task-forms) or [external task forms](../user-guide/task-forms/index.md#external-task-forms) inside the [Tasklist](../webapps/tasklist/index.md) application, then your custom EJB process application must expose the servlet context path of your application as a property. This enables the Tasklist to resolve the path to the embedded or external task forms.
+If your application is a `WAR` (or a `WAR` inside an `EAR`) and you want to use [embedded forms](../../user-guide/task-forms/index.md#embedded-task-forms) or [external task forms](../../user-guide/task-forms/index.md#external-task-forms) inside the [Tasklist](../../webapps/tasklist/index.md) application, then your custom EJB process application must expose the servlet context path of your application as a property. This enables the Tasklist to resolve the path to the embedded or external task forms.
 
 Therefore, your custom EJB process application must be extended by a `Map` and a getter-method for that `Map` as follows:
 

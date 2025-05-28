@@ -46,7 +46,7 @@ DmnEngine dmnEngine = configuration.buildEngine();
 ```
 
 # Configuration of the DMN Engine
-This section gives more insights of embedded DMN engine configuration. In case you want to use DMN engine as part of the BPMN engine, please refer to the [DMN Engine Configuration](../user-guide/process-engine/decisions/configuration)  section of the [User Guide](../user-guide/index.md) for the configuration in that scenario.
+This section gives more insights of embedded DMN engine configuration. In case you want to use DMN engine as part of the BPMN engine, please refer to the [DMN Engine Configuration](../../user-guide/process-engine/decisions/configuration)  section of the [User Guide](../../user-guide/index.md) for the configuration in that scenario.
 
 ## Decision Table Evaluation Listeners
 
@@ -113,7 +113,7 @@ configuration.getCustomPostDecisionEvaluationListeners()
 
 :::warning[Use of Internal API]
 
-Please be aware that these APIs are **not** part of the [public API](../introduction/public-api.md) and may change in later releases.
+Please be aware that these APIs are **not** part of the [public API](../../introduction/public-api.md) and may change in later releases.
 
 :::
 
@@ -335,11 +335,11 @@ For more information on how to configure and use SLF4J, please refer to the
 
 [evaluation listener]: <a class="javadocref" href="org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html">DmnDecisionTableEvaluationListener</a> Interface
 [DMN model API]: https://github.com/operaton/operaton-dmn-model
-[data types]: ../user-guide/dmn-engine/data-types.md
+[data types]: ../../user-guide/dmn-engine/data-types.md
 [hit policies]: ../reference/dmn/decision-table/hit-policy.md
 [SLF4J]: http://www.slf4j.org/
 [LOGBack]: http://logback.qos.ch/
 [user manual]: http://www.slf4j.org/manual.html
 [DMN decision table]: ../reference/dmn/decision-table/index.md
 [DMN decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
-[expressions]: ../user-guide/dmn-engine/expressions-and-scripts.md
+[expressions]: ../../user-guide/dmn-engine/expressions-and-scripts.md

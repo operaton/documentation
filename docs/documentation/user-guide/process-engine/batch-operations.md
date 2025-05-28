@@ -173,7 +173,7 @@ Batch batch = runtimeService.createMessageCorrelationAsync("myMessage")
 
 :::note[Known limitations]
 It is not possible to correlate to process definition-level start message events via this batch operation. However,
-you can [correlate to start messages](../reference/bpmn20/events/message-events.md#explicitly-triggering-a-message) synchronously.
+you can [correlate to start messages](../../reference/bpmn20/events/message-events.md#explicitly-triggering-a-message) synchronously.
 
 The execution jobs of this batch can be scheduled by the job executor as [exclusive jobs](../process-engine/the-job-executor.md#exclusive-jobs).
 As a result, the execution of some of this batch's jobs may be delayed by other exclusive jobs that are related to the same process instance that the message should be correlated to.
