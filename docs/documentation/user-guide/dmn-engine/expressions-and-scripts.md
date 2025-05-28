@@ -202,7 +202,7 @@ the script engine before using it.
 
 
 [decision table]: ../../reference/dmn/decision-table/index.md
-[decision literal expression]: ../../reference/dmn/index.md
+[decision literal expression]: ../../reference/dmn/decision-literal-expression/index.md
 [juel]: http://juel.sourceforge.net/
 [EL]: https://jakarta.ee/specifications/expression-language/4.0/
 [DMN 1.2]: http://www.omg.org/spec/DMN/
