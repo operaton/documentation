@@ -1,6 +1,6 @@
 ---
 
-title: 'Available API'
+title: 'JavaScript API'
 sidebar_position: 20
 
 menu:
