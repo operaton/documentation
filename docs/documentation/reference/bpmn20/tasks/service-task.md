@@ -32,7 +32,7 @@ To specify a class that is called during process execution, the fully qualified 
              operaton:class="org.operaton.bpm.MyJavaDelegate" />
 ```
 
-Please refer to the [Java Delegate](../user-guide/process-engine/delegation-code.md#java-delegate) section of the [User Guide](../user-guide/index.md) for details on how to implement a Java Delegate.
+Please refer to the [Java Delegate](../../../user-guide/process-engine/delegation-code.md#java-delegate) section of the [User Guide](../../../user-guide/index.md) for details on how to implement a Java Delegate.
 
 It is also possible to use an expression that resolves to an object. This object must follow the
 same rules as objects that are created when the `operaton:class` attribute is used.
@@ -52,14 +52,14 @@ Or an expression which calls a method or resolves to a value.
 ```
 
 For more information about expression language as delegation code, please see the corresponding
-[section](../user-guide/process-engine/expression-language.md#use-expression-language-as-delegation-code)
-of the [User Guide](../user-guide/index.md).
+[section](../../../user-guide/process-engine/expression-language.md#use-expression-language-as-delegation-code)
+of the [User Guide](../../../user-guide/index.md).
 
-It is also possible to invoke logic which is implemented in form of webservices. `operaton:connector` is an extension that allows calling REST/SOAP APIs directly from the workflow. For more information about using connectors, please see the corresponding [section](../user-guide/process-engine/connectors.md#use-connectors) of the [User Guide](../user-guide/index.md)
+It is also possible to invoke logic which is implemented in form of webservices. `operaton:connector` is an extension that allows calling REST/SOAP APIs directly from the workflow. For more information about using connectors, please see the corresponding [section](../../../user-guide/process-engine/connectors.md#use-connectors) of the [User Guide](../../../user-guide/index.md)
 
 ## Generic Java Delegates & Field Injection
 
-You can easily write generic Java Delegate classes which can be configured later on via the BPMN 2.0 XML in the Service Task. Please refer to the [Field Injection](../user-guide/process-engine/delegation-code.md#field-injection) section of the [User Guide](../user-guide/index.md) for details.
+You can easily write generic Java Delegate classes which can be configured later on via the BPMN 2.0 XML in the Service Task. Please refer to the [Field Injection](../../../user-guide/process-engine/delegation-code.md#field-injection) section of the [User Guide](../../../user-guide/index.md) for details.
 
 
 ## Service Task Results
@@ -80,7 +80,7 @@ Note that when you use <code>operaton:resultVariable</code> in a multi-instance 
 
 # External Tasks
 
-In contrast to calling Java code, where the process engine synchronously invokes Java logic, it is possible to implement a Service Task outside of the process engine's boundaries in the form of an external task. When a Service Task is declared external, the process engine offers a work item to workers that independently poll the engine for work to do. This decouples the implementation of tasks from the process engine and allows to cross system and technology boundaries. See the [user guide on external tasks](../user-guide/process-engine/external-tasks.md) for details on the concept and the relevant API.
+In contrast to calling Java code, where the process engine synchronously invokes Java logic, it is possible to implement a Service Task outside of the process engine's boundaries in the form of an external task. When a Service Task is declared external, the process engine offers a work item to workers that independently poll the engine for work to do. This decouples the implementation of tasks from the process engine and allows to cross system and technology boundaries. See the [user guide on external tasks](../../../user-guide/process-engine/external-tasks.md) for details on the concept and the relevant API.
 
 To declare a Service Task to be handled externally, the attribute `operaton:type` can be set to `external` and the attribute `operaton:topic` specifies the external task's topic. For example, the following XML snippet defines an external Service Task with topic `ShipmentProcessing`:
 

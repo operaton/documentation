@@ -35,7 +35,7 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
 * Apache Tomcat 9.0 / 10.1
 * JBoss EAP 7.4 / 8.0
 * WildFly Application Server 23.0 / 26.0 / 33.0
-  see [Installation guide](../installation/full/was/manual-liberty.md))
+  see [Installation guide](../installation/full/was/index.md))
 
 # Databases
 
@@ -52,7 +52,7 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
   * SQL Server on Azure Virtual Machines
   * Azure SQL Managed Instance
   * Azure SQL Database
-* H2 2.3 (not recommended for [Cluster Mode](../introduction/architecture.md#clustering-model) - see [Deployment Note](../user-guide/process-engine/deployments.md))
+* H2 2.3 (not recommended for [Cluster Mode](./architecture.md#clustering-model) - see [Deployment Note](../user-guide/process-engine/deployments.md))
 
 ## Database Clustering & Replication
 

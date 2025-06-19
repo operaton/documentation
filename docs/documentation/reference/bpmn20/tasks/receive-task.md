@@ -96,4 +96,4 @@ runtimeService.signal(execution.getId());
 # Additional Resources
 
 * [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
-* [Message Receive Events](../reference/bpmn20/events/message-events.md)
+* [Message Receive Events](../events/message-events.md)

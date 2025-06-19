@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 # Introduction
 
-Welcome to the Operaton Manual! Operaton is a Java-based framework supporting BPMN for workflow and process automation, CMMN for Case Management and DMN for Business Decision Management. Also see: [Implemented Standards](../introduction/implemented-standards.md).
+Welcome to the Operaton Manual! Operaton is a Java-based framework supporting BPMN for workflow and process automation, CMMN for Case Management and DMN for Business Decision Management. Also see: [Implemented Standards](./implemented-standards.md).
 
 Operaton inherited its source code from the legacy of Camunda, Activiti and their predecessors. Camunda 7 was an important contribution to the open-source BPMN community. Building on this legacy, we aim to create a thriving future for a truly free and open-source BPMN engine.
 
@@ -30,7 +30,7 @@ To give you an overview of Operaton, the following illustration shows the most i
 
 # Modeler
 
-* [Camunda Modeler](../modeler/index.md): Modeling tool for BPMN 2.0 and CMMN 1.1 diagrams as well as DMN 1.3 decision tables.
+* [Camunda Modeler](../modeling-bpmn/index.md): Modeling tool for BPMN 2.0 and CMMN 1.1 diagrams as well as DMN 1.3 decision tables.
 * [bpmn.io](http://bpmn.io/): Open-source project for the modeling framework and toolkits.
 
 # Web Applications
