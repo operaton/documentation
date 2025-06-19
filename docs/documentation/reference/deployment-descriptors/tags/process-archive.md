@@ -13,9 +13,9 @@ menu:
 ---
 
 
-The process archive tag allows configuration of a process engine deployment and can be used in the [processes.xml](../reference/deployment-descriptors/descriptors/processes-xml.md) file.
+The process archive tag allows configuration of a process engine deployment and can be used in the [processes.xml](../descriptors/processes-xml.md) file.
 
-See the [processes.xml](../user-guide/process-applications/the-processes-xml-deployment-descriptor.md) section of the [User Guide](../user-guide/index.md) for more details.
+See the [processes.xml](../../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md) section of the [User Guide](../../../user-guide/index.md) for more details.
 
 
 # Example

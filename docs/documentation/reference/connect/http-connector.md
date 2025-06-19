@@ -59,7 +59,7 @@ public class HttpConnectorConfigurator implements ConnectorConfigurator<HttpConn
 To enable auto detection of your new configurator please add a file called
 `org.operaton.connect.spi.ConnectorConfigurator` to your
 `resources/META-INF/services` directory with class name as content. For more
-information see the [extending Connect](../reference/connect/extending-connect.md) section.
+information see the [extending Connect](./extending-connect.md) section.
 
 ```
 org.operaton.connect.example.HttpConnectorConfigurator

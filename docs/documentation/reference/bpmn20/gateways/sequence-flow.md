@@ -80,7 +80,7 @@ In this example a simple groovy script is used to evaluate a process variable `s
 ```
 
 Similar to a script task, an external script resource can also be specified (see the documentation
-on [script source](../user-guide/process-engine/scripting.md#script-source) for more information).
+on [script source](../../../user-guide/process-engine/scripting.md#script-source) for more information).
 
 ```xml
 <conditionExpression xsi:type="tFormalExpression" language="groovy"
