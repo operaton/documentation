@@ -94,5 +94,5 @@ var ViewConfig = [ 'ViewsProvider', function(ViewsProvider) {
 
 For more information on creating and configuring your own plugin, please have a look at the following examples:
 
-* [How to build the server side](https://github.com/operaton/operaton-bpm-platform/tree/master/webapps/assembly/src/main/java/org/operaton/bpm/tasklist/impl/plugin)
-* [How to build the client side](https://github.com/operaton/operaton-bpm-platform/tree/master/webapps/frontend/ui/tasklist/plugins/standaloneTask/app)
+* [How to build the server side](https://github.com/operaton/operaton/tree/master/webapps/assembly/src/main/java/org/operaton/bpm/tasklist/impl/plugin)
+* [How to build the client side](https://github.com/operaton/operaton/tree/master/webapps/frontend/ui/tasklist/plugins/standaloneTask/app)
