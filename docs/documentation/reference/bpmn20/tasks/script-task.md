@@ -138,4 +138,4 @@ Note that when you use <code>operaton:resultVariable</code> in a multi-instance 
 
 [script-source]: ../../../user-guide/process-engine/scripting.md#script-source
 [user-guide]: ../../../user-guide/index.md
-[autostore-variables]: ../../../update/minor/71-to-72/index.md#script-variable-storing
+<!-- [autostore-variables]: ../../../update/minor/71-to-72/index.md#script-variable-storing -->
