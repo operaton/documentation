@@ -40,4 +40,4 @@ viewer.importXML(xml, function(err) {
 });
 ```
 
-Alternatively, you can use the  [bpmn-viewer widget](https://github.com/operaton/operaton-bpm-platform/blob/master/webapps/frontend/operaton-commons-ui/lib/widgets/bpmn-viewer/cam-widget-bpmn-viewer.html) from the Operaton commons UI.
+Alternatively, you can use the  [bpmn-viewer widget](https://github.com/operaton/operaton/blob/master/webapps/frontend/operaton-commons-ui/lib/widgets/bpmn-viewer/cam-widget-bpmn-viewer.html) from the Operaton commons UI.

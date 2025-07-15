@@ -176,7 +176,7 @@ Deployments via the restref page="createDeployment" text="REST API" tag="Deploym
 Just like all the other distros, you can tailor Operaton Run to your needs. To do this, you only have to edit one of the [configuration files](#choose-between-default-and-production-configuration) that you can find in the configuration folder.
 
 :::note[Note:]
-Operaton Run is based on the [Operaton Spring Boot Starter](https://github.com/operaton/operaton-bpm-platform/tree/master/spring-boot-starter).
+Operaton Run is based on the [Operaton Spring Boot Starter](https://github.com/operaton/operaton/tree/master/spring-boot-starter).
 All [configuration properties](spring-boot-integration/configuration.md#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
 :::
 
