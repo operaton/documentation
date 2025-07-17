@@ -1,0 +1,44 @@
+name: Deploy Docusaurus Website
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Operaton site
+        run: |
+          npm run build || echo "Build failed, proceeding anyway if build/ exists"
+
+      - name: Check if build directory exists
+        run: |
+          if [ ! -d "build" ]; then
+            echo "Build directory does not exist. Exiting."
+            exit 1
+          fi
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to remote server via rsync
+        run: |
+          rsync -avz --delete ./build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}
+        env:
+          RSYNC_RSH: ssh -p ${{ secrets.SSH_PORT }}

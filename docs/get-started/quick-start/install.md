@@ -12,8 +12,8 @@ In the following section, we'll describe how to install the Operaton Platform lo
 If you prefer, you can also run the Operaton Platform with Docker:
 
 ```sh
-docker pull operaton/operaton-bpm-platform:run-latest
-docker run -d --name camunda -p 8080:8080 operaton/operaton-bpm-platform:run-latest
+docker pull operaton/operaton:run-latest
+docker run -d --name camunda -p 8080:8080 operaton/operaton:run-latest
 ```
 
 Afterwards, you can [install the Camunda Modeler](#camunda-modeler).
