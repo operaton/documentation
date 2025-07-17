@@ -43,7 +43,7 @@ Note: The default value for the attribute `isBlocking` is `true`. To define a `n
 
 # Transactional Behavior
 
-The activation of the process task as well as the creation and execution of the process instance are performed in the same transaction. The transaction is executed until a wait state or an asynchronous continuation is reached inside the called process instance (for further details read the [Transactions in Processes](../user-guide/process-engine/transactions-in-processes.md) section of the user guide). To launch a process instance asynchronously it is possible to declare the process' start event as asynchronous with the XML attribute `asyncBefore="true"`  (see [Asynchronous Instantiation](../reference/bpmn20/events/start-events.md)).
+The activation of the process task as well as the creation and execution of the process instance are performed in the same transaction. The transaction is executed until a wait state or an asynchronous continuation is reached inside the called process instance (for further details read the [Transactions in Processes](../../../user-guide/process-engine/transactions-in-processes.md) section of the user guide). To launch a process instance asynchronously it is possible to declare the process' start event as asynchronous with the XML attribute `asyncBefore="true"`  (see [Asynchronous Instantiation](../../bpmn20/events/start-events.md)).
 
 # Process Binding
 
@@ -170,7 +170,7 @@ With `local="true"` for the `in` mapping, only `var2` is mapped into the called 
 
 # Pass a Business Key
 
-In addition to [exchanging variables](../reference/cmmn11/tasks/process-task.md#exchange-variables), it is possible to pass a business key to the called process instance. Since a business key is immutable, this is one way mapping. It is not possible to have output mapping for a business key.
+In addition to [exchanging variables](../../cmmn11/tasks/process-task.md#exchange-variables), it is possible to pass a business key to the called process instance. Since a business key is immutable, this is one way mapping. It is not possible to have output mapping for a business key.
 
 The following example shows how the business key of the calling case instance can be passed to the called process instance. In this case, the calling case instance and the called process instance end up with the same business key.
 

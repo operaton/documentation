@@ -50,7 +50,7 @@ an expression which will be evaluated on execution of the task.
     operaton:decisionRefVersion="${decisionVersion}" />
 ```
 
-The output of the decision, also called decision result, is not saved as process variable automatically. It has to pass into a process variable by using a [predefined](../user-guide/process-engine/decisions/bpmn-cmmn.md#predefined-mapping-of-the-decision-result) or a [custom](../user-guide/process-engine/decisions/bpmn-cmmn.md#custom-mapping-into-process-variables) mapping of the decision result.
+The output of the decision, also called decision result, is not saved as process variable automatically. It has to pass into a process variable by using a [predefined](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#predefined-mapping-of-the-decision-result) or a [custom](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#custom-mapping-into-process-variables) mapping of the decision result.
 
 In case of a predefined mapping, the `operaton:mapDecisionResult` attribute references the mapper to use. The result of the mapping is saved in the variable which is specified by the `operaton:resultVariable` attribute. If no predefined mapper is set then the `resultList` mapper is used by default.
 
@@ -61,7 +61,7 @@ In case of a predefined mapping, the `operaton:mapDecisionResult` attribute refe
     operaton:resultVariable="result" />
 ```
 
-See the [User Guide](../user-guide/process-engine/decisions/bpmn-cmmn.md#the-decision-result) for details about the mapping.
+See the [User Guide](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#the-decision-result) for details about the mapping.
 
 :::warning[Name of the Result Variable]
 The result variable should not have the name `decisionResult`, as the decision result itself is saved in a variable with this name. Otherwise, an exception is thrown while saving the result variable.
@@ -125,7 +125,7 @@ information on this please see the [Service Tasks](service-task.md) documentatio
 
 # Implementing as an External Task
 
-In addition to the above, a Business Rule Task can be implemented via the [External Task](../user-guide/process-engine/external-tasks.md) mechanism where an external system polls the process engine for work to do. See the section on [Service Tasks](service-task.md#external-tasks) for more information about how to configure an external task.
+In addition to the above, a Business Rule Task can be implemented via the [External Task](../../../user-guide/process-engine/external-tasks.md) mechanism where an external system polls the process engine for work to do. See the section on [Service Tasks](service-task.md#external-tasks) for more information about how to configure an external task.
 
 
 # Operaton Extensions
@@ -200,7 +200,7 @@ In addition to the above, a Business Rule Task can be implemented via the [Exter
 
 # Additional Resources
 
-* [Decisions](../user-guide/process-engine/decisions/index.md)
-* [Service Tasks](../reference/bpmn20/tasks/service-task.md)
+* [Decisions](../../../user-guide/process-engine/decisions/index.md)
+* [Service Tasks](./service-task.md)
 * [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
 * [Demo using Drools on the Business Rule Task](https://github.com/operaton/operaton-consulting/tree/master/one-time-examples/order-confirmation-rules)

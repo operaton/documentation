@@ -13,12 +13,12 @@ menu:
 ---
 
 
-The process engine configuration can be placed in both [processes.xml](../reference/deployment-descriptors/descriptors/processes-xml.md) and the [bpm-platform.xml](../reference/deployment-descriptors/descriptors/bpm-platform-xml.md) files. If the process engine is configured in either or both of those files, it will be bootstrapped by the Operaton infrastructure and be made available through `BpmPlatform.getProcessEngineService().getProcessEngine("name of process engine")`.
+The process engine configuration can be placed in both [processes.xml](../descriptors/processes-xml.md) and the [bpm-platform.xml](../descriptors/bpm-platform-xml.md) files. If the process engine is configured in either or both of those files, it will be bootstrapped by the Operaton infrastructure and be made available through `BpmPlatform.getProcessEngineService().getProcessEngine("name of process engine")`.
 
 
 # Example
 
-The following example shows an XML snippet which can be placed in both [processes.xml](../reference/deployment-descriptors/descriptors/processes-xml.md) and/or [bpm-platform.xml](../reference/deployment-descriptors/descriptors/bpm-platform-xml.md).
+The following example shows an XML snippet which can be placed in both [processes.xml](../descriptors/processes-xml.md) and/or [bpm-platform.xml](../descriptors/bpm-platform-xml.md).
 
 ```xml
 <process-engine name="default">
@@ -1333,7 +1333,7 @@ The history time to live defines the number of days using a time specified by th
 
 ## Logging context parameters
 
-These parameters define the keys at which the specified data can be retrieved from the Mapped Diagnostic Context (MDC). See [Logging](../user-guide/logging.md#process-data-context) for details.
+These parameters define the keys at which the specified data can be retrieved from the Mapped Diagnostic Context (MDC). See [Logging](../../../user-guide/logging.md#process-data-context) for details.
 The specified data will only be put into the MDC if a key is defined. All parameters can be set to <code>null</code> or the empty String in order to disable their logging in the MDC.
 
 <table class="table table-striped">

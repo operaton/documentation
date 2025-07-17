@@ -56,5 +56,5 @@ the format `yyyy-MM-dd'T'HH:mm:ss`.
 Date types support all [comparison] operators and [ranges].
 
 
-[comparison]: ../reference/dmn/feel/legacy/language-elements.md#comparison
-[ranges]: ../reference/dmn/feel/legacy/language-elements.md#range
+[comparison]: ./language-elements.md#comparison
+[ranges]: ./language-elements.md#range

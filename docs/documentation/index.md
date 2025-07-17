@@ -20,7 +20,7 @@ Once you completed a Getting Started Guide, you may find the following topics us
 |--|--|--|
 | [Overview](./introduction/) | [Installation](./installation/index.md) | [REST Api](./reference/rest/index.md) |
 | [Download](./introduction/downloading-operaton.md) | [User Guide](./user-guide/index.md)| [Javadoc](#) |
-| [Architecture](./introduction/architecture.md) | [Modeler](./modeler/index.md) | [BPMN 2.0](./reference/bpmn20/index.md) |
+| [Architecture](./introduction/architecture.md) | [Modeler](./modeling-bpmn/index.md) | [BPMN 2.0](./reference/bpmn20/index.md) |
 | [Supported Environments](./introduction/supported-environments.md) | [Web Applications](./webapps/index.md) |[CMMN 1.1](./reference/cmmn11/index.md) |
 | | [Update & Migration](./update/index.md) | [DMN 1.3](./reference/dmn/index.md) |
 | | | [HTML Forms](./reference/forms/index.md) |

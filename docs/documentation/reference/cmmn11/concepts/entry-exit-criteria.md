@@ -53,5 +53,5 @@ When any exit criterion is met, a plan item performs a state transition from `AC
 
 The details of plan item states and transitions are provided in the [Plan Item Lifecycles][lifecycle] section.
 
-[sentry]: ../reference/cmmn11/sentry.md
-[lifecycle]: ../reference/cmmn11/concepts/lifecycle.md
+[sentry]: ../sentry.md
+[lifecycle]: ./lifecycle.md

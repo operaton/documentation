@@ -11,7 +11,7 @@ menu:
 
 ---
 
-**Can be used with**: [Stage](../reference/cmmn11/grouping-tasks/stage.md), CasePlanModel
+**Can be used with**: [Stage](../grouping-tasks/stage.md), CasePlanModel
 
 <a href="#" class="cmmn-symbol" data-type="marker-auto-complete"></a>
 
