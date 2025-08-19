@@ -190,6 +190,6 @@ Examples:
 [ranges]: #range
 [disjunction]: #disjunction
 [negation]: #negation
-[FEEL data types]: ../reference/dmn/feel/legacy/data-types.md
-[date types]: ../reference/dmn/feel/legacy/data-types.md#date
-[input entries]: ../reference/dmn/decision-table/rule.md#input-entry-condition
+[FEEL data types]: ./data-types.md
+[date types]: ./data-types.md#date
+[input entries]: ../../decision-table/rule.md#input-entry-condition

@@ -193,7 +193,7 @@ void messageEventReceived(String messageName, String executionId);
 void messageEventReceived(String messageName, String executionId, HashMap<String, Object> processVariables);
 ```
 
-For an asynchronous correlation to existing process instances, you can use a [Batch operation](../user-guide/process-engine/batch-operations.md#correlate-messages-to-process-instances).
+For an asynchronous correlation to existing process instances, you can use a [Batch operation](../../../user-guide/process-engine/batch-operations.md#correlate-messages-to-process-instances).
 
 ## Querying for Message Event Subscriptions
 
@@ -292,7 +292,7 @@ The following example shows different message events in a process model:
 </intermediateCatchEvent>
 ```
 
-Instead of the message intermediate catching event you might want to think about a <a href="../reference/bpmn20/tasks/receive-task.md">Receive Task</a> instead, which can serve similar purposes but is able to be used in combination with boundary events. In combination with the message intermediate catching event you might want to use an <a href="../reference/bpmn20/gateways/event-based-gateway.md">Event-based Gateway</a>.
+Instead of the message intermediate catching event you might want to think about a <a href="../tasks/receive-task.md">Receive Task</a> instead, which can serve similar purposes but is able to be used in combination with boundary events. In combination with the message intermediate catching event you might want to use an <a href="../gateways/event-based-gateway.md">Event-based Gateway</a>.
 
 
 # Message Boundary Event
@@ -305,7 +305,7 @@ Boundary events are catching events that are attached to an activity. This means
 
 # Message Intermediate Throwing Event
 
-A Message Intermediate Throwing event sends a message to an external service. This event has the same behavior as a [Service Task](../reference/bpmn20/tasks/service-task.md).
+A Message Intermediate Throwing event sends a message to an external service. This event has the same behavior as a [Service Task](../tasks/service-task.md).
 
 <div data-bpmn-diagram="../bpmn/event-message-throwing" > </div>
 
@@ -373,7 +373,7 @@ A Message Intermediate Throwing event sends a message to an external service. Th
 
 # Message End Event
 
-When process execution arrives at a Message End Event, the current path of execution is ended and a message is sent. The Message End Event has the same behavior as a [Service Task](../reference/bpmn20/tasks/service-task.md).
+When process execution arrives at a Message End Event, the current path of execution is ended and a message is sent. The Message End Event has the same behavior as a [Service Task](../tasks/service-task.md).
 
 ```xml
 <endEvent id="end">

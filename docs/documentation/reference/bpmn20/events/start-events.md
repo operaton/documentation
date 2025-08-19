@@ -15,11 +15,11 @@ Start events define where a Process or Sub Process starts.
 
 The process engine supports different types of start events:
 
-* [Blank](../reference/bpmn20/events/none-events.md)
-* [Timer](../reference/bpmn20/events/timer-events.md)
-* [Message](../reference/bpmn20/events/message-events.md)
-* [Signal](../reference/bpmn20/events/signal-events.md)
-* [Conditional](../reference/bpmn20/events/conditional-events.md)
+* [Blank](../events/none-events.md)
+* [Timer](../events/timer-events.md)
+* [Message](../events/message-events.md)
+* [Signal](../events/signal-events.md)
+* [Conditional](../events/conditional-events.md)
 
 The engine requires at least one start event to instantiate a process. There can be a maximum of one blank or timer start event per process definition. There can be multiple message or signal start events.
 
@@ -32,7 +32,7 @@ A start event may be declared as asynchronous with `operaton:asyncBefore="true"`
 <startEvent id="startEvent" operaton:asyncBefore="true" />
 ```
 
-This will ensure that the process engine creates a process instance when the process is instantiated, but the execution of the initial activities is not done synchronously. Instead, a job is created and asynchronously processed by the [job executor](../user-guide/process-engine/the-job-executor.md). See the [Asynchronous Continuations](../user-guide/process-engine/transactions-in-processes.md#asynchronous-continuations) section of the [User Guide](../user-guide/index.md) for some background information.
+This will ensure that the process engine creates a process instance when the process is instantiated, but the execution of the initial activities is not done synchronously. Instead, a job is created and asynchronously processed by the [job executor](../../../user-guide/process-engine/the-job-executor.md). See the [Asynchronous Continuations](../../../user-guide/process-engine/transactions-in-processes.md#asynchronous-continuations) section of the [User Guide](../../../user-guide/index.md) for some background information.
 
 
 # Operaton Extensions

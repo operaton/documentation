@@ -74,5 +74,5 @@ The XML representation of an exclusive gateway is straightforward: one line defi
 
 # Additional Resources
 
-*   [Conditional and Default Sequence Flows](../reference/bpmn20/gateways/sequence-flow.md)
+*   [Conditional and Default Sequence Flows](../gateways/sequence-flow.md)
 *   [Exclusive Gateways](http://operaton.org/bpmn/reference.html#gateways-data-based-exclusive-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

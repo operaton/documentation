@@ -19,7 +19,7 @@ Error events are events which are triggered by a defined error.
 
 A BPMN error is meant for business errors - which are different than technical exceptions. So, this is different than Java exceptions - which are, by default, handled in their own way.
 
-You might also want to check out the basics of [Threading and Transactions](../user-guide/process-engine/transactions-in-processes.md#transaction-boundaries) in the [User Guide](../user-guide/index.md) first.
+You might also want to check out the basics of [Threading and Transactions](../../../user-guide/process-engine/transactions-in-processes.md#transaction-boundaries) in the [User Guide](../../../user-guide/index.md) first.
 
 
 # Defining an Error
@@ -40,7 +40,7 @@ An error event definition references an error element. The following is an examp
 ```
 
 You can trigger this error event either with a throwing error event within your process definition or from Delegation Code, see the
-[Throwing BPMN Errors from Delegation Code](../user-guide/process-engine/delegation-code.md#throw-bpmn-errors-from-delegation-code) section of the [User Guide](../user-guide/index.md) for more information.
+[Throwing BPMN Errors from Delegation Code](../../../user-guide/process-engine/delegation-code.md#throw-bpmn-errors-from-delegation-code) section of the [User Guide](../../../user-guide/index.md) for more information.
 
 Another possibility to define an error is setting of the type (class name) of any Java Exception as error code. Example:
 
@@ -62,8 +62,8 @@ The exception type should only be used for business exceptions and not for techn
 
 An error event handler references the same error element to declare that it catches the error.
 
-It is also possible to define an error message with the <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#errormessage">`operaton:errorMessage`</a> extension for an error element to give further information about the error.
-The referencing error event definition must specify <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#errormessagevariable">`operaton:errorMessageVariable`</a> to receive the error message. The error message can also contain <a href="../user-guide/process-engine/expression-language.md">expressions</a>.
+It is also possible to define an error message with the <a href="../custom-extensions/extension-attributes.md#errormessage">`operaton:errorMessage`</a> extension for an error element to give further information about the error.
+The referencing error event definition must specify <a href="../custom-extensions/extension-attributes.md#errormessagevariable">`operaton:errorMessageVariable`</a> to receive the error message. The error message can also contain <a href="../../../user-guide/process-engine/expression-language.md">expressions</a>.
 
 ```xml
 <definitions>
@@ -80,7 +80,7 @@ The referencing error event definition must specify <a href="../reference/bpmn20
 ```
 When the error thrown by the error end event is catched a process variable with the name `err` will be created that holds the evaluated message.
 
-For External Tasks, it is also possible to define error events by using a [operaton:errorEventDefinition](../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition) as shown in the following example. It additionally requires an expression that must evaluate to `true` in order for the BPMN error to be thrown. For further details on how to use those error events, consult the [External Tasks Guide](../user-guide/process-engine/external-tasks.md#error-event-definitions).
+For External Tasks, it is also possible to define error events by using a [operaton:errorEventDefinition](../custom-extensions/extension-elements.md#erroreventdefinition) as shown in the following example. It additionally requires an expression that must evaluate to `true` in order for the BPMN error to be thrown. For further details on how to use those error events, consult the [External Tasks Guide](../../../user-guide/process-engine/external-tasks.md#error-event-definitions).
 
 ```xml
 <serviceTask id="validateAddressTask"
@@ -231,4 +231,4 @@ An error can be handled by the error start event in the event sub process and th
 ## Additional Resources
 
 *   [Error Events](http://operaton.org/bpmn/reference.html#events-error) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
-*   [Incidents](../user-guide/process-engine/incidents.md) in the [User Guide](../user-guide/index.md)
+*   [Incidents](../../../user-guide/process-engine/incidents.md) in the [User Guide](../../../user-guide/index.md)

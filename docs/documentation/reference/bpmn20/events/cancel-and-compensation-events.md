@@ -16,7 +16,7 @@ menu:
 
 ## Cancel End Event
 
-The cancel end event can only be used in combination with a [transaction subprocess](../reference/bpmn20/subprocesses/transaction-subprocess.md). When the cancel end event is reached, a cancel event is thrown which must be caught by a cancel boundary event. The cancel boundary event then cancels the transaction and triggers compensation.
+The cancel end event can only be used in combination with a [transaction subprocess](../subprocesses/transaction-subprocess.md). When the cancel end event is reached, a cancel event is thrown which must be caught by a cancel boundary event. The cancel boundary event then cancels the transaction and triggers compensation.
 
 ## Cancel Boundary Event
 
@@ -184,5 +184,5 @@ The XML representation of a compensation start event is the normal start event d
 
 ## Additional Resources
 
-* [Transaction subprocess](../reference/bpmn20/subprocesses/transaction-subprocess.md)
+* [Transaction subprocess](../subprocesses/transaction-subprocess.md)
 * [Compensation Events](http://operaton.org/bpmn/reference.html#events-compensation) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

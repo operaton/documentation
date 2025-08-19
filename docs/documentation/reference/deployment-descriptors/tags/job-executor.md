@@ -12,7 +12,7 @@ menu:
 
 ---
 
-The job executor tag is used to configure the job executor and can be placed in the [bpm-platform.xml](../reference/deployment-descriptors/descriptors/bpm-platform-xml.md) file.
+The job executor tag is used to configure the job executor and can be placed in the [bpm-platform.xml](../descriptors/bpm-platform-xml.md) file.
 
 
 # Example

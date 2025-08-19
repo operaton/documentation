@@ -48,7 +48,7 @@ Operaton supports the 1.1 version of DMN.
 
 
 [OMG]: http://www.omg.org/
-[modelers]: ../modeler/index.md
+[modelers]: ../modeling-bpmn/index.md
 [BPMN Modeling Tutorial]: https://operaton.org/bpmn/tutorial/
 [BPMN Modeling Reference]: https://operaton.org/bpmn/reference/
 [Quick Start (Java / JS)]: /get-started/quick-start/

@@ -172,7 +172,7 @@ With `local="true"` for the `in` mapping, only `var2` is mapped into the called 
 
 # Pass Business Key
 
-In addition to [exchanging variables](../reference/cmmn11/tasks/case-task.md#exchange-variables), it is possible to pass a business key to the called case instance as well. Since a business key is immutable, this is one way mapping. It is not possible to have output mapping for a business key.
+In addition to [exchanging variables](#exchange-variables), it is possible to pass a business key to the called case instance as well. Since a business key is immutable, this is one way mapping. It is not possible to have output mapping for a business key.
 
 The following example shows how the business key of the calling case instance can be passed to the called case instance. In this case, the calling case instance and the called case instance end up with the same business key.
 
