@@ -117,7 +117,7 @@ List<Task> tasks = taskService.createTaskQuery().taskAssignee("kermit").list();
 When strictly following the CMMN standard, user and group assignments can be quite cumbersome for use cases where the assignment is more complicated. To avoid these complexities, custom extensions on the human task element can be set.
 
 The CMMN Human task supports the same assignment extensions and concepts as the BPMN User Task.
-You can read up on these extensions in the [BPMN User Task Section](../reference/bpmn20/tasks/user-task.md#user-assignment-using-operaton-extensions). Same as for the BPMN User task, [assignment based on data and service logic](../reference/bpmn20/tasks/user-task.md#assignment-based-on-data-and-service-logic) is supported for the CMMN Human Task as well.
+You can read up on these extensions in the [BPMN User Task Section](../../bpmn20/tasks/user-task.md#user-assignment-using-operaton-extensions). Same as for the BPMN User task, [assignment based on data and service logic](../../bpmn20/tasks/user-task.md#assignment-based-on-data-and-service-logic) is supported for the CMMN Human Task as well.
 
 # Forms
 
@@ -134,7 +134,7 @@ The form key is a symbolic value which can be set in the CMMN XML file by using 
 attribute `formKey` and retrieved at runtime using the process engine API.
 
 If the user task form is displayed inside the Operaton Tasklist, the format of the formKey must follow
-special rules. [See the corresponding section in the user guide for details](../user-guide/task-forms/index.md).
+special rules. [See the corresponding section in the user guide for details](../../../user-guide/task-forms/index.md).
 
 In custom applications, the value of the form key can be chosen freely. In a custom application the
 value of the form key attribute can be interpreted freely. Based on the specific UI technology used,

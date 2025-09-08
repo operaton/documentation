@@ -20,7 +20,7 @@ SoapHttpConnector soap = Connectors.getConnector(SoapHttpConnector.ID);
 
 The SOAP connector extends the Operaton Connect HTTP connector which uses
 the Apache HTTP client in the default implementation. To read about default and custom client configuration,
-please see the corresponding section in the [HTTP connector docs](../reference/connect/http-connector.md).
+please see the corresponding section in the [HTTP connector docs](./http-connector.md).
 
 
 # Request

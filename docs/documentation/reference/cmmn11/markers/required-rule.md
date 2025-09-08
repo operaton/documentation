@@ -11,7 +11,7 @@ menu:
 
 ---
 
-**Can be used with**: [Task](../reference/cmmn11/tasks/index.md), [Stage](../reference/cmmn11/grouping-tasks/stage.md) and [Milestone](../reference/cmmn11/milestone.md)
+**Can be used with**: [Task](../tasks/index.md), [Stage](../grouping-tasks/stage.md) and [Milestone](../milestone.md)
 
 <a href="#" class="cmmn-symbol" data-type="marker-required"></a>
 

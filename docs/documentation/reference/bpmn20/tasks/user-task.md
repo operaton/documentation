@@ -189,7 +189,7 @@ The following example shows how to assign a User Task to the person who started 
 
 First, the `operaton:initiator` extension is used to bind the user id of the person who started (_"initiated"_) the process to the variable `starter`. Then the expression `${ starter }` retrieves that value and uses it as assignee for the task.
 
-It is possible to use all process variables [visible](../user-guide/process-engine/variables.md#variable-scopes-and-variable-visibility) from the User Task in the expression.
+It is possible to use all process variables [visible](../../../user-guide/process-engine/variables.md#variable-scopes-and-variable-visibility) from the User Task in the expression.
 
 #### Invoking a Service / Bean
 
@@ -224,7 +224,7 @@ public class FakeLdapService {
 
 ### Assignments in Listeners
 
-It is also possible to use [task listeners](../user-guide/process-engine/delegation-code.md#task-listener) for handling assignments. The following example demonstrates a task listener on the `create` event:
+It is also possible to use [task listeners](../../../user-guide/process-engine/delegation-code.md#task-listener) for handling assignments. The following example demonstrates a task listener on the `create` event:
 
 ```xml
 <userTask id="task1" name="My task" >
@@ -278,7 +278,7 @@ User kermit = identityService.createUserQuery()
 
 # Reporting Bpmn Error
 
-See the documentation for [Error Boundary Events](../reference/bpmn20/events/error-events.md#error-boundary-event).
+See the documentation for [Error Boundary Events](../events/error-events.md#error-boundary-event).
 
 To report a business error during user task operation, use `TaskService#handleBpmnError`. It can be invoked only when the task is active.
 The `#handleBpmnError` method requires a mandatory argument: `errorCode`.
@@ -305,7 +305,7 @@ The error message and variables are optional. They can provide additional inform
 
 # Reporting Bpmn Escalation
 
-See the documentation for [Catching Escalation Events](../reference/bpmn20/events/escalation-events.md#catching-escalation-events).
+See the documentation for [Catching Escalation Events](../events/escalation-events.md#catching-escalation-events).
 
 Reporting an escalation during user task execution can be achieved via `TaskService#handleEscalation`. The user task should be active to do so. The `escalationCode` is compulsory to invoke the escalation, this code identifies a predefined escalation. If the given `escalationCode` does not exist an Process Engine Exception will be thrown. See the following example:
 
@@ -321,7 +321,7 @@ The variables are optional. They will be passed to the execution if the escalati
 
 # Completion
 
-Complete is part of the [task lifecycle](../webapps/tasklist/task-lifecycle.md) operation along with create, set candidate, assign, etc. (allow available via Java API). Complete a task by passing variables, optionally the process variables can be retrieved::
+Complete is part of the [task lifecycle](../../../webapps/tasklist/task-lifecycle.md) operation along with create, set candidate, assign, etc. (allow available via Java API). Complete a task by passing variables, optionally the process variables can be retrieved::
 
 ```java
 taskService.complete(taskId, variables);
@@ -346,7 +346,7 @@ The form key is a symbolic value which can be set in the BPMN XML file by using 
 `formKey` and retrieved at runtime using the process engine API.
 
 If the User Task form is displayed inside the Operaton Tasklist, the format of the formKey must follow
-special rules. [See the corresponding section in the user guide for details](../user-guide/task-forms/index.md).
+special rules. [See the corresponding section in the user guide for details](../../../user-guide/task-forms/index.md).
 
 In custom applications, the value of the form key attribute can be interpreted freely. Based on the specific UI technology used,
 it can reference the name of an HTML file, a JSF / Facelets template, a Vaadin / GWT view, ...

@@ -15,4 +15,4 @@ The [Full Distribution][full-distribution] includes a Shared Process engine and 
 
 The distribution is supported on a broad range of containers:
 
-[full-distribution]: ../introduction/downloading-operaton.md
+[full-distribution]: ../../introduction/downloading-operaton.md

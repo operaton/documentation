@@ -14,7 +14,7 @@ menu:
 # Prerequisites
 
 Before downloading Operaton, make sure you have a JRE (Java Runtime Environment), or better, a JDK
-(Java Development Kit) installed. Please check the supported [Java versions](../introduction/supported-environments.md#java).
+(Java Development Kit) installed. Please check the supported [Java versions](./supported-environments.md#java).
 
 [Download JDK][get-jdk]
 
@@ -67,7 +67,7 @@ from the [community download page][community-download-page].
 [get-jdk]: https://www.oracle.com/technetwork/java/javase/downloads/index.html
 [community-download-page]: https://camunda.com/download/
 [enterprise-download-page]: /enterprise/download
-[shared-engine]: ../introduction/architecture.md#shared-container-managed-process-engine
+[shared-engine]: ./architecture.md#shared-container-managed-process-engine
 [installation-guide-full]: ../installation/index.md
 [run-with-spring-boot]: ../user-guide/spring-boot-integration/index.md
 [run-with-docker]: ../installation/docker.md
