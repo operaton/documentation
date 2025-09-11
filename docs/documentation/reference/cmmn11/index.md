@@ -21,11 +21,11 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
     <div class="col-md-12">
       <h3>Grouping</h3>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/grouping-tasks/stage.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/grouping-tasks/stage/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="case-plan-model-colored"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/grouping-tasks/stage.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/grouping-tasks/stage/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="stage-collapsed-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
@@ -37,22 +37,22 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
     <div class="col-md-12">
       <h3>Tasks</h3>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/tasks/human-task.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/tasks/human-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="human-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
         <a href="#" class="cmmn-symbol" data-type="manual-task"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/tasks/process-task.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/tasks/process-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="process-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/tasks/case-task.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/tasks/case-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="case-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/tasks/decision-task.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/tasks/decision-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="decision-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
@@ -67,7 +67,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
     <div class="col-md-9">
       <h3>Event-Triggered Elements</h3>
       <div class="bpmn-symbol-container implemented">
-        <a href="../reference/cmmn11/milestone.md"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="../cmmn11/milestone/"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="milestone-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
@@ -105,34 +105,34 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
         <a href="#" class="cmmn-symbol" data-type="marker-planning-table"></a>
       </td>
       <td>
-        <a class="text" href="../reference/cmmn11/sentry.md">Entry Criterion</a>
+        <a class="text" href="../cmmn11/sentry/">Entry Criterion</a>
         <a href="#" class="cmmn-symbol" data-type="marker-entry-criterion"></a>
       </td>
       <td>
-        <a class="text" href="../reference/cmmn11/sentry.md">Exit Criterion</a>
+        <a class="text" href="../cmmn11/sentry/">Exit Criterion</a>
         <a href="#" class="cmmn-symbol" data-type="marker-exit-criterion"></a>
       </td>
       <td>
-        <a class="text" href="../reference/cmmn11/markers/auto-complete.md">AutoComplete</a>
+        <a class="text" href="../cmmn11/markers/auto-complete/">AutoComplete</a>
         <a href="#" class="cmmn-symbol" data-type="marker-auto-complete"></a>
       </td>
       <td>
-        <a class="text" href="../reference/cmmn11/markers/manual-activation-rule.md">Manual Activation</a>
+        <a class="text" href="../cmmn11/markers/manual-activation-rule/">Manual Activation</a>
         <a href="#" class="cmmn-symbol" data-type="marker-manual-activation"></a>
       </td>
       <td>
-        <a class="text" href="../reference/cmmn11/markers/required-rule.md">Required</a>
+        <a class="text" href="../cmmn11/markers/required-rule/">Required</a>
         <a href="#" class="cmmn-symbol" data-type="marker-required"></a>
       </td>
       <td>
-        <a class="text" href="../reference/cmmn11/markers/repetition-rule.md">Repetition</a>
+        <a class="text" href="../cmmn11/markers/repetition-rule/">Repetition</a>
         <a href="#" class="cmmn-symbol" data-type="marker-repetition"></a>
       </td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><a href="../reference/cmmn11/grouping-tasks/stage.md">Case Plan Model</a></td>
+      <td><a href="../cmmn11/grouping-tasks/stage/">Case Plan Model</a></td>
       <td>
         <span class="glyphicon glyphicon-remove"></span>
       </td>
@@ -147,9 +147,9 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       <td></td>
       <td></td>
       <td></td>
-    </tr>
+    </tr>  
     <tr>
-      <td><a href="../reference/cmmn11/grouping-tasks/stage.md">Stage</a></td>
+      <td><a href="../cmmn11/grouping-tasks/stage/">Stage</a></td>
       <td>
         <span class="glyphicon glyphicon-remove"></span>
       </td>
@@ -173,7 +173,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       </td>
     </tr>
     <tr>
-      <td><a href="../reference/cmmn11/tasks/index.md">Task</a></td>
+      <td><a href="../cmmn11/tasks/">Task</a></td>
       <td>
         <span class="glyphicon glyphicon-remove"></span>
       </td>
@@ -195,7 +195,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       </td>
     </tr>
     <tr>
-      <td><a href="../reference/cmmn11/milestone.md">Milestone</a></td>
+      <td><a href="../cmmn11/milestone/">Milestone</a></td>
       <td></td>
       <td>
         <span class="glyphicon glyphicon-ok"></span>

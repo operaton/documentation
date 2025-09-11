@@ -32,8 +32,8 @@ Operaton distinguishes between read-only and writable user repositories. A read-
 
 To provide a custom identity provider implementation, the following interfaces can be implemented:
 
-* <a class="javadocref" href="org/operaton/bpm/engine/impl/identity/ReadOnlyIdentityProvider.html">org.operaton.bpm.engine.impl.identity.ReadOnlyIdentityProvider</a>
-* <a class="javadocref" href="org/operaton/bpm/engine/impl/identity/WritableIdentityProvider.html">org.operaton.bpm.engine.impl.identity.WritableIdentityProvider</a>
+* <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/identity/ReadOnlyIdentityProvider.java">org.operaton.bpm.engine.impl.identity.ReadOnlyIdentityProvider</a>
+* <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/identity/WritableIdentityProvider.java">org.operaton.bpm.engine.impl.identity.WritableIdentityProvider</a>
 
 # Custom Whitelist for User, Group and Tenant IDs
 
@@ -69,7 +69,7 @@ The LDAP identity service provides read-only access to an LDAP-based user/group 
 To use the LDAP identity service, the `operaton-identity-ldap.jar` library has to be added to the classloader of the process engine.
 
 :::note
-  Please import the [Operaton BOM](/get-started/apache-maven/) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](../../../get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 ```xml

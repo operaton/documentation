@@ -39,7 +39,7 @@ interface, which requires us to implement the `execute(DelegateExecution)`
 method. It's this operation that will be called by the engine and
 which needs to contain the business logic. Process instance
 information such as process variables and other information can be accessed and
-manipulated through the <a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a> interface (click on the link for a detailed Javadoc of its operations).
+manipulated through the [DelegateExecution](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateExecution.java) interface (click on the link for a detailed Javadoc of its operations).
 
 ```java
   public class ToUppercase implements JavaDelegate {

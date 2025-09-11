@@ -10,7 +10,7 @@ menu:
     identifier: "get-started-dmn-deploy"
     description: "Use Java Code to evaluate the decision table, then deploy the web application to Apache Tomcat and verify the result in Cockpit."
 
-aliases: [/dmn11/deploy/]
+aliases: [/dmn/deploy/]
 ---
 
 In this step, we use Java Code to evaluate the decision table. Then we deploy the web application to Apache Tomcat and verify the result in Cockpit.
@@ -103,8 +103,8 @@ Congratulations, you have now successfully set up a project with your first DMN 
 
 Next,
 
-* see how you can evaluate the decision using the [REST API](/manual/reference/rest/decision-definition/post-evaluate/),
-* learn more about DMN by reading the [DMN Reference](/manual/reference/dmn/),
-* learn more about the [Decision API exposed by Operaton Process Engine](/manual/user-guide/process-engine/decisions/),
-* check how you can invoke the decision from a [BPMN Business Rule Task](/manual/reference/bpmn20/tasks/business-rule-task/),
-* Bonus Step: [Decision Requirements Graph](../drg)
+* see how you can evaluate the decision using the [REST API](../../documentation/reference/rest/index.md),
+* learn more about DMN by reading the [DMN Reference](../../documentation/reference/dmn/index.md),
+* learn more about the [Decision API exposed by Operaton Process Engine](../../documentation/user-guide/process-engine/decisions/index.md),
+* check how you can invoke the decision from a [BPMN Business Rule Task](../../documentation/reference/bpmn20/tasks/business-rule-task.md),
+* Bonus Step: [Decision Requirements Graph](drg.md)

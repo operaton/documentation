@@ -7,7 +7,7 @@ description: "Learn how to integrate DMN decision tables in the Process."
 ---
 # Leverage business rules (6/6)
 
-In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](/docs/documentation/reference/bpmn20/tasks/business-rule-task/) and [DMN 1.3 Decision Tables](/docs/documentation/reference/dmn11/).
+In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](../../documentation/reference/bpmn20/tasks/business-rule-task.md) and [DMN 1.3 Decision Tables](../../documentation/reference/dmn/index.md).
 
 # Add a Business Rule Task to the Process
 Use the Camunda Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.

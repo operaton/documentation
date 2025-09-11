@@ -99,7 +99,7 @@ String result = decisionResult.getSingleEntry();
 ```
 
 Note that the decision result also provides methods to get typed output entries.
-A complete list of all methods can be found in the  [Java Docs](/org/operaton/bpm/dmn/engine/DmnDecisionResult).
+A complete list of all methods can be found in the  [DmnDecisionResult](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnDecisionResult.java).
 
 If the decision is implemented as [decision table] then it can also be evaluated using one of the
 <a class="javadocref" href="org/operaton/bpm/engine/DecisionService.html##evaluateDecisionTableByKey(java.lang.String)">evaluateDecisionTable</a> methods. In this case, the evaluation returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provide the same methods as a

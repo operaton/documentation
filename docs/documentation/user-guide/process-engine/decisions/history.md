@@ -103,7 +103,7 @@ List<HistoricDecisionInstance> historicDecisions = processEngine
 
 # The Historic Decision Instance
 
-The [HistoricDecisionInstance](/org/operaton/bpm/engine/history/HistoricDecisionInstance) contains information about a single
+The [HistoricDecisionInstance](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/history/HistoricDecisionInstance.java) contains information about a single
 evaluation of a decision.
 
 ```java
@@ -143,7 +143,7 @@ reference].
 
 ## Historic Decision Input Instance
 
-The [HistoricDecisionInputInstance](org/operaton/bpm/engine/history/HistoricDecisionInputInstance) represents one input of an
+The [HistoricDecisionInputInstance](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/history/HistoricDecisionInputInstance.java) represents one input of an
 evaluated decision (e.g., an input clause of a decision table).
 
 ```java
@@ -168,7 +168,7 @@ input specifies a type.
 
 ## Historic Decision Output Instance
 
-The [HistoricDecisionOutputInstance](org/operaton/bpm/engine/history/HistoricDecisionOutputInstance) represents one output entry of an
+The [HistoricDecisionOutputInstance](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/history/HistoricDecisionOutputInstance.java) represents one output entry of an
 evaluated decision. If the decision is implemented as decision table, the
 `HistoricDecisionInstance` contains one `HistoricDecisionOutputInstance`
 for each output clause and matched rule.

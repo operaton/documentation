@@ -10,7 +10,7 @@ menu:
     parent: "dmn-ref-decision-table"
     description: "Specify the Inputs of Decision Tables"
 
-aliases: [reference/dmn11/decision-table/input/]
+aliases: [reference/dmn/decision-table/input/]
 ---
 
 ![Input](./img/input.png)

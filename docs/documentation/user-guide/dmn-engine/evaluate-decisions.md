@@ -12,11 +12,11 @@ menu:
 
 ---
 
-The DMN engine <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnEngine.html">interface</a> exposes methods for parsing and evaluating DMN Decisions.
+The DMN engine [interface](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnEngine.java) exposes methods for parsing and evaluating DMN Decisions.
 
 # Parse Decisions
 
-Decisions can be parsed from an `InputStream` or transformed from a <a class="javadocref" href="org/operaton/bpm/model/dmn/DmnModelInstance.html">DmnModelInstance</a>.
+Decisions can be parsed from an `InputStream` or transformed from a [DmnModelInstance](https://github.com/operaton/operaton/blob/main/model-api/dmn-model/src/main/java/org/operaton/bpm/model/dmn/DmnModelInstance.java).
 
 This example shows how to parse a decision from an input stream:
 
@@ -244,7 +244,7 @@ decisionResult.getSingleEntry();
 ```
 
 Note that the decision can also be evaluated using the
-<a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnEngine.html##evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision, java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
+<a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnEngine.java##evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision, java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
 `DmnDecisionResult`.
 
 ## Decisions with Required Decisions

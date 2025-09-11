@@ -388,7 +388,7 @@ These APIs are **not** part of the [public API](../../../introduction/public-api
 :::
 
 It is possible to add own functions which can be used inside JUEL expressions.
-Therefore a new [FunctionMapper](org/operaton/bpm/engine/impl/javax/el/FunctionMapper.html) has to be implemented. The function mapper than
+Therefore a new [FunctionMapper](https://jakarta.ee/specifications/platform/9/apidocs/jakarta/el/functionmapper) has to be implemented. The function mapper than
 has to be added to the process engine configuration after it was
 initialized.
 

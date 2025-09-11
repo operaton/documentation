@@ -71,7 +71,7 @@ Adjust the `META-INF/processes.xml` deployment descriptor file by adding the for
 
 # Re-Build and Deploy
 
-When you are done, save all resources, [perform a Maven build](../deploy/#build-the-web-application-with-maven) and [redeploy](../deploy/#deploy-to-apache-tomcat) the process application.
+When you are done, save all resources, [perform a Maven build](deploy.md#build-the-web-application-with-maven) and [redeploy](deploy.md#deploy-to-apache-tomcat) the process application.
 
 :::note[Maven]
 Before selecting the pom.xml in the Package Explorer of Eclipse and performing a right-click and select Run As / Maven Install, it is best practice to perform a right-click and select Run As / Maven Clean to make sure all resources are replaced with their newest version.

@@ -12,7 +12,7 @@ menu:
 ---
 
 :::note[Plugin Compatibility]
-Please note that we updated the frontend plugin interface with Operaton Runtime 7.14. Plugins written for Operaton Runtime 7.13 and earlier might no longer work with Operaton Runtime 7.14. Checkout the [update guide](../update/minor/713-to-714) for more details.
+Please note that we updated the frontend plugin interface with Operaton Runtime 7.14. Plugins written for Operaton Runtime 7.13 and earlier might no longer work with Operaton Runtime 7.14. Checkout the [update guide](https://docs.camunda.org/manual/latest/update/minor/713-to-714/) for more details.
 :::
 
 Cockpit defines a plugin concept to add own functionality without being forced to extend or hack the Cockpit web application. You can add plugins at various plugin points, e.g., the processes dashboard as shown in the following example:
@@ -116,7 +116,7 @@ This file can also be included standalone as a [custom script](../../cockpit/ext
 The second argument contains API endpoints and CSRF cookie information, as well as constants like a `processDefinitionId`. The `api` key is always present and contains
   * `engine`: the engine name
   * `CSRFToken`: the current CSRF token for your requests
-  * `baseApi`, `adminApi`, `cockpitApi`, `engineApi`: The paths to different API endpoints. The engineApi corresponds to the [Rest Api](../reference/rest)
+  * `baseApi`, `adminApi`, `cockpitApi`, `engineApi`: The paths to different API endpoints. The engineApi corresponds to the [Rest Api](../../../reference/rest/index.md)
 The details of which data is passed into the plugin can be found at the [plugin point reference](#plugin-points).
 
 * `result`: Function, only available in data plugins. Argument is a (`Promise`).

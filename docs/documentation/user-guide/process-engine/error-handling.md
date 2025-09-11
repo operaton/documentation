@@ -43,7 +43,7 @@ Example:
 
 ![Example img](./img/error-result-xor.png)Error Result XOR
 
-We trigger a "check data completeness" task. The Java Service might throw a "DataIncompleteException". However, if we check for completeness, incomplete data is not an exception, but an expected result, so we prefer to use an XOR-Gateway in the process flow which evaluates a process variable, e.g., "#{dataComplete==false}".
+We trigger a "check data completeness" task. The Java Service might throw a "DataIncompleteException". However, if we check for completeness, incomplete data is not an exception, but an expected result, so we prefer to use an XOR-Gateway in the process flow which evaluates a process variable, e.g., "#&#123;dataComplete==false&#125;".
 
 ## BPMN 2.0 Error Event
 

@@ -13,7 +13,7 @@ menu:
 ---
 
 To easily test DMN decisions in a JUnit test, the DMN engine provides a
-JUnit Rule. The <a class="javadocref" href="org/operaton/bpm/dmn/engine/test/DmnEngineRule.html">DmnEngineRule</a> creates a new default DMN engine. The DMN engine can be used in test cases to parse and evaluate decisions.
+JUnit Rule. The [DmnEngineRule](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/junit4/org/operaton/bpm/dmn/engine/test/DmnEngineRule.java) creates a new default DMN engine. The DMN engine can be used in test cases to parse and evaluate decisions.
 
 ```java
 public class DecisionTest {
@@ -63,6 +63,6 @@ public class DecisionTest {
 }
 ```
 
-The [DmnDecisionResult](org/operaton/bpm/dmn/engine/DmnDecisionResult.html) implements the interface `List<DmnDecisionResultEntries>`. Whereas the
-[DmnDecisionResultEntries](org/operaton/bpm/dmn/engine/DmnDecisionResultEntries.html) implements the interface `Map<String, Object>`.
+The [DmnDecisionResult](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnDecisionResult.java) implements the interface `List<DmnDecisionResultEntries>`. Whereas the
+[DmnDecisionResultEntries](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnDecisionResultEntries.java) implements the interface `Map<String, Object>`.
 This allows you to use common `List` or `Map` asserts.

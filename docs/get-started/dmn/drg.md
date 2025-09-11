@@ -10,7 +10,7 @@ menu:
     identifier: "get-started-dmn-drg"
     description: "Model a Decision Requirements Graph based on the decision table, adjust the Java Code to evaluate it and deploy the web application."
 
-aliases: [/dmn11/drg/]
+aliases: [/dmn/drg/]
 ---
 
 In this step, we extend the previous example by a second decision *Beverages* which uses the *Dish* decision table as input. We model this dependency between the decisions within a Decision Requirements Graph (DRG) using the Camunda Modeler. Then, we adjust the Application class to evaluate the *Beverages* decision, deploy the web application to Apache Tomcat and verify the result in Cockpit.
@@ -27,7 +27,7 @@ Open the *Dish* decision table from the previous step. Click on the button "View
 
 # Set the Name and the Id of the DRD
 
-Click somewhere on the canvas and open the Property Panel on the right. Change the [id](/manual/latest/reference/dmn11/drg/#decision-requirements-graph-id) of the DRD to "dinnerDecisions". Next, change the [name](/manual/latest/reference/dmn11/drg/#decision-requirements-graph-name) of the DRD to "Dinner Decisions".
+Click somewhere on the canvas and open the Property Panel on the right. Change the [id](../../documentation/reference/dmn/drg/index.md#decision-requirements-graph-id) of the DRD to "dinnerDecisions". Next, change the [name](../../documentation/reference/dmn/drg/index.md#decision-requirements-graph-name) of the DRD to "Dinner Decisions".
 
 
 ![Example image](./img/modeler-drd-step2.png)
@@ -38,7 +38,7 @@ Click on the decision icon of the palette to create a new decision. Then, double
 
 ![Example image](./img/modeler-drd-step3.png)
 
-Next, connect the *Dish* decision to the *Beverages* decision to indicate that the *Dish* decision is a [required decision](/manual/latest/reference/dmn11/drg/#required-decisions) of the *Beverages* decision. That means that it is used as an input for the decision and the output value "desiredDish" can be accessed there.
+Next, connect the *Dish* decision to the *Beverages* decision to indicate that the *Dish* decision is a [required decision](../../documentation/reference/dmn/drg/index.md#required-decisions) of the *Beverages* decision. That means that it is used as an input for the decision and the output value "desiredDish" can be accessed there.
 
 ![Example image](./img/modeler-drd-step4.png)
 
@@ -142,5 +142,5 @@ Note that the *Dish* decision is evaluated as part of the evaluation of the *Bev
 
 Next,
 
-* learn more about DRG by reading the [DMN Reference](/manual/reference/dmn11/drg),
+* learn more about DRG by reading the [DMN Reference](../../documentation/reference/dmn/drg/index.md),
 * learn more about [DMN in Cockpit](https://docs.operaton.org/manual/webapps/cockpit/dmn/)
