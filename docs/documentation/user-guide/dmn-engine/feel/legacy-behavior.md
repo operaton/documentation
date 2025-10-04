@@ -32,5 +32,5 @@ simple unary tests.
 :::
 
 [legacy behavior flag]: ../../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior
-[fluent feel flag setter]: ../org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#enableFeelLegacyBehavior
-[feel flag setter](org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#setEnableFeelLegacyBehavior)
+[fluent feel flag setter]: https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#enableFeelLegacyBehavior
+[feel flag setter](https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#setEnableFeelLegacyBehavior)

@@ -13,7 +13,7 @@ menu:
 
 This section documents how to perform process engine deployments with a Quarkus application containing an embedded
 process engine. The documentation assumes some familiarity with [Quarkus CDI support][quarkus-cdi] and the Operaton
-<a class="javadocref" href="org/operaton/bpm/engine/repository/DeploymentBuilder.html">DeploymentBuilder API</a>.
+<a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/repository/DeploymentBuilder.html">DeploymentBuilder API</a>.
 
 The Operaton Engine Quarkus Extension only supports programmatic deployments. A user can observe for the
 `OperatonEngineStartupEvent` CDI event. The `OperatonEngineStartupEvent` signals that a process engine has been

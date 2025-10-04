@@ -39,7 +39,7 @@ interface, which requires us to implement the `execute(DelegateExecution)`
 method. It's this operation that will be called by the engine and
 which needs to contain the business logic. Process instance
 information such as process variables and other information can be accessed and
-manipulated through the <a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a> interface (click on the link for a detailed Javadoc of its operations).
+manipulated through the <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a> interface (click on the link for a detailed Javadoc of its operations).
 
 ```java
   public class ToUppercase implements JavaDelegate {
@@ -611,7 +611,7 @@ public class BookOutGoodsDelegate implements JavaDelegate {
 
 # Exception codes
 
-You can throw a `<a class="javadocref" href="org/operaton/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>`
+You can throw a `<a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>`
 from your delegation code and define your custom error code by passing it to the constructor or by
 calling `ProcessEngineException#setCode`.
 
