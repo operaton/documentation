@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -37,7 +37,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          exclude: ['docs/documentation/introduction/third-party-libraries/camunda-bpm-platform-license-book.md'],
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx,bpmn}',
+            'docs/documentation/introduction/third-party-libraries/camunda-bpm-platform-license-book.md'
+          ],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -45,6 +48,18 @@ const config: Config = {
         },
         theme: {
           customCss: './src/css/custom.css',
+        },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/tags/**'],
+          filename: 'sitemap.xml',
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.filter((item) => !item.url.includes('/page/'));
+          },
         },
       } satisfies Preset.Options,
     ],
