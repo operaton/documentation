@@ -20,7 +20,7 @@ The full list of supported configuration parameters can be found [here](/manual/
 
 Let's create an `application.yaml` file in the `src/main/resources` folder with the following content:
 ```yaml
-camunda.bpm:
+operaton.bpm:
   admin-user:
     id: demo
     password: demo
