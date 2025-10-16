@@ -26,4 +26,4 @@ You can also visit the Operaton Community Hub [community repository](https://git
 
 The Operaton Community Hub enables developers to have a centralized home for their Operaton community extensions, and aids new contributors to open source software in discovering new projects to work on.
 
-You can also learn about [contributing code to the core Operaton codebase](https://camunda.com/developers/how-to-contribute/).
+You can also learn about [contributing code to the core Operaton codebase](https://github.com/operaton/operaton/blob/main/CONTRIBUTING.md).

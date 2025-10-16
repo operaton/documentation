@@ -26,7 +26,7 @@ Operaton Run is a full distribution of Operaton. It includes:
 
 # Starting with Operaton Run
 
-To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) ([enterprise](https://downloads.camunda.cloud/enterprise-release/operaton-bpm/run/)) and unpacking it. You will find the following structure:
+To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) and unpacking it. You will find the following structure:
 
 ```
 operaton-bpm-run
@@ -130,7 +130,7 @@ and starts instances of the defined processes.
 You can disable the *deployment* of the example application itself by enabling any combination of the other modules with the `--webapps` and `--rest` properties of the start script.
 That way, the example application will not be launched and its resources will not be present on the classpath of Operaton Run.
 
-You can also disable the *launch* of the example application by setting the application property `camunda.bpm.run.example.enabled` to `false`
+You can also disable the *launch* of the example application by setting the application property `operaton.bpm.run.example.enabled` to `false`
 or removing it from the application properties.
 That way, the example application and its resources will be present on the classpath of Operaton Run.
 However, the example application will not be started.
@@ -226,7 +226,7 @@ To add authentication to requests against the [REST API](../reference/rest/overv
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.auth</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.auth</code></td>
       <td><code>.enabled</code></td>
       <td>Switch to enable basic authentication for requests to the REST API.</td>
       <td><code>false</code></td>
@@ -249,7 +249,7 @@ If you want to allow cross-origin requests to the [REST API](../reference/rest/o
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.cors</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.cors</code></td>
       <td><code>.enabled</code></td>
       <td>Switch to enable CORS.</td>
       <td><code>false</code></td>
@@ -296,7 +296,7 @@ Operaton Run can be configured to disable the REST endpoint which exposes the WA
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.rest</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.rest</code></td>
       <td><code>.disable-wadl</code></td>
       <td>Disables the REST endpoint <code>/application.wadl</code>. Web Application Description Language (WADL) is an XML description of the deployed RESTful web application.</td>
       <td><code>false</code></td>
@@ -315,7 +315,7 @@ Operaton Run also supports configuration options for customizing the deployment.
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.deployment</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.deployment</code></td>
       <td><code>.deploy-changed-only</code></td>
       <td>
           <ul>
@@ -344,7 +344,7 @@ Find all available configuration properties in the [LDAP Plugin Guide](process-e
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.ldap</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.ldap</code></td>
       <td><code>.enabled</code></td>
       <td>Switch to enable the LDAP identity service plugin.</td>
       <td><code>false</code></td>
@@ -368,7 +368,7 @@ In the table below, observe the Operaton Run-specific properties for the Adminis
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.admin-auth</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.admin-auth</code></td>
       <td><code>.enabled</code></td>
       <td>Switch to enable the Administrator Authorization plugin.</td>
       <td><code>false</code></td>
@@ -403,13 +403,13 @@ In the table below, observe the Operaton Run-specific properties for registering
       <th>Default value</th>
   </tr>
   <tr>
-      <td><code>camunda.bpm.run</code></td>
+      <td><code>operaton.bpm.run</code></td>
       <td><code>.process-engine-plugins</code></td>
       <td>Define your process engine plugin configurations under this YAML property.</td>
       <td>Empty <code>List</code></td>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.process-engine-plugins</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.process-engine-plugins</code></td>
       <td><code>.plugin-class</code></td>
       <td>Part of a <code>process-engine-plugins</code> list item. Defines the process engine plugin class.</td>
       <td>none</td>
@@ -436,7 +436,7 @@ Perform the following steps in Operaton Run to register process engine plugins:
 Once complete, your YAML configuration file should look similar to the following:
 
 ```yaml
-  camunda.bpm.run.process-engine-plugins:
+  operaton.bpm.run.process-engine-plugins:
     - plugin-class: canonical.name.of.the.PluginClass
 ```
 
@@ -460,7 +460,7 @@ the `${RUN_HOME}/configuration/userlib/` directory.
 2. Add the following content to your Operaton Run YAML configuration file.
 
 ```yaml
-camunda.bpm.run.process-engine-plugins:
+operaton.bpm.run.process-engine-plugins:
   - plugin-class: org.operaton.bpm.run.test.plugins.TestPlugin
     plugin-parameters:
       parameterOne: valueOne
@@ -473,7 +473,7 @@ Some process engine plugins don't have configuration parameters. For these, you 
 YAML property, like so:
 
 ```yaml
-camunda.bpm.run.process-engine-plugins:
+operaton.bpm.run.process-engine-plugins:
   - plugin-class: org.operaton.bpm.run.test.plugins.TestPlugin
   - plugin-class: org.operaton.bpm.run.test.plugins.AnotherPlugin
 ```
@@ -503,7 +503,7 @@ are however still accessible on the classpath of Operaton Run. Consult the [exam
       <th>Default value</th>
   </tr>
   <tr>
-      <td rowspan="15"><code>camunda.bpm.run.example</code></td>
+      <td rowspan="15"><code>operaton.bpm.run.example</code></td>
       <td><code>.enabled</code></td>
       <td>Switch to enable the example application.</td>
       <td><code>false</code></td>
@@ -519,10 +519,10 @@ For testing, we included a self-signed certificate. You should not use this in p
 server:
   ssl:
     key-store: classpath:keystore.p12
-    key-store-password: camunda
+    key-store-password: operaton
     key-store-type: pkcs12
-    key-alias: camunda
-    key-password: camunda
+    key-alias: operaton
+    key-password: operaton
   port: 8443
 ```
 After starting Operaton Run, you can access the webapps via https://localhost:8443/operaton/app/ and the REST API via https://localhost:8443/engine-rest/.
