@@ -12,11 +12,11 @@ menu:
 
 ---
 
-The DMN engine <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnEngine.html">interface</a> exposes methods for parsing and evaluating DMN Decisions.
+The DMN engine <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/DmnEngine.html">interface</a> exposes methods for parsing and evaluating DMN Decisions.
 
 # Parse Decisions
 
-Decisions can be parsed from an `InputStream` or transformed from a <a class="javadocref" href="org/operaton/bpm/model/dmn/DmnModelInstance.html">DmnModelInstance</a>.
+Decisions can be parsed from an `InputStream` or transformed from a <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/model/dmn/DmnModelInstance.html">DmnModelInstance</a>.
 
 This example shows how to parse a decision from an input stream:
 
@@ -108,7 +108,7 @@ The DRG is represented in the XML by the `definitions` element. The `id` of the 
 
 ## Decision Tables only
 
-It is possible to check if a parsed decision is implemented as [decision table] by using the method <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecision.html#isDecisionTable()">isDecisionTable()</a>.
+It is possible to check if a parsed decision is implemented as [decision table] by using the method <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/DmnDecision.html#isDecisionTable()">isDecisionTable()</a>.
 
 ```java
 // create a default DMN engine
@@ -133,7 +133,7 @@ if (decision.isDecisionTable()) {
 
 # Evaluate Decisions
 
-To evaluate (or "execute") a decision, either pass an already transformed <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecision.html">DmnDecision</a> or use a DMN model instance or input stream in combination with a decision key.
+To evaluate (or "execute") a decision, either pass an already transformed <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/DmnDecision.html">DmnDecision</a> or use a DMN model instance or input stream in combination with a decision key.
 
 As input to the evaluation, a set of input variables must be provided.
 
@@ -181,7 +181,7 @@ Use the `VariableContext` to support lazy-loading of variables.
 
 ## Interpret the Decision Result
 
-The evaluation of a DMN decision returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionResult.html">DmnDecisionResult</a>. If the decision is implemented as [decision table] then the result is a list of the
+The evaluation of a DMN decision returns a <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/DmnDecisionResult.html">DmnDecisionResult</a>. If the decision is implemented as [decision table] then the result is a list of the
 matching decision rule results. These results represent a mapping from an output name to an output value.
 
 If the decision is instead implemented as [decision literal expression] then the result is a list
@@ -244,7 +244,7 @@ decisionResult.getSingleEntry();
 ```
 
 Note that the decision can also be evaluated using the
-<a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnEngine.html##evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision, java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
+<a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/DmnEngine.html##evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision, java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
 `DmnDecisionResult`.
 
 ## Decisions with Required Decisions

@@ -262,7 +262,7 @@ To optimize the acquisition of jobs that need to be executed immediately, the `D
 
 In case each job must have a `DUEDATE_` set, the optimization can be disabled. This can be done by setting the `ensureJobDueDateNotNull` [process engine configuration flag](../../reference/deployment-descriptors/tags/process-engine.md#ensureJobDueDateNotNull) to `true`.
 
-However, any jobs created with a `null` value for `DUEDATE_` before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the **Set Due Date** <a class="javadocref" href="org/operaton/bpm/engine/ManagementService.html#setJobDuedate(java.lang.String,java.util.Date)">Java</a> / <a>Rest</a> or **Set Retries** <a class="javadocref" href="org/operaton/bpm/engine/ManagementService.html#setJobRetries(int)">Java</a> / [REST](../../reference/rest/specification/#tag/Job/operation/setJobRetries) APIs.
+However, any jobs created with a `null` value for `DUEDATE_` before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the **Set Due Date** <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/ManagementService.html#setJobDuedate(java.lang.String,java.util.Date)">Java</a> / <a>Rest</a> or **Set Retries** <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/ManagementService.html#setJobRetries(int)">Java</a> / [REST](../../reference/rest/specification/#tag/Job/operation/setJobRetries) APIs.
 
 ## The Two Phases of Job Acquisition
 
