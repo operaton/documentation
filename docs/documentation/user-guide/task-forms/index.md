@@ -83,7 +83,7 @@ The form key for this file could be `embedded:deployment:FORM_NAME.html` or `emb
 
 # Operaton Forms
 
-Operaton Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in `.form` files.  You can find out how to build Operaton Forms in the [Camunda Modeler documentation](https://docs.camunda.org/manual/latest/modeler/forms/) to explore all configuration options for form elements.
+Operaton Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in `.form` files.  You can find out how to build Operaton Forms in the [Camunda Modeler documentation](https://docs.operaton.org/manual/latest/modeler/forms/) to explore all configuration options for form elements.
 
 [Process variables](../../user-guide/process-engine/variables.md) are mapped to form fields where the field's key matches the variable name.
 

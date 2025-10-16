@@ -11,10 +11,10 @@ menu:
 ---
 
 
-Run Operaton in every Java-runnable environment. Operaton is supported with our QA infrastructure in the following environments. Here you can find more information about our [enterprise support](http://camunda.com/platform-7/editions/).
+Run Operaton in every Java-runnable environment. Operaton is supported with our QA infrastructure in the following environments.
 
 :::note[Supported Environments]
-  Please note that the environments listed in this section depend on the version of Operaton. Please select the corresponding version of this documentation to see the environment that fits to your version of Operaton. e.g., [supported environments for version 7.15](http://docs.camunda.org/7.15/guides/user-guide/#introduction-supported-environments)
+  Please note that the environments listed in this section depend on the version of Operaton. Please select the corresponding version of this documentation to see the environment that fits to your version of Operaton. e.g., [supported environments for version 7.15](http://docs.operaton.org/7.15/guides/user-guide/#introduction-supported-environments)
 :::
 
 

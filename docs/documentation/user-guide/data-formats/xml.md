@@ -83,7 +83,7 @@ public class MyDelegate implements JavaDelegate {
 
   @Override
   public void execute(DelegateExecution execution) throws Exception {
-    String xml = "<customer xmlns=\"http:\\/\\/camunda.org/example\" name=\"Jonny\">"
+    String xml = "<customer xmlns=\"http:\\/\\/operaton.org/example\" name=\"Jonny\">"
           + "<address>"
             + "<street>12 High Street</street>"
             + "<postCode>1234</postCode>"
@@ -107,7 +107,7 @@ public class AddDataDelegate implements JavaDelegate {
     SpinXmlElement xmlElement = customer.getValue().append(Spin.XML("<creditLimit>1000.00</creditLimit>"));
     customer = SpinValues.xmlValue(xmlElement).create();
     execution.setVariable("customerJonny", customer);
-    //<?xml version="1.0" encoding="UTF-8"?><customer xmlns="http:\/\/camunda.org/example" name="Jonny"><address><street>12 High Street</street><postCode>1234</postCode></address><creditLimit xmlns="">1000.00</creditLimit></customer>
+    //<?xml version="1.0" encoding="UTF-8"?><customer xmlns="http:\/\/operaton.org/example" name="Jonny"><address><street>12 High Street</street><postCode>1234</postCode></address><creditLimit xmlns="">1000.00</creditLimit></customer>
   }
 }
 ```

@@ -69,7 +69,7 @@ Add a file named `logback.xml`. Example configuration:
   </appender>
 
   <!-- Operaton-->
-  <logger name="org.camunda" level="info" />
+  <logger name="org.operaton" level="info" />
 
   <!-- common dependencies -->
   <logger name="org.apache.ibatis" level="info" />

@@ -50,7 +50,7 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
-    <camunda.spring-boot.version>7.22.0</camunda.spring-boot.version>
+    <operaton.spring-boot.version>1.0.0-beta-5</operaton.spring-boot.version>
     <spring-boot.version>3.3.3</spring-boot.version>
     <maven.compiler.release>17</maven.compiler.release>
   </properties>
@@ -71,7 +71,7 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
     <dependency>
       <groupId>org.operaton.bpm.springboot</groupId>
       <artifactId>operaton-bpm-spring-boot-starter-webapp</artifactId>
-      <version>${camunda.spring-boot.version}</version>
+      <version>${operaton.spring-boot.version}</version>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
