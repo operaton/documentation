@@ -54,7 +54,7 @@ Use the properties view to reference the service task in the process (see screen
 
 ![Example image](./img/modeler-service-task3.png)
 
-Save the process model and update it in Eclipse. [Build](../deploy/#build-the-web-application-with-maven), [deploy](../deploy/#deploy-to-apache-tomcat) and [execute](../forms/#re-build-and-deploy) the process application. After completing the *Approve Loan* step, check the logfile of the Apache Tomcat server:
+Save the process model and update it in Eclipse. [Build](deploy.md#build-the-web-application-with-maven), [deploy](deploy.md#deploy-to-apache-tomcat) and [execute](forms.md#re-build-and-deploy) the process application. After completing the *Approve Loan* step, check the logfile of the Apache Tomcat server:
 
 <pre class="console">
 INFO org.operaton.bpm.getstarted.loanapproval.ProcessRequestDelegate.execute

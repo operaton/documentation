@@ -10,7 +10,7 @@ menu:
     parent: "dmn-ref-decision-table"
     description: "Specify Conditions and Conclusions"
 
-aliases: [reference/dmn11/decision-table/rule/]
+aliases: [reference/dmn/decision-table/rule/]
 ---
 
 ![Example img](./img/rule.png)Rule" class="no-lightbox

@@ -336,4 +336,4 @@ overlapping elements in the diagram.
 
 Branches of gateways are placed one below the other. Auto layout is not provided, therefore the elements of different branches may overlap.
 
-[multi-instance]: ../../../../reference/bpmn20/tasks/task-markers/#multiple-instance
+[multi-instance]: ../../../../documentation/reference/bpmn20/tasks/task-markers.md#multiple-instance

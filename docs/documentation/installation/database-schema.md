@@ -14,7 +14,7 @@ Consult the installation guide related to your setup to configure the database f
 
 This guide will not detail how to set up an instance of your target database or how to create a schema object on it.
 Consult the documentation of your target database on how to do that.
-Operaton supports a variety of databases that are documented in the [supported environments](../introduction/supported-environments.md#databases).
+Operaton supports a variety of databases that are documented in the [supported environments](../introduction/supported-environments.md#Databases).
 
 Operaton supports the following ways of installing the database schema:
 

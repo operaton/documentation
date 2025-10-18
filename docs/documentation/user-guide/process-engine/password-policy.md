@@ -28,7 +28,7 @@ The built-in password policy requires all passwords to meet the following criter
 
 # Customize the Password Policy
 
-You can use the process engine configuration to enable / disable the password policy or plug in a custom policy. See [Process Engine Bootstrapping](../process-engine-bootstrapping) on how to set properties for your Operaton environment.
+You can use the process engine configuration to enable / disable the password policy or plug in a custom policy. See [Process Engine Bootstrapping](process-engine-bootstrapping.md) on how to set properties for your Operaton environment.
 
 To enable or disable the password policy checks you need to set the `enablePasswordPolicy` property.
 

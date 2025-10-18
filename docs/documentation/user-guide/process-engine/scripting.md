@@ -449,9 +449,9 @@ i.e., `$sum`)
 
 There are also special variables:
 
-1. `execution`, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>).
-1. `task`, which is available if the script is executed in a task scope (e.g., a task listener) (<a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>).
-1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a operaton:connector) (<a class="javadocref" href="org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
+1. `execution`, which is always available if the script is executed in an execution scope (e.g., in a script task) ([DelegateExecution](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateExecution.java)).
+2. `task`, which is available if the script is executed in a task scope (e.g., a task listener) ([DelegateTask](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateTask.java)).
+3. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a operaton:connector) (<a class="javadocref" href="org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
 
 These variables correspond to the `DelegateExecution`, `DelegateTask` or resp. `ConnectorVariableScope`
 interface which means that it can be used to get and set variables or access process engine services.

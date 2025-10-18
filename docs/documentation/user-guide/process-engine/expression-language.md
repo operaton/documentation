@@ -200,7 +200,7 @@ elements which can be provided with a JUEL expression. The expression is evaluat
 `ExternalTaskService#handleFailure`. If the expression evaluates to `true`, a BPMN error is thrown which can be caught by an
 [Error Boundary Event](../../reference/bpmn20/events/error-events.md#error-boundary-event).
 
-In the scope of an External Task, expressions have access to the <a class="javadocref" href="org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a> object via the key `externalTask` which provides getter methods for `errorMessage`, `errorDetails`, `workerId`, `retries` and more.
+In the scope of an External Task, expressions have access to the <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/externaltask/ExternalTask.java">ExternalTaskEntity</a> object via the key `externalTask` which provides getter methods for `errorMessage`, `errorDetails`, `workerId`, `retries` and more.
 
 **Examples:**
 
@@ -264,7 +264,7 @@ evaluating expressions:
   <tbody>
     <tr>
       <td><code>execution</code></td>
-      <td><code><a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a></code></td>
+      <td><code><a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateExecution.java">DelegateExecution</a></code></td>
       <td>
         Available in a BPMN execution context like a service task, execution listener or sequence
         flow.
@@ -272,12 +272,12 @@ evaluating expressions:
     </tr>
     <tr>
       <td><code>task</code></td>
-      <td><code><a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a></code></td>
+      <td><code><a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateTask.java">DelegateTask</a></code></td>
       <td>Available in a task context like a task listener.</td>
     </tr>
     <tr>
       <td><code>externalTask</code></td>
-      <td><code><a class="javadocref" href="org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a></code></td>
+      <td><code><a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/externaltask/ExternalTask.java">ExternalTask</a></code></td>
       <td>Available during an external task context activity (e.g. in <a href="../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
     </tr>
     <tr>

@@ -119,7 +119,7 @@ The following table describes the built-in metrics. The identifiers of all built
 
 # Querying
 
-Metrics can be queried by making a <a class="javadocref" href="org/operaton/bpm/engine/management/MetricsQuery.html">MetricsQuery</a> offered by the `ManagementService`. For example, the following query retrieves the number of all executed activity instances throughout the entire history of reporting:
+Metrics can be queried by making a [MetricsQuery](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/management/MetricsQuery.java) offered by the `ManagementService`. For example, the following query retrieves the number of all executed activity instances throughout the entire history of reporting:
 
 ```java
 long numCompletedActivityInstances = managementService
@@ -172,12 +172,12 @@ Metrics are reported with an identifier of the reporting party. This identifier 
 reports to individual engine instances when making a metrics query. For example in a cluster, load
 metrics can be related to individual cluster nodes. By default the process engine generates a
 reporter id as `<local IP>$<engine name>`. The generation can be customized by implementing the
-interface <a class="javadocref" href="org/operaton/bpm/engine/impl/history/event/HostnameProvider.html">org.operaton.bpm.engine.impl.history.event.HostnameProvider</a>
+interface [org.operaton.bpm.engine.impl.history.event.HostnameProvider](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/history/event/HostnameProvider.java)
 and setting the engine property `hostnameProvider` to an instance of that class.
 
 :::note[Heads Up!]
 The
-<a class="javadocref" href="org/operaton/bpm/engine/impl/metrics/MetricsReporterIdProvider.html">org.operaton.bpm.engine.impl.metrics.MetricsReporterIdProvider</a>
+[org.operaton.bpm.engine.impl.metrics.MetricsReporterIdProvider](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/metrics/MetricsReporterIdProvider.java)
 interface and the corresponding `metricsReporterIdProvider` engine property have been deprecated.
 :::
 

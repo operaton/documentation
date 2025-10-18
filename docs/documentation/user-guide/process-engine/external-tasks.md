@@ -65,7 +65,7 @@ In addition, other *service-task-like* elements such as send tasks, business rul
 
 ### Error Event Definitions
 
-External tasks allow for the definition of error events that throw a specified BPMN error. This can be done by adding a [operaton:errorEventDefinition](../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition) extension element to the task's definition. Compared to the `bpmn:errorEventDefinition`, the `operaton:errorEventDefinition` elements accept an additional `expression` attribute which supports any JUEL expression. Within the expression, you have access to the <a class="javadocref" href="org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a> object via the key `externalTask` which provides getter methods
+External tasks allow for the definition of error events that throw a specified BPMN error. This can be done by adding a [operaton:errorEventDefinition](../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition) extension element to the task's definition. Compared to the `bpmn:errorEventDefinition`, the `operaton:errorEventDefinition` elements accept an additional `expression` attribute which supports any JUEL expression. Within the expression, you have access to the [ExternalTaskEntity](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/externaltask/ExternalTask.java) object via the key `externalTask` which provides getter methods
 for `errorMessage`, `errorDetails`, `workerId`, `retries` and more.
 
 The expression is evaluated on invocations of `ExternalTaskService#complete` and

@@ -24,7 +24,7 @@ Once the event has reached the History Event Handler, it can be processed and st
 
 Exchanging the History Event Handler with a custom implementation allows users to plug in a custom History Backend. To do so, two main steps are required:
 
-* Provide a custom implementation of the <a class="javadocref" href="org/operaton/bpm/engine/impl/history/handler/HistoryEventHandler.html">HistoryEventHandler</a> interface.
+* Provide a custom implementation of the [HistoryEventHandler](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/history/handler/HistoryEventHandler.java) interface.
 * Wire the custom implementation in the process engine configuration.
 
 :::note[Composite History Handling]

@@ -181,7 +181,7 @@ runtimeService
 
 ### Send a Signal
 
-The [Signal API](../../reference/bpmn20/events/signal-events.md#signal-api) can be used to deliver a signal to one or all tenants. Pass the tenant identifier to the <a class="javadocref" href="org/operaton/bpm/engine/runtime/SignalEventReceivedBuilder.html">SignalEventReceivedBuilder</a> to deliver the signal to a specific tenant. If no identifier is passed then the signal is delivered to all tenants.
+The [Signal API](../../reference/bpmn20/events/signal-events.md#signal-api) can be used to deliver a signal to one or all tenants. Pass the tenant identifier to the [SignalEventReceivedBuilder](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/runtime/SignalEventReceivedBuilder.java) to deliver the signal to a specific tenant. If no identifier is passed then the signal is delivered to all tenants.
 
 ```java
 runtimeService
@@ -194,7 +194,7 @@ When a signal is thrown within a process (i.e., intermediate signal event or sig
 
 ### Create a Case Instance
 
-To create an instance by key of a case definition which is deployed for multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="org/operaton/bpm/engine/runtime/CaseInstanceBuilder.html">CaseInstanceBuilder</a>.
+To create an instance by key of a case definition which is deployed for multiple tenants, the tenant identifier has to be passed to the [CaseInstanceBuilder](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/runtime/CaseInstanceBuilder.java).
 
 ```java
 caseService
@@ -205,7 +205,7 @@ caseService
 
 ### Evaluate a Decision Table
 
-To evaluate a decision table by key which is deployed for multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="org/operaton/bpm/engine/dmn/DecisionEvaluationBuilder.html">DecisionEvaluationBuilder</a>.
+To evaluate a decision table by key which is deployed for multiple tenants, the tenant identifier has to be passed to the [DecisionEvaluationBuilder](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/dmn/DecisionEvaluationBuilder.java).
 
 ```java
 decisionService
@@ -379,7 +379,7 @@ repositoryService.createProcessDefinitionQuery()
 ### Instantiate a Shared Definition
 
 When creating (starting) a new process instance, the tenant id of the process definition is propagated to the process instance.
-Shared resources  do not have a tenant id which means that no tenant id is propagated automatically. To have the tenant id of the user who starts the process instances assigned  to the process instance, an implementation of the <a class="javadocref" href="org/operaton/bpm/engine/impl/cfg/multitenancy/TenantIdProvider.html">TenantIdProvider</a> SPI needs to be provided.
+Shared resources  do not have a tenant id which means that no tenant id is propagated automatically. To have the tenant id of the user who starts the process instances assigned  to the process instance, an implementation of the [TenantIdProvider](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/cfg/multitenancy/TenantIdProvider.java) SPI needs to be provided.
 
 The `TenantIdProvider` receives a callback when an instance of a process definition, case definition or decision definition is created. It can then assign a tenant id to the newly created instance (or not).
 

@@ -42,4 +42,4 @@ If you have trouble setting up the Operaton Platform, you can ask for assistance
 
 # Install Camunda Modeler
 
-Follow the instructions in the [Camunda Modeler](/manual/latest/installation/camunda-modeler) section.
+Follow the instructions in the [Camunda Modeler](../../../documentation/installation/camunda-modeler.md) section.

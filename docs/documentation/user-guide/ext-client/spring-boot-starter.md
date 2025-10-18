@@ -184,9 +184,9 @@ Available properties:
 <table class="table desc-table">
   <thead>
     <tr>
-      <th style="width: 20%;">Property name</th>
-      <th style="width: 60%;">Description</th>
-      <th style="width: 20%;">Default value</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
     </tr>
   </thead>
   <tbody>
@@ -330,9 +330,9 @@ Available properties:
 <table class="table desc-table">
   <thead>
     <tr>
-      <th style="width: 20%;">Property name</th>
-      <th style="width: 60%;">Description</th>
-      <th style="width: 20%;">Default value</th>
+      <th>Property name</th>
+      <th>Description</th>
+      <th>Default value</th>
     </tr>
   </thead>
   <tbody>

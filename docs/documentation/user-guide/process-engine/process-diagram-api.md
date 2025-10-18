@@ -22,7 +22,7 @@ The previous JavaScript BPMN renderer can still be found at [operaton-bpmn.js](h
 
 # bpmn.io Diagram Renderer
 
-To render a process diagram, you need to retrieve the diagram XML via the <a class="javadocref" href="org/operaton/bpm/engine/RepositoryService.html">Java</a>- or [REST API](../getProcessDefinitionBpmn20XmlByKey#Process-Definition). The following example shows how to render the process XML using bpmn.io. For more documentation regarding the annotation of the diagram and user interaction, please refer to the [bpmn.io](https://github.com/bpmn-io/bpmn-js) page.
+To render a process diagram, you need to retrieve the diagram XML via the [Java](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/RepositoryService.java) - or [REST API](../../reference/rest/specification.md#Process-Definition). The following example shows how to render the process XML using bpmn.io. For more documentation regarding the annotation of the diagram and user interaction, please refer to the [bpmn.io](https://github.com/bpmn-io/bpmn-js) page.
 
 ```javascript
 var BpmnViewer = require('bpmn-js');

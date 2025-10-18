@@ -27,7 +27,7 @@ To persist the entity with JPA, we add an entity bean to our process application
 Operaton Automation Platform 7.19 is the last release that supports handling JPA entities as variables
 
 You need to add a process engine plugin to achieve some of the next steps in the guide.
-Have a look at the [7.20 update guide](/manual/develop/user-guide/update/minor/719-to-720/#breaking-change-discontinue-support-for-handling-jpa-entities-as-variables) for more information.
+Have a look at the [7.20 update guide](https://docs.camunda.org/manual/latest/update/minor/719-to-720/#breaking-change-discontinue-support-for-handling-jpa-entities-as-variables) for more information.
 :::
 
 ```java
@@ -168,7 +168,7 @@ public class OrderBusinessLogic {
 
 Use the properties view of the Persist Service Task in the process (see screenshot). You need to enter `${orderBusinessLogic.persistOrder(execution)}` as the `Expression` property. This will call the `persistOrder` method of the named EJB with the current execution as parameter.
 
-[Build](../deploy/#build-the-process-application), [deploy](../deploy/#deploy-to-wildfly) and start the process `Order Pizza` in [Tasklist](http://localhost:8080/operaton/app/tasklist). Fill out the emerging form. Now the *Persist Order* step should have been completed automatically. Check that by looking into the logfile of the WildFly server. It will show an entry for the new order entity:
+[Build](deploy.md#build-the-process-application), [deploy](deploy.md#deploy-to-wildfly) and start the process `Order Pizza` in [Tasklist](http://localhost:8080/operaton/app/tasklist). Fill out the emerging form. Now the *Persist Order* step should have been completed automatically. Check that by looking into the logfile of the WildFly server. It will show an entry for the new order entity:
 
 <pre class="console">
   INFO  [stdout] Hibernate: insert into OrderEntity (address, approved, customer, pizza, version, id) values (?, ?, ?, ?, ?, ?)
