@@ -22,6 +22,7 @@ jobs:
       - name: Build Operaton site
         run: |
           npm run build || echo "Build failed, proceeding anyway if build/ exists"
+          .github/script/release-assets.sh
 
       - name: Check if build directory exists
         run: |
