@@ -48,6 +48,8 @@ ASSETS=(
   "clirr-reports.zip"
 )
 
+echo "Fetching release assets from operaton/operaton..."
+
 # Get a list of releases from GitHub API using gh
 RELEASES_JSON=$(gh api repos/operaton/operaton/releases --jq '.[] | {tag_name: .tag_name, assets: .assets}')
 
