@@ -29,3 +29,17 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* line 11, styles/_svg.less */
+.implemented svg {
+  position: relative;
+  overflow: hidden;
+}
+/* line 14, styles/_svg.less */
+.implemented svg [fill="#333333"] {
+  fill: #df8a13;
+}
+
+.implemented td {
+  color: #df8a13;
+}

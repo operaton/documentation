@@ -29,9 +29,9 @@ Performing a migration consists of four steps:
 
 # Create a Migration Plan
 
-When accessing the migration page from the process definition or instance page, an appropriate source and target definition key and version is already set. Otherwise you can set the process definition key and version for both the source and target at the top of the page. After selecting a source and a target, the diagrams for these process definition versions are displayed. Also, a first draft of a migration plan is [generated](../../../user-guide/process-engine/process-instance-migration.md#generating-a-migration-plan) and successfully mapped activities are highlighted with a green checkmark symbol <span class="badge" style="border: 1px solid #4cae4c; background-color: #5cb85c;"><span class="glyphicon glyphicon-ok"></span></span>. Hovering over an activity highlights the corresponding source and target activities for the mapping.
+When accessing the migration page from the process definition or instance page, an appropriate source and target definition key and version is already set. Otherwise you can set the process definition key and version for both the source and target at the top of the page. After selecting a source and a target, the diagrams for these process definition versions are displayed. Also, a first draft of a migration plan is [generated](../../../user-guide/process-engine/process-instance-migration.md#generating-a-migration-plan) and successfully mapped activities are highlighted with a green checkmark symbol <span class="badge" style={{border: '1px solid #4cae4c', backgroundColor: '#5cb85c'}}><span class="glyphicon glyphicon-ok"></span></span>. Hovering over an activity highlights the corresponding source and target activities for the mapping.
 
-Activities that have running instances, but are not mapped to a target activity, have a yellow warning marker <span class="badge" style="background-color: #f0ad4e; border: 1px solid #eea236;"><span class="glyphicon glyphicon-warning-sign"></span></span>. If you plan to migrate these instances, you have to create a mapping for these activities, otherwise the migration will fail.
+Activities that have running instances, but are not mapped to a target activity, have a yellow warning marker <span class="badge" style={{backgroundColor: '#f0ad4e', border: '1px solid #eea236'}}><span class="glyphicon glyphicon-warning-sign"></span></span>. If you plan to migrate these instances, you have to create a mapping for these activities, otherwise the migration will fail.
 
 ## Create a new mapping
 
@@ -56,7 +56,7 @@ Checking the link diagrams navigation checkbox causes view changes of one diagra
 
 ![Example img](./../img/migration/step1_errorPopover.png)Report for an incorrect mapping
 
-If you create a mapping that is incorrect, a red error indicator <span class="badge" style="background-color: #d9534f; border: 1px solid #d43f3a;"><span class="glyphicon glyphicon-remove"></span></span> is displayed in the top right corner of the source and target activity of the faulty mapping. Clicking on the error indicator opens a tooltip showing details of the error.
+If you create a mapping that is incorrect, a red error indicator <span class="badge" style={{backgroundColor: '#d9534f', border: '1px solid #d43f3a'}}><span class="glyphicon glyphicon-remove"></span></span> is displayed in the top right corner of the source and target activity of the faulty mapping. Clicking on the error indicator opens a tooltip showing details of the error.
 
 
 ## Set Update Event Trigger flag

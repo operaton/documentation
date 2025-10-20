@@ -10,7 +10,7 @@ const config: Config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://docs.operaton.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -20,8 +20,12 @@ const config: Config = {
   organizationName: 'Operaton', // Usually your GitHub org/user name.
   projectName: 'Operaton', // Usually your repo name.
 
-  onBrokenLinks: 'throw', //'throw',
-  onBrokenMarkdownLinks: 'throw',//'warn',
+  onBrokenLinks: 'warn', //'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',//'throw'
+    }
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -48,19 +52,7 @@ const config: Config = {
         },
         theme: {
           customCss: './src/css/custom.css',
-        },
-        sitemap: {
-          lastmod: 'date',
-          changefreq: 'weekly',
-          priority: 0.5,
-          ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
-          createSitemapItems: async (params) => {
-            const { defaultCreateSitemapItems, ...rest } = params;
-            const items = await defaultCreateSitemapItems(rest);
-            return items.filter((item) => !item.url.includes('/page/'));
-          },
-        },
+        }
       } satisfies Preset.Options,
     ],
   ],

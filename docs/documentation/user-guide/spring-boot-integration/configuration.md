@@ -205,7 +205,7 @@ The available properties are as follows:
 <tr><td colspan="4"><b>General</b></td></tr>
 
 <tr>
-    <td rowspan="15"><code>camunda.bpm</code></td>
+    <td rowspan="14"><code>operaton.bpm</code></td>
     <td><code>.enabled</code></td>
     <td>Switch to disable the Operaton auto-configuration. Use to exclude Operaton in integration tests.</td>
     <td><code>true</code></td>
@@ -292,7 +292,7 @@ The available properties are as follows:
 <tr><td colspan="4"><b>Job Execution</b></td></tr>
 
 <tr>
-<td rowspan="14"><code>camunda.bpm.job-execution</code></td>
+<td rowspan="14"><code>operaton.bpm.job-execution</code></td>
 <td><code>.enabled</code></td>
 <td>If set to <code>false</code>, no JobExecutor bean is created at all. Maybe used for testing.</td>
 <td><code>true</code></td>
@@ -368,7 +368,7 @@ The available properties are as follows:
 <tr><td colspan="4"><b>Datasource</b></td></tr>
 
 <tr>
-<td rowspan="5"><code>camunda.bpm.database</code></td>
+<td rowspan="5"><code>operaton.bpm.database</code></td>
 <td><code>.schema-update</code></td>
 <td>If automatic schema update should be applied, use one of [true, false, create, create-drop, drop-create]</td>
 <td><code>true</code></td>
@@ -402,7 +402,7 @@ Controls if the engine executes the jdbc statements as Batch or not. It has to b
 
 <tr><td colspan="4"><b>Eventing</b></td></tr>
 <tr>
-<td rowspan="4"><code>camunda.bpm.eventing</code></td>
+<td rowspan="4"><code>operaton.bpm.eventing</code></td>
 <td><code>.execution</code></td>
 <td>Enables eventing of delegate execution events. See the <a href="/user-guide/spring-boot-integration/the-spring-event-bridge.md">user guide</a> for further details.</td>
 <td><code>true</code></td>
@@ -429,7 +429,7 @@ Controls if the engine executes the jdbc statements as Batch or not. It has to b
 
 <tr><td colspan="4"><b>Management</b></td></tr>
 <tr>
-<td><code>camunda.bpm.management</code></td>
+<td><code>operaton.bpm.management</code></td>
 <td><code>.health.operaton.enabled</code></td>
 <td>Enables default Operaton health indicators</td>
 <td><code>true</code></td>
@@ -437,7 +437,7 @@ Controls if the engine executes the jdbc statements as Batch or not. It has to b
 
 <tr><td colspan="4"><b>Metrics</b></td></tr>
 <tr>
-<td rowspan="2"><code>camunda.bpm.metrics</code></td>
+<td rowspan="2"><code>operaton.bpm.metrics</code></td>
 <td><code>.enabled</code></td>
 <td>Enables metrics reporting</td>
 <td><i>Operaton default value</i></td>
@@ -451,7 +451,7 @@ Controls if the engine executes the jdbc statements as Batch or not. It has to b
 
 <tr><td colspan="4"><b>Webapp</b></td></tr>
 <tr>
-<td rowspan="3"><code>camunda.bpm.webapp</code></td>
+<td rowspan="3"><code>operaton.bpm.webapp</code></td>
 <td><code>.enabled</code></td>
 <td>Switch to disable the Operaton Webapp auto-configuration.</td>
 <td><code>true</code></td>
@@ -480,7 +480,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 </tr>
 
 <tr id="csrf">
-  <td rowspan="10"><code>camunda.bpm.webapp.csrf</code></td>
+  <td rowspan="10"><code>operaton.bpm.webapp.csrf</code></td>
 </tr>
 <tr>
 <td><code>.target-origin</code></td>
@@ -552,7 +552,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 </tr>
 
 <tr id="session-cookie">
-  <td rowspan="6"><code>camunda.bpm.webapp.session-cookie</code></td>
+  <td rowspan="6"><code>operaton.bpm.webapp.session-cookie</code></td>
 </tr>
 <tr>
   <td><code>.enable-secure-cookie</code></td>
@@ -606,7 +606,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 </tr>
 
 <tr id="header-security">
-  <td rowspan="12"><code>camunda.bpm.webapp.header-security</code></td>
+  <td rowspan="12"><code>operaton.bpm.webapp.header-security</code></td>
 </tr>
 <tr>
   <td><code>.xss-protection-disabled</code></td>
@@ -725,7 +725,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 </tr>
 
 <tr id="auth-cache">
-  <td rowspan="3"><code>camunda.bpm.webapp.auth.cache</code></td>
+  <td rowspan="3"><code>operaton.bpm.webapp.auth.cache</code></td>
 </tr>
 <tr>
   <td><code>.ttl-enabled</code></td>
@@ -751,7 +751,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 
 <tr><td colspan="4"><b>Authorization</b></td></tr>
 <tr>
-<td rowspan="4"><code>camunda.bpm.authorization</code></td>
+<td rowspan="4"><code>operaton.bpm.authorization</code></td>
 <td><code>.enabled</code></td>
 <td>Enables authorization</td>
 <td><i>Operaton default value</i></td>
@@ -777,7 +777,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 
 <tr><td colspan="4"><b>Admin User</b></td></tr>
 <tr>
-<td rowspan="3"><code>camunda.bpm.admin-user</code></td>
+<td rowspan="3"><code>operaton.bpm.admin-user</code></td>
 <td><code>.id</code></td>
 <td>The username (e.g., 'admin')</td>
 <td>-</td>
@@ -797,7 +797,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
 
 <tr><td colspan="4"><b>Filter</b></td></tr>
 <tr>
-<td><code>camunda.bpm.filter</code></td>
+<td><code>operaton.bpm.filter</code></td>
 <td><code>.create</code></td>
 <td>Name of a "show all" filter. If set, a new filter is created on start that displays all tasks. Useful for testing on h2 db.</td>
 <td>-</td>
@@ -809,7 +809,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
   </td>
 </tr>
 <tr>
-  <td rowspan="3"><code>camunda.bpm.oauth2.identity-provider</code></td>
+  <td rowspan="3"><code>operaton.bpm.oauth2.identity-provider</code></td>
   <td><code>.enabled</code></td>
   <td>Enables the OAuth2 identity provider.</td>
   <td><code>true</code></td>
@@ -828,7 +828,7 @@ When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Star
   <td><code>,</code> (comma)</td>
 </tr>
 <tr>
-  <td rowspan="2"><code>camunda.bpm.oauth2.sso-logout</code></td>
+  <td rowspan="2"><code>operaton.bpm.oauth2.sso-logout</code></td>
   <td><code>.enabled</code></td>
   <td>Activates the client initiated OIDC logout feature.</td>
   <td><code>false</code></td>
@@ -865,7 +865,7 @@ operaton:
 Override configuration using exposed properties:
 
 ```yaml
-camunda.bpm:
+operaton.bpm.
   admin-user:
     id: kermit
     password: superSecret
@@ -909,7 +909,7 @@ server:
 ```
 
 Further details of the session cookie like the `SameSite` flag can be configured via
-[camunda.bpm.webapp.session-cookie](../spring-boot-integration/configuration.md#session-cookie) in the `application.yaml`.
+[operaton.bpm.webapp.session-cookie](../spring-boot-integration/configuration.md#session-cookie) in the `application.yaml`.
 
 # Configuring Spin DataFormats
 
