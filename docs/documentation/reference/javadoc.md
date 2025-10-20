@@ -10,7 +10,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 export function JavaDocLink() {
     const { siteConfig } = useDocusaurusContext();
 
-    return <a href={siteConfig.customFields.javaDocUrl}>here</a>
+    return <a target="_blank" href={siteConfig.customFields.javaDocUrl}>here</a>
 }
 
 You can find the JavaDoc <JavaDocLink/>.
