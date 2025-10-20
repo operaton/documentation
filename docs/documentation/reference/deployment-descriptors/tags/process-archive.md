@@ -1,14 +1,7 @@
 ---
 
-title: 'Process Archive Configuration'
+title: '<process-archive />'
 sidebar_position: 40
-
-menu:
-  main:
-    name: "<process-archive />"
-    identifier: "descriptor-ref-process-archive"
-    parent: "descriptor-ref-tags"
-    description: "Define a Deployment."
 
 ---
 

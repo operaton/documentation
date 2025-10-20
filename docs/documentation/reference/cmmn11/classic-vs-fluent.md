@@ -1,7 +1,7 @@
 ---
 
 title: 'Classic vs Fluent API'
-sidebar_position: 10
+sidebar_position: 20
 
 menu:
   main:

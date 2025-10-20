@@ -1,14 +1,7 @@
 ---
 
-title: 'Job Executor Configuration'
+title: '<job-executor />'
 sidebar_position: 30
-
-menu:
-  main:
-    name: "<job-executor />"
-    identifier: "descriptor-ref-job-executor"
-    parent: "descriptor-ref-tags"
-    description: "Configure the Job Executor"
 
 ---
 

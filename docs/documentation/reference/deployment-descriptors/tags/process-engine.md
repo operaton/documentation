@@ -1,14 +1,7 @@
 ---
 
-title: 'Process Engine Configuration'
+title: '<process-engine />'
 sidebar_position: 50
-
-menu:
-  main:
-    name: "<process-engine />"
-    identifier: "descriptor-ref-process-engine"
-    parent: "descriptor-ref-tags"
-    description: "Configure a Process Engine."
 
 ---
 
