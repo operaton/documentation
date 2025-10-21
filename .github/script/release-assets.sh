@@ -61,11 +61,22 @@ for RELEASE in $(echo "$RELEASES_JSON" | jq -c '.'); do
   for ASSET_NAME in "${ASSETS[@]}"; do
     ASSET_URL=$(echo "$RELEASE" | jq -r --arg NAME "$ASSET_NAME" '.assets[] | select(.name == $NAME) | .url')
     ASSET_FILE="$DOWNLOAD_DIR/${TAG_NAME}/${ASSET_NAME}"
+    # strip off .zip extension for remote URL
+    REMOTE_URL="https://docs.operaton.org/reference/${TAG_NAME}/${ASSET_NAME%.zip}/"
+
 
     if [[ -n "$ASSET_URL" ]]; then
-      if [[ -f "$ASSET_FILE" ]]; then
-        echo "  Asset $ASSET_NAME from release $TAG_NAME already exists, skipping download."
-      else
+      SKIP_DOWNLOAD=false
+      if curl --head --silent --fail "$REMOTE_URL" > /dev/null; then
+        echo "  Asset $ASSET_NAME from release $TAG_NAME has already been published at $REMOTE_URL. Skipping download."
+        SKIP_DOWNLOAD=true
+      fi
+      if [[ -f "$ASSET_FILE" && "$SKIP_DOWNLOAD" == false ]]; then
+        echo "  Asset $ASSET_NAME from release $TAG_NAME already exists. Skipping download."
+        SKIP_DOWNLOAD=true
+      fi
+
+      if [[ "$SKIP_DOWNLOAD" == false ]]; then
         mkdir -p $DOWNLOAD_DIR/${TAG_NAME}
         echo "  Downloading asset $ASSET_NAME from release $TAG_NAME"
         gh api "$ASSET_URL" --header 'Accept: application/octet-stream' > "$ASSET_FILE"
