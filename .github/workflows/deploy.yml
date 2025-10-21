@@ -45,3 +45,9 @@ jobs:
           rsync -avz --delete ./build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}
         env:
           RSYNC_RSH: ssh -p ${{ secrets.SSH_PORT }}
+
+      - name: Create symlink to latest release
+        run: |
+          TAG_NAME=$(gh api repos/operaton/operaton/releases/latest --jq .tag_name)
+          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "ln -sfn ${{ secrets.SSH_PATH }}/reference/${TAG_NAME} ${{ secrets.SSH_PATH }}/reference/latest"
