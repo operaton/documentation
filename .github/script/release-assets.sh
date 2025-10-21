@@ -68,8 +68,8 @@ for RELEASE in $(echo "$RELEASES_JSON" | jq -c '.'); do
     if [[ -n "$ASSET_URL" ]]; then
       SKIP_DOWNLOAD=false
       if curl --head --silent --fail "$REMOTE_URL" > /dev/null; then
-        echo "  Asset $ASSET_NAME from release $TAG_NAME has already been published at $REMOTE_URL. Skipping download."
-        SKIP_DOWNLOAD=true
+        echo "  Asset $ASSET_NAME from release $TAG_NAME has already been published at $REMOTE_URL."
+        #SKIP_DOWNLOAD=true
       fi
       if [[ -f "$ASSET_FILE" && "$SKIP_DOWNLOAD" == false ]]; then
         echo "  Asset $ASSET_NAME from release $TAG_NAME already exists. Skipping download."
