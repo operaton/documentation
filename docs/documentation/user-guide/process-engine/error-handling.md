@@ -104,7 +104,7 @@ Having a failed jobs list instead of using the "normal" task list feels like a m
 
 Sometimes an API call doesn't succeed because a problem occurs. The Java programming model uses exceptions
 to handle these situations. Exceptions that occur on the process engine's application level are
-of the type `<a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>`.
+of the type `<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>`.
 
 Here are two examples of everyday situations in which the engine throws a `ProcessEngineException`:
 
@@ -153,7 +153,7 @@ You can configure the exception error codes feature in your [process engine conf
 
 ### Register a Custom Code Provider
 
-With the help of a [`ProcessEnginePlugin`](../process-engine/process-engine-plugins.md) you can register a custom `<a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/impl/errorcode/ExceptionCodeProvider.html">ExceptionCodeProvider</a>`:
+With the help of a [`ProcessEnginePlugin`](../process-engine/process-engine-plugins.md) you can register a custom `<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/errorcode/ExceptionCodeProvider.html">ExceptionCodeProvider</a>`:
 
 ```java
 engineConfig.setCustomExceptionCodeProvider(new ExceptionCodeProvider() {

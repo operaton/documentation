@@ -43,7 +43,7 @@ public class MyBusinessProcessTest {
 }
 ```
 
-Note that for this to work, you need to define a <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a> bean in the Spring configuration (which is injected by auto-wiring in the example above).
+Note that for this to work, you need to define a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/test/ProcessEngineRule.html">ProcessEngineRule</a> bean in the Spring configuration (which is injected by auto-wiring in the example above).
 
 ```xml
 <bean id="processEngineRule" class="org.operaton.bpm.engine.test.ProcessEngineRule">

@@ -103,7 +103,7 @@ List<HistoricDecisionInstance> historicDecisions = processEngine
 
 # The Historic Decision Instance
 
-The [HistoricDecisionInstance](https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/engine/history/HistoricDecisionInstance.html) contains information about a single
+The [HistoricDecisionInstance](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/HistoricDecisionInstance.html) contains information about a single
 evaluation of a decision.
 
 ```java

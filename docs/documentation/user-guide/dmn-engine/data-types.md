@@ -142,7 +142,7 @@ types. For example, you can add a new type for time or change the
 transformation to support a different date format or localized boolean
 constants.
 
-To do this, implement a new [DmnDataTypeTransformer](https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/dmn/engine/impl/spi/type/DmnDataTypeTransformer.html). The transformation is processed in the `transform()` method and returns a typed value. If it cannot successfully transform a value, it must throw an `IllegalArgumentException`.
+To do this, implement a new [DmnDataTypeTransformer](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/type/DmnDataTypeTransformer.html). The transformation is processed in the `transform()` method and returns a typed value. If it cannot successfully transform a value, it must throw an `IllegalArgumentException`.
 
 ```java
 public class CustomDataTypeTransformer implements DmnDataTypeTransformer {

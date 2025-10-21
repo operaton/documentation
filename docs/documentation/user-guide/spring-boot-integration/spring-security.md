@@ -47,14 +47,14 @@ registration in the application properties (`spring.security.oauth2.client.regis
 Configuration activates if there is OAuth2 client registration configured. This class configures the Spring
 Security filter chain to secure the Operaton Webapps.
 
-Spring auto configuration class: <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OperatonSpringSecurityOAuth2AutoConfiguration.html">OperatonSpringSecurityOAuth2AutoConfiguration</a>
+Spring auto configuration class: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OperatonSpringSecurityOAuth2AutoConfiguration.html">OperatonSpringSecurityOAuth2AutoConfiguration</a>
 
 ## Spring Security Disabled Auto Configuration
 
 Configuration activates if there is **no** OAuth2 client registration configured. This class configures the Spring
 Security filter chain to a permit all mode.
 
-Spring auto configuration class: <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OperatonBpmSpringSecurityDisableAutoConfiguration.html">OperatonBpmSpringSecurityDisableAutoConfiguration</a>
+Spring auto configuration class: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OperatonBpmSpringSecurityDisableAutoConfiguration.html">OperatonBpmSpringSecurityDisableAutoConfiguration</a>
 
 # OAuth2 Client Registration
 
@@ -103,7 +103,7 @@ to grant administrator authorizations for a particular OAuth2 user or group.
 # OAuth2 Identity Provider
 
 Additionally to the OAuth2 login, Operaton also provides support to use groups from OAuth2.
-This is achieved with a custom [identity service](../process-engine/identity-service.md), called <a class="javadocref" href="https://operaton.github.io/operaton/javadoc/operaton/1.0/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OAuth2IdentityProvider.html">OAuth2IdentityProvider</a>.
+This is achieved with a custom [identity service](../process-engine/identity-service.md), called <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OAuth2IdentityProvider.html">OAuth2IdentityProvider</a>.
 
 This is a read-only identity provider that configures user's groups from the [Spring Security's granted authorities][Authorities].
 This identity provider also supports the default Operaton Database Identity Service as a fallback for authentications for the REST API.
