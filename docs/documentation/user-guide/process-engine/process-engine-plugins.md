@@ -15,7 +15,7 @@ The process engine configuration can be extended through process engine plugins.
 extension to the [process engine configuration](../process-engine/process-engine-bootstrapping.md).
 
 A plugin must provide an implementation of the
-<a class="javadocref" href="org/operaton/bpm/engine/impl/cfg/ProcessEnginePlugin.html">ProcessEnginePlugin</a> interface.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/cfg/ProcessEnginePlugin.html">ProcessEnginePlugin</a> interface.
 
 
 # Configure Process Engine Plugins

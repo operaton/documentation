@@ -28,8 +28,8 @@ const config: Config = {
   },
 
   customFields: {
-    javaDocUrl: '/reference/v1.0.0-rc-1/javadoc/',
-    restApiDocUrl: '/reference/v1.0.0-rc-1/rest-api/'
+    javadocUrl: '/reference/latest/javadoc',
+    restApiDocUrl: '/reference/latest/rest-api'
   },
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

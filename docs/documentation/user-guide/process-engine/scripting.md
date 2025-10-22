@@ -449,9 +449,9 @@ i.e., `$sum`)
 
 There are also special variables:
 
-1. `execution`, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>).
-1. `task`, which is available if the script is executed in a task scope (e.g., a task listener) (<a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>).
-1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a operaton:connector) (<a class="javadocref" href="org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
+1. `execution`, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>).
+1. `task`, which is available if the script is executed in a task scope (e.g., a task listener) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>).
+1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a operaton:connector) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
 
 These variables correspond to the `DelegateExecution`, `DelegateTask` or resp. `ConnectorVariableScope`
 interface which means that it can be used to get and set variables or access process engine services.
@@ -474,9 +474,9 @@ task = execution.getProcessEngineServices().getTaskService()
 
 Operaton's Java API provides access to Operaton's process engine services; these services can be accessed using Scripts:
 
-<a class="javadocref" href="org/operaton/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/ProcessEngineServices.html">Process Engine Services</a>
 
-<a class="javadocref" href="org/operaton/bpm/engine/package-summary.html">Public Java API of Operaton Engine</a>
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/package-summary.html">Public Java API of Operaton Engine</a>
 
 Example of creating a BPMN Message that correlates with the message key "work":
 

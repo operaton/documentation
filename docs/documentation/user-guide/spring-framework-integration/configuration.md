@@ -32,7 +32,7 @@ The ProcessEngine can be configured as a regular Spring bean. The starting point
 </bean>
 ```
 
-Note that the processEngineConfiguration bean uses the <a class="javadocref" href="org/operaton/bpm/engine/spring/SpringProcessEngineConfiguration.html">SpringProcessEngineConfiguration</a> class.
+Note that the processEngineConfiguration bean uses the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/spring/SpringProcessEngineConfiguration.html">SpringProcessEngineConfiguration</a> class.
 
 
 # Configure a Container-Managed Process Engine as a Spring Bean

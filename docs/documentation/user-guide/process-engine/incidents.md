@@ -120,4 +120,4 @@ All additional incident handlers will be added as sub handlers to the `Composite
 By default, the main handler is `DefaultIncidentHandler`. To override the main handler, create a `CompositeIncidentHandler` with your own main `IncidentHandler` and initialize the incident handlers in the engine configuration before setting up the engine.
 
 See javadoc for more details
-<a class="javadocref" href="org/operaton/bpm/engine/impl/incident/CompositeIncidentHandler.html">Composite Incident Handler</a>.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/incident/CompositeIncidentHandler.html">Composite Incident Handler</a>.

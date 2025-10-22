@@ -32,8 +32,8 @@ Operaton distinguishes between read-only and writable user repositories. A read-
 
 To provide a custom identity provider implementation, the following interfaces can be implemented:
 
-* <a class="javadocref" href="org/operaton/bpm/engine/impl/identity/ReadOnlyIdentityProvider.html">org.operaton.bpm.engine.impl.identity.ReadOnlyIdentityProvider</a>
-* <a class="javadocref" href="org/operaton/bpm/engine/impl/identity/WritableIdentityProvider.html">org.operaton.bpm.engine.impl.identity.WritableIdentityProvider</a>
+* <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/identity/ReadOnlyIdentityProvider.html">org.operaton.bpm.engine.impl.identity.ReadOnlyIdentityProvider</a>
+* <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/identity/WritableIdentityProvider.html">org.operaton.bpm.engine.impl.identity.WritableIdentityProvider</a>
 
 # Custom Whitelist for User, Group and Tenant IDs
 

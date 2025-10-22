@@ -58,7 +58,7 @@ A `QuarkusProcessEngineConfiguration` instance provides the following defaults:
   <tr>
     <td><code>idGenerator</code></td>
     <td>
-      An instance of <a class="javadocref" href="org/operaton/bpm/engine/impl/persistence/StrongUuidGenerator.html">StrongUuidGenerator</a>is used.
+      An instance of <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/persistence/StrongUuidGenerator.html">StrongUuidGenerator</a>is used.
     </td>
     <td><code>StrongUuidGenerator</code></td>
   </tr>

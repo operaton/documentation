@@ -65,7 +65,7 @@ Or, by defining configuration attributes in the annotation:
 ```
 
 Please find the complete list of attributes in the
-<a class="javadocref" href="org/operaton/bpm/client/spring/annotation/ExternalTaskSubscription.html">Javadocs</a>.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/client/spring/annotation/ExternalTaskSubscription.html">Javadocs</a>.
 
 **Please Note:** A property defined in the `application.yml` file always overrides the respective attribute defined programmatically via annotation.
 
@@ -612,4 +612,4 @@ to your `pom.xml` file:
 
 To bootstrap the Client, use the class annotation `@EnableExternalTaskClient`. You can find all
 configuration attributes in the
-<a class="javadocref" href="org/operaton/bpm/client/spring/annotation/EnableExternalTaskClient.html">Javadocs</a>.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/client/spring/annotation/EnableExternalTaskClient.html">Javadocs</a>.
