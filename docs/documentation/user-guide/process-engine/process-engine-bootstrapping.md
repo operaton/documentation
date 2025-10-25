@@ -159,11 +159,11 @@ The `<process-engine ... />` xml tag allows you to define a process engine:
 </bpm-platform>
 ```
 
-See the [Deployment Descriptor Reference](../../reference/deployment-descriptors/descriptors/bpm-platform-xml.md) for complete documentation of the syntax of the `bpm-platform.xml` file.
+See the [Deployment Descriptor Reference](../../reference/deployment-descriptors/bpm-platform-xml.md) for complete documentation of the syntax of the `bpm-platform.xml` file.
 
 
 ## Configure Process Engine in the processes.xml
 
 The process engine can also be configured and bootstrapped using the `META-INF/processes.xml` file. See [Section on processes.xml file](../process-applications/the-processes-xml-deployment-descriptor.md) for details.
 
-See the [Deployment Descriptor Reference](../../reference/deployment-descriptors/descriptors/processes-xml.md) for complete documentation of the syntax of the `processes.xml` file.
+See the [Deployment Descriptor Reference](../../reference/deployment-descriptors/processes-xml) for complete documentation of the syntax of the `processes.xml` file.

@@ -6,12 +6,12 @@ sidebar_position: 50
 ---
 
 
-The process engine configuration can be placed in both [processes.xml](../descriptors/processes-xml.md) and the [bpm-platform.xml](../descriptors/bpm-platform-xml.md) files. If the process engine is configured in either or both of those files, it will be bootstrapped by the Operaton infrastructure and be made available through `BpmPlatform.getProcessEngineService().getProcessEngine("name of process engine")`.
+The process engine configuration can be placed in both [processes.xml](../processes-xml.md) and the [bpm-platform.xml](../bpm-platform-xml.md) files. If the process engine is configured in either or both of those files, it will be bootstrapped by the Operaton infrastructure and be made available through `BpmPlatform.getProcessEngineService().getProcessEngine("name of process engine")`.
 
 
 # Example
 
-The following example shows an XML snippet which can be placed in both [processes.xml](../descriptors/processes-xml.md) and/or [bpm-platform.xml](../descriptors/bpm-platform-xml.md).
+The following example shows an XML snippet which can be placed in both [processes.xml](../processes-xml.md) and/or [bpm-platform.xml](../bpm-platform-xml.md).
 
 ```xml
 <process-engine name="default">

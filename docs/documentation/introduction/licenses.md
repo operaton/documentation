@@ -32,18 +32,6 @@ Operaton includes libraries developed by third parties. See the following resour
 -->
 
 
-# Camunda Modeler
-
-The Camunda Modeler is a desktop modeling application.
-
-## License
-
-[License information](https://docs.camunda.io/docs/reference/licenses/#camunda-modeler) for Camunda Modeler has moved to [docs.camunda.io](https://docs.camunda.io/).
-
-## Third-Party Libraries
-
-[Third-Party libraries](https://docs.camunda.io/docs/reference/dependencies/) for Camunda Modeler have moved to [docs.camunda.io](https://docs.camunda.io/).
-
 # GPL Cooperation Commitment
 
 ## Our Commitment

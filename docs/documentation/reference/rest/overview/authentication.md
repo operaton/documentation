@@ -3,12 +3,10 @@
 title: "Configure Authentication"
 sidebar_position: 10
 
-menu:
-  main:
-    identifier: "rest-api-overview-authentication"
-    parent: "rest-api-overview"
-
 ---
+
+
+# Configure Authentication
 
 The REST API ships with an implementation of [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). By default it is switched off, but can be activated by adding a servlet filter as follows:
 
