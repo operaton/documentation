@@ -51,3 +51,23 @@ jobs:
           TAG_NAME=$(gh api repos/operaton/operaton/releases/latest --jq .tag_name)
           ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
             "ln -sfn ${{ secrets.SSH_PATH }}/reference/${TAG_NAME} ${{ secrets.SSH_PATH }}/reference/latest"
+
+            steps:
+
+      - name: Run DocSearch Scraper
+        uses: celsiusnarhwal/typesense-scraper@v2
+        with:
+          # The secret containing your Typesense API key. Required.
+          api-key: ${{ secrets.TYPESENSE_API_KEY }}
+          
+          # The hostname or IP address of your Typesense server. Required.
+          host: docs.operaton.org 
+          
+          # The port on which your Typesense server is listening. Optional. Default: 8108.
+          port: 8108
+          
+          # The protocol to use when connecting to your Typesense server. Optional. Default: http.
+          protocol: http
+          
+          # The path to your DocSearch config file. Optional. Default: docsearch.config.json.
+          config: docsearch.config.json

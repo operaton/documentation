@@ -45,15 +45,5 @@
       "url_without_anchor",
       "type"
     ]
-  },
-  "typesense_server": {
-    "api_key": "xyz",
-    "nodes": [
-      {
-        "host": "localhost",
-        "port": 8108,
-        "protocol": "http"
-      }
-    ]
   }
 }
