@@ -130,7 +130,7 @@ max-age=31536000
 #### Strengthen the Base Configuration
 
 We encourage you to use a stricter configuration. Here you can find hints on how to strengthen
-the Base Configuration. Please also see the section on [How to Configure?](#hsts-config)
+the Base Configuration. Please also see the section on [How to Configure?](#how-to-configure)
 
 **Max Age**
 
@@ -159,7 +159,7 @@ Choose a container from the list and learn where to configure the HTTP Security 
 
 * [Tomcat](../../installation/full/tomcat/configuration.md#security-related-http-headers-in-webapps)
 * [Wildfly](../../installation/full/wildfly/configuration.md#security-related-http-headers-in-webapps)
-* [Spring Boot](../../user-guide/spring-boot-integration/configuration.md#header-security)
+* [Spring Boot](../../user-guide/spring-boot-integration/configuration.md)
 
 ## How to Configure?
 

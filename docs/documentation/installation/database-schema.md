@@ -151,7 +151,7 @@ You have migrated your manual installation to Liquibase.
 Updating from your current minor version (`$X`) to its follow-up version (`$Y`) requires updating the database schema as well.
 Follow the outlined procedure to perform this update:
 
-1. Check for [available database patch scripts](#patch-level-update") for your database that are within the bounds of your update path.
+1. Check for [available database patch scripts](#patch-level-update) for your database that are within the bounds of your update path.
 You can find the scripts on our [Artifact Repository].
 Select the respective version you want to update to (`$Y`) and download the scripts as a `zip` or `tar.gz` file.
 Open the `operaton-sql-scripts-$Y/upgrade` folder to find all available scripts.
@@ -168,3 +168,7 @@ The scripts update the database from one minor version to the next and change th
 :::note[Do I need to apply every minor version if I missed a few?]
 If you need to apply multiple minor versions, you MUST execute the database alteration scripts in minor version order as they are NOT cumulative.
 :::
+
+### Patch level update
+
+Patch level updates will be delivered once applicable patches are issued, since no such updates have been needed so far.

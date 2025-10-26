@@ -413,10 +413,10 @@ in the platform, not only in DMN decisions.
 [decision task]: ../../../reference/cmmn11/tasks/decision-task.md
 [Typed Value API]: ../../process-engine/variables.md#typed-value-api
 [object value serialization]: ../../process-engine/variables.md#object-value-serialization
-[output variable mapping]: ../../process-engine/variables.md#input-output-variable-mapping
+[output variable mapping]: ../../process-engine/variables.md#inputoutput-variable-mapping
 [execution listener]: ../../process-engine/delegation-code.md#execution-listener
 [expression languages]: ../../dmn-engine/expressions-and-scripts.md
 [FEEL]: ../../../reference/dmn/feel/index.md
-[Spring]: ../../spring-framework-integration/index.md#expression-resolving
+[Spring]: ../../spring-framework-integration/index.md
 [CDI]: ../../cdi-java-ee-integration/expression-resolving.md
 [process engine plugin]: ../../process-engine/process-engine-plugins.md

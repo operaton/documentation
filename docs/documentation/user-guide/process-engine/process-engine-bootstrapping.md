@@ -64,7 +64,7 @@ ProcessEngine processEngine = ProcessEngineConfiguration.createStandaloneInMemPr
 
 ### Configure Process Engine Using Operaton cfg XML
 
-The easiest way to configure your Process Engine is through an XML file called `camunda.cfg.xml`. Using that you can simply do:
+The easiest way to configure your Process Engine is through an XML file called `operaton.cfg.xml`. Using that you can simply do:
 
 ```java
 ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine()

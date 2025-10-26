@@ -139,14 +139,14 @@ From the form developers point of view, `formRef` offers more flexibility than `
 
 ### Process Variable Binding
 
-To define a default value for a form field, a process variable with the same name as the form field key needs to be defined. Local variables (e.g. created by defining an [Input Parameter](../process-engine/variables/#input-output-variable-mapping) for the User Task) take precedence over process variables.
+To define a default value for a form field, a process variable with the same name as the form field key needs to be defined. Local variables (e.g. created by defining an [Input Parameter](../process-engine/variables/#inputoutput-variable-mapping) for the User Task) take precedence over process variables.
 
 ![Example img](./img/variable-mapping-operaton-form.png)User Input/Output Mappings for default values for form fields
 
 The submitted values of a form are returned as variables to the process engine:
 
 * When a process variable with the same name as the form field key already existed, then its value will be overwritten by the form submission.
-* When the User Task has an Input Parameter defined with the same name as the form field key, then this local variable will be used. In this case, an [Output Parameter](../process-engine/variables/#input-output-variable-mapping) needs to be defined to map the local variable to a process variable for usage in other process elements.
+* When the User Task has an Input Parameter defined with the same name as the form field key, then this local variable will be used. In this case, an [Output Parameter](../process-engine/variables/#inputoutput-variable-mapping) needs to be defined to map the local variable to a process variable for usage in other process elements.
 * When no variable exists with the same name as the form field key, then a new process variable will be created and gets the value from the submission.
 
 ### Dynamic Components

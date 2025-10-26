@@ -48,7 +48,7 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
 * Amazon Aurora PostgreSQL compatible with PostgreSQL 14 / 15
 * Microsoft SQL Server 2017 / 2019 / 2022 (see [Configuration Note](../user-guide/process-engine/database/mssql-configuration.md))
 * Microsoft Azure SQL with Operaton-supported SQL Server compatibility levels
-  (see [Configuration Note](../user-guide/process-engine/database/mssql-configuration.md#azure-sql-compatibility-levels-supported-by-camunda)):
+  (see [Configuration Note](../user-guide/process-engine/database/mssql-configuration.md#azure-sql-compatibility-levels-supported-by-operaton)):
   * SQL Server on Azure Virtual Machines
   * Azure SQL Managed Instance
   * Azure SQL Database

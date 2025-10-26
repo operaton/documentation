@@ -28,7 +28,7 @@ In the following section, we walk through the different implementations and disc
   The mechanisms described herein for the `ServletProcessApplication` apply in the same way.
 :::
 
-**Supported on:** Apache Tomcat, Wildfly. The Servlet process application is supported on all containers. Read the [note about Servlet Process Application and EJB/Java EE containers](#using-servlet-process-applications-inside-an-ejb-jakarta-ee-java-ee-container-such-as-wildfly)
+**Supported on:** Apache Tomcat, Wildfly. The Servlet process application is supported on all containers. Read the [note about Servlet Process Application and EJB/Java EE containers](#using-servlet-process-applications-inside-an-ejbjakarta-eejava-ee-container-such-as-wildfly)
 
 **Packaging**: WAR (or embedded WAR inside EAR)
 

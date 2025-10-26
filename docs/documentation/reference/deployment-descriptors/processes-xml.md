@@ -24,7 +24,7 @@ The namespace for the processes.xml file is `http://www.operaton.org/schema/1.0/
 
 ## Empty processes.xml
 
-The `processes.xml` may be left blank (can be empty). In this case, default values are used. See the [Empty processes.xml](../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md#empty-processes-xml) section of the [User Guide](../../user-guide/index.md) for more details.
+The `processes.xml` may be left blank (can be empty). In this case, default values are used. See the [Empty processes.xml](../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md#empty-processesxml) section of the [User Guide](../../user-guide/index.md) for more details.
 
 
 ## Example

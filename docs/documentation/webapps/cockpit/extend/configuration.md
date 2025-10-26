@@ -224,7 +224,7 @@ export default = {
 };
 ```
 
-**Note:** Please make sure to change the CSRF cookie name also on [server-side](../../shared-options/csrf-prevention.md#cookie-name).
+**Note:** Please make sure to change the CSRF cookie name also on [server-side](../../shared-options/csrf-prevention.md).
 
 ## Disable Welcome Message for new Users
 

@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import rehypeRegisterCustomIds from './src/plugins/rehype-register-custom-ids.js';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -22,9 +23,6 @@ const config: Config = {
 
   onBrokenLinks: 'warn', //'throw',
   markdown: {
-    anchors: {
-      maintainCase: true,
-    },
     hooks: {
       onBrokenMarkdownLinks: 'warn',//'throw'
     }
@@ -56,6 +54,7 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/operaton/documentation/blob/main/',
+          rehypePlugins: [rehypeRegisterCustomIds],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -67,6 +66,11 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/operaton-logo.svg',
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      },
+    },
     navbar: {
       title: 'Operaton',
       logo: {

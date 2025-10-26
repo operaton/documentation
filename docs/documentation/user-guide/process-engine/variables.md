@@ -483,9 +483,9 @@ If an Activity is canceled (e.g. due to throwing a BPMN error), IO mapping is st
 
 The default behavior is that the engine still tries to execute output mappings on canceled activities and fails with an exception if a variable is not found. By enabling the [skipOutputMappingOnCanceledActivities](../../reference/deployment-descriptors/tags/process-engine.md#skipOutputMappingOnCanceledActivities) engine configuration flag (i.e. setting it to `true`) the engine will not perform output mappings on any canceled activity.
 
-[inputOutput]: ../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-inputoutput
+[inputOutput]: ../../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput
 [inputParameter]: ../../reference/bpmn20/custom-extensions/extension-elements.md#inputparameter
 [outputParameter]: ../../reference/bpmn20/custom-extensions/extension-elements.md#outputparameter
-[list]: ../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-list
-[map]: ../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-map
+[list]: ../../reference/bpmn20/custom-extensions/extension-elements.md#list
+[map]: ../../reference/bpmn20/custom-extensions/extension-elements.md#map
 [script-io]: ../process-engine/scripting.md#use-scripts-as-inputoutput-parameters

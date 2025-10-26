@@ -325,7 +325,7 @@ You can configure the property in three ways:
 [retry]: ../process-engine/the-job-executor.md#failed-jobs
 [incidents]: ../process-engine/incidents.md
 [history level]: ../process-engine/history/history-configuration.md#choose-a-history-level
-[history cleanup]: ../process-engine/history/history-cleanup.md#history-time-to-live-for-batch-operations
+[history cleanup]: ../process-engine/history/history-cleanup.md#batches
 [job prioritization]: ../process-engine/the-job-executor.md#job-prioritization
 [job-definition-priority]: ../process-engine/the-job-executor.md#override-priority-by-job-definition
 [job-priority]: ../process-engine/the-job-executor.md#set-job-priorities-via-managementservice-api

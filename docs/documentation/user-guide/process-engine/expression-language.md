@@ -390,7 +390,7 @@ If the Operaton Spin process engine plugin is activated, the Spin functions `S`,
 [JUEL](http://juel.sourceforge.net/)
 [official documentation](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html)
 [variables](#availability-of-variables-and-functions-inside-expression-language)
-[Spring](../spring-framework-integration/index.md#expression-resolving)
+[Spring](../spring-framework-integration/index.md)
 [CDI](../cdi-java-ee-integration/expression-resolving.md)
 [BPMN](../../reference/bpmn20/index.md)
 [CMMN](../../reference/cmmn11/index.md)

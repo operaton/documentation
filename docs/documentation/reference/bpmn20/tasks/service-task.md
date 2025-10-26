@@ -52,7 +52,7 @@ Or an expression which calls a method or resolves to a value.
 ```
 
 For more information about expression language as delegation code, please see the corresponding
-[section](../../../user-guide/process-engine/expression-language.md#use-expression-language-as-delegation-code)
+[section](../../../user-guide/process-engine/expression-language.md#delegation-code)
 of the [User Guide](../../../user-guide/index.md).
 
 It is also possible to invoke logic which is implemented in form of webservices. `operaton:connector` is an extension that allows calling REST/SOAP APIs directly from the workflow. For more information about using connectors, please see the corresponding [section](../../../user-guide/process-engine/connectors.md#use-connectors) of the [User Guide](../../../user-guide/index.md)

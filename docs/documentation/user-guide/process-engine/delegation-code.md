@@ -650,13 +650,13 @@ to assign error codes to exceptions you cannot control via your Delegation Code.
 
 :::note[Heads-up!]
 * A custom error code you define via delegation code has precedence over a custom error code provided
-by a [Custom Code Provider](#custom-code-provider).
-* If your custom error code violates the [reserved code range](#reserved-code-range), it will be
+by a Custom Code Provider.
+* If your custom error code violates the reserved code range, it will be
 overridden with `0` unless you disable the built-in code provider.
 :::
 
 
 [script-sources]: ../process-engine/scripting.md#script-source
-[operaton-script]: ../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-script
+[operaton-script]: ../../reference/bpmn20/custom-extensions/extension-elements.md#script
 [timerEventDefinition]: ../../reference/bpmn20/events/timer-events.md#defining-a-timer
 [job-executor]: ../process-engine/the-job-executor.md

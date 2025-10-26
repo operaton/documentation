@@ -18,7 +18,7 @@ I.e., a to be stored value is rounded to the next or previous second, e.g., `202
 
 :::note[Heads Up!]
 The missing millisecond’s precision for date/time values impacts the process engine's behavior. 
-Please read [how to configure the MySQL JDBC Driver](..#jdbc-driver-configuration) 
+Please read [how to configure the MySQL JDBC Driver](#jdbc-driver-configuration) 
 to ensure that date/time values are handled correctly.
 :::
 

@@ -48,7 +48,7 @@ When selecting a batch either from in progress or completed ones, the details of
 
 ### In Progress Batch Details
 
-The displayed information corresponds to the response of the [REST API query](#getBatchStatistics).
+The displayed information corresponds to the response of the <a href="/reference/latest/rest-api/#tag/Batch/operation/getBatchStatistics" target="_blank">REST API query</a>.
 
 If the batch is in progress and has failed jobs, the failed jobs and their exception message are displayed below the details table. You can access the complete stacktrace for every job by clicking on the `Full stack trace` link at the end of the exception message summary. Using the <button class="btn btn-xs"><i class="glyphicon glyphicon-repeat"></i></button> button you can increment the number of retries for this job. Using the <button class="btn btn-xs"><i class="glyphicon glyphicon-trash"></i></button> button you can delete this job. You can also increment the number of retries for all jobs by clicking the <button class="btn btn-xs"><i class="glyphicon glyphicon-repeat"></i></button> button above the details table.
 

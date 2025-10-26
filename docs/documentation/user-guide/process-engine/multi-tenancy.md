@@ -507,7 +507,7 @@ For background execution of processes and tasks, the process engine has a compon
 
 ### Example Configuration for Schema Isolation
 
-Multi-Tenancy settings can be applied in the various ways of configuring a process engine. The following is an example of a [bpm-platform.xml](../process-engine/process-engine-bootstrapping.md#configure-process-engine-in-bpm-platformxml) file that specifies engines for two tenants that share the same database but work on different schemas:
+Multi-Tenancy settings can be applied in the various ways of configuring a process engine. The following is an example of a [bpm-platform.xml](../process-engine/process-engine-bootstrapping.md#configure-process-engine-in-the-bpm-platformxml) file that specifies engines for two tenants that share the same database but work on different schemas:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

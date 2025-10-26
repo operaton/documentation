@@ -134,7 +134,7 @@ To use the CDI Event Bridge in combination with a multi application deployment a
 <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/cdi/impl/event/CdiEventListener.html">CdiEventListener</a> needs to be added as a
 [Process Application Execution Event Listener](../../user-guide/process-applications/process-application-event-listeners.md).
 
-Example configuration for [Servlet Process Application](../../user-guide/process-applications/the-process-application-class.md#the-servletprocessapplication):
+Example configuration for [Servlet Process Application](../../user-guide/process-applications/the-process-application-class.md#the-servletprocessapplication-and-jakartaservletprocessapplication):
 
 ```java
 @ProcessApplication
@@ -152,7 +152,7 @@ public class InvoiceProcessApplication extends ServletProcessApplication {
 }
 ```
 
-Example configuration for [EJB Process Application](../../user-guide/process-applications/the-process-application-class.md#the-ejbprocessapplication):
+Example configuration for [EJB Process Application](../../user-guide/process-applications/the-process-application-class.md#the-ejbprocessapplication-and-jakartaejbprocessapplication):
 
 ```java
 @Singleton

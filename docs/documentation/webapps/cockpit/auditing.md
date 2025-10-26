@@ -15,7 +15,7 @@ Since Cockpit is a very powerful tool, it is often desired to inspect which user
 * which entities (process instances, tasks, etc.) were involved
 * which changes were made
 
-To get a more detailed explanation about the Java and REST API methods to get user operations, check out [this url](../../user-guide/process-engine/history/user-operation-log.md#accessing-the-user-operation-log).
+To get a more detailed explanation about the Java and REST API methods to get user operations, check out [this url](../../user-guide/process-engine/history/user-operation-log.md#access-the-user-operation-log).
 
 ## Operation Log in Cockpit
 ![Example img](./img/cockpit-operation-log.png)Operation Log

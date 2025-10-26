@@ -143,7 +143,7 @@ When a BPMN error event from a called process instance is caught in the calling 
 
 ### Combination with Input/Output parameters
 
-Call activities can be combined with [Input/Output parameters](../../../user-guide/process-engine/variables.md#input-output-variable-mapping) as well. This allows for an even more flexible mapping of variables into the called process. In order to only map variables that are declared in the `inputOutput` mapping, the attribute `local` can be used. Consider the following XML:
+Call activities can be combined with [Input/Output parameters](../../../user-guide/process-engine/variables.md#inputoutput-variable-mapping) as well. This allows for an even more flexible mapping of variables into the called process. In order to only map variables that are declared in the `inputOutput` mapping, the attribute `local` can be used. Consider the following XML:
 
 ```xml
 <callActivity id="callSubProcess" calledElement="checkCreditProcess" >

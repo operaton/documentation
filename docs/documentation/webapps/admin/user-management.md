@@ -11,7 +11,7 @@ menu:
 ---
 
 
-## Users Menu
+## User Menu
 
 ![Example img](./img/admin-users.png)User Menu
 

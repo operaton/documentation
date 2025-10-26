@@ -76,7 +76,7 @@ Of the predefined resources at the moment this would be:
 
 ![Example img](./img/admin_cockpit_access_group.png)Authorization Application New User
 
-First of all, we have to provide the permission to access Cockpit (also see the [Application Access](#application-acces) section).
+First of all, we have to provide the permission to access Cockpit (also see the [Application Access](#application-access) section).
 
 ![Example img](./img/admin_proc_def_group_read_access.png)Authorization Application New User
 
@@ -91,7 +91,7 @@ Now that we have one group that can see everything in Cockpit, we want to have a
 
 Not every process has to be managed by every user/group and with regards to different organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.
 
-In this use case we want to give the group *accounting*, which we will assume is already present and has access to Cockpit (see [Application-Specific Permission](../admin/authorization-management.md#application-specific-permissions) and [Application Access](#application-acces)), full access to the "invoice" process and only to this process.
+In this use case we want to give the group *accounting*, which we will assume is already present and has access to Cockpit (see [Application-Specific Permission](../admin/authorization-management.md#application-specific-permissions) and [Application Access](#application-access)), full access to the "invoice" process and only to this process.
 
 For groups and users to be able to see process definitions they need at least `READ` permission for the "Process Definition" resource. To see running process instances the same permission is required for the "Process Instance" resource.
 

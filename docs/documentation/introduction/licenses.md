@@ -23,7 +23,7 @@ If you are using Operaton, the entire software is provided under various open so
 Operaton includes libraries developed by third parties. See the following resources:
 
 * [Third-Party Libraries][third-party-libraries]: An overview of the dependencies Operaton distributes. Additionally, this page points out particularly important third-party licenses to be aware of.
-* [HTML License Book Operaton](./third-party-libraries/index.md#operaton-bpm-platform-license-book): A list of all dependencies Operaton distributes with the Operaton 7 artifacts, including their licenses and notices.
+* [HTML License Book Operaton](https://github.com/operaton/operaton/blob/main/distro/license-book/src/main/resources/license-book.txt): A list of all dependencies Operaton distributes with the Operaton 7 artifacts, including their licenses and notices.
 * [Plain text license book Operaton][license-book]: A plain text version of the license book.
 
 [third-party-libraries]: ./third-party-libraries/index.md

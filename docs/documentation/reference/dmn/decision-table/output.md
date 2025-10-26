@@ -93,7 +93,7 @@ type. For example, transform the output value `80%` of type String into a
 Double using a [custom data type](../../../user-guide/dmn-engine/data-types.md#implement-a-custom-data-type).
 
 
-[decision table result]: ../../../user-guide/dmn-engine/evaluate-decisions.md#interpret-the-dmndecisiontableresult
+[decision table result]: ../../../user-guide/dmn-engine/evaluate-decisions.md#interpret-the-decision-result
 [supported DT]: ../../../user-guide/dmn-engine/data-types.md#supported-data-types
 [output entry]: ./rule.md#output-entry-conclusion
 [custom data type]: ../../../user-guide/dmn-engine/data-types.md#implement-a-custom-data-type

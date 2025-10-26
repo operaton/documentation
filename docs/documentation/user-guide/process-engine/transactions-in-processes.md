@@ -94,7 +94,7 @@ when the execution listener class is not available on the node that instantiates
 
 ### Asynchronous Continuations of Multi-Instance Activities
 
-A [multi-instance activity](../../reference/bpmn20/tasks/task-markers.md#multiple-instances) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
+A [multi-instance activity](../../reference/bpmn20/tasks/task-markers.md#multiple-instance) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
 
 Additionally, the inner activity can also be configured for asynchronous continuation using the `operaton:asyncBefore` and `operaton:asyncAfter` extension attributes on the `multiInstanceLoopCharacteristics` element:
 

@@ -24,7 +24,7 @@ Process engine plugins can be configured
 
 * in the [Operaton Deployment Descriptors](../../reference/deployment-descriptors/index.md) (bpm-platform.xml/processes.xml),
 * in the [Wildfly configuration file](../runtime-container-integration/jboss.md) (standalone.xml/domain.xml),
-* using [Spring Beans XML](../spring-framework-integration/index.md#configure-a-process-engine-plugin-in-spring),
+* using [Spring Beans XML](../spring-framework-integration/index.md),
 * in the [Operaton Run YAML configuration files](../operaton-bpm-run.md#process-engine-plugin-registration)
 * programatically.
 
