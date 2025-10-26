@@ -62,6 +62,7 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+  themes: ['docusaurus-theme-search-typesense'],
 
   themeConfig: {
     // Replace with your project's social card
@@ -70,6 +71,26 @@ const config: Config = {
       sidebar: {
         autoCollapseCategories: true,
       },
+    },
+    typesense: {
+      typesenseCollectionName: 'docusaurus_1761511744',
+
+      typesenseServerConfig: {
+        nodes: [
+          {
+            host: 'localhost',
+            port: 8108,
+            protocol: 'http',
+          },
+        ],
+        apiKey: 'xyz',
+      },
+
+      // Optional: Typesense search parameters: https://typesense.org/docs/0.24.0/api/search.html#search-parameters
+      typesenseSearchParameters: {},
+
+      // Optional
+      contextualSearch: true,
     },
     navbar: {
       title: 'Operaton',
@@ -96,7 +117,10 @@ const config: Config = {
           position: 'left',
           label: 'Security',
         },
-        // {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          type: 'search',
+          position: 'right',
+        },
         {
           href: 'https://github.com/operaton',
           label: 'GitHub',
@@ -151,7 +175,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Operaton. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Operaton. Built with <a href="https://docusaurus.io" target="_blank">Docusaurus</a>.`,
     },
     prism: {
       theme: prismThemes.github,
