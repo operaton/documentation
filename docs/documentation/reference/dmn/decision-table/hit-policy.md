@@ -61,7 +61,7 @@ supported by the Operaton DMN engine:
   </tr>
 </table>
 
-# The Role of a Hit Policy
+## The Role of a Hit Policy
 
 A hit policy specifies how many rules of a decision table can be satisfied and
 which of the satisfied rules are included in the [decision table result]. The
@@ -69,7 +69,7 @@ hit policies [Unique], [Any] and [First] will always return a maximum of one
 satisfied rule. The hit policies [Rule Order] and [Collect] can return
 multiple satisfied rules.
 
-## Unique Hit Policy
+### Unique Hit Policy
 
 Only a single rule can be satisfied or no rule at all. The decision table result contains the
 output entries of the satisfied rule.
@@ -81,7 +81,7 @@ See the following decision table.
 Depending on the current season the dish should be chosen.
 Only one dish can be chosen, since only one season can exist at the same time.
 
-## Any Hit Policy
+### Any Hit Policy
 
 Multiple rules can be satisfied. However, all satisfied rules must generate the same
 output. The decision table result contains only the output of one of the
@@ -96,7 +96,7 @@ This is a decision table for the leave application. If the applier
 has no vacation days left or is currently in the probation period, the application will be refused.
 Otherwise the application is applied.
 
-## First Hit Policy
+### First Hit Policy
 
 Multiple rules can be satisfied. The decision table result contains only
 the output of the first satisfied rule.
@@ -106,7 +106,7 @@ See the above decistion table for advertisement. Regarding the current age of th
 advertisement should be shown is decided. For example, the user is 19 years old. All the rules will match, but since
 the hit policy is set to first only, the advertisement for Cars is used.
 
-## Rule Order Hit Policy
+### Rule Order Hit Policy
 
 Multiple rules can be satisfied. The decision table result contains the output
 of all satisfied rules in the order of the rules in the decision table.
@@ -116,7 +116,7 @@ Again, see the advertisement example with the rule order policy. Say we have a u
 All rules are satisfied so all outputs are given, ordered by the rule ordering.
 It can perhaps be used to indicate the priority of the displayed advertisements.
 
-## Collect Hit Policy
+### Collect Hit Policy
 
 Multiple rules can be satisfied. The decision table result contains the output
 of all satisfied rules in an arbitrary order as a list.

@@ -43,7 +43,7 @@ As conditions or event triggers, sentries may define the following elements:
 * **OnPart**: A trigger that occurs when a certain transition in the lifecycle of a plan item or a case file item is performed.
 * **IfPart**: A condition that is checked when all OnParts are fulfilled. This condition is defined on case data.
 
-# OnPart
+## OnPart
 
 OnParts are defined on lifecycle transitions for plan items or case file items. As the Operaton engine does not currently support case file items, it is only possible to use *plan item OnParts*. A sentry with an OnPart can be defined as follows:
 
@@ -62,7 +62,7 @@ As an alternative to `sourceRef`, the CMMN specification allows to define an att
 
 Note that it is possible to have any number of OnParts which allows to combine multiple events. All OnParts must be fulfilled for a sentry to occur, i.e., specifying multiple OnParts is a conjunction of multiple events. An OnPart is fulfilled as soon as the element it is defined on performs the specified lifecycle transition. It is irrelevant whether this element performs any other subsequent lifecycle transitions.
 
-# IfPart
+## IfPart
 
 An IfPart defines an additional condition that is checked when all OnParts of the sentry are fulfilled. Only if the IfPart evaluates to `true`, the sentry is fulfilled. In Operaton, a sentry with an IfPart looks as follows:
 
@@ -89,9 +89,9 @@ The CMMN specification allows to reference a case file item by the sentry attrib
 
 The engine evaluates IfParts at every lifecycle transition of a plan item contained in the sentry's stage. That means, if an IfPart is not satisfied immediately when all OnParts have occurred, the sentry may still occur at any later lifecycle transition.
 
-# Operaton Extensions
+## Operaton Extensions
 
-# VariableOnPart
+## VariableOnPart
 
 VariableOnParts are defined on lifecycle transitions of a variable. Sentry with VariableOnPart is evaluated when the variable undergoes a transition (create or delete or update).
 A sentry can have more than one variableOnPart and can have at most one `variable event` each.
@@ -108,7 +108,7 @@ In Operaton, a sentry with a variableOnPart looks as follows
 ```
 In the above example, sentry is evaluated when the `create` event on the variable `variable_1` occurs.
 
-# VariableOnPart Evaluation
+## VariableOnPart Evaluation
 
 Variable event that occurs in the scope of the execution triggers the sentry with variableOnParts in the following conditions:
 
@@ -131,7 +131,7 @@ When there exists two variables of the same name `foo`, one defined in the scope
 * When the variable `foo` is updated in the scope of the case model, then only the `HumanTask1` gets enabled.
 * When the variable `foo` is updated in the scope of the stage, then only the `HumanTask_2` gets enabled.
 
-# Combining OnParts, IfParts and VariableOnParts
+## Combining OnParts, IfParts and VariableOnParts
 
 Sentries allow a flexible definition of event occurrences and data-based conditions to be fulfilled. The following rules apply for combining OnParts, IfParts and VariableOnParts.
 

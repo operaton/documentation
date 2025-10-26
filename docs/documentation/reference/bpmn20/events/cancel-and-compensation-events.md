@@ -11,14 +11,14 @@ menu:
 
 ---
 
-# Cancel Events
+## Cancel Events
 
 
-## Cancel End Event
+### Cancel End Event
 
 The cancel end event can only be used in combination with a [transaction subprocess](../subprocesses/transaction-subprocess.md). When the cancel end event is reached, a cancel event is thrown which must be caught by a cancel boundary event. The cancel boundary event then cancels the transaction and triggers compensation.
 
-## Cancel Boundary Event
+### Cancel Boundary Event
 
 An attached intermediate catching cancel event on the boundary of a transaction subprocess, or, for short, a cancel boundary event, is triggered when a transaction is canceled. When the cancel boundary event is triggered, it first interrupts all active executions in the current scope. Next, it starts compensation of all active compensation boundary events in the scope of the transaction. Compensation is performed synchronously, i.e., the boundary event waits before compensation is completed before leaving the transaction. When compensation is completed, the transaction subprocess is left using the sequence flow(s) running out of the cancel boundary event.
 
@@ -39,9 +39,9 @@ A cancel boundary event is defined as a typical boundary event:
 Since the cancel boundary event is always interrupting, the cancelActivity attribute is not required.
 
 
-# Compensation Events
+## Compensation Events
 
-## Intermediate Throwing Compensation Event
+### Intermediate Throwing Compensation Event
 
 An intermediate throwing compensation event can be used to trigger compensation.
 
@@ -90,7 +90,7 @@ Additionally, the optional argument `activityRef` can be used to trigger compens
 </intermediateThrowEvent>
 ```
 
-## Compensation End Event
+### Compensation End Event
 
 A compensation end event triggers compensation and the current path of execution is ended. It has the same behavior and limitations as a compensation intermediate throwing event.
 
@@ -100,7 +100,7 @@ A compensation end event triggers compensation and the current path of execution
 </endEvent>
 ```
 
-## Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -125,7 +125,7 @@ A compensation end event triggers compensation and the current path of execution
 </table>
 
 
-## Compensation Boundary Event
+### Compensation Boundary Event
 
 An attached intermediate catching compensation on the boundary of an activity, or, for short, a compensation boundary event, can be used to attach a compensation handler to an activity or an embedded subprocess.
 
@@ -152,7 +152,7 @@ A compensation boundary event is defined as a typical boundary event:
 
 As the compensation boundary event is activated after the activity has completed successfully, the cancelActivity attribute is not supported.
 
-## Compensation Start Event
+### Compensation Start Event
 
 A compensation start event can only be used to trigger an Event Sub-Process - it __cannot__ be used to start a process instance. This kind of event subprocess is called compensation event subprocess.
 
@@ -182,7 +182,7 @@ The XML representation of a compensation start event is the normal start event d
 ```
 
 
-## Additional Resources
+### Additional Resources
 
 * [Transaction subprocess](../subprocesses/transaction-subprocess.md)
 * [Compensation Events](http://operaton.org/bpmn/reference.html#events-compensation) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

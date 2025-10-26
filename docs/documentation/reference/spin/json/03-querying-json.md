@@ -13,7 +13,7 @@ menu:
 The JSON datatype supports querying with the [JSONPath](http://goessner.net/articles/JsonPath/) query language.
 
 
-# Querying an Element
+## Querying an Element
 
 ```java
 import static org.operaton.spin.Spin.JSON;
@@ -24,7 +24,7 @@ SpinJsonNode child = JSON(json).jsonPath("$.child[0]").element();
 ```
 
 
-# Querying an Element List
+## Querying an Element List
 
 ```java
 import static org.operaton.spin.Spin.JSON;
@@ -35,7 +35,7 @@ SpinList<SpinJsonNode> childs = JSON(json).jsonPath("$.child").elementList();
 ```
 
 
-# Querying a String
+## Querying a String
 
 ```java
 import static org.operaton.spin.Spin.JSON;
@@ -46,7 +46,7 @@ String value = JSON(json).jsonPath("$.child[0].name").stringValue();
 ```
 
 
-# Querying a Number
+## Querying a Number
 
 ```java
 import static org.operaton.spin.Spin.JSON;
@@ -57,7 +57,7 @@ Double count = JSON(json).jsonPath("$.number").numberValue();
 ```
 
 
-# Querying a Boolean
+## Querying a Boolean
 
 ```java
 import static org.operaton.spin.Spin.JSON;
@@ -68,7 +68,7 @@ Boolean exists = JSON(json).jsonPath("$.boolean").boolValue();
 ```
 
 
-# Filtering a Query
+## Filtering a Query
 
 Be aware that a filtering expression - the expression in the `()` - is not allowed to contain double quotes!
 

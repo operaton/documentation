@@ -14,14 +14,14 @@ menu:
 
 In this section you learn how to create your first BPMN 2.0 process with the Camunda Modeler. Start up the Camunda Modeler now.
 
-# Create a new BPMN Diagram
+## Create a new BPMN Diagram
 
 Create a new BPMN diagram by clicking *File > New File > BPMN Diagram*.
 
 ![Example image](./img/modeler-new-bpmn-diagram.png)
 
 
-# Start with a Simple Process
+## Start with a Simple Process
 
 Start by modeling a simple process.
 
@@ -43,7 +43,7 @@ Add an End Event named *Loan Request Approved*.
 
 
 
-# Configure a User Task
+## Configure a User Task
 
 ![Example image](./img/modeler-step4.png)
 
@@ -55,7 +55,7 @@ Type *john*.
 When you are done, save your changes.
 
 
-# Configure Properties for Execution
+## Configure Properties for Execution
 
 ![Example image](./img/modeler-step5.png)
 
@@ -67,13 +67,13 @@ Second, configure the Name of the process. Type *Loan Approval* in the property 
 
 Finally, check the box of the *Executable* property. If you do not check this box, the process definition is ignored by the process engine.
 
-# Save the BPMN Diagram
+## Save the BPMN Diagram
 
 When you are done, save your changes by clicking *File > Save File As..*. In the dialogue that pops up, navigate to the loan application project directory (by default this is in your Eclipse workspace path). In the project directory, place the model in the `src/main/resources` folder.
 
 Return to Eclipse. Right-click the project folder and click *Refresh*. This synchronizes the new BPMN file with Eclipse.
 
-# Adjust the deployment descriptor file
+## Adjust the deployment descriptor file
 
 Adjust the `META-INF/processes.xml` deployment descriptor file by adding the BPMN process resource:
 

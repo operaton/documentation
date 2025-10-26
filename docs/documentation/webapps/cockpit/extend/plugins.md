@@ -20,7 +20,7 @@ Cockpit defines a plugin concept to add own functionality without being forced t
 ![Example img](./../img/cockpit-plugin.png)Cockpit Plugin
 
 
-# The Nature of a Cockpit Plugin
+## The Nature of a Cockpit Plugin
 
 A Cockpit plugin is a maven jar project that is included in the Cockpit webapplication as a library dependency. It provides a server-side and a client-side extension to Cockpit.
 
@@ -28,10 +28,10 @@ On the server-side, it can extend Cockpit with custom SQL queries and JAX-RS res
 
 On the client-side a plugin may include Javascript modules to extend the Cockpit webapplication. Via those modules a plugin provides custom views.
 
-## File structure
+### File structure
 
 The basic skeleton of a Cockpit plugin looks as follows:
-
+```
     cockpit-plugin/
     ├── src/
     |   ├── main/
@@ -45,7 +45,7 @@ The basic skeleton of a Cockpit plugin looks as follows:
     |   |   |       └── MyPlugin.java                                     (1)
     |   |   └── resources/
     |   |       ├── META-INF/services/
-    |   |       |   └── org.operaton.bpm.cockpit.plugin.spi.CockpitPlugin  (2)
+    |   |       |   └── org.operaton.bpm.cockpit.plugin.spi.CockpitPlugin (2)
     |   |       ├── org/my/plugin/queries/                                (6)
     |   |       |   └── sample.xml
     |   |       └── plugin-webapp/MyPlugin/                               (7)
@@ -60,6 +60,7 @@ The basic skeleton of a Cockpit plugin looks as follows:
     |       └── resources/
     |           └── camunda.cfg.xml
     └── pom.xml
+```
 
 As runtime relevant resource it defines
 
@@ -84,7 +85,7 @@ As runtime relevant resource it defines
   [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes)
 :::
 
-## Structure of a Frontend Module
+### Structure of a Frontend Module
 A frontend module always follows the same structure. This is how a sample `plugin.js` could look like:
 
 ```Javascript
@@ -125,14 +126,14 @@ The details of which data is passed into the plugin can be found at the [plugin 
 
 * `properties`: Optional object which contains all additional configuration for the plugin point, such as labels.
 
-# Plugin Exclusion (Client Side)
+## Plugin Exclusion (Client Side)
 
 You can exclude some plugins from the interface by adding a `cam-exclude-plugins`
 attribute to the HTML `base` tag of the page loading the interface.
 The content of the attribute is a comma separated list formatted like: `<plugin.key>:<feature.id>`.
 If the feature ID is not provided, the whole plugin will be excluded.
 
-## Excluding a Complete Plugin
+### Excluding a Complete Plugin
 
 This example will completely deactivate the action buttons on the right side of the process instance view.
 
@@ -141,7 +142,7 @@ This example will completely deactivate the action buttons on the right side of 
       cam-exclude-plugins="cockpit.processInstance.runtime.action" />
 ```
 
-## Excluding a Plugin Feature
+### Excluding a Plugin Feature
 
 In this example we deactivate the cancel action in the Cockpit process instance view and disable the job retry action button:
 
@@ -151,14 +152,14 @@ In this example we deactivate the cancel action in the Cockpit process instance 
                            cockpit.processInstance.runtime.action:job-retry-action" />
 ```
 
-# Legacy Plugins
+## Legacy Plugins
 Plugins created for Operaton.13 or earlier can be included for compatibility. To achieve this, simply prefix your Plugin ID with `legacy-`. The AngularJS module name for the entry module will be `cockpit.plugin.legacy-*`.
 
 Please note that all Plugins with this prefix will be included using the 7.13 plugin mechanism. You cannot create new Plugins with IDs starting with `legacy`.
 
 For more details about legacy Plugins, check out the legacy [Plugin documentation](https://docs.operaton.org/manual/7.13/webapps/cockpit/extend/plugins/). Please note that this link will take you to the documentation of Operaton**7.13** .
 
-# Plugin points
+## Plugin points
 
 In this section you will find all Cockpit plugin points.
 To configure where you place your plugin, enter the ID into the `pluginPoint` attribute of you frontend module.
@@ -167,7 +168,7 @@ Plugin Points describe where a Plugin will be rendered and define which addition
 
 For more information on creating and configuring your own plugin, please see [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes).
 
-## Data
+### Data
 
 **Data Plugin Points** have a `#result` function that gets the response data as a promise of a called REST endpoint passed.
 The `#result` function is called when the respective HTTP request is performed.
@@ -183,7 +184,7 @@ Your [Login Plugin](#login) can react to the data that this data plugin will ret
 
 This plugin point is available for all web apps. Just change the canonical app name for the respective webapp (`tasklist.login.data`, `admin.login.data`, `welcome.login.data`).
 
-## Route
+### Route
 
 **Name:** `cockpit.route`
 
@@ -195,7 +196,7 @@ properties: {
 }
 ```
 
-## Navigation
+### Navigation
 
 ![Example img](./../img/plugin-points/plugin-point-navigation.png)Navigation
 
@@ -211,7 +212,7 @@ properties: {
 }
 ```
 
-## Login
+### Login
 
 **Name:** `cockpit.login`
 
@@ -221,7 +222,7 @@ The `cockpit.login` plugin point allows to add your custom views at the place wh
 
 This plugin point is available for all web apps. Just change the canonical app name for the respective webapp (`tasklist.login`, `admin.login`, `welcome.login`).
 
-## Dashboard
+### Dashboard
 
 **Name:** `cockpit.dashboard`
 
@@ -229,31 +230,31 @@ This plugin point is available for all web apps. Just change the canonical app n
 
 The `cockpit.dashboard` plugin point will allow to add your custom views at the bottom of the dashboard.
 
-## Metrics
+### Metrics
 
 **Name:** `cockpit.dashboard.metrics`
 
 ![Example img](./../img/plugin-points/plugin-point-dashboard-metrics-view.png)Dashboard
 
-## Processes Dashboard
+### Processes Dashboard
 
 **Name:** `cockpit.processes.dashboard`
 
 ![Example img](./../img/plugin-points/plugin-point-cockpit-processes-dashboard.png)Dashboard
 
-## Decisions Dashboard
+### Decisions Dashboard
 
 **Name:** `cockpit.decisions.dashboard`
 
 ![Example img](./../img/plugin-points/plugin-point-cockpit-decisions-dashboard.png)Dashboard
 
-## Cases Dashboard
+### Cases Dashboard
 
 **Name:** `cockpit.cases.dashboard`
 
 ![Example img](./../img/plugin-points/plugin-point-cockpit-cases-dashboard.png)Dashboard
 
-## Process Definition Runtime Tab
+### Process Definition Runtime Tab
 
 **Name:** `cockpit.processDefinition.runtime.tab`
 
@@ -271,7 +272,7 @@ This additional data is passed into the render function:
 
   * `processDefinitionId`
 
-## Process Instance Runtime Tab
+### Process Instance Runtime Tab
 
 **Name:** `cockpit.processInstance.runtime.tab`
 
@@ -289,7 +290,7 @@ This additional data is passed into the render function:
 
   * `processInstanceId`
 
-## Process Definition Runtime Action
+### Process Definition Runtime Action
 
 **Name:** `cockpit.processDefinition.runtime.action`
 
@@ -299,7 +300,7 @@ This additional data is passed into the render function:
 
   * `processDefinitionId`
 
-## Process Instance Runtime Action
+### Process Instance Runtime Action
 
 **Name:** `cockpit.processInstance.runtime.action`
 
@@ -309,19 +310,19 @@ This additional data is passed into the render function:
 
   * `processInstanceId`
 
-## Process Definition View
+### Process Definition View
 
 **Name:** `cockpit.processDefinition.view`
 
 ![Example img](./../img/plugin-points/plugin-point-cockpit-process-definition-view.png)Process Definition View
 
-## Process Instance View
+### Process Instance View
 
 **Name:** `cockpit.processInstance.view`
 
 ![Example img](./../img/plugin-points/plugin-point-cockpit-process-instance-view.png)Process Instance View
 
-## Process Definition Diagram Overlay
+### Process Definition Diagram Overlay
 
 **Name:** `cockpit.processDefinition.diagram.plugin`
 
@@ -347,7 +348,7 @@ This additional data is passed into the render function:
 
   * `processDefinitionId`
 
-## Process Instance Diagram Overlay
+### Process Instance Diagram Overlay
 
 **Name:** `cockpit.processInstance.diagram.plugin`
 
@@ -361,7 +362,7 @@ This additional data is passed into the render function:
 
   * `processInstanceId`
 
-## Job Definition Action
+### Job Definition Action
 
 **Name:** `cockpit.jobDefinition.action`
 
@@ -371,7 +372,7 @@ This additional data is passed into the render function:
 
   * `jobDefinitionId`
 
-## Decision Definition Tab
+### Decision Definition Tab
 
 **Name:** `cockpit.decisionDefinition.tab`
 
@@ -389,7 +390,7 @@ This additional data is passed into the render function:
 
   * `decisionDefinitionId`
 
-## Decision Definition Action
+### Decision Definition Action
 
 **Name:** `cockpit.decisionDefinition.action`
 
@@ -399,7 +400,7 @@ This additional data is passed into the render function:
 
   * `decisionDefinitionId`
 
-## Decision Definition Table
+### Decision Definition Table
 
 **Name:** `cockpit.decisionDefinition.table`
 
@@ -412,7 +413,7 @@ This additional data is passed into the render function:
 
   * `decisionDefinitionId`
 
-## Decision Instance Tab
+### Decision Instance Tab
 
 **Name:** `cockpit.decisionInstance.tab`
 
@@ -430,7 +431,7 @@ This additional data is passed into the render function:
 
   * `decisionInstanceId`
 
-## Decision Instance Action
+### Decision Instance Action
 
 **Name:** `cockpit.decisionInstance.action`
 
@@ -440,7 +441,7 @@ This additional data is passed into the render function:
 
   * `decisionInstanceId`
 
-## Decision Instance Table
+### Decision Instance Table
 
 **Name:** `cockpit.decisionInstance.table`
 
@@ -453,7 +454,7 @@ This additional data is passed into the render function:
 
   * `decisionInstanceId`
 
-## Case Definition Tab
+### Case Definition Tab
 
 **Name:** `cockpit.caseDefinition.tab`
 
@@ -471,7 +472,7 @@ This additional data is passed into the render function:
 
   * `decisionInstanceId`
 
-## Case Definition Action
+### Case Definition Action
 
 **Name:** `cockpit.caseDefinition.action`
 
@@ -489,13 +490,13 @@ This additional data is passed into the render function:
 
   * `caseDefinitionId`
 
-## Case Definition Diagram Overlay
+### Case Definition Diagram Overlay
 
 **Name:** `cockpit.caseDefinition.diagram.overlay`
 
 ![Example img](./../img/plugin-points/plugin-point-case-definition-diagram-overlay.png)Case Definition Diagram Overlay
 
-## Case Definition Diagram Plugin
+### Case Definition Diagram Plugin
 
 **Name:** `cockpit.caseDefinition.diagram.plugin`
 
@@ -508,7 +509,7 @@ This additional data is passed into the render function:
 
   * `caseDefinitionId`
 
-## Case Instance Tab
+### Case Instance Tab
 
 **Name:** `cockpit.caseInstance.tab`
 
@@ -526,7 +527,7 @@ This additional data is passed into the render function:
 
   * `caseInstanceId`
 
-## Case Instance Action
+### Case Instance Action
 
 **Name:** `cockpit.caseInstance.action`
 
@@ -536,13 +537,13 @@ This additional data is passed into the render function:
 
   * `caseInstanceId`
 
-## Case Instance Diagram Overlay
+### Case Instance Diagram Overlay
 
 **Name:** `cockpit.caseInstance.diagram.overlay`
 
 ![Example img](./../img/plugin-points/plugin-point-case-instance-diagram-overlay.png)Case Instance Diagram Overlay
 
-## Case Instance Diagram Plugin
+### Case Instance Diagram Plugin
 
 **Name:** `cockpit.caseInstance.diagram.plugin`
 
@@ -556,7 +557,7 @@ This additional data is passed into the render function:
   * `caseDefinitionId`
   * `caseInstanceId`
 
-## Repository Resource Action
+### Repository Resource Action
 
 **Name:** `cockpit.repository.resource.action`
 
@@ -567,7 +568,7 @@ This additional data is passed into the render function:
   * `deploymentId`
   * `resourceId`
 
-## Repository Resource Detail
+### Repository Resource Detail
 
 **Name:** `cockpit.repository.resource.detail`
 
@@ -578,13 +579,13 @@ This additional data is passed into the render function:
   * `deploymentId`
   * `resourceId`
 
-## Open Task Dashboard
+### Open Task Dashboard
 
 **Name:** `cockpit.tasks.dashboard`
 
 ![Example img](./../img/plugin-points/plugin-point-task-dashboard.png)Open Task Dashboard
 
-## Report View
+### Report View
 
 **Name:** `cockpit.report`
 
@@ -598,7 +599,7 @@ properties: {
 }
 ```
 
-## Batch Operation
+### Batch Operation
 
 **Name:** `cockpit.batch.operation`
 
@@ -640,7 +641,7 @@ export default {
 };
 ```
 
-## Incident Action
+### Incident Action
 
 **Name:** `cockpit.incident.action`
 

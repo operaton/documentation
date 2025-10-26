@@ -16,7 +16,7 @@ Decision tables and decision literal expressions allow specifying different type
 This section describes which types of expressions exist.
 It lists which expression languages are supported and demonstrates how to change the used expression language for an expression.
 
-# Expressions in DMN
+## Expressions in DMN
 
 As shown in the [decision table] and [decision literal expression] reference, four types of expressions are supported:
 
@@ -67,7 +67,7 @@ elements `inputExpression`, `inputEntry`, `outputEntry` and `literalExpression`:
 </definitions>
 ```
 
-# Supported Expression Languages
+## Supported Expression Languages
 
 The Operaton DMN engine supports two expression languages out of the box:
 
@@ -122,7 +122,7 @@ to your project `pom.xml`:
     </dependency>
 ```
 
-# Default Expression Languages
+## Default Expression Languages
 
 The default expression languages of the different expression types in the
 DMN engine are as follows:
@@ -155,7 +155,7 @@ the `definitions` element:
 Additionally, it is possible to change the default expression language in the default DMN engine configuration as described in the [user guide][default EL].
 
 
-# Configuring the Expression Language
+## Configuring the Expression Language
 
 It is also possible to set the language for each expression individually using the `expressionLanguage` attribute:
 

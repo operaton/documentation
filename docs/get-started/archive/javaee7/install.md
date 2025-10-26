@@ -14,7 +14,7 @@ menu:
 First you need to set up your development environment and install the Operaton Platform and the Camunda Modeler.
 
 
-# Prerequisites
+## Prerequisites
 
 Make sure you have the following set of tools installed:
 
@@ -23,7 +23,7 @@ Make sure you have the following set of tools installed:
 * A modern web browser (recent Firefox, Chrome or Microsoft Edge will work fine)
 * Eclipse integrated development environment (IDE)
 
-# Install Operaton Platform
+## Install Operaton Platform
 
 First, download a distribution of the Operaton Platform. You can choose from different application servers. In this tutorial, we will use a WildFly-based distribution. Download it from [the download page](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
 
@@ -40,6 +40,6 @@ If the page does not open, go to http://localhost:8080/operaton-welcome/index.ht
 If you have trouble setting up the Operaton Platform, you can ask for assistance in the [Forum](https://forum.operaton.org/).
 :::
 
-# Install Camunda Modeler
+## Install Camunda Modeler
 
 Follow the instructions in the [Camunda Modeler](/manual/latest/installation/camunda-modeler) section.

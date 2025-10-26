@@ -16,7 +16,7 @@ menu:
 At the top of the process definition view and the process instance view, you can hit the _History_ button to access the history view.
 
 
-# Process Definition History View
+## Process Definition History View
 
 ![Example img](./../img/cockpit-history-view-process-definition-history.png)Process Definition History
 
@@ -28,7 +28,7 @@ You can also select the _External Tasks Log_ tab to get an overview of all exter
 
 Furthermore, you can maximize the diagram view or the detailed information panel by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button, respectively the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-up"></i></button> button, at the bottom left of the diagram view.
 
-## Heatmap
+### Heatmap
 
 ![Example img](./../img/cockpit-heatmap.png)Process Definition Heatmap
 
@@ -37,7 +37,7 @@ The history view of a process definition contains a `Heat` button in the top-rig
 It is still possible to interact with the diagram while the heatmap is shown (e.g., to select activities).
 
 
-# Process Instance History View
+## Process Instance History View
 
 ![Example img](./../img/cockpit-history-view-process-instance-history.png)Process Instance History
 

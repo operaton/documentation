@@ -5,9 +5,9 @@ sidebar_position: 10
 description: "Download and install WildFly Application Server with the Full Distribution pre-deployed and pre-configured."
 
 ---
-# Install the pre-packaged Distribution
+## Install the pre-packaged Distribution
 
-## Installation Procedure
+### Installation Procedure
 
 1. Download the pre-packaged distribution for [WildFly](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
 2. Unpack the distro to a directory.

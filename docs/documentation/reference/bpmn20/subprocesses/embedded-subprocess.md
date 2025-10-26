@@ -48,7 +48,7 @@ A subprocess is defined by the subprocess element. All activities, gateways, eve
 ```
 
 
-# Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -77,6 +77,6 @@ A subprocess is defined by the subprocess element. All activities, gateways, eve
 </table>
 
 
-# Additional Resources
+### Additional Resources
 
 *   [Subprocesses](http://operaton.org/bpmn/reference.html#activities-subprocess) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

@@ -81,7 +81,7 @@ class MyListener {
   for processing. For more information on eventing, please consult the Spring manual.
 :::
 
-# Specifying event type
+## Specifying event type
 
 Spring allows to specify the event delivered to the listener by providing a SpEL condition in the
 `@EventListener` annotation. For example, you could register a listener for a task event fired by
@@ -98,7 +98,7 @@ class MyTaskListener {
 }
 ```
 
-# Ordering event listeners
+## Ordering event listeners
 
 Event listeners for the same event type can be executed in a specified order. To do so, provide an `Order` annotation
 to the event listener:

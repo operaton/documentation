@@ -1,9 +1,9 @@
 ---
 
-title: 'User Task Forms'
 sidebar_position: 120
 
 ---
+
 # User Task Forms
 
 
@@ -18,7 +18,7 @@ Forms are referenced using Form Keys or Form References and can either be embedd
 If no form key is present, a [Generic Task Form](#generic-task-forms) will be shown.
 
 
-# Form Key details
+## Form Key details
 Form keys that are used in Tasklist have the structure `FORM-TYPE:LOCATION:FORM.NAME`.
 
 <table class="table table-striped">
@@ -55,7 +55,7 @@ To configure the form in your process, open the process with the [Camunda Modele
           name="my Task">
 ```
 
-# Embedded Task Forms
+## Embedded Task Forms
 
 Embedded task forms are HTML and JavaScript forms. We provide more information about the creation of embedded forms in our [Embedded Task Forms Reference](../../reference/forms/embedded-forms/index.md).
 
@@ -81,7 +81,7 @@ To add an embedded form to your application, simply create an HTML file and refe
 
 The form key for this file could be `embedded:deployment:FORM_NAME.html` or `embedded:app:forms/FORM_NAME.html`.
 
-# Operaton Forms
+## Operaton Forms
 
 Operaton Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in `.form` files.  You can find out how to build Operaton Forms in the [Camunda Modeler documentation](https://docs.operaton.org/manual/latest/modeler/forms/) to explore all configuration options for form elements.
 
@@ -94,7 +94,7 @@ restref page="submit" text="Submit Task Form" tag="Task REST API.
 Forms can be used on top of the task completion API to render form fields and validate submitted values.
 :::
 
-## Form Reference
+### Form Reference
 
 With Form References, Operaton Forms provide a flexible way of linking an element in a BPMN diagram to a form. To link a BPMN element ([StartEvent][start-event] or [UserTask][user-tasks]) to a Operaton Form, you have to specify the Id of the Operaton Form as the `operaton:formRef` attribute. Additionally, the `operaton:formRefBinding` attribute specifies which version of the Operaton Form to reference.
 
@@ -126,7 +126,7 @@ The attributes `operaton:formRef` and `operaton:formRefVersion` can be specified
 
 ![Example img](./img/reference-operaton-form.png)Provide Form Key for Operaton Forms
 
-## Form Key
+### Form Key
 
 Aa an alternative to `formRef` you can reference a Operaton Form file with a `deployment` or `app` [form key](../../user-guide/task-forms/index.md#form-key-details):
 
@@ -137,7 +137,7 @@ To enter the `formKey` in the Modeler,  you have to select `Embedded or External
 
 From the form developers point of view, `formRef` offers more flexibility than `formKey` as they can be deployed independently from the process model.
 
-## Process Variable Binding
+### Process Variable Binding
 
 To define a default value for a form field, a process variable with the same name as the form field key needs to be defined. Local variables (e.g. created by defining an [Input Parameter](../process-engine/variables/#input-output-variable-mapping) for the User Task) take precedence over process variables.
 
@@ -149,7 +149,7 @@ The submitted values of a form are returned as variables to the process engine:
 * When the User Task has an Input Parameter defined with the same name as the form field key, then this local variable will be used. In this case, an [Output Parameter](../process-engine/variables/#input-output-variable-mapping) needs to be defined to map the local variable to a process variable for usage in other process elements.
 * When no variable exists with the same name as the form field key, then a new process variable will be created and gets the value from the submission.
 
-## Dynamic Components
+### Dynamic Components
 
 You can bind the available options of some component types (Select, Radio Buttons, Checklist, and Taglist) to a variable.
 Like this, Operaton Forms show available options dynamically based on process data (variables).
@@ -185,7 +185,7 @@ If you are about to prototype your application, you can also use the shortcut fo
 ["Dynamic Value 2", "Dynamic Value 2"]
 ```
 
-## Deployment
+### Deployment
 If you want to include your Operaton Form as part of the `deployment`, then you need to deploy the `.form` file in the same deployment as the respective `.bpmn` diagram - for example using the Camunda Modeler (since Modeler Version 5.0.0).
 
 :::warning[Automatic deployment]
@@ -199,7 +199,7 @@ placed inside the `configuration/resources/` directory are automatically deploye
 
 You can also include Operaton Forms from other deployments by using [form references](#form-reference).
 
-# External Task Forms
+## External Task Forms
 :::note[Using Task Forms outside of Operaton Tasklist]
   When embedding the process engine into a custom application, you can use any value in the form key property as a reference to your custom form. This way, your front-end can ensure to render the correct form for each user task.
 :::
@@ -225,10 +225,10 @@ When you have completed the task, the call back URL will be called.
 :::
 
 
-# Other Task Forms
+## Other Task Forms
 These Task forms do not use the form-key attribute to be referenced. They are not recommended for production use and are intended for testing and development purposes.
 
-## Generic Task Forms
+### Generic Task Forms
 
 The generic form will be used whenever you have not added a dedicated form for a [UserTask][user-tasks] or a [StartEvent][start-event].
 
@@ -245,7 +245,7 @@ You can also retrieve already existing variables of the process instance by clic
 [start-event]: ../../reference/bpmn20/events/start-events.md
 [jsf-task-forms]: ../../user-guide/task-forms/jsf-task-forms.md
 
-## Generated Task Forms
+### Generated Task Forms
 
 :::note[Operaton Forms or Generated Task Forms?]
   The feature set of Operaton Forms and Generated Task Forms are similar. For new projects, we recommend to use Operaton Forms, as they offer more flexibility and are easier to create.
@@ -304,7 +304,7 @@ A form data can have following attributes:
 </table>
 
 
-### Form Fields
+#### Form Fields
 
 :::warning[Process variables access]
 Defining form fields does not introduce any permissions on process variables.
@@ -352,7 +352,7 @@ A form field can have the following attributes:
 </table>
 
 
-### Form Field Validation
+#### Form Field Validation
 
 Validation can be used for specifying frontend and backend validation of form fields. Operaton provides a set of built-in form field validators and an extension point for plugging in custom validators.
 

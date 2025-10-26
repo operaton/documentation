@@ -10,8 +10,6 @@ menu:
 
 ---
 
-
-
 Diagnostics data is constantly collected and can be collected only by you. This allows you to access the collected data through the Java and REST APIs of Operaton.
 Being able to easily access the collected data is helpful when asking for help in our [forum](https://forum.operaton.org/) or when opening issues in our [issue tracker](https://app.camunda.com/jira) as it contains many of the information that are usually necessary to understand your Operaton setup.
 

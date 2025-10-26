@@ -17,9 +17,9 @@ For selected third-party libraries that we consider especially noteworthy, this 
 For legal reference and any other license-related aspects please refer to [Licences](../licenses.md).
 
 
-# Web Applications (Cockpit, Tasklist, Admin)
+## Web Applications (Cockpit, Tasklist, Admin)
 
-## XLTS for AngularJS
+### XLTS for AngularJS
 
 Starting with versions 7.18.0-alpha2, 7.17.2, 7.16.9, 7.15.15, the Operaton web applications use a set of third-party libraries referred to as *XLTS for AngularJS* (technical names: `angular`, `angular-animate`, `angular-cookies`, `angular-loader`, `angular-mocks`, `angular-resource`, `angular-route`, `angular-sanitize`, `angular-touch`). XLTS for AngularJS follows a proprietary license called *EULA for the downstream recipient of XLTS for AngularJS* (short *XLTS for AngularJS – EULA*) that you can find [here](https://xlts.dev/angularjs/downstream-eula).
 

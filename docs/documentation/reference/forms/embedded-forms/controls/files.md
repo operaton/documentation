@@ -10,7 +10,7 @@ menu:
 
 ---
 
-# Uploading Files
+## Uploading Files
 
 File input elements are HTML controls in the form of
 
@@ -34,7 +34,7 @@ In the example above, the user can upload a document with a maximum filesize of 
 Besides uploading a file, it is also possible to present the user with a download link or displaying files as images.
 
 
-# Downloading Files
+## Downloading Files
 
 The `cam-file-download` directive turns a link into a file download link.
 
@@ -47,7 +47,7 @@ The above link will allow the user to download the file stored in the variable `
 If the link has no text content, the filename of the file will be set as text content.
 
 
-# Displaying an Uploaded Image
+## Displaying an Uploaded Image
 
 If the user uploaded an image, it can be displayed using an `<img>` tag. There is no special directive for this yet.
 However, you can make sure that the corresponding variable is fetched (either using javascript or an hidden input field) and then

@@ -5,15 +5,15 @@ sidebar_position: 5
 description: "Install Operaton Run, an easy to configure remote engine distribution of Operaton. No Java knowledge necessary."
 
 ---
-# Install Operaton Run
+## Install Operaton Run
 
 :::note[What is a Remote Engine Distribution?]
 If you need a Remote or Shared Engine Distribution depends on your use-case. Check out the [architecture overview](../introduction/architecture.md) for more information.
-:::note
+:::
 
 This page describes the steps to execute Operaton Run.
 
-# Requirements
+## Requirements
 Please make sure that you have the Java Runtime Environment 17 installed.
 
 You can verify this by using your terminal, shell, or command line:
@@ -23,7 +23,7 @@ java -version
 ```
 If you need to install Java Runtime Environment, you can [find the download from Oracle here](https://www.oracle.com/java/technologies/javase-downloads.html).
 
-# Installation Procedure
+## Installation Procedure
 1. Download the pre-packed distribution of  [Operaton here](tbd).
 1. Unpack the distro to a directory.
 1. Configure the distro as described in the [User Guide](../user-guide/operaton-bpm-run.md).

@@ -11,7 +11,7 @@ Operaton is a Java-based framework. The main components are written in Java and 
 Operaton can be used both as a standalone process engine server or embedded inside custom Java applications. The embeddability requirement is at the heart of many architectural decisions within Operaton. For instance, we work hard to make the process engine component a lightweight component with as little dependencies on [third-party libraries](./third-party-libraries/index.md) as possible. Furthermore, the embeddability motivates programming model choices such as the capabilities of the process engine to participate in Spring Managed or JTA [transactions and the threading model](../user-guide/process-engine/transactions-in-processes.md).
 
 
-# Process Engine Architecture
+## Process Engine Architecture
 
 ![Process Engine Architecture](./img/process-engine-architecture.png)
 
@@ -21,38 +21,38 @@ Operaton can be used both as a standalone process engine server or embedded insi
 * **The Persistence Layer**: The process engine features a persistence layer responsible for persisting process instance state to a relational database. We use the MyBatis mapping engine for object relational mapping.
 
 
-## Required Third-Party Libraries
+### Required Third-Party Libraries
 
 See the section on [third-party libraries](./third-party-libraries/index.md).
 
 
-# Operaton Architecture
+## Operaton Architecture
 
 Operaton is a flexible framework which can be deployed in different scenarios. This section provides an overview of the most common deployment scenarios.
 
 
-## Embedded Process Engine
+### Embedded Process Engine
 
 ![Embedded Process Engine](./img/embedded-process-engine.png)
 
 In this case, the process engine is added as an application library to a custom application. This way, the process engine can easily be started and stopped with the application lifecycle. It is possible to run multiple embedded process engines on top of a shared database.
 
 
-## Shared, Container-Managed Process Engine
+### Shared, Container-Managed Process Engine
 
 ![Shared Process Engine](./img/shared-process-engine.png)
 
 In this case, the process engine is started inside the runtime container (Servlet Container, Application Server, ...). The process engine is provided as a container service and can be shared by all applications deployed inside the container. The concept can be compared to a JMS Message Queue which is provided by the runtime and can be used by all applications. There is a one-to-one mapping between process deployments and applications: the process engine keeps track of the process definitions deployed by an application and delegates execution to the application in question.
 
 
-## Standalone (Remote) Process Engine Server
+### Standalone (Remote) Process Engine Server
 
 ![Standalone Process Engine](./img/standalone-process-engine.png)
 
 In this case, the process engine is provided as a network service. Different applications running on the network can interact with the process engine through a remote communication channel. The easiest way to make the process engine accessible remotely is to use the built-in REST API. Different communication channels such as SOAP Webservices or JMS are possible but need to be implemented by users.
 
 
-# Clustering Model
+## Clustering Model
 
 In order to provide scale-up or fail-over capabilities, the process engine can be distributed to different nodes in a cluster. Each process engine instance must then connect to a shared database.
 
@@ -60,7 +60,7 @@ In order to provide scale-up or fail-over capabilities, the process engine can b
 
 The individual process engine instances do not maintain session state across transactions. Whenever the process engine runs a transaction, the complete state is flushed out to the shared database. This makes it possible to route subsequent requests which do work in the same process instance to different cluster nodes. This model is very simple and easy to understand and imposes limited restrictions when it comes to deploying a cluster installation. As far as the process engine is concerned, there is no difference between setups for scale-up and setups for fail-over (as the process engine keeps no session state between transactions).
 
-## Session State in a Clustered Environment
+### Session State in a Clustered Environment
 
 Operaton doesn't provide load-balancing capabilities or session replication capabilities out of the box. The load-balancing function would need to be provided by a third-party system, and session replication would need to be provided by the host application server.
 
@@ -71,7 +71,7 @@ In a clustered setup, if users are going to login to the web applications, an ex
 
 If neither of the above approaches are implemented in a cluster setup, connections to multiple nodes - intentionally or via a load-balancing solution - will result in multiple login requests.
 
-## The Job Executor in a Clustered Environment
+### The Job Executor in a Clustered Environment
 
 The process engine [job executor](../user-guide/process-engine/the-job-executor.md) is also clustered and runs on each node. This way, there is no single point of failure as far as the process engine is concerned. The job executor can run in both [homogeneous and heterogeneous clusters](../user-guide/process-engine/the-job-executor.md#cluster-setups).
 
@@ -80,7 +80,7 @@ The are some limitations on [time zone usage in a cluster](../user-guide/process
 :::
 
 
-# Multi-Tenancy Models
+## Multi-Tenancy Models
 
 To serve multiple, independent parties with one Operaton installation, the process engine supports
 multi-tenancy. The following multi tenancy models are supported:
@@ -93,7 +93,7 @@ to processes and related data specific to each tenant.
 More details can be found in the [multi-tenancy section](../user-guide/process-engine/multi-tenancy.md).
 
 
-# Web Application Architecture
+## Web Application Architecture
 
 The Operaton web applications are based on a RESTful architecture.
 

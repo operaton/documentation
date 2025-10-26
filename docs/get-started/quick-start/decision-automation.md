@@ -9,7 +9,7 @@ description: "Learn how to integrate DMN decision tables in the Process."
 
 In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](/docs/documentation/reference/bpmn20/tasks/business-rule-task/) and [DMN 1.3 Decision Tables](/docs/documentation/reference/dmn11/).
 
-# Add a Business Rule Task to the Process
+## Add a Business Rule Task to the Process
 Use the Camunda Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.
 
 ![Example image](./img/modeler-businessrule-task1.png)
@@ -20,7 +20,7 @@ Next, link the Business Rule Task to a DMN table by changing `Implementation` to
 
 Save your changes and deploy the updated process using the `Deploy` Button in the Camunda Modeler.
 
-# Create a DMN table using the Camunda Modeler
+## Create a DMN table using the Camunda Modeler
 First, create a new DMN diagram by clicking *File > New File > DMN Diagram*.
 ![Example image](./img/modeler-new-dmn-diagram.png)
 
@@ -30,7 +30,7 @@ Now the newly created diagram will already have a decision element added to it. 
 Next, create a new DMN table by clicking the table button.
 ![Example image](./img/modeler-new-dmn-table.png)
 
-# Specify the DMN table
+## Specify the DMN table
 First, specify the input expressions for the DMN table. In this example, we'll decide whether a payment is approved based on the item name. Your rules can also make use of the FEEL Expression Language, JUEL or Script. If you like, you can [read more about Expressions in the DMN Engine](/docs/documentation/user-guide/dmn-engine/expressions-and-scripts/).
 
 Double click *Input* to configure the input column. Use `Item` as the *Input Label* and `item` as the *Input Expression*:
@@ -45,16 +45,16 @@ Let's create some rules by clicking on the plus icon on the left side of the DMN
 After setup, your DMN table should look like this:
 ![Example image](./img/modeler-dmn5.png)
 
-# Deploy the DMN table
+## Deploy the DMN table
 To deploy the Decision Table, click on the Deploy button in the Camunda Modeler, give it Deployment Name "Payment Retrieval Decision", then hit the Deploy button.
 ![Example image](./img/modeler-dmn6.png)
 
-# Verify the Deployment with Cockpit
+## Verify the Deployment with Cockpit
 Now, use Cockpit to see if the decision table was successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit/](http://localhost:8080/operaton/app/cockpit/). Log in with the credentials *demo / demo*. Navigate to the "Decisions" section. Your decision table *Approve Payment* should be listed as deployed decision definition.
 
 ![Example image](./img/cockpit-approve-payment.png)
 
-# Inspect using Cockpit and Tasklist
+## Inspect using Cockpit and Tasklist
 
 Next, use Tasklist to start two new Process Instances and verify that depending on your input, the Process Instance will be routed differently.
 To do so, go to [http://localhost:8080/operaton/app/tasklist/](http://localhost:8080/operaton/app/tasklist/). Log in with *demo / demo*.

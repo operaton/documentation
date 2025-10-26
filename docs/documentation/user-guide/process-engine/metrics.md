@@ -12,7 +12,7 @@ menu:
 
 The process engine reports runtime metrics to the database that can help draw conclusions about usage, load, and performance of Operaton. Metrics are reported in the database tables `ACT_RU_METER_LOG` and `ACT_RU_TASK_METER_LOG`. Single metric entries in `ACT_RU_METER_LOG` consist of a metric identifier, a value as natural number in the Java `long` range that the metric took in a certain timespan and a name identifying the metric reporter. Task metric entries in `ACT_RU_TASK_METER_LOG` comprise a fixed-length, pseudonymized assignee value and the point in time it was assigned at. There is a set of built-in metrics that are reported by default.
 
-# Built-in Metrics
+## Built-in Metrics
 
 The following table describes the built-in metrics. The identifiers of all built-in metrics are available as constants of the class <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/management/Metrics.html">org.operaton.bpm.engine.management.Metrics</a>.
 
@@ -117,7 +117,7 @@ The following table describes the built-in metrics. The identifiers of all built
   </tr>
 </table>
 
-# Querying
+## Querying
 
 Metrics can be queried by making a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/management/MetricsQuery.html">MetricsQuery</a> offered by the `ManagementService`. For example, the following query retrieves the number of all executed activity instances throughout the entire history of reporting:
 
@@ -136,9 +136,9 @@ Task metrics can be queried by using the `getUniqueTaskWorkerCount` method offer
 long numUniqueTaskWorkers = managementService.getUniqueTaskWorkerCount(null, null);
 ```
 
-# Configuration
+## Configuration
 
-## Metrics Reporter
+### Metrics Reporter
 
 The process engine flushes the collected metrics to the runtime database tables in an interval of 15 minutes. The behavior of metrics reporting can be changed by replacing the `dbMetricsReporter` instance of the process engine configuration. For example, to change the reporting interval, a process engine plugin replacing the reporter can be employed:
 
@@ -166,7 +166,7 @@ public class MetricsConfigurationPlugin implements ProcessEnginePlugin {
 Task metric entries are created on every assignment of a user task. This behavior cannot be modified and is not in the responsibility of the metrics reporter.
 :::
 
-## Reporter Identifier
+### Reporter Identifier
 
 Metrics are reported with an identifier of the reporting party. This identifier allows to attribute
 reports to individual engine instances when making a metrics query. For example in a cluster, load
@@ -181,7 +181,7 @@ The
 interface and the corresponding `metricsReporterIdProvider` engine property have been deprecated.
 :::
 
-## Disable Reporting
+### Disable Reporting
 
 By default, all built-in metrics are reported. For the configuration via XML file (e.g. standalone.xml or bpm-platform.xml) you can disable reporting by adding the properties:
 ```xml

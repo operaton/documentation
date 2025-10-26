@@ -14,7 +14,7 @@ menu:
 If you use [Delegation Code](../../../user-guide/process-engine/delegation-code.md), you can access the BPMN model instance and current element of the executed process. If a BPMN model is accessed, it will be cached to avoid redundant database queries.
 
 
-# Java Delegate
+## Java Delegate
 
 If your class implements the `org.operaton.bpm.engine.delegate.JavaDelegate` interface, you can access the BPMN model instance
 and the current flow element. In the following example the `JavaDelegate` was added to a service task in the BPMN model.
@@ -31,7 +31,7 @@ public class ExampleServiceTask implements JavaDelegate {
 ```
 
 
-# Execution Listener
+## Execution Listener
 
 If your class implements the `org.operaton.bpm.engine.delegate.ExecutionListener` interface, you can access the BPMN model instance
 and the current flow element. As an Execution Listener can be added to several elements like process, events, tasks, gateways
@@ -48,7 +48,7 @@ public class ExampleExecutionListener implements ExecutionListener {
 ```
 
 
-# Task Listener
+## Task Listener
 
 If your class implements the `org.operaton.bpm.engine.delegate.TaskListener` interface, you can access the BPMN model instance
 and the current user task since a Task Listener can only be added to a user task.

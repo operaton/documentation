@@ -13,7 +13,7 @@ menu:
 The XML datatype supports querying with the XPath 1.0 query language.
 
 
-# Querying an Element
+## Querying an Element
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -24,7 +24,7 @@ SpinXmlTreeElement child = XML(xml).xPath("/root/child").element();
 ```
 
 
-# Querying an Element List
+## Querying an Element List
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -35,7 +35,7 @@ SpinList<SpinXmlTreeElement> childs = XML(xml).xPath("/root/child/a").elementLis
 ```
 
 
-# Querying an Attribute
+## Querying an Attribute
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -46,7 +46,7 @@ SpinXmlTreeAttribute attribute = XML(xml).xPath("/root/child/@id").attribute();
 ```
 
 
-# Querying an Attribute List
+## Querying an Attribute List
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -57,7 +57,7 @@ SpinList<SpinXmlTreeAttribute> attributes = XML(xml).xPath("/root/child/a/@id").
 ```
 
 
-# Querying a String
+## Querying a String
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -68,7 +68,7 @@ String value = XML(xml).xPath("string(/root/child/@id)").string();
 ```
 
 
-# Querying a Number
+## Querying a Number
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -79,7 +79,7 @@ Double count = XML(xml).xPath("count(/root/child/a)").number();
 ```
 
 
-# Querying a Boolean
+## Querying a Boolean
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -90,12 +90,12 @@ Boolean exists = XML(xml).xPath("boolean(/root/child)").bool();
 ```
 
 
-# Querying with Namespaces
+## Querying with Namespaces
 
 To use namespaces in spin with XML, you can choose one of the following methods or combine both of them.
 
 
-## 1. Using a Single Prefix - URI Pair
+### 1. Using a Single Prefix - URI Pair
 
 ```java
 import static org.operaton.spin.Spin.XML;
@@ -107,7 +107,7 @@ SpinXmlTreeElement child = XML(xml).xPath("/root/t:child")
                                    .element();
 ```
 
-## 2. Using a Map of Prefix - URI Pairs
+### 2. Using a Map of Prefix - URI Pairs
 
 ```java
 import static org.operaton.spin.Spin.XML;

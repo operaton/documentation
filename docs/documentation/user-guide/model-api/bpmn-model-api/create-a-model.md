@@ -86,7 +86,7 @@ File file = new File(...);
 Bpmn.writeModelToFile(file, modelInstance);
 ```
 
-# Example 1: Create a Simple Process With One User Task
+## Example 1: Create a Simple Process With One User Task
 
 With the basic helper methods from above it is very easy and straightforward to create simple processes. First, create a
 process with a start event, user task and an end event.
@@ -122,7 +122,7 @@ Bpmn.writeModelToFile(file, modelInstance);
 ```
 
 
-# Example 2: Create a Simple Process With Two Parallel Tasks
+## Example 2: Create a Simple Process With Two Parallel Tasks
 
 Even more complex processes can be created with a few lines of code with the standard BPMN model API.
 

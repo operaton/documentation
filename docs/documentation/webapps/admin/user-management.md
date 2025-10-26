@@ -11,14 +11,14 @@ menu:
 ---
 
 
-# Users Menu
+## Users Menu
 
 ![Example img](./img/admin-users.png)User Menu
 
 The Users menu allows you to add, edit and delete user profiles. Furthermore, you can manage group membership and change passwords.
 
 
-# My Profile
+## My Profile
 
 By clicking on your user name in the Users menu, you can access the My Profile menu. In the My Profile menu you can edit your personal account settings, such as:
 
@@ -29,7 +29,7 @@ By clicking on your user name in the Users menu, you can access the My Profile m
 You can also access the My Profile menu from any of the web applications by clicking on your user name at the top right and selecting *My Profile*.
 
 
-# Initial User Setup
+## Initial User Setup
 
 ![Example img](./img/admin-initial-user-setup.png)Initial User Setup
 
@@ -42,6 +42,6 @@ If you installed the default Operaton webapps and demo content, Operaton was con
 * Password: `demo`
 
 
-# Administrator Account
+## Administrator Account
 
 Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user- and groupmanagement, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](authorization-management.md) for more details.

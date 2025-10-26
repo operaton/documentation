@@ -17,21 +17,21 @@ To use Spin with the process engine, the following is required:
 
 The following sections go into the details of integrating Spin with the process engine. Note that when you use a pre-built Operaton distribution, Spin is already integrated.
 
-# Artifacts
+## Artifacts
 
 There are three types of Spin artifacts as follows.
 
-## operaton-spin-core
+### operaton-spin-core
 
 `operaton-spin-core` is a jar that contains only the core Spin classes. It can be combined with single data format artifacts. Operaton provides the artifacts `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` (`operaton-spin-dataformat-xml-dom-jakarta` for Jakarta XML Binding 4.0 support) that implement JSON and XML processing. These artifacts transitively pull in libraries they need. For example, `operaton-spin-dataformat-json-jackson` has a dependency to `jackson-databind`.
 
-## operaton-spin-dataformat-all
+### operaton-spin-dataformat-all
 
 `operaton-spin-dataformat-all` is a fat jar that contains `operaton-spin-core`, `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` as well as all their dependencies. The dependencies are shaded into the `spinjar` package namespace.
 
 Note that the package relocation means that you cannot develop against the original namespaces. Example: `operaton-spin-dataformat-json-jackson` uses `jackson-databind` for object (de-)serialization. A common use case is declaring Jackson annotations in custom classes to finetune JSON handling. With relocated dependencies, annotations in the `com.fasterxml.jackson` namespace will not be recognized by Spin. In that case, consider using `operaton-spin-core`. Keep in mind the implications this may have as described in the [Integration Use Cases](#integration-use-cases) section.
 
-## operaton-engine-plugin-spin
+### operaton-engine-plugin-spin
 
 `operaton-engine-plugin-spin` is a process engine plugin that integrates Spin with a process engine. For example, it
 registers variable serializers that enable the process engine to store Java objects as JSON.
@@ -62,7 +62,7 @@ The Spin process engine plugin provides the following configuration options:
   </tr>
 </table>
 
-## Maven coordinates
+### Maven coordinates
 
 Import the [Operaton BOM](/get-started/apache-maven/) to ensure that you use the right version of Spin that is tested to work with your version of the process engine.
 
@@ -77,20 +77,20 @@ All Spin artifacts have the group id `org.operaton.spin`, so in order to import 
 </dependency>
 ```
 
-# Integration Use Cases
+## Integration Use Cases
 
 Depending on the application and process engine setup, it is recommended to use either `operaton-engine-plugin-spin` and `operaton-spin-core` (plus individual data formats) or `operaton-engine-plugin-spin` and `operaton-spin-dataformat-all`. The following sections explain when to use which for the most common use cases.
 
-## Embedded Process Engine
+### Embedded Process Engine
 
 If your application manages its own process engine, then using `operaton-engine-plugin-spin` with `operaton-spin-core` is the recommended approach. Declare the dependencies in the `compile` scope so that the Spin libraries and their dependencies are added to your application when you bundle it. Configure `org.operaton.spin.plugin.impl.SpinProcessEnginePlugin` as a process engine plugin according to the [process engine plugin documentation](../../user-guide/process-engine/process-engine-plugins.md).
 
-## Application with Operaton Spring Boot Starter
+### Application with Operaton Spring Boot Starter
 
 Add the dependencies to `operaton-engine-plugin-spin` and `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` as needed) to your application. If you need to use Jakarta XML Binding 4.0 (e.g. Springboot version 3.x.x), use `operaton-spin-dataformat-xml-dom-jakarta` instead of `operaton-spin-dataformat-xml-dom`.
 The Spin process engine plugin will be automatically registered with the process engine.
 
-## Shared Process Engine
+### Shared Process Engine
 
 If you use a shared process engine, Spin is usually installed as a shared library in the application server. Check the [installation guide](../../installation/full/index.md) for your application server for how to set up Spin with a shared engine. When using a pre-built distribution of Operaton, Spin is already pre-configured.
 

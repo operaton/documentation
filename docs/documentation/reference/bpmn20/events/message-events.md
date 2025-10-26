@@ -13,11 +13,11 @@ menu:
 Message events are events which reference a named message. A message has a name and a payload. Unlike a signal, a message event is always directed at a single recipient.
 
 
-# Defining a Message
+## Defining a Message
 
 A message event definition is declared by using the `messageEventDefinition` element. The attribute `messageRef` references a message element declared as a child element of the definitions root element. The following is an excerpt of a process in which two message events are declared and referenced by a start event and an intermediate catching message event.
 
-## Example
+### Example
 
 ```xml
 <definitions id="definitions"
@@ -43,7 +43,7 @@ A message event definition is declared by using the `messageEventDefinition` ele
 </definitions>
 ```
 
-## Expressions
+### Expressions
 
 You can use expressions for the name in the message event definition (except for the message start event). The name is then resolved as soon as a process reaches the scope of the message. For example when the process instances reaches a Message Intermediate Catching Event, then the expression within the name is resolved.
 
@@ -55,7 +55,7 @@ By using expressions within the message name, you can influence the message name
 
 **Note:** It is not allowed to use expressions in the message name of a start event of the process definition. So using an expression in the message definition and then referencing this definition in a message start event of the process entry point will cause an error. However, it is allowed to use expressions in the message start event of a subprocess. Therefore, using an expression in the message definition and then referencing this definition in the message start event within a subprocess will work just fine.
 
-## Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -79,13 +79,13 @@ By using expressions within the message name, you can influence the message name
   </tr>
 </table>
 
-# Message Api
+## Message Api
 
 As an embeddable process engine, the Operaton engine is not concerned with the receiving part of the message. This would be environment dependent and entails platform-specific activities such as connecting to a JMS (Java Messaging Service) Queue/Topic or processing a Webservice or REST request. The reception of messages is therefore something you have to implement as part of the application or infrastructure into which the process engine is embedded.
 
 After you have received a message, you can choose whether you employ the engine's built-in correlation or explicitly deliver the message to start a new process instance or trigger a waiting execution.
 
-## Using the Runtime Service's Correlation Methods
+### Using the Runtime Service's Correlation Methods
 
 The engine offers a basic correlation mechanism that will either signal an execution waiting for a specific message or instantiate a process with a matching message start event. The `RuntimeService` provides a fluent message correlation API:
 
@@ -151,7 +151,7 @@ In this case the matching execution will be selected based on variables existing
 In case of successful correlation, the correlated or newly created process instance is updated with the variables from the `processVariables` map.
 
 
-## Explicitly Triggering a Message
+### Explicitly Triggering a Message
 
 Alternatively, you can explicitly deliver a message to start a process instance or trigger a waiting execution.
 
@@ -195,7 +195,7 @@ void messageEventReceived(String messageName, String executionId, HashMap<String
 
 For an asynchronous correlation to existing process instances, you can use a [Batch operation](../../../user-guide/process-engine/batch-operations.md#correlate-messages-to-process-instances).
 
-## Querying for Message Event Subscriptions
+### Querying for Message Event Subscriptions
 
 The engine supports message start events and intermediate message events.
 
@@ -221,7 +221,7 @@ Execution execution = runtimeService.createExecutionQuery()
 Such queries are called correlation queries and usually require knowledge about the processes (in this case, there is a maximum of one process instance for a given orderId).
 
 
-# Message Start Event
+## Message Start Event
 
 A message start event can be used to start a process instance using a named message. This effectively allows us to select the right start event from a set of alternative start events using the message name.
 
@@ -277,7 +277,7 @@ A process can be started using one of two different messages, this is useful if 
 <div data-bpmn-diagram="../bpmn/event-message-start-alternative" > </div>
 
 
-# Message Intermediate Catching Event
+## Message Intermediate Catching Event
 
 
 When a token arrives at the message intermediate catching event it will wait there until a message with the proper name arrives. As already described, the message must be handed into the engine via the appropriate API calls.
@@ -295,7 +295,7 @@ The following example shows different message events in a process model:
 Instead of the message intermediate catching event you might want to think about a <a href="../tasks/receive-task.md">Receive Task</a> instead, which can serve similar purposes but is able to be used in combination with boundary events. In combination with the message intermediate catching event you might want to use an <a href="../gateways/event-based-gateway.md">Event-based Gateway</a>.
 
 
-# Message Boundary Event
+## Message Boundary Event
 
 Boundary events are catching events that are attached to an activity. This means that while the activity is running, the message boundary event is listening for named message. When this is caught, two things might happen, depending on the configuration of the boundary event:
 
@@ -303,7 +303,7 @@ Boundary events are catching events that are attached to an activity. This means
 * Non-interrupting boundary event: One token stays in the activity and an additional token is created which follows the sequence flow going out of the event.
 
 
-# Message Intermediate Throwing Event
+## Message Intermediate Throwing Event
 
 A Message Intermediate Throwing event sends a message to an external service. This event has the same behavior as a [Service Task](../tasks/service-task.md).
 
@@ -316,7 +316,7 @@ A Message Intermediate Throwing event sends a message to an external service. Th
 ```
 
 
-## Operaton Extensions for `messageEventDefinition`
+### Operaton Extensions for `messageEventDefinition`
 
 <table class="table table-striped">
   <tr>
@@ -371,7 +371,7 @@ A Message Intermediate Throwing event sends a message to an external service. Th
 </table>
 
 
-# Message End Event
+## Message End Event
 
 When process execution arrives at a Message End Event, the current path of execution is ended and a message is sent. The Message End Event has the same behavior as a [Service Task](../tasks/service-task.md).
 
@@ -382,7 +382,7 @@ When process execution arrives at a Message End Event, the current path of execu
 ```
 
 
-## Operaton Extensions for `messageEventDefinition`
+### Operaton Extensions for `messageEventDefinition`
 
 <table class="table table-striped">
   <tr>

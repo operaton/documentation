@@ -26,7 +26,7 @@ for decisions is created.
 
 :::
 
-# Query for evaluated Decisions
+## Query for evaluated Decisions
 
 The History Service can be used to query for `HistoricDecisionInstances`. For
 example, use the following query to get all history entries for a decision
@@ -101,7 +101,7 @@ List<HistoricDecisionInstance> historicDecisions = processEngine
   .list();
 ```
 
-# The Historic Decision Instance
+## The Historic Decision Instance
 
 The [HistoricDecisionInstance](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/HistoricDecisionInstance.html) contains information about a single
 evaluation of a decision.
@@ -141,7 +141,7 @@ the `getCollectResultValue()` method.
 For more information on supported hit policies please see the [DMN 1.3
 reference].
 
-## Historic Decision Input Instance
+### Historic Decision Input Instance
 
 The [HistoricDecisionInputInstance](org/operaton/bpm/engine/history/HistoricDecisionInputInstance) represents one input of an
 evaluated decision (e.g., an input clause of a decision table).
@@ -166,7 +166,7 @@ TypedValue typedValue = input.getTypedValue();
 Note that the value may be the result of a type transformation in case the
 input specifies a type.
 
-## Historic Decision Output Instance
+### Historic Decision Output Instance
 
 The [HistoricDecisionOutputInstance](org/operaton/bpm/engine/history/HistoricDecisionOutputInstance) represents one output entry of an
 evaluated decision. If the decision is implemented as decision table, the
@@ -202,7 +202,7 @@ String variableName = output.getVariableName();
 Note that the value may be the result of a type transformation in case the
 output specifies a type.
 
-# Cockpit
+## Cockpit
 
 You can audit the evaluated decision definitions in the [Cockpit] webapp.
 

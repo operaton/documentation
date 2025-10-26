@@ -89,7 +89,7 @@ event for some instances of an event it must still return `true` if `entity` is 
 Please have a look at this [complete example][2] to get a better overview.
 
 ### Removal time inheritance
-Historic instances inherit the [removal time](#removal-time) from the respective historic top-level
+Historic instances inherit the removal time from the respective historic top-level
 instance. If the custom history level is configured in a way, so that the historic top-level instance is not written,
 the removal time is not available.
 

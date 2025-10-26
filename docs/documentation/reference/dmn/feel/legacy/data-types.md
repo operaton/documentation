@@ -13,14 +13,14 @@ was integrated into Operaton.
 
 The Operaton DMN engine supports the following FEEL data types.
 
-# String
+## String
 
 ![Example img](./../img/string-type.png)String" class="no-lightbox
 
 FEEL supports Strings. They must be encapsulated in double quotes. They
 support only the equal [comparison] operator.
 
-# Numeric Types
+## Numeric Types
 
 ![Example img](./../img/integer-type.png)Integer" class="no-lightbox
 
@@ -33,14 +33,14 @@ following numeric types are available:
 
 Numeric types support all [comparison] operators and [ranges].
 
-# Boolean
+## Boolean
 
 ![Example img](./../img/boolean-type.png)Boolean" class="no-lightbox
 
 FEEL supports the boolean value `true` and `false`. The boolean type only
 supports the equal [comparison] operator.
 
-# Date
+## Date
 
 ![Example img](./../img/date-type.png)Date" class="no-lightbox
 

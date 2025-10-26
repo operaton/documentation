@@ -4,11 +4,11 @@ title: 'Reports'
 sidebar_position: 90
 
 ---
-# Reports
+## Reports
 
 You can use the reports section of cockpit to display custom statistics and reports. Please note that this section is not visible if no report is available. Refer to the [Cockpit Plugins](../cockpit/extend/plugins.md) section for adding a custom reporting plugin.
 
-# Process Instance Duration Report
+## Process Instance Duration Report
 
 ![Example img](./img/duration-report.png)Process Instance Duration Report
 
@@ -16,7 +16,7 @@ This report shows the average, minimum and maximum duration for a selected proce
 
 Pressing the download buttons above the chart triggers the export of the results in CSV or JSON format.
 
-# Completed Task Instance Report
+## Completed Task Instance Report
 
 ![Example img](./img/historic-task-instance-report.png)Historic Task Instance Report
 

@@ -21,13 +21,13 @@ Furthermore, you can maximize the diagram view or the detailed information panel
 [process-definition-view]: ../bpmn/process-definition-view.md
 
 
-# Activity Instance Tree
+## Activity Instance Tree
 
 ![Example img](./../img/cockpit-activity-instance-tree-view.png)Activity Instance Tree
 
 The activity instance tree contains a node for each activity that is currently active in the process instance. It allows you to select activity instances to explore their details. Concurrently, the selected instance will be marked in the rendered process diagram and the corresponding variables will be listed in the detailed information panel.
 
-# Call Activity Drill Down
+## Call Activity Drill Down
 
 ![Example img](./../img/cockpit-call-activity-instance-drill-down.png)Call Activity Drill Down
 
@@ -38,7 +38,7 @@ If the call activity instance calls exactly one process instance, then clicking 
 
 However, if the number of called process instances exceeds one, then clicking the overlay will show the called process instances tab containing only process instances called by the selected call activity instance.
 
-# Detailed Information Panel
+## Detailed Information Panel
 
 ![Example img](./../img/cockpit-detailed-information-view.png)Detailed Information Panel
 
@@ -54,27 +54,27 @@ The jobs tab gives you an overview of all currently active jobs. If the job has 
 
 The external tasks tab displays various information about external tasks, such as the External Task Id, the activity, amount of retries, the Worker Id of the external task, lock expiration time, topic name and the set priority. See the [external tasks](../../../user-guide/process-engine/external-tasks.md) section of the user guide for more information about external tasks.
 
-# Filter for Variables
+## Filter for Variables
 
 ![Example img](./../img/variable-filter.png)Filter Variables
 
 In the variables tab, you can filter for variables by variable name, activity instance id and variable value by using search pills. You can filter variable values with the type `String`, `Number`, or `Boolean`. To do so, click in the empty search field and select a criterion. Next, fill in the respective values for the search pill. You can combine multiple search pills to narrow down the results. The total amount of results that suit the search query is displayed to the right. Furthermore, you can copy a link to the current search query to your clipboard by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-link"></i></button> button and you can save search queries to your local browser storage by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and inserting a name in the drop down menu that appears. You can then retrieve the search query by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and selecting the chosen name in the drop down menu.
 
-# Add Variables
+## Add Variables
 
 ![Example img](./../img/cockpit-add-variables.png)Add Variables
 
 Hit the plus button on the right side to add variables to a process instance. You can choose between different data types. Please note that variables will be overwritten if you add a new variable with an existing name.
 
 
-# Edit Variables
+## Edit Variables
 
 ![Example img](./../img/cockpit-edit-variables.png)Edit Variables
 
 Edit variables in the list of variables by using the pencil symbol. This feature allows you to change the value of variables as well as the type. A validation of the date format and for the value of integers happens on client side. If you enter NULL the variable will be converted to a string type.
 
 
-# Cancel a Process Instance
+## Cancel a Process Instance
 
 ![Example img](./../img/cockpit-cancel-process-instance.png)Cancel Instances
 

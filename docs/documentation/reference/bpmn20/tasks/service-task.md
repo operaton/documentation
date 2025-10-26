@@ -15,7 +15,7 @@ menu:
 
 A Service Task is used to invoke services. In Operaton this is done by calling Java code or providing a work item for an external worker to complete asynchronously or invoking a logic which is implemented in form of webservices.
 
-# Calling Java Code
+## Calling Java Code
 
 There are four ways of declaring how to invoke Java logic:
 
@@ -57,12 +57,12 @@ of the [User Guide](../../../user-guide/index.md).
 
 It is also possible to invoke logic which is implemented in form of webservices. `operaton:connector` is an extension that allows calling REST/SOAP APIs directly from the workflow. For more information about using connectors, please see the corresponding [section](../../../user-guide/process-engine/connectors.md#use-connectors) of the [User Guide](../../../user-guide/index.md)
 
-## Generic Java Delegates & Field Injection
+### Generic Java Delegates & Field Injection
 
 You can easily write generic Java Delegate classes which can be configured later on via the BPMN 2.0 XML in the Service Task. Please refer to the [Field Injection](../../../user-guide/process-engine/delegation-code.md#field-injection) section of the [User Guide](../../../user-guide/index.md) for details.
 
 
-## Service Task Results
+### Service Task Results
 
 The return value of a service execution (for a Service Task exclusively using expressions) can be assigned to an already existing or to a new process variable by specifying the process variable name as a literal value for the `operaton:resultVariable` attribute of a Service Task definition. Any existing value for a specific process variable will be overwritten by the result value of the service execution. When not specifying a result variable name, the service execution result value is ignored.
 
@@ -78,7 +78,7 @@ In the example above, the result of the service execution (the return value of t
 Note that when you use <code>operaton:resultVariable</code> in a multi-instance construct, for example in a multi-instance subprocess, the result variable is overwritten every time the task completes, which may appear as random behavior. See <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a> for details.
 :::
 
-# External Tasks
+## External Tasks
 
 In contrast to calling Java code, where the process engine synchronously invokes Java logic, it is possible to implement a Service Task outside of the process engine's boundaries in the form of an external task. When a Service Task is declared external, the process engine offers a work item to workers that independently poll the engine for work to do. This decouples the implementation of tasks from the process engine and allows to cross system and technology boundaries. See the [user guide on external tasks](../../../user-guide/process-engine/external-tasks.md) for details on the concept and the relevant API.
 
@@ -90,7 +90,7 @@ To declare a Service Task to be handled externally, the attribute `operaton:type
            operaton:topic="ShipmentProcessing" />
 ```
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -161,7 +161,7 @@ To declare a Service Task to be handled externally, the attribute `operaton:type
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 * [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html) section
 * [How to call a Webservice from BPMN](http://www.bpm-guide.de/2010/12/09/how-to-call-a-webservice-from-bpmn/). Please note that this article is outdated. However, it is still valid regarding how you would call a Web Service using the process engine.

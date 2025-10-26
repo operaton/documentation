@@ -43,7 +43,7 @@ Operaton should work with most of the JSR-223 compatible script engine implement
 
 :::
 
-# Variables in Scripts
+## Variables in Scripts
 
 All process variables that are accessible through the execution that arrives in the Script Task can be used within the script. In the example below, the script variable `inputArray` is in fact a process variable (an array of integers).
 
@@ -69,7 +69,7 @@ It's also possible to set process variables in a script. Variables can be set by
 </script>
 ```
 
-## Enabling auto-storing of Script Variables
+### Enabling auto-storing of Script Variables
 
 By setting the property `autoStoreScriptVariables` to `true` in the process engine configuration, the process engine will automatically store all _global_ script variables as process variables. This was the default behavior in Operaton.0 and 7.1 but it only reliably works for the Groovy scripting language (see the [Set autoStoreScriptVariables][autostore-variables] section of the [Migration Guide](../../../update/index.md) for more information).
 
@@ -88,7 +88,7 @@ Note: the following names are reserved and cannot be used as variable names:
 `out`, `out:print`, `lang:import`, `context`, `elcontext`.
 
 
-# Script Results
+## Script Results
 
 The return value of a Script Task can be assigned to a previously existing or to a new process variable by specifying the process variable name as a literal value for the `operaton:resultVariable` attribute of a Script Task definition. Any existing value for a specific process variable will be overwritten by the result value of the script execution. When a result variable name is not specified, the script result value gets ignored.
 
@@ -105,7 +105,7 @@ Note that when you use <code>operaton:resultVariable</code> in a multi-instance 
 :::
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

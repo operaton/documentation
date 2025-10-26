@@ -14,7 +14,7 @@ menu:
 This section describes the concepts of variables in processes. Variables can be used to add data to process runtime state or, more particular, variable scopes. Various API methods that change the state of these entities allow updating of the attached variables. In general, a variable consists of a name and a value. The name is used for identification across process constructs. For example, if one activity sets a variable named *var*, a follow-up activity can access it by using this name. The value of a variable is a Java object.
 
 
-# Variable Scopes and Variable Visibility
+## Variable Scopes and Variable Visibility
 
 All entities that can have variables are called *variable scopes*. These are executions (which include process instances) and tasks. As described in the  [Concepts section](../process-engine/process-engine-concepts.md#executions), the runtime state of a process instance is represented by a tree of executions. Consider the following process model where the red dots mark active tasks:
 
@@ -50,7 +50,7 @@ In general, variables are accessible in the following cases:
 * (Historic) Variable queries
 
 
-# Set and Retrieve Variables - Overview
+## Set and Retrieve Variables - Overview
 
 To set and retrieve variables, the process engine offers a Java API that allows setting of variables from Java objects and retrieving them in the same form. Internally, the engine persists variables to the database and therefore applies serialization. For most applications, this is a detail of no concern. However, sometimes, when working with custom Java classes, the serialized value of a variable is of interest. Imagine the case of a monitoring application that manages many process applications. It is decoupled from those applications' classes and therefore cannot access custom variables in their Java representation. For these cases, the process engine offers a way to retrieve and manipulate the serialized value. This boils down to two APIs:
 
@@ -79,7 +79,7 @@ execution.setVariable("diff", typedDiff);
 
 The specifics of this code are described in more detail in the sections on the [Java Object Value API](#java-object-api) and the [Typed Value API](#typed-value-api).
 
-## Setting variables to specific scope
+### Setting variables to specific scope
 
 There is a possibility to set variables into specific scope from scripts, input\output mapping, listeners and service tasks. Implementation of this functionality is using activity id in order to identify destination scope and will throw an exception if no scope is located to set a variable. Additionally, once target scope is found, variable will be set locally in it, which means that propagation to the parent scope will not be executed even if destination scope does not have a variable with given id.
 
@@ -105,7 +105,7 @@ public class SetVariableToScopeMappingDelegate implements DelegateVariableMappin
 ```
 here variable will be set locally in "aSubProcess" and not propagated to the parent scope even if variable was not set beforehand locally in "aSubProcess".
 
-# Supported Variable Values
+## Supported Variable Values
 
 The process engine supports the following variable value types:
 
@@ -139,7 +139,7 @@ configured charset, this length restriction can result in different quantities o
 Process variables can be stored in formats like JSON and XML provided by the [Operaton Spin plugin](../data-formats/index.md). Spin provides serializers for the variables of type `object` such that Java variables can be persisted in these formats to the database. Furthermore, it is possible to store JSON and XML documents directly as a Spin object by the value types `xml` and `json`. Opposed to plain `string` variables, Spin objects provide a fluent API to perform common operations on such documents like reading and writing properties.
 
 
-## Object Value Serialization
+### Object Value Serialization
 
 When an `object` value is passed to the process engine, a *serialization format* can be specified to tell the process engine to store the value in a specific format. Based on this format, the engine looks up a *serializer*. The serializer is able to serialize a Java object to the specified format and deserialize it from a representation in that format. That means, there may be different serializers for different formats and it is possible to implement custom serializers in order to store custom objects in a specific format.
 
@@ -168,7 +168,7 @@ execution.setVariable("someVariable", customerDataValue);
 :::
 
 
-# Java Object API
+## Java Object API
 
 The most convenient way of working with process variables from Java is to use their Java object representation. Wherever the process engine offers variable access, process variables can be accessed in this representation given that for custom objects the engine is aware of the involved classes. For example, the following code sets and retrieves a variable for a given process instance:
 
@@ -193,14 +193,14 @@ com.example.Order retrievedOrder = (com.example.Order) runtimeService.getVariabl
 Whenever a variable is set in its Java representation, the process engine automatically determines a suitable value serializer or raises an exception if the provided value cannot be serialized.
 
 
-# Typed Value API
+## Typed Value API
 
 In cases in which it is important to access a variable's serialized representation or in which the engine has to be hinted to serialize a value in a certain format, the typed-value-based API can be used. In comparison to the Java-Object-based API, it wraps a variable value in a so-called *Typed Value*. Such a typed value allows richer representation of variable values.
 
 In order to easily construct typed values, Operaton offers the class `org.operaton.bpm.engine.variable.Variables`. This class contains static methods that allow creation of single typed values as well as creation of a map of typed values in a fluent way.
 
 
-## Primitive Values
+### Primitive Values
 
 The following code sets a single `String` variable by specifying it as a typed value:
 
@@ -215,7 +215,7 @@ String stringValue = retrievedTypedStringValue.getValue(); // equals "a string v
 Note that with this API, there is one more level of abstraction around the variable value. Thus, in order to access the true value, it is necessary to *unwrap* the actual value.
 
 
-## File Values
+### File Values
 
 Of course, for plain `String` values, the Java-Object-based API is more concise. Let us therefore consider values of richer data structures.
 
@@ -247,7 +247,7 @@ FileValue fileVariable = execution.getVariableTyped("addresses.txt");
 Variables.fileValue(fileVariable.getName()).file(newContent).encoding(fileVariable.getEncoding()).mimeType(fileVariable.getMimeType()).create();
 ```
 
-## Object Values
+### Object Values
 
 Custom Java objects can be serialized with the value type `object`. Example using the typed value API:
 
@@ -317,11 +317,11 @@ com.example.Order retrievedOrder = (com.example.Order) retrievedTypedObjectValue
   However, please make sure to read the [Security Implication](../security.md#variable-values-from-untrusted-sources) first before enabling this.
 :::
 
-## JSON and XML Values
+### JSON and XML Values
 
 The Operaton Spin plugin provides an abstraction for JSON and XML documents that facilitate their processing and manipulation. This is often more convenient than storing such documents as plain `string` variables. See the documentation on Operaton SPIN for [storing JSON documents](../data-formats/json.md#native-json-variable-value) and [storing XML documents](../data-formats/xml.md#native-xml-variable-value) for details.
 
-## Transient variables
+### Transient variables
 
 Declaration of transient variables is possible only through the typed-value-based API. They are not saved into the database and exist only during the current transaction. Every waiting state during an execution of a process instance leads to the loss of all transient variables. This happens typically when e.g. an external service is not currently available, an user task has been reached or the process execution is waiting for a message, a signal or a condition. Please use this feature carefully.
 
@@ -345,7 +345,7 @@ TypedValue typedTransientFileValue = Variables.fileValue("file.txt", true)
 
 Transient variables can be used via REST API, e.g. restref page="startProcessInstance" text="when starting a new process instance" tag="Process-Definition.
 
-## Set Multiple Typed Values
+### Set Multiple Typed Values
 
 Similar to the Java-Object-based API, it is also possible to set multiple typed values in one API call. The `Variables` class offers a fluent API to construct a map of typed values:
 
@@ -361,14 +361,14 @@ runtimeService.setVariablesLocal(execution.getId(), "order", variables);
 ```
 
 
-# Interchangeability of APIs
+## Interchangeability of APIs
 
 Both APIs offer different views on the same entities and can therefore be combined as is desired. For example, a variable that is set using the Java-Object-based API can be retrieved as a typed value and vice versa. As the class `VariableMap` implements the `Map` interface, it is also possible to put plain Java objects as well as typed values into this map.
 
 Which API should you use? The one that fits your purpose best. When you are certain that you always have access to the involved value classes, such as when implementing code in a process application like a `JavaDelegate`, then the Java-Object-based API is easier to use. When you need to access value-specific metadata such as serialization formats or to define a variable as transient, then the Typed-Value-based API is the way to go.
 
 
-# Input/Output Variable Mapping
+## Input/Output Variable Mapping
 
 To improve the reusability of source code and business logic, Operaton offers input/output
 mapping of process variables. This can be used for tasks, events and subprocesses.
@@ -469,7 +469,7 @@ depends on a variable `avgForecast` as the average value of the three forecasts.
 ```
 
 
-## Multi-instance IO Mapping
+### Multi-instance IO Mapping
 
 Input mappings can also be used with multi-instance constructs, in which the mapping is applied for every instance that is created. For example, for a multi-instance subprocess with five instances, the mapping is executed five times and the involved variables are created in each of the five subprocess scopes such that they can be accessed independently.
 
@@ -477,7 +477,7 @@ Input mappings can also be used with multi-instance constructs, in which the map
   The engine does not support output mappings for multi-instance constructs. Every instance of the output mapping would overwrite the variables set by the previous instances and the final variable state would become hard to predict.
 :::
 
-## IO Mapping on canceled activities
+### IO Mapping on canceled activities
 
 If an Activity is canceled (e.g. due to throwing a BPMN error), IO mapping is still executed. This can lead to exceptions if the output mapping references variables that do not exist in the scope of the activity at that time.
 

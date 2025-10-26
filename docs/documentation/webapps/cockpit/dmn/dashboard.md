@@ -15,7 +15,7 @@ menu:
 The decisions dashboard of Cockpit is the entry point for decision monitoring. It comes with a pre-installed plugin, which lets you see deployed decision definitions. Additional [plugins](../extend/plugins.md) can be added to the decisions dashboard.
 
 
-# Deployed Decisions
+## Deployed Decisions
 
 ![Example img](./../img/cockpit-decision-definition-list.png)Deployed Decision Definitions
 
@@ -23,14 +23,14 @@ This plugin provides you with a list of deployed decision definitions. You can c
 You can also click on the name of a decision requirements definition to go to the [decision requirements definition view][decision-requirements-definition-view].
 
 
-# Deployed Decision Requirements Definition
+## Deployed Decision Requirements Definition
 
 ![Example img](./../img/cockpit-drd-list.png)Deployed Decision Definitions
 
 This plugin provides you with a list of deployed decision requirements definitions. You can click on the name of a decision requirements definition to go to the [decision requirements definition view][decision-requirements-definition-view] and access more details, like the decision requirements definition diagram or executed [decision requirements definition instances view][decision-requirements-definition-instance-view]. 
 
 
-# Search
+## Search
 
 ![Example img](./../img/dmn/decision-instance-search.png)Decision Instance Search
 

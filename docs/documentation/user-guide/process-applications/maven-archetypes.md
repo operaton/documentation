@@ -17,7 +17,7 @@ We incorporated best practices for different application types into the template
 The Archetypes can be used to generate projects as detailed in the different usage sections.
 In case generating a project from an Archetype on your own is not feasible, we also provide a template GitHub repository for every Archetype.
 
-# Overview of Available Maven Archetypes
+## Overview of Available Maven Archetypes
 
 The following archetypes are currently provided. They are distributed via our Maven repository: https://artifacts.camunda.com/artifactory/operaton-bpm/
 
@@ -60,7 +60,7 @@ The following archetypes are currently provided. They are distributed via our Ma
   </tbody>
 </table>
 
-# Template repositories
+## Template repositories
 
 We provide a template repository for every Operaton Archetype.
 Every repository contains a project generated from one specific template.
@@ -71,16 +71,16 @@ This allows to investigate possible update paths from one Operaton version to an
 
 In case you need more flexibility and customization for your project, you can generate a project on your own using one of the methods detailed in the next sections.
 
-# Usage in Eclipse IDE
+## Usage in Eclipse IDE
 
-## Summary
+### Summary
 
 1. Add archetype catalog (**Preferences -> Maven -> Archetypes -> Add Remote Catalog**):
     **https://artifacts.camunda.com/artifactory/operaton-bpm/**
 2. Create Maven project from archetype (**File -> New -> Project... -> Maven -> Maven Project**)
 
 
-## Detailed Instructions
+### Detailed Instructions
 
 1. Go to **Preferences -> Maven -> Archetypes -> Add Remote Catalog**
 ![Example img](./img/eclipse-00-preferences-maven-archetypes.png)Eclipse Preferences: Maven Archetypes
@@ -107,11 +107,11 @@ The resulting project should look like this:
 ![Example img](./img/eclipse-06-generated-maven-project.png)Generated Maven Project in Eclipse
 
 
-## Troubleshooting
+### Troubleshooting
 
 Sometimes the creation of the very first Maven project fails in Eclipse. If that happens to you, just try it again. Most of the times the second try works. If the problem persists, [contact us](https://forum.operaton.org/).
 
-# Usage in IntelliJ IDEA
+## Usage in IntelliJ IDEA
 
 1. On the "Welcome to IntelliJ IDEA" screen, click on "Configure" and select "Plugins" in the dropdown.
 2. In the plugins dialog, click on "Browse repositories...".
@@ -125,9 +125,9 @@ Sometimes the creation of the very first Maven project fails in Eclipse. If that
 9. In the new project dialog, click on the left side on "Maven", check "Create from archetype"
    and select any `org.operaton.bpm.archetype` entry.
 
-# Usage on Command Line
+## Usage on Command Line
 
-## Interactive
+### Interactive
 
 Run the following command in a terminal to generate a project. Maven will allow you to select an archetype and ask you for all parameters needed to configure it:
 
@@ -136,7 +136,7 @@ mvn archetype:generate -Dfilter=org.operaton.bpm.archetype:
 </pre>
 
 
-## Full Automation
+### Full Automation
 
 The following command completely automates the project generation and can be used in shell scripts or Ant builds:
 <pre class="console">
@@ -152,6 +152,6 @@ mvn archetype:generate \
 </pre>
 
 
-# Source Code and Customization
+## Source Code and Customization
 
 You can also customize the project templates for your own technology stack. Just [fork them on GitHub](https://github.com/operaton/operaton-archetypes)!

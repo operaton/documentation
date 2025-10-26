@@ -22,6 +22,9 @@ const config: Config = {
 
   onBrokenLinks: 'warn', //'throw',
   markdown: {
+    anchors: {
+      maintainCase: true,
+    },
     hooks: {
       onBrokenMarkdownLinks: 'warn',//'throw'
     }

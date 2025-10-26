@@ -16,16 +16,16 @@ Timer events are events which are triggered by a defined timer. They can be used
 <div data-bpmn-diagram="../bpmn/event-timer" ></div>
 
 
-# Configuration
+## Configuration
 
 Timers are only fired when the [Job Executor](../../../user-guide/process-engine/the-job-executor.md) is enabled.
 
 
-# Defining a Timer
+## Defining a Timer
 
 Timers are configured using an [ISO 8601][iso-8601] time format. A timer definition must have exactly one of the following elements.
 
-## Time Date
+### Time Date
 
 This format specifies a fixed time and date in adhering to the [ISO 8601][iso-8601] format, when the trigger will be fired.
 
@@ -37,7 +37,7 @@ Example:
 </timerEventDefinition>
 ```
 
-## Time Duration
+### Time Duration
 
 To specify how long the timer should run before it is fired, a timeDuration can be specified as a sub-element of timerEventDefinition. It is possible to define the duration in two different [ISO 8601 Durations](http://en.wikipedia.org/wiki/ISO_8601#Durations) formats:
 <ul>
@@ -53,7 +53,7 @@ Example (interval lasting 10 days):
 </timerEventDefinition>
 ```
 
-## Time Cycle
+### Time Cycle
 
 Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals) standard.
 
@@ -93,7 +93,7 @@ managementService.setJobDuedate(String jobId, Date newDuedate, boolean cascade)
 ```
 
 
-## Expressions
+### Expressions
 
 You can use expressions for the timer event definitions. By doing so you can influence the timer definition based on process variables. The process variables must contain the [ISO 8601][iso-8601] (or cron for cycle type) string for the appropriate timer type.
 
@@ -135,11 +135,11 @@ To enforce an immediate re-evaluation of a time cycle, follow the steps:
 
 After this job is executed, the next jobs will be created with adjusted time cycle.
 :::
-## Handling of Timezones
+### Handling of Timezones
 
 The configuration `2022-03-11T12:13:14` does not specify a time zone. At runtime, such a date is interpreted in the local time zone of the JVM executing the process. This can be problematic in various cases, such as when running multiple Operaton nodes in different time zones or when you cannot assume the time zone the platform runs in. Furthermore, there can be glitches with respect to daylight saving time (DST). If in doubt, specify the time in UTC (e.g., `2022-03-11T12:13:14Z`) or with a UTC-relative offset (e.g., `2022-03-11T12:13:14+01`).
 
-## Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -165,7 +165,7 @@ The configuration `2022-03-11T12:13:14` does not specify a time zone. At runtime
 </table>
 
 
-# Timer Start Event
+## Timer Start Event
 
 A timer start event is used to create process instance at a given time. It can be used both for processes which should start only once and for processes that should start in specific time intervals.
 
@@ -193,7 +193,7 @@ and this process will start once, on a selected date, at Greenwich time:
 </startEvent>
 ```
 
-# Timer Intermediate Catching Event
+## Timer Intermediate Catching Event
 
 A timer intermediate event acts as a stopwatch. When an execution arrives in catching event activity, a timer is started. When the timer fires (e.g., after a specified interval), the sequence flow going out of the timer intermediate event is followed.
 
@@ -208,7 +208,7 @@ A timer intermediate event is defined as an intermediate catching event. The spe
 ```
 
 
-# Timer Boundary Event
+## Timer Boundary Event
 
 A timer boundary event acts as a stopwatch and as an alarm clock. When an execution arrives in the activity to which the boundary event is attached, a timer is started. When the timer fires (e.g.,  after a specified interval), the activity is interrupted and the sequence flow going out of the timer boundary event are followed.
 

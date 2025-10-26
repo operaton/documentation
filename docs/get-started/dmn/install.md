@@ -16,7 +16,7 @@ aliases: [/dmn11/install/]
 First you need to set up your development environment and install the Operaton Platform and the Camunda Modeler.
 
 
-# Prerequisites
+## Prerequisites
 
 Make sure you have the following set of tools installed:
 
@@ -26,7 +26,7 @@ Make sure you have the following set of tools installed:
 * Eclipse integrated development environment (IDE)
 
 
-# Operaton Platform
+## Operaton Platform
 
 First, download a distribution of the Operaton Platform. You can choose from different distributions for various application servers. In this tutorial, we will use the Apache Tomcat based distribution. Download it from [the download page](https://camunda.com/download/).
 
@@ -40,6 +40,6 @@ This script will start the application server and open a welcome screen in your 
 If you have trouble setting up the Operaton Platform, you can ask for assistance in the [Operaton Users Forum](https://forum.operaton.org/).
 :::
 
-# Camunda Modeler
+## Camunda Modeler
 
-Follow the instructions in the [Camunda Modeler](/manual/latest/installation/camunda-modeler) section.
+Follow the instructions in the [Camunda Modeler](../../documentation/installation/camunda-modeler) section.

@@ -13,7 +13,7 @@ menu:
 The following examples show example scenarios of custom JavaScript in embedded forms.
 
 
-# User name from a cam-script
+## User name from a cam-script
 
 This example demonstrates how to retrieve the user name and display it in an embedded form:
 
@@ -30,7 +30,7 @@ This example demonstrates how to retrieve the user name and display it in an emb
 ```
 
 
-# Load Additional Resources
+## Load Additional Resources
 
 This example includes an image, which is located in the contextPath of the form (i.e., in the same directory). The URL of the image is retrieved via the _task form key_ method of the REST API:
 
@@ -51,7 +51,7 @@ This example includes an image, which is located in the contextPath of the form 
 </form>
 ```
 
-# Exclude a variable from submit
+## Exclude a variable from submit
 
 When a variable is loaded, it is also sent back to the server when the form is submitted. If you have a variable that you don't want to be submitted when the form is completed, you can use the `destroyVariable` function of the variable manager:
 
@@ -72,7 +72,7 @@ When a variable is loaded, it is also sent back to the server when the form is s
 </script>
 ```
 
-# Upload Large Files
+## Upload Large Files
 
 This example contains a file input element and the script to send it to the server. In contrast to the [file input element of the Forms SDK](../../../../reference/forms/embedded-forms/controls/files.md), this example can handle large files, but it also has some drawbacks:
 

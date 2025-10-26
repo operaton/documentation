@@ -25,7 +25,7 @@ test an input value against an expression and return either `true` if the test
 is satisfied or `false` otherwise. The expression can contain different
 elements which are described in this sections.
 
-# Comparison
+## Comparison
 
 FEEL simple unary tests support the following comparison operators. Please
 note that the equals operator is empty and *not* `=`. Also, a non equal operator such as `!=`
@@ -70,7 +70,7 @@ does *not* exist. To express this, [negation] has to be used.
   </tr>
 </table>
 
-# Range
+## Range
 
 Some [FEEL data types], such as numeric types and date types, can be tested against
 a range of values. These ranges consist of a start value and an end value. The
@@ -121,7 +121,7 @@ range specifies if the start and end value is included in the range.
   </tr>
 </table>
 
-# Disjunction
+## Disjunction
 
 A FEEL simple unary test can be specified as conjunction of expressions. These
 expressions have to either have [comparisons] or [ranges]. The test is `true` if
@@ -140,7 +140,7 @@ Examples:
 - `>customer.age,>21`: Test if the input is either greater than the `age`
   property of the variable `customer` or greater than 21
 
-# Negation
+## Negation
 
 A FEEL simple unary test can be negated with the `not` function. This means if
 the containing expression returns `true`, the test will return `false`. Please
@@ -155,7 +155,7 @@ Examples:
 - `not(3,5,7)`: Test if the input is neither 3, 5 nor 7
 - `not([20..30])`: Test if the input is not between 20 and 30
 
-# Qualified Names
+## Qualified Names
 
 FEEL simple unary tests can access variables and object properties by
 qualified names.
@@ -167,7 +167,7 @@ Examples:
 - `< customer.age`: Test if the input is less than the `age` property of the
   variable `customer`
 
-# Date Functions
+## Date Functions
 
 FEEL simple unary tests provide functions to create [date types]. The Operaton
 DMN engine supports the following date functions:

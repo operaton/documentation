@@ -15,7 +15,7 @@ menu:
 The next step consists of building, deploying and testing the process.
 
 
-# Build the Web Application with Maven
+## Build the Web Application with Maven
 
 Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`. This will generate a WAR file named `loan-approval-0.1.0-SNAPSHOT.war` in the `target/` folder of your Maven project.
 
@@ -25,7 +25,7 @@ If you saved your bpmn file from the previous chapter in `src/main/resources`, t
 If the `loan-approval-0.1.0-SNAPSHOT.war` file is not visible after having performed the Maven build, you need to refresh the project (F5) in eclipse.
 :::
 
-# Deploy to Apache Tomcat
+## Deploy to Apache Tomcat
 
 In order to deploy the process application, copy-paste the `loan-approval-0.1.0-SNAPSHOT.war` from your Maven project to the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
 
@@ -46,14 +46,14 @@ ENGINE-08050 Process application Loan Approval App successfully deployed
 </pre>
 
 
-# Verify the Deployment with Cockpit
+## Verify the Deployment with Cockpit
 
 Now use Cockpit to check if the process is successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit](http://localhost:8080/operaton/app/cockpit). Log in with demo / demo. Your process *Loan Approval* is visible on the dashboard.
 
 ![Example image](./img/cockpit-loan-approval.png)
 
 
-# Start a Process Instance
+## Start a Process Instance
 
 Next, go to Operaton Tasklist ([http://localhost:8080/operaton/app/tasklist](http://localhost:8080/operaton/app/tasklist)). Click on the **Start process** button to start a process instance. This opens a dialog where you can select *Loan Approval* from the list. Now you can set variables for the process instance using a generic form.
 
@@ -64,7 +64,7 @@ Click on the *Add a variable* button to get a new row. Fill in the form as shown
 
 If you now go back to [Operaton Cockpit](http://localhost:8080/operaton/app/cockpit), you see the newly created process instance that is waiting in the User Task.
 
-# Configure Process Start Authorizations
+## Configure Process Start Authorizations
 
 To allow the user *john* to see the process definition *Loan Approval*, you have to go to Operaton Admin ([http://localhost:8080/operaton/app/admin/default/#/authorization?resource=6](http://localhost:8080/operaton/app/admin/default/#/authorization?resource=6)). Next, click on the button *Create new authorization* to add a new authorization on the resource *process definition*. Now you can give the user *john* all permissions on process definition *approve-loan*. When you are done, submit the new authorization.
 
@@ -77,7 +77,7 @@ Now create a second authorization for the *process instance* resource. Set the p
 For further details about authorizations and how to manage them, please read the following sections in the user guide: [Authorization Service](/manual/latest/user-guide/process-engine/authorization-service) and [Authorization Management](/manual/latest/webapps/admin/authorization-management).
 
 
-# Work on the Task
+## Work on the Task
 
 Log out of Admin. Go to Tasklist ([http://localhost:8080/operaton/app/tasklist](http://localhost:8080/operaton/app/tasklist)) and log back in with the user credentials "john / john". Now you see the *Approve Loan* task in your Tasklist. Select the task and click on the *Diagram* tab. This displays the process diagram highlighting the User Task that is waiting for you to work on it.
 

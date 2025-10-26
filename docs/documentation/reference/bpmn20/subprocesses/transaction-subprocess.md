@@ -65,7 +65,7 @@ The BPMN specification requires that the process engine reacts to events issued 
 
 Consistency on top of ACID transactions and optimistic concurrency: A BPMN transaction guarantees consistency in the sense that either all activities compete successfully, or, if some activity cannot be performed, the effects of all other successful activities are compensated. So either way, we end up in a consistent state. However, it is important to recognize that in Operaton, the consistency model for BPMN transactions is superposed on top of the consistency model for process execution. The Operaton engine executes processes in a transactional way. Concurrency is addressed using optimistic locking. In the engine BPMN error, cancel and compensation events are built on top of the same ACID transactions and optimistic locking. For example, a cancel end event can only trigger compensation if it is actually reached. It is not reached if some undeclared exception is thrown by a service task before. The effects of a compensation handler can not be committed if some other participant in the underlying ACID transaction sets the transaction to the state rollback-only. Also, when two concurrent executions reach a cancel end event, compensation might be triggered twice and fail with an optimistic locking exception. All of this is to say that when implementing BPMN transactions in the core engine, the same set of rules apply as when implementing "ordinary" processes and subprocesses. So, to effectively guarantee consistency, it is important to implement processes in a way that takes the optimistic, transactional execution model into consideration. For further information, see the documentation on [optimistic locking](../../../user-guide/process-engine/transactions-in-processes.md#optimistic-locking).
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -94,6 +94,6 @@ Consistency on top of ACID transactions and optimistic concurrency: A BPMN trans
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Transactions in Processes](../../../user-guide/process-engine/transactions-in-processes.md)

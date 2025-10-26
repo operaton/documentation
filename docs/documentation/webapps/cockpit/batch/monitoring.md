@@ -16,11 +16,11 @@ menu:
 
 The batch page displays the status of running and completed batches. It allows displaying details of a batch such as the start- and end-time or the number of remaining jobs. For failed jobs, it displays the error message and allows a retry or deletion of the job.
 
-# Overview
+## Overview
 
 On the left side of the page, two lists of running and finished batches are displayed. You can click on any entry to display details of the batch on the right side of the page.
 
-## In Progress
+### In Progress
 
 For batches that are currently in progress, the ID, type, user, started time, number of failed jobs as well as the progress is displayed.
 Please note that if a batch has failed jobs, the batch cannot be completed.
@@ -38,15 +38,15 @@ You can also begin typing to find the required parameter faster.
 Depending on the selected property, you have to specify the value of the property.
 You can combine multiple search pills to narrow down the search results.
 
-## Completed
+### Completed
 
 Below the currently running batches, completed batches along with their start- and end-time are displayed. Completed batches are only visible when the process engine [history level](../../../user-guide/process-engine/history/history-configuration.md#choose-a-history-level) is set to FULL.
 
-# Batch Details
+## Batch Details
 
 When selecting a batch either from in progress or completed ones, the details of the batch are displayed on the right side of the page.
 
-## In Progress Batch Details
+### In Progress Batch Details
 
 The displayed information corresponds to the response of the [REST API query](#getBatchStatistics).
 
@@ -56,7 +56,7 @@ You can suspend a batch that is in progress by clicking on the <button class="bt
 
 Clicking the <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i></button> button above the details table deletes a running batch.
 
-## Completed Batch Details
+### Completed Batch Details
 
 The displayed information corresponds to the response of the restref page="getBatch" text="REST API query" tag="Batch.
 

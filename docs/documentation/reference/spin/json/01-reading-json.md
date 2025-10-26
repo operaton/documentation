@@ -14,7 +14,7 @@ menu:
 The JSON datatype supports reading JSON from Strings or Readers.
 
 
-# Reading JSON from a String:
+## Reading JSON from a String:
 
 ```java
 import static org.operaton.spin.Spin.*;
@@ -36,7 +36,7 @@ SpinJsonNode json = JSON("{\"customer\": \"Kermit\"}");
 String values that represent JSON primitive values can also be read. For example, `JSON("true")` returns a `SpinJsonNode` that represents the boolean value `true`.
 
 
-# Reading JSON from a Reader:
+## Reading JSON from a Reader:
 
 Spin also supports reading JSON from an instance of `java.io.Reader`:
 
@@ -58,7 +58,7 @@ SpinJsonNode json = JSON(reader);
 ```
 
 
-# Reading JSON using a Script Language
+## Reading JSON using a Script Language
 
 JSON can be read from script languages in the same way as from Java. Since script languages use dynamic typing, you do not need to hint the data format but you can use autodetection. The following example demonstrates how to read JSON in Javascript:
 
@@ -67,7 +67,7 @@ var customer = S('{"customer": "Kermit"}');
 ```
 
 
-# Reading JSON Properties
+## Reading JSON Properties
 
 To fetch properties from the JSON tree you can use `.prop("name")`. This will return the property as SpinJsonNode and you can use this to get the value of the property as the following examples will demonstrate:
 
@@ -89,7 +89,7 @@ var customerProperty = json.prop("customer");
 var customerName = customerProperty.value();
 ```
 
-## The Different Value Types
+### The Different Value Types
 
 The method `SpinJsonNode#value()` can be used to get the Java equivalent of a String/Boolean/Number or `null` JSON property. It throws an exception for Object and Array properties. There are also:
 
@@ -97,7 +97,7 @@ The method `SpinJsonNode#value()` can be used to get the Java equivalent of a St
   * `#numberValue()` - gets a Java `Number` representation of the value or throws an exception if the value is not a Number
   * `#boolValue()` - gets a Java `Boolean` representation of the value or throws an exception if the value is not a Boolean
 
-## Value type checks of the property
+### Value type checks of the property
 
 1. `isObject()` returns boolean
 2. `hasProp()` returns boolean
@@ -115,7 +115,7 @@ var json = S('{"over18":false}');
 json.prop('over18').isBoolean() //returns true
 ```
 
-## Fetch Array of Data
+### Fetch Array of Data
 
 You can also fetch a list of items if your property is an array of data.
 
@@ -141,7 +141,7 @@ var customer = customers.get(0)
 var customerName = customer.value();
 ```
 
-## Fetch Field Names
+### Fetch Field Names
 
 Spin allows us to use the `.fieldNames()` method to fetch the names of all child nodes and properties in a node. The following example shows you how to use `.fieldNames()` in Java and Javascript.
 
@@ -164,7 +164,7 @@ var fieldName1 = fieldNames.get(0)
 ```
 
 
-# Set JSON Properties
+## Set JSON Properties
 
 To set a property you can use the `.prop("name", object)` method. This allows you to set one of the following 5 simple types:
 
@@ -224,7 +224,7 @@ or one of the 2 following container types:
     ```
 
 
-# Remove JSON Properties
+## Remove JSON Properties
 
 There are 2 ways to remove properties from a JSON object.
 
@@ -264,7 +264,7 @@ json.deleteProp(list);
 ```
 
 
-# Work with JSON Arrays
+## Work with JSON Arrays
 
 JSON arrays represent a list of objects. Spin offers the following methods to manipulate this list:
 
@@ -297,7 +297,7 @@ These methods allow us to work with JSON arrays in a fast way. To show this, we 
 
 So let's see how we can manipulate this list in some examples.
 
-## Example 1 - Get the Index of 'testdata2' and the Last Occurrence of '1':
+### Example 1 - Get the Index of 'testdata2' and the Last Occurrence of '1':
 
 ```java
 import static org.operaton.spin.Spin.*;
@@ -317,7 +317,7 @@ var i = list.indexOf("testdata2"); // should be 1
 var j = list.lastIndexOf(1); // Should be '7'
 ```
 
-## Example 2 - Add and Remove Data to/from the list:
+### Example 2 - Add and Remove Data to/from the list:
 
 ```java
 import static org.operaton.spin.Spin.*;

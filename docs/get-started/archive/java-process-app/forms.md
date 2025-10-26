@@ -15,7 +15,7 @@ menu:
 In the next step, we want to add a task form to the application.
 
 
-# Add a Start Form
+## Add a Start Form
 
 Create a new form in Camunda Modeler and set its id to `request-loan`.
 
@@ -32,7 +32,7 @@ Open the process with the modeler. Click on the start event. In the properties p
 ![Example image](./img/modeler-start-form.png)
 
 
-# Add a Task Form
+## Add a Task Form
 
 You can add and configure the task form in a similar way with the difference,
 that you set its id to `approve-loan` and select the **Disabled** checkbox in both fields.
@@ -41,7 +41,7 @@ Save the form with the file name `approve-loan.form` to `src/main/resources`.
 
 After that, open the process with the modeler. Click on the user task. In the properties panel, click on `Forms` select `Operaton Forms` as type, insert `approve-loan` into the `Form reference` field, and choose `latest` as binding.
 
-# Adjust the deployment descriptor file
+## Adjust the deployment descriptor file
 
 Adjust the `META-INF/processes.xml` deployment descriptor file by adding the form resources:
 
@@ -69,7 +69,7 @@ Adjust the `META-INF/processes.xml` deployment descriptor file by adding the for
 </process-application>
 ```
 
-# Re-Build and Deploy
+## Re-Build and Deploy
 
 When you are done, save all resources, [perform a Maven build](../deploy/#build-the-web-application-with-maven) and [redeploy](../deploy/#deploy-to-apache-tomcat) the process application.
 

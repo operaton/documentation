@@ -15,7 +15,7 @@ menu:
 Now that you have set up the project with the correct Maven dependencies, we can start configuring the process engine.
 
 
-# Configure an Embedded Process Engine
+## Configure an Embedded Process Engine
 
 Add the following Spring beans to the `LoanApplication` class as follows:
 

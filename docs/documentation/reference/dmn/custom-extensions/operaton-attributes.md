@@ -14,7 +14,7 @@ aliases: [reference/dmn11/custom-extensions/operaton-attributes/]
 
 The following attributes are extension attributes for the `camunda` namespace `http://operaton.org/schema/1.0/dmn`.
 
-# historyTimeToLive
+## historyTimeToLive
 
 <table class="table table-striped">
   <tr>
@@ -45,7 +45,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   </tr>
 </table>
 
-# inputVariable
+## inputVariable
 
 <table class="table table-striped">
   <tr>
@@ -77,7 +77,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   </tr>
 </table>
 
-# versionTag
+## versionTag
 
 <table class="table table-striped">
   <tr>

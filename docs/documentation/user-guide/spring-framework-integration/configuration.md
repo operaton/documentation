@@ -16,7 +16,7 @@ You can use a Spring application context XML file to bootstrap the process engin
 
 Note that you can also use a [Spring JavaConfig](#using-spring-javaconfig) for bootstrapping instead of XML.
 
-# Configure an Application-Managed Process Engine
+## Configure an Application-Managed Process Engine
 
 The ProcessEngine can be configured as a regular Spring bean. The starting point of the integration is the class `org.operaton.bpm.engine.spring.ProcessEngineFactoryBean`. That bean takes a process engine configuration and creates the process engine. This means that the creation and configuration of properties for Spring is the same as documented in the configuration section. For Spring integration the configuration and engine beans will look like this:
 
@@ -35,7 +35,7 @@ The ProcessEngine can be configured as a regular Spring bean. The starting point
 Note that the processEngineConfiguration bean uses the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/spring/SpringProcessEngineConfiguration.html">SpringProcessEngineConfiguration</a> class.
 
 
-# Configure a Container-Managed Process Engine as a Spring Bean
+## Configure a Container-Managed Process Engine as a Spring Bean
 
 If you want the process engine to be registered with the Operaton ProcessEngineService, you must use `org.operaton.bpm.engine.spring.container.ManagedProcessEngineFactoryBean` instead of the ProcessEngineFactoryBean shown in the example above. You will also need to ensure:
 
@@ -66,7 +66,7 @@ If you want the process engine to be registered with the Operaton ProcessEngineS
 In that case the constructed process engine object is registered with Operaton and can be referenced for creating process application deployments and exposed through the runtime container integration.
 
 
-# Configure a Process Engine Plugin
+## Configure a Process Engine Plugin
 
 In Spring you can configure a process engine plugin by setting a list value to the
 `processEnginePlugins` property of the `processEngineConfiguration` bean:
@@ -83,7 +83,7 @@ In Spring you can configure a process engine plugin by setting a list value to t
 </bean>
 ```
 
-# Using Spring JavaConfig
+## Using Spring JavaConfig
 
 In addition to the Spring application context XML file, you can bootstrap the process engine using Spring JavaConfig. The configuration class can look like this:
 

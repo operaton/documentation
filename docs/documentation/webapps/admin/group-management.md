@@ -11,7 +11,7 @@ menu:
 ---
 
 
-# Groups Menu
+## Groups Menu
 
 ![Example img](./img/admin-groups.png)Groups Menu
 

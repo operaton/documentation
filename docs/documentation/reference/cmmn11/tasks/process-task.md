@@ -41,11 +41,11 @@ Note: The default value for the attribute `isBlocking` is `true`. To define a `n
 <processTask id="checkCreditProcess" name="Check credit" processRef="checkCreditProcess" isBlocking="false" />
 ```
 
-# Transactional Behavior
+## Transactional Behavior
 
 The activation of the process task as well as the creation and execution of the process instance are performed in the same transaction. The transaction is executed until a wait state or an asynchronous continuation is reached inside the called process instance (for further details read the [Transactions in Processes](../../../user-guide/process-engine/transactions-in-processes.md) section of the user guide). To launch a process instance asynchronously it is possible to declare the process' start event as asynchronous with the XML attribute `asyncBefore="true"`  (see [Asynchronous Instantiation](../../bpmn20/events/start-events.md)).
 
-# Process Binding
+## Process Binding
 
 By default, the process task creates a new process instance of the latest process definition with the specified key. To specify a different version of a process, it is possible to define a binding with the Operaton custom attribute `processBinding`. The following values are allowed for the attribute `processBinding`:
 
@@ -64,18 +64,18 @@ The following is an example of a process task that calls the `checkCreditProcess
 
 Note: It is also possible to use an expression for the attribute `processVersion` that must resolve to an integer when the task is executed.
 
-# Process Tenant Id
+## Process Tenant Id
 
 When the process task resolves the process definition to be called it must take into account multi tenancy.
 
-## Default Tenant Resolution
+### Default Tenant Resolution
 By default, the tenant id of the calling case definition is used to resolve the called process definition.
 That is, if the calling case definition has no tenant id, then the process task resolves a process definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling case definition has a tenant id, a process definition with the provided key and the same tenant id is resolved.
 
 Note that the tenant id of the calling case instance is not taken into account in the default behavior.
 
-## Explicit Tenant Resolution
+### Explicit Tenant Resolution
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
@@ -103,7 +103,7 @@ An expression also allows using the tenant id of the calling case instance inste
 </processTask>
 ```
 
-# Exchange Variables
+## Exchange Variables
 
 The Operaton custom extensions elements `in` and `out` allow to exchange variables between the process task (in a case instance) and the process instance that it creates: `in` elements of a process task map case variables to input variables of the launched process instance and `out` mappings of a process task map output variables of the process instance to case variables, e.g.,:
 
@@ -168,7 +168,7 @@ caseService
 
 With `local="true"` for the `in` mapping, only `var2` is mapped into the called process instance.
 
-# Pass a Business Key
+## Pass a Business Key
 
 In addition to [exchanging variables](../../cmmn11/tasks/process-task.md#exchange-variables), it is possible to pass a business key to the called process instance. Since a business key is immutable, this is one way mapping. It is not possible to have output mapping for a business key.
 
@@ -192,7 +192,7 @@ If the business key of the called process instance should be different than the 
 </processTask>
 ```
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

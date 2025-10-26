@@ -14,11 +14,11 @@ You can override the default configuration of admin using a central configuratio
 located in `app/admin/scripts/config.js`. The following configuration options are
 available:
 
-# LDAP
+## LDAP
 
 If you connect Operaton with the LDAP identity service, you have read-only access to the users and groups. Create new users and groups via the LDAP system, but not in the admin application. Find more information about how to configure the process engine in order to use the LDAP identity service [here](../../user-guide/process-engine/identity-service.md#the-ldap-identity-service).
 
-# Logo and header color
+## Logo and header color
 
 You can change the visual aspects of Admin. The user stylesheet file is located in
 `app/admin/styles/user-styles.css`. This file contains CSS, which is loaded into Admin
@@ -53,7 +53,7 @@ export default {
 }
 ```
 
-# Localization
+## Localization
 
 Admin can be localized. Operaton maintains English and German translation files.
 You can find and download community maintained translation files at the [Operaton webapp translations repository](https://github.com/operaton/operaton-webapp-translations).
@@ -83,7 +83,7 @@ To create a new localization for Admin, copy the provided language file, transla
 save it as new localization file with the corresponding language code. To make the new translation
 available, add it to the list of available locales in the configuration file.
 
-# Custom scripts
+## Custom scripts
 
 Admin allows you to include arbitrary JavaScript files. This allows you to extend admin with custom code. The script file might contain a
 custom frontend module. Admin shares the frontend module structure with [Cockpit Plugins](../cockpit/extend/plugins.md#structure-of-a-frontend-module).
@@ -99,7 +99,7 @@ export default {
 ```
 This includes a `custom-module/module.js` file. The path is relative to the `app/admin` folder in the Operaton webapp .war file.
 
-# Change CSRF cookie name
+## Change CSRF cookie name
 
 The default name of the CSRF Cookie is `XSRF-TOKEN`. When using other applications within the
 same origin, the CSRF mechanisms could interfere with each other. To avoid the name conflict, change the name of the CSRF cookie in the `config.js` file as follows:
@@ -113,7 +113,7 @@ export default {
 
 **Note:** Ensure you also change the CSRF cookie name on [server-side](../shared-options/csrf-prevention.md#cookie-name).
 
-# Disable welcome message for new users
+## Disable welcome message for new users
 
 First-time visitors are shown a message directing them to the Operaton welcome page. If you do
 not want this message to be shown, you can disable it by adjusting the `config.js` as follows:
@@ -127,7 +127,7 @@ export default {
 
 **Note:** This only affects the Admin login page. For other web apps, adjust the corresponding config file as well.
 
-# User operation log annotation length
+## User operation log annotation length
 
 The default maximum length of a user operation log annotation is 4000 characters. Some databases have smaller limits. You can change the maximum allowed input length in the `config.js` file as follows:
 
@@ -140,7 +140,7 @@ export default {
 
 **Note:** This only affects the Admin Operation Log. For the Cockpit Operation Log, check out the [Cockpit configuration](../cockpit/extend/configuration.md#user-operation-log-annotation-length).
 
-# Task worker metrics
+## Task worker metrics
 
 The task worker metrics (TW) on the metrics page are displayed by default. You can disable this behavior by adjusting the `config.js` as follows:
 
@@ -153,7 +153,7 @@ export default {
 
 If disabled, the metrics can still be displayed on-demand via a checkbox.
 
-# Advanced styles customization
+## Advanced styles customization
 
 In addition to the basic `user-styles.css` file, you can edit the source style and layout files
 using [less](http://lesscss.org/) to change the overall appearance of Admin.
@@ -166,7 +166,7 @@ at the variables defined in the following files:
  - `node_modules/operaton-commons-ui/resources/less/cam-variables.less`
    overrides some Bootstrap variables (above) and add some custom ones
 
-## Compiling with Grunt
+### Compiling with Grunt
 
 From within the `operaton-bpm-webapp` directory:
 

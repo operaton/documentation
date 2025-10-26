@@ -6,8 +6,6 @@ sidebar_position: 10
 ---
 
 
-# Configure Authentication
-
 The REST API ships with an implementation of [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). By default it is switched off, but can be activated by adding a servlet filter as follows:
 
 ```xml
@@ -36,7 +34,7 @@ Note that HTTP Basic Authentication *does not provide encryption* and should be 
 
 The authentication provider is exchangeable. You can implement the interface `org.operaton.bpm.engine.rest.security.auth.AuthenticationProvider` to provide another authentication method and change the filter's initialization parameter accordingly.
 
-# RESTEasy Specifics
+## RESTEasy Specifics
 
 The authentication filter works fine whenever the JAX-RS application containing the REST API is deployed as a servlet. This is not necessarily the case. One such case we are aware of is with some types of RESTEasy deployments:
 

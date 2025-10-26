@@ -10,7 +10,7 @@ menu:
 
 ---
 
-# Adding JSF Forms to your Process Application
+## Adding JSF Forms to your Process Application
 
 :::note[Heads-up!]
 The required CDI beans for this functionality are currently not available in [Quarkus applications](../quarkus-integration/cdi-integration.md#task-form-beans) out of the box.
@@ -47,7 +47,7 @@ This is how the forms are referenced in the BPMN 2.0 XML with the `operaton:form
 ```
 
 
-# Creating Simple User Task Forms
+## Creating Simple User Task Forms
 
 Create a JSF page in `src/main/webapp/WEB-INF` representing a form used for User Tasks. A very simple task form is shown below:
 
@@ -85,7 +85,7 @@ Create a JSF page in `src/main/webapp/WEB-INF` representing a form used for User
 Note that you need `operaton-engine-cdi` in order to have the `camundaTaskForm` bean available.
 
 
-# How does this work?
+## How does this work?
 
 If the user clicks on "Start to work on task" ![Example img](./img/start-task-button.png)Start Task Button in the tasklist, he will follow a link to this form, including the taskId and the callback URL (the URL to access the central tasklist) as GET-Parameters. Accessing this form will trigger the special CDI bean `camundaTaskForm` which
 
@@ -114,7 +114,7 @@ Submit the form by calling the `camundaTaskForm` bean again, which:
 Note that the command button doesn't have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the `completeTask` button. This will work because of the conversation running in the background.
 
 
-# Access Process Variables
+## Access Process Variables
 
 In the forms you can access your own CDI beans as usual and also access the Operaton CDI beans. This makes it easy to access process variables, e.g., via the `processVariables` CDI bean:
 
@@ -230,7 +230,7 @@ Submitting the start form now:
 Note that the command button doesn't have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the `completeProcessInstanceForm` button. This will work because of the conversation running in the background.
 
 
-# Styling your Task Forms
+## Styling your Task Forms
 
 We use [Twitter Bootstrap](http://getbootstrap.com/) in our tasklist - so best add this to your Process Application as well and you can easily polish your UI:
 

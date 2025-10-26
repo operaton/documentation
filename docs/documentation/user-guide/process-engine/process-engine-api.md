@@ -11,7 +11,7 @@ menu:
 ---
 
 
-# Services API
+## Services API
 
 The Java API is the most common way of interacting with the engine. The central starting point is the ProcessEngine, which can be created in several ways as described in the configuration section. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods. ProcessEngine and the services objects are thread safe. So you can keep a reference to 1 of those for a whole server.
 
@@ -85,7 +85,7 @@ The **[DecisionService](../process-engine/decisions/decision-service.md)** allow
 :::
 
 
-# Query API
+## Query API
 
 To query data from the engine there are multiple possibilities:
 
@@ -109,7 +109,7 @@ List<Task> tasks = taskService.createTaskQuery()
 
 You can find more information on this in the <a class="javadocref" href="">Java Docs</a>.
 
-## Query Maximum Results Limit
+### Query Maximum Results Limit
 
 Querying for results without restricting the maximum number of results or querying for a vast number
 of results can lead to a high memory consumption or even to out of memory exceptions. With the help
@@ -155,7 +155,7 @@ rely on retrieving unlimited results.
 
 [javadocs-query-unlimited-list]: javadocref_url page="org/operaton/bpm/engine/query/Query.html#unlimitedList--
 
-## Paginated Queries
+### Paginated Queries
 
 Pagination allows configuring the maximum results retrieved by a query as well as the position
 (index) of the first result.
@@ -171,7 +171,7 @@ List<Task> tasks = taskService.createTaskQuery()
 
 The query shown above retrieves 50 results starting at the result with the index 20.
 
-## OR Queries
+### OR Queries
 The default behavior of the query API links filter criteria together with an AND expression.
 OR queries enable building queries in which filter criteria are linked together with an OR expression.
 
@@ -240,12 +240,12 @@ In the query shown above the value "sales" of the filter criterion `taskCandidat
 * processDefinitionKey**In**()
 :::
 
-## REST Query API
+### REST Query API
 
 The Java Query API is exposed as REST service as well, see the [REST documentation](../../reference/rest/index.md) for details.
 
 
-## Native Queries
+### Native Queries
 
 Sometimes you need more powerful queries, e.g., queries using an OR operator or restrictions you can not express using the Query API. For these cases, we introduced native queries, which allow you to write your own SQL queries. The return type is defined by the Query object you use and the data is mapped into the correct objects, e.g., Task, ProcessInstance, Execution, etc. Since the query will be fired at the database you have to use table and column names as they are defined in the [database schema](../process-engine/database/database-schema.md). This requires some knowledge about the internal data structure and it is recommended to use native queries with care. The table names can be retrieved via the API to keep the dependency as small as possible.
 
@@ -262,7 +262,7 @@ long count = taskService.createNativeTaskQuery()
 ```
 
 
-## Custom Queries
+### Custom Queries
 
 For performance reasons it might sometimes be desirable not to query the engine objects but some own value or DTO objects collecting data from different tables - maybe including your own domain classes.
 
@@ -271,6 +271,6 @@ For performance reasons it might sometimes be desirable not to query the engine 
 :::
 
 
-## SQL Queries
+### SQL Queries
 
 The [table layout](../process-engine/database/database-schema.md) is pretty straightforward - we focused on making it easy to understand. Hence it is OK to do SQL queries for e.g., reporting use cases. Just make sure that you do not mess up the engine data by updating the tables without exactly knowing what you are doing.

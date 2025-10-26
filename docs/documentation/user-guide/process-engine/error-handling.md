@@ -10,7 +10,7 @@ menu:
 
 ---
 
-# Error Handling Strategies
+## Error Handling Strategies
 
 There are a couple of basic strategies to handle errors and exceptions within processes. The decision which strategy to use depends on:
 
@@ -19,13 +19,13 @@ There are a couple of basic strategies to handle errors and exceptions within pr
 
 In the context of the process engine, errors are normally raised as Java exceptions which you have to handle. Let's have a look at how to handle them.
 
-## Transaction Rollbacks
+### Transaction Rollbacks
 
 The standard handling strategy is that exceptions are thrown to the client, meaning that the current transaction is rolled back. This means that the process state is rolled back to the last wait state. This behavior is described in detail in the [Transactions in Processes](../process-engine/transactions-in-processes.md) section of the [User Guide](../index.md). Error handling is delegated to the client by the engine.
 
 Let's show this in a concrete example: the user gets an error dialog on the frontend stating that the stock management software is currently not reachable due to network errors. To perform a retry, the user might have to click the same button again. Even if this is often not desired it is still a simple strategy applicable in a lot of situations.
 
-## Async and Failed Jobs
+### Async and Failed Jobs
 
 If you don't want the exception being shown to the user, one option is to make service calls, which might cause an error, async (as described in [Transactions in Processes](../process-engine/transactions-in-processes.md)). In that case the exception is stored in the process engine database and the [Job](../process-engine/the-job-executor.md) in the background is marked as failed (to be more precise, the exception is stored and some retry counter is decremented).
 
@@ -33,7 +33,7 @@ In the example above this means that the user will not see an error but an "ever
 
 This strategy is pretty powerful and applied often in real-life projects, however, it still hides the error in the BPMN diagram, so for business errors which you want to be visible in the process diagram, it would be better to use [Error Events](#bpmn-2-0-error-event).
 
-## Catch Exception and use Data Based XOR-Gateway
+### Catch Exception and use Data Based XOR-Gateway
 
 If you call Java Code which can throw an exception, you can catch the exception within the Java Delegate, CDI Bean or whatsoever. Maybe it is already sufficient to log some information and go on, meaning that you ignore the error. More often you write the result into a process variable and model an XOR-Gateway later in the process flow to take a different path if that error occurs.
 
@@ -45,7 +45,7 @@ Example:
 
 We trigger a "check data completeness" task. The Java Service might throw a "DataIncompleteException". However, if we check for completeness, incomplete data is not an exception, but an expected result, so we prefer to use an XOR-Gateway in the process flow which evaluates a process variable, e.g., ```"#{dataComplete==false}"```.
 
-## BPMN 2.0 Error Event
+### BPMN 2.0 Error Event
 
 The BPMN 2.0 error event gives you the possibility to explicitly model errors, tackling the use case of business errors. The most prominent example is the "intermediate catching error event", which can be attached to the boundary of an activity. Defining a boundary error event makes most sense on an embedded subprocess, a call activity or a Service Task. An error will cause the alternative process flow to be triggered:
 
@@ -54,20 +54,20 @@ The BPMN 2.0 error event gives you the possibility to explicitly model errors, t
 
 See the [Error Events](../../reference/bpmn20/events/error-events.md) section of the [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) and the [Throwing Errors from Delegation Code](../process-engine/delegation-code.md#throw-bpmn-errors-from-delegation-code) section of the [User Guide](../index.md) for more information.
 
-## BPMN 2.0 Compensation and Business Transactions
+### BPMN 2.0 Compensation and Business Transactions
 
 BPMN 2.0 transactions and compensations allow you to model business transaction boundaries (however, not in a technical ACID manner) and make sure already executed actions are compensated during a rollback. Compensation means to make the effect of the action invisible, e.g. book in goods if you have previously booked out the goods. See the [BPMN Compensation event](../../reference/bpmn20/events/cancel-and-compensation-events.md) and the [BPMN Transaction Subprocess](../../reference/bpmn20/subprocesses/transaction-subprocess.md) sections of the [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) for details.
 
 
-# Monitoring and Recovery Strategies
+## Monitoring and Recovery Strategies
 
 In case the error occurred, different recovery strategies can be applied.
 
-## Let the User Retry
+### Let the User Retry
 
 As mentioned above, the simplest error handling strategy is to throw the exception to the client, meaning that the user has to retry the action himself. How he does that is up to the user, normally reloading the page or clicking again.
 
-## Retry Failed Jobs
+### Retry Failed Jobs
 
 If you use Jobs (`async`), you can leverage Cockpit as monitoring tool to handle failed jobs, in this case no end user sees the exception. Then you normally see failures in cockpit when the retries are depleted (see the [Failed Jobs](../process-engine/the-job-executor.md#failed-jobs) section of the [Web Applications](../../webapps/cockpit/index.md) for more information).
 
@@ -82,7 +82,7 @@ for (Job failedJob : failedJobs) {
 }
 ```
 
-## Explicit Modeling
+### Explicit Modeling
 
 Of course you can always explicitly model a retry mechanism as pointed out in [Where is the retry in BPMN 2.0](http://www.bpm-guide.de/2012/06/15/where-is-the-retry-in-bpmn-2-0/):
 
@@ -90,7 +90,7 @@ Of course you can always explicitly model a retry mechanism as pointed out in [W
 
 We would recommend to limit it to cases where you want to see it in the process diagram for a good reason. We prefer asynchronous continuation, as it doesn't bloat your process diagram and basically can do the same thing with even less runtime overhead, as "walking" through the modeled loop involves additional action, e.g., writing an audit log.
 
-## User Tasks for Operations
+### User Tasks for Operations
 
 We often see something like this in projects:
 
@@ -100,7 +100,7 @@ Actually this is a valid approach in which you assign errors to an operator as U
 
 Having a failed jobs list instead of using the "normal" task list feels like a more natural approach for this situation, which is why we normally recommend the other possibility and do not consider this to be best practice.
 
-# Exception codes
+## Exception codes
 
 Sometimes an API call doesn't succeed because a problem occurs. The Java programming model uses exceptions
 to handle these situations. Exceptions that occur on the process engine's application level are
@@ -127,12 +127,12 @@ problems and react accordingly.
 
 You can access error codes via Java as well as [REST API](../../reference/rest/overview/index.md#exception-codes).
 
-## Built-in codes
+### Built-in codes
 
 We identified common situations in which the engine throws an exception and assigned a built-in
 error code to the exception. You can look up the built-in codes in the [Categories, ranges, and codes](#categories-ranges-and-codes) section.
 
-## Custom codes
+### Custom codes
 
 Sometimes you may want to assign codes to specific errors Operaton hasn't covered so far.
 You can either define custom codes from delegation code or by [registering your custom `ExceptionCodeProvider`](#register-a-custom-code-provider).
@@ -141,7 +141,7 @@ You can either define custom codes from delegation code or by [registering your 
 
 Learn more on how to assign a custom error code to an exception in the documentation about [Delegation Code](../process-engine/delegation-code.md#exception-codes).
 
-## Configuration
+### Configuration
 
 You can configure the exception error codes feature in your [process engine configuration](../../reference/deployment-descriptors/tags/process-engine.md#exception-codes):
 
@@ -179,7 +179,7 @@ engineConfig.setCustomExceptionCodeProvider(new ExceptionCodeProvider() {
 If your custom error code violates the [reserved code range](#reserved-code-range), it will be overridden with `0` unless you disable the built-in code provider.
 :::
 
-## Categories, ranges, and codes
+### Categories, ranges, and codes
 
 In the table below, you will find an overview of all categories, ranges, and codes:
 

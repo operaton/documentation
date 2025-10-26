@@ -40,7 +40,7 @@ XML element.
 </definitions>
 ```
 
-# Input Id
+## Input Id
 
 The input id is a unique identifier of the decision table input. It is used by
 Operaton to reference the input in the history of evaluated
@@ -55,7 +55,7 @@ the `id` attribute of the `input` XML element.
 </input>
 ```
 
-# Input Label
+## Input Label
 
 ![Example img](./img/input-label.png)Input Label" class="no-lightbox
 
@@ -71,7 +71,7 @@ recommended, since it helps to understand the decision.
 </input>
 ```
 
-# Input Expression
+## Input Expression
 
 ![Example img](./img/input-expression.png)Input Expression" class="no-lightbox
 
@@ -89,7 +89,7 @@ expression is set inside a `text` element that is a child of the
 </input>
 ```
 
-# Input Type Definition
+## Input Type Definition
 
 ![Example img](./img/input-type-definition.png)Input Type Definition" class="no-lightbox
 
@@ -110,7 +110,7 @@ Note that the type is not required but recommended, since it helps to understand
 the possible input values and provides a type safety to be aware of unexpected
 input values.
 
-# Input Expression Language
+## Input Expression Language
 
 The expression language of the input expression can be specified by the
 `expressionLanguage` attribute on the `inputExpression` XML element. The
@@ -142,7 +142,7 @@ is used instead. The default expression language for input expressions is FEEL.
 Please refer to the [User Guide][default EL] to read more about expression
 languages.
 
-# Input Variable Name
+## Input Variable Name
 
 When the input expression is evaluated then the return value is stored in a variable.
 The name of the variable can be specified by the `operaton:inputVariable`

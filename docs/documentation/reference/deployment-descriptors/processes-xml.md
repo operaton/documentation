@@ -17,17 +17,17 @@ The `processes.xml` file is deployed as part of a process application and is use
 See the [processes.xml](../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md) section of the <a href="../../user-guide">User Guide</a> for more details..
 
 
-# Xml Schema Namespace
+## Xml Schema Namespace
 
 The namespace for the processes.xml file is `http://www.operaton.org/schema/1.0/ProcessApplication`. The XSD file can be found in the `operaton-engine.jar` file.
 
 
-# Empty processes.xml
+## Empty processes.xml
 
 The `processes.xml` may be left blank (can be empty). In this case, default values are used. See the [Empty processes.xml](../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md#empty-processes-xml) section of the [User Guide](../../user-guide/index.md) for more details.
 
 
-# Example
+## Example
 
 ```xml
 <process-application
@@ -46,7 +46,7 @@ The `processes.xml` may be left blank (can be empty). In this case, default valu
 ```
 
 
-# Syntax Reference
+## Syntax Reference
 
 <table class="table table-striped">
   <tr>

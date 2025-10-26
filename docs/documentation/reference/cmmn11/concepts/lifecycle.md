@@ -17,7 +17,7 @@ The following descriptions cover the CMMN lifecycles as supported by the Operato
 
 The descriptions in this section are general for the constructs they describe. Considerations that are specific for individual plan item definitions can be found in the respective sections of this guide.
 
-# Lifecycles By Example
+## Lifecycles By Example
 
 To understand the role lifecycles play for CMMN execution, consider the following case:
 
@@ -61,7 +61,7 @@ caseExecution.isCompleted();
 
 Note that a `CaseExecution` object corresponds to a plan item, here the plan item for Task A.
 
-# Case Instance Lifecycle
+## Case Instance Lifecycle
 
 *Case instance* refers to an instance of the case plan model. More specific, it is an instance of the single top-level stage in a case definition. The lifecycle of a case instance is the following:
 
@@ -108,7 +108,7 @@ States:
   </tr>
 </table>
 
-# Task/Stage Lifecycle
+## Task/Stage Lifecycle
 
 The lifecycle of a task or stage plan item is the following:
 
@@ -171,7 +171,7 @@ States:
   </tr>
 </table>
 
-# Milestone Lifecycle
+## Milestone Lifecycle
 
 The lifecycle of a milestone plan item is the following:
 

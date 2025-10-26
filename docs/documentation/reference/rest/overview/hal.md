@@ -33,10 +33,10 @@ property `_embedded` includes other linked resources in the representing resourc
 embedded resource will be structured as a `HAL` resource.
 
 
-# Example: Resource
+## Example: Resource
 
 
-## Request
+### Request
 
 GET `/task/a-task-id`
 
@@ -45,7 +45,7 @@ Request Header:
 Accept: application/hal+json
 ```
 
-## Response
+### Response
 
 ```json
 {
@@ -80,9 +80,9 @@ Accept: application/hal+json
 ```
 
 
-# Example: Collection
+## Example: Collection
 
-## Request
+### Request
 
 GET `/task`
 
@@ -91,7 +91,7 @@ Request Header:
 Accept: application/hal+json
 ```
 
-## Response
+### Response
 
 ```json
 {
@@ -138,7 +138,7 @@ Accept: application/hal+json
 ```
 
 
-# Caching of HAL Relations
+## Caching of HAL Relations
 
 During the generation of a HAL response, linked resources are resolved to embed
 them.  Some of these resolved resources, like process definitions or users, are
@@ -190,7 +190,7 @@ case the REST API is embedded into the Operaton Web Application).
 </web-app>
 ```
 
-## The HalRelationCacheBootstrap Listener
+### The HalRelationCacheBootstrap Listener
 
 To bootstrap the caching, the `HalRelationCacheBootstrap` context listener is
 used:
@@ -229,7 +229,7 @@ as JSON and consists of two properties:
   </tr>
 </table>
 
-## DefaultHalResourceCache Configuration Options
+### DefaultHalResourceCache Configuration Options
 
 The simple default cache implementation `DefaultHalResourceCache` provides following configuration
 options:
@@ -254,7 +254,7 @@ options:
   </tr>
 </table>
 
-## List of Resources Which Support Caching
+### List of Resources Which Support Caching
 
 * Case Definition: `org.operaton.bpm.engine.rest.hal.caseDefinition.HalCaseDefinition`
 * Group: `org.operaton.bpm.engine.rest.hal.group.HalGroup`

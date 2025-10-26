@@ -12,10 +12,10 @@ menu:
 
 This page lists the most commonly used Apache Maven Coordinates for Operaton.
 
-Most Operaton artifacts are pushed to [maven central](https://central.sonatype.com/).
+Most Operaton artifacts are pushed to [maven central](https://central.sonatype.com/search?q=org.operaton.bpm).
 
 
-# Operaton BOM (Bill of Materials)
+## Operaton BOM (Bill of Materials)
 
 ```xml
 <dependencyManagement>
@@ -23,7 +23,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
     <dependency>
       <groupId>org.operaton.bpm</groupId>
       <artifactId>operaton-bom</artifactId>
-      <version>v1.0.0-beta-3</version>
+      <version>1.0.0-rc-1</version>
       <scope>import</scope>
       <type>pom</type>
     </dependency>
@@ -35,7 +35,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
   Please import the Operaton BOM if you use multiple Operaton projects. The BOM defines versions for all Operaton projects. This way it is ensured that no incompatible versions are imported.
 :::
 
-# Operaton Engine
+## Operaton Engine
 
 ```xml
 <dependency>
@@ -45,7 +45,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
 ```
 
 
-# Operaton Engine Spring Integration
+## Operaton Engine Spring Integration
 
 The `operaton-engine` Spring integration for Spring Framework 5:
 
@@ -65,7 +65,7 @@ The `operaton-engine` Spring integration for Spring Framework 6:
 </dependency>
 ```
 
-# Operaton Engine CDI Integration
+## Operaton Engine CDI Integration
 
 ```xml
 <dependency>
@@ -74,7 +74,7 @@ The `operaton-engine` Spring integration for Spring Framework 6:
 </dependency>
 ```
 
-# Operaton DMN Engine BOM (Bill of Materials)
+## Operaton DMN Engine BOM (Bill of Materials)
 This BOM allows to use the DMN engine standalone without the BPMN engine and the rest of the Operaton Platform.
 
 ```xml
@@ -82,14 +82,14 @@ This BOM allows to use the DMN engine standalone without the BPMN engine and the
   <dependency>
     <groupId>org.operaton.bpm.dmn</groupId>
     <artifactId>operaton-engine-dmn-bom</artifactId>
-    <version>v1.0.0-beta-3</version>
+    <version>1.0.0-rc-1</version>
     <type>pom</type>
     <scope>import</scope>
   </dependency>
 </dependencyManagement>
 ```
 
-# Operaton DMN
+## Operaton DMN
 This dependency allows to use DMN engine standalone without the BPMN engine and the rest of the Operaton Platform.
 It is not needed when using `operaton-engine` because that already contains the DMN engine.
 
@@ -100,7 +100,7 @@ It is not needed when using `operaton-engine` because that already contains the 
 </dependency>
 ```
 
-# Process Application EJB Client
+## Process Application EJB Client
 
 ```xml
 <dependency>
@@ -109,7 +109,7 @@ It is not needed when using `operaton-engine` because that already contains the 
 </dependency>
 ```
 
-# Other Operaton Modules:
+## Other Operaton Modules:
 
 * [DMN Engine](/manual/latest/user-guide/dmn-engine/embed/#maven-coordinates)
 * [Operaton Spin](/manual/latest/reference/spin)

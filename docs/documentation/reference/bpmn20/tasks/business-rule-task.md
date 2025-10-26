@@ -13,7 +13,7 @@ menu:
 
 A Business Rule Task is used to synchronously execute one or more rules. It is also possible to call Java code or providing a work item for an external worker to complete asynchronously or invoking a logic which is implemented in form of webservices.
 
-# Using Operaton DMN Engine
+## Using Operaton DMN Engine
 
 You can use the Operaton DMN engine integration to evaluate a DMN decision. You have
 to specify the decision key to evaluate as the `operaton:decisionRef` attribute. Additionally,
@@ -67,18 +67,18 @@ See the [User Guide](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#t
 The result variable should not have the name `decisionResult`, as the decision result itself is saved in a variable with this name. Otherwise, an exception is thrown while saving the result variable.
 :::
 
-# DecisionRef Tenant Id
+## DecisionRef Tenant Id
 
 When the Business Rule Task resolves the decision definition to be evaluated it must take multi tenancy into account.
 
-## Default Tenant Resolution
+### Default Tenant Resolution
 By default, the tenant id of the calling process definition is used to evaluate the decision definition.
 That is, if the calling process definition has no tenant id, then the Business Rule Task evaluates a decision definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling process definition has a tenant id, a decision definition with the provided key and the same tenant id is evaluated.
 
 Note that the tenant id of the calling process instance is not taken into account in the default behavior.
 
-## Explicit Tenant Resolution
+### Explicit Tenant Resolution
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
@@ -106,7 +106,7 @@ An expression also allows using the tenant id of the calling process instance in
 </businessRuleTask>
 ```
 
-# Using a Custom Rule Engine
+## Using a Custom Rule Engine
 
 You can integrate with other rule engines. To do so, you have to plug in your
 implementation of the rule task the same way as in a Service Task.
@@ -117,18 +117,18 @@ implementation of the rule task the same way as in a Service Task.
 ```
 
 
-# Using Delegate Code
+## Using Delegate Code
 
 Alternatively, a Business Rule Task can be implemented using Java Delegation just as a Service Task. For more
 information on this please see the [Service Tasks](service-task.md) documentation.
 
 
-# Implementing as an External Task
+## Implementing as an External Task
 
 In addition to the above, a Business Rule Task can be implemented via the [External Task](../../../user-guide/process-engine/external-tasks.md) mechanism where an external system polls the process engine for work to do. See the section on [Service Tasks](service-task.md#external-tasks) for more information about how to configure an external task.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -198,7 +198,7 @@ In addition to the above, a Business Rule Task can be implemented via the [Exter
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 * [Decisions](../../../user-guide/process-engine/decisions/index.md)
 * [Service Tasks](./service-task.md)

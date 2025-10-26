@@ -24,7 +24,7 @@ The process engine supports different types of start events:
 The engine requires at least one start event to instantiate a process. There can be a maximum of one blank or timer start event per process definition. There can be multiple message or signal start events.
 
 
-# Asynchronous Instantiation
+## Asynchronous Instantiation
 
 A start event may be declared as asynchronous with `operaton:asyncBefore="true"`
 
@@ -35,7 +35,7 @@ A start event may be declared as asynchronous with `operaton:asyncBefore="true"`
 This will ensure that the process engine creates a process instance when the process is instantiated, but the execution of the initial activities is not done synchronously. Instead, a job is created and asynchronously processed by the [job executor](../../../user-guide/process-engine/the-job-executor.md). See the [Asynchronous Continuations](../../../user-guide/process-engine/transactions-in-processes.md#asynchronous-continuations) section of the [User Guide](../../../user-guide/index.md) for some background information.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

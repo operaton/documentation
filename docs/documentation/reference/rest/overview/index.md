@@ -5,12 +5,10 @@ sidebar_position: 10
 
 ---
 
-# Overview
-
 The goal of the REST API is to provide access to all relevant interfaces of the engine.
 
 
-# Structure
+## Structure
 
 These documents explain all existing methods in the REST API. For each method they provide:
 
@@ -22,14 +20,14 @@ These documents explain all existing methods in the REST API. For each method th
 * A brief example request and response
 
 
-# Engine Usage
+## Engine Usage
 
 The methods as described work on the default process engine as given by the available `ProcessEngineProvider` service.
 
 You may prepend `/engine/{name}` to any of the methods (unless otherwise documented) to access another engine where `{name}` is the name of the process engine as returned by `ProcessEngine#getName()`, e.g., `/engine/myEngineName/task`.
 
 
-# Error Handling
+## Error Handling
 
 For every method this documentation gives possible HTTP status codes. The error explanations do not cover all possible error causes that may arise when the request is served, for example, most of the requests will not work properly if there are problems with database access. Any of these undocumented errors will be translated to a HTTP 500 error.
 
@@ -43,7 +41,7 @@ All errors also provide a JSON response body of the form:
   }
 ```
 
-## Authorization Exceptions
+### Authorization Exceptions
 
 If an already authenticated user interacts with a resource in an unauthorized way, the status code of the response will be set to `403 Forbidden`. Details about the unauthorized interaction are provided in the response body.
 
@@ -63,7 +61,7 @@ If an already authenticated user interacts with a resource in an unauthorized wa
  "resourceId" : "Mary"}
 ```
 
-## Migration Validation Exceptions
+### Migration Validation Exceptions
 
 If a migration plan from one process definition version to another is not
 valid, a migration exception is thrown. It can be a *migration plan validation
@@ -295,7 +293,7 @@ Every validation report object contains the following properties:
 }
 ```
 
-## Parse Exceptions
+### Parse Exceptions
 
 If the process bpmn resource cannot be parsed during deployment, the deployment of it will fail and the status code of the response will be set to `400 Bad Request`. Details about the parsing problems are provided in the response body.
 
@@ -339,12 +337,12 @@ If the process bpmn resource cannot be parsed during deployment, the deployment 
 	}
 ```
 
-## Query Maximum Results Limit Exceptions
+### Query Maximum Results Limit Exceptions
 
 When the [maximum results limit of a query](../../../user-guide/process-engine/process-engine-api.md#query-maximum-results-limit)
 is exceeded, an exception is thrown which results in an HTTP status code 400.
 
-## Exception codes
+### Exception codes
 
 Whenever an error occurs, the REST API exposes a property `"code"` with a numeric code as value in
 the response body of the failed request. Like this, your client application can handle the error in
@@ -354,6 +352,6 @@ property might change with newer versions.
 You can look up the meaning of all built-in codes and learn how to add custom codes in the
 [User Guide](../../../user-guide/process-engine/error-handling.md#exception-codes).
 
-# Authentication
+## Authentication
 
 The REST API ships with an implementation of [HTTP Basic Authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). By default it is switched off (in the rest-api web application and therefore also in the pre-built Operaton distributions). You can activate it by adding a servlet filter as described in the [Authentication](authentication.md) section.

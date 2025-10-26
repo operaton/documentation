@@ -5,7 +5,7 @@ sidebar_position: 3
 description: "Install and update the Operaton database schema used by the Process Engine."
 
 ---
-# Install the Database Schema
+## Install the Database Schema
 
 This document will guide you through the installation and update of the Operaton [database schema](../user-guide/process-engine/database/database-schema.md) used by the process engine.
 Regardless of the [architecture of your application setup](../introduction/architecture.md), the process engine always requires this database schema.
@@ -27,13 +27,13 @@ You may have to change the default setting on your database when installing Oper
 For more information see the documentation on [isolation levels](../user-guide/process-engine/database/database-configuration.md#isolation-level-configuration).
 :::
 
-# Installation
+## Installation
 
 You can either install your database schema using Liquibase or using the provided SQL scripts manually. You can switch between those mechanisms when updating your Operaton version at a later stage if desired.
 However, this might come with additional preparation work to work reliably.
 The [update](#update) paragraph provides more details on this topic.
 
-## Liquibase installation
+### Liquibase installation
 
 Operaton comes with a maintained changelog file that Liquibase can consume.
 This changelog defines which SQL statements to execute on a database.
@@ -68,7 +68,7 @@ Liquibase provides additional commands to preview all changes that will be appli
 Furthermore, if you have defined a specific prefix for the entities of your database, you will have to manually adjust the `create` scripts in the `liquibase/baseline` directory accordingly so that the tables are created with the prefix.
 :::
 
-## Manual installation
+### Manual installation
 
 To install the database schema required for Operaton, we provide a set of scripts with prepared DDL statements.
 Those scripts create all required tables and default indices. You can find the provided SQL scripts on our [Artifact Repository].
@@ -92,7 +92,7 @@ Consult the [manual installation guide](../installation/full/index.md) of your d
 If you have defined a specific prefix for the entities of your database, you will have to manually adjust the `create` scripts accordingly so that the tables are created with the prefix.
 :::
 
-# Update
+## Update
 
 Updating to a newer Operaton minor version also requires a database schema update. You can reuse all the options available for a [schema installation](#installation) here as well.
 If you are switching from one option to another, you might need to perform additional preparation work to update reliably.
@@ -101,7 +101,7 @@ The individual sections on the mechanisms will provide details if necessary.
 In case you are just updating to a newer patch level of your Operaton installation, a schema update might not be necessary.
 Section [patch level update](#patch-level-update) provides details on how this can be achieved depending on the mechanism you want to apply.
 
-## Liquibase update
+### Liquibase update
 
 This section assumes you are already set up with Liquibase as described in the [installation section](#liquibase-installation).
 In case you have not set up Liquibase itself yet and want to update a database that you [manually installed](#manual-installation) and updated until now, please consult the [migration section](#migrate-to-liquibase) first.
@@ -128,7 +128,7 @@ Liquibase takes care of determining which upgrade scripts to apply automatically
 Liquibase provides additional commands to preview all changes applied by commands that execute SQL statements on a database. For the `update` command, you can execute the [updateSql](https://docs.liquibase.com/commands/community/updatesql.html) command to inspect all statements that Liquibase will issue on your database without actually executing them.
 :::
 
-### Migrate to Liquibase
+#### Migrate to Liquibase
 
 Liquibase provides workflows to update databases that were not set up using Liquibase from the very beginning.
 For such a scenario to work, you need to populate a tracking table that represents the current state of your database with regards to the changelog file you want to update against.
@@ -146,7 +146,7 @@ Liquibase uses this information to create the tracking tables and mark all chang
 Liquibase determines if there are any changes that it needs to apply to your database for any subsequent `update` commands.
 You have migrated your manual installation to Liquibase.
 
-## Manual update
+### Manual update
 
 Updating from your current minor version (`$X`) to its follow-up version (`$Y`) requires updating the database schema as well.
 Follow the outlined procedure to perform this update:

@@ -48,7 +48,7 @@ Process `exampleProcess:2`:
 
 <div data-bpmn-diagram="../bpmn/process-instance-migration/example2"></div>
 
-# Process Instance Migration by Example
+## Process Instance Migration by Example
 
 We can define a migration plan using the API entrance point `RuntimeService#createMigrationPlan`.
 It returns a fluent builder to create a migration plan. For our example, the code looks like:
@@ -111,12 +111,12 @@ successfully. It still has the same properties such as assignee or name.
 From the accountant's perspective, migration is completely transparent while working on a task.
 
 
-# API
+## API
 
 The following gives a structured overview of the Java API for process instance migration. Note that these operations are also available
 via restref text="REST" tag="Migration.
 
-## Creating a Migration Plan
+### Creating a Migration Plan
 
 A migration plan can be created by using the API `RuntimeService#createMigrationPlan`.
 It defines how migration should be performed.
@@ -214,7 +214,7 @@ you can [set transient variables] synchronously.
 
 [set transient variables]: ../process-engine/variables.md#transient-variables
 
-## Generating a migration plan
+### Generating a migration plan
 
 In addition to manually specifying all migration instructions, the `MigrationPlanBuilder`
 is able to generate migration instructions for all *equal* activities in the source
@@ -256,7 +256,7 @@ MigrationPlan migrationPlan = processEngine.getRuntimeService()
   .build();
 ```
 
-## Executing a migration plan
+### Executing a migration plan
 
 Migration plans can be applied to a set of process instances of the source process
 definition by using the API Method `RuntimeService#newMigration`.
@@ -419,11 +419,11 @@ of the target process. Note that it is also possible to
 [skip the execution of custom code](#skipping-listeners-and-input-output-mappings)
 during migration.
 
-# BPMN-specific API and Effects
+## BPMN-specific API and Effects
 
 Depending on the type of the activities a process model contains, migration has varying effects.
 
-## Tasks
+### Tasks
 
 ### User Task
 
@@ -453,7 +453,7 @@ apart from activity id, process definition key, and process definition id. In pa
 
 It is possible to map activities that are implemented as external tasks to each other even if they have different types. For example, an external send task can be mapped to an external service task.
 
-## Gateways
+### Gateways
 
 ### Inclusive & Parallel Gateway
 
@@ -473,7 +473,7 @@ In order to migrate the gateway's event triggers (event subscriptions, jobs), th
 See the [events section](#events) for the semantics of instructions between events.
 
 
-## Events
+### Events
 
 For all kinds of catching events (start, intermediate, boundary), a migration instruction can be supplied if they define a persistent event
 trigger. This is the case for message, conditional, timer, and signal events.
@@ -613,7 +613,7 @@ If this process instance is migrated (with *Assess Credit Worthiness* being mapp
 afterwards is **not** going to compensate *Archive Application*.
 
 
-## Subprocess
+### Subprocess
 
 If a migration instruction applies to an embedded/event/transaction sub process, it is migrated to its target sub process in the target process definition.
 This preserves sub process state such as variables. In case no instruction applies, the instance is cancelled before migration is performed.
@@ -626,7 +626,7 @@ Embedded/Event/Transaction sub processes can be mapped interchangeably. For exam
 Call activities are migrated like any other activity. The called instance, be it a BPMN process or a CMMN case, is not changed. It can be migrated separately.
 
 
-## Flow Node Markers
+### Flow Node Markers
 
 ### Multi-Instance
 
@@ -656,11 +656,11 @@ When an asynchronous continuation is active, i.e., the corresponding job has not
 :::
 
 
-# Operational Semantics
+## Operational Semantics
 
 In the following, the exact semantics of migration are documented. Reading this section is recommended to fully understand the effects, power, and limitations of process instance migration.
 
-## Migration Procedure
+### Migration Procedure
 
 Migration of a process instance follows these steps:
 
@@ -724,7 +724,7 @@ in the activity instance tree and its execution representation. Furthermore, it 
 * Event subscription instances
 
 
-## Validation
+### Validation
 
 A migration plan is validated at two points in time: When it is created, its
 instructions are validated for static aspects. When it is applied to a

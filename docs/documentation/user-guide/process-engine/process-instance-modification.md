@@ -30,7 +30,7 @@ To perform such an operation, the process engine offers the *process instance mo
  An activity which tries to modify its own process instance can cause undefined behavior, which should be avoided.
 :::
 
-# Process Instance Modification by Example
+## Process Instance Modification by Example
 
 As an example, consider the following process model:
 
@@ -117,7 +117,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
 ```
 
 
-## Process Instance Modification in JUnit Tests
+### Process Instance Modification in JUnit Tests
 
 Process instance modification can be very useful in JUnit Tests. You can skip the long part to run through the process from the start to the point you want to test and jump directly to the activity or gateway to test.
 
@@ -134,14 +134,14 @@ ProcessInstance processInstance = runtimeService.createProcessInstanceByKey("Loa
 
 In a JUnit test, you can assert that the processInstance is waiting at 'Accept Loan Application', now.
 
-# Operational Semantics
+## Operational Semantics
 
 The following sections specify the exact semantics of process instance modification and should be read in order to understand the modification effects in varying circumstances. If not otherwise noted, the following examples refer to the following process model for illustration:
 
 <div data-bpmn-diagram="../bpmn/example1"></div>
 
 
-## Modification Instruction Types
+### Modification Instruction Types
 
 The fluent process instance modification builder offers the following instructions to be submitted:
 
@@ -213,7 +213,7 @@ ProcessInstanceModificationBuilder#cancelAllForActivity(String activityId)
 For convenience, it is also possible to cancel all activity and transition instances of a given activity by the instruction `cancelAllForActivity`.
 
 
-## Provide Variables
+### Provide Variables
 
 With every instantiating instruction (i.e., `startBeforeActivity`, `startAfterActivity`, or `startTransition`), it is possible to submit process variables.
 The API offers the methods
@@ -228,7 +228,7 @@ Variables are set **after** the [necessary scopes for instantiation are created]
 See the [variables section of this guide](../process-engine/variables.md) for details on variables and scopes in general.
 
 
-## Activity-Instance-based API
+### Activity-Instance-based API
 
 The process instance modification API is based on *activity instances*. The activity instance tree of a process instance can be retrieved with the following method:
 
@@ -269,7 +269,7 @@ ActivityInstance assessCreditWorthinessInstances = activityInstance.getActivityI
 Compared to activity instances, *transition instances* do not represent active activities but activities that are about to be entered or about to be left. This is the case when jobs for asynchronous continuations exist but have not been executed yet. For an activity instance, child transition instances can be retrieved with the method `getChildTransitionInstances` and the API for transition instances is similar to that for activity instances.
 
 
-## Nested Instantiation
+### Nested Instantiation
 
 Assume a process instance of the above example process where the activity *Decline Loan Application* is active. Now we submit the instruction to start before the activity *Assess Credit Worthiness*. When applying this instruction, the process engine makes sure to instantiate all parent scopes that are not active yet. In this case, before starting the activity, the process engine instantiates the *Evaluate Loan Application* sub process. Where before the activity instance tree was
 
@@ -294,7 +294,7 @@ Apart from instantiating these parent scopes, the engine also ensures to registe
 Starting the activity *Assess Credit Worthiness* also registers an event subscription for the message boundary event *Cancelation Notice Received* such that it is possible to cancel the sub process this way.
 
 
-## Ancestor Selection for Instantiation
+### Ancestor Selection for Instantiation
 
 By default, starting an activity instantiates all parent scopes that are not instantiated yet. When the activity instance tree is the following:
 
@@ -354,7 +354,7 @@ ProcessInstance
 The sub process was started a second time.
 
 
-## Cancelation Propagation
+### Cancelation Propagation
 
 Canceling an activity instance propagates to parent activity instances that do not contain other activity instances. This behavior ensures that the process instance is not left in an execution state that makes no sense. This means, when a single activity is active in a sub process and that activity instance is canceled, the sub process is canceled as well. Consider the following activity instance tree:
 
@@ -392,7 +392,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
 ```
 
 
-## Instruction Execution Order
+### Instruction Execution Order
 
 Modification instructions are always executed in the order they are submitted. Thus, performing the same instructions in a different order can make a difference. Consider the following activity instance tree:
 
@@ -427,7 +427,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
 Due to the [default ancestor selection](#ancestor-selection-for-instantiation) during instantiation and the fact that cancelation does not propagate to the sub process instance in this case, the sub process instance is the same after modification as it was before. Related entities like variables and event subscriptions are preserved.
 
 
-## Start Activities with Interrupting/Canceling Semantics
+### Start Activities with Interrupting/Canceling Semantics
 
 Process instance modification respects any interrupting or canceling semantics of the activities to be started. In particular, starting an interrupting boundary event or an interrupting event sub process will cancel/interrupt the activity it is defined on/in. Consider the following process:
 
@@ -471,7 +471,7 @@ ProcessInstance
 ```
 
 
-## Modify Multi-Instance Activity Instances
+### Modify Multi-Instance Activity Instances
 
 Modification also works for multi-instance activities. We distinguish in the following between the *multi-instance body* and the *inner activity*. The inner activity is the actual activity and has the ID as declared in the process model. The multi-instance body is a scope around this activity that is not represented in the process model as a distinct element. For an activity with id `anActivityId`, the multi-instance body has by convention the id `anActivityId#multiInstanceBody`.
 
@@ -535,7 +535,7 @@ ProcessInstance
     Contact Customer
 ```
 
-## Asynchronous modification of a process instance
+### Asynchronous modification of a process instance
 
 It is possible to execute modification of single process instance asynchronous. The [modification](../process-engine/process-instance-modification.md#modification-instruction-types) instructions are the same as the synchronous modification and the syntax of fluent builder is the following:
 
@@ -548,7 +548,7 @@ Batch modificationBatch = runtimeService.createProcessInstanceModification(proce
 This would create a modification [batch](../process-engine/batch.md) which will be executed asynchronously.
 Providing variables is not supported when executing async modification of single process instance. 
 
-## Modification of Multiple Process Instances
+### Modification of Multiple Process Instances
 
 When there are multiple process instances which fulfill a specific criteria, it is possible to modify them at once using `RuntimeService.createModification(...)`. This method allows to specify
 the modification instructions and IDs of process instances that should be modified. It is required that the process instances belong to the given process definition. 
@@ -598,11 +598,11 @@ Batch batch = runtimeService.createModification("exampleProcessDefinitionId")
   .executeAsync();
 ```
 
-## Skip Listener and Input/Output Invocation
+### Skip Listener and Input/Output Invocation
 
 It is possible to skip invocations of execution and task listeners as well as input/output mappings for the transaction that performs the modification. This can be useful when the modification is executed on a system that has no access to the involved process application deployments and their contained classes. Listener and ioMapping invocations can be skipped by using the modification builder's method `execute(boolean skipCustomListeners, boolean skipIoMappings)`.
 
-## Annotation
+### Annotation
 
 Use the `annotation` option to pass an arbitrary text annotation for auditing reasons.
 
@@ -615,7 +615,7 @@ runtimeService.createProcessInstanceModification(processInstanceId)
 ```
 It will be visible in [User Operation Log](../process-engine/history/user-operation-log.md#annotation-of-user-operation-logs) for the performed modification.
 
-## Soundness Checks
+### Soundness Checks
 
 Process instance modification is a very powerful tool and allows to start and cancel activities at will. Thus, it is easy to create situations that are unreachable by normal process execution. Assume the following process model:
 

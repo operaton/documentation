@@ -22,7 +22,7 @@ Afterwards, you can [install the Camunda Modeler](#camunda-modeler).
 :::
 
 
-# Prerequisites
+## Prerequisites
 
 Please make sure you have the following installed:
 
@@ -39,7 +39,7 @@ If you need to install Java Runtime Environment, you can [find the download from
 Make sure to use a Java version from [Operaton's list of supported environments](/docs/documentation/introduction/supported-environments/#java-runtime).
 :::
 
-# Operaton Platform
+## Operaton Platform
 
 First, download a distribution of the Operaton Platform. You can choose from different distributions for [various application servers](/docs/documentation/installation/full/). In this tutorial, we'll use Operaton Platform Run. Download it from [the download page](https://camunda.com/download/).
 
@@ -49,7 +49,7 @@ After you've successfully unpacked your distribution of the Operaton Platform, e
 
 This script will start the application server. Open your web browser and navigate to [http://localhost:8080/](http://localhost:8080/) to visit the Welcome Page.
 
-# Camunda Modeler
+## Camunda Modeler
 
 Download the Camunda Modeler from [the download page](https://camunda.com/download/modeler/).
 

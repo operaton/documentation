@@ -9,11 +9,10 @@ menu:
     parent: "user-guide-process-engine"
 
 ---
----
 
 All process definitions are cached (after they have been parsed) to avoid polling the database every time a process definition is needed and because process definition data doesn't change. This reduces the latency of referencing the process definitions and thus improves the performance of the system.
 
-# Customize the maximum Capacity of the Cache
+## Customize the maximum Capacity of the Cache
 
 If one has many process definitions, the cache might occupy a large amount of memory and the capacity of the working memory may reach its limits. Therefore, after the maximum capacity is reached the least recently used process definition entry is evicted from the cache to satisfy the capacity condition. However, if one still meets out of memory issues, it can be necessary to lower the maximum capacity of the cache.
 
@@ -38,7 +37,7 @@ In the process engine configuration one can specify the maximum capacity of the 
 __Note:__ The same capacity is used for all of the components stated above and it is not possible to set the capacity size individually for each component. Furthermore, in the default cache implementation corresponds the capacity size to the maximum number of elements in the cache that are used. That means, the absolute amount of physical storage (e.g. mega bytes) you use up depends on the size needed for the respective process definitions.
 
 
-# Provide a custom Cache Implementation
+## Provide a custom Cache Implementation
 
 The default implementation of the cache evicts the least recently used entry as soon as the maximum capacity is exceeded. If it is necessary to choose the evicted cache entries by a different criteria, one can provide its own cache implementation.
 

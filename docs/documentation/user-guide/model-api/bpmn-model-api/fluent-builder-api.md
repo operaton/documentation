@@ -28,7 +28,7 @@ The fluent builder API is not nearly complete but provides you with the followin
 * subprocess
 
 
-# Create a Process With the Fluent Builder API
+## Create a Process With the Fluent Builder API
 
 To create an empty model instance with a new process the method `Bpmn.createProcess()` is used. After this,
 you can add as many tasks and gateways as you like. At the end you must call `done()` to return the generated
@@ -198,7 +198,7 @@ BpmnModelInstance modelInstance = Bpmn.createProcess()
   .done();
 ```
 
-# Extend a Process With the Fluent Builder API
+## Extend a Process With the Fluent Builder API
 
 With the fluent builder API you can not only create processes, you can also extend existing processes.
 
@@ -232,9 +232,9 @@ userTask.builder()
   .connectTo(serviceTask.getId());
 ```
 
-# Common Model Patterns
+## Common Model Patterns
 
-## Controlling Transaction Boundaries
+### Controlling Transaction Boundaries
 
 The transaction boundaries of a process created with the fluent builder API can be controlled using the `camundaAsyncBefore()` and `camundaAsyncAfter()` methods offered for various process constructs.
 
@@ -266,7 +266,7 @@ BpmnModelInstance modelInstance = Bpmn.createProcess()
 ```
 
 
-# Generation of Diagram Interchange
+## Generation of Diagram Interchange
 
 To render the process, BPMN diagram elements are necessary. The fluent builder generates
 BPMN Shapes and BPMN Edges and places them automatically for flow nodes and sequence flows.

@@ -32,7 +32,7 @@ The `Job Definitions` tab displays the job definitions that are linked to this p
 [job-definition-suspension]: ../bpmn/suspension.md#job-definition-suspension
 
 
-# Filter
+## Filter
 
 The filter function on the bottom of the Process Definition View in the `Process Instances` tab allows you to find certain instances by filtering for variables, business keys, activity IDs or date and time. In addition, you can filter for the process definition version by selecting the version of a process on the left side of the Process Definition View. Beyond that you can combine different filters as logical *AND* relation. Filter expressions on variables must be specified as `variableName OPERATOR value` where the *operator* may be one of the following terms: `=`, `!=`, `>`, `$\geq$`, `<`, `$\leq$`, `like`. Apart from the `like` operator, the operator expressions do not have to be separated by spaces.
 The `like` operator is for string variables only. You can use `%` as wildcard in the *value* expression. String and date values must be properly enclosed in quotes `" "`.
@@ -43,7 +43,7 @@ The `like` operator is for string variables only. You can use `%` as wildcard in
 
 Furthermore, you can copy a link to the current filter query to your clipboard by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-link"></i></button> button and you can save filter queries to your local browser storage by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and inserting a name in the drop down menu that appears. You can then retrieve the filter query by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and selecting the chosen name in the drop down menu.
 
-## Runtime View
+### Runtime View
 
 ![Example img](./../img/filter-examples/add-filter.png)Filter Example
 
@@ -89,7 +89,7 @@ Add a filter for process instances by filtering for a `boolean` value.
 Add a filter for process instances by filtering for a `numeric` (double, integer, long or short) value.
 
 
-## History View
+### History View
 
 Add a filter to the [process definition history view][process-definition-history-view]. Select filters for variables, the start date and time, the activity ID or the business key of process instances as in [the runtime view](#runtime-view). In addition, select filters for completed, running or process instances with a certain end date and time.
 
@@ -111,17 +111,17 @@ Add a filter for process instances by end date. Please note that the date must b
 [process-definition-history-view]: ../bpmn/process-history-views.md#process-definition-history-view
 
 
-# Delete Multiple Running Process Instances
+## Delete Multiple Running Process Instances
 
 ![Example img](./../img/cockpit-bulk-delete.png)Batch Delete Running Process Instances
 
 Delete multiple running process instances at once by using this feature. In the process definition view, hit the remove-circle button on the right side. This opens a confirmation screen in which you can select which process instances to delete. You can apply [filters](#filter) to make it easier to find the desired process instances. In addition, it is possible to provide a reason for the delete. After you have selected which instances to delete and confirmed the delete, the runtime data of the deleted instances will be removed.
 
-# Delete A Process Definition Version
+## Delete A Process Definition Version
 
 Delete the current process definition version by using this feature. In the process definition view, hit the trash button on the right side. This opens a confirmation screen in which you can select flags to apply to the delete. You can always choose to enable/disable skipping custom listeners. However, if the process definition version has process instances running, enabling the cascading flag becomes mandatory.
 
-# BPMN Documentation
+## BPMN Documentation
 
 ![Example img](./../img/cockpit-documentation.png)Set Job Priority
 
@@ -129,7 +129,7 @@ This feature allows you to inspect documentation added in the Camunda Modeler. T
 
 To view long documentations, click on the info-sign on the element or the documentation link in the table. This opens a modal which displays the formated documentation in a textbox. To copy the documentation to the clipboard, click on copy button.
 
-# Set Job priority
+## Set Job priority
 
 ![Example img](./../img/cockpit-set-job-priority.png)Set Job Priority
 
@@ -137,7 +137,7 @@ You can change the job priority by overriding the priority specified in the BPMN
 
 By using the button to the right of the process diagram, you can set the job priority of all jobs contained in the process definition at once.
 
-# Call Activity Navigation
+## Call Activity Navigation
 
 You can navigate from a process that contains Call Activities to its respectively called process definitions.
 Hover over a Call Activity in the BPMN diagram to display a link in the upper right corner of the Call Activity.

@@ -87,7 +87,7 @@ Note that a parallel gateway does not need to be 'balanced' (i.e., a matching nu
 <div data-bpmn-diagram="../bpmn/parallel-gateway-unbalanced"></div>
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -116,6 +116,6 @@ Note that a parallel gateway does not need to be 'balanced' (i.e., a matching nu
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Parallel Gateways](http://operaton.org/bpmn/reference.html#gateways-parallel-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

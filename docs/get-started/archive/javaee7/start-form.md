@@ -15,7 +15,7 @@ menu:
 In this step, we add a start form and configure it in the BPMN 2.0 process, then, re-deploy the application and start the process from the Operaton Tasklist.
 
 
-# Add a Start Form
+## Add a Start Form
 
 Go back to eclipse and add a file named `placeorder.xhtml` to the `src/main/webapp` folder. Add the following content:
 
@@ -81,7 +81,7 @@ The user input inside the form fields are saved as a map of process variables in
 When the form is submitted, the `camundaTaskForm.completeProcessInstanceForm()` method starts a new process instance by the process definition key which was determined by the `startProcessInstanceByKeyForm()` method. Additionally, the process variables set by the user are passed to the process instance.
 
 
-# Configure the Start Form in the Process
+## Configure the Start Form in the Process
 
 ![Example image](./img/pizza-order-process-start-form.png)
 

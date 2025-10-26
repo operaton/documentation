@@ -19,7 +19,7 @@ The first option is used when code is implemented as [Delegation Code](../proces
 
 Note that the above distinction does not say whether the actual "business logic" is implemented locally or as a remote service. The Java Delegate invoked by an internal service task may either implement the business logic itself or it may call out to a web/rest service, send a message to another system and so forth. The same is true for an external worker. The worker can implement the business logic directly or again delegate to a remote system.
 
-# The External Task Pattern
+## The External Task Pattern
 
 The flow of executing external tasks can be conceptually separated into three steps, as depicted in the following image:
 
@@ -44,11 +44,11 @@ The essence of this pattern is that the entities performing the actual work are 
 * **Fine-Grained Scaling**: If there is high load concentrated on service task processing, the number of external workers for the respective topics can be scaled out independently of the process engine.
 * **Independent Maintenance**: Workers can be maintained independently of the process engine without breaking operations. For example, if a worker for a specific topic has a downtime (e.g., due to an update), there is no immediate impact on the process engine. Execution of external tasks for such workers degrades gracefully: They are stored in the external task list until the external worker resumes operation.
 
-# Working with External Tasks
+## Working with External Tasks
 
 To work with external tasks they have to be declared in the BPMN XML. At runtime, external task instances can be accessed via Java and REST API. The following explains the API concepts and focuses on the Java API. Often the REST API is more suitable in this context, especially when implementing workers running in different environments with different technologies.
 
-## BPMN
+### BPMN
 
 In the BPMN XML of a process definition, a service task can be declared to be performed by an external worker by using the attributes `operaton:type` and `operaton:topic`. For example, a service task *Validate Address* can be configured to provide an external task instance for the topic `AddressValidation` as follows:
 
@@ -87,7 +87,7 @@ The expression is evaluated on invocations of `ExternalTaskService#complete` and
 
 Further information on the functionality of error event definitions on external tasks can be found in the [expression language user guide](../process-engine/expression-language.md#external-task-error-handling).
 
-## Rest API
+### Rest API
 
 See the restref text="REST API documentation" tag="External-Task for how the API operations can be accessed via HTTP.
 
@@ -129,7 +129,7 @@ consider the following configuration snippet:
 <!-- ... -->
 ```
 
-## Java API
+### Java API
 
 The entry point to the Java API for external tasks is the `ExternalTaskService`. It can be accessed via `processEngine.getExternalTaskService()`.
 

@@ -15,7 +15,7 @@ Since version 7.11.0, the engine comes with a standard password policy that is d
 
 **Note:** This only applies to users that are managed within the Operaton engine. If you use LDAP for your user management a password policy has no effect on these users.
 
-# Built-In Password Policy
+## Built-In Password Policy
 
 The built-in password policy requires all passwords to meet the following criteria:
 
@@ -26,7 +26,7 @@ The built-in password policy requires all passwords to meet the following criter
 * at least 1 digit
 * at least 1 special character
 
-# Customize the Password Policy
+## Customize the Password Policy
 
 You can use the process engine configuration to enable / disable the password policy or plug in a custom policy. See [Process Engine Bootstrapping](../process-engine-bootstrapping) on how to set properties for your Operaton environment.
 

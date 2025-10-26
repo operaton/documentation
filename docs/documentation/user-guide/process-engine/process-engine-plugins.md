@@ -18,7 +18,7 @@ A plugin must provide an implementation of the
 <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/cfg/ProcessEnginePlugin.html">ProcessEnginePlugin</a> interface.
 
 
-# Configure Process Engine Plugins
+## Configure Process Engine Plugins
 
 Process engine plugins can be configured
 
@@ -63,7 +63,7 @@ The following is an example of how to configure a process engine plugin in a bpm
 A process engine plugin class must be visible to the classloader which loads the process engine classes.
 
 
-# List of Built-In Process Engine Plugins
+## List of Built-In Process Engine Plugins
 
 The following is a list of built-in process engine plugins:
 

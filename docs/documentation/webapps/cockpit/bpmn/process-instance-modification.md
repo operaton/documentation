@@ -23,7 +23,7 @@ In the detail view, you can modify the process instance's execution state. A mod
 * Canceling an activity instance or all instances of an activity
 
 
-# Perform a Modification
+## Perform a Modification
 
 A modification consists of multiple instructions, which are displayed in the modification tab at the bottom half of the screen (1). To add an instruction to the modification, hover over an activity of the process instance diagram. Using the modification button (2), you can select the operation to be performed with this activity. In the top-left corner of the activity, a modification badge will appear, indicating how many new instances of this activity will be created and how many activity instances will be canceled when applying this modification (3). This number represents the directly created/canceled instances only. Instances created during the modification (e.g., by service tasks) are not counted.
 
@@ -36,7 +36,7 @@ When executing a modification, the instructions are applied in the specified ord
 In the modification tab you can then configure the specification of the instruction depending on its type:
 
 
-## Cancel Running Activity Instances
+### Cancel Running Activity Instances
 
 ![Example img](./../img/cockpit-modification-cancel.png)Cancel Modification
 
@@ -45,7 +45,7 @@ When canceling activity instances you can select the instances of the activity y
 When canceling all instances of an activity using the  Allbutton, all instances which exist at the moment this instruction is executed will be canceled. This will also cancel instances which were created in the same modification (e.g., using a startBefore instruction before the cancel instruction). In most cases, you probably want to explicitly state the instances to cancel.
 
 
-## Start New Activity Instances
+### Start New Activity Instances
 
 ![Example img](./../img/cockpit-modification-start.png)Modification Start
 
@@ -56,7 +56,7 @@ Additionally, you can specify the ancestor of the new activity instance if it is
 When starting activities with a multi-instance flag, there is the option to either start a new multi-instance body of the activity (which executes the entire multi-instance construct and therefore creates the number of child activities specified in the multi-instance configuration for this task) or a new single instance of the activity in an already existing multi-instance body.
 
 
-# Review Modification Instructions
+## Review Modification Instructions
 
 ![Example img](./../img/cockpit-modification-review.png)Modification Review
 
@@ -68,7 +68,7 @@ To perform the modification, you have to click on *Apply modifications*. Then yo
   The exact semantics of process instance modification as well as the underlying REST and Java API can be read about in the [Process Instance Modification section](../../../user-guide/process-engine/process-instance-modification.md) of the user guide.
 :::
 
-# Perform a Batch Modification
+## Perform a Batch Modification
 
 ![Example img](./../img/cockpit-batch-modification-view.png)Batch Modification View
 

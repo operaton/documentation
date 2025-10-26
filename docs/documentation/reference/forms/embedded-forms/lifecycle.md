@@ -10,7 +10,7 @@ menu:
 
 ---
 
-# Events
+## Events
 
 <ol>
   <li>
@@ -74,7 +74,7 @@ menu:
   </li>
 </ol>
 
-# Event Listeners
+## Event Listeners
 
 Event listeners can be registered from [custom JavaScript](../../../reference/forms/embedded-forms/javascript):
 

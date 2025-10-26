@@ -46,7 +46,7 @@ A rule is represented by a `rule` element inside a `decisionTable` XML element.
 </definitions>
 ```
 
-# Input Entry (Condition)
+## Input Entry (Condition)
 
 ![Example img](./img/input-entry.png)Input Entry" class="no-lightbox
 
@@ -62,7 +62,7 @@ The input entry is satisfied when the evaluated expression returns `true`.
 </inputEntry>
 ```
 
-## Expression Language of an Input Entry
+### Expression Language of an Input Entry
 
 The expression language of the input entry can be specified by the
 `expressionLanguage` attribute on the `inputEntry` XML element. The supported
@@ -94,7 +94,7 @@ Please refer to the [User Guide][default EL] to read more about expression
 languages.
 
 
-# Output Entry (Conclusion)
+## Output Entry (Conclusion)
 
 ![Example img](./img/output-entry.png)Output Entry" class="no-lightbox
 
@@ -108,7 +108,7 @@ an `outputEntry` XML element.
 </outputEntry>
 ```
 
-## Expression Language of an Output Entry
+### Expression Language of an Output Entry
 
 The expression language of the expression can be specified by the
 `expressionLanguage` attribute on the `outputEntry` XML element. The supported
@@ -139,9 +139,9 @@ is used instead. The default expression language for output entries is JUEL.
 Please refer to the [User Guide][default EL] to read more about expression
 languages.
 
-# Empty Entries
+## Empty Entries
 
-## Empty Input Entry
+### Empty Input Entry
 
 In case an input entry is irrelevant for a rule, the expression is empty, which
 is always satisfied.
@@ -155,7 +155,7 @@ is always satisfied.
 If FEEL is used as expression language, then an empty input entry is represented
 by a `-`. Otherwise, the expression is empty.
 
-## Empty Output Entry
+### Empty Output Entry
 
 If the output entry is empty, then the output is ignored and not part of the
 decision table result.
@@ -166,12 +166,12 @@ decision table result.
 </outputEntry>
 ```
 
-## Both Entries Empty
+### Both Entries Empty
 
 In case of a rule has an empty input and output entry, the outcome of evaluation
 will be determined with precedence of the empty input outcome.
 
-# Description
+## Description
 
 ![Example img](./img/description.png)Description" class="no-lightbox
 

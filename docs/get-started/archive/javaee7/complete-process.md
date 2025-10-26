@@ -15,9 +15,9 @@ menu:
 In the last section of this tutorial we learn how to complete the BPMN 2.0 Process.
 
 
-# Complete the Process
+## Complete the Process
 
-## Add Prepare Pizza Task Form
+### Add Prepare Pizza Task Form
 
 ![Example image](./img/prepare-pizza.png)
 
@@ -61,7 +61,7 @@ Open the process with Camunda Modeler. Click on the prepare pizza user task. In 
 
 When you are done, save all resources, [perform a Maven build](../deploy/#build-the-process-application), and [redeploy](../deploy/#deploy-to-wildfly) the process application.
 
-## Add Send Rejection Email Service Task
+### Add Send Rejection Email Service Task
 
 If the user disapproves the pizza order an email is sent to inform the customer. This will be simulated by a simple log output.
 

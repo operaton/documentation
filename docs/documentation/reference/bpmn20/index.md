@@ -12,11 +12,11 @@ If you are unfamiliar with BPMN 2.0, you might want to check out the
 <a href="http://operaton.org/bpmn/tutorial.html">BPMN Tutorial</a> first.
 :::
 
-# Coverage
+## Coverage
 
 The elements marked in <span class="label label-warning label-implemented">orange</span> are supported.
 
-## Symbols
+### Symbols
 
 
 <div class="bpmn-symbols" style={{border: '0px solid #000', paddingLeft: '16px'}}>
@@ -175,7 +175,7 @@ The elements marked in <span class="label label-warning label-implemented">orang
   </div>
 </div>
 
-## Events
+### Events
 
 In BPMN there are start events, intermediate events and end events. These three event types can be catching events or throwing events. Intermediate events can be used as boundary events on tasks, in which case they can be interrupting or non-interrupting. This gives you a lot of flexibility to use events in your processes.
 

@@ -21,7 +21,7 @@ on:
 To use these guides, you should have a basic understanding of (Microsoft's) T-SQL syntax. You should
 also have access to a database administration tool that can interact with your Microsoft database.
 
-# Transaction Isolation Levels
+## Transaction Isolation Levels
 
 This section applies to the following database types:
 
@@ -45,7 +45,7 @@ SET READ_COMMITTED_SNAPSHOT ON
 ```
 where `[process-engine]` contains the name of your database.
 
-# Operaton support for Azure SQL
+## Operaton support for Azure SQL
 
 This section applies only to the following Microsoft database products:
 
@@ -60,7 +60,7 @@ Microsoft's *Azure SQL Managed Instance* and *Azure SQL Database* products alway
 stable version of the SQL Server database engine. In order to provide backward compatibility with
 earlier SQL Server versions, the Azure SQL products utilize the *Database Compatibility Level* setting.
 
-## Azure SQL compatibility levels supported by Operaton
+### Azure SQL compatibility levels supported by Operaton
 
 Microsoft associates each SQL Server version with a *Database Compatibility Level*. You can find a table
 of the SQL Server versions, and their associated compatibility level values
@@ -69,7 +69,7 @@ of the SQL Server versions, and their associated compatibility level values
 Operaton supports the *Database Compatibility Level* values of the currently supported Microsoft
 SQL Server versions documented in our [Supported Database Products section](../../../introduction/supported-environments.md#supported-database-products).
 
-## Configuring a database on Azure SQL
+### Configuring a database on Azure SQL
 
 It is advised to explicitly set the *Database Compatibility Level* setting for each database created on
 Azure SQL. The default value of the *Database Compatibility Level* setting is updated every time a new

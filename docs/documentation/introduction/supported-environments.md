@@ -18,9 +18,9 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
 :::
 
 
-# Container/Application Server for Runtime Components
+## Container/Application Server for Runtime Components
 
-## Application-Embedded Process Engine
+### Application-Embedded Process Engine
 
 * All Java application servers
 * Operaton Spring Boot Starter: Embedded Tomcat
@@ -30,16 +30,16 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
   * [Supported versions](../user-guide/quarkus-integration/version-compatibility.md)
   * [Deployment scenarios](../user-guide/quarkus-integration/index.md#supported-deployment-scenarios)
 
-## Container-Managed Process Engine and Operaton Cockpit, Tasklist, Admin
+### Container-Managed Process Engine and Operaton Cockpit, Tasklist, Admin
 
 * Apache Tomcat 9.0 / 10.1
 * JBoss EAP 7.4 / 8.0
 * WildFly Application Server 23.0 / 26.0 / 33.0
   see [Installation guide](../installation/full/wildfly/index.md))
 
-# Databases
+## Databases
 
-## Supported Database Products
+### Supported Database Products
 
 * MySQL  8.0
 * Oracle 19c / 23ai
@@ -54,24 +54,24 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
   * Azure SQL Database
 * H2 2.3 (not recommended for [Cluster Mode](./architecture.md#clustering-model) - see [Deployment Note](../user-guide/process-engine/deployments.md))
 
-## Database Clustering & Replication
+### Database Clustering & Replication
 
 Clustered or replicated databases are supported given the following conditions. The communication between Operaton and the database cluster has to match with the corresponding non-clustered / non-replicated configuration. It is especially important that the configuration of the database cluster guarantees the equivalent behavior of READ-COMMITTED isolation level.
 
 
-# Web Browser
+## Web Browser
 
 * Google Chrome latest
 * Mozilla Firefox latest
 * Microsoft Edge latest
 
 
-# Java
+## Java
 
 * Java 11 / 17 / 21 (if supported by your application server/container)
 
 
-# Java Runtime
+## Java Runtime
 
 * Oracle JDK 11 / 17 / 21
 * OpenJDK 11 / 17 / 21, including builds of the following products:
@@ -80,13 +80,13 @@ Clustered or replicated databases are supported given the following conditions. 
   * Amazon Corretto
   * Azul Zulu
 
-# Camunda Modeler
+## Camunda Modeler
 
 [Supported environments](https://docs.camunda.io/docs/reference/supported-environments/#camunda-modeler) for Camunda Modeler have moved to [docs.camunda.io](https://docs.camunda.io/).
 
-# Maintenance Policy
+## Maintenance Policy
 
-## Adding Environments
+### Adding Environments
 
 Whenever a new version of one of the following environments is released, we target support of that new version with the next minor release of Operaton. A new released environment has to be available three months before the next Operaton minor release to be considered.
 
@@ -99,7 +99,7 @@ The exact release in which we support a new environment depends on factors such 
 
 Version support for other environments is decided case by case, much of which is based on the demand in our user base.
 
-## Removing Environments
+### Removing Environments
 
 Whenever a new version of one of the following environments is supported, we usually discontinue support of the oldest version with the same release:
 

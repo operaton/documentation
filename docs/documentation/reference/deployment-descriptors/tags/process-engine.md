@@ -9,7 +9,7 @@ sidebar_position: 50
 The process engine configuration can be placed in both [processes.xml](../processes-xml.md) and the [bpm-platform.xml](../bpm-platform-xml.md) files. If the process engine is configured in either or both of those files, it will be bootstrapped by the Operaton infrastructure and be made available through `BpmPlatform.getProcessEngineService().getProcessEngine("name of process engine")`.
 
 
-# Example
+## Example
 
 The following example shows an XML snippet which can be placed in both [processes.xml](../processes-xml.md) and/or [bpm-platform.xml](../bpm-platform-xml.md).
 
@@ -29,7 +29,7 @@ The following example shows an XML snippet which can be placed in both [processe
 ```
 
 
-# Syntax Reference
+## Syntax Reference
 
 <table class="table table-striped">
   <tr>
@@ -215,7 +215,7 @@ The following example shows an XML snippet which can be placed in both [processe
 </table>
 
 
-# Configuration Properties
+## Configuration Properties
 
 The following is a list with the most commonly used process engine configuration properties, along with some explanations. The properties can be used in the `<property name="foo">bar</property>` tag, where `foo` is the name of the property and `bar` is the value of the property.
 
@@ -1076,7 +1076,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 </table>
 
-## History cleanup configuration parameters
+### History cleanup configuration parameters
 
 <table class="table table-striped">
   <tr id="historyCleanupStrategy">
@@ -1270,7 +1270,7 @@ The history time to live defines the number of days using a time specified by th
   </tr>
 </table>
 
-## Login parameters
+### Login parameters
 
 <table class="table table-striped">
   <tr>
@@ -1295,7 +1295,7 @@ The history time to live defines the number of days using a time specified by th
   </tr>
 </table>
 
-## Resource whitelist pattern parameters
+### Resource whitelist pattern parameters
 
 <table class="table table-striped">
   <tr>
@@ -1324,7 +1324,7 @@ The history time to live defines the number of days using a time specified by th
   </tr>
 </table>
 
-## Logging context parameters
+### Logging context parameters
 
 These parameters define the keys at which the specified data can be retrieved from the Mapped Diagnostic Context (MDC). See [Logging](../../../user-guide/logging.md#process-data-context) for details.
 The specified data will only be put into the MDC if a key is defined. All parameters can be set to <code>null</code> or the empty String in order to disable their logging in the MDC.
@@ -1387,7 +1387,7 @@ The specified data will only be put into the MDC if a key is defined. All parame
 Any properties set by the user that match the configured Logging context parameters will be preserved after the processing of the engine.
 :::
 
-## Logging level parameters
+### Logging level parameters
 
 These parameters define the log level for the specified log entries.
 

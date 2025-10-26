@@ -30,7 +30,7 @@ A call activity is a regular activity that requires a calledElement which refere
 Note that the process definition of the subprocess is resolved at runtime. This means that the subprocess can be deployed independently from the calling process, if needed.
 
 
-# CalledElement Binding
+## CalledElement Binding
 
 In a call activity the `calledElement` attribute contains the process definition key as reference to the subprocess. This means that the latest process definition version of the subprocess is always called.
 To call another version of the subprocess it is possible to define the attributes `calledElementBinding`, `calledElementVersion`, and `calledElementVersionTag` in the call activity. These attributes are optional.
@@ -56,18 +56,18 @@ or
 </callActivity>
 ```
 
-# CalledElement Tenant Id
+## CalledElement Tenant Id
 
 When the call activity resolves the process definition to be called it must take multi tenancy into account.
 
-## Default Tenant Resolution
+### Default Tenant Resolution
 By default, the tenant id of the calling process definition is used to resolve the called process definition.
 That is, if the calling process definition has no tenant id, then the call activity resolves a process definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling process definition has a tenant id, a process definition with the provided key and the same tenant id is resolved.
 
 Note that the tenant id of the calling process instance is not taken into account in the default behavior.
 
-## Explicit Tenant Resolution
+### Explicit Tenant Resolution
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
@@ -96,7 +96,7 @@ An expression also allows using the tenant id of the calling process instance in
 ```
 
 
-# Passing Variables
+## Passing Variables
 
 You can pass process variables to the subprocess and vice versa. The data is copied into the subprocess when it is started and copied back into the main process when it ends.
 
@@ -137,11 +137,11 @@ So in the end `z = y+5 = x+5+5` holds.
 
 Source expressions are evaluated in the context of the called process instance. That means, in cases where calling and called process definitions belong to different process applications, context like Java classes, Spring or CDI beans is resolved from the process application the called process definition belongs to.
 
-## Variable Output on BPMN Error Event
+### Variable Output on BPMN Error Event
 
 When a BPMN error event from a called process instance is caught in the calling process instance, the output variable mappings are executed as well. Depending on the BPMN models, this requires output parameters to tolerate `null` values for variables that do not exist in the called instance when the error is propagated.
 
-## Combination with Input/Output parameters
+### Combination with Input/Output parameters
 
 Call activities can be combined with [Input/Output parameters](../../../user-guide/process-engine/variables.md#input-output-variable-mapping) as well. This allows for an even more flexible mapping of variables into the called process. In order to only map variables that are declared in the `inputOutput` mapping, the attribute `local` can be used. Consider the following XML:
 
@@ -194,7 +194,7 @@ The same can be done with output parameters:
 When the called process instance ends, due to `local="true"` in the `operaton:out` parameter all variables are mapped to local variables of the execution executing the call activity. These variables can be mapped to process instance variables by using an output mapping. Any variable that is not declared by a `operaton:outputParameter` element will not be available anymore after the call activity ends.
 
 
-## Delegation of Variable Mapping
+### Delegation of Variable Mapping
 
 The mapping of input and output variables can also be delegated. This means the passing of input or/and output variables can be done in Java code.
 For this the [Delegate Variable Mapping](../../../user-guide/process-engine/delegation-code.md#delegate-variable-mapping) interface must be implemented.
@@ -252,7 +252,7 @@ This allows to specify an expression that resolves to an object implementing the
 ```
 See [Delegate Variable Mapping](../../../user-guide/process-engine/delegation-code.md#delegate-variable-mapping) for further information of implementing the interface.
 
-# Passing Business Key
+## Passing Business Key
 
 You can pass the business key to the subprocess. The data is copied into the subprocess when it is started. You can not give back the business key to the parent process because the business key is not changeable.
 
@@ -265,7 +265,7 @@ You can pass the business key to the subprocess. The data is copied into the sub
 ```
 
 
-# Example
+## Example
 
 The following process diagram shows a simple handling of an order. Since, for example, the billing could be common to many other processes, it is modeled as a call activity.
 
@@ -288,11 +288,11 @@ The XML looks as follows:
 
 There is nothing special about the process definition of the subprocess. It could also be used without being called from another process.
 
-# Create a Case Instance
+## Create a Case Instance
 
 A call activity can also be used to create a new CMMN case instance as a subordinate of the corresponding process instance. The call activity completes as soon as the created case instance reaches the state `COMPLETED` for the first time. In contrast to calling a BPMN process, the attribute `caseRef` instead of the attribute `calledElement` must be used to reference a case definition by its key. This means that the latest case definition version is always called.
 
-## Case Binding
+### Case Binding
 
 To call another version of a case definition it is possible to define the attributes `caseBinding` and `caseVersion` in the call activity. Both attributes are optional.
 
@@ -309,7 +309,7 @@ CaseBinding has three different values:
 </callActivity>
 ```
 
-## Case Tenant Id
+### Case Tenant Id
 
 The call activity must take multi tenancy into account when resolving the case definition to be called.
 
@@ -339,7 +339,7 @@ An expression also allows using the tenant id of the calling process instance in
 </callActivity>
 ```
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -400,6 +400,6 @@ An expression also allows using the tenant id of the calling process instance in
   </tr>
 </table>
 
-# Additional Resources
+## Additional Resources
 
 *   [Call Activity](http://operaton.org/bpmn/reference.html#activities-call-activity) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

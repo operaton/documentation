@@ -19,20 +19,20 @@ In this step, we extend the previous example by a second decision *Beverages* wh
 The visual representation of a Decision Requirements Graph (DRG) is called Decision Requirements Diagram (DRD). In the context of the Camunda Modeler, we name it DRD because we use the visual representation to model the DRG.
 :::
 
-# Switch from Decision Table to DRD
+## Switch from Decision Table to DRD
 
 Open the *Dish* decision table from the previous step. Click on the button "View DRD" to see the Decision Requirements Diagram (DRD). It contains a single decision with the name *Dish*.
 
 ![Example image](./img/modeler-drd-step1.png)
 
-# Set the Name and the Id of the DRD
+## Set the Name and the Id of the DRD
 
 Click somewhere on the canvas and open the Property Panel on the right. Change the [id](/manual/latest/reference/dmn11/drg/#decision-requirements-graph-id) of the DRD to "dinnerDecisions". Next, change the [name](/manual/latest/reference/dmn11/drg/#decision-requirements-graph-name) of the DRD to "Dinner Decisions".
 
 
 ![Example image](./img/modeler-drd-step2.png)
 
-# Create a new Decision in the DRD
+## Create a new Decision in the DRD
 
 Click on the decision icon of the palette to create a new decision. Then, double-click on the decision and type *Beverages* to set the name. Change the type of the decision to *Decision Table* by clicking on the wrench icon next to the "Beverages" decision and selecting "Decision Table". Use the Property Panel on the right side again to set the id to "beverages".
 
@@ -44,7 +44,7 @@ Next, connect the *Dish* decision to the *Beverages* decision to indicate that t
 
 Click on the top left icon of the *Beverages* decision to open the decision table.
 
-# Configure the Decision Table and add the Rules
+## Configure the Decision Table and add the Rules
 
 Configure the *Beverages* decision table so that it has:
 
@@ -59,7 +59,7 @@ Then, fill the table with the rules.
 
 Save your changes and replace the existing DMN file in the `src/main/resources` folder.
 
-# Evaluate the Decision
+## Evaluate the Decision
 
 To evaluate the *Beverages* decision, we extend the existing method in your Application class and add a new variable "guestsWithChildren".
 
@@ -96,7 +96,7 @@ public class DinnerApplication extends ServletProcessApplication
 }
 ```
 
-# Build and Deploy the Web Application
+## Build and Deploy the Web Application
 
 Build the web application with Maven and replace the `dinner-dmn-0.1.0-SNAPSHOT.war` in the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
 
@@ -124,7 +124,7 @@ INFO org.operaton.commons.logging.BaseLogger.logInfo
 ENGINE-08050 Process application Dinner App DMN successfully deployed
 </pre>
 
-# Verify the Evaluation with Cockpit
+## Verify the Evaluation with Cockpit
 
 Now, open [Cockpit](http://localhost:8080/operaton/app/cockpit) and go to the "Decisions" section.
 
@@ -138,7 +138,7 @@ Verify that both rules were matched and the output value for the beverages is "G
 
 Note that the *Dish* decision is evaluated as part of the evaluation of the *Beverages* decision. It provides the value "Stew" for the input expression "desiredDish".
 
-# Next Steps
+## Next Steps
 
 Next,
 

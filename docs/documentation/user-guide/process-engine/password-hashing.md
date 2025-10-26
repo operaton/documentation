@@ -16,7 +16,7 @@ The Operaton version 7.6 and earlier use the cryptographic hash function [SHA-1]
 
 At salt generation, a random 16-byte per-user value is created, which is generated with [SecureRandom](http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html). It is also possible to [customize the salt generation](#customize-the-salt-generation) if desired.
 
-# Customize the Hashing Algorithm
+## Customize the Hashing Algorithm
 
 If it is necessary to use a more secure hash algorithm, you can provide your own implementation.
 
@@ -55,7 +55,7 @@ Please do not use your own implementation of a hash function, but rather a stand
 :::
 
 
-# Customize the Salt generation
+## Customize the Salt generation
 
 Similar to the hashing algorithm, the salt generation can be adjusted. First, implement the `SaltGenerator` interface from the `org.operaton.bpm.engine.impl.digest`. This ensures that all necessary functions are implemented. You can have a look at the classes `Base64EncodedSaltGenerator` and `Default16ByteSaltGenerator` from the `org.operaton.bpm.engine.impl.digest` package to see how this is done in Operaton. A template for your own implementation could look as follows:
 

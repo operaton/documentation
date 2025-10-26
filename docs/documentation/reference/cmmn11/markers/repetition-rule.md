@@ -50,7 +50,7 @@ The rule specified in the `humanTask` element is valid for all plan items that r
 The behavior of the repetition relies on the presence of entry criteria. If there is no entry criterion defined, then the repetition rule is evaluated by default in the transition into the `COMPLETED` state. Otherwise the repetition rule is only evaluated, when an entry criterion is satisfied and the plan item instance transitions away from the state `AVAILABLE` into the next state.
 
 
-# Repetition on completion
+## Repetition on completion
 
 To repeat a task or stage when it gets completed a repetition rule must be defined and the task or stage must not have any entry criteria. Whenever a task or stage instance transitions into the `COMPLETED` state, the repetition rule is evaluated and if it evaluates to `true` a new instance of the task or stage is created. The new instance transitions into the `AVAILABLE` state.
 
@@ -127,7 +127,7 @@ The transition in which the repetition rule is evaluated can be changed by a Ope
 
 This means that the repetition rule is  evaluated in the transition `disable`. So, whenever an instance of the defined human task gets disabled, the repetition rule is evaluated and if this rule evaluates to `true`, a new instance is created. As a consequence, the repetition rule is not evaluated when an instance transitions in state `COMPLETED` anymore.
 
-# Repetition triggered by entry criteria
+## Repetition triggered by entry criteria
 
 A trigger for a repetition of a milestone, stage or task is a satisfied [sentry](../sentry.md), that is referenced as [entry criterion](../concepts/entry-exit-criteria.md). Whenever an entry criterion is satisfied, the repetition rule is evaluated and if it evaluates to `true`, a new instance of the milestone, stage or task is created. The new instance transitions into the `AVAILABLE` state. The *previous* instance, in case of a milestone instance, transitions in state `COMPLETED` and, in case of a stage or task instance, into the `ACTIVE` or `ENABLED` state (depending on the [manual activation rule](../markers/manual-activation-rule.md)) because the entry criterion is satisfied.
 
@@ -196,7 +196,7 @@ In our example, the following steps might take place:
 1.  From now on, no more repetitions of *A* or *B* can occur.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

@@ -7,11 +7,11 @@ sidebar_position: 140
 
 This page provides information about logging in Operaton.
 
-# SLF4J
+## SLF4J
 
 Most Operaton modules, including the Operaton engine, use [slf4j] as logging "facade". This allows users to direct logging output to the logging "backend" of their choice, such as [logback] or [log4j].
 
-## Preconfigured Logging with a Shared Process Engine
+### Preconfigured Logging with a Shared Process Engine
 
 When installing Operaton as a shared process engine in an application server, Operaton logging is pre-configured.
 
@@ -21,7 +21,7 @@ Both SLF4J API and the slf4j-jdk14 bridge are available in a shared classpath wh
 
 On Wildfly, logging is directed to the JBoss logging infrastructure. The SLF4J API is not available in the classpath of custom applications by default.
 
-## Adding a Logging Backend for Embedded Use
+### Adding a Logging Backend for Embedded Use
 
 When using the Operaton Maven modules in a custom application, only the [slf4j] API is pulled in transitively.
 If you do not provide any backend, nothing will actually be logged.
@@ -91,7 +91,7 @@ LogFactory.useSlf4jLogging();
 
 somewhere in your setup code.
 
-## Process Data Context
+### Process Data Context
 
 In order to provide details on the current execution context of log statements,
 we set process execution-specific data in the [Mapped Diagnostic Context (MDC)](https://www.slf4j.org/manual.html#mdc).
@@ -124,9 +124,9 @@ By adding the `context:[%X]` to your configuration, all values that are present 
 Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](http://logback.qos.ch/manual/layouts.html#mdc).
 
 
-# Logging Categories
+## Logging Categories
 
-## Process Engine
+### Process Engine
 
 The process engine logs on the following categories
 
@@ -382,7 +382,7 @@ Here is a sample of what traces the server log file will contain when increasing
 
 The snippet contains the start and of `RemoveExecutionVariablesCmd`, the flush summary of the operation, and the database statements of the variable instance.
 
-# Legacy: Java Util Logging
+## Legacy: Java Util Logging
 
 Some Operaton modules still use Java Util Logging directly.
 The use of Java Util Logging in these modules is considered deprecated and will be gradually migrated to [slf4j] in future releases.

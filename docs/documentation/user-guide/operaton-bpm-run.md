@@ -7,13 +7,13 @@ sidebar_position: 40
 
 This guide gives an introduction to Operaton Run, a pre-packaged, lightweight distribution of Operaton. Operaton Run is easy to configure and does not require Java knowledge.
 
-# Prerequisites and audience
+## Prerequisites and audience
 
 To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](https://docs.operaton.org/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
 
 This guide will teach you about Operaton Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install Operaton Run. Head over to the [Installation guide](../installation/operaton-bpm-run.md) for details on how to install and start Operaton Run.
 
-# What is Operaton Run?
+## What is Operaton Run?
 
 Operaton Run is a full distribution of Operaton. It includes:
 
@@ -24,7 +24,7 @@ Operaton Run is a full distribution of Operaton. It includes:
 * [REST API](../reference/rest/overview/index.md)
 * [An example application](#example-application)
 
-# Starting with Operaton Run
+## Starting with Operaton Run
 
 To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) and unpacking it. You will find the following structure:
 
@@ -60,7 +60,7 @@ By explicitly passing arguments to one of the two Operaton Run start scripts, th
 you can configure Operaton Run according to your needs. Furthermore, Operaton Run will start as a foreground process
 unless the `--detached` argument is explicitly passed to the `start.bat` or `start.sh` script.
 
-## Start script arguments
+### Start script arguments
 
 The start scripts (`start.bat` for Windows, `start.sh` for Linux/Mac) accept the following arguments:
 
@@ -113,11 +113,11 @@ The start scripts (`start.bat` for Windows, `start.sh` for Linux/Mac) accept the
   </tr>
 </table>
 
-## Starting Operaton Run using Docker
+### Starting Operaton Run using Docker
 
 Operaton Run is also available as a Docker image. Please see the Operaton Run section of the Operaton Docker documentation [here](../installation/docker.md#start-operaton-bpm-run-using-docker) for more details.
 
-## Optional components
+### Optional components
 
 By default, Operaton Run launches with the web apps, REST API and example modules. If you want to enable only a subset of them, execute the start script through a command-line interface with any of the `--webapps`, `--rest` or `--example` properties to enable the specific modules.
 
@@ -140,7 +140,7 @@ You have to delete this data manually through the [web apps](../webapps/cockpit/
 restref page="deleteDeployment" text="REST API" tag="Deployment, or by cleaning the database
 [configured in the application properties](#database).
 
-## Choose between default and production configuration
+### Choose between default and production configuration
 
 Operaton Run ships with two different configuration files which are both located in the `configuration` folder.
 
@@ -152,7 +152,7 @@ By default, Run launches with the `default.yml` configuration. To enable the `pr
 Using `--production` disables the example application. It can be enabled by explicitly passing `--example` to the start script.
 However, we do not recommended to use the example application in production.
 
-## Connect to a Database
+### Connect to a Database
 
 Operaton Run is pre-configured to use a file-based H2 database for testing. The database schema and all required tables are automatically created when the engine starts up for the first time. If you want to use a custom standalone database, follow these steps:
 
@@ -163,7 +163,7 @@ Operaton Run is pre-configured to use a file-based H2 database for testing. The 
 5. Add the JDBC URL and login credentials to the configuration file like described [below](#database).
 6. Restart Operaton Run
 
-## Deploy BPMN Models
+### Deploy BPMN Models
 
 In the unpacked distro, you will find a `resources` folder. All files (including BPMN, DMN, CMMN, form, and script files) will be deployed when you start Operaton Run.
 
@@ -171,7 +171,7 @@ You can reference forms and scripts in the BPMN diagram with `embedded:deploymen
 
 Deployments via the restref page="createDeployment" text="REST API" tag="Deployment are still possible.
 
-# Configure Operaton Run
+## Configure Operaton Run
 
 Just like all the other distros, you can tailor Operaton Run to your needs. To do this, you only have to edit one of the [configuration files](#choose-between-default-and-production-configuration) that you can find in the configuration folder.
 
@@ -180,7 +180,7 @@ Operaton Run is based on the [Operaton Spring Boot Starter](https://github.com/o
 All [configuration properties](spring-boot-integration/configuration.md#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
 :::
 
-## Database
+### Database
 
 The distro comes with a file-based h2 database for testing. It is recommended to connect to a standalone database system for use in production.
 
@@ -214,7 +214,7 @@ The distro comes with a file-based h2 database for testing. It is recommended to
   </tr>
 </table>
 
-## Authentication
+### Authentication
 
 To add authentication to requests against the [REST API](../reference/rest/overview/index.md), you can enable basic authentication.
 
@@ -238,7 +238,7 @@ To add authentication to requests against the [REST API](../reference/rest/overv
   </tr>
 </table>
 
-## Cross-Origin Resource Sharing
+### Cross-Origin Resource Sharing
 
 If you want to allow cross-origin requests to the [REST API](../reference/rest/overview/index.md), you need to enable CORS.
 <table class="table desc-table">
@@ -284,7 +284,7 @@ If you want to allow cross-origin requests to the [REST API](../reference/rest/o
   </tr>
 </table>
 
-## REST
+### REST
 
 Operaton Run can be configured to disable the REST endpoint which exposes the WADL file via a property.
 
@@ -303,7 +303,7 @@ Operaton Run can be configured to disable the REST endpoint which exposes the WA
   </tr>
 </table>
 
-## Deployment
+### Deployment
 
 Operaton Run also supports configuration options for customizing the deployment.
 
@@ -329,7 +329,7 @@ Operaton Run also supports configuration options for customizing the deployment.
   </tr>
 </table>
 
-## LDAP Identity Service
+### LDAP Identity Service
 
 Operaton can manage users and authorizations on its own, but if you want to use an existing LDAP authentication database you can enable the [LDAP Identity Service Plugin](process-engine/identity-service.md#the-ldap-identity-service)
 which provides read-only access to the LDAP repository.
@@ -375,7 +375,7 @@ In the table below, observe the Operaton Run-specific properties for the Adminis
   </tr>
 </table>
 
-## Plugin registration
+### Plugin registration
 
 Operaton Run supports two types of plugins.
 
@@ -489,7 +489,7 @@ A webapp plugin is a maven jar project that provides a server-side and a client-
 
 To register a webapp plugin, simply drop the jar file into the `configuration/userlib` folder. See [the Starting with Operaton Run section](#starting-with-operaton-platform-run) of this guide to find out how to navigate the directories of Operaton Run.
 
-## Example application launch
+### Example application launch
 
 Operaton Run comes with a [demo application](#example-application) that deploys resources and starts process instances.
 You can disable the start of that application so it does not create deployments and process instances. The resources of the application
@@ -510,7 +510,7 @@ are however still accessible on the classpath of Operaton Run. Consult the [exam
   </tr>
 </table>
 
-## HTTPS
+### HTTPS
 
 Operaton Run supports HTTPS over SSL. To enable it, you will need a valid SSL certificate signed by a trusted provider and stored in a key store file (either .jks or .p12).
 For testing, we included a self-signed certificate. You should not use this in production. To enable it, add the following properties to your configuration file.
@@ -562,7 +562,7 @@ After starting Operaton Run, you can access the webapps via https://localhost:84
   </tr>
 </table>
 
-## Logging
+### Logging
 
 Operaton provides fine-grained and customizable logging. An overview of the available logging categories can be found in the [Logging User Guide](logging.md#process-engine).
 To configure the logging behavior in Operaton Run, customize your configuration file with the following properties.

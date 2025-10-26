@@ -23,11 +23,11 @@ When the execution waits in an External Task, the Client executes your custom bu
 For instance, the customer's credit score is checked, and if successful, the External Task
 can be marked as completed and the execution proceeds.
 
-# Requirements
+## Requirements
 
 External Task Client Spring Boot Starter requires Java 17.
 
-## Topic Subscription
+### Topic Subscription
 
 The interface which allows implementing the custom business logic and interacting with the Engine is
 called `ExternalTaskHandler`. A subscription is identified by a topic name and configured with a
@@ -158,7 +158,7 @@ public class SubscriptionInitializedListener
 }
 ```
 
-## Configuration
+### Configuration
 
 ### `application.yml` file
 
@@ -562,7 +562,7 @@ public class CustomClientConfiguration {
 }
 ```
 
-## Beans
+### Beans
 
 You can define handler beans, but more beans are defined internally, and they are beyond your control.
 However, these beans can be accessed via auto wiring.
@@ -597,7 +597,7 @@ Will result in the subscription bean name:
 creditScoreCheckerHandlerSubscription
 ```
 
-## Spring-only Module
+### Spring-only Module
 
 If you want to use Spring instead of Spring Boot, you can add the following Maven dependency
 to your `pom.xml` file:

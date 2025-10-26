@@ -10,7 +10,7 @@ menu:
 
 ---
 
-# Configuring Connectors
+## Configuring Connectors
 
 The connectors available to Connect may not always suit your needs. Sometimes,
 it is necessary to provide configuration.
@@ -31,7 +31,7 @@ To provide a custom configurator, you have to
 * Ensure that the artifact containing the configurator is reachable from Connect's classloader
 
 
-# Custom Connector
+## Custom Connector
 
 A connector is an implementation of the interface
 `org.operaton.connect.spi.Connector`. An implementation of this interface can be

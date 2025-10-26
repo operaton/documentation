@@ -15,7 +15,7 @@ menu:
 The processes dashboard of Cockpit is the entry point for process monitoring. It comes with a pre-installed plugin, which lets you see deployed process definitions. Additional [plugins](../extend/plugins.md) can be added to the processes dashboard.
 
 
-# Deployed Processes
+## Deployed Processes
 
 ![Example img](./../img/cockpit-process-definition-state.png)Deployed Processes
 
@@ -42,7 +42,7 @@ You can also switch to the preview tab which displays the rendered process model
 [process-definition-view]: ../bpmn/process-definition-view.md
 [failed-jobs]: ../bpmn/failed-jobs.md
 
-# Process Instances Search
+## Process Instances Search
 
 ![Example img](./../img/cockpit-search.png)cockpit Search
 
@@ -60,7 +60,7 @@ You can perform batch operation on process instances matching search criteria by
   The process instance search operates on the history endpoint of the engine. In case the requested historic data is not persisted to the database, then the search does not deliver the desired results.
 :::
 
-## CSV Export for Process Instances
+### CSV Export for Process Instances
 
 Sometimes incidents make it necessary for the Operations Engineer to intervene manually. However, these incidents might
 not always be solvable from Cockpit if other services or systems are involved. For this case, Cockpit provides a feature
@@ -119,7 +119,7 @@ The format of the export result is a file of [Comma-separated values (CSV)](http
   * `double`, `integer`, `long`, `short` (number types)
 * You can only export the value property of a variable.
 
-## `IN` operator
+### `IN` operator
 
 ![Example img](./../img/cockpit-in-operator.png)IN Operator
 
@@ -138,7 +138,7 @@ start editing by clicking on the value. You can expand the value in a modal dial
 
 ![Example img](./../img/cockpit-in-operator-modal.png)IN Operator Modal
 
-# Delete process definitions
+## Delete process definitions
 
 ![Example img](./../img/cockpit-delete-process-definition.png)Delete Process Definition
 

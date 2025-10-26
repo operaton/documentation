@@ -45,12 +45,12 @@ caseService.manuallyStartCaseExecution("aCaseExecutionId");
 When the decision task instance becomes `ACTIVE`, the referenced decision is evaluated synchronously. As a consequence, the decision task is always executed as `blocking`, because the engine does not distinguish between a `blocking` and a `non-blocking` decision task.
 
 
-# Transactional Behavior
+## Transactional Behavior
 
 The activation of the decision task as well as the evaluation of the decision are performed in the same transaction.
 
 
-# Decision Binding
+## Decision Binding
 
 By default, the decision task always evaluates the latest decision definition with the specified key. To specify a different version of a decision, it is possible to define a binding with the Operaton custom attribute `decisionBinding`. The following values are allowed for the attribute `decisionBinding`:
 
@@ -70,18 +70,18 @@ The following is an example of a decision task that calls the `checkCreditDecisi
 
 Note: It is also possible to use an expression for the attribute `decisionVersion` that must resolve to an integer at runtime.
 
-# Decision Tenant Id
+## Decision Tenant Id
 
 When the decision task resolves the decision definition to be evaluated it must take into account multi tenancy.
 
-## Default Tenant Resolution
+### Default Tenant Resolution
 By default, the tenant id of the calling case definition is used to evaluate the decision definition.
 That is, if the calling case definition has no tenant id, then the decision task evaluate a decision definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling case definition has a tenant id, a decision definition with the provided key and the same tenant id is evaluated.
 
 Note that the tenant id of the calling case instance is not taken into account in the default behavior.
 
-## Explicit Tenant Resolution
+### Explicit Tenant Resolution
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
@@ -109,7 +109,7 @@ An expression also allows using the tenant id of the calling case instance inste
 </decisionTask>
 ```
 
-# Decision Result
+## Decision Result
 
 The output of the decision, also called decision result, is not saved as case variable automatically. It has to pass into a case variable by using a [predefined](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#predefined-mapping-of-the-decision-result) or a [custom](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#custom-mapping-to-case-variables) mapping of the decision result.
 
@@ -133,12 +133,12 @@ The result variable should not have the name `decisionResult` since the decision
 :::
 
 
-# Limitations of the Decision Task
+## Limitations of the Decision Task
 
 To evaluate a referenced decision, the integration of the Operaton DMN engine is used. As a result, only [DMN 1.3] decisions can be evaluated with a decision task. There is no option to integrate with other rule engines.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

@@ -82,9 +82,9 @@ usage of EL.
 </table>
 
 
-# Usage of Expression Language
+## Usage of Expression Language
 
-## Delegation Code
+### Delegation Code
 
 Besides Java code, Operaton also supports the evaluation of expressions as delegation code. For
 general information about delegation code, see the corresponding
@@ -138,7 +138,7 @@ interface.
 ```
 
 
-## Conditions
+### Conditions
 
 To use conditional sequence flows or conditional events, expression language is usually used.
 For conditional sequence flows, a `conditionExpression` element of a sequence flow has to be used.
@@ -168,7 +168,7 @@ For usage of expression language on conditional events, see the following exampl
 ```
 
 
-## inputOutput Parameters
+### inputOutput Parameters
 
 With the Operaton`inputOutput` extension element you can map an `inputParameter` or `outputParameter`
 with expression language.
@@ -192,7 +192,7 @@ a bean.
   </serviceTask>
 ```
 
-## External Task Error Handling
+### External Task Error Handling
 
 For External Tasks it is possible to define
 [operaton:errorEventDefinition](../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition)
@@ -226,16 +226,16 @@ How to match an error message:
 
 For further details on the functionality of error event definitions in the context of external tasks, consult the [External Tasks Guide](../process-engine/external-tasks.md#error-event-definitions).
 
-## Value
+### Value
 
 Different BPMN and CMMN elements allow to specify their content or an attribute value by an
 expression. Please see the corresponding sections for [BPMN][] and [CMMN][] in the references
 for more detailed examples.
 
 
-# Availability of Variables and Functions Inside Expression Language
+## Availability of Variables and Functions Inside Expression Language
 
-## Process Variables
+### Process Variables
 
 All process variables of the current scope are directly available inside an expression. So a
 conditional sequence flow can directly check a variable value:
@@ -248,7 +248,7 @@ conditional sequence flow can directly check a variable value:
   </sequenceFlow>
 ```
 
-## Internal Context Variables
+### Internal Context Variables
 
 Depending on the current execution context, special built-in context variables are available while
 evaluating expressions:
@@ -306,7 +306,7 @@ event name of an execution listener.
 ```
 
 
-## External Context Variables With Spring and CDI
+### External Context Variables With Spring and CDI
 
 If the process engine is integrated with Spring or CDI, it is possible to access Spring and CDI
 beans inside of expressions. Please see the corresponding sections for [Spring][] and [CDI][]
@@ -324,7 +324,7 @@ With the expression attribute any method of a bean can be called.
 ```
 
 
-## Internal Context Functions
+### Internal Context Functions
 
 Special built-in context functions are available while evaluating expressions:
 
@@ -376,7 +376,7 @@ of the task.
 ```
 
 
-## Built-In Operaton Spin Functions
+### Built-In Operaton Spin Functions
 
 If the Operaton Spin process engine plugin is activated, the Spin functions `S`,
 `XML` and `JSON` are also available inside of an expression. See the [Data Formats section][spin-section] for a detailed explanation.

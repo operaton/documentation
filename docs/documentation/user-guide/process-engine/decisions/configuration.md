@@ -21,7 +21,7 @@ This section shows how to configure the DMN engine:
 
 In the examples the default expression language of the input expressions is set to `groovy`. A list of all possible configurations can be found in the [DMN Engine Configuration] section.
 
-# Configure the DMN Engine using Java API
+## Configure the DMN Engine using Java API
 
 First, you need to create a [ProcessEngineConfiguration](../../process-engine/process-engine-bootstrapping.md#bootstrap-a-process-engine-using-the-java-api) object for the process engine and a `DmnEngineConfiguration` object for the DMN engine. Now you can configure the DMN engine using the `DmnEngineConfiguration` object. When you are done, set the object on the `ProcessEngineConfiguration` and call `buildProcessEngine()` to create the process engine.
 
@@ -44,7 +44,7 @@ processEngineConfiguration.setDmnEngineConfiguration(dmnEngineConfiguration);
 processEngineConfiguration.buildProcessEngine();
 ```
 
-# Configure the DMN Engine using Spring XML
+## Configure the DMN Engine using Spring XML
 
 Follow the [instructions](../../process-engine/process-engine-bootstrapping.md#configure-process-engine-using-spring-xml) to create a base `camunda.cfg.xml` XML configuration for the process engine.
 

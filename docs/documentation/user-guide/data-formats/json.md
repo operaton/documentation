@@ -28,7 +28,7 @@ If you want to learn how to use JSON objects in an embedded form, please take a 
 
 Further documentation about the usage of Spin can be found in the [Operaton Spin Dataformat Reference](../../reference/spin/index.md).
 
-# Expression Language Integration
+## Expression Language Integration
 
 The Spin entry functions can be used wherever the process engine allows expression language. The following BPMN snippet shows a conditional sequence flow expression based on the customer's post code:
 
@@ -55,7 +55,7 @@ If your variable is already a [JSON variable value](#native-json-variable-value)
 ```
 
 
-# Scripting Integration
+## Scripting Integration
 
 The following example is a script implemented in JavaScript. The script makes use of the Spin API to extract the address object from the customer, add a city name and set it as a process variable:
 
@@ -74,7 +74,7 @@ The following example is a script implemented in JavaScript. The script makes us
 ```
 
 
-# Native JSON Variable Value
+## Native JSON Variable Value
 
 The native variable value for JSON makes it possible to easily parse a JSON string and wrap it inside an object without the need to have a class representing the JSON. Suppose we want to save the JSON inside a process variable for later use, we could do the following inside a JavaDelegate:
 
@@ -114,7 +114,7 @@ When retrieving the JSON value via `execution.getVariableTyped()` there are two 
 Retrieving the variable deserialized by calling either `getVariableTyped("name")` or `getVariableTyped("name", true)`, the `JsonValue` contains the wrapped Jackson object to represent the JSON data. Calling `getVariableTyped("name", false)` results in `JsonValue` containing only the raw string, which is advantageous if you only need the string, e.g., to pass it to another API.
 
 
-# Serializing Process Variables
+## Serializing Process Variables
 
 A Java object can be serialized using Spin's built-in JSON data format. Let us assume that there are two java classes, `com.example.Customer` and `com.example.Address`, with the following structure:
 

@@ -51,17 +51,17 @@ batch jobs. A single batch consists of three job types:
 - Monitor job: after the seed job finished, it monitors the progress of the
   batch execution and completion
 
-# API
+## API
 
 The following gives an overview of the Java API for batches.
 
-## Creating a Batch
+### Creating a Batch
 
 A batch is created by executing a process engine command asynchronously.
 You can find a list of currently supported batch types in the [Batch operations](../process-engine/batch-operations.md).
 The Java API can be used to create Batch command. Refer to specific commands for exact usage examples.
 
-## Query a Batch
+### Query a Batch
 
 You can query a running batch by the id and the type, for example to query
 for all running process instance migration batches.
@@ -73,7 +73,7 @@ List<Batch> migrationBatches = processEngine.getManagementService()
   .list();
 ```
 
-## Batch Statistics
+### Batch Statistics
 
 You can query for statistics of batches by using the management service.
 The batch statistics will contain information about the remaining,
@@ -86,7 +86,7 @@ List<BatchStatistics> migrationBatches = processEngine.getManagementService()
   .list();
 ```
 
-## History of a Batch
+### History of a Batch
 
 For the [history level][] `FULL` a historic batch entry is created. You
 can query it using the history service.
@@ -114,7 +114,7 @@ List<HistoricJobLog> batchExecutionJobLogs = processEngine.getHistoryService()
 
 You can make a configuration for [history cleanup][] of the finished historic batch operations.
 
-## Suspend a Batch
+### Suspend a Batch
 
 To pause the execution of a batch and all corresponding jobs, a batch
 can be suspended using the management service.
@@ -132,7 +132,7 @@ processEngine.getManagementService()
   .activateBatchById("myBatch");
 ```
 
-## Delete a Batch
+### Delete a Batch
 
 A running batch can be deleted using the management service.
 
@@ -159,7 +159,7 @@ to suspend the batch before deleting it.
 See the [Suspend a Batch](#suspend-a-batch) section for details.
 :::
 
-## Priority of a Batch
+### Priority of a Batch
 
 As all batch jobs are executed using the job executor, it is possible to use the
 [job prioritization][] feature to adjust the priority of batch jobs. The
@@ -179,15 +179,15 @@ processEngine.getManagementService()
   .setOverridingJobPriorityForJobDefinition(batchJobDefinitionId, 100, true);
 ```
 
-## Operation log
+### Operation log
 
 Please note that a user operation log is written for Batch creation itself only, execution
 of the seed job as well as individual jobs that perform operations are performed by Job Executor
 and therefore are not considered to be user operations.
 
-# Job Definitions
+## Job Definitions
 
-## Seed Job
+### Seed Job
 
 A batch initially creates a seed job. This seed will be repeatedly executed to
 create all batch execution jobs. For example if a user starts a [process
@@ -216,7 +216,7 @@ processEngine.getManagementService()
   .suspendJobByJobDefinitionId(seedJobDefinition.getId());
 ```
 
-## Execution Jobs
+### Execution Jobs
 
 The execution of a batch is split into several execution jobs. The specific
 number of jobs depends on the total jobs of the batch and the process engine
@@ -247,7 +247,7 @@ processEngine.getManagementService()
   .suspendJobByJobDefinitionId(executionJobDefinition.getId());
 ```
 
-## Monitor Job
+### Monitor Job
 
 After all batch execution jobs were created by the [seed job][] a monitor job
 is created for the batch. This job regularly polls if the batch has been completed,
@@ -274,7 +274,7 @@ processEngine.getManagementService()
   .suspendJobByJobDefinitionId(monitorJobDefinition.getId());
 ```
 
-## Configuration
+### Configuration
 
 You can configure the number of jobs created by every seed job invocation
 `batchJobsPerSeed` (default: 100) and the number of invocations per batch

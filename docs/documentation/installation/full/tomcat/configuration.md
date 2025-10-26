@@ -5,11 +5,11 @@ sidebar_position: 30
 description: "Configure the installation."
 
 ---
-# Configure the Full Distribution for Tomcat
+## Configure the Full Distribution for Tomcat
 
 This page explains how to configure the full distribution for Tomcat Application Server.
 
-## LDAP
+### LDAP
 
 In order to setup LDAP for the Tomcat distribution, you have to perform the following steps:
 
@@ -80,7 +80,7 @@ The `administratorUserName` property should contain the user id of the LDAP user
 See our user guide for complete documentation on the [LDAP Identity Provider Plugin](../../../user-guide/process-engine/identity-service.md#the-ldap-identity-service) and the [Administrator Authorization Plugin](../../../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin).
 
 
-## HAL Resource Caching
+### HAL Resource Caching
 
 If you use LDAP as Indentity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
 Users and Groups in the Operaton webapplication. In order to activate this, add the following
@@ -123,7 +123,7 @@ configuration to the `web.xml` file of Operaton webapplication
 </web-app>
 ```
 
-## Session Cookie in Webapps
+### Session Cookie in Webapps
 
 To configure the **Session Cookie**, you can adjust the deployment descriptor of the Web applications.
 You can find it in the `WEB-INF/web.xml` in the following section:
@@ -239,7 +239,7 @@ The following list describes all possible parameters you can use for the filter 
 
 Please also see the detailed overview about the [Cookie Security](../../../webapps/shared-options/cookie-security.md).
 
-## Security-related HTTP headers in Webapps
+### Security-related HTTP headers in Webapps
 
 To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
 to be adjusted. You can find it under `WEB-INF/web.xml`.

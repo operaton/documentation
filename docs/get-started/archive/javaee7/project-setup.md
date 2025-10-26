@@ -14,7 +14,7 @@ menu:
 
 Now you are ready to set up your first process application project in the IDE of your choice, the following description uses Eclipse.
 
-# Set up your project
+## Set up your project
 
 :::note[Fancy to save work and use a project template instead?]
 You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/manual/latest/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
@@ -31,7 +31,7 @@ Now you are ready to set up your Java EE process application project in Eclipse.
 
 In the following sections, we go through this process step by step.
 
-## Create a new Maven Project in Eclipse
+### Create a new Maven Project in Eclipse
 
 ![Example image](./img/maven-project-settings.png)
 
@@ -45,7 +45,7 @@ As we are setting up a WAR Project, make sure to select `Packaging: war`.
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* view.
 
-## Add Maven Dependencies
+### Add Maven Dependencies
 
 The next step consists of setting up the Maven dependencies for your new process application. Add the following dependencies to the `pom.xml` file of your project:
 
@@ -143,13 +143,13 @@ WildFly already contains this interfaces.
 
 Now you can perform the first build. Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`
 
-## Add a WEB-INF/beans.xml Deployment Descriptor
+### Add a WEB-INF/beans.xml Deployment Descriptor
 
 After we have all of our maven dependencies configured, we can add our first deployment descriptor. The `WEB-INF/beans.xml` is used to configure a CDI application. It's presence is always mandatory but it can be empty, as it is in our case. For further information, please see [this explanation](http://www.cdi-spec.org/faq/).
 
 This file needs to be added to the `src/main/webapp/WEB-INF` folder of the Maven project.
 
-## Add a WEB-INF/faces-config.xml Deployment Descriptor
+### Add a WEB-INF/faces-config.xml Deployment Descriptor
 
 The next step is to configure the JSF component. This is done by adding the `WEB-INF/faces-config.xml` to your project. We use the default configuration, so you only have to add the file without any additional configuration.
 
@@ -165,7 +165,7 @@ This file needs to be added to the `src/main/webapp/WEB-INF` folder of the Maven
 </faces-config>
 ```
 
-## Add a META-INF/persistence.xml Deployment Descriptor
+### Add a META-INF/persistence.xml Deployment Descriptor
 
 To configure JPA, we add the `META-INF/persistence.xml` file. We use the same data source as the process engine which is configured inside the `standalone.xml` of the WildFly distribution.
 
@@ -193,7 +193,7 @@ This file needs to be added to the `src/main/resources/META-INF` folder of the M
 </persistence>
 ```
 
-## Add a META-INF/processes.xml Deployment Descriptor
+### Add a META-INF/processes.xml Deployment Descriptor
 
 The last step for setting up the process application is adding the `META-INF/processes.xml` deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) that this process application makes to the process engine.
 

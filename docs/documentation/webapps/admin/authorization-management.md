@@ -21,12 +21,12 @@ See [Authorization Service](../../user-guide/process-engine/authorization-servic
 The Authorization Management menu is only usable by users which are granted with *Read* permission for authorizations.
 :::
 
-# Grant Basic Permissions
+## Grant Basic Permissions
 
 In this use case we'll grant some basic permissions. To start out we'll need some users and a group. Create two users in the  [users menu](../admin/user-management.md#user-menu), create a group called *support* in the [groups menu](../admin/group-management.md#groups-menu) and add the new users to the group in the [users menu](../admin/user-management.md#user-menu).
 
 
-## Application Access
+### Application Access
 
 Set the authorizations for the new group and the created users. First you have to define which application the members of your new group have access to. Select the *Application* menu and create a new `Application Authorization` rule. The group members should be able to access Tasklist, so add the following rule:
 
@@ -45,7 +45,7 @@ This specific rule is only valid for the user 'lemmy' and provides him with addi
 Log in with the new user accounts and test if you can access the desired application.
 
 
-## Filter Access
+### Filter Access
 
 Currently the users in the *support* group can only see the predefined filters in Tasklist. We want the group members to have `READ` access to another filter, so we create a rule for that filter:
 
@@ -54,7 +54,7 @@ Currently the users in the *support* group can only see the predefined filters i
 The authorizations set here correspond to the authorizations that can be set in the filter settings in Tasklist. The resource ID can be found in the database table `ACT_RU_FILTER`. See [this section](../tasklist/filters.md) for more information about filters.
 
 
-## Member Visibility
+### Member Visibility
 
 Depending on the users authorization, [Tasklist](../tasklist/index.md) will show you information about your colleagues and groups. Currently you can only see the group folder *support* but not your colleague. To change that, log in to the admin application as administrator, enter the Users Authorization menu and create the following rules:
 
@@ -63,7 +63,7 @@ Depending on the users authorization, [Tasklist](../tasklist/index.md) will show
 Now every member of the group *support* is able to see the new users *lemmy* and *Ozzy*.
 
 
-# Application-Specific Permissions
+## Application-Specific Permissions
 
 This use case demonstrates how to give a group access to Cockpit, but restrict them to `READ` access. We will use the *support* group that we created in the previous [example](../admin/authorization-management.md#grant-basic-permissions).
 
@@ -87,7 +87,7 @@ Now every user of the *support* group can access Cockpit and see everything that
 Now that we have one group that can see everything in Cockpit, we want to have another group managing one single process.
 
 
-# Restrict Process Permissions
+## Restrict Process Permissions
 
 Not every process has to be managed by every user/group and with regards to different organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.
 
@@ -102,7 +102,7 @@ We grant the *accounting* group all permissions for the *invoice* process becaus
 Now that we know how to grant certain permissions, we might need a second user who serves as an administrator.
 
 
-# Create a User with All Permissions
+## Create a User with All Permissions
 
 During the [setup](../admin/user-management.md#initial-user-setup) you had to create one administrator account. In a real-world scenario it could be beneficial to have a second administrator account to manage the users. Basically, an administrator is a user with the `ALL` permission for every possible resource and resource id. For example, to grant the *accounting* group all permissions for authorizations the following entry has to be made:
 
@@ -118,7 +118,7 @@ To create an administrator account, there are several options:
 Now, after creating a new administrator account, we may want to start working and start processes.
 
 
-# Grant Permission to Start Processes from Tasklist
+## Grant Permission to Start Processes from Tasklist
 
 Processes are started from Tasklist. For a user or group to be able to start processes we need, again, a certain combination of permissions.
 In this use case we want to give the *accounting* group the permission to start the *invoice* process from Tasklist.
@@ -138,7 +138,7 @@ After that, we grant the `CREATE` permission for process instances. The `CREATE`
 Now that we know how to start a process, we may want to restrict permissions to certain running processes.
 
 
-# Grant Permission for Single Process Instance
+## Grant Permission for Single Process Instance
 
 It is possible to restrict a group's/user's permissions to a single process instance, i.e., after the process ends, the group/user will not be able to change any other running process instances. We will use the *accounting* group again in this example. We assume that the group has access to Cockpit (also see [Application Access](#application-access)) and that a process with the name and key *OrderProcess* is present.
 
@@ -157,7 +157,7 @@ This id then has to be used as the resource id when granting the user all permis
 This will limit the group's permissions to this running process instance. As with restricting access to a certain process instance, it is also possible to apply similar limitations for a single task.
 
 
-# Grant Permission for Single Tasks
+## Grant Permission for Single Tasks
 
 Since several groups can participate in a process, it could be useful to restrict certain tasks to certain people/groups. For this example, we will reuse the *accounting* group and the *invoice* process from the previous sections. At least we need one running instance of the process.
 

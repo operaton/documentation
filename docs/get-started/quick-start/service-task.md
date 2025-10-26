@@ -9,14 +9,14 @@ description: 'Learn the basics of handling the Camunda Modeler, learn how to mod
 
 In this section, you'll learn how to create your first BPMN 2.0 process with the Camunda Modeler and how to execute automated steps. Start by opening up Camunda Modeler.
 
-# Create a new BPMN Diagram
+## Create a new BPMN Diagram
 
 Create a new BPMN diagram by clicking *File > New File > BPMN Diagram (Operaton Platform)*.
 
 ![Example image](./img/modeler-new-bpmn-diagram.png)
 
 
-## Start with a Simple Process
+### Start with a Simple Process
 Start by modeling a simple process.
 
 ![Example image](./img/modeler-step1.png)
@@ -36,14 +36,14 @@ Add an End Event named *Payment Received*.
 ![Example image](./img/modeler-step3.png)
 
 
-## Configure the Service Task
+### Configure the Service Task
 
 There are different ways to [execute service tasks](https://docs.operaton.org/manual/latest/reference/bpmn20/tasks/service-task/) using Operaton Platform. In this guide, we'll use the external [task pattern](https://docs.operaton.org/manual/latest/user-guide/process-engine/external-tasks/).
 Open the Properties Panel within the Camunda Modeler and click on the Service Task you just created. Change the Implementation to `External` and use `charge-card` as the Topic.
 
 ![Example image](./img/modeler-step4.png)
 
-## Configure Properties for Execution
+### Configure Properties for Execution
 
 ![Example image](./img/modeler-step5.png)
 
@@ -55,11 +55,11 @@ Second, configure the Name of the process. Type *Payment Retrieval* in the prope
 
 Finally, make sure the box next to the *Executable* property is checked. If you don't check this box, the process definition is ignored by the process engine.
 
-## Save the BPMN Diagram
+### Save the BPMN Diagram
 
 When you're done, save your changes by clicking *File > Save File As..*. In the dialogue that appears, navigate to a folder of your choice and save the diagram as something like `payment.bpmn`.
 
-# Implement an external task worker
+## Implement an external task worker
 
 After modeling the process, we want to execute some business logic.
 
@@ -77,18 +77,18 @@ If you've never worked with Java before, we recommend using the JavaScript (Node
 If you prefer a different programming language, you can also use Operaton's [REST API](/docs/documentation/user-guide/process-engine/external-tasks/#rest-api) to access API operations via HTTP.
 :::
 
-## a) Using Java
+### a) Using Java
 
 In this section, you'll learn how to implement an external task worker in Java.
 
-### Prerequisites
+#### Prerequisites
 
 Make sure you have the following tools installed:
 
 * JDK 11
 * An IDE for Java projects (e.g. [Eclipse](https://eclipse.org/))
 
-### Create a new Maven project
+#### Create a new Maven project
 
 Start by creating a new Maven project in your IDE. If you're using Eclipse, you can follow these steps:
 
@@ -102,7 +102,7 @@ On the second page (see screenshot), configure the Maven coordinates for the pro
 
 When you're done, click Finish. Eclipse will set up a new Maven project. The project appears in the Project Explorer View.
 
-### Add Operaton External Task Client Dependency
+#### Add Operaton External Task Client Dependency
 
 The next step consists of setting up the Maven dependency to the external task client for your new process application.
 Your pom.xml file of your project should look like this:
@@ -142,7 +142,7 @@ Your pom.xml file of your project should look like this:
 </project>
 ```
 
-### Add the Java class
+#### Add the Java class
 
 Next, we will create a new ExternalTaskClient which subscribes to the `charge-card` topic.
 
@@ -195,7 +195,7 @@ public class ChargeCardWorker {
 }
 ```
 
-### Run the worker
+#### Run the worker
 
 You can run the Java application by right clicking on the class `ChargeCardWorker` and choosing `Run as Java`.
 
@@ -205,18 +205,18 @@ Note that the worker should remain running throughout the entirety of this quick
 Once your worker is running, you can [continue to deploy your process and start some instances](/docs/get-started/quick-start/deploy/).
 :::
 
-## b) Using JavaScript (NodeJS)
+### b) Using JavaScript (NodeJS)
 
 In this section, you'll learn how to implement an external task worker in NodeJS.
 
-### Prerequisites
+#### Prerequisites
 
 Make sure you have the following tools installed:
 
 * NodeJS $\geq$ v16 ([Download available here](https://nodejs.org/en/download/))
 * Editor for JavaScript files (e.g. [Atom](https://atom.io/))
 
-### Create a new NodeJS project
+#### Create a new NodeJS project
 
 ```sh
 mkdir charge-card-worker
@@ -224,7 +224,7 @@ cd ./charge-card-worker
 npm init -y
 ```
 
-### Update package.json to enable ES modules
+#### Update package.json to enable ES modules
 Add the following "type" field to your package.json file:
 
 ``` json
@@ -239,14 +239,14 @@ Add the following "type" field to your package.json file:
 }
 ```
 
-### Add Operaton External Task Client JS library
+#### Add Operaton External Task Client JS library
 
 ```sh
 npm install operaton-external-task-client-js
 npm install -D open
 ```
 
-### Implement the NodeJS script
+#### Implement the NodeJS script
 
 Next, we'll create a new ExternalTaskClient that subscribes to the `charge-card` topic.
 
@@ -286,7 +286,7 @@ client.subscribe('charge-card', async function({ task, taskService }) {
 
 ```
 
-### Run the NodeJS script
+#### Run the NodeJS script
 
 You can run the NodeJS script with:
 

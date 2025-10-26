@@ -24,7 +24,7 @@ This event can now be caught by all process instances which are interested. The 
 Note: It is important to understand that a signal event is broadcast to all active handlers. In the example given above this means that all instances of the process catching the signal would receive the event.
 
 
-# Signal Event Definition
+## Signal Event Definition
 
 A signal event definition is declared using the signalEventDefinition element. The attribute `signalRef` references a signal element declared as a child element of the definitions root element. The following is an excerpt of a process in which a signal event is thrown and caught by intermediate events. The signalEventDefinitions reference the 'global' signal element.
 
@@ -52,7 +52,7 @@ A signal event definition is declared using the signalEventDefinition element. T
 __Note__: Contrary to other events, such error events, a signal is not consumed if it is caught. If you have two active signal boundary events catching the same signal event, both boundary events are triggered, even if they are part of different process instances.
 
 
-## Expressions
+### Expressions
 
 You can use expressions for the name in the signal event definition. The name is then resolved as soon as a process reaches the scope of the signal. For example when the process instances reaches a Signal Intermediate Catching Event, then the expression within the name is resolved.
 
@@ -63,9 +63,9 @@ By using expressions within the signal name you can influence the signal name dy
 ```
 
 
-# Signal Api
+## Signal Api
 
-## Triggering (Throwing) Signals
+### Triggering (Throwing) Signals
 
 A signal can either be thrown by a process instance using a BPMN construct or programmatically using Java API. The `RuntimeService` provides a fluent API to throw a signal programmatically:
 
@@ -95,7 +95,7 @@ If an execution id is specified then the signal is only delivered to the specifi
 
 Note: The signal event does not perform any kind of correlation to a specific process instance. On the contrary, it is broadcast to all process instances. If you need to exclusively deliver a signal to a specific process instance, do not use the throwing signal event. Instead, perform the correlation manually using the appropriate query mechanisms and deliver the signal to a specific execution programmatically.
 
-## Querying for Signal Event Subscriptions
+### Querying for Signal Event Subscriptions
 
 It is possible to query for all executions which have subscribed to a specific signal event:
 
@@ -107,9 +107,9 @@ List<Execution> executions = runtimeService.createExecutionQuery()
 
 You could then use the signal API to deliver the signal to these executions.
 
-# Catching Signal Events
+## Catching Signal Events
 
-## Signal Start Event
+### Signal Start Event
 
 A signal start event can be used to start a process instance using a named signal.
 
@@ -136,7 +136,7 @@ The XML representation of a signal start event is the normal start event declara
 </startEvent>
 ```
 
-## Signal Intermediate Catching Event
+### Signal Intermediate Catching Event
 
 When a token arrives at the signal intermediate catching event, it will wait there until a signal with the proper name arrives.
 
@@ -146,7 +146,7 @@ When a token arrives at the signal intermediate catching event, it will wait the
 </intermediateCatchEvent>
 ```
 
-## Operaton Extensions
+### Operaton Extensions
 
 The following extensions are supported for the Signal Intermediate Catching Event:
 
@@ -167,7 +167,7 @@ The following extensions are supported for the Signal Intermediate Catching Even
   </tr>
 </table>
 
-## Signal Boundary Event
+### Signal Boundary Event
 
 When an execution arrives in the activity to which the signal boundary event is attached, the signal boundary event catches signals with the proper name.
 
@@ -179,9 +179,9 @@ Note: Contrary to other events, such as the error boundary event, a signal bound
 </boundaryEvent>
 ```
 
-# Throwing Signal Events
+## Throwing Signal Events
 
-## Signal Intermediate Throwing Event
+### Signal Intermediate Throwing Event
 
 A signal intermediate throwing event throws a signal event for a defined signal.
 
@@ -206,7 +206,7 @@ An asynchronous signal event would look like this:
 </intermediateThrowEvent>
 ```
 
-## Signal End Event
+### Signal End Event
 
 A signal end event throws a signal event for a defined signal and the current path of execution is ended. It has the same behavior as a signal intermediate throwing event.
 
@@ -216,7 +216,7 @@ A signal end event throws a signal event for a defined signal and the current pa
 </endEvent>
 ```
 
-## Passing Variables
+### Passing Variables
 
 It is possible to pass process variables from the signal-throwing process instance, to all of the signal-catching process instances. The data is copied into a signal-catching process instance when it is started with a Signal Start Event, or before it leaves the wait-state in a Signal Intermediate Catching Event.
 
@@ -274,7 +274,7 @@ It is possible to use multiple of the above-mentioned options at once. For examp
 </signalEventDefinition>
 ```
 
-## Passing a Business Key
+### Passing a Business Key
 
 In addition to passing process variables to the signal-catching process instances, it is also possible to pass a Business Key. However, this Business Key passing can only be applied to process instances that use a Signal Start Event.
 
@@ -288,7 +288,7 @@ In addition to passing process variables to the signal-catching process instance
 
 The business key "operaton:in" element can be used in combination with the process variable passing "operaton:in" elements.
 
-## Operaton Extensions
+### Operaton Extensions
 
 The following extensions are supported for the Signal Intermediate and End Throwing Events:
 
@@ -311,6 +311,6 @@ The following extensions are supported for the Signal Intermediate and End Throw
   </tr>
 </table>
 
-# Additional Resources
+## Additional Resources
 
 *   [Signal Events](http://operaton.org/bpmn/reference.html#events-signal) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

@@ -15,12 +15,12 @@ You can override the default configuration of the Welcome application by using a
 located in `app/welcome/scripts/config.js`. The following configuration options are
 available:
 
-# Custom links
+## Custom links
 
 Can be used to add some useful links for the user, such as other applications or intranet sites.
 
 
-## Example
+### Example
 
 ```javascript
 export default {
@@ -36,7 +36,7 @@ export default {
 }
 ```
 
-# Logo and Header Color
+## Logo and Header Color
 
 You can change the visual aspects of Welcome. The user stylesheet file is located in
 `app/welcome/styles/user-styles.css`. This file contains CSS which is loaded into Welcome
@@ -71,7 +71,7 @@ export default {
 }
 ```
 
-# Localization
+## Localization
 
 Welcome can be localized. Operaton maintains English and German translation files.
 
@@ -101,7 +101,7 @@ To create a new localization for the Welcome application, copy the provided lang
 save it as a new localization file with the corresponding language code. To make the new translation
 available, add it to the list of available locales in the configuration file.
 
-# Change CSRF Cookie Name
+## Change CSRF Cookie Name
 
 The default name of the CSRF Cookie is `XSRF-TOKEN`. When using other applications within the
 same-origin, the CSRF mechanisms could interfere with each other. To avoid the name conflict, you
@@ -115,7 +115,7 @@ export default {
 
 **Note:** Please make sure to change the CSRF cookie name also on [server-side](../shared-options/csrf-prevention.md#cookie-name).
 
-# Disable Welcome Message for new Users
+## Disable Welcome Message for new Users
 
 First-time visitors are shown a message directing them to the Operaton welcome page. If you do
 not want this message to be shown, you can disable it by adjusting the `config.js` as follows:

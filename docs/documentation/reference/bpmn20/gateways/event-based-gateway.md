@@ -65,7 +65,7 @@ The corresponding xml looks like this:
 ```
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -93,6 +93,6 @@ The corresponding xml looks like this:
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Event-based Gateways](http://operaton.org/bpmn/reference.html#gateways-event-based-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

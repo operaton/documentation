@@ -20,7 +20,7 @@ A terminate event on process instance level terminates the complete instance. On
 <div data-bpmn-diagram="../bpmn/event-terminate"></div>
 
 
-# Terminate Event Definition
+## Terminate Event Definition
 
 A terminate event is modeled as an end event with an additional definition element to mark the termination:
 
@@ -35,7 +35,7 @@ A terminate event is modeled as an end event with an additional definition eleme
 ```
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -59,6 +59,6 @@ A terminate event is modeled as an end event with an additional definition eleme
   </tr>
 </table>
 
-## Additional Resources
+### Additional Resources
 
 * [Terminate Events](http://operaton.org/bpmn/reference.html#events-termination) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

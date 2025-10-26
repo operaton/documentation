@@ -15,7 +15,7 @@ menu:
 The CMMN Cases dashboard of Cockpit is the entry point for case monitoring. It comes with a pre-installed plugin, which lets you see deployed case definitions. Additional [plugins](../extend/plugins.md) can be added to the cases dashboard.
 
 
-# Search
+## Search
 
 ![Example img](./../img/cmmn/case-dashboard-search.png)Case Instance Search
 
@@ -30,7 +30,7 @@ Furthermore, you can copy a link to the current search query to your clipboard b
   The case instance search operates on the history endpoint of the engine. In case the requested historic data is not persisted to the database, then the search does not deliver the desired results.
 :::
 
-# Deployed Cases
+## Deployed Cases
 
 ![Example img](./../img/cmmn/case-dashboard-deployed.png)Deployed Case Definitions
 

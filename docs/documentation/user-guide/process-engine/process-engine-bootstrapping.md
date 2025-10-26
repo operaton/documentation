@@ -14,7 +14,7 @@ menu:
 You have a number of options to configure and create a process engine depending on whether you use an application managed or a shared, container managed process engine.
 
 
-# Application Managed Process Engine
+## Application Managed Process Engine
 
 You manage the process engine as part of your application. The following ways exist to configure it:
 
@@ -23,12 +23,12 @@ You manage the process engine as part of your application. The following ways ex
 * [Via Spring](../spring-framework-integration/index.md)
 
 
-# Shared, Container Managed Process Engine
+## Shared, Container Managed Process Engine
 
 A container of your choice (e.g., Tomcat, Wildfly or IBM WebSphere) manages the process engine for you. The configuration is carried out in a container specific way, see [Runtime Container Integration](../runtime-container-integration/index.md) for details.
 
 
-## ProcessEngineConfiguration Bean
+### ProcessEngineConfiguration Bean
 
 The Operaton engine uses the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/ProcessEngineConfiguration.html">ProcessEngineConfiguration</a> bean to configure and construct a standalone Process Engine. There are multiple subclasses available that can be used to define the process engine configuration. These classes represent different environments, and set defaults accordingly. It's a best practice to select the class that matches (most of) your environment to minimize the number of properties needed to configure the engine. The following classes are currently available:
 
@@ -42,7 +42,7 @@ To be used when the process engine is used in a Spring environment. See the Spri
 To be used when the engine runs in standalone mode, with JTA transactions.
 
 
-## Bootstrap a Process Engine Using the Java API
+### Bootstrap a Process Engine Using the Java API
 
 You can configure the process engine programmatically by creating the right ProcessEngineConfiguration object or by using some pre-defined one:
 
@@ -62,7 +62,7 @@ ProcessEngine processEngine = ProcessEngineConfiguration.createStandaloneInMemPr
 ```
 
 
-## Configure Process Engine Using Operaton cfg XML
+### Configure Process Engine Using Operaton cfg XML
 
 The easiest way to configure your Process Engine is through an XML file called `camunda.cfg.xml`. Using that you can simply do:
 
@@ -124,7 +124,7 @@ ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
 All these `ProcessEngineConfiguration.createXXX()` methods return a `ProcessEngineConfiguration` that can further be tweaked if needed. After calling the `buildProcessEngine()` operation, a `ProcessEngine` is created as explained above.
 
 
-## Configure Process Engine in the bpm-platform.xml
+### Configure Process Engine in the bpm-platform.xml
 
 The `bpm-platform.xml` file is used to configure Operaton in the following distributions:
 
@@ -162,7 +162,7 @@ The `<process-engine ... />` xml tag allows you to define a process engine:
 See the [Deployment Descriptor Reference](../../reference/deployment-descriptors/bpm-platform-xml.md) for complete documentation of the syntax of the `bpm-platform.xml` file.
 
 
-## Configure Process Engine in the processes.xml
+### Configure Process Engine in the processes.xml
 
 The process engine can also be configured and bootstrapped using the `META-INF/processes.xml` file. See [Section on processes.xml file](../process-applications/the-processes-xml-deployment-descriptor.md) for details.
 

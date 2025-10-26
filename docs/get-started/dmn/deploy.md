@@ -15,7 +15,7 @@ aliases: [/dmn11/deploy/]
 
 In this step, we use Java Code to evaluate the decision table. Then we deploy the web application to Apache Tomcat and verify the result in Cockpit.
 
-# Evaluate the Decision Table
+### Evaluate the Decision Table
 
 To directly evaluate the decision table after deployment, add the following method to your Application class:
 
@@ -45,7 +45,7 @@ public class DinnerApplication extends ServletProcessApplication {
 }
 ```
 
-# Build the Web Application with Maven
+### Build the Web Application with Maven
 
 Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`. This will generate a WAR file named `dinner-dmn-0.1.0-SNAPSHOT.war` in the `target/` folder of your Maven project.
 
@@ -53,7 +53,7 @@ Select the `pom.xml` in the Package Explorer, perform a right-click and select `
 If the `dinner-dmn-0.1.0-SNAPSHOT.war` file is not visible after having performed the Maven build, you need to refresh the project (F5) in eclipse.
 :::
 
-# Deploy to Apache Tomcat
+### Deploy to Apache Tomcat
 
 In order to deploy the process application, copy-paste the `dinner-dmn-0.1.0-SNAPSHOT.war` from your Maven project to the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
 
@@ -78,14 +78,14 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
 </pre>
 
 
-# Verify the Deployment with Cockpit
+## Verify the Deployment with Cockpit
 
 Now, use Cockpit to check if the decision table is successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit](http://localhost:8080/operaton/app/cockpit). Log in with *demo / demo*. Go to "Decisions" section. Your decision table *Dish* should be listed as deployed decision definition.
 
 ![Example image](./img/cockpit-dish-dmn.png)
 
 
-# Verify the Evaluation with Cockpit
+## Verify the Evaluation with Cockpit
 
 Click on the decision *Dish*. This opens a dialog where you see when the decision table was evaluated.
 
@@ -97,7 +97,7 @@ If you click on the id, you can see the historic data of the evaluation. The mat
 
 Verify that the 5th rule was matched and the output value for the desired dish is "Stew".
 
-# Next Steps
+## Next Steps
 
 Congratulations, you have now successfully set up a project with your first DMN decision table.
 

@@ -21,12 +21,12 @@ The <code>bpm-platform.xml</code> file is not used in the Operaton distribution 
 :::
 
 
-# Xml Schema Namespace
+## Xml Schema Namespace
 
 The namespace for the `bpm-platform.xml` file is `http://www.operaton.org/schema/1.0/BpmPlatform`. The XSD file can be found in the `operaton-engine.jar` file.
 
 
-## Example
+### Example
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -55,7 +55,7 @@ The namespace for the `bpm-platform.xml` file is `http://www.operaton.org/schema
 </bpm-platform>
 ```
 
-# Syntax Reference
+## Syntax Reference
 
 <table class="table table-striped">
   <tr>
@@ -85,7 +85,7 @@ The namespace for the `bpm-platform.xml` file is `http://www.operaton.org/schema
 </table>
 
 
-# Configure Location of the bpm-platform.xml File
+## Configure Location of the bpm-platform.xml File
 
 You can configure the location of the `bpm-platform.xml`, so the file can be stored externally to allow an easy update path of operaton-bpm-platform.ear. This negates the work of unpacking / repackaging the ear when you need to change the configuration.
 
@@ -108,12 +108,12 @@ During startup of the operaton-bpm-platform, it tries to discover the location o
 The discovery stops when one of the above mentioned sources is found or, in case none is found, it falls back to the `bpm-platform.xml` on the classpath, respectively `${CATALINA_BASE} || ```${CATALINA_HOME} + /conf/` for Tomcat. We ship a default `bpm-platform.xml` file inside the operaton-bpm-platform.ear, except when you use the Tomcat or Wildfly version of the platform.
 
 
-# Using System Properties
+## Using System Properties
 
 To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., `${PROPERTY_KEY}`). Expression resolution is supported within the `property` elements only. System properties may be set via command line (`-D`option) or in an implementation specific manner (Apache Tomcat's `catalina.properties` for example).
 Complex operations are not supported, but you may combine more than one expression in a single `property` element (e.g., `${ldap.host}:${ldap.port}`).
 
-## Example
+### Example
 
 ```xml
 <!-- ... -->

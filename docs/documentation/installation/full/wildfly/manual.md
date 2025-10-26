@@ -5,7 +5,7 @@ sidebar_position: 20
 description: "Install and configure the Full Distribution on a vanilla WildFly Application Server."
 
 ---
-# Install the Full Distribution on a WildFly Application Server manually
+## Install the Full Distribution on a WildFly Application Server manually
 
 This document describes the installation of Operaton and its components on a vanilla [WildFly Application Server](http://www.wildfly.org) or JBoss EAP 7 / 8.
 
@@ -18,7 +18,7 @@ This guide uses a number of variables to denote common path names and constants:
 * `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `7.0.0`.
 :::
 
-## Setup
+### Setup
 
 * For WildFly ≥27 / JBoss EAP 8, download the [Operaton WildFly distribution](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
 * For WildFly ≤26 / JBoss EAP 7, download the [`operaton-wildfly26-modules`](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/wildfly/operaton-wildfly26-modules/).
@@ -141,7 +141,7 @@ These links point you to resources for other databases:
 * [How to configure an Oracle database](http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle)
 * [How to configure a MySQL database](http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql)
 
-## Optional Components
+### Optional Components
 
 This section describes how to install optional dependencies. None of these are required to work with the core platform. Before continuing, make sure that Operaton is already installed according to [this step](#setup) for WildFly / JBoss EAP.
 

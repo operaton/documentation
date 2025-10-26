@@ -18,7 +18,7 @@ configure and build a decision engine instance. This section provides the
 required maven coordinates to add the DMN engine as a dependency to your
 project. It then shows how to configure and build a new DMN engine instance.
 
-# Maven Coordinates
+## Maven Coordinates
 
 The Operaton DMN engine is released to Maven Central.
 
@@ -28,7 +28,7 @@ to ensure correct dependency management.
 Next, include the [`operaton-engine-dmn`](/get-started/apache-maven/#operaton-dmn)
 artifact in the `dependencies` section.
 
-# Building a DMN Engine
+## Building a DMN Engine
 
 To build a new DMN engine, create a DMN engine configuration.
 Configure it as needed and then build a new DMN engine from it.
@@ -45,10 +45,10 @@ DmnEngineConfiguration configuration = DmnEngineConfiguration
 DmnEngine dmnEngine = configuration.buildEngine();
 ```
 
-# Configuration of the DMN Engine
+## Configuration of the DMN Engine
 This section gives more insights of embedded DMN engine configuration. In case you want to use DMN engine as part of the BPMN engine, please refer to the [DMN Engine Configuration](../../user-guide/process-engine/decisions/configuration)  section of the [User Guide](../../user-guide/index.md) for the configuration in that scenario.
 
-## Decision Table Evaluation Listeners
+### Decision Table Evaluation Listeners
 
 The DMN engine configuration allows you add a custom decision table [evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html).
 A decision table evaluation listener is notified after a decision table has been evaluated. It receives an evaluation event which contains the result of the evaluation. You can decide if the listener should be notified before or after the default listeners.
@@ -85,7 +85,7 @@ DmnEngineMetricCollector metricCollector = ...;
 // set the metric collector
 configuration.setEngineMetricCollector(metricCollector);
 ```
-## Decision Evaluation Listeners
+### Decision Evaluation Listeners
 
 The DMN engine configuration allows you add a custom [decision evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.html). A decision evaluation listener is
 notified after a decision with all the required decisions has been evaluated. It receives an evaluation event
@@ -109,7 +109,7 @@ configuration.getCustomPostDecisionEvaluationListeners()
   .add(myListener);
 ```
 
-# Customizing and Extending the DMN Engine
+## Customizing and Extending the DMN Engine
 
 :::warning[Use of Internal API]
 
@@ -120,7 +120,7 @@ Please be aware that these APIs are **not** part of the [public API](../../intro
 The [default DMN engine configuration](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html)
  has further customization and extension points.
 
-## Customize DMN Transformation
+### Customize DMN Transformation
 
 It is possible to customize the transformation of DMN by providing a [DMN transformer](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnTransformer.html) or configuring the [default one](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/transform/DefaultDmnTransformer.html).
 
@@ -245,7 +245,7 @@ hitPolicyHandlerRegistry
   .addHandler(HitPolicy.PRIORITY, null, new MyPriorityHitPolicyHandler());
 ```
 
-## Change default expression languages
+### Change default expression languages
 
 A [DMN decision table] has multiple expressions which are evaluated when the table is executed.
 The default expression language for every expression type can be configured.
@@ -284,7 +284,7 @@ implementation like Rhino or Nashorn, then `javascript` is available as well.
 It is also possible to use other script languages like `groovy`, `python` or `ruby`.
 Just make sure that the corresponding libraries are available on the classpath at runtime.
 
-## Customize Expression and Script Resolving
+### Customize Expression and Script Resolving
 
 The default DMN engine resolves the supported expression and script languages
 using different providers.
@@ -323,7 +323,7 @@ DefaultDmnEngineConfiguration configuration = (DefaultDmnEngineConfiguration) Dm
 configuration.setScriptEngineResolver(new MyScriptEngineResolver());
 ```
 
-# Logging
+## Logging
 
 The DMN engine uses [SLF4J] as logging API. The `operaton-dmn-engine` artifact
 does not have a dependency to any of the existing [SLF4J] backends. This means that

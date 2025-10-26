@@ -15,7 +15,7 @@ menu:
 In this section we learn how to start a process from a Spring Bean and how to invoke a Spring Bean from a BPMN 2.0 Service Task.
 
 
-# Add a Spring Bean Service Task
+## Add a Spring Bean Service Task
 
 Now that we know how to bootstrap the process engine in a Spring Application context, we can add a BPMN 2.0 process
 model and interact with the process form inside our Spring beans. In this section we will
@@ -25,7 +25,7 @@ model and interact with the process form inside our Spring beans. In this sectio
 3. Start a process instance from a Spring bean.
 4. Invoke a Spring bean from a BPMN 2.0 Service task.
 
-## Model an Executable BPMN 2.0 Process
+### Model an Executable BPMN 2.0 Process
 
 Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.
 
@@ -38,7 +38,7 @@ If you are unfamiliar with modeling an executable process, you can read the
 
 When you are done, save the process model in the `src/main/resources` folder of your Eclipse project. Make sure to refresh the Eclipse project afterwards.
 
-## Use Spring Auto-Deployment for BPMN 2.0 Processes
+### Use Spring Auto-Deployment for BPMN 2.0 Processes
 
 For the process to be deployed, use the auto-deployment feature provided by the Operaton engine Spring integration. In order to use this feature, modify the definition of the `SpringProcessEngineConfiguration` bean inside `LoanApplicationContext` as follows:
 
@@ -63,7 +63,7 @@ public SpringProcessEngineConfiguration engineConfiguration(
 
 (the import for the `Resource` interface is `org.springframework.core.io.Resource`)
 
-## Start a Process Instance from a Spring Bean
+### Start a Process Instance from a Spring Bean
 
 The next step consists of starting a process instance from a Spring Bean. Add a class called `Starter` to the `org.operaton.bpm.getstarted.loanapproval` package:
 
@@ -106,7 +106,7 @@ public class LoanApplicationContext {
 }
 ```
 
-## Invoke a Spring Bean from a BPMN 2.0 Service Task
+### Invoke a Spring Bean from a BPMN 2.0 Service Task
 
 ![Example image](./img/service-task.png)
 

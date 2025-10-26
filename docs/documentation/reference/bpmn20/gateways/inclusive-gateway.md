@@ -84,7 +84,7 @@ When this task is completed, the second inclusive gateway joins the two executio
 Note that an inclusive gateway does not need to be 'balanced' (i.e., a matching number of incoming/outgoing sequence flows for corresponding inclusive gateways). An inclusive gateway will simply wait for all incoming sequence flows and create a concurrent path of execution for each outgoing sequence flow, not influenced by other constructs in the process model.
 
 
-# Operaton-specific behavior
+## Operaton-specific behavior
 
 Note that in Operaton's implementation of the inclusive gateway, the following holds:
 
@@ -131,7 +131,7 @@ The following examples show under which conditions an inclusive gateway will tri
    instead of the `Inclusive Gateway 1`.
    <div data-bpmn-diagram="../bpmn/inclusive_gateway_scenario_4"></div>
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -160,7 +160,7 @@ The following examples show under which conditions an inclusive gateway will tri
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Inclusive Gateways](http://operaton.org/bpmn/reference.html#gateways-data-based-inclusive-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
 *   [Conditional and Default Sequence Flows](../gateways/sequence-flow.md)

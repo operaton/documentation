@@ -14,7 +14,7 @@ Single line text inputs are `<input type="text">` controls. Single line text inp
 common input field and allow the user to provide values for different data types.
 
 
-# Binding Text Input to a Process Variable
+## Binding Text Input to a Process Variable
 
 A text input can be bound to a process variable using the `cam-variable-type` and
 `cam-variable-name` directives:
@@ -29,7 +29,7 @@ In the example above, the text input field is bound to the variable named `CUSTO
 `String`.
 
 
-# Supported Variable Types for Text Inputs
+## Supported Variable Types for Text Inputs
 
 A text input field supports multiple variable types.
 
@@ -39,7 +39,7 @@ the type of the variable is provided by the process engine and the `cam-variable
 is not required.
 :::
 
-## String
+### String
 
 To bind the input field to a `String` variable, the directive `cam-variable-type="String"`
 must be used.
@@ -57,7 +57,7 @@ Example:
 process engine: leading and trailing whitespace is removed.
 :::
 
-## Integer
+### Integer
 
 To bind the input field to a Java `Integer` variable, the directive
 `cam-variable-type="Integer"` must be used.
@@ -70,7 +70,7 @@ Example:
        cam-variable-type="Integer" />
 ```
 
-## Long
+### Long
 
 To bind the input field to a Java `Long` variable, the directive
 `cam-variable-type="Long"` must be used.
@@ -83,7 +83,7 @@ Example:
        cam-variable-type="Long" />
 ```
 
-## Short
+### Short
 
 To bind the input field to a Java `Short` variable, the directive
 `cam-variable-type="Short"` must be used.
@@ -96,7 +96,7 @@ cam-variable-name="CUSTOMER_REVENUE"
 cam-variable-type="Short" />
 ```
 
-## Double
+### Double
 
 To bind the input field to a Java `Double` variable, the directive
 `cam-variable-type="Double"` must be used.

@@ -44,11 +44,11 @@ Instead of using the `CaseService` it is also possible to use the `TaskService` 
 taskService.complete("aTaskId");
 ```
 
-# Properties
+## Properties
 
 In that case the associated human task is completed as well.
 
-## Description
+### Description
 
 A human task can have a description. In fact, any CMMN 1.1 element can have a description. A description is defined by adding the `description` attribute.
 
@@ -62,7 +62,7 @@ The description text can be retrieved from the task in the standard Java way:
 task.getDescription();
 ```
 
-## Due Date
+### Due Date
 
 Each task has a field indicating the due date of that task. The Query API can be used to query for tasks that are due on, before or after a certain date.
 
@@ -74,7 +74,7 @@ There is an extension attribute that allows to specify an expression in a task d
 
 The due date of a task can also be altered using the task service or in task listeners using the passed delegate task.
 
-## Follow Up Date
+### Follow Up Date
 
 Each task has a field indicating the follow up date of that task. The Query API can be used to query for tasks that need to be followed up on, before or after a certain date.
 
@@ -84,11 +84,11 @@ There is an extension attribute that allows you to specify an expression in a ta
 <humanTask id="theTask" name="Important task" operaton:followUpDate="${dateVariable}"/>
 ```
 
-# User Assignment
+## User Assignment
 
 A human task can be directly assigned to a single user, a list of users or a list of groups.
 
-## Assignment using CMMN Case Role
+### Assignment using CMMN Case Role
 
 CMMN defines some native assignment concepts which can be used in Operaton.
 As a more powerful alternative, Operaton also defines a set of custom extension elements (see below).
@@ -112,14 +112,14 @@ Tasks directly assigned to users can be retrieved through the task service as fo
 List<Task> tasks = taskService.createTaskQuery().taskAssignee("kermit").list();
 ```
 
-## User Assignment using Operaton Extensions
+### User Assignment using Operaton Extensions
 
 When strictly following the CMMN standard, user and group assignments can be quite cumbersome for use cases where the assignment is more complicated. To avoid these complexities, custom extensions on the human task element can be set.
 
 The CMMN Human task supports the same assignment extensions and concepts as the BPMN User Task.
 You can read up on these extensions in the [BPMN User Task Section](../../bpmn20/tasks/user-task.md#user-assignment-using-operaton-extensions). Same as for the BPMN User task, [assignment based on data and service logic](../../bpmn20/tasks/user-task.md#assignment-based-on-data-and-service-logic) is supported for the CMMN Human Task as well.
 
-# Forms
+## Forms
 
 It is possible to provide information to render a human task form by using the `operaton:formKey`
 attribute:
@@ -140,13 +140,13 @@ In custom applications, the value of the form key can be chosen freely. In a cus
 value of the form key attribute can be interpreted freely. Based on the specific UI technology used,
 it can reference the name of an HTML file, a JSF / Facelets template, a Vaadin / GWT view, ...
 
-## Retrieving the form key using the form service.
+### Retrieving the form key using the form service.
 
 ```java
 String formKey = formService.getTaskFormData(someTaskId).getFormKey();
 ```
 
-## Retrieving the form using the task service
+### Retrieving the form using the task service
 
 When performing a task query, it is possible to retrieve the form key as well. This is most useful
 if the form keys need to be retrieved for a complete list of tasks:
@@ -165,7 +165,7 @@ for(Task task : tasks) {
 Note that it is required to call the `.initializeFormKeys()` method on the `TaskQuery` object to
 make sure the form keys are initialized.
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

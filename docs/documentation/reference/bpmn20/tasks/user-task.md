@@ -20,7 +20,7 @@ A User Task is defined in XML as follows. The id attribute is required, while th
 ```
 
 
-# Description
+## Description
 
 A User Task can also have a description. In fact, any BPMN 2.0 element can have a description. A description is defined by adding the documentation element.
 
@@ -38,9 +38,9 @@ task.getDescription();
 ```
 
 
-# Properties
+## Properties
 
-## Due Date
+### Due Date
 
 Each task has a field indicating the due date of that task. The Query API can be used to query for tasks that are due on, before or after a certain date.
 
@@ -52,7 +52,7 @@ There is an activity extension which allows you to specify an expression in your
 
 The due date of a task can also be altered using the TaskService or in TaskListeners using the passed DelegateTask.
 
-## Follow Up Date
+### Follow Up Date
 
 Each task has a field indicating the follow up date of that task. The Query API can be used to query for tasks that need to be followed up on, before or after a certain date.
 
@@ -62,11 +62,11 @@ There is an activity extension which allows you to specify an expression in your
 <userTask id="theTask" name="Important task" operaton:followUpDate="${dateVariable}"/>
 ```
 
-# User Assignment
+## User Assignment
 
 A User Task can be directly assigned to a single user, a list of users or a list of groups.
 
-## Assignment using BPMN Resource Assignments
+### Assignment using BPMN Resource Assignments
 
 BPMN defines some native assignment concepts which can be used in camunda.
 As a more powerful alternative, Operaton also defines a set of custom extension elements (see below).
@@ -126,7 +126,7 @@ If no specifics are given whether the given text string is a user or a group, th
 <formalExpression>group(accountancy)</formalExpression>
 ```
 
-## User Assignment using Operaton Extensions
+### User Assignment using Operaton Extensions
 
 It is clear that user and group assignments are quite cumbersome for use cases where the assignment is more complicated. To avoid these complexities, custom extensions on the User Task are possible.
 
@@ -164,7 +164,7 @@ This is exactly the same as using a potentialOwner construct as defined above. N
 `candidateUsers` and `candidateGroups` can both be defined for the same User Task.
 
 
-## Assignment based on Data and Service Logic
+### Assignment based on Data and Service Logic
 
 In the above examples, constant values such as `kermit` or `management` are used. But what if the exact name of an assignee or a candidate group is not known at design time? And what if the assignee is not a constant value but depends on data such as _"The person who started the process"_? Maybe the assigment logic is also more complex and needs to access an external data source such as LDAP to implement a lookup such as _"The manager of the employee who started the process"_.
 
@@ -255,7 +255,7 @@ Assigning a task, or setting any other property through a TaskListener, will not
 is intentional, in order to avoid creating event loops.
 :::
 
-## Assignments and Identity Service
+### Assignments and Identity Service
 
 Although the Operaton engine provides an identity management component, which is exposed through the IdentityService, it does not check whether a provided user is known by the identity component. This allows integration of the engine with existing identity management solutions when it is embedded into an application.
 
@@ -276,7 +276,7 @@ User kermit = identityService.createUserQuery()
     .singleResult();
 ```
 
-# Reporting Bpmn Error
+## Reporting Bpmn Error
 
 See the documentation for [Error Boundary Events](../events/error-events.md#error-boundary-event).
 
@@ -303,7 +303,7 @@ taskService.handleBpmnError(
 A BPMN error with the error code `bpmn-error-543` is propagated. If a boundary event with this error code exists, the BPMN error will be caught and handled.
 The error message and variables are optional. They can provide additional information for the error. The variables will be passed to the execution if the BPMN error is caught.
 
-# Reporting Bpmn Escalation
+## Reporting Bpmn Escalation
 
 See the documentation for [Catching Escalation Events](../events/escalation-events.md#catching-escalation-events).
 
@@ -319,7 +319,7 @@ taskService.handleEscalation(
 Here an escalation is propagated with escalation code `escalation-432`. If a boundary event with this escalation code exists, the escalation will be caught and handled.
 The variables are optional. They will be passed to the execution if the escalation is caught.
 
-# Completion
+## Completion
 
 Complete is part of the [task lifecycle](../../../webapps/tasklist/task-lifecycle.md) operation along with create, set candidate, assign, etc. (allow available via Java API). Complete a task by passing variables, optionally the process variables can be retrieved::
 
@@ -331,7 +331,7 @@ VariableMap processVariables = taskService
   .completeWithVariablesInReturn(taskId, variables, shouldDeserializeValues);
 ```
 
-# Forms
+## Forms
 
 It is possible to provide information to render a User Task form by using the `operaton:formKey`
 attribute:
@@ -351,13 +351,13 @@ special rules. [See the corresponding section in the user guide for details](../
 In custom applications, the value of the form key attribute can be interpreted freely. Based on the specific UI technology used,
 it can reference the name of an HTML file, a JSF / Facelets template, a Vaadin / GWT view, ...
 
-## Retrieving the Form Key using the Form Service.
+### Retrieving the Form Key using the Form Service.
 
 ```java
 String formKey = formService.getTaskFormData(someTaskId).getFormKey();
 ```
 
-## Retrieving the Form using the Task Service
+### Retrieving the Form using the Task Service
 
 When performing a task query, it is possible to retrieve the form key as well. This is most useful
 if the form keys need to be retrieved for a complete list of tasks:
@@ -376,7 +376,7 @@ for(Task task : tasks) {
 Note that it is required to call the `.initializeFormKeys()` method on the `TaskQuery` object to
 make sure the form keys are initialized.
 
-## Form submission
+### Form submission
 
 When a form is submitted, it is possible to fetch the process variables in return:
 
@@ -388,7 +388,7 @@ VariableMap processVariables = formService
 formService.submitTaskForm(taskId, properties);
 ```
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>

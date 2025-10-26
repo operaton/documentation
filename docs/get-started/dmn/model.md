@@ -17,14 +17,14 @@ In this section you learn how to create your first [DMN Decision Table](/manual/
 
 Now start up the Camunda Modeler.
 
-# Create a new Decision Diagram
+## Create a new Decision Diagram
 
 Create a new DMN diagram by clicking *File > New File > DMN Diagram*.
 
 ![Example image](./img/modeler-new-dmn-table.png)
 
 
-# Start with the Table Header
+## Start with the Table Header
 
 Start by setting the name and the id of the decision. Select the decision, open the Properties Panel on the right side and change the text to "dish" as the technical [id of the decision](/manual/latest/reference/dmn11/decision-table/#decision-id) which is used to reference the decision inside the process application.
 
@@ -40,7 +40,7 @@ To set the [label of the input](/manual/latest/reference/dmn11/decision-table/in
 
 ![Example image](./img/modeler-step2b.png)
 
-# Configure the Input Expression and the Output Name
+## Configure the Input Expression and the Output Name
 
 Assuming that the input value for "Season" is provided by a variable with name "season", the [input expression](/manual/latest/reference/dmn11/decision-table/input/#input-expression) should be "season".
 
@@ -50,7 +50,7 @@ Double-click on the "Season" field. In the modal menu that pops up, set "season"
 
 Next, double-click on the "Dish" field and set "desiredDish" as [output name](/manual/latest/reference/dmn11/decision-table/output/#output-name).
 
-# Configure the Type of the Input and Output
+## Configure the Type of the Input and Output
 
 Assuming that the input value for "Season" is provided as String, the [type of the input value](/manual/latest/reference/dmn11/decision-table/input/#input-type-definition) should be "string".
 
@@ -60,7 +60,7 @@ Double-click on the "Season" column header. Open the "Type" dropdown-menu in the
 
 Same for the [output type](/manual/latest/reference/dmn11/decision-table/output/#output-type-definition), double-click on the "Dish" column header and choose "string" as type.
 
-# Add Rules
+## Add Rules
 
 Now, add the first [rule](/manual/latest/reference/dmn11/decision-table/rule/) that specifies that the desired dish for season "Fall" is "Spareribs".
 
@@ -76,7 +76,7 @@ Next, add a second input "How many guests" with the input expression "guestCount
 
 ![Example image](./img/modeler-step6.png)
 
-# Configure the Hit Policy
+## Configure the Hit Policy
 
 Set the [hit policy](/manual/latest/reference/dmn11/decision-table/hit-policy/) to "UNIQUE", which specifies that only one rule can match. Verify that the decision table contains only one rule that can match the inputs.
 
@@ -88,7 +88,7 @@ Click on the "Hit Policy" dropdown and choose the hit policy "UNIQUE".
 The default hit policy is "UNIQUE". If your rules are disjunct so only one rule can match then you don't need to change the hit policy.
 :::
 
-# Save the Decision Table
+## Save the Decision Table
 
 When you are done, save your changes by clicking *File > Save File As..*. In the dialogue that pops up, navigate to the application project directory (by default this is in your Eclipse workspace path). In the project directory, place the model in the `src/main/resources` folder.
 

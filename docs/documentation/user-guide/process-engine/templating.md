@@ -31,9 +31,9 @@ The following template engines are provided as optional community extensions:
 The script engine wrapper implementations can be found in the
 [operaton-template-engines-jsr223][operaton-template-engines-jsr223] community hub repository.
 
-# Install a Template Engine
+## Install a Template Engine
 
-## Install a Template Engine for an Embedded Process Engine
+### Install a Template Engine for an Embedded Process Engine
 
 A template engine must be installed in the same way as a script engine. This means that the template
 engine must be added to the process engine classpath.
@@ -86,7 +86,7 @@ Here are the Maven coordinates of the community extensions:
 ```
 
 
-## Install a Template Engine for a Shared Process Engine
+### Install a Template Engine for a Shared Process Engine
 
 When using a shared process engine, the template engine must be added to the shared process engine
 classpath. The procedure for this depends on the application server. In Apache Tomcat, the
@@ -97,7 +97,7 @@ libraries have to be added to the shared `lib/` folder.
 :::
 
 
-# Use a Template Engine
+## Use a Template Engine
 
 If the template engine library is in the classpath, you can use templates everywhere in the BPMN
 process where you can [use scripts][use-scripts], for example as a script task or inputOutput mapping.
@@ -145,9 +145,9 @@ payload of a `operaton:connector`.
 </bpmn2:serviceTask>
 ```
 
-# Use XSLT as Template Engine
+## Use XSLT as Template Engine
 
-## Use XSLT Template Engine with an embedded process engine
+### Use XSLT Template Engine with an embedded process engine
 
 When using an embedded process engine, the XSLT template engine library must be added to the
 application deployment. When using the process engine in a maven `war` project, the template engine
@@ -165,7 +165,7 @@ dependency must be added as dependencies to the maven `pom.xml` file:
 </dependencies>
 ```
 
-## Use XSLT Templates
+### Use XSLT Templates
 
 The following is an example of a BPMN ScriptTask used to execute an XSLT Template:
 

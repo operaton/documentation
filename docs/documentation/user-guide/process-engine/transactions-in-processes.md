@@ -11,7 +11,7 @@ The process engine is a piece of passive Java code which works in the Thread of 
 On any such *external* trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed *later*, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an *internal* trigger. That is why the engine also needs an active component, the [job executor](../process-engine/the-job-executor.md), which is able to fetch registered jobs and process them asynchronously.
 
 
-# Wait States
+## Wait States
 
  We talked about wait states as transaction boundaries where the process state is stored to the database, the thread returns to the client and the transaction is committed. The following BPMN elements are always wait states:
 
@@ -34,7 +34,7 @@ A special type of the [Service Task](../../reference/bpmn20/tasks/service-task.m
 Keep in mind that [Asynchronous Continuations](#asynchronous-continuations) can add transaction boundaries to other tasks as well.
 
 
-# Transaction Boundaries
+## Transaction Boundaries
 
 The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occuring during its execution. This is illustrated in the following example:
 
@@ -45,9 +45,9 @@ We see a segment of a BPMN process with a user task, a service task and a timer 
 In **1**, an application or client thread completes the task. In that same thread the engine runtime is now executing the service task and advances until it reaches the wait state at the timer event (**2**). Then it returns the control to the caller (**3**) potentially committing the transaction (if it was started by the engine).
 
 
-# Asynchronous Continuations
+## Asynchronous Continuations
 
-## Why Asynchronous Continuations?
+### Why Asynchronous Continuations?
 
 In some cases the synchronous behavior is not desired. Sometimes it is useful to have custom control over transaction boundaries in a process.
 The most common motivation is the requirement to scope *logical units of work*. Consider the following process fragment:
@@ -61,7 +61,7 @@ This is the exact behavior offered by asynchronous continuations: they allow us 
 boundaries in the process.
 
 
-## Configure Asynchronous Continuations
+### Configure Asynchronous Continuations
 
 Asynchronous Continuations can be configured *before* and *after* an activity. Additionally, a
 process instance itself may be configured to be started asynchronously.
@@ -92,7 +92,7 @@ when the execution listener class is not available on the node that instantiates
 ```
 
 
-## Asynchronous Continuations of Multi-Instance Activities
+### Asynchronous Continuations of Multi-Instance Activities
 
 A [multi-instance activity](../../reference/bpmn20/tasks/task-markers.md#multiple-instances) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
 
@@ -109,7 +109,7 @@ Additionally, the inner activity can also be configured for asynchronous continu
 Declaring asynchronous continuation of the inner activity makes each instance of the multi-instance activity asynchronous. In the above example, all instances of the parallel multi-instance activity will be created but their execution will be deferred. This can be useful to take more control over the transaction boundaries of the multi-instance activity or to enable true parallelism in case of a parallel multi-instance activity.
 
 
-## Understand Asynchronous Continuations
+### Understand Asynchronous Continuations
 
 To understand how asynchronous continuations work, we first need to understand how an activity is
 executed:
@@ -149,7 +149,7 @@ What's more, asynchronous continuations are always executed by the [Job
 Executor](../process-engine/the-job-executor.md).
 
 
-# Rollback on Exception
+## Rollback on Exception
 
 We want to emphasize that in case of a non handled exception, the current transaction gets rolled back and the process instance is in the last wait state (save point). The following image visualizes that.
 
@@ -158,7 +158,7 @@ We want to emphasize that in case of a non handled exception, the current transa
 If an exception occurs when calling `startProcessInstanceByKey` the process instance will not be saved to the database at all.
 
 
-# Reasoning for This Design
+## Reasoning for This Design
 
 The above sketched solution normally leads to discussion, as people expect the process engine to stop in case the task caused an exception. Also, other BPM suites often implement every task as a wait state. However, this approach has a couple of **advantages**:
 
@@ -176,13 +176,13 @@ However, there are consequences which you should keep in mind:
 ![Example img](./img/NotWorkingTimerOnServiceTimeout.png)Not Working Timeout
 
 
-# Transaction Integration
+## Transaction Integration
 
 The process engine can either manage transactions on its own ("Standalone" transaction management)
 or integrate with a platform transaction manager.
 
 
-## Standalone Transaction Management
+### Standalone Transaction Management
 
 If the process engine is configured to perform standalone transaction management, it always opens a
 new transaction for each command which is executed. To configure the process engine to use
@@ -204,7 +204,7 @@ systems.
 :::
 
 
-## Transaction Manager Integration
+### Transaction Manager Integration
 
 The process engine can be configured to integrate with a transaction manager (or transaction
 management systems). Out of the box, the process engine supports integration with Spring and JTA
@@ -231,7 +231,7 @@ integrate with
 [tx-spring]: ../spring-framework-integration/transactions.md
 [tx-jta]: ../cdi-java-ee-integration/jta-transaction-integration.md
 
-## Transactions and the Process Engine Context
+### Transactions and the Process Engine Context
 
 When a Process Engine Command is executed, the engine
 will create a Process Engine Context. The Context caches database
@@ -277,7 +277,7 @@ try {
 }
 ```
 
-# Optimistic Locking
+## Optimistic Locking
 
 The Operaton Engine can be used in multi threaded applications. In such a setting, when multiple threads interact with the process engine concurrently, it can happen that these threads attempt to do changes to the same data. For example: two threads attempt to complete the same User Task at the same time (concurrently). Such a situation is a conflict: the task can be completed only once.
 
@@ -285,7 +285,7 @@ Operaton Engine uses a well known technique called "Optimistic Locking" (or Opti
 
 This section is structured in two parts: The first part introduces Optimistic Locking as a concept. You can skip this section in case you are already familiar with Optimistic Locking as such. The second part explains the usage of Optimistic Locking in Operaton.
 
-## What is Optimistic Locking?
+### What is Optimistic Locking?
 
 Optimistic Locking (also Optimistic Concurrency Control) is a method for concurrency control, which is used in
 transaction based systems. Optimistic Locking is most efficient in situations in which data is read more frequently than it is changed. Many threads can read the same data objects at the same time without excluding each other. Consistency is then ensured by detecting conflicts and preventing updates in situations in which multiple threads attempt to change the same data objects concurrently. If such a conflict is detected, it is ensured that only one update succeeds and all others fail.
@@ -346,7 +346,7 @@ However, since pessimistic locks are exclusive, concurrency is reduced, degradin
 * [\[1\] Wikipedia: Optimistic concurrency control](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)
 * [\[2\] Stackoverflow: Optimistic vs. Pessimistic Locking](http://stackoverflow.com/questions/129329/optimistic-vs-pessimistic-locking)
 
-## Optimistic Locking in Operaton
+### Optimistic Locking in Operaton
 
 Operaton uses Optimistic Locking for concurrency control. If a concurrency conflict is detected,
 an exception is thrown and the transaction is rolled back. Conflicts are detected when _UPDATE_ or _DELETE_ statements are executed.

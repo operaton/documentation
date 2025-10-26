@@ -21,7 +21,7 @@ You can delegate the bootstrapping of the process engine and process deployment 
 
 In the following section, we walk through the different implementations and discuss where and how they can be used.
 
-# The ServletProcessApplication and JakartaServletProcessApplication
+## The ServletProcessApplication and JakartaServletProcessApplication
 
 :::note[Jakarta Servlet environments]
   The `JakartaServletProcessApplication` can only be used in environments working with Jakarta Servlet 5.0 and above like WildFly 27+.
@@ -59,7 +59,7 @@ This means that in case you deploy to a Servlet 3.0 compliant container (such as
   There is a [project template for Maven](../../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a servlet process application.
 :::
 
-## Using Servlet process applications inside an EJB/Jakarta EE/Java EE container such as Wildfly
+### Using Servlet process applications inside an EJB/Jakarta EE/Java EE container such as Wildfly
 
 You can use the `ServletProcessApplication` inside an EJB / Java EE container such as Wildfly 26 and below.
 In Jakarta EE 9+ containers like WildFly 27 and above, you need to use the `JakartaServletProcessApplication`.
@@ -80,7 +80,7 @@ Jakarta EE/Java EE container, you will not be able to use features like:
 If your application does not use such features, it is perfectly fine to use the servlet process application inside an EE container.
 In that case you only get servlet specification guarantees.
 
-# The EjbProcessApplication and JakartaEjbProcessApplication
+## The EjbProcessApplication and JakartaEjbProcessApplication
 
 :::note[Jakarta EJB environments]
   The `JakartaEjbProcessApplication` can only be used in environments working with Jakarta EJB.
@@ -108,7 +108,7 @@ or `JakartaEjbProcessApplication`, you can write a custom subclass of the respec
 Both options are explained in greater detail below.
 
 
-## Bundling the Operaton EJB Client Jar
+### Bundling the Operaton EJB Client Jar
 
 The most convenient option for deploying a process application to a Java EE EJB container is by adding the following maven dependency to your maven project:
 
@@ -144,7 +144,7 @@ You could of course use something like the maven shade plugin for adding the cla
 :::
 
 
-## Deploying a Custom `EjbProcessApplication` Class
+### Deploying a Custom `EjbProcessApplication` Class
 
 If you want to customize the behavior of the `EjbProcessApplication` class you have the option of writing a custom `EjbProcessApplication` class. The following is an example of such an implementation:
 
@@ -171,7 +171,7 @@ public class MyEjbProcessApplication extends EjbProcessApplication {
 ```
 
 
-## Expose Servlet Context Path Using a Custom EJB process application
+### Expose Servlet Context Path Using a Custom EJB process application
 
 If your application is a `WAR` (or a `WAR` inside an `EAR`) and you want to use [embedded forms](../../user-guide/task-forms/index.md#embedded-task-forms) or [external task forms](../../user-guide/task-forms/index.md#external-task-forms) inside the [Tasklist](../../webapps/tasklist/index.md) application, then your custom EJB process application must expose the servlet context path of your application as a property. This enables the Tasklist to resolve the path to the embedded or external task forms.
 
@@ -250,7 +250,7 @@ Finally, the custom `ProcessArchiveServletContextListener` has to be added to yo
 ```
 
 
-## Invocation Semantics of the EJB process application
+### Invocation Semantics of the EJB process application
 
 The fact that the EJB process application exposes itself as a Session Bean Component inside the EJB container determines
 
@@ -293,7 +293,7 @@ public class MyEjbProcessApplication extends EjbProcessApplication {
 
 When the EJB process application registers with a process engine (see `ManagementService#registerProcessApplication(String, ProcessApplicationReference)`, the process application passes a reference to itself to the process engine. This reference allows the process engine to reference the process application. The EJB process application takes advantage of the EJB Containers naming context and passes a reference containing the EJB process application's Component Name to the process engine. Whenever the process engine needs access to process application, the actual component instance is looked up and invoked.
 
-# The EmbeddedProcessApplication
+## The EmbeddedProcessApplication
 
 **Supported on:** JVM, Apache Tomcat, Wildfly
 
@@ -338,7 +338,7 @@ runtimeContainerDelegate.registerProcessEngine(processEngine);
 ```
 
 
-# The SpringProcessApplication
+## The SpringProcessApplication
 
 **Supported on:** JVM, Apache Tomcat.
 
@@ -352,7 +352,7 @@ We recommend to always use `SpringServletProcessApplication` unless the deployme
 
 
 
-## Configuring a Spring Process Application
+### Configuring a Spring Process Application
 
 The following shows an example of how to bootstrap a SpringProcessApplication inside a Spring application context XML file:
 
@@ -372,12 +372,12 @@ Remember to additionally add a `META-INF/processes.xml` file.
 > If you are manually managing your processEngine, you will have to register it on the RuntimeContainerDelegate as described in the EmbeddedProcessEngine section.
 
 
-## Process Application Name
+### Process Application Name
 
 The `SpringProcessApplication` will use the bean name (`id="invoicePa"` in the example above) as auto-detected name for the process application. Make sure to provide a unique process application name here (unique across all process applications deployed on a single application server instance). As an alternative, you can provide a custom subclass of `SpringProcessApplication` (or `SpringServletProcessApplication`) and override the `getName()` method.
 
 
-## Configure a Managed Process Engine Using Spring
+### Configure a Managed Process Engine Using Spring
 
 If you use a Spring process application, you may want to configure your process engine inside the Spring application context Xml file (as opposed to the processes.xml file). In this case, you must use the `org.operaton.bpm.engine.spring.container.ManagedProcessEngineFactoryBean` class for creating the process engine object instance. In addition to creating the process engine object, this implementation registers the process engine with the Operaton infrastructure so that the process engine is returned by the `ProcessEngineService`. The following is an example of how to configure a managed process engine using Spring.
 

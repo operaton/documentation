@@ -5,7 +5,7 @@ sidebar_position: 50
 
 ---
 
-# Cleanup View
+## Cleanup View
 
 ![Example img](./img/cockpit-cleanup-page.png)Cockpit Cleanup View
 
@@ -13,7 +13,7 @@ The cleanup view in Cockpit provides information about the history cleanup state
 Moreover, the page allows to manually perform various operations related to the history cleanup.
 
 
-# Cleanup State
+## Cleanup State
 
 Information and operations related to the history cleanup vary on its state.
 
@@ -24,7 +24,7 @@ Furthermore, you can always be aware of any incident that occurred to the cleanu
 ![Example img](./img/cockpit-cleanup-state-incident.png)Cockpit Cleanup Job Incident
 
 
-# Cleanable Data Statistics
+## Cleanable Data Statistics
 
 You can get more insights on the effectiveness of your configuration by checking statistics about the cleanable process/decision/case instances as well as batch operations. Data are filtered and sorted in a way to only show
 the most relevant data to history cleanup first, i.e. the rows with the most finished instances first.
@@ -34,6 +34,6 @@ the most relevant data to history cleanup first, i.e. the rows with the most fin
 Moreover, it's also possible to modify the history time to live directly from the table for a specific definition version.
 
 
-# Deleted Data Metrics
+## Deleted Data Metrics
 
 The metrics in the bottom of the cleanup page give an overview about the cleaned up data. You can select to display the details for the current day, the current week or the current month.

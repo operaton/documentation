@@ -27,7 +27,7 @@ The most prominent features are:
 * Automatic deployment of BPMN 2.0 processes (through the Process Application API).
 * Use a managed Thread Pool for the Job Executor configured through the Operaton Subsystem.
 
-# Configure the Job Executor in standalone.xml/domain.xml
+## Configure the Job Executor in standalone.xml/domain.xml
 
 Since Operaton.5, the configuration of the thread pool used by the Job Executor is done in the Operaton subsystem, not in the JBoss Threads subsystem, as it was done before 7.5.
 The thread pool creation and shutdown is now controlled through the Operaton subsystem.
@@ -48,7 +48,7 @@ Shown values are the default ones.
 
 For a complete list of all configuration options, please refer to the [Job Executor Configuration](../../reference/deployment-descriptors/tags/job-executor.md).
 
-# Configure a Process Engine in standalone.xml/domain.xml
+## Configure a Process Engine in standalone.xml/domain.xml
 
 
 
@@ -91,7 +91,7 @@ If you start up your Wildfly server with this configuration, it will automatical
 For a complete list of all configuration options, please refer to the [Process Engine Configuration](../../reference/deployment-descriptors/tags/process-engine.md).
 
 
-# Provide a Custom Process Engine Configuration Class
+## Provide a Custom Process Engine Configuration Class
 
 It is possible to provide a custom Process Engine Configuration class on a Wildfly Application Server. To this extent, provide the fully qualified classname of the class in the `standalone.xml` file:
 
@@ -134,7 +134,7 @@ public void setMyCustomProperty(boolean boolean) {
 :::
 
 
-# Extend a Process Engine Using Process Engine Plugins
+## Extend a Process Engine Using Process Engine Plugins
 
 It is possible to extend a process engine using the process engine plugins concept.
 You specify the process engine plugins in `standalone.xml`/`domain.xml` for each process engine separately as shown below:
@@ -171,13 +171,13 @@ The restrictions which apply for [providing a custom process engine configuratio
  * Properties map can be used for invoking primitive valued setters (Integer, String, Boolean) that follow the Java Bean conventions.
 
 
-# Using System Properties
+## Using System Properties
 
 To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., `${PROPERTY_KEY}`).
 Expression resolution is supported for all elements and attributes except for the `name` attribute on the elements `process-engine` and `job-acquisition`.
 System properties may be set via command line (`-D`option). Read more on expressions in the documentation for [WildFly](http://docs.wildfly.org/23/Extending_WildFly.html#expressions).
 
-## Example
+### Example
 
 ```xml
 <!-- ... -->
@@ -191,7 +191,7 @@ System properties may be set via command line (`-D`option). Read more on express
 ```
 
 
-# Look Up a Process Engine in JNDI
+## Look Up a Process Engine in JNDI
 
 The Operaton Wildfly subsystem provides the same [JNDI bindings for the ProcessApplicationService and the ProcessEngineService](../runtime-container-integration/jndi-bindings-for-bpmn-platform-services.md) as provided on other containers. In addition, the Operaton Wildfly subsystem creates JNDI Bindings for all managed process engines, allowing us to look them up directly.
 
@@ -215,12 +215,12 @@ A declarative mechanism like `@Resource` could be
 :::
 
 
-# Manage the Process Engine Through the JBoss Management System
+## Manage the Process Engine Through the JBoss Management System
 
 To inspect and change the management model, we can use [one of the multiple WildFly Management Clients available](https://docs.wildfly.org/23/Admin_Guide.html#Management_Clients).
 
 
-## Inspect the Configuration
+### Inspect the Configuration
 
 It is possible to inspect the configuration using the CLI (Command Line Interface, jboss-cli.bat/sh):
 
@@ -260,7 +260,7 @@ You are disconnected at the moment. Type 'connect' to connect to the server or '
 ```
 
 
-## Stop the Process Engine Through the JBoss Management System
+### Stop the Process Engine Through the JBoss Management System
 
 Once the process engine is registered in the JBoss Management Model, it is possible to control it through the management API. For example, you can stop it through the CLI:
 
@@ -277,7 +277,7 @@ This removes the process engine and all dependent services. This means that if y
 :::
 
 
-## Start the Process Engine Through the JBoss Management System
+### Start the Process Engine Through the JBoss Management System
 
 It is also possible to start a new process engine at runtime:
 
@@ -292,7 +292,7 @@ One of the nice features of the Wildfly Management System is that it will
 * Distribute the configuration in the cluster and start / stop the process engine on all servers that are part of the same domain.
 
 
-## Use the JBoss JConsole Extensions
+### Use the JBoss JConsole Extensions
 
 In some cases, you may find it more convenient to use WildFly's JConsole extension for starting a process engine.
 
@@ -301,7 +301,7 @@ In some cases, you may find it more convenient to use WildFly's JConsole extensi
 The JConsole plugin allows you to inspect the management model graphically and build operations using a wizard. To start the JBoss JConsole plugin, start the jconsole.bat/sh file provided in the WildFly distribution. [More Information in the WildFly Docs](https://docs.wildfly.org/23/Admin_Guide.html#JMX).
 
 
-# Manage Classpath Dependencies
+## Manage Classpath Dependencies
 
 :::note[Implicit Module Dependencies]
    Classpath dependencies are automatically managed for you if you use the [Process Application API](../process-applications/index.md).
@@ -313,12 +313,12 @@ When using the Operaton Wildfly subsystem, the process engine classes are deploy
 By default, the application server will not add this module to the classpath of applications. If an application needs to interact with the process engine, we must declare a module dependency in the application. This can be achieved using either an implicit or an explicit module dependency.
 
 
-## Implicit Module Dependencies with the Process Application API
+### Implicit Module Dependencies with the Process Application API
 
 When using the Process Application API (i.e., when deploying either a servlet process application or an EJB process application), the Operaton Wildfly subsystem will detect the `@ProcessApplication` class in the deployment and automatically add a module dependency between the application and the process engine module. As a result, we don't have to declare the dependency ourselves. It is called an [implicit module dependency](https://docs.wildfly.org/23/Developer_Guide.html#Implicit_module_dependencies_for_deployments) because it is not explicitly declared but can be derived by inspecting the application and seeing that it provides a `@ProcessApplication` class.
 
 
-## Explicit Module Dependencies
+### Explicit Module Dependencies
 
 If an application does not use the Process Application API but still needs the process engine classes to be added to its classpath, an explicit module dependency is required.
 Wildfly offers multiple [different mechanisms for achieving this](https://docs.wildfly.org/23/Developer_Guide.html#Class_Loading_in_WildFly). The simplest way is to add a manifest entry to the MANIFEST.MF file of the deployment. The following example illustrates how to generate such a dependency using the maven WAR plugin:
@@ -345,7 +345,7 @@ Wildfly offers multiple [different mechanisms for achieving this](https://docs.w
 As a result, the Application Service will add the process engine module to the classpath of the application.
 
 
-# Manage Service Dependencies
+## Manage Service Dependencies
 
 :::note[Implicit Service Dependencies]
    Service dependencies are automatically managed for you if you use the [Process Application API](../process-applications/index.md).
@@ -358,12 +358,12 @@ The Operaton Wildfly subsystem manages process engines as JBoss Services in the 
 There are three applications deployed and two process engine services exist. Application 1 and Application 2 are using Process Engine 1 and Application 3 is using Process Engine 2.
 
 
-## Implicit Service Dependencies
+### Implicit Service Dependencies
 
 When using the Process Application API (i.e., when deploying either a servlet process application or an EJB process application), the Operaton Wildfly subsystem will detect the `@ProcessApplication` class in the deployment and automatically add a service dependency between the process application component and the process engine module. This ensures that the process engine is available when the process application is deployed.
 
 
-## Explicit Service Dependencies
+### Explicit Service Dependencies
 
 If an application does not use the Process Application API but still needs to interact with a process engine, it is important to declare the dependency on the Process Engine Service explicitly. If we fail to declare the dependency, there is no guarantee that the process engine is available to the application.
 

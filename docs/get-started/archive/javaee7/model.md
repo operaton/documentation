@@ -15,13 +15,13 @@ menu:
 In this section we model our sample process with the Camunda Modeler.
 
 
-# Create a new BPMN 2.0 Diagram
+## Create a new BPMN 2.0 Diagram
 
 ![Example image](./img/modeler-new-bpmn-diagram.png)
 
 Open Camunda Modeler and create a new BPMN diagram by Clicking *File > New File > BPMN Diagram*.
 
-## Create the Sample Pizza Order Process
+### Create the Sample Pizza Order Process
 
 ![Example image](./img/pizza-order-process.png)
 
@@ -29,7 +29,7 @@ The sample process models a pizza order approval. In the first service task, the
 
 Since we are modeling an executable process, we should give it an ID, a name and set the `isExecutable` property to `true`. Click on a free spot of the modeling canvas. This displays the properties of the process itself.
 
-## Configure Placeholder Expressions
+### Configure Placeholder Expressions
 
 ![Example image](./img/pizza-order-process-expression.png)
 

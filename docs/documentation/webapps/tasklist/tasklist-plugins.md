@@ -23,7 +23,7 @@ For further details about the concepts behind plugins, please read the [Cockpit 
   * The plugin mechanism of Tasklist does not allow to provide additional SQL queries by using [MyBatis](http://www.mybatis.org/) mappings.
 :::
 
-# Plugin Points
+## Plugin Points
 
 Here you can see the various points at which you are able to add your own plugins.
 

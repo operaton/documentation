@@ -36,7 +36,7 @@ It is represented using XML in the same way as an embedded subprocess. Additiona
 :::
 
 
-# Example
+## Example
 
 The following is an example of an event subprocess triggered using an Error Start Event. The event subprocess is located at the "process level", i.e., is scoped to the process instance:
 
@@ -70,7 +70,7 @@ In both cases the same tasks are executed. However, there are differences betwee
 These two differences can help you decide whether a boundary event or an embedded subprocess is better suited for solving a particular process modeling / implementation problem.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -99,6 +99,6 @@ These two differences can help you decide whether a boundary event or an embedde
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Event subprocess](http://operaton.org/bpmn/reference.html#activities-event-subprocess) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

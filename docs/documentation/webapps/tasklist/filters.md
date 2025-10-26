@@ -22,7 +22,7 @@ In Tasklist, you can create and select filters. You can use these filters to cre
 * **Variables** - Specify which variables are displayed in the [filter results](../tasklist/dashboard.md#filter-results) section of the [dashboard](../tasklist/dashboard.md). Setting variables here has no influence on which tasks are displayed. To set the variables, you need to insert a *Name*, which is the coded name of the variable, and a *Label*, which defines what the variable will be named in the [filter results](../tasklist/dashboard.md#filter-results).
 
 
-# Expressions in Filters
+## Expressions in Filters
 
 Several of the filter criteria accept expressions as values. These expressions are written in [JUEL](http://juel.sourceforge.net/). In filters which are related to times and dates, you can use the dateTime class, which returns a [Joda-Time](http://www.joda.org/joda-time/) DateTime object.
 
@@ -31,7 +31,7 @@ Several of the filter criteria accept expressions as values. These expressions a
 :::
 
 
-# Common Filters
+## Common Filters
 
 ![Example img](./img/tasklist-filter-detail.png)Filter Details
 

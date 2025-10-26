@@ -19,13 +19,13 @@ The System Settings menu gives you general information about the process engine.
 The System Settings menu is only usable by users which are granted with *All* permission for authorizations.
 :::
 
-# Diagnostics
+## Diagnostics
 
 ![Example img](./img/admin-diagnostics.png)Diagnostics
 
 The **Diagnostics** menu allows you to view and copy diagnostics data about your environment or distribution of Operaton. The main purpose of the **Diagnostics** menu is to increase transparency by giving you easy access to important system diagnostics information. In the event of an issue, this should also improve problem diagnosis by enabling you to quickly understand and share the Operaton environment you are running.
 
-# Execution Metrics
+## Execution Metrics
 
 ![Example img](./img/admin-execution-metrics.png)Execution Metrics
 

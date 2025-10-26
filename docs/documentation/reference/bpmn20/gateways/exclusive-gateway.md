@@ -43,7 +43,7 @@ The XML representation of an exclusive gateway is straightforward: one line defi
 ```
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -72,7 +72,7 @@ The XML representation of an exclusive gateway is straightforward: one line defi
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Conditional and Default Sequence Flows](../gateways/sequence-flow.md)
 *   [Exclusive Gateways](http://operaton.org/bpmn/reference.html#gateways-data-based-exclusive-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)

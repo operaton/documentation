@@ -16,29 +16,29 @@ The main entry point to Spin's functionality is the static function `org.operato
 The following subsections describe the integration points of the process engine and Spin. For specific documentation on data formats like XML and JSON, please refer to the [XML section](../../user-guide/data-formats/xml.md) and the [JSON section](../../user-guide/data-formats/json.md).
 
 
-# Expression Language Integration
+## Expression Language Integration
 
 The Spin engine plugin registers the Spin API entry functions in the context used for expression evaluation. It can therefore be used at all points where the engine allows expression language.
 
 
-# Scripting Integration
+## Scripting Integration
 
 Similar to the EL integration, the Spin functions can be accessed from custom scripts in the supported languages JavaScript, Groovy, Python and Ruby. See the [scripting section](../../user-guide/process-engine/scripting.md) on how scripting is configured in general in Operaton.
 
 
-# Native JSON and XML Variable Values
+## Native JSON and XML Variable Values
 
 When working with JSON or XML payloads it wouldn't be convenient to treat the payload as strings because then features like path-expressions and accessing properties couldn't be used. Additionally, you do not always need or want a class in your system to represent the JSON/XML.
 
 That is why Spin provides native variable values to work with JSON and XML. The Spin API enables access and manipulation of the data in an easy way. Parsing and serialization can be done with a single command.
 
 
-# Serializing Process Variables
+## Serializing Process Variables
 
 Whenever custom Java objects are set as process variables, they have to be persisted to the database. Thus, a Java object instance has to be serialized. The engine's default serialization uses standard Java object serialization which ends up as machine-readable bytes in the database. This approach is limited in that the database values cannot be introspected and that a client reading the object has to possess the respective Java class. To alleviate these issues, by using the Spin engine plugin, variables can be serialized using Spin's data formats. The plugin registers a serializer that looks up all available data formats and offers them for serialization.
 
 
-# Extending Serialization
+## Extending Serialization
 
 Spin offers two interfaces that can be implemented to [provide custom data formats](../../reference/spin/extending-spin.md#custom-dataformats) and to [configure serialization](../../reference/spin/extending-spin.md#configuring-data-formats). Every process application may provide a different set of data format providers and configurators. Operaton then instantiates process-application-specific data formats and ensures that they are only accessible when code is executed within the process application's context. See the section on [process application resource access](../../user-guide/process-applications/process-application-resources.md) to understand when the process engine operates in the context of a process application and how a context switch can be enforced.
 

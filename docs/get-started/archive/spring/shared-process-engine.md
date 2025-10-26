@@ -15,7 +15,7 @@ menu:
 In the last section of this tutorial we learn how to use a shared process engine.
 
 
-# Alternative Configuration: Using Shared Process Engine
+## Alternative Configuration: Using Shared Process Engine
 
 So far, we explored how to set up an embedded process engine inside a web application using the
 Spring Framework. You can also use the Spring Framework to develop applications that use a shared

@@ -14,11 +14,11 @@ menu:
 
 First, let's set up your first process application project in the IDE of your choice, the following description uses Eclipse.
 
-# Requirements
+## Requirements
 
 The project requires Java 17/21.
 
-# Set Up a Java Project
+## Set Up a Java Project
 
 We will start by setting up a Spring Boot application as an Apache Maven Project inside Eclipse. This consists of three steps:
 
@@ -28,7 +28,7 @@ We will start by setting up a Spring Boot application as an Apache Maven Project
 
 In the following sections, we go through this process step by step.
 
-## Create a new Maven Project
+### Create a new Maven Project
 
 First, we set up a new Apache Maven based project. Let's call it *loan-approval-spring-boot*. The screenshot below illustrates the settings we choose in Eclipse.
 
@@ -36,7 +36,7 @@ First, we set up a new Apache Maven based project. Let's call it *loan-approval-
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* view.
 
-## Add Operaton Platform & Spring Boot Dependencies
+### Add Operaton Platform & Spring Boot Dependencies
 
 The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the `pom.xml` file of the project.
 We add the Spring Boot BOM in the "dependency management" section and the Operaton Spring Boot Starter for Webapps, which will automatically include the Operaton engine and webapps in the app.
@@ -112,7 +112,7 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
 </project>
 ```
 
-## Add Main Class to our Spring Boot Application
+### Add Main Class to our Spring Boot Application
 
 Next, we add an application class with a main method that will be the entry point for launching the Spring Boot application. The class has the annotation `@SpringBootApplication` on it,
 which implicitly adds several convenient features (autoconfiguration, component scan, etc. - see Spring Boot docs).
@@ -132,7 +132,7 @@ public class WebappExampleProcessApplication {
 }
 ```
 
-## Build and Run
+### Build and Run
 
 Now you can perform the first build. Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`.
 

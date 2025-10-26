@@ -14,7 +14,7 @@ This page provides an overview of how to secure a Operaton installation. For Ope
 
 In order to secure a Operaton installation, Operaton itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific Operaton product and listed those in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others
 
-# Deployment Options and Components
+## Deployment Options and Components
 
 There are different ways of using Operaton and different components are provided: the process engine itself, the REST API, the web applications. Depending on how Operaton is deployed and which components are used, different security considerations apply. The following list gives a general overview over deployment options and components outlining the main differences from a security point of view. The remainder of this chapter elaborates on the different configuration options.
 
@@ -31,11 +31,11 @@ Keep in mind that it is not recommended to use the pre-packaged distribution in 
   you still want to use it in production, consider un-deploying the invoice application and removing the demo user.
 :::
 
-# Security Configuration inside Operaton
+## Security Configuration inside Operaton
 
 Operaton provides a number of configuration options which are relevant from a security perspective. Most prominently: authentication, authorization and the control of custom code (scripts) which can be executed on the server.
 
-## Authentication
+### Authentication
 
 Authentication controls _who_ can access Operaton's APIs and Applications.
 
@@ -109,7 +109,7 @@ When using the database, usernames and passwords are stored inside the `ACT_ID_U
 
 As an alternative to the database, Operaton can use LDAP for verifying user credentials on authentication. Operaton has read-only access to LDAP.
 
-## Authorization
+### Authorization
 
 Authorization controls what data a user can access and change in Operaton once authenticated. Authentication is a pre-requisite to authorization.
 
@@ -167,11 +167,11 @@ To prevent this:
 4. Don't allow to reuse an id of a deleted user.
 
 
-## Spring Security OAuth2
+### Spring Security OAuth2
 
 See the Spring Security OAuth2 Integration's [Security Recommendations](../user-guide/spring-boot-integration/spring-security.md#security-recommendations) documentation.
 
-## Deployments
+### Deployments
 
 [Deployments](../user-guide/process-engine/deployments.md) to the process engine can contain resources that are interpreted like code:
 
@@ -190,15 +190,15 @@ For example, you can restrict deployment access in the following ways:
 
 See also the user guide section [Custom Code & Security](../user-guide/process-engine/securing-custom-code.md) for further information.
 
-## Throttle login attempts
+### Throttle login attempts
 
 The engine gives option to throttle login attempts. The mechanism behind this is enabled by default. You can read more about it under [Identity Service](../user-guide/process-engine/identity-service.md#throttle-login-attempts) in User Guide.
 
-## Custom Whitelist for User, Group and Tenant IDs
+### Custom Whitelist for User, Group and Tenant IDs
 To determine if the provided ID is acceptable or not, IDs can be matched against a Whitelist Pattern.
 You can read more about it under [Identity Service](../user-guide/process-engine/identity-service.md#custom-whitelist-for-user-group-and-tenant-ids) in User Guide.
 
-## Password Policy
+### Password Policy
 
 When using the identity management provided by the engine (i.e., not the LDAP identity management),
 it is possible to configure a password policy to ensure that all user passwords meet a certain security
@@ -213,13 +213,13 @@ on password complexity).
 
 You can find more information on how to enable the base password policy and how to implement a custom password policy in our [User Guide](../user-guide/process-engine/password-policy.md).
 
-## Forms
+### Forms
 
 Operaton offers different types of forms which are primarily used in Tasklist. In the input inside of this forms you can call and execute scripts which allows you to achieve easily your business logic. Please validate this input each time to prevent malicious behaviour.
 
 If you don't want to display form previews and execute the embedded scripts in Cockpit, you can disable it in the [configuration](../webapps/cockpit/extend/configuration.md#preview-deployed-embedded-forms).
 
-## Queries
+### Queries
 
 ### Expressions in Queries
 
@@ -247,14 +247,14 @@ To gain the full feature set of the Webapps, and not suffer any UX degradation d
 Please see the User Guide to learn more about the
 [Query Maximum Results Limit](../user-guide/process-engine/process-engine-api.md#query-maximum-results-limit).
 
-## CSRF Prevention in the Webapps
+### CSRF Prevention in the Webapps
 A CSRF filter is enabled by default, validating each modifying request performed through the webapps.
 Please also see the detailed overview on how to configure [CSRF Prevention](../webapps/shared-options/csrf-prevention.md).
 
 The CSRF Prevention makes use of a cookie. By default, some security-related configurations are present for this cookie.
 To ensure full security, please consult the documentation about [Cookie Security](../webapps/shared-options/cookie-security.md) to learn more about it.
 
-## XML Security
+### XML Security
 Operaton handles many XML files containing configurations of process engines, definitions of process models and more. In order to mitigate possible vulnerabilities that can be introduced by XML files, the following measures are activated by default:
 
 * Prevention against XML eXternal Entity (XXE) injections according to [OWASP](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.md)
@@ -266,7 +266,7 @@ FSP itself can not be disabled in the engine. All properties that are influenced
 
 Since BPMN schema validation requires external XSD documents, the property `http://javax.xml.XMLConstants/property/accessExternalSchema` is by default configured to value `all`, which enables referencing XML schemas by any supported protocol. This can be overridden via the system property `javax.xml.accessExternalSchema`, however a value set via `jaxp.properties` does not take effect.
 
-## HTTP Header Security in Webapps
+### HTTP Header Security in Webapps
 
 Out-of-the-box the web applications support the following security-related HTTP headers:
 
@@ -281,7 +281,7 @@ According to your project requirements, some of these headers can be configured 
 documentation about the [HTTP Header Security](../webapps/shared-options/header-security.md) to learn more
 about the several headers, the defaults and how to configure the HTTP headers according to your needs.
 
-## Variable Values from Untrusted Sources
+### Variable Values from Untrusted Sources
 
 Process variables can be submitted as Java objects using the JDK built-in `application/x-java-serialized-object` data format, JSON or XML along with a Java class name via the Operaton REST API and web applications.
 On server side, they can then be deserialized into Java objects, so that Java code can work with them in a native way. See [Operaton Spin](../user-guide/data-formats/configuring-spin-integration.md) for details and this restref page="putLocalExecutionVariable" text="REST API endpoint" tag="Execution for an example.
@@ -307,7 +307,7 @@ An implementation of this interface registered as validator will be provided wit
   Spin's JSON implementation is based on Jackson. If you configure Operaton Spin to deserialize polymorphic classes based on type information included in the JSON itself (i.e. where the JSON contains explicit class names), we strongly recommend to additionally enable Jackson's [Whitelisting feature](https://medium.com/@cowtowncoder/jackson-2-10-safe-default-typing-2d018f0ce2ba) starting with version 2.10. Operaton's whitelisting feature does not cover this case.
 :::
 
-## User operation log settings for synchronous operations affecting multiple entities
+### User operation log settings for synchronous operations affecting multiple entities
 
 Some of the synchronous APIs can be used to perform actions on multiple entities, potentially affecting large amounts of data. For some use-cases it is necessary to have a log of those
 operations for audit reasons (see [Auditing of Cockpit Operations](../webapps/cockpit/auditing.md) for more information).
@@ -323,11 +323,11 @@ Currently, the following APIs are affected:
 
 * Message correlation
 
-# Security Configuration in the external Environment
+## Security Configuration in the external Environment
 
 Operaton integrates into an environment, most prominently the database and, when using the web applications or the REST API, also a webserver. In order to secure your Operaton deployment as a whole, the integration is relevant.
 
-## Database
+### Database
 
 Operaton stores its data into a relational database. In order to protect access to this data, it must be configured correctly.
 The documentation section on [supported environments](../introduction/supported-environments.md) provides a list of supported databases.
@@ -344,7 +344,7 @@ To access the database, Operaton needs to establish a connection. Usually the co
 
 To establish the connection to the database, the database credentials need to be provided. As opposed to providing the credentials as plain text in a configuration file, some application servers support storing the credentials securely in an encrypted form. In that case, consult the manual of your application server to learn how to use these features.
 
-## Web Server (applicable when using REST API or Web Applications)
+### Web Server (applicable when using REST API or Web Applications)
 
 When deploying the REST API or the Operaton web applications, Operaton is integrated with a third party web server. The documentation section on [supported environments](../introduction/supported-environments.md) provides a list of supported web servers / application servers.
 It is strongly recommended to consider applying the following configurations.

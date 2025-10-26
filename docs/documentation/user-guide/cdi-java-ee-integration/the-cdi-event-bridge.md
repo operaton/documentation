@@ -128,7 +128,7 @@ public void onShipmentSuceeded(
 Note: `BusinessProcessEvent.getTask` will return an instance of `DelegateTask` (in case the event is a task event).
 If the listener is invoked after the transaction has completed, the `DelegateTask` object cannot be used for modifying variables.
 
-# The CDI Event Bridge in a process application
+## The CDI Event Bridge in a process application
 
 To use the CDI Event Bridge in combination with a multi application deployment and the shared process engine, the
 <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/cdi/impl/event/CdiEventListener.html">CdiEventListener</a> needs to be added as a

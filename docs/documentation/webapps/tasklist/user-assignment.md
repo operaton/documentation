@@ -18,7 +18,7 @@ This works as follows:
 2. Building Filters: [filters][filter] then allow users to find tasks which are assigned to them or to the groups they belong to.
 3. Claiming group tasks: if a task is not directly assigned to a given user, the user must claim the task before working on it.
 
-# Implementing Initial Assignment
+## Implementing Initial Assignment
 
 ![Example img](./img/tasklist-task-form-modeler.png)User Task Assignment
 
@@ -27,7 +27,7 @@ You can read up on how to implement the inital user assignment for BPMN User Tas
 * [Implementing user assignments for BPMN User Tasks][bpmn-user-assignment]
 * [Implementing user assignments for CMMN Human Tasks][cmmn-user-assignment]
 
-# Claiming a task in Tasklist
+## Claiming a task in Tasklist
 
 In Tasklist, a user can ony work on a task (i.e., filling in the task form) if the task is assigned to that user. This means that a user must `claim` a task if it is not yet assigned to him.
 Claiming a task sets the assignee of the task to the user who claimed the task.

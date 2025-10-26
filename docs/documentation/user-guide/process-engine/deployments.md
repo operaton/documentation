@@ -12,7 +12,7 @@ menu:
 
 Before a process (or case, or decision) can be executed by the process engine, it has to be deployed. A deployment is a logical entity that groups multiple resources that are deployed together. Deployments can be made programmatically via Java API or restref page="createDeployment" text="REST API" tag="Deployment, or declaratively for resources of a [Process Application](../process-applications/index.md). This section covers advanced deployment concepts.
 
-# Deployments in a Clustered Scenario
+## Deployments in a Clustered Scenario
 
 Before the process engine starts to perform a deployment, it tries to acquire an exclusive lock on a row in the table `ACT_GE_PROPERTY`. When the process engine is able to acquire the lock successfully, it starts to deploy and holds the exclusive lock as long as the execution of the deployment take place.
 

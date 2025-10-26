@@ -11,9 +11,9 @@ menu:
 
 ---
 
-# Definition Of operation
+## Definition Of operation
 
-![Example img](./../img/batch/batch_operation_definition.png" alt="Batch Operation Definition" caption="
+![Example img](../img/batch/batch_operation_definition.png)
 
 
 It is possible to execute the following batch operations:
@@ -69,14 +69,14 @@ start editing by clicking on the value. You can expand the value in a modal dial
   The instance search operates on the history endpoint of the engine. In case the requested historic data is not persisted to the database, then the search does not deliver the desired results.
 :::
 
-# Confirmation of operation
+## Confirmation of operation
 
 ![Example img](./../img/batch/batch_operation_confirmation.png" alt="Batch Operation Confirmation" caption="
 
 In the next step of the process, you can review the operation that is going to be performed. One can see a short summary of affected instances
 count as well as a <button class="btn btn-xs"><i class="glyphicon glyphicon-eye-open"></i></button> button which toggles display of extended information. In the section with extended information, you see a path to the REST endpoint that will process the request as well as the payload of the request.
 
-# Review results
+## Review results
 
 ![Example img](./../img/batch/batch_operation_result.png" alt="Batch Operation Result" caption="
 

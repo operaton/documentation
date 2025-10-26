@@ -19,7 +19,7 @@ to the embedded form. Java Objects serialized using Java Serialization cannot be
 :::
 
 
-# Fetching an existing Serialized Java Object Variable
+## Fetching an existing Serialized Java Object Variable
 
 The Form SDK will only fetch those variables which are actually used in a form. Since a Complex Java
 Object is usually not bound to a single input field, we cannot use the `cam-variable-name` directive.
@@ -39,7 +39,7 @@ We thus need to fetch the variable programatically:
 ```
 
 
-# Creating a new Serialized Java Object
+## Creating a new Serialized Java Object
 
 In case the variable does not yet exist (for instance in a Start Form), you have to create the variable and specify the necessary meta data in order for the process engine to correctly handle the variable as Java Object.
 
@@ -69,6 +69,6 @@ In case the variable does not yet exist (for instance in a Start Form), you have
 ```
 
 
-# Full Example
+## Full Example
 
 A full example of this feature can be found in the [Operaton Examples Repository](https://github.com/operaton/operaton-bpm-examples/tree/master/usertask/task-form-embedded-serialized-java-object).

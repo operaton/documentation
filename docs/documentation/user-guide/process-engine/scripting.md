@@ -69,7 +69,7 @@ scripts.
 </table>
 
 
-# Use Script Tasks
+## Use Script Tasks
 
 With a BPMN 2.0 script task you can add a script to your BPM process (for more information see the
 [BPMN 2.0 reference](../../reference/bpmn20/tasks/script-task.md).
@@ -111,7 +111,7 @@ runtimeService.startProcessInstanceByKey("process", variables);
 ```
 
 
-# Use Scripts as Execution Listeners
+## Use Scripts as Execution Listeners
 
 Besides Java code and expression language, Operaton also supports the execution of a script
 as an execution listener. For general information about execution listeners see the corresponding
@@ -157,7 +157,7 @@ The following example shows usage of scripts as execution listeners.
 ```
 
 
-# Use Scripts as Task Listeners
+## Use Scripts as Task Listeners
 
 Similar to execution listeners, task listeners can also be implemented as scripts. For general
 information about task listeners see the corresponding
@@ -182,7 +182,7 @@ The following example shows usage of scripts as task listeners.
 </userTask>
 ```
 
-# Use Scripts as Conditions
+## Use Scripts as Conditions
 
 As an alternative to expression language, Operaton allows you to use scripts as
 `conditionExpression` of conditional sequence flows. To do that, the `language` attribute of the
@@ -206,7 +206,7 @@ process variable which is available inside the script.
 </sequenceFlow>
 ```
 
-# Use Scripts as inputOutput Parameters
+## Use Scripts as inputOutput Parameters
 
 With the Operaton`inputOutput` extension element you can map an `inputParameter` or `outputParameter`
 with a script. The following example process uses the Groovy script from the previous example to assign
@@ -278,7 +278,7 @@ for [script tasks](#script-source).
   </operaton:inputParameter>
 </operaton:inputOutput>
 ```
-# Script Engine Caching
+## Script Engine Caching
 
 Whenever the process engine reaches a point where a script has to be executed, the process engine looks for a Script Engine by a language name. The default behavior is that if it is the first request, a new Script Engine is created. If the Script Engine declares to be thread safe, it is also cached. The caching prevents the process engine from creating a new Script Engine for each request for the same script language.
 
@@ -287,7 +287,7 @@ By default the caching of Script Engines happens at process application level. E
 If it is not desired to cache Script Engines in general, it can be disabled by setting the process engine configuration flag name `enableScriptEngineCaching` to false.
 
 
-# Script Compilation
+## Script Compilation
 
 Most script engines compile script source code either to a Java class or to a different
 intermediary format prior to executing the script. Script engines implementing the Java `Compilable`
@@ -296,7 +296,7 @@ process engine is to check if a Script Engine supports the compile feature. If t
 
 By default, compilation of scripts is enabled. If you need to disable script compilation, you can set the process engine configuration flag named `enableScriptCompilation` to false.
 
-# Load Script Engine
+## Load Script Engine
 
 If the process engine configuration flag named `enableFetchScriptEngineFromProcessApplication` is set to true, it is also possible to load Script Engines from the classpath of the process application. For that, the Script Engine can be packaged as a library within the process application. It is also possible to install the Script Engine globally.
 
@@ -314,7 +314,7 @@ In case the Script Engine module should be installed globally and Wildfly is use
 </jboss-deployment-structure>
 ```
 
-# Configure Script Engine
+## Configure Script Engine
 
 Most script engines offer configuration options to adjust their script execution semantics.
 We provide the following default configurations for supported script engines before executing code on them:
@@ -346,7 +346,7 @@ Besides those default options, you can configure the script engines by any of th
 Note that for JavaScript execution you might be able to choose the script engine to use depending on your setup. Consult
 [JavaScript Considerations](#javascript-considerations) for further information.
 
-## Process engine flags
+### Process engine flags
 
 You can use the following process engine configuration flags to influence the configuration of specific script engines:
 
@@ -357,7 +357,7 @@ You can use the following process engine configuration flags to influence the co
 * [enableScriptEngineNashornCompatibility](../../reference/deployment-descriptors/tags/process-engine.md#enableScriptEngineNashornCompatibility) -
   Specifies whether Nashorn compatibility mode is enabled or not.
 
-## System properties
+### System properties
 
 Depending on the script engine, specific system properties can be used to influence the setup of the script engine.
 Consult the development guides of the script engine you want to configure for further information on available parameters.
@@ -369,7 +369,7 @@ Tomcat, Websphere, and Weblogic support providing JVM arguments via environment 
 Consult your application server's documentation to learn how to pass on JVM arguments. Operaton Run supports setting
 JVM arguments via the `JAVA_OPTS` environment variable as well.
 
-## Custom ScriptEngineResolver
+### Custom ScriptEngineResolver
 
 You can provide a custom `ScriptEngineResolver` implementation to configure script engines. Depending on the specifc script engine to configure,
 you can gain more configuration options with this approach. You can add your custom script engine resolver to the engine configuration
@@ -425,7 +425,7 @@ public class CustomScriptEngineResolver extends DefaultScriptEngineResolver {
 }
 ```
 
-# Reference Process Application Provided Classes
+## Reference Process Application Provided Classes
 
 The script can reference to process application provided classes by importing them like in the following groovy script example.
 
@@ -440,7 +440,7 @@ To avoid possible class loading problems during the script execution, it is reco
 
 Be aware that the process engine flag `enableFetchScriptEngineFromProcessApplication` is only relevant in a shared engine scenario.
 
-# Variables Available During Script Execution
+## Variables Available During Script Execution
 
 During the execution of scripts, all process variables visible in the current scope are available.
 They can be accessed directly by the name of the variable (i.e., `sum`). This does not apply for
@@ -470,7 +470,7 @@ task = execution.getProcessEngineServices().getTaskService()
   .singleResult()
 ```
 
-# Accessing Process Engine Services using Scripts
+## Accessing Process Engine Services using Scripts
 
 Operaton's Java API provides access to Operaton's process engine services; these services can be accessed using Scripts:
 
@@ -485,7 +485,7 @@ execution.getProcessEngineServices().getRuntimeService().createMessageCorrelatio
 ```
 
 
-# Printing to Console using Scripts
+## Printing to Console using Scripts
 
 During the execution of scripts, it might be desired to print to the console due to logging and debugging reasons.
 
@@ -505,7 +505,7 @@ system.out.println('This prints to the console');
 ```
 
 
-# Script Source
+## Script Source
 
 The standard way to specify the script source code in the BPMN XML model is to add it directly to
 the XML file. Nonetheless, Operaton provides additional ways to specify the script source.
@@ -582,7 +582,7 @@ For more information, see the
 [operaton:resource](../../reference/bpmn20/custom-extensions/extension-attributes.md#resource)
 section of the [Custom Extensions](../../reference/bpmn20/custom-extensions/index.md) chapter.
 
-# JavaScript Considerations
+## JavaScript Considerations
 
 JavaScript code execution is part of the Java Runtime (JRE) with the **Nashorn** script engine until Java 14 and thus only there available out of the box.
 We include **GraalVM JavaScript** in the pre-packaged Operaton distributions as a replacement regardless of the JRE version.

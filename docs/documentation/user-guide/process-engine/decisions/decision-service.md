@@ -14,7 +14,7 @@ menu:
 The decision service is a part of the process engine's [Services API]. It allows
 to evaluate a deployed decision definition independently from BPMN and CMMN.
 
-# Evaluating a Decision
+## Evaluating a Decision
 
 To evaluate a deployed decision, reference it by id or a combination of key and version. If
 a key is used but no version is specified then the latest version of decision
@@ -39,14 +39,14 @@ DmnDecisionTableResult decisionResult = decisionService
   .evaluate();
 ```
 
-## The Decision Key
+### The Decision Key
 
 The key of a decision definition is specified by the `id` attribute of the
 `decision` element in the DMN XML. The different naming is related to the
 [Versioning of Decisions]. Since a key can reference multiple versions of a
 decision definition, the id specifies exactly one version.
 
-## Passing Data
+### Passing Data
 
 A decision may reference one or more variables. For example, a variable can be
 referenced in an input expression or an input entry of a decision table. The
@@ -55,7 +55,7 @@ specifies the name and the value of a variable.
 
 For more information on the different expressions see the [DMN 1.3 reference].
 
-# Authorizations for Evaluating Decisions
+## Authorizations for Evaluating Decisions
 
 The user needs the permission `CREATE_INSTANCE` on the resource
 `DECISION_DEFINITION` to evaluate decisions. The resource id of the
@@ -64,7 +64,7 @@ authorization is the decision definition key.
 For more information about authorizations please refer to the [Authorization
 Service] section.
 
-# Working with the Decision Result
+## Working with the Decision Result
 
 The result of an evaluation is called decision result. The decision result is a complex object
 of type `DmnDecisionResult`. Think of it as a list of key-value pairs.
@@ -105,7 +105,7 @@ If the decision is implemented as [decision table] then it can also be evaluated
 <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/DecisionService.html##evaluateDecisionTableByKey(java.lang.String)">evaluateDecisionTable</a> methods. In this case, the evaluation returns a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provide the same methods as a
 `DmnDecisionResult`.
 
-# History of Evaluated Decisions
+## History of Evaluated Decisions
 
 When a decision is evaluated, a new history entry of type
 `HistoricDecisionInstance` is created which contains the inputs and outputs of

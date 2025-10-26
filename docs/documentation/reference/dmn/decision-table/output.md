@@ -34,7 +34,7 @@ XML element.
 
 ```
 
-# Output Id
+## Output Id
 
 The output id is a unique identifier of the decision table output. It is used
 by Operaton to reference the output in the history of
@@ -45,7 +45,7 @@ set as the `id` attribute of the `output` XML element.
 <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
 ```
 
-# Output Label
+## Output Label
 
 ![Example img](./img/output-label.png)Output Label" class="no-lightbox
 
@@ -57,7 +57,7 @@ recommended, since it helps to understand the decision.
 <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
 ```
 
-# Output Name
+## Output Name
 
 ![Example img](./img/output-name.png)Output Name" class="no-lightbox
 
@@ -72,7 +72,7 @@ unique name.
 <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
 ```
 
-# Output Type Definition
+## Output Type Definition
 
 ![Example img](./img/output-type-definition.png)Output Type Definition" class="no-lightbox
 

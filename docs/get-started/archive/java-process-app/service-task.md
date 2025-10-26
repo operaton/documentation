@@ -16,7 +16,7 @@ menu:
 In the last section of this tutorial we learn how to invoke a Java class from a BPMN 2.0 service task.
 
 
-# Add a Service Task to the Process
+## Add a Service Task to the Process
 
 Use the Camunda Modeler to add a service task after the user task. To do so, select the activity shape (rectangle) and drag it onto a sequence flow (see screenshot). Name it *Process Request*. Change the activity type to *Service Task* by clicking on it and using the wrench button.
 
@@ -25,7 +25,7 @@ Use the Camunda Modeler to add a service task after the user task. To do so, sel
 ![Example image](./img/modeler-service-task2.png)
 
 
-# Add a JavaDelegate Implementation
+## Add a JavaDelegate Implementation
 
 Now we need to add the actual service task implementation. In the Eclipse project, add a class into the package `org.operaton.bpm.getstarted.loanapproval` named `ProcessRequestDelegate` implementing the `JavaDelegate` interface:
 
@@ -48,7 +48,7 @@ public class ProcessRequestDelegate implements JavaDelegate {
 ```
 
 
-# Configure the Class in the Process
+## Configure the Class in the Process
 
 Use the properties view to reference the service task in the process (see screenshot). You need to provide the fully qualified classname of your class in the *Java Class* property field. In our case this is `org.operaton.bpm.getstarted.loanapproval.ProcessRequestDelegate`.
 

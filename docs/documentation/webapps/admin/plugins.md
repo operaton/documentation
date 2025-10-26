@@ -25,11 +25,11 @@ For further details about the concepts behind plugins, please read the [Cockpit 
 :::
 
 
-# Plugin Points
+## Plugin Points
 
 Here you can see the various points at which you are able to add your own plugins.
 
-## Route
+### Route
 **Name:** `admin.route`
 
 This plugin points properties contain the attribute `path`, which stands for the hashRoute for this page. This will be rendered when the user navigates in the browser to the url, e.g. `#/my-path`.
@@ -40,7 +40,7 @@ properties: {
 }
 ```
 
-## Dashboard
+### Dashboard
 
 **Name:** `admin.dashboard.section`
 

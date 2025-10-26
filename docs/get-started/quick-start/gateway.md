@@ -10,7 +10,7 @@ description: 'Learn how to make your Process more dynamic by adding Gateways to 
 
 In this section, you'll learn how to make your process more dynamic by using BPMN 2.0 *Exclusive Gateways*.
 
-# Add Two Gateways
+## Add Two Gateways
 We want to modify our process so that it's more dynamic.
 
 To do so, open the process in the Camunda Modeler.
@@ -21,7 +21,7 @@ Next, from the Modeler's left-hand menu, select the gateway shape (diamond) and 
 Now also name the new elements accordingly:
 ![Example image](./img/modeler-gateway2.png)
 
-# Configure the Gateways
+## Configure the Gateways
 
 Next, open the properties panel and select the `<1000 €` Sequence Flow after the Gateway on the canvas. This will update the selection in the properties panel.
 Scroll to the property named `Condition Type` and change it to `Expression`. Then input `${amount<1000}` as the Expression.
@@ -41,11 +41,11 @@ For the `Yes` Sequence Flow, use the Expression `${approved}`:
 For the `No` Sequence Flow, use the Expression `${!approved}`:
 ![Example image](./img/modeler-gateway6.png)
 
-# Deploy the Process
+## Deploy the Process
 
 Use the `Deploy` Button in the Camunda Modeler to deploy the updated process to Operaton.
 
-# Work on the Task
+## Work on the Task
 
 Go to Tasklist ([http://localhost:8080/operaton/app/tasklist/](http://localhost:8080/operaton/app/tasklist/)) and log in with the credentials "demo / demo".
 Click on the Start process button to start a process instance for the *Payment Retrieval* Process.

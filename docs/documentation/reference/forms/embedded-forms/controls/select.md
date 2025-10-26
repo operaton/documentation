@@ -17,7 +17,7 @@ Select boxes are HTML controls of the form of
 ```
 
 
-# Binding to a Process Variable
+## Binding to a Process Variable
 
 A select box can be bound to a process variable using the `cam-variable-name` directive:
 
@@ -30,12 +30,12 @@ A select box can be bound to a process variable using the `cam-variable-name` di
 ```
 
 
-# Supported Variable Types
+## Supported Variable Types
 
 The select box supports the same value types as `<input type="text">`.
 
 
-# Populating the Options from a Variable
+## Populating the Options from a Variable
 
 The `<option>` entries can be populated using a variable. The name of the variable can be provided using the `cam-choices` directive:
 

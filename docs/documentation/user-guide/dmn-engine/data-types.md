@@ -20,7 +20,7 @@ tries to transform the value into the specified type or throws an exception.
 The DMN engine supports basic types which can be extended by custom types.
 
 
-# Supported Data Types
+## Supported Data Types
 
 The following types are supported by the DMN engine:
 
@@ -71,7 +71,7 @@ additional type informations.
 If the given type does not match one of the above types then the value is
 transformed into an untyped value by default.
 
-## Working with Dates
+### Working with Dates
 
 The DMN engine supports a `date` type which is a combination of date and time.
 By default, the data type transformer accept objects of the types:
@@ -84,7 +84,7 @@ By default, the data type transformer accept objects of the types:
 If you prefer another format or different representation of a date,
 implement a custom type and [replace the default transformer][data-type-transformer].
 
-# Setting the Data Type of an Input
+## Setting the Data Type of an Input
 
 The type of a decision table input is specified by the `typeRef` attribute on the
 `inputExpression` element.
@@ -102,7 +102,7 @@ The type of a decision table input is specified by the `typeRef` attribute on th
 </decision>
 ```
 
-# Setting the Data Type of an Output
+## Setting the Data Type of an Output
 
 The type of a decision table output is specified by the `typeRef` attribute on the `output`
 element.
@@ -117,7 +117,7 @@ element.
 </decision>
 ```
 
-# Setting the Data Type of a Variable
+## Setting the Data Type of a Variable
 
 The type of a decision literal expression result is specified by the `typeRef` attribute on the `variable`
 element.
@@ -129,7 +129,7 @@ element.
 </decision>
 ```
 
-# Implement a Custom Data Type
+## Implement a Custom Data Type
 
 :::warning[Use of Internal API]
 

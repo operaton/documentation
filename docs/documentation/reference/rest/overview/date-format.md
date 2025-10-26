@@ -16,7 +16,7 @@ represents a date with milliseconds and timezone information, e.g.,
 
 If you add a date as a GET request parameter, remember the URL encoding, e.g. `2016-01-25T13:33:42.165%2b0100`.
 
-# Custom Date Format
+## Custom Date Format
 A custom date format can be configured in the `web.xml`
 file of the REST API. To do so, the ServletContextListener
 `CustomJacksonDateFormatListener` has to be added. The custom date format

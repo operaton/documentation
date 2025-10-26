@@ -15,11 +15,11 @@ menu:
 In this section we learn how to call an EJB from a BPMN 2.0 Service Task.
 
 
-# Add EJB Service Task
+## Add EJB Service Task
 
 After the process has been started with the new order as process variables, we want to persist the order to the database and only save the newly generated order id as process variable.
 
-## Add an Entity Bean to the Process Application
+### Add an Entity Bean to the Process Application
 
 To persist the entity with JPA, we add an entity bean to our process application. Create a package `org.operaton.bpm.getstarted.pizza` and then place the following `OrderEntity` class into that package:
 
@@ -108,7 +108,7 @@ public class OrderEntity implements Serializable {
 
 The entity class has to be annotated with `@Entity` and needs an `@Id` field. We also add a `@Version` field to the entity bean. This enables optimistic locking and ensures integrity during merges.
 
-## Add an EJB to the Process Application
+### Add an EJB to the Process Application
 
 The next step is to add a stateless EJB to the process application which is called by the process. In this EJB we inject the entity manager. It is used to manage our persistent objects during the session.
 
@@ -162,7 +162,7 @@ public class OrderBusinessLogic {
 }
 ```
 
-## Configure the EJB in the Process
+### Configure the EJB in the Process
 
 ![Example image](./img/pizza-order-process-service-task-expression.png)
 

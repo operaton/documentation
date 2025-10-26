@@ -14,7 +14,7 @@ menu:
 In addition to the various types of tasks, we can mark tasks as loops, multiple instances or compensations. Markers can be combined with task types.
 
 
-# Multiple Instance
+## Multiple Instance
 
 A multi-instance activity is a way of defining repetition for a certain step in a business process. In programming concepts, a multi-instance matches the `for each` construct: it allows execution of a certain step or even a complete subprocess for each item in a given collection, sequentially or in parallel.
 
@@ -113,7 +113,7 @@ A multi-instance activity ends when all instances are finished. However, it is p
 In this example, parallel instances will be created for each element of the assigneeList collection. However, when 60% of the tasks are completed, the other tasks are deleted and the process continues.
 
 
-## Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -141,7 +141,7 @@ In this example, parallel instances will be created for each element of the assi
 </table>
 
 
-## Boundary Events and Multi-Instance
+### Boundary Events and Multi-Instance
 
 Since a multi-instance is a regular activity, it is possible to define a boundary event on its boundary. In case of an interrupting boundary event, when the event is caught, all instances that are still active will be destroyed. For example, take the following multi-instance subprocess:
 
@@ -150,7 +150,7 @@ Since a multi-instance is a regular activity, it is possible to define a boundar
 Here all instances of the subprocess will be destroyed when the timer fires, regardless of how many instances there are or which inner activities are currently not completed yet.
 
 
-## Loops
+### Loops
 
 The loop marker is not natively supported yet by the engine. For Multiple Instance, the number of repetitions is known in advance - which makes it a bad candidate for loops anyway, as it defines a completion condition that may already be sufficient in some cases.
 
@@ -160,7 +160,7 @@ To get around this limitation, the solution is to explicitly model the loop in y
 
 Be assured that we have the loop marker in our backlog to be added to the engine.
 
-## JSON Collections with Multi-Instance Collections
+### JSON Collections with Multi-Instance Collections
 
 JSON Arrays created with [Operaton SPIN](../index.md) can be used as a collection for multi-instance activities.
 Consider the following JavaScript example that initializes execution variable `collection`:
@@ -183,7 +183,7 @@ We can now use `collection` variable in multi-instance activity's `operaton:coll
 This uses the SPIN's JSON `.prop()` and `.elements()` to return the JSON array.  Set the multi-instance activity's `elementVariable` to a variable name that
 will contain the array item. To access the value of the element, you can use `.value()` in your element variable.
 
-# Compensation
+## Compensation
 
 If an activity is used for compensating the effects of another activity, it can be declared to be a compensation handler. Compensation handlers are not contained in the regular flow and are only executed when a compensation event is thrown.
 
@@ -202,7 +202,7 @@ To declare an activity to be a compensation handler, we need to set the attribut
 ```
 
 
-# Additional Resources
+## Additional Resources
 
 * [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
 * [Transaction Subprocess](../subprocesses/transaction-subprocess.md)

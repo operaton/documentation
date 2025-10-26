@@ -16,7 +16,7 @@ On the right hand side, you see an overview of deployed process definitions, dec
 
 Additional [plugins](../cockpit/extend/plugins.md) can be added to the dashboard.
 
-# Metrics
+## Metrics
 
 ![Example img](./img/dashboard-metrics.png)Cockpit Dashboard Metrics
 
@@ -26,7 +26,7 @@ in either direction, you can select a specified range of time. You can also modi
 appears under the graph, you are forwarded to the respective search with preselected query parameters.
 
 
-# Multi Engine
+## Multi Engine
 
 ![Example img](./img/cockpit-multi-engine.png)Multiple Engines
 

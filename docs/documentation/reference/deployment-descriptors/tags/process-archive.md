@@ -11,7 +11,7 @@ The process archive tag allows configuration of a process engine deployment and 
 See the [processes.xml](../../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md) section of the [User Guide](../../../user-guide/index.md) for more details.
 
 
-# Example
+## Example
 
 The following example shows a process-archive XML snippet:
 
@@ -29,7 +29,7 @@ The following example shows a process-archive XML snippet:
 ```
 
 
-# Syntax Reference
+## Syntax Reference
 
 <table class="table table-striped">
   <tr>
@@ -128,7 +128,7 @@ The following example shows a process-archive XML snippet:
 </table>
 
 
-# Configuration Properties
+## Configuration Properties
 
 The following is a list of all supported configuration properties.
 

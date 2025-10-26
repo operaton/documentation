@@ -5,7 +5,7 @@ sidebar_position: 5
 description: "Restart process instances after termination."
 
 ---
-# Instance Restart"
+## Instance Restart"
 
 
 In the history view, you can restart process instances individually or by a batch operation. A restart can consist of one or multiple of the following operations:
@@ -14,7 +14,7 @@ In the history view, you can restart process instances individually or by a batc
 * Restart after an activity, on its single outgoing sequence flow
 
 
-# Perform Restart
+## Perform Restart
 
 
 ![Example img](./../img/cockpit-restart.png)Process Instance Restart
@@ -28,11 +28,11 @@ In the top-left corner of the activity, a badge will appear, indicating the rest
 At any point during the creation of the restart, you can show the payload by clicking the eye button. This will show the request payload that will be sent via the [REST API](../../../reference/rest/index.md).
 
 
-## Restart Instructions
+### Restart Instructions
 
 When restarting a process instance, you have the option to *start before* or *start after* the activity. Using *start before*, the activity will be executed. *start after* is only possible if there is only one sequence flow going out of the activity.
 
-## Instance selection
+### Instance selection
 
 ![Example img](./../img/cockpit-restart-instance-selection.png)Instance Selection
 
@@ -47,7 +47,7 @@ Selecting all instances might create a high load on the database and application
 When you have made your selection you can proceed by clicking the red button. This leads you to the **Confirm Restart** modal.
 
 
-## Confirm Restart
+### Confirm Restart
 
 ![Example img](./../img/cockpit-restart-confirm.png)Confirm Restart
 

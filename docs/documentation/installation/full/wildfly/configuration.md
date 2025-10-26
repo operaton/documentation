@@ -5,12 +5,12 @@ sidebar_position: 30
 description: "Configure the installation."
 
 ---
-# Configure the Full Distribution for WildFly
+## Configure the Full Distribution for WildFly
 
 This page explains how to configure the full distribution for the WildFly application server.
 
 
-## LDAP
+### LDAP
 
 In order to setup LDAP for the WildFly Application Server distribution, you have to perform the following steps:
 
@@ -71,7 +71,7 @@ The `administratorUserName` property should contain the user id of the LDAP user
 See our user guide for complete documentation on the [LDAP Identity Provider Plugin](../../../user-guide/process-engine/identity-service.md#the-ldap-identity-service) and the [Administrator Authorization Plugin](../../../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin).
 
 
-## HAL Resource Caching
+### HAL Resource Caching
 
 If you use LDAP as Identity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
 Users and Groups in the Operaton web application. In order to activate this, add the following
@@ -114,7 +114,7 @@ configuration to the `web.xml` file of the Operaton web application
 </web-app>
 ```
 
-## Add Custom Engine Plugins
+### Add Custom Engine Plugins
 
 1.  Add an additional engine plugin as a module to the folder $WILDFLY_HOME/modules/
 2.  Add the module dependency to the file `$WILDFLY_HOME/modules/org/operaton/bpm/operaton-engine-plugins/main/module.xml` and set the attribute `export="true"` to make sure that the module is visible in the classpath of Operaton's subsystem
@@ -131,7 +131,7 @@ configuration to the `web.xml` file of the Operaton web application
     The `module.xml` file is included in the Operaton distribution. If you install Operaton on a vanilla WildFly container, this file needs to be created manually.
 3. [Configure the process engine plugin](../../../user-guide/runtime-container-integration/jboss.md#extend-a-process-engine-using-process-engine-plugins) in the standalone.xml/domain.xml configuration file
 
-## Session Cookie in Webapps
+### Session Cookie in Webapps
 
 The deployment descriptor of the Web applications needs to be adjusted to configure the **Session Cookie**.
 
@@ -152,7 +152,7 @@ Please note that security-related configurations for the **Session Cookie** can 
 To adjust the `SameSite` flag of the session cookie, you can configure a `SameSiteCookieHandler` as described in related the [WildFly documentation](https://www.wildfly.org/news/2020/05/04/WildFly-1910-Released/).
 This can be used with WildFly versions $\geq$ 19.1.0.
 
-## Security-related HTTP headers in Webapps
+### Security-related HTTP headers in Webapps
 
 To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
 to be adjusted. You can find it under `WEB-INF/web.xml`.

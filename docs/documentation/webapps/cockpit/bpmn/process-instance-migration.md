@@ -27,13 +27,13 @@ Performing a migration consists of four steps:
 4. Observe the results of the migration and check for errors
 
 
-# Create a Migration Plan
+## Create a Migration Plan
 
 When accessing the migration page from the process definition or instance page, an appropriate source and target definition key and version is already set. Otherwise you can set the process definition key and version for both the source and target at the top of the page. After selecting a source and a target, the diagrams for these process definition versions are displayed. Also, a first draft of a migration plan is [generated](../../../user-guide/process-engine/process-instance-migration.md#generating-a-migration-plan) and successfully mapped activities are highlighted with a green checkmark symbol <span class="badge" style={{border: '1px solid #4cae4c', backgroundColor: '#5cb85c'}}><span class="glyphicon glyphicon-ok"></span></span>. Hovering over an activity highlights the corresponding source and target activities for the mapping.
 
 Activities that have running instances, but are not mapped to a target activity, have a yellow warning marker <span class="badge" style={{backgroundColor: '#f0ad4e', border: '1px solid #eea236'}}><span class="glyphicon glyphicon-warning-sign"></span></span>. If you plan to migrate these instances, you have to create a mapping for these activities, otherwise the migration will fail.
 
-## Create a new mapping
+### Create a new mapping
 
 ![Example img](./../img/migration/step1_createMapping.png)Creating a new mapping
 
@@ -42,24 +42,24 @@ To create a mapping for an activity, hover over the activity and click on the ar
 You can only create a mapping for activities that are not mapped yet.
 
 
-## Remove an existing mapping
+### Remove an existing mapping
 
 You can remove an existing mapping by hovering over the mapped activity and clicking the <button class="btn btn-xs"><i class="glyphicon glyphicon-remove"></i></button> button in the lower right corner.
 
 
-## Link diagrams navigation
+### Link diagrams navigation
 
 Checking the link diagrams navigation checkbox causes view changes of one diagram to be displayed on the other diagram, too. If you move, zoom or reset one diagram, the same change is applied to the other diagram, too. To move both diagrams independently from each other, uncheck this box.
 
 
-## Check incorrect mappings
+### Check incorrect mappings
 
 ![Example img](./../img/migration/step1_errorPopover.png)Report for an incorrect mapping
 
 If you create a mapping that is incorrect, a red error indicator <span class="badge" style={{backgroundColor: '#d9534f', border: '1px solid #d43f3a'}}><span class="glyphicon glyphicon-remove"></span></span> is displayed in the top right corner of the source and target activity of the faulty mapping. Clicking on the error indicator opens a tooltip showing details of the error.
 
 
-## Set Update Event Trigger flag
+### Set Update Event Trigger flag
 
 To set the [update event trigger flag](../../../user-guide/process-engine/process-instance-migration.md#events) for events, first create a mapping for the event. Then click on the green checkmark indicator to open the details tooltip. The opened popup contains a checkbox to update the event trigger.
 
@@ -68,13 +68,13 @@ By default, the update event trigger flag in cockpit migration is set for activi
 I.e., for interrupting/non-interrupting message boundary events, message intermediate catch events, and receive tasks.
 :::
 
-## Show migration plan
+### Show migration plan
 
 You can visualize the migration plan in two ways: You can hover over an activity to highlight the activity that is mapped to the hovered activity. E.g., if you hover over a mapped source activity, the corresponding target activity is highlighted. If you hover over a target activity, the corresponding source activities are highlighted as well.
 
 You can also click on an activity to show a green arrow pointing from the source activity to the mapped target activity. Clicking on the activity again hides the arrow. If the mapping contains errors, the arrow is displayed in red. You can also use the checkbox at the bottom of the screen reading "show migration plan" to toggle the display of all arrows on the diagram.
 
-# Set Variables
+## Set Variables
 
 After finishing defining the flow-node mapping, click on the **Set Variables** button to proceed.
 
@@ -95,7 +95,7 @@ If a variable invalidates the migration plan, Cockpit opens a popover with the r
 
 You can still edit the variables you have just added. For instance, if a variable invalidates the migration plan, you can easily correct it to proceed with the process instance migration.
 
-# Select instances
+## Select instances
 
 ![Example img](./../img/migration/step3.png)Select instances for migration
 
@@ -114,7 +114,7 @@ Using the checkboxes to the left of the instances, you can mark them for migrati
 If you do not explicitly select any instances, all instances of the source process definition version are migrated to the target version.
 
 
-# Confirm Migration
+## Confirm Migration
 
 ![Example img](./../img/migration/step4.png)Confirm Migration
 
@@ -123,22 +123,22 @@ In the next step, you see an overview of the migration that you are about to exe
 By clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-eye-open"></i></button> button on the bottom of the page, you can assess the request payload that is sent to the server to perform the migration.
 
 
-# Check Migration Result
+## Check Migration Result
 
 ![Example img](./../img/migration/step5_batch.png)Executing migration asynchronously
 
 After clicking `Execute Migration`, the result screen is displayed. If the migration was performed successfully, that is indicated on this page. For asynchronous migrations, a link to the [batch page](../batch/monitoring.md) is displayed where the progress of the batch can be observed.
 
-## Error: Migration Plan invalid
+### Error: Migration Plan invalid
 
 ![Example img](./../img/migration/step5_error.png)Invalid migration plan
 
 If the migration plan contains errors, they are displayed on this page. No instances are migrated in this case. You can go back to the first step to fix the errors.
 
-## Error: Failed to apply the Migration Plan
+### Error: Failed to apply the Migration Plan
 
 If the migration plan itself is correct, but could not be applied to a specific instance, an error is shown. This error contains the instance id that produced the error as well as the cause of the failure.
 
-## Error: Migration Failed
+### Error: Migration Failed
 
 If the migration failed for other reasons, the error is displayed.

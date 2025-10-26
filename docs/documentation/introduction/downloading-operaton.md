@@ -11,7 +11,7 @@ menu:
 ---
 
 
-# Prerequisites
+## Prerequisites
 
 Before downloading Operaton, make sure you have a JRE (Java Runtime Environment), or better, a JDK
 (Java Development Kit) installed. Please check the supported [Java versions](./supported-environments.md#java).
@@ -19,18 +19,18 @@ Before downloading Operaton, make sure you have a JRE (Java Runtime Environment)
 [Download JDK][get-jdk]
 
 
-# Download the Runtime
+## Download the Runtime
 
 Operaton is a flexible framework which can be used in different contexts. See [Architecture Overview](./architecture.md) for more details. Based on how you want
 to use Operaton, you can choose a different distribution.
 
 
-## Spring Boot and Docker
+### Spring Boot and Docker
 
 It is also possible to run Operaton with [Spring Boot][run-with-spring-boot] and [Docker][run-with-docker].
 
 
-## Full Distribution
+### Full Distribution
 
 Download the full distribution if you want to use a [shared process engine][shared-engine] or if you
 want to get to know Operaton quickly, without any additional setup or installation steps required.
@@ -57,7 +57,7 @@ The full distribution bundles
 See the [Installation Guide][installation-guide-full] for additional details.
 
 
-# Download Camunda Modeler
+## Download Camunda Modeler
 
 Camunda Modeler is a modeling Tool for BPMN 2.0 and DMN 1.3. Camunda Modeler can be downloaded
 from the [community download page][community-download-page].

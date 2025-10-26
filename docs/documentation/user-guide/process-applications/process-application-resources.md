@@ -15,7 +15,7 @@ Process applications provide and logically group resources specific to the proce
 ![Example img](./img/process-application-context.png)Process Application Context
 
 
-# Context Switch
+## Context Switch
 
 When executing a process instance, the process engine has to know which process application provides the corresponding resources. It then internally performs a *context switch*. This has the following effects:
 
@@ -33,11 +33,11 @@ A context switch is guaranteed in the following cases:
 * **Delegation Code Invocation**: Whenever delegation code like Java Delegates, execution/task listeners (Java code or scripts), etc. is called by the process engine
 * **Explicit Process Application Context Declaration**: For every engine API invocation, when a process application was declared using the utility class `org.operaton.bpm.application.ProcessApplicationContext`
 
-# Declare Process Application Context
+## Declare Process Application Context
 
 Process application context must be declared whenever custom code uses the engine API that is not part of delegation code and when a context switch is needed for proper function.
 
-## Example
+### Example
 
 To clarify the use case, we assume that a process application employs the [feature to serialize object-type variables in the JSON format](../../user-guide/data-formats/json.md#serializing-process-variables). However, for that application JSON serialization shall be customized (think about the numerous ways to serialize a date as a JSON string). The process application therefore contains a Operaton Spin data format configurator implementation that configures the Spin JSON data format in the desired way. In turn, the process engine manages a Spin data format for that specific process application to serialize object values with. Now, we assume that a Java servlet calls the process engine API to submit a Java object and serialize it with the JSON format. The code might look as follows:
 
@@ -72,10 +72,10 @@ try {
 
 Now, the process engine knows in which context to execute the `#setVariable` call in. It therefore can access the correct JSON data format and serializes the variable correctly.
 
-## Java API
+### Java API
 
 The methods `ProcessApplicationContext#setCurrentProcessApplication` declare process application context for all following API invocations until `ProcessApplicationContext#clear` is called. It is therefore advised to use a try-finally block to ensure clearance even when exceptions are raised. In addition, the methods `ProcessApplicationContext#withProcessApplicationContext` execute a Callable and declare the context during the Callable's execution.
 
-## Programming Model Integration
+### Programming Model Integration
 
 Declaring process application context whenever engine API is invoked can result in highly repetitive code. Depending on your programming model, you may consider declaring the context in a place that applies to all the desired business logic in a cross-cutting manner. For example, in CDI it is possible to define method invocation interceptors that trigger based on the presence of annotations. Such an interceptor can identify the process application based on the annotation and declare the context transparently.

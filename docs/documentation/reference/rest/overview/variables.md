@@ -25,12 +25,12 @@ form:
 The REST API supports the [Value Types](../../../user-guide/process-engine/variables.md#supported-variable-values) supported by the process engine.
 
 
-# Capitalization of Type Names
+## Capitalization of Type Names
 
 In the REST API, the type names start with a capital letter, i.e., `String` instead of `string`.
 
 
-# Serialized and Deserialized Object Values
+## Serialized and Deserialized Object Values
 
 Object Values are instances of (non primitive) Java types. When working with the REST API, it is
 generally advisable to work with the serialized value of a variable. In that case the value is
@@ -43,7 +43,7 @@ building is not a Java Applications by itself, make sure you use a text-based
 :::
 
 
-# Serialize Variables of type Object in REST API
+## Serialize Variables of type Object in REST API
 
 In the REST API, [process variables](../../../user-guide/process-engine/variables.md) of type Object can be serialized in JSON or XML format.
 

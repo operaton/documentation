@@ -8,7 +8,7 @@ sidebar_position: 30
 The job executor tag is used to configure the job executor and can be placed in the [bpm-platform.xml](../bpm-platform-xml.md) file.
 
 
-# Example
+## Example
 
 The following example shows a job executor XML snippet:
 
@@ -32,7 +32,7 @@ The following example shows a job executor XML snippet:
 ```
 
 
-# Syntax Reference
+## Syntax Reference
 
 <table class="table table-striped">
   <tr>
@@ -132,7 +132,7 @@ The following example shows a job executor XML snippet:
 </table>
 
 
-# Job-Executor Configuration Properties
+## Job-Executor Configuration Properties
 
 The following is a list with the available job acquisition thread configuration properties, along with some explanations. The properties can be used in the `<property name="foo">bar</property>` tag, where `foo` is the name of the property and `bar` is the value of the property.
 
@@ -181,7 +181,7 @@ These properties only take effect in a Tomcat environment.
 </table>
 
 
-# Job-Acquisition Configuration Properties
+## Job-Acquisition Configuration Properties
 
 The following is a list with the available job acquisition thread configuration properties, along with some explanations. The properties can be used in the `<property name="foo">bar</property>` tag, where `foo` is the name of the property and `bar` is the value of the property.
 

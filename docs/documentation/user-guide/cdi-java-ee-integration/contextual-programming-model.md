@@ -21,7 +21,7 @@ of different forms and "non-process-scoped" state needs to be kept during this i
 process instances are associated with the "broadest" active scope, starting with the conversation and falling back to the request
 if the conversation context is not active.
 
-# Associate a conversation with a process instance
+## Associate a conversation with a process instance
 
 When resolving `@BusinessProcessScoped` beans or injecting process variables, we rely on an existing association between an active CDI scope and a process instance.
 The Operaton CDI integration provides the `org.operaton.bpm.engine.cdi.BusinessProcess` bean for controlling the association, most prominently:
@@ -43,7 +43,7 @@ The following JSF2 snippet begins a new conversation and associates it with a us
 </f:metadata>
 ```
 
-# Declaratively controlling the process
+## Declaratively controlling the process
 
 Operaton CDI allows declaratively starting process instances and completing tasks using annotations.
 The `@org.operaton.bpm.engine.cdi.annotation.StartProcess` annotation allows to start a process instance either by "key" or by "name".
@@ -72,7 +72,7 @@ public String authorizeBusinessTrip() {
 The `@CompleteTask` annotation offers the possibility to end the current conversation. The default behavior is to end the conversation
 after the call to the engine returns. Ending the conversation can be disabled, as shown in the example above.
 
-# Work with @BusinessProcessScoped beans
+## Work with @BusinessProcessScoped beans
 
 Using Operaton CDI, the lifecycle of a bean can be bound to a process instance. To this extent, a custom context implementation is provided,
 namely the `BusinessProcessContext`. Instances of `BusinessProcessScoped` beans are stored as process variables in the current process instance.

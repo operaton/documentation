@@ -64,7 +64,7 @@ runtimeService.signal(execution.getId());
 ```
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
@@ -93,7 +93,7 @@ runtimeService.signal(execution.getId());
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 * [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
 * [Message Receive Events](../events/message-events.md)

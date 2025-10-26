@@ -12,11 +12,11 @@ menu:
 ---
 
 
-# BPMN & CMMN Integration
+## BPMN & CMMN Integration
 
 This section explains how to invoke DMN decision from BPMN and CMMN.
 
-## BPMN Business Rule Task
+### BPMN Business Rule Task
 
 The BPMN business rule task can reference a [deployed] decision
 definition. The decision definition is evaluated when the task is executed.
@@ -45,7 +45,7 @@ definition. The decision definition is evaluated when the task is executed.
 For more information on how to reference a decision definition from a business
 rule task, please refer to the [BPMN 2.0 reference][business rule task].
 
-## DMN Decision Task
+### DMN Decision Task
 
 The CMMN decision task references a [deployed] decision definition.
 The decision definition is invoked when the task is activated.
@@ -71,7 +71,7 @@ The decision definition is invoked when the task is activated.
 For more information on how to reference a decision definition from a decision
 task, please refer to the [CMMN 1.1 reference][decision task].
 
-# The Decision Result
+## The Decision Result
 
 The output of the decision, also called decision result, is a complex object of
 type `DmnDecisionResult`. Generally, it is a list of key-value pairs.
@@ -112,7 +112,7 @@ The decision result is available in the local scope of the executing task as a
 transient variable named `decisionResult`. It can be passed into a variable by
 using a predefined or a custom mapping of the decision result, if necessary.
 
-## Predefined Mapping of the Decision Result
+### Predefined Mapping of the Decision Result
 
 The engine includes predefined mappings of the decision result for common use
 cases. The mapping is similar to an [output variable mapping]. It extracts a
@@ -191,7 +191,7 @@ exception is thrown while saving the result variable.
 
 :::
 
-## Custom Mapping of the Decision Result
+### Custom Mapping of the Decision Result
 
 Instead of a predefined mapping, a custom decision result mapping can be used
 to pass the decision result into variables.
@@ -287,7 +287,7 @@ public class MyDecisionResultListener implements CaseExecutionListener {
 }
 ```
 
-## Limitations of the Serialization of the Mapping Result
+### Limitations of the Serialization of the Mapping Result
 
 The predefined mappings `singleResult`, `collectEntries` and `resultList` map
 the decision result to Java collections. The implementation of the collections
@@ -314,7 +314,7 @@ To prevent any of these problems, you should use primitive variables only.
 Alternatively, you can use a custom object for serialization that you control
 by yourself.
 
-# Accessing Variables from Decisions
+## Accessing Variables from Decisions
 
 DMN Decision tables and Decision Literal Expressions contain multiple expressions which will be evaluated by the
 DMN engine. For more information about the expressions of a decision
@@ -360,14 +360,14 @@ its unwrapped value.
 </input>
 ```
 
-# Expression Language Integration
+## Expression Language Integration
 
 By default, the DMN engine uses [FEEL] as expression language for input
 expressions, input entries, output entries and literal expressions.
 Please see the [DMN engine][expression languages] guide for more
 information about expression languages.
 
-## Accessing Beans
+### Accessing Beans
 
 If the DMN engine is invoked by Operaton, it uses the same
 JUEL configuration as the Operaton engine. Therefore, it is also
@@ -379,7 +379,7 @@ section in the [Spring] and [CDI] guides.
 Beans cannot be accessed when using FEEL as expression language.
 :::
 
-## Extending the Expression Language
+### Extending the Expression Language
 
 :::warning[Use of Internal API]
 

@@ -17,7 +17,7 @@ Open the case instance view by selecting a case instance from the [case definiti
 
 Furthermore, you can maximize the diagram view or the detailed information panel by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button, respectively the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-up"></i></button> button, at the bottom left of the diagram view.
 
-# Detailed Information Panel
+## Detailed Information Panel
 
 ![Example img](./../img/cmmn/detailed-information-view.png)Detailed Information Panel
 
@@ -41,21 +41,21 @@ In the Called Case Instances tab you find an overview of all the case instances 
 **Executed Decision Instances**  
 In the Executed Decision Instances tab you find an overview of all decision instances which were evaluated in this case instance. Clicking on the ID of the decision instance will take you to the decision instance view page of the respective instance. Clicking on the decision definition key will take you to the decision definition page of the definition for the respective decision instance.
 
-# Add Variables
+## Add Variables
 
 ![Example img](./../img/cmmn/add-variables.png)Add Variables
 
 Hit the plus button on the right side to add variables to a case instance. You can choose between different data types. Please note that variables will be overwritten if you add a new variable with an existing name.
 
 
-# Edit Variables
+## Edit Variables
 
 ![Example img](./../img/cmmn/edit-variables.png)Edit Variables
 
 Edit variables in the list of variables by using the pencil symbol. This feature allows you to change the value of variables as well as the type. A validation of the date format and for the value of integers happens on client side. If you enter NULL, the variable will be converted to a string type.
 
 
-# Terminate a Case Instance
+## Terminate a Case Instance
 
 ![Example img](./../img/cmmn/terminate-case.png)Terminate Case Instance
 
