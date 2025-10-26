@@ -76,7 +76,7 @@ const config: Config = {
       },
     },
     typesense: {
-      typesenseCollectionName: 'docusaurus_1761511744',
+      typesenseCollectionName: 'docusaurus',
 
       typesenseServerConfig: {
         nodes: [
