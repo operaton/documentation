@@ -30,17 +30,6 @@ Other starters that can be used are:
 * [`Operaton-bpm-spring-boot-starter-webapp`](webapps)
 * [`Operaton-bpm-spring-boot-starter-external-task-client`](../../user-guide/ext-client/spring-boot-starter.md)
 
-## Using Enterprise Edition
-
-To use Operaton Spring Boot Starter with Operaton EE you need to define the EE version of the webapp (`Operaton-bpm-spring-boot-starter-webapp-ee` instead of `Operaton-bpm-spring-boot-starter-webapp`), see also [Web Applications](webapps/):
-
-```xml
-<dependency>
-  <groupId>org.Operaton.bpm.springboot</groupId>
-  <artifactId>Operaton-bpm-spring-boot-starter-webapp-ee</artifactId>
-  <version>{{< minor-version >}}.0-ee</version>
-</dependency>
-```
 
 ## Requirements
 

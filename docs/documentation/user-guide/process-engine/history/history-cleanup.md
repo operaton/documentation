@@ -244,10 +244,6 @@ The property accepts values in the ISO-8601 date format. Note that only the nota
 <property name="taskMetricsTimeToLive">P540D</property>
 ```
 
-:::warning[Heads Up!]
-If you are an enterprise customer, your license agreement might require you to report some metrics annually. Please store task metrics from `ACT_RU_TASK_METER_LOG` for at least 18 months until they were reported.
-:::
-
 ### Cleanup window
 
 For automated history cleanup on a regular basis, a batch window must be configured - the period of time during the day when the cleanup is to run.
