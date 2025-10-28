@@ -81,7 +81,7 @@ const config: Config = {
       typesenseServerConfig: {
         nodes: [
           {
-            host: 'localhost',
+            host: 'docs.operaton.org',
             port: 8108,
             protocol: 'http',
           },
