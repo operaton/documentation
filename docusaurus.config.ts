@@ -83,7 +83,7 @@ const config: Config = {
           {
             host: 'docs.operaton.org',
             port: 8108,
-            protocol: 'http',
+            protocol: 'https',
           },
         ],
         apiKey: process.env.TYPESENSE_API_KEY,
