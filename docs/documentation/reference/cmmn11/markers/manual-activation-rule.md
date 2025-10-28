@@ -20,7 +20,7 @@ Whether the actual work of a task or stage can be performed depends on its [entr
 * By manual activation
 * By automatic activation
 
-Automatic activation is the default behavior in which it is not required that a user manually activates a task. In camunda, manual activation can be done by using the `CaseService` API with `caseService.manuallyStartCaseExecution(caseExecutionId)`. By specifying a *manual activation rule*, it is possible to omit this step or make it depend on case variable payload. With manual activation, a user can decide to activate a task or instead disable it. A task that is automatically activated *must* be carried out.
+Automatic activation is the default behavior in which it is not required that a user manually activates a task. In operaton, manual activation can be done by using the `CaseService` API with `caseService.manuallyStartCaseExecution(caseExecutionId)`. By specifying a *manual activation rule*, it is possible to omit this step or make it depend on case variable payload. With manual activation, a user can decide to activate a task or instead disable it. A task that is automatically activated *must* be carried out.
 
 In XML, a manual activation rule can be specified for an individual plan item or for a plan item definition. For a plan item it looks as follows:
 

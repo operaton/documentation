@@ -21,20 +21,20 @@ To enable the [Web Applications](../../webapps/index.md) you can use the followi
 </dependency>
 ```
 
-By default the application path is `/camunda`, so without any further configuration you can access
+By default the application path is `/operaton`, so without any further configuration you can access
 the Webapps under [http://localhost:8080/operaton/app/](http://localhost:8080/operaton/app/).
 
 ## Configurations
 
 You can change the application path with the following configuration property in your `application.yaml` file:
 ```properties
-camunda.bpm.webapp.application-path=/my/application/path
+operaton.bpm.webapp.application-path=/my/application/path
 ```
 
 By default, the starter registers a controller to redirect `/` to Operaton's bundled `index.html`.
 To disable this, you have to add to your application properties:
 ```properties
-camunda.bpm.webapp.index-redirect-enabled=false
+operaton.bpm.webapp.index-redirect-enabled=false
 ```
 
 ## Error Pages
@@ -47,4 +47,4 @@ The Operaton Web Applications use a `CSRF Prevention Filter` that expects a `CSR
 modifying request for paths beginning with `/operaton/api/` or `/operaton/app/`. Any modifying requests
 mapped to these paths will fail, and the current session will be ended if no CSRF Token is present.
 You can avoid this by registering your resources on different paths or add your resources to the
-CSRF Prevention Filter Whitelist (via the configuration property `camunda.bpm.webapp.csrf.entry-points`).
+CSRF Prevention Filter Whitelist (via the configuration property `operaton.bpm.webapp.csrf.entry-points`).

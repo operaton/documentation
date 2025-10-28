@@ -28,7 +28,7 @@ Make sure you have the following set of tools installed:
 First, download a distribution of the Operaton Platform. You can choose from different application servers. In this tutorial, we will use a WildFly-based distribution. Download it from [the download page](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
 
 After having downloaded the distribution, unpack it inside a directory of your choice. We will call that directory
-`$CAMUNDA_HOME`.
+`$OPERATON_HOME`.
 
 After you have successfully unpacked your distribution of the Operaton Platform, execute the script named
 `start-camunda.bat` for Windows users, respectively `start-camunda.sh` for Unix users.

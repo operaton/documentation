@@ -23,7 +23,7 @@ If the `pizza-order.war` file is not visible after having performed the Maven bu
 
 ## Deploy to WildFly
 
-To deploy the process application, copy and paste the `pizza-order.war` from your Maven project `target` folder to the `$CAMUNDA_HOME/server/wildfly-VERSION/standalone/deployments` folder.
+To deploy the process application, copy and paste the `pizza-order.war` from your Maven project `target` folder to the `$OPERATON_HOME/server/wildfly-VERSION/standalone/deployments` folder.
 
 Check the log file of the WildFly server. If you see a log message like the following one, the deployment was successful:
 

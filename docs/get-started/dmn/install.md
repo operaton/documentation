@@ -30,7 +30,7 @@ Make sure you have the following set of tools installed:
 
 First, download a distribution of the Operaton Platform. You can choose from different distributions for various application servers. In this tutorial, we will use the Apache Tomcat based distribution. Download it from [the download page](https://camunda.com/download/).
 
-After having downloaded the distribution, unpack it inside a directory of your choice. We will call that directory `$CAMUNDA_HOME`.
+After having downloaded the distribution, unpack it inside a directory of your choice. We will call that directory `$OPERATON_HOME`.
 
 After you have successfully unpacked your distribution of the Operaton Platform, execute the script named `start-camunda.bat` (for Windows users), respectively `start-camunda.sh` (for Unix users).
 

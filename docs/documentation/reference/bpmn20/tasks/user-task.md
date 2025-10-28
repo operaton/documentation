@@ -68,7 +68,7 @@ A User Task can be directly assigned to a single user, a list of users or a list
 
 ### Assignment using BPMN Resource Assignments
 
-BPMN defines some native assignment concepts which can be used in camunda.
+BPMN defines some native assignment concepts which can be used in operaton.
 As a more powerful alternative, Operaton also defines a set of custom extension elements (see below).
 
 ### Human Performer

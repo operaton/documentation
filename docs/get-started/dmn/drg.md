@@ -98,7 +98,7 @@ public class DinnerApplication extends ServletProcessApplication
 
 ## Build and Deploy the Web Application
 
-Build the web application with Maven and replace the `dinner-dmn-0.1.0-SNAPSHOT.war` in the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
+Build the web application with Maven and replace the `dinner-dmn-0.1.0-SNAPSHOT.war` in the `$OPERATON_HOME/server/apache-tomcat/webapps` folder.
 
 Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:
 

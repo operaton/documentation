@@ -55,7 +55,7 @@ If the `dinner-dmn-0.1.0-SNAPSHOT.war` file is not visible after having performe
 
 ### Deploy to Apache Tomcat
 
-In order to deploy the process application, copy-paste the `dinner-dmn-0.1.0-SNAPSHOT.war` from your Maven project to the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
+In order to deploy the process application, copy-paste the `dinner-dmn-0.1.0-SNAPSHOT.war` from your Maven project to the `$OPERATON_HOME/server/apache-tomcat/webapps` folder.
 
 Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:
 

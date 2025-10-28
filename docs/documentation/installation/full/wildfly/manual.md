@@ -20,8 +20,8 @@ This guide uses a number of variables to denote common path names and constants:
 
 ### Setup
 
-* For WildFly ≥27 / JBoss EAP 8, download the [Operaton WildFly distribution](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
-* For WildFly ≤26 / JBoss EAP 7, download the [`operaton-wildfly26-modules`](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/wildfly/operaton-wildfly26-modules/).
+* For WildFly ≥27 / JBoss EAP 8, download the [Operaton WildFly distribution](https://downloads.operaton.cloud/release/operaton-bpm/wildfly/).
+* For WildFly ≤26 / JBoss EAP 7, download the [`operaton-wildfly26-modules`](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/wildfly/operaton-wildfly26-modules/).
 
 ### Copy Modules
 
@@ -151,9 +151,9 @@ This section describes how to install optional dependencies. None of these are r
 The following steps are required to deploy the web application:
 
 1. Download the Operaton web application that contains the web applications from our Maven Artifactory.
-    * For [WildFly ≥27 / JBoss EAP 8](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-wildfly/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-wildfly-$PLATFORM_VERSION.war`.
-    * For [WildFly ≤26 / JBoss EAP 7](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-jboss/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-jboss-$PLATFORM_VERSION.war`.
-2. Optionally, you may change the context path to which the application will be deployed (default is `/camunda`).
+    * For [WildFly ≥27 / JBoss EAP 8](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-wildfly/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-wildfly-$PLATFORM_VERSION.war`.
+    * For [WildFly ≤26 / JBoss EAP 7](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-jboss/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-jboss-$PLATFORM_VERSION.war`.
+2. Optionally, you may change the context path to which the application will be deployed (default is `/operaton`).
     Edit the file `WEB-INF/jboss-web.xml` in the war file and update the `context-root` element accordingly.
 3. Copy the war file to `$WILDFLY_HOME/standalone/deployments`.
 4. Startup WildFly.
@@ -165,8 +165,8 @@ The following steps are required to deploy the web application:
 The following steps are required to deploy the REST API:
 
 1. Download the REST API web application archive from our Maven Artifactory.
-    * For [WildFly ≥27 / JBoss EAP 8](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-wildfly.war`.
-    * For [WildFly ≤26 / JBoss EAP 7](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-wildfly.war`.
+    * For [WildFly ≥27 / JBoss EAP 8](https://artifacts.operaton.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-wildfly.war`.
+    * For [WildFly ≤26 / JBoss EAP 7](https://artifacts.operaton.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-wildfly.war`.
 2. Optionally, you may change the context path to which the REST API will be deployed (default is `/engine-rest`).
    Edit the file `WEB-INF/jboss-web.xml` in the war file and update the `context-root` element accordingly.
 3. Copy the war file to `$WILDFLY_HOME/standalone/deployments`.

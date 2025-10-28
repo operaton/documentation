@@ -177,7 +177,7 @@ The following is an example of a BPMN ScriptTask used to execute an XSLT Templat
 
   <bpmn2:extensionElements>
     <operaton:inputOutput>
-      <operaton:inputParameter name="camunda_source">${customers}</operaton:inputParameter>
+      <operaton:inputParameter name="operaton_source">${customers}</operaton:inputParameter>
     </operaton:inputOutput>
   </bpmn2:extensionElements>
 
@@ -191,7 +191,7 @@ described for [script tasks][script-source].
 The result of the transformation can be mapped to a variable using the `operaton:resultVariable`
 attribute.
 
-Finally, the input of the transformation must be mapped using the special variable `camunda_source`
+Finally, the input of the transformation must be mapped using the special variable `operaton_source`
 using a `<operaton:inputParameter ... />` mapping.
 
 A [full example of the XSLT Template Engine][xslt-example] in Operaton can be found in the

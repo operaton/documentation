@@ -33,7 +33,7 @@ Configures the Operaton data source and enables [transaction integration](../spr
 
 If you want to [configure more than one datasource](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-two-datasources)
 and don't want to use the `@Primary` one for the process engine, then you can create a separate
-data source with name `camundaBpmDataSource` that will be automatically wired with Operaton instead.
+data source with name `operatonBpmDataSource` that will be automatically wired with Operaton instead.
 
 ```java
 @Bean
@@ -43,7 +43,7 @@ public DataSource primaryDataSource() {
   return DataSourceBuilder.create().build();
 }
 
-@Bean(name="camundaBpmDataSource")
+@Bean(name="operatonBpmDataSource")
 @ConfigurationProperties(prefix="datasource.secondary")
 public DataSource secondaryDataSource() {
   return DataSourceBuilder.create().build();
@@ -51,8 +51,8 @@ public DataSource secondaryDataSource() {
 ```
 
 If you don't want to use the `@Primary` transaction manager, it is possible to create a separate
-transaction manager with the name `camundaBpmTransactionManager` that will be wired with the data
-source used for Operaton(either `@Primary` or `camundaBpmDataSource`):
+transaction manager with the name `operatonBpmTransactionManager` that will be wired with the data
+source used for Operaton(either `@Primary` or `operatonBpmDataSource`):
 
 ```java
 @Bean
@@ -61,8 +61,8 @@ public PlatformTransactionManager primaryTransactionManager() {
   return new JpaTransactionManager();
 }
 
-@Bean(name="camundaBpmTransactionManager")
-public PlatformTransactionManager camundaTransactionManager(@Qualifier("camundaBpmDataSource") DataSource dataSource) {
+@Bean(name="operatonBpmTransactionManager")
+public PlatformTransactionManager operatonTransactionManager(@Qualifier("operatonBpmDataSource") DataSource dataSource) {
   return new DataSourceTransactionManager(dataSource);
 }
 ```
@@ -100,7 +100,7 @@ Applies the job execution properties to the process engine.
 To have more control over the execution itself, you can provide your own
 
 - `org.operaton.bpm.engine.impl.jobexecutor.JobExecutor`
-- `org.springframework.core.task.TaskExecutor` named `camundaTaskExecutor`
+- `org.springframework.core.task.TaskExecutor` named `operatonTaskExecutor`
 
 beans.
 
@@ -114,7 +114,7 @@ The resource pattern can be changed using properties (see [properties](#operaton
 
 ### `DefaultAuthorizationConfiguration`
 
-Applies the authorization configuration to the process engine. If not configured, the `camunda` default values are used (see [properties](#operaton-engine-properties)).
+Applies the authorization configuration to the process engine. If not configured, the `operaton` default values are used (see [properties](#operaton-engine-properties)).
 
 ## Overriding the Default Configuration
 
@@ -125,7 +125,7 @@ Provide a bean implementing one of the marker interfaces. For example to customi
 public class MyOperatonConfiguration {
 
 	@Bean
-	public static OperatonDatasourceConfiguration camundaDatasourceConfiguration() {
+	public static OperatonDatasourceConfiguration operatonDatasourceConfiguration() {
 		return new MyOperatonDatasourceConfiguration();
 	}
 
@@ -460,7 +460,7 @@ Controls if the engine executes the jdbc statements as Batch or not. It has to b
 <tr>
 <td><code>.index-redirect-enabled</code></td>
 <td>
-Registers a redirect from <code>/</code> to camunda's bundled <code>index.html</code>.
+Registers a redirect from <code>/</code> to operaton's bundled <code>index.html</code>.
 <br/>
 If this property is set to <code>false</code>, the
 <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-welcome-page">default</a>
@@ -476,7 +476,7 @@ Changes the application path of the webapp.
 <br/>
 When setting to <code>/</code>, the legacy behavior of Operaton Spring Boot Starter $\leq$ 3.4.x is restored.
 </td>
-<td><code>/camunda</code></td>
+<td><code>/operaton</code></td>
 </tr>
 
 <tr>

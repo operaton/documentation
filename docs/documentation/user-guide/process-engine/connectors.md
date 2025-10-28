@@ -29,7 +29,7 @@ connectors. Currently the following connector implementations exist:
   </tr>
 </table>
 
-It is also possible to implement your own custom connector in camunda. For more information about extending connectors please visit the [Connector reference](../../reference/connect/extending-connect.md).
+It is also possible to implement your own custom connector in operaton. For more information about extending connectors please visit the [Connector reference](../../reference/connect/extending-connect.md).
 
 
 ## Configure Operaton Connect

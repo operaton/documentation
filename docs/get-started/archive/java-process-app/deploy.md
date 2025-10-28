@@ -27,9 +27,9 @@ If the `loan-approval-0.1.0-SNAPSHOT.war` file is not visible after having perfo
 
 ## Deploy to Apache Tomcat
 
-In order to deploy the process application, copy-paste the `loan-approval-0.1.0-SNAPSHOT.war` from your Maven project to the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
+In order to deploy the process application, copy-paste the `loan-approval-0.1.0-SNAPSHOT.war` from your Maven project to the `$OPERATON_HOME/server/apache-tomcat/webapps` folder.
 
-Check the log file of the Apache Tomcat server in the `$CAMUNDA_HOME/server/apache-tomcat/logs` folder. Select the file with the name `catalina.out`. Scroll to the end of the file and if you see the following log message, the deployment was successful:
+Check the log file of the Apache Tomcat server in the `$OPERATON_HOME/server/apache-tomcat/logs` folder. Select the file with the name `catalina.out`. Scroll to the end of the file and if you see the following log message, the deployment was successful:
 
 <pre class="console">
 INFO org.operaton.commons.logging.BaseLogger.logInfo
