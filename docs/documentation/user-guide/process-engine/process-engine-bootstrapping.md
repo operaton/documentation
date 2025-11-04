@@ -70,13 +70,13 @@ The easiest way to configure your Process Engine is through an XML file called `
 ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine()
 ```
 
-The `camunda.cfg.xml` must contain a bean that has the id `processEngineConfiguration`, select the `ProcessEngineConfiguration` class best suited to your needs:
+The `operaton.cfg.xml` must contain a bean that has the id `processEngineConfiguration`, select the `ProcessEngineConfiguration` class best suited to your needs:
 
 ```xml
 <bean id="processEngineConfiguration" class="org.operaton.bpm.engine.impl.cfg.StandaloneProcessEngineConfiguration">
 ```
 
-This will look for a `camunda.cfg.xml` file on the classpath and construct an engine based on the configuration in that file. The following snippet shows an example configuration:
+This will look for a `operaton.cfg.xml` file on the classpath and construct an engine based on the configuration in that file. The following snippet shows an example configuration:
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -100,7 +100,7 @@ This will look for a `camunda.cfg.xml` file on the classpath and construct an en
 
 </beans>
 ```
-If no resource `camunda.cfg.xml` is found, the default engine will search for the file `activiti.cfg.xml` as a fallback. If both are missing, the engine stops and prints an error message about the missing configuration resource.
+If no resource `operaton.cfg.xml` is found, the default engine will search for the file `activiti.cfg.xml` as a fallback. If both are missing, the engine stops and prints an error message about the missing configuration resource.
 
 Note that the configuration XML is in fact a Spring configuration. This does not mean that the Operaton engine can only be used in a Spring environment! We are simply leveraging the parsing and dependency injection capabilities of Spring internally for building up the engine.
 

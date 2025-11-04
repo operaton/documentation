@@ -5,7 +5,7 @@ sidebar_position: 10
 
 menu:
   main:
-    identifier: "user-guide-introduction-downloading-camunda"
+    identifier: "user-guide-introduction-downloading-operaton"
     parent: "user-guide-introduction"
 
 ---
@@ -66,7 +66,6 @@ from the [community download page][community-download-page].
 
 [get-jdk]: https://www.oracle.com/technetwork/java/javase/downloads/index.html
 [community-download-page]: https://camunda.com/download/
-[enterprise-download-page]: /enterprise/download
 [shared-engine]: ./architecture.md#shared-container-managed-process-engine
 [installation-guide-full]: ../installation/index.md
 [run-with-spring-boot]: ../user-guide/spring-boot-integration/index.md

@@ -58,7 +58,7 @@ The basic skeleton of a Cockpit plugin looks as follows:
     |       |   └── org/my/plugin/
     |       |       └── MyPluginTest.java
     |       └── resources/
-    |           └── camunda.cfg.xml
+    |           └── operaton.cfg.xml
     └── pom.xml
 ```
 

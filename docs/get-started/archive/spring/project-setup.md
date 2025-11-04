@@ -47,7 +47,7 @@ The next step consists of setting up the Maven dependencies for the new project.
   <packaging>war</packaging>
 
   <properties>
-    <camunda.version>7.18.0</camunda.version>
+    <operaton.version>1.0.0-rc-2</operaton.version>
     <spring.version>5.3.22</spring.version>
     <h2.version>2.1.214</h2.version>
     <slf4j.version>1.7.36</slf4j.version>
@@ -60,7 +60,7 @@ The next step consists of setting up the Maven dependencies for the new project.
       <dependency>
         <groupId>org.operaton.bpm</groupId>
         <artifactId>operaton-bom</artifactId>
-        <version>${camunda.version}</version>
+        <version>${operaton.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>

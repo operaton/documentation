@@ -155,7 +155,7 @@ process building or you can detach it and create flow elements of the subprocess
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .subProcess()
-    .camundaAsync()
+    .operatonAsync()
     .embeddedSubProcess()
       .startEvent()
       .userTask()
@@ -175,24 +175,24 @@ modelInstance = Bpmn.createProcess()
 
 SubProcess subProcess = (SubProcess) modelInstance.getModelElementById("subProcess");
 subProcess.builder()
-  .camundaAsync()
+  .operatonAsync()
   .embeddedSubProcess()
     .startEvent()
     .userTask()
     .endEvent();
 ```
 
-The example below shows how to create a throwing signal event definition and define the payload that this signal will contain. By using the `camundaIn` methods, it is possible to define which process variables will be included in the signal payload, define an expression that will be resolved in the signal-catching process instances, or declare that all of the process variables in the signal-throwing process instance should be passed. It is also possible to define a business key that will be assigned to the signal-catching process instances.
+The example below shows how to create a throwing signal event definition and define the payload that this signal will contain. By using the `operatonIn` methods, it is possible to define which process variables will be included in the signal payload, define an expression that will be resolved in the signal-catching process instances, or declare that all of the process variables in the signal-throwing process instance should be passed. It is also possible to define a business key that will be assigned to the signal-catching process instances.
 
 ```java
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .intermediateThrowEvent("throw")
     .signalEventDefinition("signal")
-      .camundaInSourceTarget("source", "target1")
-      .camundaInSourceExpressionTarget("${'sourceExpression'}", "target2")
-      .camundaInAllVariables("all", true)
-      .camundaInBusinessKey("aBusinessKey")
+      operatonInSourceTarget("source", "target1")
+      operatonInSourceExpressionTarget("${'sourceExpression'}", "target2")
+      operatonInAllVariables("all", true)
+      operatonInBusinessKey("aBusinessKey")
       .throwEventDefinitionDone()
   .endEvent()
   .done();
@@ -236,29 +236,29 @@ userTask.builder()
 
 ### Controlling Transaction Boundaries
 
-The transaction boundaries of a process created with the fluent builder API can be controlled using the `camundaAsyncBefore()` and `camundaAsyncAfter()` methods offered for various process constructs.
+The transaction boundaries of a process created with the fluent builder API can be controlled using the `operatonAsyncBefore()` and `operatonAsyncAfter()` methods offered for various process constructs.
 
 ```java
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .serviceTask("servicetask")
-    .camundaAsyncBefore()
+    .operatonAsyncBefore()
   .userTask("task")
-    .camundaAsyncAfter()
+    operatonAsyncAfter()
   .done();
 ```
 
 The service task in the example above will have a transaction boundary before its execution and the user task will have a transaction boundary after its completion.
 
-If an activity has [multi-instance characteristics][multi-instance], the  `camundaAsyncBefore()` and `camundaAsyncAfter()` methods apply to the multi-instance body as a whole. The transaction boundaries of the individual occurrences (instances) of the multi-instance can be controlled with similar methods, called from **within** the multi-instance builder.
+If an activity has [multi-instance characteristics][multi-instance], the  `operatonAsyncBefore()` and `operatonAsyncAfter()` methods apply to the multi-instance body as a whole. The transaction boundaries of the individual occurrences (instances) of the multi-instance can be controlled with similar methods, called from **within** the multi-instance builder.
 
 ```java
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .serviceTask("servicetask")
-    .camundaAsyncBefore() // multi-instance body
+    .operatonAsyncBefore() // multi-instance body
     .multiInstance()
-      .camundaAsyncBefore() // every instance
+      .operatonAsyncBefore() // every instance
       .parallel()
     .multiInstanceDone()
   .endEvent()

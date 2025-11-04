@@ -429,7 +429,7 @@ public class CustomTenantIdProvider implements TenantIdProvider {
 }
 ```
 
-To use the `TenantIdProvider`, it must be set in the Process Engine Configuration, for example using the `camunda.cfg.xml`:
+To use the `TenantIdProvider`, it must be set in the Process Engine Configuration, for example using the `operaton.cfg.xml`:
 
 ```xml
 <beans>

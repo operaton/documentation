@@ -15,7 +15,7 @@ The visual representation of a DRG is called Decision Requirements Diagram (DRD)
 In the XML a DRG is represented by the `definitions` element.
 
 ```xml
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="dinnerDecisions" name="Dinner Decisions" namespace="http://camunda.org/schema/1.0/dmn">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="dinnerDecisions" name="Dinner Decisions" namespace="http://operaton.org/schema/1.0/dmn">
   <decision id="dish" name="Dish">
     <!-- ... -->
   </decision>
@@ -35,7 +35,7 @@ The name describes the DRG. It is set as the `name` attribute on the `definition
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" 
              id="dinnerDecisions" 
              name="Dinner Decisions" 
-             namespace="http://camunda.org/schema/1.0/dmn">
+             namespace="http://operaton.org/schema/1.0/dmn">
   <!-- ... -->
 </definitions>
 ```
@@ -54,7 +54,7 @@ The engine uses the id as the decision requirements definition key of the deploy
 <definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" 
              id="dinnerDecisions" 
              name="Dinner Decisions" 
-             namespace="http://camunda.org/schema/1.0/dmn">
+             namespace="http://operaton.org/schema/1.0/dmn">
   <!-- ... -->
 </definitions>
 ```
@@ -104,7 +104,7 @@ An input data denotes information used as an input by one or more decisions.
 It is represented by an `inputData` element inside the `definitions` element. 
 
 ```xml
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="dinnerDecisions" name="Dinner Decisions" namespace="http://camunda.org/schema/1.0/dmn">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="dinnerDecisions" name="Dinner Decisions" namespace="http://operaton.org/schema/1.0/dmn">
   <inputData id="guestsWithChildren" name="Guests with children?" />
   
   <decision id="beverages" name="Beverages">
@@ -126,7 +126,7 @@ A knowledge source denotes an authority for a Decision.
 It is represented by a `knowledgeSource` element inside the `definitions` element. 
 
 ```xml
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="dinnerDecisions" name="Dinner Decisions" namespace="http://camunda.org/schema/1.0/dmn">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="dinnerDecisions" name="Dinner Decisions" namespace="http://operaton.org/schema/1.0/dmn">
   <knowledgeSource id="cookbook" name="Men's Cookbook" />
   
   <decision id="dish" name="Dish">

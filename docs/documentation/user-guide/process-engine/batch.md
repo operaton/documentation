@@ -310,7 +310,7 @@ You can configure the property in three ways:
     ```
 3.  In Spring Boot environment via the [`application.yaml`][spring-boot-config] file
     ```yaml
-    camunda.bpm.generic-properties.properties:
+    operaton.bpm.generic-properties.properties:
       invocations-per-batch-job-by-batch-type:
         process-set-removal-time:     10
         historic-instance-deletion:   3

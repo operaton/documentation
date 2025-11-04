@@ -38,7 +38,7 @@ Go back to Eclipse and add a file named `preparepizza.xhtml` to the `src/main/we
          request parameters and cached in the CDI conversation scope.
     -->
 
-    <f:event type="preRenderView" listener="#{camundaTaskForm.startTaskForm()}" />
+    <f:event type="preRenderView" listener="#{operatonTaskForm.startTaskForm()}" />
   </f:metadata>
   <h:head>
     <title>Prepare Pizza</title>
@@ -46,7 +46,7 @@ Go back to Eclipse and add a file named `preparepizza.xhtml` to the `src/main/we
   <h:body>
     <h1>Please prepare pizza</h1>
     <h:form id="submitForm">
-      <h:commandButton id="submit_button" value="Done" action="#{camundaTaskForm.completeTask()}" />
+      <h:commandButton id="submit_button" value="Done" action="#{operatonTaskForm.completeTask()}" />
     </h:form>
   </h:body>
 </f:view>

@@ -169,8 +169,8 @@ The following example shows how to use a `VariableMap`.
 ```java
 // create the input variables
 VariableMap variables = Variables.createVariables()
-  .putValue("x", "camunda")
-  .putValue("y", 2015);
+  .putValue("x", "operaton")
+  .putValue("y", 2025);
 
 // evaluate the decision with the input variables
 result = dmnEngine.evaluateDecision(decision, variables);

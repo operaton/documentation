@@ -117,7 +117,7 @@ Your pom.xml file of your project should look like this:
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<camunda.external-task-client.version>7.22.0</camunda.external-task-client.version>
+		<operaton.external-task-client.version>7.22.0</operaton.external-task-client.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
@@ -126,7 +126,7 @@ Your pom.xml file of your project should look like this:
 		<dependency>
 			<groupId>org.operaton.bpm</groupId>
 			<artifactId>operaton-external-task-client</artifactId>
-			<version>${camunda.external-task-client.version}</version>
+			<version>${operaton.external-task-client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>

@@ -45,7 +45,7 @@ The next step consists of setting up the Maven dependencies for your new process
   <packaging>war</packaging>
 
   <properties>
-    <camunda.version>7.18.0</camunda.version>
+    <operaton.version>1.0.0-rc-2</operaton.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -55,7 +55,7 @@ The next step consists of setting up the Maven dependencies for your new process
       <dependency>
         <groupId>org.operaton.bpm</groupId>
         <artifactId>operaton-bom</artifactId>
-        <version>${camunda.version}</version>
+        <version>${operaton.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>

@@ -35,7 +35,7 @@ DecisionService decisionService = processEngine.getDecisionService();
 
 `ProcessEngines.getDefaultProcessEngine()` will initialize and build a process engine the first time it is called and afterwards always returns the same process engine. Proper creation and closing of all process engines can be done with `ProcessEngines.init()` and `ProcessEngines.destroy()`.
 
-The ProcessEngines class will scan for all camunda.cfg.xml and activiti.cfg.xml files. For all `camunda.cfg.xml` files, the process engine will be built in the typical way:
+The ProcessEngines class will scan for all operaton.cfg.xml and activiti.cfg.xml files. For all `operaton.cfg.xml` files, the process engine will be built in the typical way:
 
 ```java
 ProcessEngineConfiguration

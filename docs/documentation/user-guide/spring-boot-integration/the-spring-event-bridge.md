@@ -11,16 +11,16 @@ menu:
 ---
 
 
-The process engine can be hooked-up to the Spring event bus. We call this the "Spring Eventing Bridge". This allows us to be notified of process events using standard Spring eventing mechanisms. By default, the Spring eventing is enabled by a engine plugin. The eventing is controlled by four `camunda.bpm.eventing` properties. These are:
+The process engine can be hooked-up to the Spring event bus. We call this the "Spring Eventing Bridge". This allows us to be notified of process events using standard Spring eventing mechanisms. By default, the Spring eventing is enabled by a engine plugin. The eventing is controlled by four `operaton.bpm.eventing` properties. These are:
 
 ```
-camunda.bpm.eventing.execution=true
-camunda.bpm.eventing.history=true
-camunda.bpm.eventing.task=true
-camunda.bpm.eventing.skippable=true
+operaton.bpm.eventing.execution=true
+operaton.bpm.eventing.history=true
+operaton.bpm.eventing.task=true
+operaton.bpm.eventing.skippable=true
 ```
 
-The first three properties control three event streams for execution, task and history events respectively. The last property `camunda.bpm.eventing.skippable` is responsible
+The first three properties control three event streams for execution, task and history events respectively. The last property `operaton.bpm.eventing.skippable` is responsible
 for the registration of the event listeners. If its value is `true`, the execution of the listners can be skipped via API or in Operaton Cockpit by activating "skip listners" flag. Otherwise, the listeners are registered as built-in listeners and are executed unconditionally.
 
 Listeners can subscribe to streams of mutable or immutable event objects. The latter of those are particularly useful

@@ -86,9 +86,9 @@ Make sure to correctly configure which token attribute should be used as the Use
 
 For creating initial authorizations in your application, you have the following options available:
 
-1. The `camunda.bpm.admin-user` property to create an administrator user with authorizations:
+1. The `operaton.bpm.admin-user` property to create an administrator user with authorizations:
    ```yaml
-   camunda.bpm:
+   operaton.bpm:
      admin-user:
        id: demo
        password: demo
@@ -110,7 +110,7 @@ This identity provider also supports the default Operaton Database Identity Serv
 
 The identity provider is activated by default. You can override this with the following properties:
 ```yaml
-camunda.bpm.oauth2:
+operaton.bpm.oauth2:
   identity-provider:
     enabled: false
 ```
@@ -124,7 +124,7 @@ authorities, that are by default populated with the scope (`scp`) claim.
 
 This mapper can be enabled with the `group-name-attribute` property:
 ```yaml
-camunda.bpm.oauth2:
+operaton.bpm.oauth2:
   identity-provider:
     enabled: true
     group-name-attribute: cognito:groups
@@ -148,7 +148,7 @@ This needs to contain a [Spring auto configuration][AutoConfig] with the custom 
 
 ### Configuration
 
-All configuration properties of the identity provider start with the prefix `camunda.bpm.oauth2.identity-provider`.
+All configuration properties of the identity provider start with the prefix `operaton.bpm.oauth2.identity-provider`.
 The following properties are available:
 
 <table class="table table-striped">
@@ -212,15 +212,15 @@ Please refer Spring's [OpenID Connect 1.0 Client-Initiated Logout][SSOLogout] se
 In order to configure this feature, use the following properties:
 
 ```yaml
-camunda.bpm.oauth2:
+operaton.bpm.oauth2:
   sso-logout:
     enabled: true
-    postLogoutRedirectUri: https://camunda.com/
+    postLogoutRedirectUri: https://operaton.org/
 ```
 
 ### Configuration
 
-All configuration properties of the identity provider start with the prefix `camunda.bpm.oauth2.sso-logout`.
+All configuration properties of the identity provider start with the prefix `operaton.bpm.oauth2.sso-logout`.
 The following properties are available:
 
 <table class="table table-striped">
@@ -280,10 +280,10 @@ In this section we provide an example configuration with OKTA as OIDC provider.
 Additionally, we also mark and explain a few lines:
 
 ```yaml
-camunda.bpm.oauth2:
+operaton.bpm.oauth2:
  sso-logout: # 1
    enabled: true
-   postLogoutRedirectUri: https://camunda.com/
+   postLogoutRedirectUri: https://operaton.com/
  identity-provider:
    group-name-attribute: okta-groups # 2
 

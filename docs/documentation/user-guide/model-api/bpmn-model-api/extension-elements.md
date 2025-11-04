@@ -60,8 +60,8 @@ OperatonExecutionListener listener = extensionElements.addExtensionElement(Opera
 Another helper method exists for the fluent builder API which allows you to add prior defined extension elements.
 
 ```java
-OperatonExecutionListener camundaExecutionListener = modelInstance.newInstance(OperatonExecutionListener.class);
-camundaExecutionListener.setOperatonClass("org.operaton.bpm.MyJavaDelegte");
+OperatonExecutionListener operatonExecutionListener = modelInstance.newInstance(OperatonExecutionListener.class);
+operatonExecutionListener.setOperatonClass("org.operaton.bpm.MyJavaDelegte");
 startEvent.builder()
-  .addExtensionElement(camundaExecutionListener);
+  .addExtensionElement(operatonExecutionListener);
 ```
