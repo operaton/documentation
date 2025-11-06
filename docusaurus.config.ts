@@ -1,6 +1,4 @@
 import 'dotenv/config';
-// only for testing
-console.log("TYPESENSE_API_KEY =", process.env.TYPESENSE_API_KEY);
 
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';

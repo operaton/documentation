@@ -69,7 +69,7 @@ The LDAP identity service provides read-only access to an LDAP-based user/group 
 To use the LDAP identity service, the `operaton-identity-ldap.jar` library has to be added to the classloader of the process engine.
 
 :::note
-  Please import the [Operaton BOM](/get-started/apache-maven/) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](/get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 ```xml

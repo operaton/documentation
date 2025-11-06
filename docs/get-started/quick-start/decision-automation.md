@@ -7,7 +7,7 @@ description: "Learn how to integrate DMN decision tables in the Process."
 ---
 # Leverage business rules (6/6)
 
-In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](/docs/documentation/reference/bpmn20/tasks/business-rule-task/) and [DMN 1.3 Decision Tables](/docs/documentation/reference/dmn11/).
+In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](/docs/documentation/reference/bpmn20/tasks/business-rule-task/) and [DMN 1.3 Decision Tables](/docs/documentation/reference/dmn/).
 
 ## Add a Business Rule Task to the Process
 Use the Camunda Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.
@@ -76,5 +76,5 @@ A single DMN table that was executed could look like this in Operaton Cockpit:
 ![Example image](./img/cockpit-dmn-table.png)
 
 :::note[Success!]
-Congratulations! You've successfully completed the Operaton Platform Quick Start. Ready to continue? We recommend the [Operaton Platform documentation](https://docs.operaton.org/manual/latest/).
+Congratulations! You've successfully completed the Operaton Platform Quick Start. Ready to continue? We recommend the [Operaton Platform documentation](https://docs.operaton.org/docs/documentation/).
 :::

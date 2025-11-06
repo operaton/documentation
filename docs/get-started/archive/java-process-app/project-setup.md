@@ -17,7 +17,7 @@ Now you are ready to set up your first process application project in the IDE of
 ## Create a new Maven Project
 
 :::note[Fancy to save work and use a project template instead?]
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/manual/latest/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
+You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
 :::
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
@@ -137,7 +137,7 @@ This file needs to be added to the `src/main/resources/META-INF` folder of the M
 ```
 
 :::note[Empty META-INF/processes.xml]
-You can leave the `META-INF/processes.xml` file empty. In that case, default values are used. See the [Empty Processes.xml](/manual/latest/user-guide/process-applications/the-processes-xml-deployment-descriptor/#empty-processes-xml) section of the [User Guide](/manual/latest/user-guide) for more information
+You can leave the `META-INF/processes.xml` file empty. In that case, default values are used. See the [Empty Processes.xml](/docs/documentation/user-guide/process-applications/the-processes-xml-deployment-descriptor/#empty-processes-xml) section of the [User Guide](/docs/documentation/user-guide) for more information
 :::
 
 At this point you have successfully set up the process application and you can start modeling the first process.

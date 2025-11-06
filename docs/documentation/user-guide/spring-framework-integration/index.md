@@ -8,7 +8,7 @@ sidebar_position: 50
 The operaton-engine Spring Framework integration is located inside a maven module and can be added to apache maven-based projects through the following dependency:
 
 :::note
-  Please import the [Operaton BOM](../../../get-started/apache-maven/) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](../../../get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 * `operaton-engine-spring` maven module for Spring Framework 5

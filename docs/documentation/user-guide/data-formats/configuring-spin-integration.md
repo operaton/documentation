@@ -64,7 +64,7 @@ The Spin process engine plugin provides the following configuration options:
 
 ### Maven coordinates
 
-Import the [Operaton BOM](/get-started/apache-maven/) to ensure that you use the right version of Spin that is tested to work with your version of the process engine.
+Import the [Operaton BOM](/get-started/apache-maven.md) to ensure that you use the right version of Spin that is tested to work with your version of the process engine.
 
 All Spin artifacts have the group id `org.operaton.spin`, so in order to import `operaton-spin-core`, we can write:
 

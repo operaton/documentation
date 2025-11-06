@@ -74,7 +74,7 @@ Now create a second authorization for the *process instance* resource. Set the p
 
 ![Example image](./img/create-process-instance-authorization.png)
 
-For further details about authorizations and how to manage them, please read the following sections in the user guide: [Authorization Service](/manual/latest/user-guide/process-engine/authorization-service) and [Authorization Management](/manual/latest/webapps/admin/authorization-management).
+For further details about authorizations and how to manage them, please read the following sections in the user guide: [Authorization Service](/docs/documentation/user-guide/process-engine/authorization-service) and [Authorization Management](/docs/documentation/webapps/admin/authorization-management).
 
 
 ## Work on the Task
