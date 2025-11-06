@@ -30,7 +30,7 @@ const config: Config = {
   },
 
   customFields: {
-    javadocUrl: '/reference/latest/javadoc',
+    javaDocUrl: '/reference/latest/javadoc',
     restApiDocUrl: '/reference/latest/rest-api'
   },
   // Even if you don't use internationalization, you can use this field to set
