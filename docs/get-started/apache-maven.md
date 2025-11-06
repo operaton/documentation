@@ -111,8 +111,8 @@ It is not needed when using `operaton-engine` because that already contains the 
 
 ## Other Operaton Modules:
 
-* [DMN Engine](/manual/latest/user-guide/dmn-engine/embed/#maven-coordinates)
-* [Operaton Spin](/manual/latest/reference/spin)
-* [Operaton Connect](/manual/latest/reference/connect/#maven-coordinates)
-* [Templating Engines](/manual/latest/user-guide/process-engine/templating/#install-a-template-engine-for-an-embedded-process-engine)
-* [Spring Boot Integration](/manual/latest/user-guide/spring-boot-integration/)
+* [DMN Engine](/docs/documentation/user-guide/dmn-engine/embed/#maven-coordinates)
+* [Operaton Spin](/docs/documentation/reference/spin)
+* [Operaton Connect](/docs/documentation/reference/connect/#maven-coordinates)
+* [Templating Engines](/docs/documentation/user-guide/process-engine/templating/#install-a-template-engine-for-an-embedded-process-engine)
+* [Spring Boot Integration](/docs/documentation/user-guide/spring-boot-integration/)

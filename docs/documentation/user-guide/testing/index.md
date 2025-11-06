@@ -269,7 +269,7 @@ Also, you will have to add the AssertJ library to your dependencies. Make sure t
 ```
 
 If Operaton Assert is used in combination with [Spring Boot](https://spring.io/projects/spring-boot) or the 
-[Operaton Spring Boot Starter](https://docs.operaton.org/manual/latest/user-guide/spring-boot-integration/), 
+[Operaton Spring Boot Starter](https://docs.operaton.org/docs/documentation/user-guide/spring-boot-integration/), 
 the AssertJ dependency will be present in your project already.
 
 ### Assertions Version Compatibility

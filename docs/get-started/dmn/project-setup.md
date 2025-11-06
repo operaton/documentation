@@ -10,7 +10,7 @@ menu:
     identifier: "get-started-dmn-setup"
     description: "Set up an Apache Maven-based process application inside Eclipse."
 
-aliases: [/dmn11/project-setup/]
+aliases: [/dmn/project-setup/]
 ---
 
 Now you are ready to set up your first process application project in the IDE of your choice, the following description uses Eclipse.
@@ -23,7 +23,7 @@ DMN is a modeling language for *decisions*, whereas BPMN is a language for *proc
 
 :::note[Fancy to save work and use a project template instead?]
 
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/manual/latest/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
+You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
 
 :::
 

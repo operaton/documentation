@@ -9,7 +9,7 @@ menu:
     parent: "dmn-ref-extensions"
     description: "Reference of Operaton Extension Attributes for DMN."
 
-aliases: [reference/dmn11/custom-extensions/operaton-attributes/]
+aliases: [reference/dmn/custom-extensions/operaton-attributes/]
 ---
 
 The following attributes are extension attributes for the `camunda` namespace `http://operaton.org/schema/1.0/dmn`.

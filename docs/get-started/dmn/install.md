@@ -10,7 +10,7 @@ menu:
     identifier: "get-started-dmn-install"
     description: "Install the Operaton Platform and Camunda Modeler on your machine."
 
-aliases: [/dmn11/install/]
+aliases: [/dmn/install/]
 ---
 
 First you need to set up your development environment and install the Operaton Platform and the Camunda Modeler.

@@ -46,7 +46,7 @@ The following `connect` artifacts exist:
 ## Maven Coordinates
 
 :::note
-  Please import the [Operaton BOM](/get-started/apache-maven/) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](/get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 
