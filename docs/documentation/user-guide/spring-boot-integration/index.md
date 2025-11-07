@@ -18,11 +18,11 @@ To enable Operaton auto configuration, add the following dependency to your ```p
 <dependency>
   <groupId>org.operaton.bpm.springboot</groupId>
   <artifactId>operaton-bpm-spring-boot-starter</artifactId>
-  <version>1.0.0-rc-1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-This will add the Operaton engine v1.0.0-rc-1 to your dependencies.
+This will add the Operaton engine v1.0.0 to your dependencies.
 
 Other starters that can be used are: 
 
