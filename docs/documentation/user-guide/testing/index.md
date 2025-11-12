@@ -24,7 +24,8 @@ If you want to use the JUnit 5 `ProcessEngineExtension`, you need to add the fol
 ```xml
     <dependency>
       <groupId>org.operaton.bpm</groupId>
-      <artifactId>operaton-bpm-junit5</artifactId>
+      <artifactId>operaton-engine</artifactId>
+      <classifier>junit5</classifier>
       <version>1.0.0</version>
       <scope>test</scope>
     </dependency>
