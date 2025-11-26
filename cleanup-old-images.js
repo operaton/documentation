@@ -14,7 +14,7 @@ const path = require('path');
 
 const CONFIG = {
   docsPath: './docs',
-  dryRun: true, // Set to false to actually delete
+  dryRun: false, // Set to false to actually delete
   dirsToRemove: [], // Will be populated during scan
 };
 
