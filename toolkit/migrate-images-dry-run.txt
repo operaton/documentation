@@ -1,0 +1,689 @@
+$ node migrate-images.js 
+� Starting Docusaurus image migration...
+
+Scanning for markdown files...
+Found 413 markdown files
+
+Processing files...
+✓ Updated: documentation\introduction\architecture.md
+    ./img/process-engine-architecture.png → /img/documentation/introduction/process-engine-architecture.png
+    ./img/embedded-process-engine.png → /img/documentation/introduction/embedded-process-engine.png
+    ./img/shared-process-engine.png → /img/documentation/introduction/shared-process-engine.png
+    ./img/standalone-process-engine.png → /img/documentation/introduction/standalone-process-engine.png
+    ./img/clustered-process-engine.png → /img/documentation/introduction/clustered-process-engine.png
+✓ Updated: documentation\introduction\index.md
+    ./img/architecture-overview.png → /img/documentation/introduction/architecture-overview.png
+✓ Updated: documentation\reference\bpmn20\events\conditional-events.md
+    ./bpmn/event-conditional.svg → /img/documentation/reference/bpmn20/events/event-conditional.svg
+    ./img/activityInstanceState.png → /img/documentation/reference/bpmn20/events/activityInstanceState.png
+✓ Updated: documentation\reference\bpmn20\index.md
+    ./img/symbols/pool.svg → /img/documentation/reference/bpmn20/pool.svg
+    ./img/symbols/lane.svg → /img/documentation/reference/bpmn20/lane.svg
+    ./img/symbols/subprocess.svg → /img/documentation/reference/bpmn20/subprocess.svg
+    ./img/symbols/call_activity.svg → /img/documentation/reference/bpmn20/call_activity.svg
+    ./img/symbols/event_subprocess.svg → /img/documentation/reference/bpmn20/event_subprocess.svg
+    ./img/symbols/transaction.svg → /img/documentation/reference/bpmn20/transaction.svg
+    ./img/symbols/service_task.svg → /img/documentation/reference/bpmn20/service_task.svg
+    ./img/symbols/user_task.svg → /img/documentation/reference/bpmn20/user_task.svg
+    ./img/symbols/script_task.svg → /img/documentation/reference/bpmn20/script_task.svg
+    ./img/symbols/business_rule_task.svg → /img/documentation/reference/bpmn20/business_rule_task.svg
+    ./img/symbols/manual_task.svg → /img/documentation/reference/bpmn20/manual_task.svg
+    ./img/symbols/receive_task.svg → /img/documentation/reference/bpmn20/receive_task.svg
+    ./img/symbols/undefined_task.svg → /img/documentation/reference/bpmn20/undefined_task.svg
+    ./img/symbols/send_task.svg → /img/documentation/reference/bpmn20/send_task.svg
+    ./img/symbols/instantiated_receive_task.svg → /img/documentation/reference/bpmn20/instantiated_receive_task.svg
+    ./img/symbols/xor_gateway.svg → /img/documentation/reference/bpmn20/xor_gateway.svg
+    ./img/symbols/or_gateway.svg → /img/documentation/reference/bpmn20/or_gateway.svg
+    ./img/symbols/and_gateway.svg → /img/documentation/reference/bpmn20/and_gateway.svg
+    ./img/symbols/event_gateway.svg → /img/documentation/reference/bpmn20/event_gateway.svg
+    ./img/symbols/complex_gateway.svg → /img/documentation/reference/bpmn20/complex_gateway.svg
+    ./img/symbols/data_object.svg → /img/documentation/reference/bpmn20/data_object.svg
+    ./img/symbols/data_store.svg → /img/documentation/reference/bpmn20/data_store.svg
+    ./img/symbols/text_annotation.svg → /img/documentation/reference/bpmn20/text_annotation.svg
+    ./img/symbols/group_symbol.svg → /img/documentation/reference/bpmn20/group_symbol.svg
+    ./img/symbols/events/none_start_event.svg → /img/documentation/reference/bpmn20/none_start_event.svg
+    ./img/symbols/events/none_intermediate_event.svg → /img/documentation/reference/bpmn20/none_intermediate_event.svg
+    ./img/symbols/events/none_end_event.svg → /img/documentation/reference/bpmn20/none_end_event.svg
+    ./img/symbols/events/message_start_event.svg → /img/documentation/reference/bpmn20/message_start_event.svg
+    ./img/symbols/events/message_start_event.svg → /img/documentation/reference/bpmn20/message_start_event.svg
+    ./img/symbols/events/event_subprocess_message_non_interrupting.svg → /img/documentation/reference/bpmn20/event_subprocess_message_non_interrupting.svg       
+    ./img/symbols/events/message_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/message_intermediate_catch_event.svg
+    ./img/symbols/events/message_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/message_intermediate_catch_event.svg
+    ./img/symbols/events/message_intermediate_non_interrupting_catch_event.svg → /img/documentation/reference/bpmn20/message_intermediate_non_interrupting_catch_
+event.svg
+    ./img/symbols/events/message_intermediate_throw_event.svg → /img/documentation/reference/bpmn20/message_intermediate_throw_event.svg
+    ./img/symbols/events/message_throw_end_event.svg → /img/documentation/reference/bpmn20/message_throw_end_event.svg
+    ./img/symbols/events/timer_start_event.svg → /img/documentation/reference/bpmn20/timer_start_event.svg
+    ./img/symbols/events/timer_start_event.svg → /img/documentation/reference/bpmn20/timer_start_event.svg
+    ./img/symbols/events/event_subprocess_timer_non_interrupting.svg → /img/documentation/reference/bpmn20/event_subprocess_timer_non_interrupting.svg
+    ./img/symbols/events/timer_intermediate_event.svg → /img/documentation/reference/bpmn20/timer_intermediate_event.svg
+    ./img/symbols/events/timer_intermediate_event.svg → /img/documentation/reference/bpmn20/timer_intermediate_event.svg
+    ./img/symbols/events/timer_intermediate_none_interrupting_event.svg → /img/documentation/reference/bpmn20/timer_intermediate_none_interrupting_event.svg     
+    ./img/symbols/events/conditional_start_event.svg → /img/documentation/reference/bpmn20/conditional_start_event.svg
+    ./img/symbols/events/conditional_start_event.svg → /img/documentation/reference/bpmn20/conditional_start_event.svg
+    ./img/symbols/events/event_subprocess_conditional_non_interrupting.svg → /img/documentation/reference/bpmn20/event_subprocess_conditional_non_interrupting.sv
+g
+    ./img/symbols/events/conditional_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/conditional_intermediate_catch_event.svg
+    ./img/symbols/events/conditional_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/conditional_intermediate_catch_event.svg
+    ./img/symbols/events/conditional_intermediate_non_interrupting_event.svg → /img/documentation/reference/bpmn20/conditional_intermediate_non_interrupting_even
+t.svg
+    ./img/symbols/events/link_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/link_intermediate_catch_event.svg
+    ./img/symbols/events/link_intermediate_throw_event.svg → /img/documentation/reference/bpmn20/link_intermediate_throw_event.svg
+    ./img/symbols/events/signal_start_event.svg → /img/documentation/reference/bpmn20/signal_start_event.svg
+    ./img/symbols/events/signal_start_event.svg → /img/documentation/reference/bpmn20/signal_start_event.svg
+    ./img/symbols/events/event_subprocess_signal_non_interrupting_start_event.svg → /img/documentation/reference/bpmn20/event_subprocess_signal_non_interrupting_
+start_event.svg
+    ./img/symbols/events/signal_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/signal_intermediate_catch_event.svg
+    ./img/symbols/events/signal_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/signal_intermediate_catch_event.svg
+    ./img/symbols/events/signal_intermediate_non_interrupting_catch_event.svg → /img/documentation/reference/bpmn20/signal_intermediate_non_interrupting_catch_ev
+ent.svg
+    ./img/symbols/events/signal_intermediate_throw_event.svg → /img/documentation/reference/bpmn20/signal_intermediate_throw_event.svg
+    ./img/symbols/events/signal_throw_end_event.svg → /img/documentation/reference/bpmn20/signal_throw_end_event.svg
+    ./img/symbols/events/error_event_subprocess_start_event.svg → /img/documentation/reference/bpmn20/error_event_subprocess_start_event.svg
+    ./img/symbols/events/error_boundary_catch_event.svg → /img/documentation/reference/bpmn20/error_boundary_catch_event.svg
+    ./img/symbols/events/error_throw_end_event.svg → /img/documentation/reference/bpmn20/error_throw_end_event.svg
+    ./img/symbols/events/escalation_event_subprocess_start_event.svg → /img/documentation/reference/bpmn20/escalation_event_subprocess_start_event.svg
+    ./img/symbols/events/escalation_event_subprocess_non_interrupting_start_event.svg → /img/documentation/reference/bpmn20/escalation_event_subprocess_non_inter
+rupting_start_event.svg
+    ./img/symbols/events/escalation_boundary_catch_event.svg → /img/documentation/reference/bpmn20/escalation_boundary_catch_event.svg
+    ./img/symbols/events/escalation_boundary_catch_non_interrupting_event.svg → /img/documentation/reference/bpmn20/escalation_boundary_catch_non_interrupting_ev
+ent.svg
+    ./img/symbols/events/escalation_intermediate_throw_event.svg → /img/documentation/reference/bpmn20/escalation_intermediate_throw_event.svg
+    ./img/symbols/events/escalation_throw_end_event.svg → /img/documentation/reference/bpmn20/escalation_throw_end_event.svg
+    ./img/symbols/events/termination_end_event.svg → /img/documentation/reference/bpmn20/termination_end_event.svg
+    ./img/symbols/events/compensation_event_subprocess_start_event.svg → /img/documentation/reference/bpmn20/compensation_event_subprocess_start_event.svg       
+    ./img/symbols/events/compensation_boundary_event.svg → /img/documentation/reference/bpmn20/compensation_boundary_event.svg
+    ./img/symbols/events/compensation_intermediate_throw_event.svg → /img/documentation/reference/bpmn20/compensation_intermediate_throw_event.svg
+    ./img/symbols/events/compensation_end_event.svg → /img/documentation/reference/bpmn20/compensation_end_event.svg
+    ./img/symbols/events/cancel_boundary_event.svg → /img/documentation/reference/bpmn20/cancel_boundary_event.svg
+    ./img/symbols/events/cancel_end_event.svg → /img/documentation/reference/bpmn20/cancel_end_event.svg
+    ./img/symbols/events/multiple_start_event.svg → /img/documentation/reference/bpmn20/multiple_start_event.svg
+    ./img/symbols/events/multiple_start_event.svg → /img/documentation/reference/bpmn20/multiple_start_event.svg
+    ./img/symbols/events/multiple_event_subprocess_non_interrupting_start_event.svg → /img/documentation/reference/bpmn20/multiple_event_subprocess_non_interrupt
+ing_start_event.svg
+    ./img/symbols/events/multiple_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/multiple_intermediate_catch_event.svg
+    ./img/symbols/events/multiple_intermediate_catch_event.svg → /img/documentation/reference/bpmn20/multiple_intermediate_catch_event.svg
+    ./img/symbols/events/multiple_boundary_non_interrupting_event.svg → /img/documentation/reference/bpmn20/multiple_boundary_non_interrupting_event.svg
+    ./img/symbols/events/multiple_intermediate_throw_event.svg → /img/documentation/reference/bpmn20/multiple_intermediate_throw_event.svg
+    ./img/symbols/events/multiple_end_event.svg → /img/documentation/reference/bpmn20/multiple_end_event.svg
+    ./img/symbols/events/multiple_parallel_start_event.svg → /img/documentation/reference/bpmn20/multiple_parallel_start_event.svg
+    ./img/symbols/events/multiple_parallel_start_event.svg → /img/documentation/reference/bpmn20/multiple_parallel_start_event.svg
+    ./img/symbols/events/multiple_parallel_non_interrupting_start_event.svg → /img/documentation/reference/bpmn20/multiple_parallel_non_interrupting_start_event.
+svg
+    ./img/symbols/events/multiple_parallel_catch_event.svg → /img/documentation/reference/bpmn20/multiple_parallel_catch_event.svg
+    ./img/symbols/events/multiple_parallel_catch_event.svg → /img/documentation/reference/bpmn20/multiple_parallel_catch_event.svg
+    ./img/symbols/events/multiple_parallel_intermediate_non_interrupting_event.svg → /img/documentation/reference/bpmn20/multiple_parallel_intermediate_non_inter
+rupting_event.svg
+✓ Updated: documentation\reference\cmmn11\concepts\lifecycle.md
+    ./img/example-lifecycle-case.png → /img/documentation/reference/cmmn11/concepts/example-lifecycle-case.png
+    ./img/lifecycle-example-1.png → /img/documentation/reference/cmmn11/concepts/lifecycle-example-1.png
+    ./img/lifecycle-example-2.png → /img/documentation/reference/cmmn11/concepts/lifecycle-example-2.png
+    ./img/lifecycle-example-3.png → /img/documentation/reference/cmmn11/concepts/lifecycle-example-3.png
+    ./img/lifecycle-example-4.png → /img/documentation/reference/cmmn11/concepts/lifecycle-example-4.png
+    ./img/CaseInstanceLifecycle.png → /img/documentation/reference/cmmn11/concepts/CaseInstanceLifecycle.png
+    ./img/TaskStageLifecycle.png → /img/documentation/reference/cmmn11/concepts/TaskStageLifecycle.png
+    ./img/MilestoneLifecycle.png → /img/documentation/reference/cmmn11/concepts/MilestoneLifecycle.png
+✓ Updated: documentation\reference\cmmn11\markers\repetition-rule.md
+    ./img/repetition-on-completion/repetition-rule-example.png → /img/documentation/reference/cmmn11/markers/repetition-rule-example.png
+    ./img/repetition-on-completion/state-1.png → /img/documentation/reference/cmmn11/markers/state-1.png
+    ./img/repetition-on-completion/state-2.png → /img/documentation/reference/cmmn11/markers/state-2.png
+    ./img/repetition-on-completion/state-3.png → /img/documentation/reference/cmmn11/markers/state-3.png
+    ./img/repetition-on-completion/state-4.png → /img/documentation/reference/cmmn11/markers/state-4.png
+    ./img/repetition-by-entry-criteria/repetition-rule-example.png → /img/documentation/reference/cmmn11/markers/repetition-rule-example.png
+    ./img/repetition-by-entry-criteria/state-1.png → /img/documentation/reference/cmmn11/markers/state-1.png
+    ./img/repetition-by-entry-criteria/state-2.png → /img/documentation/reference/cmmn11/markers/state-2.png
+    ./img/repetition-by-entry-criteria/state-3.png → /img/documentation/reference/cmmn11/markers/state-3.png
+    ./img/repetition-by-entry-criteria/state-4.png → /img/documentation/reference/cmmn11/markers/state-4.png
+    ./img/repetition-by-entry-criteria/state-5.png → /img/documentation/reference/cmmn11/markers/state-5.png
+✓ Updated: documentation\reference\cmmn11\sentry.md
+    ./img/variableOnPart.png → /img/documentation/reference/cmmn11/variableOnPart.png
+✓ Updated: documentation\reference\dmn\decision-table\hit-policy.md
+    ./img/hit-policy.png → /img/documentation/reference/dmn/decision-table/hit-policy.png
+    ./img/hit-policy-unique.png → /img/documentation/reference/dmn/decision-table/hit-policy-unique.png
+    ./img/hit-policy-any.png → /img/documentation/reference/dmn/decision-table/hit-policy-any.png
+    ./img/hit-policy-first.png → /img/documentation/reference/dmn/decision-table/hit-policy-first.png
+    ./img/hit-policy-rule-order.png → /img/documentation/reference/dmn/decision-table/hit-policy-rule-order.png
+    ./img/hit-policy-collect.png → /img/documentation/reference/dmn/decision-table/hit-policy-collect.png
+    ./img/hit-policy-collect-sum.png → /img/documentation/reference/dmn/decision-table/hit-policy-collect-sum.png
+    ./img/hit-policy-collect-min.png → /img/documentation/reference/dmn/decision-table/hit-policy-collect-min.png
+    ./img/hit-policy-collect-max.png → /img/documentation/reference/dmn/decision-table/hit-policy-collect-max.png
+    ./img/hit-policy-collect-count.png → /img/documentation/reference/dmn/decision-table/hit-policy-collect-count.png
+✓ Updated: documentation\reference\dmn\decision-table\index.md
+    img/dish-table.png → /img/documentation/reference/dmn/decision-table/dish-table.png
+    img/decision-name.png → /img/documentation/reference/dmn/decision-table/decision-name.png
+    img/decision-id.png → /img/documentation/reference/dmn/decision-table/decision-id.png
+✓ Updated: documentation\reference\dmn\decision-table\input.md
+    ./img/input.png → /img/documentation/reference/dmn/decision-table/input.png
+    ./img/input-label.png → /img/documentation/reference/dmn/decision-table/input-label.png
+    ./img/input-expression.png → /img/documentation/reference/dmn/decision-table/input-expression.png
+    ./img/input-type-definition.png → /img/documentation/reference/dmn/decision-table/input-type-definition.png
+✓ Updated: documentation\reference\dmn\decision-table\output.md
+    ./img/output.png → /img/documentation/reference/dmn/decision-table/output.png
+    ./img/output-label.png → /img/documentation/reference/dmn/decision-table/output-label.png
+    ./img/output-name.png → /img/documentation/reference/dmn/decision-table/output-name.png
+    ./img/output-type-definition.png → /img/documentation/reference/dmn/decision-table/output-type-definition.png
+✓ Updated: documentation\reference\dmn\decision-table\rule.md
+    ./img/rule.png → /img/documentation/reference/dmn/decision-table/rule.png
+    ./img/input-entry.png → /img/documentation/reference/dmn/decision-table/input-entry.png
+    ./img/output-entry.png → /img/documentation/reference/dmn/decision-table/output-entry.png
+    ./img/description.png → /img/documentation/reference/dmn/decision-table/description.png
+✓ Updated: documentation\reference\dmn\drg\index.md
+    ./img/drd.png → /img/documentation/reference/dmn/drg/drd.png
+    img/drg-name.png → /img/documentation/reference/dmn/drg/drg-name.png
+    img/drg-id.png → /img/documentation/reference/dmn/drg/drg-id.png
+    img/decision.png → /img/documentation/reference/dmn/drg/decision.png
+    img/required-decision.png → /img/documentation/reference/dmn/drg/required-decision.png
+    img/input-data.png → /img/documentation/reference/dmn/drg/input-data.png
+    img/knowledge-source.png → /img/documentation/reference/dmn/drg/knowledge-source.png
+✓ Updated: documentation\reference\dmn\feel\legacy\data-types.md
+    ./../img/string-type.png → /img/documentation/reference/dmn/feel/legacy/string-type.png
+    ./../img/integer-type.png → /img/documentation/reference/dmn/feel/legacy/integer-type.png
+    ./../img/boolean-type.png → /img/documentation/reference/dmn/feel/legacy/boolean-type.png
+    ./../img/date-type.png → /img/documentation/reference/dmn/feel/legacy/date-type.png
+✓ Updated: documentation\user-guide\dmn-engine\evaluate-decisions.md
+    ./img/dish-dmn.png → /img/documentation/user-guide/dmn-engine/dish-dmn.png
+    ./img/beverages-dmn.png → /img/documentation/user-guide/dmn-engine/beverages-dmn.png
+    ./img/drd.png → /img/documentation/user-guide/dmn-engine/drd.png
+✓ Updated: documentation\user-guide\model-api\bpmn-model-api\create-a-model.md
+    ./img/bpmn-model-api-simple-process.png → /img/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-simple-process.png
+    ./img/bpmn-model-api-parallel-gateway.png → /img/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-parallel-gateway.png
+✓ Updated: documentation\user-guide\process-applications\maven-archetypes.md
+    ./img/eclipse-00-preferences-maven-archetypes.png → /img/documentation/user-guide/process-applications/eclipse-00-preferences-maven-archetypes.png
+    ./img/eclipse-01-add-remote-archetype-catalog.png → /img/documentation/user-guide/process-applications/eclipse-01-add-remote-archetype-catalog.png
+    ./img/eclipse-02-create-maven-project.png → /img/documentation/user-guide/process-applications/eclipse-02-create-maven-project.png
+    ./img/eclipse-03-select-maven-project-location.png → /img/documentation/user-guide/process-applications/eclipse-03-select-maven-project-location.png
+    ./img/eclipse-04-select-archetype-from-catalog.png → /img/documentation/user-guide/process-applications/eclipse-04-select-archetype-from-catalog.png
+    ./img/eclipse-05-specify-maven-coordinates-and-operaton-version.png → /img/documentation/user-guide/process-applications/eclipse-05-specify-maven-coordinates
+-and-operaton-version.png
+    ./img/eclipse-06-generated-maven-project.png → /img/documentation/user-guide/process-applications/eclipse-06-generated-maven-project.png
+✓ Updated: documentation\user-guide\process-applications\process-application-event-listeners.md
+    ./img/process-application-events.png → /img/documentation/user-guide/process-applications/process-application-events.png
+✓ Updated: documentation\user-guide\process-applications\process-application-resources.md
+    ./img/process-application-context.png → /img/documentation/user-guide/process-applications/process-application-context.png
+✓ Updated: documentation\user-guide\process-applications\the-processes-xml-deployment-descriptor.md
+    ./img/process-application-deployment.png → /img/documentation/user-guide/process-applications/process-application-deployment.png
+    ./img/process-application-redeployment.png → /img/documentation/user-guide/process-applications/process-application-redeployment.png
+✓ Updated: documentation\user-guide\process-engine\database\database-schema.md
+    ./../img/database-schema.png → /img/documentation/user-guide/process-engine/database/database-schema.png
+    ./../img/erd_722_bpmn.svg → /img/documentation/user-guide/process-engine/database/erd_722_bpmn.svg
+    ./../img/erd_722_dmn.svg → /img/documentation/user-guide/process-engine/database/erd_722_dmn.svg
+    ./../img/erd_722_cmmn.svg → /img/documentation/user-guide/process-engine/database/erd_722_cmmn.svg
+    ./../img/erd_722_history.svg → /img/documentation/user-guide/process-engine/database/erd_722_history.svg
+    ./../img/erd_722_identity.svg → /img/documentation/user-guide/process-engine/database/erd_722_identity.svg
+✓ Updated: documentation\user-guide\process-engine\error-handling.md
+    ./img/error-result-xor.png → /img/documentation/user-guide/process-engine/error-result-xor.png
+    ./img/bpmn.boundary.error.event.png → /img/documentation/user-guide/process-engine/bpmn.boundary.error.event.png
+    ./img/retry.png → /img/documentation/user-guide/process-engine/retry.png
+    ./img/error-handling-user-task.png → /img/documentation/user-guide/process-engine/error-handling-user-task.png
+✓ Updated: documentation\user-guide\process-engine\external-tasks.md
+    ./img/external-task-pattern.png → /img/documentation/user-guide/process-engine/external-task-pattern.png
+    ./img/external-task-long-polling.png → /img/documentation/user-guide/process-engine/external-task-long-polling.png
+✓ Updated: documentation\user-guide\process-engine\history\custom-implementation.md
+    ./../img/process-engine-history-architecture.png → /img/documentation/user-guide/process-engine/history/process-engine-history-architecture.png
+✓ Updated: documentation\user-guide\process-engine\history\history-cleanup.md
+    ./../img/history-cleanup-process-hierarchy.png → /img/documentation/user-guide/process-engine/history/history-cleanup-process-hierarchy.png
+✓ Updated: documentation\user-guide\process-engine\multi-tenancy.md
+    ./img/multi-tenancy-tenant-identifiers.png → /img/documentation/user-guide/process-engine/multi-tenancy-tenant-identifiers.png
+    ./../../introduction/img/multi-tenancy-process-engine.png → /img/documentation/user-guide/process-engine/multi-tenancy-process-engine.png
+✓ Updated: documentation\user-guide\process-engine\process-diagram-api.md
+    ./img/process-diagram-bpmn-js.png → /img/documentation/user-guide/process-engine/process-diagram-bpmn-js.png
+✓ Updated: documentation\user-guide\process-engine\process-engine-api.md
+    ./img/api.services.png → /img/documentation/user-guide/process-engine/api.services.png
+✓ Updated: documentation\user-guide\process-engine\process-engine-concepts.md
+    ./img/parallel-gw.png → /img/documentation/user-guide/process-engine/parallel-gw.png
+✓ Updated: documentation\user-guide\process-engine\process-instance-restart.md
+    ./img/variables-3.png → /img/documentation/user-guide/process-engine/variables-3.png
+✓ Updated: documentation\user-guide\process-engine\process-versioning.md
+    ./img/versioning.png → /img/documentation/user-guide/process-engine/versioning.png
+✓ Updated: documentation\user-guide\process-engine\the-job-executor.md
+    ./img/job-executor-basic-architecture.png → /img/documentation/user-guide/process-engine/job-executor-basic-architecture.png
+    ./img/job-executor-priority-precedence.png → /img/documentation/user-guide/process-engine/job-executor-priority-precedence.png
+    ./img/job-executor-exclusive-jobs.png → /img/documentation/user-guide/process-engine/job-executor-exclusive-jobs.png
+    ./img/exclusive-over-process-hierarchies.png → /img/documentation/user-guide/process-engine/exclusive-over-process-hierarchies.png
+    ./img/job-executor-single-engine.png → /img/documentation/user-guide/process-engine/job-executor-single-engine.png
+    ./img/job-executor-multiple-engines.png → /img/documentation/user-guide/process-engine/job-executor-multiple-engines.png
+    ./img/homogeneous-cluster.png → /img/documentation/user-guide/process-engine/homogeneous-cluster.png
+    ./img/heterogeneous-cluster.png → /img/documentation/user-guide/process-engine/heterogeneous-cluster.png
+✓ Updated: documentation\user-guide\process-engine\transactions-in-processes.md
+    ./img/bpmn-elements/receive-task.svg → /img/documentation/user-guide/process-engine/receive-task.svg
+    ./img/bpmn-elements/user-task.svg → /img/documentation/user-guide/process-engine/user-task.svg
+    ./img/bpmn-elements/message-event.svg → /img/documentation/user-guide/process-engine/message-event.svg
+    ./img/bpmn-elements/timer-event.svg → /img/documentation/user-guide/process-engine/timer-event.svg
+    ./img/bpmn-elements/signal-event.svg → /img/documentation/user-guide/process-engine/signal-event.svg
+    ./img/transactions-1.png → /img/documentation/user-guide/process-engine/transactions-1.png
+    ./img/transactions-2.png → /img/documentation/user-guide/process-engine/transactions-2.png
+    ./img/process-engine-activity-execution.png → /img/documentation/user-guide/process-engine/process-engine-activity-execution.png
+    ./img/process-engine-async.png → /img/documentation/user-guide/process-engine/process-engine-async.png
+    ./img/process-engine-async-transactions.png → /img/documentation/user-guide/process-engine/process-engine-async-transactions.png
+    ./img/transactions-3.png → /img/documentation/user-guide/process-engine/transactions-3.png
+    ./img/NotWorkingTimerOnServiceTimeout.png → /img/documentation/user-guide/process-engine/NotWorkingTimerOnServiceTimeout.png
+    ./img/optimisticLockingTransactions.png → /img/documentation/user-guide/process-engine/optimisticLockingTransactions.png
+    ./img/optimisticLockingParallel.png → /img/documentation/user-guide/process-engine/optimisticLockingParallel.png
+    /img/event-based-gateway.png → /img/documentation/user-guide/process-engine/event-based-gateway.png
+✓ Updated: documentation\user-guide\process-engine\variables.md
+    ./img/variables-3.png → /img/documentation/user-guide/process-engine/variables-3.png
+    ./img/variables-4.png → /img/documentation/user-guide/process-engine/variables-4.png
+    ./img/variables-5.png → /img/documentation/user-guide/process-engine/variables-5.png
+    ./img/variables-6.png → /img/documentation/user-guide/process-engine/variables-6.png
+    ./img/variables-1.png → /img/documentation/user-guide/process-engine/variables-1.png
+✓ Updated: documentation\user-guide\runtime-container-integration\jboss.md
+    ./img/jboss-jconsole.png → /img/documentation/user-guide/runtime-container-integration/jboss-jconsole.png
+    ./img/jboss-service-dependencies.png → /img/documentation/user-guide/runtime-container-integration/jboss-service-dependencies.png
+✓ Updated: documentation\user-guide\task-forms\index.md
+    ./img/reference-operaton-form.png → /img/documentation/user-guide/task-forms/reference-operaton-form.png
+    ./img/variable-mapping-operaton-form.png → /img/documentation/user-guide/task-forms/variable-mapping-operaton-form.png
+    ./img/deploy-form.png → /img/documentation/user-guide/task-forms/deploy-form.png
+    ./img/tasklist-generic-form.png → /img/documentation/user-guide/task-forms/tasklist-generic-form.png
+    ./img/generated-forms-example.png → /img/documentation/user-guide/task-forms/generated-forms-example.png
+✓ Updated: documentation\user-guide\task-forms\jsf-task-forms.md
+    ./img/task-form-process.png → /img/documentation/user-guide/task-forms/task-form-process.png
+    ./img/start-task-button.png → /img/documentation/user-guide/task-forms/start-task-button.png
+    ./img/variablesTaskFormExample.png → /img/documentation/user-guide/task-forms/variablesTaskFormExample.png
+    ./img/startFormExample.png → /img/documentation/user-guide/task-forms/startFormExample.png
+    ./img/start-process-button.png → /img/documentation/user-guide/task-forms/start-process-button.png
+    ./img/tasklist-forms-layouted-start.png → /img/documentation/user-guide/task-forms/tasklist-forms-layouted-start.png
+✓ Updated: documentation\user-guide\testing\index.md
+    img/api-test-debug-breakpoint.png → /img/documentation/user-guide/testing/api-test-debug-breakpoint.png
+    img/api-test-debug-view.png → /img/documentation/user-guide/testing/api-test-debug-view.png
+    img/api-test-debug-start-h2-server.png → /img/documentation/user-guide/testing/api-test-debug-start-h2-server.png
+    img/api-test-debug-start-h2-server-2.png → /img/documentation/user-guide/testing/api-test-debug-start-h2-server-2.png
+    img/api-test-debug-h2-login.png → /img/documentation/user-guide/testing/api-test-debug-h2-login.png
+    img/api-test-debug-h2-tables.png → /img/documentation/user-guide/testing/api-test-debug-h2-tables.png
+    img/test-scopes.png → /img/documentation/user-guide/testing/test-scopes.png
+✓ Updated: documentation\webapps\admin\auditing.md
+    ./img/admin-system-audit.png → /img/documentation/webapps/admin/admin-system-audit.png
+    ./img/admin-audit-entity.png → /img/documentation/webapps/admin/admin-audit-entity.png
+✓ Updated: documentation\webapps\admin\authorization-management.md
+    ./img/admin-authorization.png → /img/documentation/webapps/admin/admin-authorization.png
+    ./img/admin-authorization-application-new-group.png → /img/documentation/webapps/admin/admin-authorization-application-new-group.png
+    ./img/admin-authorization-application-new-user.png → /img/documentation/webapps/admin/admin-authorization-application-new-user.png
+    ./img/admin-access.png → /img/documentation/webapps/admin/admin-access.png
+    ./img/admin-authorization-filter.png → /img/documentation/webapps/admin/admin-authorization-filter.png
+    ./img/admin-authorization-users.png → /img/documentation/webapps/admin/admin-authorization-users.png
+    ./img/admin_cockpit_access_group.png → /img/documentation/webapps/admin/admin_cockpit_access_group.png
+    ./img/admin_proc_def_group_read_access.png → /img/documentation/webapps/admin/admin_proc_def_group_read_access.png
+    ./img/admin_proc_def_group_full_access.png → /img/documentation/webapps/admin/admin_proc_def_group_full_access.png
+    ./img/admin_auth_edit_full_access.png → /img/documentation/webapps/admin/admin_auth_edit_full_access.png
+    ./img/admin_tasklist_access_group.png → /img/documentation/webapps/admin/admin_tasklist_access_group.png
+    ./img/admin_proc_def_acc_read_create_inst_access.png → /img/documentation/webapps/admin/admin_proc_def_acc_read_create_inst_access.png
+    ./img/admin_proc_inst_acc_create.png → /img/documentation/webapps/admin/admin_proc_inst_acc_create.png
+    ./img/admin_proc_def_acc_read.png → /img/documentation/webapps/admin/admin_proc_def_acc_read.png
+    ./img/admin_cockpit_proc_inst_id.png → /img/documentation/webapps/admin/admin_cockpit_proc_inst_id.png
+    ./img/admin_proc_inst_id_acc.png → /img/documentation/webapps/admin/admin_proc_inst_id_acc.png
+    ./img/admin_filter_acc_read.png → /img/documentation/webapps/admin/admin_filter_acc_read.png
+    ./img/admin_task_acc_edit.png → /img/documentation/webapps/admin/admin_task_acc_edit.png
+✓ Updated: documentation\webapps\admin\group-management.md
+    ./img/admin-groups.png → /img/documentation/webapps/admin/admin-groups.png
+✓ Updated: documentation\webapps\admin\plugins.md
+    ./img/admin-start-page-view.png → /img/documentation/webapps/admin/admin-start-page-view.png
+✓ Updated: documentation\webapps\admin\system-management.md
+    ./img/admin-system-management.png → /img/documentation/webapps/admin/admin-system-management.png
+    ./img/admin-diagnostics.png → /img/documentation/webapps/admin/admin-diagnostics.png
+    ./img/admin-execution-metrics.png → /img/documentation/webapps/admin/admin-execution-metrics.png
+✓ Updated: documentation\webapps\admin\tenant-management.md
+    ./img/admin-tenants.png → /img/documentation/webapps/admin/admin-tenants.png
+✓ Updated: documentation\webapps\admin\user-management.md
+    ./img/admin-users.png → /img/documentation/webapps/admin/admin-users.png
+    ./img/admin-initial-user-setup.png → /img/documentation/webapps/admin/admin-initial-user-setup.png
+✓ Updated: documentation\webapps\cockpit\auditing.md
+    ./img/cockpit-operation-log.png → /img/documentation/webapps/cockpit/cockpit-operation-log.png
+    ./img/cockpit-audit-timestamp.png → /img/documentation/webapps/cockpit/cockpit-audit-timestamp.png
+    ./img/cockpit-audit-type.png → /img/documentation/webapps/cockpit/cockpit-audit-type.png
+    ./img/cockpit-audit-annotation.png → /img/documentation/webapps/cockpit/cockpit-audit-annotation.png
+    ./img/cockpit-user-operation-log.png → /img/documentation/webapps/cockpit/cockpit-user-operation-log.png
+✓ Updated: documentation\webapps\cockpit\batch\batch-operation.md
+    ../img/batch/batch_operation_definition.png → /img/documentation/webapps/cockpit/batch/batch_operation_definition.png
+    ./../img/batch/batch-in-operator.png → /img/documentation/webapps/cockpit/batch/batch-in-operator.png
+    ./../img/batch/batch-in-operator-modal.png → /img/documentation/webapps/cockpit/batch/batch-in-operator-modal.png
+    ./../img/batch/batch_operation_confirmation.png → /img/documentation/webapps/cockpit/batch/batch_operation_confirmation.png
+    ./../img/batch/batch_operation_result.png → /img/documentation/webapps/cockpit/batch/batch_operation_result.png
+✓ Updated: documentation\webapps\cockpit\batch\monitoring.md
+    ./../img/batch.png → /img/documentation/webapps/cockpit/batch/batch.png
+    ./../img/batch-search.png → /img/documentation/webapps/cockpit/batch/batch-search.png
+✓ Updated: documentation\webapps\cockpit\bpmn\correlate-message.md
+    ./../img/correlate-message/batch-operation.png → /img/documentation/webapps/cockpit/bpmn/batch-operation.png
+    ./../img/correlate-message/process-action.png → /img/documentation/webapps/cockpit/bpmn/process-action.png
+    ./../img/correlate-message/modal-dialog.png → /img/documentation/webapps/cockpit/bpmn/modal-dialog.png
+    ./../img/correlate-message/diagram-overlay-button.png → /img/documentation/webapps/cockpit/bpmn/diagram-overlay-button.png
+✓ Updated: documentation\webapps\cockpit\bpmn\dashboard.md
+    ./../img/cockpit-process-definition-state.png → /img/documentation/webapps/cockpit/bpmn/cockpit-process-definition-state.png
+    ./../img/cockpit-deployed-processes-search.png → /img/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes-search.png
+    ./../img/cockpit-deployed-processes.png → /img/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes.png
+    ./../img/cockpit-search.png → /img/documentation/webapps/cockpit/bpmn/cockpit-search.png
+    ./../img/cockpit-export.png → /img/documentation/webapps/cockpit/bpmn/cockpit-export.png
+    ./../img/cockpit-export-modal-dialog.png → /img/documentation/webapps/cockpit/bpmn/cockpit-export-modal-dialog.png
+    ./../img/cockpit-export-download-as-csv.png → /img/documentation/webapps/cockpit/bpmn/cockpit-export-download-as-csv.png
+    ./../img/cockpit-export-result.png → /img/documentation/webapps/cockpit/bpmn/cockpit-export-result.png
+    ./../img/cockpit-in-operator.png → /img/documentation/webapps/cockpit/bpmn/cockpit-in-operator.png
+    ./../img/cockpit-in-operator-modal.png → /img/documentation/webapps/cockpit/bpmn/cockpit-in-operator-modal.png
+    ./../img/cockpit-delete-process-definition.png → /img/documentation/webapps/cockpit/bpmn/cockpit-delete-process-definition.png
+✓ Updated: documentation\webapps\cockpit\bpmn\drilldown.md
+    ./../img/drilldown/shape.png → /img/documentation/webapps/cockpit/bpmn/shape.png
+    ./../img/drilldown/breadcrumbs.png → /img/documentation/webapps/cockpit/bpmn/breadcrumbs.png
+    ./../img/drilldown/migration.png → /img/documentation/webapps/cockpit/bpmn/migration.png
+✓ Updated: documentation\webapps\cockpit\bpmn\failed-jobs.md
+    ./../img/cockpit-failed-job-drill-down.png → /img/documentation/webapps/cockpit/bpmn/cockpit-failed-job-drill-down.png
+    ./../img/cockpit-instance-job-retry.png → /img/documentation/webapps/cockpit/bpmn/cockpit-instance-job-retry.png
+    ./../img/cockpit-bulk-retry.png → /img/documentation/webapps/cockpit/bpmn/cockpit-bulk-retry.png
+✓ Updated: documentation\webapps\cockpit\bpmn\process-definition-view.md
+    ./../img/cockpit-process-definitions-view.png → /img/documentation/webapps/cockpit/bpmn/cockpit-process-definitions-view.png
+    ./../img/filter-examples/add-filter.png → /img/documentation/webapps/cockpit/bpmn/add-filter.png
+    ./../img/filter-examples/business-key.png → /img/documentation/webapps/cockpit/bpmn/business-key.png
+    ./../img/filter-examples/start-date.png → /img/documentation/webapps/cockpit/bpmn/start-date.png
+    ./../img/filter-examples/start-date-before-after.png → /img/documentation/webapps/cockpit/bpmn/start-date-before-after.png
+    ./../img/filter-examples/var-string.png → /img/documentation/webapps/cockpit/bpmn/var-string.png
+    ./../img/filter-examples/var-boolean.png → /img/documentation/webapps/cockpit/bpmn/var-boolean.png
+    ./../img/filter-examples/var-numeric.png → /img/documentation/webapps/cockpit/bpmn/var-numeric.png
+    ./../img/filter-examples/history-completed.png → /img/documentation/webapps/cockpit/bpmn/history-completed.png
+    ./../img/filter-examples/history-running.png → /img/documentation/webapps/cockpit/bpmn/history-running.png
+    ./../img/filter-examples/history-end-date.png → /img/documentation/webapps/cockpit/bpmn/history-end-date.png
+    ./../img/cockpit-bulk-delete.png → /img/documentation/webapps/cockpit/bpmn/cockpit-bulk-delete.png
+    ./../img/cockpit-documentation.png → /img/documentation/webapps/cockpit/bpmn/cockpit-documentation.png
+    ./../img/cockpit-set-job-priority.png → /img/documentation/webapps/cockpit/bpmn/cockpit-set-job-priority.png
+    ./../img/cockpit-call-activity-definition-navigation.png → /img/documentation/webapps/cockpit/bpmn/cockpit-call-activity-definition-navigation.png
+✓ Updated: documentation\webapps\cockpit\bpmn\process-history-views.md
+    ./../img/cockpit-history-view-process-definition-history.png → /img/documentation/webapps/cockpit/bpmn/cockpit-history-view-process-definition-history.png   
+    ./../img/cockpit-heatmap.png → /img/documentation/webapps/cockpit/bpmn/cockpit-heatmap.png
+    ./../img/cockpit-history-view-process-instance-history.png → /img/documentation/webapps/cockpit/bpmn/cockpit-history-view-process-instance-history.png       
+✓ Updated: documentation\webapps\cockpit\bpmn\process-instance-migration.md
+    ./../img/migration/step1_overview.png → /img/documentation/webapps/cockpit/bpmn/step1_overview.png
+    ./../img/migration/accessing_2.png → /img/documentation/webapps/cockpit/bpmn/accessing_2.png
+    ./../img/migration/step1_createMapping.png → /img/documentation/webapps/cockpit/bpmn/step1_createMapping.png
+    ./../img/migration/step1_errorPopover.png → /img/documentation/webapps/cockpit/bpmn/step1_errorPopover.png
+    ./../img/migration/step2.png → /img/documentation/webapps/cockpit/bpmn/step2.png
+    ./../img/migration/step2_modal.png → /img/documentation/webapps/cockpit/bpmn/step2_modal.png
+    ./../img/migration/step2_validation.png → /img/documentation/webapps/cockpit/bpmn/step2_validation.png
+    ./../img/migration/step2_edit.png → /img/documentation/webapps/cockpit/bpmn/step2_edit.png
+    ./../img/migration/step3.png → /img/documentation/webapps/cockpit/bpmn/step3.png
+    ./../img/migration/step4.png → /img/documentation/webapps/cockpit/bpmn/step4.png
+    ./../img/migration/step5_batch.png → /img/documentation/webapps/cockpit/bpmn/step5_batch.png
+    ./../img/migration/step5_error.png → /img/documentation/webapps/cockpit/bpmn/step5_error.png
+✓ Updated: documentation\webapps\cockpit\bpmn\process-instance-modification.md
+    ./../img/cockpit-modification.png → /img/documentation/webapps/cockpit/bpmn/cockpit-modification.png
+    ./../img/cockpit-modification-cancel.png → /img/documentation/webapps/cockpit/bpmn/cockpit-modification-cancel.png
+    ./../img/cockpit-modification-start.png → /img/documentation/webapps/cockpit/bpmn/cockpit-modification-start.png
+    ./../img/cockpit-modification-review.png → /img/documentation/webapps/cockpit/bpmn/cockpit-modification-review.png
+    ./../img/cockpit-batch-modification-view.png → /img/documentation/webapps/cockpit/bpmn/cockpit-batch-modification-view.png
+    ./../img/cockpit-batch-modification-detail.png → /img/documentation/webapps/cockpit/bpmn/cockpit-batch-modification-detail.png
+    ./../img/cockpit-batch-modification-instance-selection.png → /img/documentation/webapps/cockpit/bpmn/cockpit-batch-modification-instance-selection.png       
+    ./../img/cockpit-batch-modification-options.png → /img/documentation/webapps/cockpit/bpmn/cockpit-batch-modification-options.png
+✓ Updated: documentation\webapps\cockpit\bpmn\process-instance-restart.md
+    ./../img/cockpit-restart.png → /img/documentation/webapps/cockpit/bpmn/cockpit-restart.png
+    ./../img/cockpit-restart-instance-selection.png → /img/documentation/webapps/cockpit/bpmn/cockpit-restart-instance-selection.png
+    ./../img/cockpit-restart-confirm.png → /img/documentation/webapps/cockpit/bpmn/cockpit-restart-confirm.png
+✓ Updated: documentation\webapps\cockpit\bpmn\process-instance-view.md
+    ./../img/cockpit-process-instances-view.png → /img/documentation/webapps/cockpit/bpmn/cockpit-process-instances-view.png
+    ./../img/cockpit-activity-instance-tree-view.png → /img/documentation/webapps/cockpit/bpmn/cockpit-activity-instance-tree-view.png
+    ./../img/cockpit-call-activity-instance-drill-down.png → /img/documentation/webapps/cockpit/bpmn/cockpit-call-activity-instance-drill-down.png
+    ./../img/cockpit-detailed-information-view.png → /img/documentation/webapps/cockpit/bpmn/cockpit-detailed-information-view.png
+    ./../img/variable-filter.png → /img/documentation/webapps/cockpit/bpmn/variable-filter.png
+    ./../img/cockpit-add-variables.png → /img/documentation/webapps/cockpit/bpmn/cockpit-add-variables.png
+    ./../img/cockpit-edit-variables.png → /img/documentation/webapps/cockpit/bpmn/cockpit-edit-variables.png
+    ./../img/cockpit-cancel-process-instance.png → /img/documentation/webapps/cockpit/bpmn/cockpit-cancel-process-instance.png
+✓ Updated: documentation\webapps\cockpit\cleanup.md
+    ./img/cockpit-cleanup-page.png → /img/documentation/webapps/cockpit/cockpit-cleanup-page.png
+    ./img/cockpit-cleanup-state-incident.png → /img/documentation/webapps/cockpit/cockpit-cleanup-state-incident.png
+    ./img/cockpit-cleanup-ttl.png → /img/documentation/webapps/cockpit/cockpit-cleanup-ttl.png
+✓ Updated: documentation\webapps\cockpit\cmmn\case-definition-view.md
+    ./../img/cmmn/case-definition-view.png → /img/documentation/webapps/cockpit/cmmn/case-definition-view.png
+✓ Updated: documentation\webapps\cockpit\cmmn\case-instance-view.md
+    ./../img/cmmn/case-instance-view.png → /img/documentation/webapps/cockpit/cmmn/case-instance-view.png
+    ./../img/cmmn/detailed-information-view.png → /img/documentation/webapps/cockpit/cmmn/detailed-information-view.png
+    ./../img/cmmn/add-variables.png → /img/documentation/webapps/cockpit/cmmn/add-variables.png
+    ./../img/cmmn/edit-variables.png → /img/documentation/webapps/cockpit/cmmn/edit-variables.png
+    ./../img/cmmn/terminate-case.png → /img/documentation/webapps/cockpit/cmmn/terminate-case.png
+✓ Updated: documentation\webapps\cockpit\cmmn\dashboard.md
+    ./../img/cmmn/case-dashboard-search.png → /img/documentation/webapps/cockpit/cmmn/case-dashboard-search.png
+    ./../img/cmmn/case-dashboard-deployed.png → /img/documentation/webapps/cockpit/cmmn/case-dashboard-deployed.png
+✓ Updated: documentation\webapps\cockpit\dashboard.md
+    ./img/dashboard.png → /img/documentation/webapps/cockpit/dashboard.png
+    ./img/dashboard-metrics.png → /img/documentation/webapps/cockpit/dashboard-metrics.png
+    ./img/cockpit-multi-engine.png → /img/documentation/webapps/cockpit/cockpit-multi-engine.png
+✓ Updated: documentation\webapps\cockpit\deployment-view.md
+    ./img/cockpit-deployments-page.png → /img/documentation/webapps/cockpit/cockpit-deployments-page.png
+✓ Updated: documentation\webapps\cockpit\dmn\dashboard.md
+    ./../img/cockpit-decision-definition-list.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-list.png
+    ./../img/cockpit-drd-list.png → /img/documentation/webapps/cockpit/dmn/cockpit-drd-list.png
+    ./../img/dmn/decision-instance-search.png → /img/documentation/webapps/cockpit/dmn/decision-instance-search.png
+✓ Updated: documentation\webapps\cockpit\dmn\decision-definition-view.md
+    ./../img/cockpit-decision-definition-view.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-view.png
+✓ Updated: documentation\webapps\cockpit\dmn\decision-instance-view.md
+    ./../img/cockpit-decision-instance-view.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-instance-view.png
+✓ Updated: documentation\webapps\cockpit\dmn\decision-requirements-definition-view.md
+    ./../img/cockpit-decision-requirements-definition-view.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-requirements-definition-view.png        
+    ./../img/cockpit-decision-definition-requirement-decision-instances-tab.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-
+decision-instances-tab.png
+    ./../img/cockpit-decision-definition-requirement-decision-drd-tab.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-decisi
+on-drd-tab.png
+✓ Updated: documentation\webapps\cockpit\dmn\decision-requirements-instance-view.md
+    ./../img/cockpit-decision-requirements-definition-instance-view.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-requirements-definition-instanc
+e-view.png
+    ./../img/cockpit-decision-definition-requirement-decision-instance-instances-tab.png → /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-req
+uirement-decision-instance-instances-tab.png
+✓ Updated: documentation\webapps\cockpit\extend\plugins.md
+    ./../img/cockpit-plugin.png → /img/documentation/webapps/cockpit/extend/cockpit-plugin.png
+    ./../img/plugin-points/plugin-point-navigation.png → /img/documentation/webapps/cockpit/extend/plugin-point-navigation.png
+    ./../img/plugin-points/plugin-point-login-custom.png → /img/documentation/webapps/cockpit/extend/plugin-point-login-custom.png
+    ./../img/plugin-points/plugin-point-dashboard-custom.png → /img/documentation/webapps/cockpit/extend/plugin-point-dashboard-custom.png
+    ./../img/plugin-points/plugin-point-dashboard-metrics-view.png → /img/documentation/webapps/cockpit/extend/plugin-point-dashboard-metrics-view.png
+    ./../img/plugin-points/plugin-point-cockpit-processes-dashboard.png → /img/documentation/webapps/cockpit/extend/plugin-point-cockpit-processes-dashboard.png 
+    ./../img/plugin-points/plugin-point-cockpit-decisions-dashboard.png → /img/documentation/webapps/cockpit/extend/plugin-point-cockpit-decisions-dashboard.png 
+    ./../img/plugin-points/plugin-point-cockpit-cases-dashboard.png → /img/documentation/webapps/cockpit/extend/plugin-point-cockpit-cases-dashboard.png
+    ./../img/plugin-points/plugin-point-process-definition-details.png → /img/documentation/webapps/cockpit/extend/plugin-point-process-definition-details.png   
+    ./../img/plugin-points/plugin-point-process-instance-details.png → /img/documentation/webapps/cockpit/extend/plugin-point-process-instance-details.png       
+    ./../img/plugin-points/plugin-point-process-definition-runtime-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-process-definition-runtime
+-action.png
+    ./../img/plugin-points/plugin-point-process-instance-runtime-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-process-instance-runtime-act
+ion.png
+    ./../img/plugin-points/plugin-point-cockpit-process-definition-view.png → /img/documentation/webapps/cockpit/extend/plugin-point-cockpit-process-definition-v
+iew.png
+    ./../img/plugin-points/plugin-point-cockpit-process-instance-view.png → /img/documentation/webapps/cockpit/extend/plugin-point-cockpit-process-instance-view.
+png
+    ./../img/plugin-points/plugin-point-definition-diagram-overlay.png → /img/documentation/webapps/cockpit/extend/plugin-point-definition-diagram-overlay.png   
+    ./../img/plugin-points/plugin-point-instance-diagram-overlay.png → /img/documentation/webapps/cockpit/extend/plugin-point-instance-diagram-overlay.png       
+    ./../img/plugin-points/plugin-point-job-definition-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-job-definition-action.png
+    ./../img/plugin-points/plugin-point-decision-definition-tab.png → /img/documentation/webapps/cockpit/extend/plugin-point-decision-definition-tab.png
+    ./../img/plugin-points/plugin-point-decision-definition-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-decision-definition-action.png   
+    ./../img/plugin-points/plugin-point-decision-definition-table.png → /img/documentation/webapps/cockpit/extend/plugin-point-decision-definition-table.png     
+    ./../img/plugin-points/plugin-point-decision-instance-tab.png → /img/documentation/webapps/cockpit/extend/plugin-point-decision-instance-tab.png
+    ./../img/plugin-points/plugin-point-decision-instance-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-decision-instance-action.png       
+    ./../img/plugin-points/plugin-point-decision-instance-table.png → /img/documentation/webapps/cockpit/extend/plugin-point-decision-instance-table.png
+    ./../img/plugin-points/plugin-point-case-definition-tab.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-definition-tab.png
+    ./../img/plugin-points/plugin-point-case-definition-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-definition-action.png
+    ./../img/plugin-points/plugin-point-case-definition-diagram-overlay.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-definition-diagram-over
+lay.png
+    ./../img/plugin-points/plugin-point-case-definition-diagram-overlay.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-definition-diagram-over
+lay.png
+    ./../img/plugin-points/plugin-point-case-instance-tab.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-instance-tab.png
+    ./../img/plugin-points/plugin-point-case-instance-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-instance-action.png
+    ./../img/plugin-points/plugin-point-case-instance-diagram-overlay.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-instance-diagram-overlay.
+png
+    ./../img/plugin-points/plugin-point-case-instance-diagram-overlay.png → /img/documentation/webapps/cockpit/extend/plugin-point-case-instance-diagram-overlay.
+png
+    ./../img/plugin-points/plugin-point-repository-resource-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-repository-resource-action.png   
+    ./../img/plugin-points/plugin-point-repository-resource-detail.png → /img/documentation/webapps/cockpit/extend/plugin-point-repository-resource-detail.png   
+    ./../img/plugin-points/plugin-point-task-dashboard.png → /img/documentation/webapps/cockpit/extend/plugin-point-task-dashboard.png
+    ./../img/plugin-points/plugin-point-batch-operation.png → /img/documentation/webapps/cockpit/extend/plugin-point-batch-operation.png
+    ./../img/plugin-points/plugin-point-incident-action.png → /img/documentation/webapps/cockpit/extend/plugin-point-incident-action.png
+✓ Updated: documentation\webapps\cockpit\reporting.md
+    ./img/duration-report.png → /img/documentation/webapps/cockpit/duration-report.png
+    ./img/historic-task-instance-report.png → /img/documentation/webapps/cockpit/historic-task-instance-report.png
+✓ Updated: documentation\webapps\cockpit\tasks-dashboard.md
+    ./img/task-dashboard.png → /img/documentation/webapps/cockpit/task-dashboard.png
+✓ Updated: documentation\webapps\tasklist\dashboard.md
+    ./img/tasklist-dashboard-detail.png → /img/documentation/webapps/tasklist/tasklist-dashboard-detail.png
+    ./img/tasklist-toggle-view.png → /img/documentation/webapps/tasklist/tasklist-toggle-view.png
+    ./img/tasklist-start-process.png → /img/documentation/webapps/tasklist/tasklist-start-process.png
+    ./img/tasklist-start-task.png → /img/documentation/webapps/tasklist/tasklist-start-task.png
+    ./img/tasklist-filter-results.png → /img/documentation/webapps/tasklist/tasklist-filter-results.png
+    ./img/tasklist-task-search.png → /img/documentation/webapps/tasklist/tasklist-task-search.png
+    ./img/tasklist-case-insensitive.png → /img/documentation/webapps/tasklist/tasklist-case-insensitive.png
+    ./img/tasklist-in-operator.png → /img/documentation/webapps/tasklist/tasklist-in-operator.png
+    ./img/tasklist-in-operator-modal.png → /img/documentation/webapps/tasklist/tasklist-in-operator-modal.png
+    ./img/tasklist-task-view.png → /img/documentation/webapps/tasklist/tasklist-task-view.png
+    ./img/tasklist-task-view-tabs.png → /img/documentation/webapps/tasklist/tasklist-task-view-tabs.png
+✓ Updated: documentation\webapps\tasklist\filters.md
+    ./img/tasklist-create-filter.png → /img/documentation/webapps/tasklist/tasklist-create-filter.png
+    ./img/tasklist-filter-detail.png → /img/documentation/webapps/tasklist/tasklist-filter-detail.png
+✓ Updated: documentation\webapps\tasklist\task-lifecycle.md
+    ./img/tasklist-user-task-state-complete.png → /img/documentation/webapps/tasklist/tasklist-user-task-state-complete.png
+✓ Updated: documentation\webapps\tasklist\tasklist-plugins.md
+    ./img/plugin-points/tasklist-plugin-navbar-action.png → /img/documentation/webapps/tasklist/tasklist-plugin-navbar-action.png
+    ./img/plugin-points/tasklist-plugin-task-action.png → /img/documentation/webapps/tasklist/tasklist-plugin-task-action.png
+    ./img/plugin-points/tasklist-plugin-tasklist-header.png → /img/documentation/webapps/tasklist/tasklist-plugin-tasklist-header.png
+    ./img/plugin-points/tasklist-plugin-task-detail.png → /img/documentation/webapps/tasklist/tasklist-plugin-task-detail.png
+    ./img/plugin-points/tasklist-plugin-list.png → /img/documentation/webapps/tasklist/tasklist-plugin-list.png
+    ./img/plugin-points/tasklist-plugin-card.png → /img/documentation/webapps/tasklist/tasklist-plugin-card.png
+✓ Updated: documentation\webapps\tasklist\user-assignment.md
+    ./img/tasklist-task-form-modeler.png → /img/documentation/webapps/tasklist/tasklist-task-form-modeler.png
+✓ Updated: documentation\webapps\welcome\welcome-plugins.md
+    ./img/welcome-dashboard-plugin.png → /img/documentation/webapps/welcome/welcome-dashboard-plugin.png
+    ./img/welcome-profile-plugin.png → /img/documentation/webapps/welcome/welcome-profile-plugin.png
+✓ Updated: get-started\archive\java-process-app\deploy.md
+    ./img/cockpit-loan-approval.png → /img/get-started/archive/java-process-app/cockpit-loan-approval.png
+    ./img/start-form-generic.png → /img/get-started/archive/java-process-app/start-form-generic.png
+    ./img/create-process-definition-authorization.png → /img/get-started/archive/java-process-app/create-process-definition-authorization.png
+    ./img/create-process-instance-authorization.png → /img/get-started/archive/java-process-app/create-process-instance-authorization.png
+    ./img/diagram.png → /img/get-started/archive/java-process-app/diagram.png
+    ./img/task-form-generic.png → /img/get-started/archive/java-process-app/task-form-generic.png
+✓ Updated: get-started\archive\java-process-app\forms.md
+    ./img/form-builder-start-form.png → /img/get-started/archive/java-process-app/form-builder-start-form.png
+    ./img/modeler-start-form.png → /img/get-started/archive/java-process-app/modeler-start-form.png
+    ./img/start-form-embedded.png → /img/get-started/archive/java-process-app/start-form-embedded.png
+    ./img/task-form-embedded.png → /img/get-started/archive/java-process-app/task-form-embedded.png
+✓ Updated: get-started\archive\java-process-app\model.md
+    ./img/modeler-new-bpmn-diagram.png → /img/get-started/archive/java-process-app/modeler-new-bpmn-diagram.png
+    ./img/modeler-step1.png → /img/get-started/archive/java-process-app/modeler-step1.png
+    ./img/modeler-step2.png → /img/get-started/archive/java-process-app/modeler-step2.png
+    ./img/modeler-step3.png → /img/get-started/archive/java-process-app/modeler-step3.png
+    ./img/modeler-step4.png → /img/get-started/archive/java-process-app/modeler-step4.png
+    ./img/modeler-step5.png → /img/get-started/archive/java-process-app/modeler-step5.png
+✓ Updated: get-started\archive\java-process-app\project-setup.md
+    ./img/eclipse-new-project.png → /img/get-started/archive/java-process-app/eclipse-new-project.png
+✓ Updated: get-started\archive\java-process-app\service-task.md
+    ./img/modeler-service-task1.png → /img/get-started/archive/java-process-app/modeler-service-task1.png
+    ./img/modeler-service-task2.png → /img/get-started/archive/java-process-app/modeler-service-task2.png
+    ./img/modeler-service-task3.png → /img/get-started/archive/java-process-app/modeler-service-task3.png
+✓ Updated: get-started\archive\javaee7\complete-process.md
+    ./img/prepare-pizza.png → /img/get-started/archive/javaee7/prepare-pizza.png
+    ./img/pizza-order-process-prepare-pizza.png → /img/get-started/archive/javaee7/pizza-order-process-prepare-pizza.png
+    ./img/pizza-order-process-send-rejection-email.png → /img/get-started/archive/javaee7/pizza-order-process-send-rejection-email.png
+✓ Updated: get-started\archive\javaee7\model.md
+    ./img/modeler-new-bpmn-diagram.png → /img/get-started/archive/javaee7/modeler-new-bpmn-diagram.png
+    ./img/pizza-order-process.png → /img/get-started/archive/javaee7/pizza-order-process.png
+    ./img/pizza-order-process-expression.png → /img/get-started/archive/javaee7/pizza-order-process-expression.png
+    ./img/pizza-order-process-condition-expression.png → /img/get-started/archive/javaee7/pizza-order-process-condition-expression.png
+✓ Updated: get-started\archive\javaee7\project-setup.md
+    ./img/maven-project-settings.png → /img/get-started/archive/javaee7/maven-project-settings.png
+✓ Updated: get-started\archive\javaee7\service-task.md
+    ./img/pizza-order-process-service-task-expression.png → /img/get-started/archive/javaee7/pizza-order-process-service-task-expression.png
+✓ Updated: get-started\archive\javaee7\start-form.md
+    ./img/pizza-order-process-start-form.png → /img/get-started/archive/javaee7/pizza-order-process-start-form.png
+✓ Updated: get-started\archive\javaee7\task-form.md
+    ./img/approve-order.png → /img/get-started/archive/javaee7/approve-order.png
+    ./img/pizza-order-process-task-form.png → /img/get-started/archive/javaee7/pizza-order-process-task-form.png
+    ./img/pizza-order-process-no.png → /img/get-started/archive/javaee7/pizza-order-process-no.png
+✓ Updated: get-started\archive\spring\project-setup.md
+    ./img/eclipse-new-project.png → /img/get-started/archive/spring/eclipse-new-project.png
+    ./img/project-layout-after-setup.png → /img/get-started/archive/spring/project-layout-after-setup.png
+✓ Updated: get-started\archive\spring\service-task.md
+    ./img/process-model.png → /img/get-started/archive/spring/process-model.png
+    ./img/service-task.png → /img/get-started/archive/spring/service-task.png
+✓ Updated: get-started\dmn\deploy.md
+    ./img/cockpit-dish-dmn.png → /img/get-started/dmn/cockpit-dish-dmn.png
+    ./img/cockpit-decision-overview-dish-dmn.png → /img/get-started/dmn/cockpit-decision-overview-dish-dmn.png
+    ./img/cockpit-decision-history-dish-dmn.png → /img/get-started/dmn/cockpit-decision-history-dish-dmn.png
+✓ Updated: get-started\dmn\drg.md
+    ./img/modeler-drd-step1.png → /img/get-started/dmn/modeler-drd-step1.png
+    ./img/modeler-drd-step2.png → /img/get-started/dmn/modeler-drd-step2.png
+    ./img/modeler-drd-step3.png → /img/get-started/dmn/modeler-drd-step3.png
+    ./img/modeler-drd-step4.png → /img/get-started/dmn/modeler-drd-step4.png
+    ./img/modeler-drd-step5.png → /img/get-started/dmn/modeler-drd-step5.png
+    ./img/cockpit-decision-overview-beverages-dmn.png → /img/get-started/dmn/cockpit-decision-overview-beverages-dmn.png
+    ./img/cockpit-decision-history-beverages-dmn.png → /img/get-started/dmn/cockpit-decision-history-beverages-dmn.png
+✓ Updated: get-started\dmn\model.md
+    ./img/modeler-new-dmn-table.png → /img/get-started/dmn/modeler-new-dmn-table.png
+    ./img/modeler-step1.png → /img/get-started/dmn/modeler-step1.png
+    ./img/modeler-step2a.png → /img/get-started/dmn/modeler-step2a.png
+    ./img/modeler-step2b.png → /img/get-started/dmn/modeler-step2b.png
+    ./img/modeler-step3.png → /img/get-started/dmn/modeler-step3.png
+    ./img/modeler-step4.png → /img/get-started/dmn/modeler-step4.png
+    ./img/modeler-step5.png → /img/get-started/dmn/modeler-step5.png
+    ./img/modeler-step6.png → /img/get-started/dmn/modeler-step6.png
+    ./img/modeler-step7.png → /img/get-started/dmn/modeler-step7.png
+    ./img/modeler-save-dmn-table.png → /img/get-started/dmn/modeler-save-dmn-table.png
+✓ Updated: get-started\dmn\project-setup.md
+    ./img/eclipse-new-project.png → /img/get-started/dmn/eclipse-new-project.png
+✓ Updated: get-started\quick-start\decision-automation.md
+    ./img/modeler-businessrule-task1.png → /img/get-started/quick-start/modeler-businessrule-task1.png
+    ./img/modeler-businessrule-task2.png → /img/get-started/quick-start/modeler-businessrule-task2.png
+    ./img/modeler-new-dmn-diagram.png → /img/get-started/quick-start/modeler-new-dmn-diagram.png
+    ./img/modeler-new-dmn-diagram-properties.png → /img/get-started/quick-start/modeler-new-dmn-diagram-properties.png
+    ./img/modeler-new-dmn-table.png → /img/get-started/quick-start/modeler-new-dmn-table.png
+    ./img/modeler-dmn2.png → /img/get-started/quick-start/modeler-dmn2.png
+    ./img/modeler-dmn3.png → /img/get-started/quick-start/modeler-dmn3.png
+    ./img/modeler-dmn4.png → /img/get-started/quick-start/modeler-dmn4.png
+    ./img/modeler-dmn5.png → /img/get-started/quick-start/modeler-dmn5.png
+    ./img/modeler-dmn6.png → /img/get-started/quick-start/modeler-dmn6.png
+    ./img/cockpit-approve-payment.png → /img/get-started/quick-start/cockpit-approve-payment.png
+    ./img/tasklist-dmn1.png → /img/get-started/quick-start/tasklist-dmn1.png
+    ./img/tasklist-dmn2.png → /img/get-started/quick-start/tasklist-dmn2.png
+    ./img/cockpit-dmn-table.png → /img/get-started/quick-start/cockpit-dmn-table.png
+✓ Updated: get-started\quick-start\deploy.md
+    ./img/modeler-deploy1.png → /img/get-started/quick-start/modeler-deploy1.png
+    ./img/modeler-deploy2.png → /img/get-started/quick-start/modeler-deploy2.png
+    ./img/modeler-deploy3.png → /img/get-started/quick-start/modeler-deploy3.png
+    ./img/cockpit-payment-retrieval.png → /img/get-started/quick-start/cockpit-payment-retrieval.png
+    ./img/postman-start-instance.png → /img/get-started/quick-start/postman-start-instance.png
+✓ Updated: get-started\quick-start\gateway.md
+    ./img/modeler-gateway1.png → /img/get-started/quick-start/modeler-gateway1.png
+    ./img/modeler-gateway2.png → /img/get-started/quick-start/modeler-gateway2.png
+    ./img/modeler-gateway3.png → /img/get-started/quick-start/modeler-gateway3.png
+    ./img/modeler-gateway4.png → /img/get-started/quick-start/modeler-gateway4.png
+    ./img/modeler-gateway5.png → /img/get-started/quick-start/modeler-gateway5.png
+    ./img/modeler-gateway6.png → /img/get-started/quick-start/modeler-gateway6.png
+    ./img/start-form-generic.png → /img/get-started/quick-start/start-form-generic.png
+✓ Updated: get-started\quick-start\service-task.md
+    ./img/modeler-new-bpmn-diagram.png → /img/get-started/quick-start/modeler-new-bpmn-diagram.png
+    ./img/modeler-step1.png → /img/get-started/quick-start/modeler-step1.png
+    ./img/modeler-step2.png → /img/get-started/quick-start/modeler-step2.png
+    ./img/modeler-step3.png → /img/get-started/quick-start/modeler-step3.png
+    ./img/modeler-step4.png → /img/get-started/quick-start/modeler-step4.png
+    ./img/modeler-step5.png → /img/get-started/quick-start/modeler-step5.png
+    ./img/eclipse-new-project.png → /img/get-started/quick-start/eclipse-new-project.png
+✓ Updated: get-started\quick-start\user-task.md
+    ./img/modeler-usertask1.png → /img/get-started/quick-start/modeler-usertask1.png
+    ./img/modeler-usertask2.png → /img/get-started/quick-start/modeler-usertask2.png
+    ./img/modeler-usertask3.png → /img/get-started/quick-start/modeler-usertask3.png
+    ./img/modeler-usertask-add.png → /img/get-started/quick-start/modeler-usertask-add.png
+    ./img/modeler-usertask-form.png → /img/get-started/quick-start/modeler-usertask-form.png
+    ./img/modeler-usertask4.png → /img/get-started/quick-start/modeler-usertask4.png
+    ./img/modeler-usertask5.png → /img/get-started/quick-start/modeler-usertask5.png
+    ./img/modeler-usertask6.png → /img/get-started/quick-start/modeler-usertask6.png
+    ./img/modeler-platform-selection.png → /img/get-started/quick-start/modeler-platform-selection.png
+    ./img/modeler-deploy-form.png → /img/get-started/quick-start/modeler-deploy-form.png
+    ./img/start-form-generic.png → /img/get-started/quick-start/start-form-generic.png
+    ./img/diagram.png → /img/get-started/quick-start/diagram.png
+    ./img/task-form-generated.png → /img/get-started/quick-start/task-form-generated.png
+✓ Updated: get-started\spring-boot\model.md
+    ./img/loanApproval.png → /img/get-started/spring-boot/loanApproval.png
+    ./img/tasklist.png → /img/get-started/spring-boot/tasklist.png
+✓ Updated: get-started\spring-boot\project-setup.md
+    ./img/eclipse-new-project.png → /img/get-started/spring-boot/eclipse-new-project.png
+
+============================================================
+MIGRATION REPORT
+============================================================
+Mode: DRY RUN (no changes made)
+Files scanned: 413
+Images found: 542
+Images moved: 0
+Files updated: 0
+
+⚠ Warnings: 2
+  - Image not found: {{ camForm.variableManager.variable( (referenced in docs\documentation\reference\forms\embedded-forms\controls\files.md)
+  - Image not found: {{contextPath}}/image.png (referenced in docs\documentation\reference\forms\embedded-forms\javascript\examples.md) 
+============================================================
+
+� This was a dry run. To apply changes, set dryRun: false in the script.
+
