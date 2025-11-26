@@ -19,7 +19,7 @@ const CONFIG = {
   docsPath: './docs',
   staticPath: './static/img',
   backupPath: './backup-images',
-  dryRun: true, // Set to true to see what would happen without making changes
+  dryRun: false, // Set to true to see what would happen without making changes
   
   // Define your sidebar structure - images will be organized to match
   sidebarSections: {
