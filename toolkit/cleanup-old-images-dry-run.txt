@@ -1,0 +1,56 @@
+$ node cleanup-old-images.js 
+� Old Image Cleanup Script
+
+============================================================
+Mode: DRY RUN (no changes)
+============================================================
+
+Scanning for old image directories...
+
+Found 35 directories containing 625 files:
+
+1. docs\documentation\img
+2. docs\documentation\introduction\img
+3. docs\documentation\reference\bpmn20\events\bpmn
+4. docs\documentation\reference\bpmn20\events\img
+5. docs\documentation\reference\bpmn20\gateways\bpmn
+6. docs\documentation\reference\bpmn20\img
+7. docs\documentation\reference\bpmn20\subprocesses\bpmn
+8. docs\documentation\reference\bpmn20\tasks\bpmn
+9. docs\documentation\reference\cmmn11\concepts\img
+10. docs\documentation\reference\cmmn11\img
+11. docs\documentation\reference\cmmn11\markers\img
+12. docs\documentation\reference\dmn\decision-literal-expression\img
+13. docs\documentation\reference\dmn\decision-table\img
+14. docs\documentation\reference\dmn\drg\img
+15. docs\documentation\reference\dmn\feel\img
+16. docs\documentation\user-guide\dmn-engine\img
+17. docs\documentation\user-guide\ext-client\img
+18. docs\documentation\user-guide\model-api\bpmn-model-api\img
+19. docs\documentation\user-guide\process-applications\img
+20. docs\documentation\user-guide\process-engine\bpmn
+21. docs\documentation\user-guide\process-engine\img
+22. docs\documentation\user-guide\runtime-container-integration\img
+23. docs\documentation\user-guide\task-forms\img
+24. docs\documentation\user-guide\testing\img
+25. docs\documentation\webapps\admin\img
+26. docs\documentation\webapps\cockpit\bpmn
+27. docs\documentation\webapps\cockpit\img
+28. docs\documentation\webapps\tasklist\img
+29. docs\documentation\webapps\welcome\img
+30. docs\get-started\archive\java-process-app\img
+31. docs\get-started\archive\javaee7\img
+32. docs\get-started\archive\spring\img
+33. docs\get-started\dmn\img
+34. docs\get-started\quick-start\img
+35. docs\get-started\spring-boot\img
+
+============================================================
+
+� This is a DRY RUN. No files were deleted.
+
+To actually delete these directories:
+1. Verify your documentation works correctly
+2. Edit this script and set dryRun: false
+3. Run the script again
+
