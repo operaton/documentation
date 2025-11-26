@@ -43,11 +43,20 @@ const report = {
  * Determine which sidebar section a file belongs to
  */
 function getSidebarSection(filePath) {
-  for (const [section, paths] of Object.entries(CONFIG.sidebarSections)) {
-    if (paths.some(p => filePath.startsWith(p))) {
-      return section;
-    }
+  // Normalize path separators for cross-platform compatibility
+  const normalizedPath = filePath.replace(/\\/g, '/');
+  
+  // Check if path contains any of the sidebar section names
+  if (normalizedPath.includes('docs/get-started')) {
+    return 'get-started';
   }
+  if (normalizedPath.includes('docs/documentation')) {
+    return 'documentation';
+  }
+  if (normalizedPath.includes('docs/security')) {
+    return 'security';
+  }
+  
   return 'shared'; // Default for images not in a specific section
 }
 
@@ -105,13 +114,21 @@ function resolveImagePath(imagePath, mdFilePath) {
     return path.join(CONFIG.staticPath, imagePath.replace('/img/', ''));
   }
   
-  // Relative path
+  // Relative path with explicit ./  or ../
   if (imagePath.startsWith('./') || imagePath.startsWith('../')) {
     const mdDir = path.dirname(mdFilePath);
     return path.resolve(mdDir, imagePath);
   }
   
-  // Check if it's in static folder
+  // Relative path without ./ (e.g., "img/file.png")
+  // This should be resolved relative to the markdown file's directory
+  if (!path.isAbsolute(imagePath)) {
+    const mdDir = path.dirname(mdFilePath);
+    const resolvedPath = path.resolve(mdDir, imagePath);
+    return resolvedPath;
+  }
+  
+  // Check if it's in static folder (fallback)
   const staticPath = path.join(CONFIG.staticPath, imagePath);
   return staticPath;
 }
@@ -123,12 +140,21 @@ function getNewImagePath(oldPath, sidebarSection, mdFilePath) {
   const ext = path.extname(oldPath);
   const basename = path.basename(oldPath, ext);
   
-  // Create a subfolder structure based on the doc's location
-  const docRelativePath = path.relative(CONFIG.docsPath, path.dirname(mdFilePath));
-  const docParts = docRelativePath.split(path.sep).filter(p => p && p !== '.');
+  // Create a subfolder structure based on the doc's location within the section
+  const normalizedMdPath = mdFilePath.replace(/\\/g, '/');
   
-  // Remove the sidebar section name from path parts if it exists
-  const subPath = docParts.filter(p => p !== sidebarSection).join('/');
+  // Extract the path after the sidebar section
+  let subPath = '';
+  if (sidebarSection !== 'shared') {
+    const sectionPrefix = `docs/${sidebarSection}/`;
+    const sectionIndex = normalizedMdPath.indexOf(sectionPrefix);
+    
+    if (sectionIndex !== -1) {
+      const pathAfterSection = normalizedMdPath.substring(sectionIndex + sectionPrefix.length);
+      const docParts = path.dirname(pathAfterSection).split('/').filter(p => p && p !== '.');
+      subPath = docParts.join('/');
+    }
+  }
   
   // Build new path
   let newPath;
