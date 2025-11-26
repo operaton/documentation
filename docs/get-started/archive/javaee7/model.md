@@ -17,13 +17,13 @@ In this section we model our sample process with the Camunda Modeler.
 
 ## Create a new BPMN 2.0 Diagram
 
-![Example image](./img/modeler-new-bpmn-diagram.png)
+![Example image](/img/get-started/archive/javaee7/modeler-new-bpmn-diagram.png)
 
 Open Camunda Modeler and create a new BPMN diagram by Clicking *File > New File > BPMN Diagram*.
 
 ### Create the Sample Pizza Order Process
 
-![Example image](./img/pizza-order-process.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process.png)
 
 The sample process models a pizza order approval. In the first service task, the order should be persisted to our database. The next step is the approval of the order by a user. Based on his decision, the pizza will be prepared or a rejection email is sent.
 
@@ -31,9 +31,9 @@ Since we are modeling an executable process, we should give it an ID, a name and
 
 ### Configure Placeholder Expressions
 
-![Example image](./img/pizza-order-process-expression.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-expression.png)
 
-![Example image](./img/pizza-order-process-condition-expression.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-condition-expression.png)
 
 Additionally, you have to configure some placeholder expressions for the service tasks and the conditional sequence flows. Otherwise, you wouldn't be able to deploy this process on the process engine. Please set the `Expression` property of both service tasks to `${true}`. Also set the `Condition` property of the sequence flows after the exclusive gateway to `${true}`, respectively `${false}`.
 

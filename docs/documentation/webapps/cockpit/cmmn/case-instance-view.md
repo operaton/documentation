@@ -11,7 +11,7 @@ menu:
 
 ---
 
-![Example img](./../img/cmmn/case-instance-view.png)Case Instance View
+![Example img](/img/documentation/webapps/cockpit/cmmn/case-instance-view.png)Case Instance View
 
 Open the case instance view by selecting a case instance from the [case definition view][case-definition-view] instance list. This view allows you to drill down into a single case instance and explore its activities as well as the variables, tasks, etc.
 
@@ -19,7 +19,7 @@ Furthermore, you can maximize the diagram view or the detailed information panel
 
 ## Detailed Information Panel
 
-![Example img](./../img/cmmn/detailed-information-view.png)Detailed Information Panel
+![Example img](/img/documentation/webapps/cockpit/cmmn/detailed-information-view.png)Detailed Information Panel
 
 You can access various information regarding the specific instance by selecting the applicable tab at the bottom of the screen:
 
@@ -43,21 +43,21 @@ In the Executed Decision Instances tab you find an overview of all decision inst
 
 ## Add Variables
 
-![Example img](./../img/cmmn/add-variables.png)Add Variables
+![Example img](/img/documentation/webapps/cockpit/cmmn/add-variables.png)Add Variables
 
 Hit the plus button on the right side to add variables to a case instance. You can choose between different data types. Please note that variables will be overwritten if you add a new variable with an existing name.
 
 
 ## Edit Variables
 
-![Example img](./../img/cmmn/edit-variables.png)Edit Variables
+![Example img](/img/documentation/webapps/cockpit/cmmn/edit-variables.png)Edit Variables
 
 Edit variables in the list of variables by using the pencil symbol. This feature allows you to change the value of variables as well as the type. A validation of the date format and for the value of integers happens on client side. If you enter NULL, the variable will be converted to a string type.
 
 
 ## Terminate a Case Instance
 
-![Example img](./../img/cmmn/terminate-case.png)Terminate Case Instance
+![Example img](/img/documentation/webapps/cockpit/cmmn/terminate-case.png)Terminate Case Instance
 
 In the case instance view you can terminate a single case instance. Hit the remove button on the right side.
 

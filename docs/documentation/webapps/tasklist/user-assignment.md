@@ -20,7 +20,7 @@ This works as follows:
 
 ## Implementing Initial Assignment
 
-![Example img](./img/tasklist-task-form-modeler.png)User Task Assignment
+![Example img](/img/documentation/webapps/tasklist/tasklist-task-form-modeler.png)User Task Assignment
 
 You can read up on how to implement the inital user assignment for BPMN User Tasks and CMMN Human Tasks in the corresponding reference sections:
 

@@ -25,11 +25,11 @@ Add a **Number Field**, set the **Field Label** to `Amount` and the **Key** to `
 
 Save the form with the file name `request-loan.form` to `src/main/resources`.
 
-.![Example image](./img/form-builder-start-form.png)
+.![Example image](/img/get-started/archive/java-process-app/form-builder-start-form.png)
 
 Open the process with the modeler. Click on the start event. In the properties panel, click on `Forms` select `Operaton Forms` as type, insert `request-loan` into the `Form reference` field, and choose `latest` as binding. This means Tasklist uses the latest deployed version of the form. Save the diagram and refresh the Eclipse project.
 
-![Example image](./img/modeler-start-form.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-start-form.png)
 
 
 ## Add a Task Form
@@ -79,8 +79,8 @@ Before selecting the pom.xml in the Package Explorer of Eclipse and performing a
 
 Now you go to [Tasklist](http://localhost:8080/operaton/app/tasklist) and start a new process instance for the loan approval process. You will notice that the custom form is displayed.
 
-![Example image](./img/start-form-embedded.png)
+![Example image](/img/get-started/archive/java-process-app/start-form-embedded.png)
 
 After starting a new process instance a new task `Approve Loan` is assigned to john. To work on the task, select the task inside the list of tasks and you will also notice that the custom form is displayed.
 
-![Example image](./img/task-form-embedded.png)
+![Example image](/img/get-started/archive/java-process-app/task-form-embedded.png)
