@@ -18,7 +18,7 @@ const CONFIG = {
   docsPath: './docs',
   staticPath: './static/img',
   backupPath: './backup-assets',
-  dryRun: true, // ALWAYS start with dry run!
+  dryRun: false, // ALWAYS start with dry run!
   
   // All file extensions to migrate
   assetExtensions: [
