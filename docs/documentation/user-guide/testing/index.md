@@ -213,27 +213,27 @@ When using the in-memory H2 database for unit tests, the following instructions 
 
 Suppose we have put a breakpoint somewhere in our unit test. In Eclipse this is done by double-clicking in the left border next to the code:
 
-![API Test Debugging](img/api-test-debug-breakpoint.png)
+![API Test Debugging](/img/documentation/user-guide/testing/api-test-debug-breakpoint.png)
 
 If we now run the unit test in debug mode (right-click in test class, select 'Run as' and then 'JUnit test'), the test execution halts at our breakpoint, where we can now inspect the variables of our test as shown in the right upper panel.
 
-![API Test Debugging](img/api-test-debug-view.png)
+![API Test Debugging](/img/documentation/user-guide/testing/api-test-debug-view.png)
 
 To inspect the data, open up the 'Display' window (if this window isn't there, open Window->Show View->Other and select Display.) and type (code completion is available) `org.h2.tools.Server.createWebServer("-web").start()`
 
-![API Test Debugging](img/api-test-debug-start-h2-server.png)
+![API Test Debugging](/img/documentation/user-guide/testing/api-test-debug-start-h2-server.png)
 
 Select the line you've just typed and right-click on it. Now select 'Display' (or execute the shortcut instead of right-clicking)
 
-![API Test Debugging](img/api-test-debug-start-h2-server-2.png)
+![API Test Debugging](/img/documentation/user-guide/testing/api-test-debug-start-h2-server-2.png)
 
 Now open up a browser and go to http://localhost:8082, and fill in the JDBC URL to the in-memory database (by default this is jdbc:h2:mem:operaton), and hit the connect button.
 
-![API Test Debugging](img/api-test-debug-h2-login.png)
+![API Test Debugging](/img/documentation/user-guide/testing/api-test-debug-h2-login.png)
 
 You can now see the engine database and use it to understand how and why your unit test is executing your process in a certain way.
 
-![API Test Debugging](img/api-test-debug-h2-tables.png)
+![API Test Debugging](/img/documentation/user-guide/testing/api-test-debug-h2-tables.png)
 
 
 ## Operaton Assertions
@@ -405,7 +405,7 @@ To test this application, all components, including the application server itsel
 
 The following drawing shows a schematic representation of what this looks like for our example of a Java EE application:
 
-![Testing Scopes](img/test-scopes.png)
+![Testing Scopes](/img/documentation/user-guide/testing/test-scopes.png)
 
 Three test scopes are defined:
 

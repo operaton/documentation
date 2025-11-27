@@ -21,7 +21,7 @@ The descriptions in this section are general for the constructs they describe. C
 
 To understand the role lifecycles play for CMMN execution, consider the following case:
 
-![Example img](./img/example-lifecycle-case.png)
+![Example img](/img/documentation/reference/cmmn11/concepts/example-lifecycle-case.png)
 
 This case contains two human tasks *Task A* and *Task B* that are connected by a sentry. The sentry expresses that Task B can be enacted when Task A finishes. This is formally specified by lifecycles. In our example, the following steps might take place:
 
@@ -29,21 +29,21 @@ This case contains two human tasks *Task A* and *Task B* that are connected by a
 2. Two instances for each human task are automatically created, both in state `AVAILABLE`.
 3. Task A does not have a condition to start, so it immediately reaches state `ENABLED`. Note that the steps 1 to 3 all happens synchronously with the `caseService` invocation from step 1. The case is now in the following state:
 <center>
-  ![Example img](./img/lifecycle-example-1.png)
+  ![Example img](/img/documentation/reference/cmmn11/concepts/lifecycle-example-1.png)
 </center>
 4. A user manually starts Task A by calling `caseService.manuallyStartCaseExecution(taskAExecutionId);`. As a consequence, Task A reaches state `ACTIVE` and a task instance is added to the assignee's task list. Note that starting a task is only allowed if that task is in state `ENABLED`. Thus, trying to manually start Task B here by `caseService.manuallyStartCaseExecution(taskBExecutionId);` would fail. The state is now:
 <center>
-![Example img](./img/lifecycle-example-2.png)
+![Example img](/img/documentation/reference/cmmn11/concepts/lifecycle-example-2.png)
 </center>
 5. The assignee completes the task instance by calling `taskService.complete(taskId);`. Task A reaches the state `COMPLETED`.
 6. Task A's state transition triggers Task B's sentry. In consequence, Task B becomes `ENABLED`. This happens synchronously in the invocation from step 5. Accordingly, the case's new state is:
 <center>
-  ![Example img](./img/lifecycle-example-3.png)
+  ![Example img](/img/documentation/reference/cmmn11/concepts/lifecycle-example-3.png)
 </center>
 7. Similar to Task A, a user may now use the `CaseService` and `TaskService` to start Task B, complete the corresponding task instance, and complete Task B. Ultimately, Task B reaches the state `COMPLETED`.
 8. With both tasks in state `COMPLETED`, the case instance automatically reaches the state `COMPLETED` as well. The state has case has reached the following state:
 <center>
-  ![Example img](./img/lifecycle-example-4.png)
+  ![Example img](/img/documentation/reference/cmmn11/concepts/lifecycle-example-4.png)
 </center>
 9. A user may close the case instance by invoking `caseService.closeCaseInstance(caseInstanceId);`. The case instance reaches the state `CLOSED`.
 
@@ -65,7 +65,7 @@ Note that a `CaseExecution` object corresponds to a plan item, here the plan ite
 
 *Case instance* refers to an instance of the case plan model. More specific, it is an instance of the single top-level stage in a case definition. The lifecycle of a case instance is the following:
 
-![Example img](./img/CaseInstanceLifecycle.png)
+![Example img](/img/documentation/reference/cmmn11/concepts/CaseInstanceLifecycle.png)
 
 States:
 
@@ -112,7 +112,7 @@ States:
 
 The lifecycle of a task or stage plan item is the following:
 
-![Example img](./img/TaskStageLifecycle.png)
+![Example img](/img/documentation/reference/cmmn11/concepts/TaskStageLifecycle.png)
 
 States:
 
@@ -175,7 +175,7 @@ States:
 
 The lifecycle of a milestone plan item is the following:
 
-![Example img](./img/MilestoneLifecycle.png)
+![Example img](/img/documentation/reference/cmmn11/concepts/MilestoneLifecycle.png)
 
 States
 

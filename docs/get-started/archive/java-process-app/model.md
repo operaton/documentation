@@ -18,14 +18,14 @@ In this section you learn how to create your first BPMN 2.0 process with the Cam
 
 Create a new BPMN diagram by clicking *File > New File > BPMN Diagram*.
 
-![Example image](./img/modeler-new-bpmn-diagram.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-new-bpmn-diagram.png)
 
 
 ## Start with a Simple Process
 
 Start by modeling a simple process.
 
-![Example image](./img/modeler-step1.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-step1.png)
 
 Double-click on the Start Event. A text box opens. Type "Loan Request Received".
 
@@ -35,17 +35,17 @@ When editing Labels, you can add line breaks by hitting `Shift + Enter`.
 
 Click on the start event. From its context menu, select the activity shape (rectangle) and drag it to a good position. Name it *Approve Loan*. Change the activity type to *User Task* by clicking on it and using the wrench button.
 
-![Example image](./img/modeler-step2.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-step2.png)
 
 Add an End Event named *Loan Request Approved*.
 
-![Example image](./img/modeler-step3.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-step3.png)
 
 
 
 ## Configure a User Task
 
-![Example image](./img/modeler-step4.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-step4.png)
 
 Next, Open the properties view. If it is not already visible then click on the label on the right hand side of your screen and the properties view will be displayed.
 
@@ -57,7 +57,7 @@ When you are done, save your changes.
 
 ## Configure Properties for Execution
 
-![Example image](./img/modeler-step5.png)
+![Example image](/img/get-started/archive/java-process-app/modeler-step5.png)
 
 Since we are modeling an executable process, we should give it an ID and set the `isExecutable` property to `true`. On the right hand side of the canvas, you find the properties panel. Click on a free spot of the modeling canvas. This displays the properties of the process itself.
 

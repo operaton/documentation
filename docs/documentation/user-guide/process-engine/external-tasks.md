@@ -23,7 +23,7 @@ Note that the above distinction does not say whether the actual "business logic"
 
 The flow of executing external tasks can be conceptually separated into three steps, as depicted in the following image:
 
-![Example img](./img/external-task-pattern.png)External Task Pattern
+![Example img](/img/documentation/user-guide/process-engine/external-task-pattern.png)External Task Pattern
 
 1. **Process Engine**: Creation of an external task instance
 2. **External Worker**: Fetch and lock external tasks
@@ -97,7 +97,7 @@ Ordinary HTTP requests are immediately answered by the server, regardless of whe
 is available or not. This inevitably leads to a situation where the client has to perform multiple recurring requests until
 the information is available (polling). This approach can obviously be expensive in terms of resources.
 
-![Long polling to fetch and lock external tasks](./img/external-task-long-polling.png)
+![Long polling to fetch and lock external tasks](/img/documentation/user-guide/process-engine/external-task-long-polling.png)
 
 With the aid of long polling, a request is suspended by the server if no external tasks are available. As soon as new
 external tasks occur, the request is reactivated and the response is performed. The suspension is limited to a

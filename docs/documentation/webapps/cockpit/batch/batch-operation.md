@@ -13,7 +13,7 @@ menu:
 
 ## Definition Of operation
 
-![Example img](../img/batch/batch_operation_definition.png)
+![Example img](/img/documentation/webapps/cockpit/batch/batch_operation_definition.png)
 
 
 It is possible to execute the following batch operations:
@@ -48,7 +48,7 @@ appropriate notice once the operation type is selected.
 
 Navigation to the next step is disabled as long as all required data to perform the operation is not filled out.
 
-![Example img](./../img/batch/batch-in-operator.png)IN Operator
+![Example img](/img/documentation/webapps/cockpit/batch/batch-in-operator.png)IN Operator
 
 Cockpit provides `IN` operator support when filtering for process instances for the following query criteria:
 
@@ -63,7 +63,7 @@ Occasionally, you may search for multiple query criterion values. The `IN` opera
 To use the `IN` operator, select a query criterion that supports the `IN` operator, and provide the values as a comma-separated list. To adjust the comma-separated list of values,
 start editing by clicking on the value. You can expand the value in a modal dialog for easier editing by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button.
 
-![Example img](./../img/batch/batch-in-operator-modal.png)IN Operator Modal
+![Example img](/img/documentation/webapps/cockpit/batch/batch-in-operator-modal.png)IN Operator Modal
 
 :::note[Heads-up!]
   The instance search operates on the history endpoint of the engine. In case the requested historic data is not persisted to the database, then the search does not deliver the desired results.
@@ -71,14 +71,14 @@ start editing by clicking on the value. You can expand the value in a modal dial
 
 ## Confirmation of operation
 
-![Batch Operation Confirmation](./../img/batch/batch_operation_confirmation.png)
+![Batch Operation Confirmation](/img/documentation/webapps/cockpit/batch/batch_operation_confirmation.png)
 
 In the next step of the process, you can review the operation that is going to be performed. One can see a short summary of affected instances
 count as well as a <button class="btn btn-xs"><i class="glyphicon glyphicon-eye-open"></i></button> button which toggles display of extended information. In the section with extended information, you see a path to the REST endpoint that will process the request as well as the payload of the request.
 
 ## Review results
 
-![Batch Operation Result](./../img/batch/batch_operation_result.png)
+![Batch Operation Result](/img/documentation/webapps/cockpit/batch/batch_operation_result.png)
 
 On the results screen you will see the current status of the batch operation creation. Upon successful batch creation, the user is able to
 navigate to [batch monitoring](../batch/monitoring.md). In case of error, this screen will display a corresponding error message.

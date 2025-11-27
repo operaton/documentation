@@ -24,7 +24,7 @@ Note that these operations are also available via REST: restref page="restartPro
 
 As an example, consider the following process model where the red dots mark active tasks:
 
-![Example img](./img/variables-3.png)Running Process Instance
+![Example img](/img/documentation/user-guide/process-engine/variables-3.png)Running Process Instance
 
 Let us assume that the process instance has been canceled externally by a worker using the following code:
 
