@@ -1,56 +1,44 @@
 # File Count Report
 
-**Generated:** 2025-11-27 14:32:27
+**Generated:** 2025-11-27 14:35:02
 
 ## Summary
 
 | File Type | docs/ | static/img/ | Total |
 |-----------|-------|-------------|-------|
-| .png | 456 | 9 | 465 |
+| .png | 0 | 460 | 460 |
 | .md | 410 | 0 | 410 |
-| .svg | 87 | 4 | 91 |
-| .bpmn | 66 | 0 | 66 |
+| .svg | 0 | 91 | 91 |
+| .bpmn | 0 | 66 | 66 |
 | .mdx | 3 | 0 | 3 |
-| .dmn | 2 | 0 | 2 |
+| .dmn | 0 | 2 | 2 |
 | .jpg | 0 | 1 | 1 |
-| .odg | 1 | 0 | 1 |
-| .js | 1 | 0 | 1 |
+| .odg | 0 | 1 | 1 |
+| .js | 0 | 1 | 1 |
 | .json | 1 | 0 | 1 |
-| **TOTAL** | **1027** | **14** | **1041** |
+| **TOTAL** | **414** | **622** | **1036** |
 
 ## Details
 
 ### .png
 
-**In docs/ (456 files):**
+**In static/img/ (460 files):**
 
-- docs/documentation/img/docsVersionDropdown.png
-- docs/documentation/img/localeDropdown.png
-- docs/documentation/introduction/img/architecture-overview.png
-- docs/documentation/introduction/img/clustered-process-engine.png
-- docs/documentation/introduction/img/embedded-process-engine.png
-- docs/documentation/introduction/img/multi-tenancy-process-engine.png
-- docs/documentation/introduction/img/process-engine-architecture.png
-- docs/documentation/introduction/img/shared-process-engine.png
-- docs/documentation/introduction/img/standalone-process-engine.png
-- docs/documentation/reference/bpmn20/events/img/activityInstanceState.png
-- ... (436 more files)
-- docs/get-started/quick-start/img/modeler-usertask6.png
-- docs/get-started/quick-start/img/niall-says-congrats.png
-- docs/get-started/quick-start/img/postman-start-instance.png
-- docs/get-started/quick-start/img/start-form-generic.png
-- docs/get-started/quick-start/img/task-form-generated.png
-- docs/get-started/quick-start/img/tasklist-dmn1.png
-- docs/get-started/quick-start/img/tasklist-dmn2.png
-- docs/get-started/spring-boot/img/eclipse-new-project.png
-- docs/get-started/spring-boot/img/loanApproval.png
-- docs/get-started/spring-boot/img/tasklist.png
-
-**In static/img/ (9 files):**
-
-- static/img/docusaurus.png
-- static/img/event-based-gateway.png
-- static/img/favicon.png
+- static/img/documentation/examples/img/docsVersionDropdown.png
+- static/img/documentation/examples/img/localeDropdown.png
+- static/img/documentation/examples/reference/dmn/decision-literal-expression/img/decision-id.png
+- static/img/documentation/examples/reference/dmn/decision-literal-expression/img/decision-literal-expression.png
+- static/img/documentation/examples/reference/dmn/decision-literal-expression/img/decision-name.png
+- static/img/documentation/examples/user-guide/ext-client/img/externalTaskCient.png
+- static/img/documentation/examples/user-guide/process-engine/img/process-engine-history.png
+- static/img/documentation/examples/webapps/cockpit/img/cockpit-edit-dmn-dialog.png
+- static/img/documentation/examples/webapps/cockpit/img/cockpit-plugins/architecture.png
+- static/img/documentation/examples/webapps/cockpit/img/migration/step4_error.png
+- ... (440 more files)
+- static/img/get-started/quick-start/tasklist-dmn2.png
+- static/img/get-started/spring-boot/eclipse-new-project.png
+- static/img/get-started/spring-boot/loanApproval.png
+- static/img/get-started/spring-boot/tasklist.png
 - static/img/operaton_docs_icon.png
 - static/img/operaton_docs_icon_comp.png
 - static/img/operaton_docs_start_icon.png
@@ -86,32 +74,25 @@
 
 ### .svg
 
-**In docs/ (87 files):**
+**In static/img/ (91 files):**
 
-- docs/documentation/reference/bpmn20/events/bpmn/event-conditional.svg
-- docs/documentation/reference/bpmn20/img/symbols/and_gateway.svg
-- docs/documentation/reference/bpmn20/img/symbols/business_rule_task.svg
-- docs/documentation/reference/bpmn20/img/symbols/call_activity.svg
-- docs/documentation/reference/bpmn20/img/symbols/complex_gateway.svg
-- docs/documentation/reference/bpmn20/img/symbols/data_object.svg
-- docs/documentation/reference/bpmn20/img/symbols/data_store.svg
-- docs/documentation/reference/bpmn20/img/symbols/event_gateway.svg
-- docs/documentation/reference/bpmn20/img/symbols/event_subprocess.svg
-- docs/documentation/reference/bpmn20/img/symbols/events/cancel_boundary_event.svg
-- ... (67 more files)
-- docs/documentation/user-guide/process-engine/img/bpmn-elements/message-event.svg
-- docs/documentation/user-guide/process-engine/img/bpmn-elements/receive-task.svg
-- docs/documentation/user-guide/process-engine/img/bpmn-elements/signal-event.svg
-- docs/documentation/user-guide/process-engine/img/bpmn-elements/timer-event.svg
-- docs/documentation/user-guide/process-engine/img/bpmn-elements/user-task.svg
-- docs/documentation/user-guide/process-engine/img/erd_722_bpmn.svg
-- docs/documentation/user-guide/process-engine/img/erd_722_cmmn.svg
-- docs/documentation/user-guide/process-engine/img/erd_722_dmn.svg
-- docs/documentation/user-guide/process-engine/img/erd_722_history.svg
-- docs/documentation/user-guide/process-engine/img/erd_722_identity.svg
-
-**In static/img/ (4 files):**
-
+- static/img/documentation/examples/reference/dmn/decision-table/img/dish-table.svg
+- static/img/documentation/reference/bpmn20/and_gateway.svg
+- static/img/documentation/reference/bpmn20/business_rule_task.svg
+- static/img/documentation/reference/bpmn20/call_activity.svg
+- static/img/documentation/reference/bpmn20/cancel_boundary_event.svg
+- static/img/documentation/reference/bpmn20/cancel_end_event.svg
+- static/img/documentation/reference/bpmn20/compensation_boundary_event.svg
+- static/img/documentation/reference/bpmn20/compensation_end_event.svg
+- static/img/documentation/reference/bpmn20/compensation_event_subprocess_start_event.svg
+- static/img/documentation/reference/bpmn20/compensation_intermediate_throw_event.svg
+- ... (71 more files)
+- static/img/documentation/user-guide/process-engine/database/erd_722_identity.svg
+- static/img/documentation/user-guide/process-engine/message-event.svg
+- static/img/documentation/user-guide/process-engine/receive-task.svg
+- static/img/documentation/user-guide/process-engine/signal-event.svg
+- static/img/documentation/user-guide/process-engine/timer-event.svg
+- static/img/documentation/user-guide/process-engine/user-task.svg
 - static/img/operaton-logo.svg
 - static/img/undraw_docusaurus_mountain.svg
 - static/img/undraw_docusaurus_react.svg
@@ -119,29 +100,29 @@
 
 ### .bpmn
 
-**In docs/ (66 files):**
+**In static/img/ (66 files):**
 
-- docs/documentation/reference/bpmn20/events/bpmn/catchandthrowpattern.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/compensation-event-subprocess.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/compensation-intermediate-throw-event.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/conditionalEventScopes.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/conditionalEventScopesHighestFirst.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/escalation-boundary-event.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/escalation-end-event.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/escalation-example.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/escalation-intermediate-throw-event.bpmn
-- docs/documentation/reference/bpmn20/events/bpmn/escalation-start-event.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/catchandthrowpattern.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/compensation-event-subprocess.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/compensation-intermediate-throw-event.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/conditionalEventScopes.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/conditionalEventScopesHighestFirst.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/escalation-boundary-event.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/escalation-end-event.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/escalation-example.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/escalation-intermediate-throw-event.bpmn
+- static/img/documentation/examples/reference/bpmn20/events/bpmn/escalation-start-event.bpmn
 - ... (46 more files)
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-boundary-timer2.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation1.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation2.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation3.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation4.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation5.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation6.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example1.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/process-instance-migration/example2.bpmn
-- docs/documentation/user-guide/process-engine/bpmn/x_event-based-gateway.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-boundary-timer2.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation1.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation2.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation3.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation4.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation5.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation6.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example1.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example2.bpmn
+- static/img/documentation/examples/user-guide/process-engine/bpmn/x_event-based-gateway.bpmn
 
 ### .mdx
 
@@ -153,10 +134,10 @@
 
 ### .dmn
 
-**In docs/ (2 files):**
+**In static/img/ (2 files):**
 
-- docs/documentation/reference/dmn/decision-literal-expression/img/decision-literal-expression.dmn
-- docs/documentation/reference/dmn/drg/img/drg.dmn
+- static/img/documentation/examples/reference/dmn/decision-literal-expression/img/decision-literal-expression.dmn
+- static/img/documentation/examples/reference/dmn/drg/img/drg.dmn
 
 ### .jpg
 
@@ -166,15 +147,15 @@
 
 ### .odg
 
-**In docs/ (1 files):**
+**In static/img/ (1 files):**
 
-- docs/documentation/user-guide/process-engine/img/api.services.odg
+- static/img/documentation/examples/user-guide/process-engine/img/api.services.odg
 
 ### .js
 
-**In docs/ (1 files):**
+**In static/img/ (1 files):**
 
-- docs/documentation/reference/dmn/decision-table/img/map.js
+- static/img/documentation/examples/reference/dmn/decision-table/img/map.js
 
 ### .json
 
