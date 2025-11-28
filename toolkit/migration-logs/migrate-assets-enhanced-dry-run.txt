@@ -1,0 +1,434 @@
+ðŸš€ Starting Enhanced Docusaurus Asset Migration...
+
+This migration runs in TWO passes:
+  PASS 1: Migrate assets referenced in markdown files
+  PASS 2: Migrate orphaned assets (not referenced anywhere)
+
+=== PASS 1: Processing markdown files ===
+
+Scanning for markdown files...
+Found 413 markdown files
+
+Processing files...
+âœ“ Updated: documentation/introduction/architecture.md
+    (5 assets updated)
+âœ“ Updated: documentation/introduction/index.md
+    ./img/architecture-overview.png â†’ /img/documentation/introduction/architecture-overview.png
+âœ“ Updated: documentation/reference/bpmn20/events/conditional-events.md
+    ./bpmn/event-conditional.svg â†’ /img/documentation/reference/bpmn20/events/event-conditional.svg
+    ./img/activityInstanceState.png â†’ /img/documentation/reference/bpmn20/events/activityInstanceState.png
+âœ“ Updated: documentation/reference/bpmn20/index.md
+    (87 assets updated)
+âœ“ Updated: documentation/reference/cmmn11/concepts/lifecycle.md
+    (8 assets updated)
+âœ“ Updated: documentation/reference/cmmn11/markers/repetition-rule.md
+    (11 assets updated)
+âœ“ Updated: documentation/reference/cmmn11/sentry.md
+    ./img/variableOnPart.png â†’ /img/documentation/reference/cmmn11/variableOnPart.png
+âœ“ Updated: documentation/reference/dmn/decision-table/hit-policy.md
+    (10 assets updated)
+âœ“ Updated: documentation/reference/dmn/decision-table/index.md
+    img/dish-table.png â†’ /img/documentation/reference/dmn/decision-table/dish-table.png
+    img/decision-name.png â†’ /img/documentation/reference/dmn/decision-table/decision-name.png
+    img/decision-id.png â†’ /img/documentation/reference/dmn/decision-table/decision-id.png
+âœ“ Updated: documentation/reference/dmn/decision-table/input.md
+    (4 assets updated)
+âœ“ Updated: documentation/reference/dmn/decision-table/output.md
+    (4 assets updated)
+âœ“ Updated: documentation/reference/dmn/decision-table/rule.md
+    (4 assets updated)
+âœ“ Updated: documentation/reference/dmn/drg/index.md
+    (7 assets updated)
+âœ“ Updated: documentation/reference/dmn/feel/legacy/data-types.md
+    (4 assets updated)
+âœ“ Updated: documentation/user-guide/dmn-engine/evaluate-decisions.md
+    ./img/dish-dmn.png â†’ /img/documentation/user-guide/dmn-engine/dish-dmn.png
+    ./img/beverages-dmn.png â†’ /img/documentation/user-guide/dmn-engine/beverages-dmn.png
+    ./img/drd.png â†’ /img/documentation/user-guide/dmn-engine/drd.png
+âœ“ Updated: documentation/user-guide/model-api/bpmn-model-api/create-a-model.md
+    ./img/bpmn-model-api-simple-process.png â†’ /img/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-simple-process.png
+    ./img/bpmn-model-api-parallel-gateway.png â†’ /img/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-parallel-gateway.png
+âœ“ Updated: documentation/user-guide/process-applications/maven-archetypes.md
+    (7 assets updated)
+âœ“ Updated: documentation/user-guide/process-applications/process-application-event-listeners.md
+    ./img/process-application-events.png â†’ /img/documentation/user-guide/process-applications/process-application-events.png
+âœ“ Updated: documentation/user-guide/process-applications/process-application-resources.md
+    ./img/process-application-context.png â†’ /img/documentation/user-guide/process-applications/process-application-context.png
+âœ“ Updated: documentation/user-guide/process-applications/the-processes-xml-deployment-descriptor.md
+    ./img/process-application-deployment.png â†’ /img/documentation/user-guide/process-applications/process-application-deployment.png
+    ./img/process-application-redeployment.png â†’ /img/documentation/user-guide/process-applications/process-application-redeployment.png
+âœ“ Updated: documentation/user-guide/process-engine/database/database-schema.md
+    (6 assets updated)
+âœ“ Updated: documentation/user-guide/process-engine/error-handling.md
+    (4 assets updated)
+âœ“ Updated: documentation/user-guide/process-engine/external-tasks.md
+    ./img/external-task-pattern.png â†’ /img/documentation/user-guide/process-engine/external-task-pattern.png
+    ./img/external-task-long-polling.png â†’ /img/documentation/user-guide/process-engine/external-task-long-polling.png
+âœ“ Updated: documentation/user-guide/process-engine/history/custom-implementation.md
+    ./../img/process-engine-history-architecture.png â†’ /img/documentation/user-guide/process-engine/history/process-engine-history-architecture.png
+âœ“ Updated: documentation/user-guide/process-engine/history/history-cleanup.md
+    ./../img/history-cleanup-process-hierarchy.png â†’ /img/documentation/user-guide/process-engine/history/history-cleanup-process-hierarchy.png
+âœ“ Updated: documentation/user-guide/process-engine/multi-tenancy.md
+    ./img/multi-tenancy-tenant-identifiers.png â†’ /img/documentation/user-guide/process-engine/multi-tenancy-tenant-identifiers.png
+    ./../../introduction/img/multi-tenancy-process-engine.png â†’ /img/documentation/user-guide/process-engine/multi-tenancy-process-engine.png
+âœ“ Updated: documentation/user-guide/process-engine/process-diagram-api.md
+    ./img/process-diagram-bpmn-js.png â†’ /img/documentation/user-guide/process-engine/process-diagram-bpmn-js.png
+âœ“ Updated: documentation/user-guide/process-engine/process-engine-api.md
+    ./img/api.services.png â†’ /img/documentation/user-guide/process-engine/api.services.png
+âœ“ Updated: documentation/user-guide/process-engine/process-engine-concepts.md
+    ./img/parallel-gw.png â†’ /img/documentation/user-guide/process-engine/parallel-gw.png
+âœ“ Updated: documentation/user-guide/process-engine/process-instance-restart.md
+    ./img/variables-3.png â†’ /img/documentation/user-guide/process-engine/variables-3.png
+âœ“ Updated: documentation/user-guide/process-engine/process-versioning.md
+    ./img/versioning.png â†’ /img/documentation/user-guide/process-engine/versioning.png
+âœ“ Updated: documentation/user-guide/process-engine/the-job-executor.md
+    (8 assets updated)
+âœ“ Updated: documentation/user-guide/process-engine/transactions-in-processes.md
+    (15 assets updated)
+âœ“ Updated: documentation/user-guide/process-engine/variables.md
+    (5 assets updated)
+âœ“ Updated: documentation/user-guide/runtime-container-integration/jboss.md
+    ./img/jboss-jconsole.png â†’ /img/documentation/user-guide/runtime-container-integration/jboss-jconsole.png
+    ./img/jboss-service-dependencies.png â†’ /img/documentation/user-guide/runtime-container-integration/jboss-service-dependencies.png
+âœ“ Updated: documentation/user-guide/task-forms/index.md
+    (5 assets updated)
+âœ“ Updated: documentation/user-guide/task-forms/jsf-task-forms.md
+    (6 assets updated)
+âœ“ Updated: documentation/user-guide/testing/index.md
+    (7 assets updated)
+âœ“ Updated: documentation/webapps/admin/auditing.md
+    ./img/admin-system-audit.png â†’ /img/documentation/webapps/admin/admin-system-audit.png
+    ./img/admin-audit-entity.png â†’ /img/documentation/webapps/admin/admin-audit-entity.png
+âœ“ Updated: documentation/webapps/admin/authorization-management.md
+    (18 assets updated)
+âœ“ Updated: documentation/webapps/admin/group-management.md
+    ./img/admin-groups.png â†’ /img/documentation/webapps/admin/admin-groups.png
+âœ“ Updated: documentation/webapps/admin/plugins.md
+    ./img/admin-start-page-view.png â†’ /img/documentation/webapps/admin/admin-start-page-view.png
+âœ“ Updated: documentation/webapps/admin/system-management.md
+    ./img/admin-system-management.png â†’ /img/documentation/webapps/admin/admin-system-management.png
+    ./img/admin-diagnostics.png â†’ /img/documentation/webapps/admin/admin-diagnostics.png
+    ./img/admin-execution-metrics.png â†’ /img/documentation/webapps/admin/admin-execution-metrics.png
+âœ“ Updated: documentation/webapps/admin/tenant-management.md
+    ./img/admin-tenants.png â†’ /img/documentation/webapps/admin/admin-tenants.png
+âœ“ Updated: documentation/webapps/admin/user-management.md
+    ./img/admin-users.png â†’ /img/documentation/webapps/admin/admin-users.png
+    ./img/admin-initial-user-setup.png â†’ /img/documentation/webapps/admin/admin-initial-user-setup.png
+âœ“ Updated: documentation/webapps/cockpit/auditing.md
+    (5 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/batch/batch-operation.md
+    (5 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/batch/monitoring.md
+    ./../img/batch.png â†’ /img/documentation/webapps/cockpit/batch/batch.png
+    ./../img/batch-search.png â†’ /img/documentation/webapps/cockpit/batch/batch-search.png
+âœ“ Updated: documentation/webapps/cockpit/bpmn/correlate-message.md
+    (4 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/bpmn/dashboard.md
+    (11 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/bpmn/drilldown.md
+    ./../img/drilldown/shape.png â†’ /img/documentation/webapps/cockpit/bpmn/shape.png
+    ./../img/drilldown/breadcrumbs.png â†’ /img/documentation/webapps/cockpit/bpmn/breadcrumbs.png
+    ./../img/drilldown/migration.png â†’ /img/documentation/webapps/cockpit/bpmn/migration.png
+âœ“ Updated: documentation/webapps/cockpit/bpmn/failed-jobs.md
+    ./../img/cockpit-failed-job-drill-down.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-failed-job-drill-down.png
+    ./../img/cockpit-instance-job-retry.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-instance-job-retry.png
+    ./../img/cockpit-bulk-retry.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-bulk-retry.png
+âœ“ Updated: documentation/webapps/cockpit/bpmn/process-definition-view.md
+    (15 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/bpmn/process-history-views.md
+    ./../img/cockpit-history-view-process-definition-history.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-history-view-process-definition-history.png
+    ./../img/cockpit-heatmap.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-heatmap.png
+    ./../img/cockpit-history-view-process-instance-history.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-history-view-process-instance-history.png
+âœ“ Updated: documentation/webapps/cockpit/bpmn/process-instance-migration.md
+    (12 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/bpmn/process-instance-modification.md
+    (8 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/bpmn/process-instance-restart.md
+    ./../img/cockpit-restart.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-restart.png
+    ./../img/cockpit-restart-instance-selection.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-restart-instance-selection.png
+    ./../img/cockpit-restart-confirm.png â†’ /img/documentation/webapps/cockpit/bpmn/cockpit-restart-confirm.png
+âœ“ Updated: documentation/webapps/cockpit/bpmn/process-instance-view.md
+    (8 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/cleanup.md
+    ./img/cockpit-cleanup-page.png â†’ /img/documentation/webapps/cockpit/cockpit-cleanup-page.png
+    ./img/cockpit-cleanup-state-incident.png â†’ /img/documentation/webapps/cockpit/cockpit-cleanup-state-incident.png
+    ./img/cockpit-cleanup-ttl.png â†’ /img/documentation/webapps/cockpit/cockpit-cleanup-ttl.png
+âœ“ Updated: documentation/webapps/cockpit/cmmn/case-definition-view.md
+    ./../img/cmmn/case-definition-view.png â†’ /img/documentation/webapps/cockpit/cmmn/case-definition-view.png
+âœ“ Updated: documentation/webapps/cockpit/cmmn/case-instance-view.md
+    (5 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/cmmn/dashboard.md
+    ./../img/cmmn/case-dashboard-search.png â†’ /img/documentation/webapps/cockpit/cmmn/case-dashboard-search.png
+    ./../img/cmmn/case-dashboard-deployed.png â†’ /img/documentation/webapps/cockpit/cmmn/case-dashboard-deployed.png
+âœ“ Updated: documentation/webapps/cockpit/dashboard.md
+    ./img/dashboard.png â†’ /img/documentation/webapps/cockpit/dashboard.png
+    ./img/dashboard-metrics.png â†’ /img/documentation/webapps/cockpit/dashboard-metrics.png
+    ./img/cockpit-multi-engine.png â†’ /img/documentation/webapps/cockpit/cockpit-multi-engine.png
+âœ“ Updated: documentation/webapps/cockpit/deployment-view.md
+    ./img/cockpit-deployments-page.png â†’ /img/documentation/webapps/cockpit/cockpit-deployments-page.png
+âœ“ Updated: documentation/webapps/cockpit/dmn/dashboard.md
+    ./../img/cockpit-decision-definition-list.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-list.png
+    ./../img/cockpit-drd-list.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-drd-list.png
+    ./../img/dmn/decision-instance-search.png â†’ /img/documentation/webapps/cockpit/dmn/decision-instance-search.png
+âœ“ Updated: documentation/webapps/cockpit/dmn/decision-definition-view.md
+    ./../img/cockpit-decision-definition-view.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-view.png
+âœ“ Updated: documentation/webapps/cockpit/dmn/decision-instance-view.md
+    ./../img/cockpit-decision-instance-view.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-instance-view.png
+âœ“ Updated: documentation/webapps/cockpit/dmn/decision-requirements-definition-view.md
+    ./../img/cockpit-decision-requirements-definition-view.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-requirements-definition-view.png
+    ./../img/cockpit-decision-definition-requirement-decision-instances-tab.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-decision-instances-tab.png
+    ./../img/cockpit-decision-definition-requirement-decision-drd-tab.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-decision-drd-tab.png
+âœ“ Updated: documentation/webapps/cockpit/dmn/decision-requirements-instance-view.md
+    ./../img/cockpit-decision-requirements-definition-instance-view.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-requirements-definition-instance-view.png
+    ./../img/cockpit-decision-definition-requirement-decision-instance-instances-tab.png â†’ /img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-decision-instance-instances-tab.png
+âœ“ Updated: documentation/webapps/cockpit/extend/plugins.md
+    (36 assets updated)
+âœ“ Updated: documentation/webapps/cockpit/reporting.md
+    ./img/duration-report.png â†’ /img/documentation/webapps/cockpit/duration-report.png
+    ./img/historic-task-instance-report.png â†’ /img/documentation/webapps/cockpit/historic-task-instance-report.png
+âœ“ Updated: documentation/webapps/cockpit/tasks-dashboard.md
+    ./img/task-dashboard.png â†’ /img/documentation/webapps/cockpit/task-dashboard.png
+âœ“ Updated: documentation/webapps/tasklist/dashboard.md
+    (11 assets updated)
+âœ“ Updated: documentation/webapps/tasklist/filters.md
+    ./img/tasklist-create-filter.png â†’ /img/documentation/webapps/tasklist/tasklist-create-filter.png
+    ./img/tasklist-filter-detail.png â†’ /img/documentation/webapps/tasklist/tasklist-filter-detail.png
+âœ“ Updated: documentation/webapps/tasklist/task-lifecycle.md
+    ./img/tasklist-user-task-state-complete.png â†’ /img/documentation/webapps/tasklist/tasklist-user-task-state-complete.png
+âœ“ Updated: documentation/webapps/tasklist/tasklist-plugins.md
+    (6 assets updated)
+âœ“ Updated: documentation/webapps/tasklist/user-assignment.md
+    ./img/tasklist-task-form-modeler.png â†’ /img/documentation/webapps/tasklist/tasklist-task-form-modeler.png
+âœ“ Updated: documentation/webapps/welcome/welcome-plugins.md
+    ./img/welcome-dashboard-plugin.png â†’ /img/documentation/webapps/welcome/welcome-dashboard-plugin.png
+    ./img/welcome-profile-plugin.png â†’ /img/documentation/webapps/welcome/welcome-profile-plugin.png
+âœ“ Updated: get-started/archive/java-process-app/deploy.md
+    (6 assets updated)
+âœ“ Updated: get-started/archive/java-process-app/forms.md
+    (4 assets updated)
+âœ“ Updated: get-started/archive/java-process-app/model.md
+    (6 assets updated)
+âœ“ Updated: get-started/archive/java-process-app/project-setup.md
+    ./img/eclipse-new-project.png â†’ /img/get-started/archive/java-process-app/eclipse-new-project.png
+âœ“ Updated: get-started/archive/java-process-app/service-task.md
+    ./img/modeler-service-task1.png â†’ /img/get-started/archive/java-process-app/modeler-service-task1.png
+    ./img/modeler-service-task2.png â†’ /img/get-started/archive/java-process-app/modeler-service-task2.png
+    ./img/modeler-service-task3.png â†’ /img/get-started/archive/java-process-app/modeler-service-task3.png
+âœ“ Updated: get-started/archive/javaee7/complete-process.md
+    ./img/prepare-pizza.png â†’ /img/get-started/archive/javaee7/prepare-pizza.png
+    ./img/pizza-order-process-prepare-pizza.png â†’ /img/get-started/archive/javaee7/pizza-order-process-prepare-pizza.png
+    ./img/pizza-order-process-send-rejection-email.png â†’ /img/get-started/archive/javaee7/pizza-order-process-send-rejection-email.png
+âœ“ Updated: get-started/archive/javaee7/model.md
+    (4 assets updated)
+âœ“ Updated: get-started/archive/javaee7/project-setup.md
+    ./img/maven-project-settings.png â†’ /img/get-started/archive/javaee7/maven-project-settings.png
+âœ“ Updated: get-started/archive/javaee7/service-task.md
+    ./img/pizza-order-process-service-task-expression.png â†’ /img/get-started/archive/javaee7/pizza-order-process-service-task-expression.png
+âœ“ Updated: get-started/archive/javaee7/start-form.md
+    ./img/pizza-order-process-start-form.png â†’ /img/get-started/archive/javaee7/pizza-order-process-start-form.png
+âœ“ Updated: get-started/archive/javaee7/task-form.md
+    ./img/approve-order.png â†’ /img/get-started/archive/javaee7/approve-order.png
+    ./img/pizza-order-process-task-form.png â†’ /img/get-started/archive/javaee7/pizza-order-process-task-form.png
+    ./img/pizza-order-process-no.png â†’ /img/get-started/archive/javaee7/pizza-order-process-no.png
+âœ“ Updated: get-started/archive/spring/project-setup.md
+    ./img/eclipse-new-project.png â†’ /img/get-started/archive/spring/eclipse-new-project.png
+    ./img/project-layout-after-setup.png â†’ /img/get-started/archive/spring/project-layout-after-setup.png
+âœ“ Updated: get-started/archive/spring/service-task.md
+    ./img/process-model.png â†’ /img/get-started/archive/spring/process-model.png
+    ./img/service-task.png â†’ /img/get-started/archive/spring/service-task.png
+âœ“ Updated: get-started/dmn/deploy.md
+    ./img/cockpit-dish-dmn.png â†’ /img/get-started/dmn/cockpit-dish-dmn.png
+    ./img/cockpit-decision-overview-dish-dmn.png â†’ /img/get-started/dmn/cockpit-decision-overview-dish-dmn.png
+    ./img/cockpit-decision-history-dish-dmn.png â†’ /img/get-started/dmn/cockpit-decision-history-dish-dmn.png
+âœ“ Updated: get-started/dmn/drg.md
+    (7 assets updated)
+âœ“ Updated: get-started/dmn/model.md
+    (10 assets updated)
+âœ“ Updated: get-started/dmn/project-setup.md
+    ./img/eclipse-new-project.png â†’ /img/get-started/dmn/eclipse-new-project.png
+âœ“ Updated: get-started/quick-start/decision-automation.md
+    (14 assets updated)
+âœ“ Updated: get-started/quick-start/deploy.md
+    (5 assets updated)
+âœ“ Updated: get-started/quick-start/gateway.md
+    (7 assets updated)
+âœ“ Updated: get-started/quick-start/service-task.md
+    (7 assets updated)
+âœ“ Updated: get-started/quick-start/user-task.md
+    (13 assets updated)
+âœ“ Updated: get-started/spring-boot/model.md
+    ./img/loanApproval.png â†’ /img/get-started/spring-boot/loanApproval.png
+    ./img/tasklist.png â†’ /img/get-started/spring-boot/tasklist.png
+âœ“ Updated: get-started/spring-boot/project-setup.md
+    ./img/eclipse-new-project.png â†’ /img/get-started/spring-boot/eclipse-new-project.png
+
+Pass 1 tracked 525 unique asset paths as referenced
+
+=== PASS 2: Scanning for orphaned assets ===
+
+Found 90 orphaned assets (not referenced in markdown):
+  documentation/img/docsVersionDropdown.png â†’ documentation/examples/img/docsVersionDropdown.png
+  documentation/img/localeDropdown.png â†’ documentation/examples/img/localeDropdown.png
+  documentation/reference/bpmn20/events/bpmn/catchandthrowpattern.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/catchandthrowpattern.bpmn
+  documentation/reference/bpmn20/events/bpmn/compensation-event-subprocess.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/compensation-event-subprocess.bpmn
+  documentation/reference/bpmn20/events/bpmn/compensation-intermediate-throw-event.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/compensation-intermediate-throw-event.bpmn
+  documentation/reference/bpmn20/events/bpmn/conditionalEventScopes.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/conditionalEventScopes.bpmn
+  documentation/reference/bpmn20/events/bpmn/conditionalEventScopesHighestFirst.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/conditionalEventScopesHighestFirst.bpmn
+  documentation/reference/bpmn20/events/bpmn/escalation-boundary-event.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/escalation-boundary-event.bpmn
+  documentation/reference/bpmn20/events/bpmn/escalation-end-event.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/escalation-end-event.bpmn
+  documentation/reference/bpmn20/events/bpmn/escalation-example.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/escalation-example.bpmn
+  documentation/reference/bpmn20/events/bpmn/escalation-intermediate-throw-event.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/escalation-intermediate-throw-event.bpmn
+  documentation/reference/bpmn20/events/bpmn/escalation-start-event.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/escalation-start-event.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-conditional-parallel-boundary.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-conditional-parallel-boundary.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-conditional.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-conditional.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-conditional2.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-conditional2.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-error.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-error.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-link.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-link.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-message-start-alternative.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-message-start-alternative.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-message-throwing.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-message-throwing.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-message.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-message.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-none-intermediate.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-none-intermediate.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-none.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-none.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-signal-catching.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-signal-catching.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-signal-throwing.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-signal-throwing.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-subprocess-alternative1.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-subprocess-alternative1.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-subprocess-alternative2.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-subprocess-alternative2.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-terminate.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-terminate.bpmn
+  documentation/reference/bpmn20/events/bpmn/event-timer.bpmn â†’ documentation/examples/reference/bpmn20/events/bpmn/event-timer.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/event-based-gateway.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/event-based-gateway.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/exclusive-gateway.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/exclusive-gateway.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/inclusive-gateway.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/inclusive-gateway.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_1.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_1.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_2.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_2.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_3.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_3.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_4.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/inclusive_gateway_scenario_4.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/parallel-gateway-unbalanced.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/parallel-gateway-unbalanced.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/parallel-gateway.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/parallel-gateway.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/sequence-flow-conditional.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/sequence-flow-conditional.bpmn
+  documentation/reference/bpmn20/gateways/bpmn/sequence-flow-parallel.bpmn â†’ documentation/examples/reference/bpmn20/gateways/bpmn/sequence-flow-parallel.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/business-transaction.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/business-transaction.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/call-activity.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/call-activity.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/event-subprocess-alternative1.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/event-subprocess-alternative1.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/event-subprocess-alternative2.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/event-subprocess-alternative2.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/event-subprocess.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/event-subprocess.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/subprocess.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/subprocess.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/subprocess_attached.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/subprocess_attached.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/subprocess_event.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/subprocess_event.bpmn
+  documentation/reference/bpmn20/subprocesses/bpmn/subprocess_expanded.bpmn â†’ documentation/examples/reference/bpmn20/subprocesses/bpmn/subprocess_expanded.bpmn
+  documentation/reference/bpmn20/tasks/bpmn/compensation-marker.bpmn â†’ documentation/examples/reference/bpmn20/tasks/bpmn/compensation-marker.bpmn
+  documentation/reference/bpmn20/tasks/bpmn/loop-alternative.bpmn â†’ documentation/examples/reference/bpmn20/tasks/bpmn/loop-alternative.bpmn
+  documentation/reference/bpmn20/tasks/bpmn/multiple-instance-boundary.bpmn â†’ documentation/examples/reference/bpmn20/tasks/bpmn/multiple-instance-boundary.bpmn
+  documentation/reference/bpmn20/tasks/bpmn/multiple-instance.bpmn â†’ documentation/examples/reference/bpmn20/tasks/bpmn/multiple-instance.bpmn
+  documentation/reference/dmn/decision-literal-expression/img/decision-id.png â†’ documentation/examples/reference/dmn/decision-literal-expression/img/decision-id.png
+  documentation/reference/dmn/decision-literal-expression/img/decision-literal-expression.dmn â†’ documentation/examples/reference/dmn/decision-literal-expression/img/decision-literal-expression.dmn
+  documentation/reference/dmn/decision-literal-expression/img/decision-literal-expression.png â†’ documentation/examples/reference/dmn/decision-literal-expression/img/decision-literal-expression.png
+  documentation/reference/dmn/decision-literal-expression/img/decision-name.png â†’ documentation/examples/reference/dmn/decision-literal-expression/img/decision-name.png
+  documentation/reference/dmn/decision-table/img/dish-table.svg â†’ documentation/examples/reference/dmn/decision-table/img/dish-table.svg
+  documentation/reference/dmn/decision-table/img/map.js â†’ documentation/examples/reference/dmn/decision-table/img/map.js
+  documentation/reference/dmn/drg/img/drg.dmn â†’ documentation/examples/reference/dmn/drg/img/drg.dmn
+  documentation/user-guide/ext-client/img/externalTaskCient.png â†’ documentation/examples/user-guide/ext-client/img/externalTaskCient.png
+  documentation/user-guide/process-engine/bpmn/example1.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/example1.bpmn
+  documentation/user-guide/process-engine/bpmn/example2.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/example2.bpmn
+  documentation/user-guide/process-engine/bpmn/example3.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/example3.bpmn
+  documentation/user-guide/process-engine/bpmn/example4.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/example4.bpmn
+  documentation/user-guide/process-engine/bpmn/example5.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/example5.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-boundary-timer1.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-boundary-timer1.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-boundary-timer2.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-boundary-timer2.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation1.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation1.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation2.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation2.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation3.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation3.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation4.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation4.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation5.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation5.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example-compensation6.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example-compensation6.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example1.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example1.bpmn
+  documentation/user-guide/process-engine/bpmn/process-instance-migration/example2.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/process-instance-migration/example2.bpmn
+  documentation/user-guide/process-engine/bpmn/x_event-based-gateway.bpmn â†’ documentation/examples/user-guide/process-engine/bpmn/x_event-based-gateway.bpmn
+  documentation/user-guide/process-engine/img/api.services.odg â†’ documentation/examples/user-guide/process-engine/img/api.services.odg
+  documentation/user-guide/process-engine/img/process-engine-history.png â†’ documentation/examples/user-guide/process-engine/img/process-engine-history.png
+  documentation/webapps/cockpit/img/cockpit-edit-dmn-dialog.png â†’ documentation/examples/webapps/cockpit/img/cockpit-edit-dmn-dialog.png
+  documentation/webapps/cockpit/img/cockpit-plugins/architecture.png â†’ documentation/examples/webapps/cockpit/img/cockpit-plugins/architecture.png
+  documentation/webapps/cockpit/img/migration/step4_error.png â†’ documentation/examples/webapps/cockpit/img/migration/step4_error.png
+  documentation/webapps/tasklist/img/tasklist-dashboard.png â†’ documentation/examples/webapps/tasklist/img/tasklist-dashboard.png
+  documentation/webapps/tasklist/img/tasklist-generic-form.png â†’ documentation/examples/webapps/tasklist/img/tasklist-generic-form.png
+  documentation/webapps/welcome/img/welcome-start-page-view.png â†’ documentation/examples/webapps/welcome/img/welcome-start-page-view.png
+  get-started/archive/java-process-app/img/modeler-save-diagram.png â†’ get-started/examples/archive/java-process-app/img/modeler-save-diagram.png
+  get-started/archive/javaee7/img/javaee.png â†’ get-started/examples/archive/javaee7/img/javaee.png
+  get-started/archive/javaee7/img/start-form.png â†’ get-started/examples/archive/javaee7/img/start-form.png
+  get-started/archive/spring/img/Spring_Logo.png â†’ get-started/examples/archive/spring/img/Spring_Logo.png
+  get-started/quick-start/img/modeler-dmn1.png â†’ get-started/examples/quick-start/img/modeler-dmn1.png
+  get-started/quick-start/img/niall-says-congrats.png â†’ get-started/examples/quick-start/img/niall-says-congrats.png
+
+======================================================================
+MIGRATION REPORT
+======================================================================
+Mode: DRY RUN (no changes made)
+
+Markdown files scanned: 413
+
+--- PASS 1: Referenced Assets ---
+Assets found in markdown: 541
+Assets moved: 540
+
+--- PASS 2: Orphaned Assets ---
+Orphaned assets found: 90
+Orphaned assets moved: 90
+
+--- TOTALS ---
+Total assets found: 631
+Total assets moved: 630
+Markdown files updated: 0
+
+Assets by type:
+  .png: 442
+  .svg: 98
+
+âš ï¸  Orphaned Assets (90):
+These assets were not referenced in any markdown file.
+They have been moved to static/img/*/examples/ directories.
+
+Recommendations:
+1. Review the orphaned assets list below
+2. Determine if they are still needed
+3. Either reference them in docs or delete them
+4. Consider creating a cleanup task
+
+
+  .png files (19):
+    - documentation/img/docsVersionDropdown.png
+    - documentation/img/localeDropdown.png
+    - documentation/reference/dmn/decision-literal-expression/img/decision-id.png
+    - documentation/reference/dmn/decision-literal-expression/img/decision-literal-expression.png
+    - documentation/reference/dmn/decision-literal-expression/img/decision-name.png
+    ... and 14 more
+
+  .bpmn files (66):
+    - documentation/reference/bpmn20/events/bpmn/catchandthrowpattern.bpmn
+    - documentation/reference/bpmn20/events/bpmn/compensation-event-subprocess.bpmn
+    - documentation/reference/bpmn20/events/bpmn/compensation-intermediate-throw-event.bpmn
+    - documentation/reference/bpmn20/events/bpmn/conditionalEventScopes.bpmn
+    - documentation/reference/bpmn20/events/bpmn/conditionalEventScopesHighestFirst.bpmn
+    ... and 61 more
+
+  .dmn files (2):
+    - documentation/reference/dmn/decision-literal-expression/img/decision-literal-expression.dmn
+    - documentation/reference/dmn/drg/img/drg.dmn
+
+  .svg files (1):
+    - documentation/reference/dmn/decision-table/img/dish-table.svg
+
+  .js files (1):
+    - documentation/reference/dmn/decision-table/img/map.js
+
+  .odg files (1):
+    - documentation/user-guide/process-engine/img/api.services.odg
+======================================================================
+
+ðŸ’¡ This was a dry run. To apply changes, set dryRun: false in the script.
+
+Recommended next steps:
+1. Review the orphaned assets list above
+2. Decide which orphaned assets to keep vs. delete
+3. Set dryRun: false and run the migration
+4. Test your documentation (npm start)
+5. Verify all assets display correctly
+

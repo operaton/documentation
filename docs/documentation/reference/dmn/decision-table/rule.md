@@ -13,7 +13,7 @@ menu:
 aliases: [reference/dmn/decision-table/rule/]
 ---
 
-![Example img](./img/rule.png)Rule" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/rule.png)Rule" class="no-lightbox
 
 A decision table can have one or more rules. Each rule contains input and
 output entries. The input entries are the condition and the output entries the
@@ -48,7 +48,7 @@ A rule is represented by a `rule` element inside a `decisionTable` XML element.
 
 ## Input Entry (Condition)
 
-![Example img](./img/input-entry.png)Input Entry" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-entry.png)Input Entry" class="no-lightbox
 
 A rule can have one or more input entries, which are the conditions of the rule.
 Each input entry contains an expression in a `text` element as child of an
@@ -96,7 +96,7 @@ languages.
 
 ## Output Entry (Conclusion)
 
-![Example img](./img/output-entry.png)Output Entry" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-entry.png)Output Entry" class="no-lightbox
 
 A rule can have one or more output entries, which are the conclusions of the
 rule. Each output entry contains an expression in a `text` element as child of
@@ -173,7 +173,7 @@ will be determined with precedence of the empty input outcome.
 
 ## Description
 
-![Example img](./img/description.png)Description" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/description.png)Description" class="no-lightbox
 
 A rule can be annotated with a description that provides additional
 information. The description text is set inside the `description` XML element.

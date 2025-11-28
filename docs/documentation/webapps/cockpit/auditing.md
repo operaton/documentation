@@ -18,7 +18,7 @@ Since Cockpit is a very powerful tool, it is often desired to inspect which user
 To get a more detailed explanation about the Java and REST API methods to get user operations, check out [this url](../../user-guide/process-engine/history/user-operation-log.md#access-the-user-operation-log).
 
 ## Operation Log in Cockpit
-![Example img](./img/cockpit-operation-log.png)Operation Log
+![Example img](/img/documentation/webapps/cockpit/cockpit-operation-log.png)Operation Log
 
 Cockpit provides the possibility to audit the activities which each user performs. You can find the Operation Log in the top menu bar under the `more` option. The table is a representation of the history of various user operations, and it provides information about changes performed in the past. The rows are grouped by an operation to provide clear insights on the changes produced by each operation. Results can be filtered using the search bar at the top. You can add columns using the dropdown in the top right. They can be removed by clicking the <button class="btn btn-xs"><i class="glyphicon glyphicon-remove"></i></button> next to the corresponding table header.
 
@@ -27,18 +27,18 @@ To only display Operations performed by a specific User, click in the Search fie
 
 ### Operations in a specific Timespan
 You can limit Results the time the operation occurred. Click in the Search field and select `Timestamp` from the dropdown. You can now specify the date and time at which you want to cut off results. By clicking on the operator, you can select if you want results `before` or `after` the specified time. Add another `Timestamp` filter to specify a period.
-![Example img](./img/cockpit-audit-timestamp.png)Filter by Timestamp
+![Example img](/img/documentation/webapps/cockpit/cockpit-audit-timestamp.png)Filter by Timestamp
 
 ### Operations of a specific Type
 If you are only interested in a specific operation, for example, every time a process instance was manually modified, you can use the `operation` filter. Select the desired operation from the dropdown or start to type the name to filter through the list. For a complete list of logged operations, check out [History and Audit Event Log](/user-guide/process-engine/history/#glossary-of-operations-logged-in-the-user-operation-log).
-![Example img](./img/cockpit-audit-type.png)Filter by Type
+![Example img](/img/documentation/webapps/cockpit/cockpit-audit-type.png)Filter by Type
 
 ### Annotating Operation Logs
 For each operation, an annotation can be added to provide context. To do this, click on the <button class="btn btn-xs"><i class="glyphicon glyphicon-pencil"></i></button> for the operation you want to annotate. The maximum length of the annotation is limited by your database. The length can be configured in the [Cockpit Configuration](extend/configuration.md#user-operation-log-annotation-length).
 
-![Example img](./img/cockpit-audit-annotation.png)Annotation edit
+![Example img](/img/documentation/webapps/cockpit/cockpit-audit-annotation.png)Annotation edit
 
 ## User Operation Log per Process
-![Example img](./img/cockpit-user-operation-log.png)Batch View Page
+![Example img](/img/documentation/webapps/cockpit/cockpit-user-operation-log.png)Batch View Page
 
 Every Process Instance offers a User Operations table. It displays all User Operation affecting the particular process. The table can be found in both the process definition and instance history views.
