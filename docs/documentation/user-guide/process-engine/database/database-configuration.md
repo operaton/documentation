@@ -179,4 +179,4 @@ When initializing the engine, a check is performed in order to determine if the 
 
 This behaviour can be disabled by setting the `skipIsolationLevelCheck` flag to `true`. Doing this will prevent an exception from being thrown and a warning message will be logged instead.
 
-[See here](../../../reference/deployment-descriptors/tags/process-engine.md#configuration-properties) for more details about this and other properties.
+[See here](../../../reference/deployment-descriptors/tags/process-engine.mdx#configuration-properties) for more details about this and other properties.

@@ -395,7 +395,7 @@ The mechanism is configurable with the following properties and respective defau
 * `loginDelayMaxTime=60`
 * `loginDelayBase=3`
 
-For more information, please check the process engine's [login properties](../../reference/deployment-descriptors/tags/process-engine.md#login-parameters) section.
+For more information, please check the process engine's [login properties](../../reference/deployment-descriptors/tags/process-engine.mdx#login-parameters) section.
 
 Calculation of the delay is done via the formula: <code>baseTime * factor^(attempt-1)</code>.
 The behaviour with the default configuration will be:

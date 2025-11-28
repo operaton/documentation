@@ -14,7 +14,7 @@ menu:
 A CSRF filter is enabled by default, validating each modifying request performed through the webapps. The filter implements a (per-session) _Synchronization Token_ method for CSRF validation with an optional _Same Origin with Standard Headers_ verification.
 
 In Spring Boot Starter, the configuration needs to be made in the `application.yaml`.
-Please read more about it [here](../../user-guide/spring-boot-integration/configuration.md#csrf).
+Please read more about it [here](../../user-guide/spring-boot-integration/configuration.mdx#csrf).
 
 If you would like to enable the additional _Same Origin with Standard Headers_ verification, the `targetOrigin` init-parameter should be set in the `web.xml` file of your application. That, and some additional optional initialization parameters are:
 

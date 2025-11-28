@@ -260,7 +260,7 @@ In addition, the process engine has a concept of job suspension. For example, a 
 
 To optimize the acquisition of jobs that need to be executed immediately, the `DUEDATE_` column is not set (`null`) and a (positive) null check is added as a condition for acquisition.
 
-In case each job must have a `DUEDATE_` set, the optimization can be disabled. This can be done by setting the `ensureJobDueDateNotNull` [process engine configuration flag](../../reference/deployment-descriptors/tags/process-engine.mdx#ensureJobDueDateNotNull) to `true`.
+In case each job must have a `DUEDATE_` set, the optimization can be disabled. This can be done by setting the `ensureJobDueDateNotNull` [process engine configuration flag](../../reference/deployment-descriptors/tags/process-engine.mdxx#ensureJobDueDateNotNull) to `true`.
 
 However, any jobs created with a `null` value for `DUEDATE_` before disabling the optimization will not be picked up by the Job Acquisition phase, unless the jobs are explicitly updated with a due date through the **Set Due Date** [Java](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/ManagementService.html#setJobDuedate(java.lang.String,java.util.Date)) / [Rest](https://docs.operaton.org/reference/latest/rest-api/#tag/Job/operation/setJobRetries) or **Set Retries** <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/ManagementService.html#setJobRetries(int)">Java</a> / [REST](https://docs.operaton.org/reference/latest/rest-api/#tag/Job/operation/setJobRetries) APIs.
 
@@ -370,7 +370,7 @@ For example:
 
 By default, the Job Executor executes all jobs regardless of their priorities. Some jobs might be more important to finish quicker than others, so we assign them priorities and set `jobExecutorAcquireByPriority` to `true` as described above. Depending on the workload, the Job Executor might be able to execute all jobs eventually. But if the load is high enough, we might face starvation where a Job Executor is always busy working on high-priority jobs and never manages to execute the lower priority jobs.
 
-To prevent this, you can specify a priority range for the job executor by setting values for [`jobExecutorPriorityRangeMin`](../../reference/deployment-descriptors/tags/process-engine.md#jobExecutorPriorityRangeMin) or [`jobExecutorPriorityRangeMax`](../../reference/deployment-descriptors/tags/process-engine.mdx#jobExecutorPriorityRangeMax) (or both). The Job Executor will only acquire jobs that are inside its priority range (inclusive). Both properties are optional, so it is fine only to set one of them.
+To prevent this, you can specify a priority range for the job executor by setting values for [`jobExecutorPriorityRangeMin`](../../reference/deployment-descriptors/tags/process-engine.mdx#jobExecutorPriorityRangeMin) or [`jobExecutorPriorityRangeMax`](../../reference/deployment-descriptors/tags/process-engine.mdxx#jobExecutorPriorityRangeMax) (or both). The Job Executor will only acquire jobs that are inside its priority range (inclusive). Both properties are optional, so it is fine only to set one of them.
 
 To avoid job starvation, make sure to have no gaps between Job Executor priority ranges. If, for example, Job Executor A has a priority range of 0 to 100 and Job Executor B executes jobs from priority 200 to `Long.MAX_VALUE` any job that receives a priority of 101 to 199 will never be executed. Job starvation can also occur with `batch jobs` and `history cleanup jobs` as both types of jobs also receive priorities (default: `0`). You can configure them via their respective properties: `batchJobPriority` and `historyCleanupJobPriority`.
 
@@ -605,7 +605,7 @@ If there is a use case where the subprocess-jobs **should not be performed in pa
 ```
 
 :::warning
-The property `jobExecutorAcquireExclusiveOverProcessHierarchies` is by default set to `false`. See the <a href="../../reference/deployment-descriptors/tags/process-engine.md#jobExecutorAcquireExclusiveOverProcessHierarchies">property</a> under the `Configuration Properties` section.
+The property `jobExecutorAcquireExclusiveOverProcessHierarchies` is by default set to `false`. See the <a href="../../reference/deployment-descriptors/tags/process-engine.mdx#jobExecutorAcquireExclusiveOverProcessHierarchies">property</a> under the `Configuration Properties` section.
 
 Keep in mind that enabling the feature to guarantee exclusive jobs across all subprocesses originating from a root process might have performance implications, especially for process definitions that involve complex and numerous hierarchies.
 
