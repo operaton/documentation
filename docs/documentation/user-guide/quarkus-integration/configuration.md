@@ -238,7 +238,7 @@ quarkus.datasource.my-datasource.jdbc.url=jdbc:h2:mem:operaton;TRACE_LEVEL_FILE=
 quarkus.operaton.datasource=my-datasource
 ```
 
-[engine-properties]: ../../reference/deployment-descriptors/tags/process-engine.md#configuration-properties
+[engine-properties]: ../../reference/deployment-descriptors/tags/process-engine.mdx#configuration-properties
 [executor-properties]: ../../reference/deployment-descriptors/tags/job-executor.md#job-acquisition-configuration-properties
 
 [quarkus-datasource]: https://quarkus.io/guides/datasource

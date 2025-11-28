@@ -56,7 +56,7 @@ This section describes how to configure the authentication cache time to live.
 
 ##### Spring Boot
 
-You can find the configuration properties for the Spring Boot Starter in the [User Guide](../../user-guide/spring-boot-integration/configuration.md#auth-cache).
+You can find the configuration properties for the Spring Boot Starter in the [User Guide](../../user-guide/spring-boot-integration/configuration.mdx#auth-cache).
 
 ##### Java EE/Jakarta Servlet Application Servers/Runtimes
 

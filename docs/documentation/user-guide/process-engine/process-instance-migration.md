@@ -746,7 +746,7 @@ the following requirements:
 * The migration plan adheres to [BPMN-element-specific considerations](#bpmn-specific-api-and-effects)
 * A set variable must not be of type `Object` **AND** its `serializationFormat` must not be `application/x-java-serialized-object`
   * Validation is skipped when the engine configuration flag `javaSerializationFormatEnabled` is set to `true`
-  * Please see [Process Engine Configuration Reference](../../reference/deployment-descriptors/tags/process-engine.md#javaSerializationFormatEnabled) for more details
+  * Please see [Process Engine Configuration Reference](../../reference/deployment-descriptors/tags/process-engine.mdx#javaSerializationFormatEnabled) for more details
 
 If validation reports errors, migration fails with a `MigrationPlanValidationException`
 providing a `MigrationPlanValidationReport` object with details on the

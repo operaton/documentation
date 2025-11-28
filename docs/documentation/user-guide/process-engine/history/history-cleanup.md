@@ -147,7 +147,7 @@ The history cleanup jobs can be found via the API method `HistoryService#findHis
 
 #### Required property
 
-The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via [process engine configuration](../../../reference/deployment-descriptors/tags/process-engine.md#enforceHistoryTimeToLive). To define a default TTL for process definitions and decision definitions if no other value is defined check [historyTimeToLive configuration](../../../reference/deployment-descriptors/tags/process-engine.md#historyTimeToLive).
+The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via [process engine configuration](../../../reference/deployment-descriptors/tags/process-engine.mdx#enforceHistoryTimeToLive). To define a default TTL for process definitions and decision definitions if no other value is defined check [historyTimeToLive configuration](../../../reference/deployment-descriptors/tags/process-engine.mdx#historyTimeToLive).
 
 #### Process/decision/case definitions
 
@@ -179,7 +179,7 @@ Setting the value to `null` clears the TTL. The same can be done via restref pag
 For decision and case definitions, TTL can be defined in a similar way.
 
 In case you want to provide an engine-wide default TTL for all process, decision and case definitions,
-use the ["historyTimeToLive" attribute](../../../reference/deployment-descriptors/tags/process-engine.md#historytimetolive)
+use the ["historyTimeToLive" attribute](../../../reference/deployment-descriptors/tags/process-engine.mdx#historytimetolive)
 of the process engine configuration. This value is applied as the default whenever new definitions without TTL are deployed. Note that it therefore does not change the TTL of already deployed definitions. Use the API method given above to change TTL in this case.
 
 #### Batches
@@ -344,4 +344,4 @@ related to the cleanup execution since the particular node ignores them.
 **Please Note:** The history cleanup configuration properties that are unrelated to the cleanup execution (e.g.,
 time to live, removal time strategy) still need to be defined among all nodes.
 
-[configuration-options]: ../../../reference/deployment-descriptors/tags/process-engine.md#history-cleanup-configuration-parameters
+[configuration-options]: ../../../reference/deployment-descriptors/tags/process-engine.mdx#history-cleanup-configuration-parameters

@@ -134,7 +134,7 @@ DMN engine are as follows:
 
 :::note[Legacy Behavior]
 You can find how to go back to the legacy behavior, where `JUEL` was used for input expressions,
-output entries and literal expressions [here](../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior).
+output entries and literal expressions [here](../../reference/deployment-descriptors/tags/process-engine.mdx#dmnFeelEnableLegacyBehavior).
 :::
 
 The default language can be changed by setting it directly in the DMN 1.3 XML as global expression language with the `expressionLanguage` attribute of

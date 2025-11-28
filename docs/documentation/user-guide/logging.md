@@ -101,7 +101,7 @@ In case of arising exceptions upon execution, the data is kept in the MDC until 
 i.e. the [JobExecutor](../user-guide/process-engine/the-job-executor.md) or the surrounding command, finished its logging.
 
 The keys at which the properties are accessible in the MDC can be defined in the
-[process engine configuration](../reference/deployment-descriptors/tags/process-engine.md#logging-context-parameters).
+[process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdx#logging-context-parameters).
 
 In order to access the MDC data, you need to adjust the logging pattern of your logging configuration.
 An example using Logback could look as follows
@@ -176,7 +176,7 @@ The process engine logs on the following categories
     <td>
       command context logs including executing atomic operations and bpmn stack traces during exceptions<br/>
       You can override the default <code>DEBUG</code> log level for bpmn stack traces, see the
-      <a href="../reference/deployment-descriptors/tags/process-engine.md#logLevelBpmnStackTrace">Logging level parameters</a> section.
+      <a href="../reference/deployment-descriptors/tags/process-engine.mdx#logLevelBpmnStackTrace">Logging level parameters</a> section.
     </td>
   </tr>
   <tr>

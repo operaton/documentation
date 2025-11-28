@@ -313,7 +313,7 @@ com.example.Order retrievedOrder = (com.example.Order) retrievedTypedObjectValue
 
 :::warning[Java serialization format]
   Be aware that when using a serialized representation of variables, the Java serialization format is forbidden by default. You should either use another format (JSON or XML) or explicitly enable the Java serialization
-  with the help of the [`javaSerializationFormatEnabled`](../../reference/deployment-descriptors/tags/process-engine.md#javaSerializationFormatEnabled) configuration flag.
+  with the help of the [`javaSerializationFormatEnabled`](../../reference/deployment-descriptors/tags/process-engine.mdx#javaSerializationFormatEnabled) configuration flag.
   However, please make sure to read the [Security Implication](../security.md#variable-values-from-untrusted-sources) first before enabling this.
 :::
 
@@ -481,7 +481,7 @@ Input mappings can also be used with multi-instance constructs, in which the map
 
 If an Activity is canceled (e.g. due to throwing a BPMN error), IO mapping is still executed. This can lead to exceptions if the output mapping references variables that do not exist in the scope of the activity at that time.
 
-The default behavior is that the engine still tries to execute output mappings on canceled activities and fails with an exception if a variable is not found. By enabling the [skipOutputMappingOnCanceledActivities](../../reference/deployment-descriptors/tags/process-engine.md#skipOutputMappingOnCanceledActivities) engine configuration flag (i.e. setting it to `true`) the engine will not perform output mappings on any canceled activity.
+The default behavior is that the engine still tries to execute output mappings on canceled activities and fails with an exception if a variable is not found. By enabling the [skipOutputMappingOnCanceledActivities](../../reference/deployment-descriptors/tags/process-engine.mdx#skipOutputMappingOnCanceledActivities) engine configuration flag (i.e. setting it to `true`) the engine will not perform output mappings on any canceled activity.
 
 [inputOutput]: ../../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput
 [inputParameter]: ../../reference/bpmn20/custom-extensions/extension-elements.md#inputparameter

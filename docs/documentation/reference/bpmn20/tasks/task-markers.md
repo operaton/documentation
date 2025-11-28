@@ -79,7 +79,7 @@ Expressions that resolve to a positive number are also possible:
 Another way to define the number of instances is to specify the name of a process variable which is a collection using the `loopDataInputRef` child element. For each item in the collection, an instance will be created. Optionally, it is possible to set that specific item of the collection for the instance using the inputDataItem child element. This is shown in the following XML example:
 
 ```xml
-<userTask id="miTasks" name="My Task ```${loopCounter}" operaton:assignee="${assignee}">
+<userTask id="miTasks" name="My Task ${loopCounter}" operaton:assignee="${assignee}">
   <multiInstanceLoopCharacteristics isSequential="false">
     <loopDataInputRef>assigneeList</loopDataInputRef>
     <inputDataItem name="assignee" />

@@ -113,7 +113,7 @@ You can find more information on this in the <a class="javadocref" href="">Java 
 
 Querying for results without restricting the maximum number of results or querying for a vast number
 of results can lead to a high memory consumption or even to out of memory exceptions. With the help
-of the [Query Maximum Results Limit](../../reference/deployment-descriptors/tags/process-engine.md#queryMaxResultsLimit),
+of the [Query Maximum Results Limit](../../reference/deployment-descriptors/tags/process-engine.mdx#queryMaxResultsLimit),
 you can restrict the maximum number of results.
 
 This restriction is only enforced in the following cases:

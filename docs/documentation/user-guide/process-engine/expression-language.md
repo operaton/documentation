@@ -154,7 +154,7 @@ The following example shows usage of expression language as condition of a seque
 ```xml
   <sequenceFlow>
     <conditionExpression xsi:type="tFormalExpression">
-      ```${test == 'foo'}
+      ${test == 'foo'}
     </conditionExpression>
   </sequenceFlow>
 ```
@@ -185,7 +185,7 @@ a bean.
     <extensionElements>
       <operaton:inputOutput>
         <operaton:inputParameter name="x">
-          ```${myBean.calculateX()}
+          ${myBean.calculateX()}
         </operaton:inputParameter>
       </operaton:inputOutput>
     </extensionElements>
@@ -243,7 +243,7 @@ conditional sequence flow can directly check a variable value:
 ```xml
   <sequenceFlow>
     <conditionExpression xsi:type="tFormalExpression">
-      ```${test == 'start'}
+      ${test == 'start'}
     </conditionExpression>
   </sequenceFlow>
 ```

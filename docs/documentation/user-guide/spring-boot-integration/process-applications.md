@@ -28,7 +28,7 @@ public class MyApplication {
 }
 ```
 
-Some configuration can be done via Spring Boot configuration parameters. Check [the list of currently available parameters](../spring-boot-integration/configuration.md#operaton-bpm-application).
+Some configuration can be done via Spring Boot configuration parameters. Check [the list of currently available parameters](../spring-boot-integration/configuration.mdx#operaton-bpm-application).
 
 ## Using Deployment Callbacks
 

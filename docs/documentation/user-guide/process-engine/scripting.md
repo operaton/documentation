@@ -350,11 +350,11 @@ Note that for JavaScript execution you might be able to choose the script engine
 
 You can use the following process engine configuration flags to influence the configuration of specific script engines:
 
-* [configureScriptEngineHostAccess](../../reference/deployment-descriptors/tags/process-engine.md#configureScriptEngineHostAccess) -
+* [configureScriptEngineHostAccess](../../reference/deployment-descriptors/tags/process-engine.mdx#configureScriptEngineHostAccess) -
   Specifies whether host language resources like classes and their methods are accessible or not.
-* [enableScriptEngineLoadExternalResources](../../reference/deployment-descriptors/tags/process-engine.md#enableScriptEngineLoadExternalResources) -
+* [enableScriptEngineLoadExternalResources](../../reference/deployment-descriptors/tags/process-engine.mdx#enableScriptEngineLoadExternalResources) -
   Specifies whether external resources can be loaded from file system or not.
-* [enableScriptEngineNashornCompatibility](../../reference/deployment-descriptors/tags/process-engine.md#enableScriptEngineNashornCompatibility) -
+* [enableScriptEngineNashornCompatibility](../../reference/deployment-descriptors/tags/process-engine.mdx#enableScriptEngineNashornCompatibility) -
   Specifies whether Nashorn compatibility mode is enabled or not.
 
 ### System properties

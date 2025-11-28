@@ -159,7 +159,7 @@ Choose a container from the list and learn where to configure the HTTP Security 
 
 * [Tomcat](../../installation/full/tomcat/configuration.md#security-related-http-headers-in-webapps)
 * [Wildfly](../../installation/full/wildfly/configuration.md#security-related-http-headers-in-webapps)
-* [Spring Boot](../../user-guide/spring-boot-integration/configuration.md)
+* [Spring Boot](../../user-guide/spring-boot-integration/configuration.mdx)
 
 ## How to Configure?
 
