@@ -29,10 +29,9 @@ The data source that is constructed based on the provided JDBC properties will h
 
 ## Jdbc Batch Processing
 
-<a name="jdbcBatchProcessing"></a>Another configuration - `jdbcBatchProcessing` - sets if batch processing mode must be used when sending SQL statements to the database. When switched off, statements are executed one by one.
+Another configuration - [jdbcBatchProcessing](../../../../documentation/reference/deployment-descriptors/tags/process-engine.mdx#jdbcBatchProcessing) - sets if batch processing mode must be used when sending SQL statements to the database. When switched off, statements are executed one by one.
 Values: `true` (default), `false`.
 
-Known issues with batch processing:
 
 * batch processing is not working for Oracle versions earlier than 12.
 * when using batch processing on MariaDB and DB2, `jdbcStatementTimeout` is being ignored.
