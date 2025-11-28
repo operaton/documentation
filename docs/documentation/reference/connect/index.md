@@ -32,7 +32,7 @@ dependency to your `pom.xml` file:
 
 :::info[Operaton BOM]
 If you use other Operaton projects please import the
-[Operaton BOM](/get-started/apache-maven/)
+[Operaton BOM](/docs/get-started/apache-maven/)
 to ensure correct versions for every Operaton project.
 :::
 
