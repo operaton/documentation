@@ -297,7 +297,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr>
-    <td><a name="disabledPermissions"></a><code>disabledPermissions</code></td>
+    <td id="disabledPermissions"><code>disabledPermissions</code></td>
     <td>List</td>
     <td>Define a list of Permissions' names. These permissions will be not taken into account whenever authorization check is performed.</td>
   </tr>
@@ -809,7 +809,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr>
-    <td><a name="javaSerializationFormatEnabled"></a><code>javaSerializationFormatEnabled</code></td>
+    <td id="javaSerializationFormatEnabled"><code>javaSerializationFormatEnabled</code></td>
     <td>Boolean</td>
     <td>
         Sets if Java serialization format can be used, when <a href="../user-guide/process-engine/variables.md#object-values">setting variables by their serialized representation</a>. Default value: <code>false</code>
@@ -817,7 +817,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr>
-    <td><a name="deserializationTypeValidationEnabled"></a><code>deserializationTypeValidationEnabled</code></td>
+    <td id="deserializationTypeValidationEnabled"><code>deserializationTypeValidationEnabled</code></td>
     <td>Boolean</td>
     <td>
         Sets if validation of types should be performed before JSON and XML deserialization. See <a href="../user-guide/security.md#variable-values-from-untrusted-sources">Security Instructions</a> for further information. Default value: <code>false</code>
@@ -841,7 +841,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr>
-    <td><a name="enablePasswordPolicy"></a><code>enablePasswordPolicy</code></td>
+    <td id="enablePasswordPolicy"><code>enablePasswordPolicy</code></td>
     <td>Boolean</td>
     <td>
         Set to <code>true</code>, to enable a <a href="../user-guide/process-engine/password-policy">password policy</a> for users that are managed by the engine. If a <a href="https://docs.operaton.org/docs/documentation/user-guide/process-engine/password-policy/#customize-the-password-policy">custom password policy</a> is configured, it will be enabled. Otherwise the <a href="https://docs.operaton.org/docs/documentation/user-guide/process-engine/password-policy/#built-in-password-policy">built-in password policy</a> is activated.
@@ -849,7 +849,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr>
-    <td><a name="enableCmdExceptionLogging"></a><code>enableCmdExceptionLogging</code></td>
+    <td id="enableCmdExceptionLogging"><code>enableCmdExceptionLogging</code></td>
     <td>Boolean</td>
     <td>
         Set to <code>false</code>, to disable logging of unhandled exceptions that occur during command execution. The default setting for this flag is <code>true</code>. Note: There might be duplicate log entries for command exceptions (e.g. when a job fails).
@@ -857,7 +857,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr>
-    <td><a name="enableReducedJobExceptionLogging"></a><code>enableReducedJobExceptionLogging</code></td>
+    <td id="enableReducedJobExceptionLogging"><code>enableReducedJobExceptionLogging</code></td>
     <td>Boolean</td>
     <td>
         Set to <code>true</code>, to suppress logging of exceptions that occur during the execution of a job that has retries left. If the job does not have any retries left an exception will still be logged.
@@ -865,7 +865,7 @@ The following is a list with the most commonly used process engine configuration
   </tr>
 
   <tr id="webappsAuthenticationLoggingEnabled">
-    <td><a name="webappsAuthenticationLoggingEnabled"></a><code>webappsAuthenticationLoggingEnabled</code></td>
+    <td id="webappsAuthenticationLoggingEnabled"><code>webappsAuthenticationLoggingEnabled</code></td>
     <td>Boolean</td>
     <td>
         Set to <code>true</code> to enable authentication logging in the Operaton web apps (Cockpit, Tasklist, and Admin). When enabled, the Operaton web apps will produce log statements in the application log for each user initiated log in and log out event. The name of the logger is <code>org.operaton.bpm.webapp</code>.
