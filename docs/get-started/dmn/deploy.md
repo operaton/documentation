@@ -103,8 +103,8 @@ Congratulations, you have now successfully set up a project with your first DMN 
 
 Next,
 
-* see how you can evaluate the decision using the [REST API](/docs/documentation/reference/rest/decision-definition/post-evaluate/),
+* see how you can evaluate the decision using the [REST API](https://docs.operaton.org/reference/latest/rest-api/#tag/Condition/operation/evaluateCondition),
 * learn more about DMN by reading the [DMN Reference](/docs/documentation/reference/dmn/),
 * learn more about the [Decision API exposed by Operaton Process Engine](/docs/documentation/user-guide/process-engine/decisions/),
 * check how you can invoke the decision from a [BPMN Business Rule Task](/docs/documentation/reference/bpmn20/tasks/business-rule-task/),
-* Bonus Step: [Decision Requirements Graph](../drg)
+* Bonus Step: [Decision Requirements Graph](drg.md)
