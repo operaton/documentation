@@ -25,7 +25,7 @@ The [Event Based Gateway](../../reference/bpmn20/gateways/event-based-gateway.md
 
 <img src="/img/event-based-gateway.png" width="150px"/>
 
-<div data-bpmn-diagram="../bpmn/event-based-gateway"></div>
+<div data-bpmn-diagram="./bpmn/event-based-gateway"></div>
 
 A special type of the [Service Task](../../reference/bpmn20/tasks/service-task.md): [External Task](../process-engine/external-tasks.md)
 

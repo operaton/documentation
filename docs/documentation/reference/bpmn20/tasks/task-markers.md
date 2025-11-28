@@ -35,7 +35,7 @@ A Gateway or Event can not become multi-instance.
 
 If an activity is multi-instance, this is indicated by three short lines at the bottom of the activity. Three vertical lines indicate that the instances will be executed in <strong>parallel</strong>, while three horizontal lines indicate **sequential** execution.
 
-<div data-bpmn-diagram="../bpmn//multiple-instance"></div>
+<div data-bpmn-diagram="./bpmn//multiple-instance"></div>
 
 As required by the specification, each parent execution of the created executions for each instance will have the following variables:
 
@@ -145,7 +145,7 @@ In this example, parallel instances will be created for each element of the assi
 
 Since a multi-instance is a regular activity, it is possible to define a boundary event on its boundary. In case of an interrupting boundary event, when the event is caught, all instances that are still active will be destroyed. For example, take the following multi-instance subprocess:
 
-<div data-bpmn-diagram="../bpmn/multiple-instance-boundary"></div>
+<div data-bpmn-diagram="./bpmn/multiple-instance-boundary"></div>
 
 Here all instances of the subprocess will be destroyed when the timer fires, regardless of how many instances there are or which inner activities are currently not completed yet.
 
@@ -156,7 +156,7 @@ The loop marker is not natively supported yet by the engine. For Multiple Instan
 
 To get around this limitation, the solution is to explicitly model the loop in your BPMN process:
 
-<div data-bpmn-diagram="../bpmn/loop-alternative"></div>
+<div data-bpmn-diagram="./bpmn/loop-alternative"></div>
 
 Be assured that we have the loop marker in our backlog to be added to the engine.
 
@@ -187,7 +187,7 @@ will contain the array item. To access the value of the element, you can use `.v
 
 If an activity is used for compensating the effects of another activity, it can be declared to be a compensation handler. Compensation handlers are not contained in the regular flow and are only executed when a compensation event is thrown.
 
-<div data-bpmn-diagram="../bpmn/compensation-marker"></div>
+<div data-bpmn-diagram="./bpmn/compensation-marker"></div>
 
 Notice the compensation handler icon in the bottom center area of the "cancel hotel reservation" service task.
 

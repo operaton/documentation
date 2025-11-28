@@ -12,7 +12,7 @@ menu:
 
 Error events are events which are triggered by a defined error.
 
-<div data-bpmn-diagram="../bpmn/event-error"></div>
+<div data-bpmn-diagram="./bpmn/event-error"></div>
 
 
 ## Business Errors vs. Technical Errors
@@ -99,7 +99,7 @@ For External Tasks, it is also possible to define error events by using a [opera
 
 An error start event can only be used to trigger an Event Sub-Process - it __cannot__ be used to start a process instance. The error start event is always interrupting.
 
-<div data-bpmn-diagram="../bpmn/event-subprocess-alternative1"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess-alternative1"></div>
 
 Three optional attributes can be added to the error start event: <code>errorRef</code>, <code>operaton:errorCodeVariable</code> and <code>operaton:errorMessageVariable</code>:
 ```xml
@@ -186,7 +186,7 @@ Defining a error boundary event makes most sense on an embedded subprocess, or a
 
 When an error event is caught, the activity on which the boundary event is defined is destroyed, also destroying all current executions therein (e.g., concurrent activities, nested subprocesses, etc.). Process execution continues following the outgoing sequence flow of the boundary event.
 
-<div data-bpmn-diagram="../bpmn/event-subprocess-alternative2"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess-alternative2"></div>
 
 A error boundary event is defined as a typical boundary event. As with the other error events, the errorRef references an error defined outside of the process element:
 
@@ -226,7 +226,7 @@ This behaviour can be changed with <code>enableExceptionsAfterUnhandledBpmnError
 
 An error can be handled by the error start event in the event sub process and the same error can be thrown from the event sub process to handle the error on the higher level scope (in the example  below, the error thrown from the Event Subprocess is handled by the error boundary event in the Subprocess).
 
-<div data-bpmn-diagram="../bpmn/catchandthrowpattern"></div>
+<div data-bpmn-diagram="./bpmn/catchandthrowpattern"></div>
 
 ### Additional Resources
 

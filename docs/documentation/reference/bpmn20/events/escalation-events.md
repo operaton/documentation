@@ -12,7 +12,7 @@ menu:
 
 Escalation events are events which reference a named escalation. They are mostly used to communicate from a subprocess to an upper process. Unlike an error, an escalation event is non critical and execution continues at the location of throwing.
 
-<div data-bpmn-diagram="../bpmn/escalation-example"></div>
+<div data-bpmn-diagram="./bpmn/escalation-example"></div>
 
 
 ## Defining Escalation
@@ -40,7 +40,7 @@ An escalation event definition is declared by using the `escalationEventDefiniti
 
 An escalation start event can only be used to trigger an event sub-process - it __cannot__ be used to start a process instance.
 
-<div data-bpmn-diagram="../bpmn/escalation-start-event"></div>
+<div data-bpmn-diagram="./bpmn/escalation-start-event"></div>
 
 An event sub-process with an escalation start event is triggered by an escalation event that occurs in the same scope or in a lower scope (e.g., sub-process or call activity). When the sub-process is triggered by an escalation event from a call activity, then the defined output variables of the call activity are passed to the sub-process.
 
@@ -89,7 +89,7 @@ The following extensions are supported for `escalationEventDefinition`.
 
 An intermediate catching escalation event on the boundary of an activity, or escalation boundary event for short, catches escalations that are thrown within the scope of the activity on which it is defined.
 
-<div data-bpmn-diagram="../bpmn/escalation-boundary-event"></div>
+<div data-bpmn-diagram="./bpmn/escalation-boundary-event"></div>
 
 An escalation boundary event can only attached on an embedded sub-process or a call activity, since an escalation can only be thrown by an escalation intermediate throw event or an escalation end event. When the boundary event is triggered by an escalation event from a call activity, then the defined output variables of the call activity are passed to the scope of the boundary event.
 
@@ -134,7 +134,7 @@ The following extensions are supported for `escalationEventDefinition`.
 
 When process execution arrives at an escalation intermediate throw event, a named escalation is thrown. This escalation can be caught by an escalation boundary event or an event sub-process with an escalation start event which has the same or none escalation code.
 
-<div data-bpmn-diagram="../bpmn/escalation-intermediate-throw-event"></div>
+<div data-bpmn-diagram="./bpmn/escalation-intermediate-throw-event"></div>
 
 Like an error event, an escalation event is propagated to upper scopes (e.g., from sub-process or call activity) till it is caught. In case no boundary event or event sub-process caught the event, the execution just continues with normal flow. If the escalation is propagated to an upper scope via call activity then the defined output variables of the call activity are passed to the upper scope.
 
@@ -148,7 +148,7 @@ Like an error event, an escalation event is propagated to upper scopes (e.g., fr
 
 When process execution arrives at an escalation end event, the current path of execution is ended and a named escalation is thrown. It has the same behavior as an [escalation intermediate throw event](#escalation-intermediate-throw-event).
 
-<div data-bpmn-diagram="../bpmn/escalation-end-event"></div>
+<div data-bpmn-diagram="./bpmn/escalation-end-event"></div>
 
 ```xml
 <endEvent id="throwEscalation" name="late shipment">

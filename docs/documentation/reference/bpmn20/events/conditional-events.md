@@ -162,7 +162,7 @@ are evaluated. This behavior is called *triggering on scope instantiation*.
 
 Consider the following process model:
 
-<div data-bpmn-diagram="../bpmn/event-conditional2" ></div>
+<div data-bpmn-diagram="./bpmn/event-conditional2" ></div>
 
 When a process instance is started, i.e., the process definition scope is instantiated, the condition of the sub process is evaluated before the none start
 event is executed. If fulfilled, it triggers immediately and the none start event never executes. The same applies to activities with conditional boundary events and intermediate conditional events.
@@ -218,7 +218,7 @@ That means the evaluation starts at the the conditional events of the BPMN scope
 
 For example see the following BPMN process model:
 
-<div data-bpmn-diagram="../bpmn/conditionalEventScopesHighestFirst" ></div>
+<div data-bpmn-diagram="./bpmn/conditionalEventScopesHighestFirst" ></div>
 
 If a variable is set in the context of the sub process instance, then the conditional boundary event of the sub process is evaluated first.
 If the condition is satisfied, then the execution is interrupted, otherwise the conditional boundary event of `UserTask B` is evaluated and
@@ -231,7 +231,7 @@ That means if a variable changes, only those conditional events are evaluated th
 
 See the following BPMN process model:
 
-<div data-bpmn-diagram="../bpmn/conditionalEventScopes" ></div>
+<div data-bpmn-diagram="./bpmn/conditionalEventScopes" ></div>
 
 If we have started the process above and `UserTask B` and `UserTask A` are active, then the [activity instance](../../../user-guide/process-engine/process-engine-concepts.md#activity-instances) hierarchy is:
 

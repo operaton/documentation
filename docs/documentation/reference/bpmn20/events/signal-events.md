@@ -15,11 +15,11 @@ Signal events are events which reference a named signal. A signal is an event of
 
 The following is an example of two separate processes communicating using signals. The first process is started if an insurance policy is updated or changed. After the changes have been reviewed by a human participant, a signal event is thrown, signaling that a policy has changed:
 
-<div data-bpmn-diagram="../bpmn/event-signal-throwing"></div>
+<div data-bpmn-diagram="./bpmn/event-signal-throwing"></div>
 
 This event can now be caught by all process instances which are interested. The following is an example of a process subscribing to the event.
 
-<div data-bpmn-diagram="../bpmn/event-signal-catching"></div>
+<div data-bpmn-diagram="./bpmn/event-signal-catching"></div>
 
 Note: It is important to understand that a signal event is broadcast to all active handlers. In the example given above this means that all instances of the process catching the signal would receive the event.
 
