@@ -16,7 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');
 
-const DRY_RUN = true; // <-- set to false to actually write changes
+const DRY_RUN = false; // <-- set to false to actually write changes
 const docsDir = path.join(__dirname, 'docs'); // Adjust if your docs folder is elsewhere
 
 async function fixBpmnReferences() {

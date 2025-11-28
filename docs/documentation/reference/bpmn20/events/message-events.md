@@ -274,7 +274,7 @@ The XML representation of a message start event is the normal start event declar
 
 A process can be started using one of two different messages, this is useful if the process needs alternative ways to react to different start events but eventually continues in a uniform way.
 
-<div data-bpmn-diagram="../bpmn/event-message-start-alternative" > </div>
+<div data-bpmn-diagram="./bpmn/event-message-start-alternative" > </div>
 
 
 ## Message Intermediate Catching Event
@@ -284,7 +284,7 @@ When a token arrives at the message intermediate catching event it will wait the
 
 The following example shows different message events in a process model:
 
-<div data-bpmn-diagram="../bpmn/event-message"></div>
+<div data-bpmn-diagram="./bpmn/event-message"></div>
 
 ```xml
 <intermediateCatchEvent id="message">
@@ -307,7 +307,7 @@ Boundary events are catching events that are attached to an activity. This means
 
 A Message Intermediate Throwing event sends a message to an external service. This event has the same behavior as a [Service Task](../tasks/service-task.md).
 
-<div data-bpmn-diagram="../bpmn/event-message-throwing" > </div>
+<div data-bpmn-diagram="./bpmn/event-message-throwing" > </div>
 
 ```xml
 <intermediateThrowEvent id="message">

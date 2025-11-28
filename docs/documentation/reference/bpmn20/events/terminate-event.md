@@ -17,7 +17,7 @@ It is useful if you have a parallel token flow in a process and you want to cons
 
 A terminate event on process instance level terminates the complete instance. On subprocess level the current scope and all contained processes instances will be terminated.
 
-<div data-bpmn-diagram="../bpmn/event-terminate"></div>
+<div data-bpmn-diagram="./bpmn/event-terminate"></div>
 
 
 ## Terminate Event Definition
