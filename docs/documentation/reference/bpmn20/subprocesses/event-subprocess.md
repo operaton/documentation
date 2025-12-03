@@ -19,7 +19,7 @@ An event subprocess may not have any incoming or outgoing sequence flows. As an 
 
 The event subprocess is visualized as an embedded subprocess with a dotted outline.
 
-<div data-bpmn-diagram="../bpmn/subprocess_event"> </div>
+<div data-bpmn-diagram="./bpmn/subprocess_event"> </div>
 
 It is represented using XML in the same way as an embedded subprocess. Additionally, the attribute triggeredByEvent must have the value `true`:
 
@@ -40,7 +40,7 @@ It is represented using XML in the same way as an embedded subprocess. Additiona
 
 The following is an example of an event subprocess triggered using an Error Start Event. The event subprocess is located at the "process level", i.e., is scoped to the process instance:
 
-<div data-bpmn-diagram="../bpmn/event-subprocess"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess"></div>
 
 This is what the event subprocess looks like in XML:
 
@@ -56,11 +56,11 @@ This is what the event subprocess looks like in XML:
 
 As already stated, an event subprocess can also be added to an embedded subprocess. If it is added to an embedded subprocess, it becomes an alternative to a boundary event. Consider the two following process diagrams. In both cases the embedded subprocess throws an error event. Both times the error is caught and handled using a user task.
 
-<div data-bpmn-diagram="../bpmn/event-subprocess-alternative1"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess-alternative1"></div>
 
 as opposed to:
 
-<div data-bpmn-diagram="../bpmn/event-subprocess-alternative2"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess-alternative2"></div>
 
 In both cases the same tasks are executed. However, there are differences between both modeling options:
 

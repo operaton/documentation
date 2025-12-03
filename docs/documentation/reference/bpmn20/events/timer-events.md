@@ -13,7 +13,7 @@ menu:
 
 Timer events are events which are triggered by a defined timer. They can be used as start event, intermediate event or boundary event. Boundary events can be interrupting or not.
 
-<div data-bpmn-diagram="../bpmn/event-timer" ></div>
+<div data-bpmn-diagram="./bpmn/event-timer" ></div>
 
 
 ## Configuration
