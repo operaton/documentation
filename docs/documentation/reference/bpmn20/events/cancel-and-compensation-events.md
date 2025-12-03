@@ -56,7 +56,7 @@ Triggering compensation: Compensation can either be triggered for a designated a
 
 Note: If compensation is thrown within a scope which contains a subprocess and the subprocess contains activities with compensation handlers, compensation is only propagated to the subprocess if it has completed successfully when compensation is thrown. If some of the activities nested inside the subprocess have completed and have attached compensation handlers, the compensation handlers are not executed if the subprocess containing these activities is not completed yet. Consider the following example:
 
-<div data-bpmn-diagram="../bpmn/compensation-intermediate-throw-event"></div>
+<div data-bpmn-diagram="./bpmn/compensation-intermediate-throw-event"></div>
 
 In this process we have two concurrent executions, one executing the embedded subprocess and one executing the "charge credit card" activity. Lets assume both executions are started and the first concurrent execution is waiting for a user to complete the "review bookings" task. The second execution performs the "charge credit card" activity and an error is thrown, which causes the "cancel reservations" event to trigger compensation. At this point the parallel subprocess is not yet completed which means that the compensation event is not propagated to the subprocess and thus the "cancel hotel reservation" compensation handler is not executed. If the user task (and thus the embedded subprocess) completes before the "cancel reservations" is performed, compensation is propagated to the embedded subprocess.
 
@@ -166,7 +166,7 @@ A compensation event subprocess can be used as a compensation handler for the em
 
 Contrary to a compensation boundary event attached to a subprocess, a compensation event subprocess *consumes* a thrown compensation event. That means, activities contained in the subprocess are not compensated by default. Instead, the compensation event subprocess can recursively trigger compensation for activities contained in its parent.
 
-<div data-bpmn-diagram="../bpmn/compensation-event-subprocess"></div>
+<div data-bpmn-diagram="./bpmn/compensation-event-subprocess"></div>
 
 The above process contains an embedded subprocess with a compensation event subprocess, triggered by a compensation start event. Note that this compensation handler deviates from default compensation in that it triggers compensation activities in an specific order independent from the order of execution; it also contains an additional activity adding process logic that cannot be derived from the body of the subprocess itself.
 

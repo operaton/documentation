@@ -7,16 +7,10 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 ### Installation
 
 ```
-$ yarn
+$ npm install
 ```
 
 ### Local Development
-
-```
-$ yarn start
-```
-
-or
 
 ```
 npm run start
@@ -27,7 +21,15 @@ This command starts a local development server and opens up a browser window. Mo
 ### Build
 
 ```
-$ yarn build
+$ npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Update dependencies
+
+```
+$ npm update
+```
+
+This command update the dependencies from `package.json`

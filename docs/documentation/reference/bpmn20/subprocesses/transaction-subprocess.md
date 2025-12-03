@@ -26,7 +26,7 @@ A transaction can have three possible outcomes:
 
 The following diagram illustrates the three different outcomes:
 
-<div data-bpmn-diagram="../bpmn/business-transaction"></div>
+<div data-bpmn-diagram="./bpmn/business-transaction"></div>
 
 A transaction subprocess is represented in xml using the transaction element:
 

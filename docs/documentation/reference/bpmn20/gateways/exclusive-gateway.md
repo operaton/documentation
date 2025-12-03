@@ -19,7 +19,7 @@ Note that only one sequence flow is selected when using the exclusive gateway. I
 If no sequence flow can be selected (no condition evaluates to 'true') this will result in a runtime exception, unless you have a default flow defined. One default flow can be set on the gateway itself in case no other condition matches - like an 'else' in programming languages.
 
 
-<div data-bpmn-diagram="../bpmn/exclusive-gateway"></div>
+<div data-bpmn-diagram="./bpmn/exclusive-gateway"></div>
 
 
 Note that a gateway without an icon inside it defaults to an exclusive gateway, even if we recommend to use the X within the gateway if your BPMN tool gives you that option.

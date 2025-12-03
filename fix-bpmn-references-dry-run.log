@@ -1,0 +1,27 @@
+$ node fix-bpmn-references.js 
+[fix-bpmn] Found 413 Markdown/MDX files
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\user-guide\process-engine\transactions-in-processes.md
+[dry-run] 6 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\user-guide\process-engine\process-instance-modification.md
+[dry-run] 10 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\user-guide\process-engine\process-instance-migration.md
+[dry-run] 4 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\tasks\task-markers.md
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\subprocesses\transaction-subprocess.md
+[dry-run] 4 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\subprocesses\event-subprocess.md
+[dry-run] 3 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\subprocesses\embedded-subprocess.md
+[dry-run] 2 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\subprocesses\call-activity.md
+[dry-run] 3 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\gateways\sequence-flow.md
+[dry-run] 2 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\gateways\parallel-gateway.md
+[dry-run] 5 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\gateways\inclusive-gateway.md
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\gateways\exclusive-gateway.md
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\gateways\event-based-gateway.md
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\timer-events.md
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\terminate-event.md
+[dry-run] 2 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\signal-events.md
+[dry-run] 2 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\none-events.md
+[dry-run] 3 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\message-events.md
+[dry-run] 1 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\link-events.md
+[dry-run] 5 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\escalation-events.md
+[dry-run] 4 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\error-events.md
+[dry-run] 3 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\conditional-events.md
+[dry-run] 2 reference(s) WOULD be fixed in: C:\Users\mail\Development\documentation\docs\documentation\reference\bpmn20\events\cancel-and-compensation-events.md
+[fix-bpmn] Done! Total replacements across all files: 67
+[dry-run] No files were modified. Set DRY_RUN = false to apply changes.

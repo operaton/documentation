@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "dev": "docusaurus start",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
@@ -18,9 +19,11 @@
     "@docusaurus/core": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
     "@mdx-js/react": "^3.1.1",
+    "bpmn-js": "^18.9.1",
     "clsx": "^2.1.1",
     "docusaurus-theme-search-typesense": "^0.25.0-0",
     "dotenv": "^17.2.3",
+    "glob": "^13.0.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
