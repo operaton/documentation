@@ -238,7 +238,7 @@ results or querying  for a vast number of results can lead to a high memory cons
 out of memory exceptions.
 
 You can mitigate the risk of an attack by defining a limit for the maximum number of results
-(`queryMaxResultsLimit`) in the [process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdxx#queryMaxResultsLimit).
+(`queryMaxResultsLimit`) in the [process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdx#queryMaxResultsLimit).
 
 
 :::note[Heads-up!]
@@ -261,7 +261,7 @@ Operaton handles many XML files containing configurations of process engines, de
 * Prevention against XML eXternal Entity (XXE) injections according to [OWASP](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.md)
 * Feature Secure Processing (FSP) of XML files according to [Oracle](https://docs.oracle.com/javase/8/docs/api/javax/xml/XMLConstants.html#FEATURE_SECURE_PROCESSING) which introduces [limits](https://docs.oracle.com/javase/tutorial/jaxp/limits/limits.html) for several XML properties
 
-If the limitations on XML files introduced by XXE prevention need to be removed, XXE processing can be enabled via `enableXxeProcessing` in the [process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdxx#enableXxeProcessing).
+If the limitations on XML files introduced by XXE prevention need to be removed, XXE processing can be enabled via `enableXxeProcessing` in the [process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdx#enableXxeProcessing).
 
 FSP itself can not be disabled in the engine. All properties that are influenced by this can however be configured in the environment via system properties and the `jaxp.properties` file. See the [Oracle documentation](https://docs.oracle.com/javase/tutorial/jaxp/limits/using.html) on how to determine the right limits and how to set them.
 
@@ -292,12 +292,12 @@ If an attacker can access these endpoints, they can exploit so-called _serializa
 ### Java objects using the JDK built-in `application/x-java-serialized-object` data format
 
 Starting with version 7.9, by default, it is not possible to set variables of type `Object` **AND** the data format `application/x-java-serialized-object`.
-The behavior can be restored with the process engine configuration flag [`javaSerializationFormatEnabled`](../reference/deployment-descriptors/tags/process-engine.mdxx#javaSerializationFormatEnabled).
+The behavior can be restored with the process engine configuration flag [`javaSerializationFormatEnabled`](../reference/deployment-descriptors/tags/process-engine.mdx#javaSerializationFormatEnabled).
 However, please bear in mind that enabling the java serialization format might make the process engine vulnerable against the aforementioned attacking scenario.
 
 ### JSON/XML serialized objects using Spin
 
-Therefore, we recommend enabling the whitelisting of allowed Java classes by enabling the property [deserializationTypeValidationEnabled](../reference/deployment-descriptors/tags/process-engine.mdxx#deserializationTypeValidationEnabled) in the process engine configuration. With this, the process engine validates the class names of submitted variables against a whitelist of allowed Java class and package names. Any non-whitelisted content is rejected. The default values are safe, but may be too restrictive for your use case. You can use the engine properties `deserializationAllowedPackages` and `deserializationAllowedClasses` to extend the default whitelist with package and class names of Java types that you consider save to deserialize in your environment.
+Therefore, we recommend enabling the whitelisting of allowed Java classes by enabling the property [deserializationTypeValidationEnabled](../reference/deployment-descriptors/tags/process-engine.mdx#deserializationTypeValidationEnabled) in the process engine configuration. With this, the process engine validates the class names of submitted variables against a whitelist of allowed Java class and package names. Any non-whitelisted content is rejected. The default values are safe, but may be too restrictive for your use case. You can use the engine properties `deserializationAllowedPackages` and `deserializationAllowedClasses` to extend the default whitelist with package and class names of Java types that you consider save to deserialize in your environment.
 
 In case this default behavior needs further adjustment, a custom validator can be implemented and registered in the engine with the engine property `deserializationTypeValidator`.
 The provided object needs to be a subtype of `org.operaton.bpm.engine.runtime.DeserializationTypeValidator` and offer an implementation of the `#validate` method.
@@ -318,7 +318,7 @@ the `ACT_HI_OP_LOG` table. The amount of table entries depends on the number of 
 
 Using the process engine configuration flag `logEntriesPerSyncOperationLimit`, the number of created entries to the user operation log can be limited for synchronous API calls. By default, one operation log entry is written per API call, regardless of how many entities were affected (default property value is `1`).
 If you choose to change `logEntriesPerSyncOperationLimit`, select a value that you are certain your system can handle.
-For more information about the possible values for `logEntriesPerSyncOperationLimit`, visit the [configuration documentation](../reference/deployment-descriptors/tags/process-engine.mdxx#logEntriesPerSyncOperationLimit).
+For more information about the possible values for `logEntriesPerSyncOperationLimit`, visit the [configuration documentation](../reference/deployment-descriptors/tags/process-engine.mdx#logEntriesPerSyncOperationLimit).
 
 Currently, the following APIs are affected:
 
