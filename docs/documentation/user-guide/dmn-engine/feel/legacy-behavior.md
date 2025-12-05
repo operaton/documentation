@@ -31,6 +31,6 @@ By using the legacy FEEL Engine, the Operaton DMN Engine **only** supports `FEEL
 simple unary tests.
 :::
 
-[legacy behavior flag]: ../../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior
+[legacy behavior flag]: ../../../reference/deployment-descriptors/tags/process-engine.mdx#dmnFeelEnableLegacyBehavior
 [fluent feel flag setter]: https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#enableFeelLegacyBehavior
 [feel flag setter](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html#setEnableFeelLegacyBehavior)

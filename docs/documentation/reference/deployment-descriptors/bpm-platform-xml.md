@@ -80,7 +80,7 @@ The namespace for the `bpm-platform.xml` file is `http://www.operaton.org/schema
     <td><code>&lt;process-engine&gt;</code></td>
     <td><code>&lt;bpm-platform&gt;</code></td>
     <td>false</td>
-    <td>See <a href="../reference/deployment-descriptors/tags/process-engine.md">process-engine Reference</a></td>
+    <td>See <a href="../reference/deployment-descriptors/tags/process-engine.mdx">process-engine Reference</a></td>
   </tr>
 </table>
 

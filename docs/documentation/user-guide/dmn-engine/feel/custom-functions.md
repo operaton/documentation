@@ -121,5 +121,5 @@ the types listed in the [FEEL Data Types] documentation can be returned by a Cus
 [FEEL Type Handling]: ../../../user-guide/dmn-engine/feel/type-handling.md#return-types
 [FEEL Data Types]: https://camunda.github.io/feel-scala/1.11/feel-data-types
 [Process Engine Plugin]: ../../../user-guide/process-engine/process-engine-plugins.md
-[dmnFeelCustomFunctionProviders]: ../../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelCustomFunctionProviders
+[dmnFeelCustomFunctionProviders]: ../../../reference/deployment-descriptors/tags/process-engine.mdx#dmnFeelCustomFunctionProviders
 [Register Custom Function Providers]: #register-custom-function-providers
