@@ -485,7 +485,7 @@ If different tenants should work on entirely different databases, they have to u
 For schema- or table-based isolation, a single data source can be used which means that resources like a connection pool can be shared among multiple engines.
 To achieve this,
 
-* the configuration option [databaseTablePrefix](../../reference/deployment-descriptors/tags/process-engine.md#configuration-protperties) can be used to configure database access.
+* the configuration option [databaseTablePrefix](../../reference/deployment-descriptors/tags/process-engine.mdx#configuration-protperties) can be used to configure database access.
 * consider switching on the setting `useSharedSqlSessionFactory`. The setting controls whether each process engine instance should parse and maintain a local copy of the mybatis mapping files or whether a single, shared copy can be used. Since the mappings require a lot of heap (>30MB), it is recommended to switch this on. This way only one copy needs to be allocated.
 
 :::warning[Considerations for useSharedSqlSessionFactory setting]

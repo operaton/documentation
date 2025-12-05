@@ -1037,5 +1037,5 @@ On these databases, revoke authorizations are effectively unusable.
 
 Also see the [Configuration Options](#check-revoke-authorizations) section on this page.
 
-[hist-inst-perm-config-flag]: ../../reference/deployment-descriptors/tags/process-engine.md#enable-historic-instance-permissions
+[hist-inst-perm-config-flag]: ../../reference/deployment-descriptors/tags/process-engine.mdx#enable-historic-instance-permissions
 [Removal-Time-based History Cleanup Strategy]: ../process-engine/history/history-cleanup.md#removal-time-based-strategy

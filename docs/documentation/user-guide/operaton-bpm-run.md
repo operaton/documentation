@@ -177,7 +177,7 @@ Just like all the other distros, you can tailor Operaton Run to your needs. To d
 
 :::note[Note:]
 Operaton Run is based on the [Operaton Spring Boot Starter](https://github.com/operaton/operaton/tree/master/spring-boot-starter).
-All [configuration properties](spring-boot-integration/configuration.md#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
+All [configuration properties](spring-boot-integration/configuration.mdx#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
 :::
 
 ### Database

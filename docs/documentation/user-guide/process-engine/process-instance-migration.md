@@ -42,11 +42,11 @@ In the remainder of this section, the following process models are used to illus
 
 Process `exampleProcess:1`:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example1"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example1"></div>
 
 Process `exampleProcess:2`:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example2"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example2"></div>
 
 ## Process Instance Migration by Example
 
@@ -494,11 +494,11 @@ When mapping events, there are two configuration options:
 
   Process `timerBoundary:1`:
 
-  <div data-bpmn-diagram="../bpmn/process-instance-migration/example-boundary-timer1"></div>
+  <div data-bpmn-diagram="./bpmn/process-instance-migration/example-boundary-timer1"></div>
 
   Process `timerBoundary:2`:
 
-  <div data-bpmn-diagram="../bpmn/process-instance-migration/example-boundary-timer2"></div>
+  <div data-bpmn-diagram="./bpmn/process-instance-migration/example-boundary-timer2"></div>
 
   Specifying the instruction `migrationBuilder.mapActivities("timer", "timer").updateEventTrigger()` is going to reinitialize the timer job.
   In effect, the boundary event fires ten days after migration. In contrast, if `updateEventTrigger` is not used, then the
@@ -548,11 +548,11 @@ This tells the migration API which compensation handler of the source process mo
 
 Consider this source process:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example-compensation5"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example-compensation5"></div>
 
 And this target process:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example-compensation6"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example-compensation6"></div>
 
 Assume a process instance in the following state:
 
@@ -575,11 +575,11 @@ MigrationPlan migrationPlan = processEngine.getRuntimeService()
 After migration, compensation can be triggered from the same scope as before migration (or in case that scope is removed, the closest ancestor scope that migrates).
 For illustration, consider the following source process:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example-compensation3"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example-compensation3"></div>
 
 And this target process:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example-compensation4"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example-compensation4"></div>
 
 When migrating the same process instance state as in the above example, the inner compensation event is **not** going to
 trigger compensation of the *Archive Application* activity but only the outer compensation event.
@@ -596,11 +596,11 @@ For example, consider the following two processes:
 
 Process `compensation:1`:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example-compensation1"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example-compensation1"></div>
 
 Process `compensation:2`:
 
-<div data-bpmn-diagram="../bpmn/process-instance-migration/example-compensation2"></div>
+<div data-bpmn-diagram="./bpmn/process-instance-migration/example-compensation2"></div>
 
 Furthermore, assume that before migration a process instance is in the following state:
 
@@ -746,7 +746,7 @@ the following requirements:
 * The migration plan adheres to [BPMN-element-specific considerations](#bpmn-specific-api-and-effects)
 * A set variable must not be of type `Object` **AND** its `serializationFormat` must not be `application/x-java-serialized-object`
   * Validation is skipped when the engine configuration flag `javaSerializationFormatEnabled` is set to `true`
-  * Please see [Process Engine Configuration Reference](../../reference/deployment-descriptors/tags/process-engine.md#javaSerializationFormatEnabled) for more details
+  * Please see [Process Engine Configuration Reference](../../reference/deployment-descriptors/tags/process-engine.mdx#javaSerializationFormatEnabled) for more details
 
 If validation reports errors, migration fails with a `MigrationPlanValidationException`
 providing a `MigrationPlanValidationReport` object with details on the

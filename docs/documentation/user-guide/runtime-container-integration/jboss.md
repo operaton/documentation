@@ -88,7 +88,7 @@ It should be easy to see that the configuration consists of a single process eng
 
 If you start up your Wildfly server with this configuration, it will automatically create the corresponding services and expose them through the management model.
 
-For a complete list of all configuration options, please refer to the [Process Engine Configuration](../../reference/deployment-descriptors/tags/process-engine.md).
+For a complete list of all configuration options, please refer to the [Process Engine Configuration](../../reference/deployment-descriptors/tags/process-engine.mdx).
 
 
 ## Provide a Custom Process Engine Configuration Class

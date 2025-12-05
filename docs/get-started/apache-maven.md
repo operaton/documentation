@@ -23,7 +23,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
     <dependency>
       <groupId>org.operaton.bpm</groupId>
       <artifactId>operaton-bom</artifactId>
-      <version>1.0.0-rc-1</version>
+      <version>1.0.0</version>
       <scope>import</scope>
       <type>pom</type>
     </dependency>
@@ -82,7 +82,7 @@ This BOM allows to use the DMN engine standalone without the BPMN engine and the
   <dependency>
     <groupId>org.operaton.bpm.dmn</groupId>
     <artifactId>operaton-engine-dmn-bom</artifactId>
-    <version>1.0.0-rc-1</version>
+    <version>1.0.0</version>
     <type>pom</type>
     <scope>import</scope>
   </dependency>

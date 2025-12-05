@@ -19,11 +19,11 @@ To enable Operaton Engine autoconfiguration, add the following dependency to you
 <dependency>
   <groupId>org.operaton.bpm.quarkus</groupId>
   <artifactId>operaton-bpm-quarkus-engine</artifactId>
-  <version>1.0.0-rc-1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-This will add the Operaton engine v1.0.0.-rc-1 to your dependencies.
+This will add the Operaton engine v1.0.0 to your dependencies.
 
 ## Supported deployment scenarios
 

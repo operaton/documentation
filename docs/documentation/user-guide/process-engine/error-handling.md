@@ -143,7 +143,7 @@ Learn more on how to assign a custom error code to an exception in the documenta
 
 ### Configuration
 
-You can configure the exception error codes feature in your [process engine configuration](../../reference/deployment-descriptors/tags/process-engine.md#exception-codes):
+You can configure the exception error codes feature in your [process engine configuration](../../reference/deployment-descriptors/tags/process-engine.mdx#exception-codes):
 
 * To disable the exception codes feature entirely, set the flag <code>disableExceptionCode</code>
   in your process engine configuration to <code>true</code>.

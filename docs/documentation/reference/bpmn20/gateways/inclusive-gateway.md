@@ -21,7 +21,7 @@ The functionality of the inclusive gateway is based on the incoming and outgoing
 
 Note that an inclusive gateway can have both _fork_ and _join_ behavior, if there are multiple incoming and outgoing sequence flows for the same inclusive gateway. In that case, the gateway will first join all incoming sequence flows that have a process token, before splitting into multiple concurrent paths of executions for the outgoing sequence flows that have a condition that evaluates to 'true'.
 
-<div data-bpmn-diagram="../bpmn/inclusive-gateway"></div>
+<div data-bpmn-diagram="./bpmn/inclusive-gateway"></div>
 
 Defining an inclusive gateway needs one line of XML:
 
@@ -104,20 +104,20 @@ The following examples show under which conditions an inclusive gateway will tri
    only two sequence flows join in the inclusive gateway. In this scenario, the inclusive
    gateway **will trigger** even with only two tokens since the tokens from `Task 1` and `Task 2`
    were joined in a single token by `Parallel Gateway 2`.
-   <div data-bpmn-diagram="../bpmn/inclusive_gateway_scenario_1"></div>
+   <div data-bpmn-diagram="./bpmn/inclusive_gateway_scenario_1"></div>
 
 1. In this scenario, `Parallel Gateway 1` creates two execution tokens, and
    three sequence flows join in the inclusive gateway. In this scenario, the inclusive
    gateway **will trigger** with three tokens since `Parallel Gateway 2` splits the single
    token from `Task 1` into two separate tokens for `Task 3` and `Task 4`.
-   <div data-bpmn-diagram="../bpmn/inclusive_gateway_scenario_2"></div>
+   <div data-bpmn-diagram="./bpmn/inclusive_gateway_scenario_2"></div>
 
 1. In the diagram below, the parallel gateway creates two execution tokens. The first
    execution token will wait at `User Task 1`, and the second will reach the
    `Inclusive Gateway`. The `Inclusive Gateway` will trigger immediately for the first token,
    and a second time, for the second token, as both tokens arrive on the same sequence flow.
    As a result, there will be two instances of `User Task 2` that will need to be completed.
-   <div data-bpmn-diagram="../bpmn/inclusive_gateway_scenario_3"></div>
+   <div data-bpmn-diagram="./bpmn/inclusive_gateway_scenario_3"></div>
 
 1. In the last scenario, the parallel gateway creates two execution tokens. The first
    execution token will wait at `User Task 1`, and the second will reach the
@@ -129,7 +129,7 @@ The following examples show under which conditions an inclusive gateway will tri
    behavior, only one instance of `User Task 2` will need to be completed instead of the expected two.
    In cases like this one, it is recommended to use an [`Exclusive Gateway`](../gateways/exclusive-gateway.md)
    instead of the `Inclusive Gateway 1`.
-   <div data-bpmn-diagram="../bpmn/inclusive_gateway_scenario_4"></div>
+   <div data-bpmn-diagram="./bpmn/inclusive_gateway_scenario_4"></div>
 
 ## Operaton Extensions
 

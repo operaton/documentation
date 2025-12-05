@@ -24,8 +24,9 @@ If you want to use the JUnit 5 `ProcessEngineExtension`, you need to add the fol
 ```xml
     <dependency>
       <groupId>org.operaton.bpm</groupId>
-      <artifactId>operaton-bpm-junit5</artifactId>
-      <version>1.0.0-rc-1</version>
+      <artifactId>operaton-engine</artifactId>
+      <classifier>junit5</classifier>
+      <version>1.0.0</version>
       <scope>test</scope>
     </dependency>
 ```
@@ -237,7 +238,7 @@ You can now see the engine database and use it to understand how and why your un
 
 ## Operaton Assertions
 
-Additional to normal JUnit assertions, [Operaton Assert](https://github.com/operaton/operaton/tree/v1.0.0-rc-1/test-utils/assert) adds a fluent API for asserting typical scenarios in a process integrating with [AssertJ](https://joel-costigliola.github.io/assertj/).
+Additional to normal JUnit assertions, [Operaton Assert](https://github.com/operaton/operaton/tree/v1.0.0/test-utils/assert) adds a fluent API for asserting typical scenarios in a process integrating with [AssertJ](https://joel-costigliola.github.io/assertj/).
 
 ```java
 assertThat(processInstance).isWaitingAt("UserTask_InformCustomer");
@@ -290,7 +291,7 @@ With Operaton.17.0 the project was moved into the [Operaton repository](https://
     <td>operaton-bpm-assert</td>
     <td>1.5.0</td>
     <td>1.0</td>
-    <td>1.0.0-rc-1</td>
+    <td>1.0.0</td>
   </tr>
 </table>
 

@@ -118,7 +118,7 @@ Here you can find how to configure the session cookie for the following containe
 
 * [Tomcat](../../installation/full/tomcat/configuration.md#session-cookie-in-webapps)
 * [Wildfly](../../installation/full/wildfly/configuration.md#session-cookie-in-webapps)
-* [Spring Boot](../../user-guide/spring-boot-integration/configuration.md#session-cookie)
+* [Spring Boot](../../user-guide/spring-boot-integration/configuration.mdx#session-cookie)
 
 ### CSRF Cookie
 
