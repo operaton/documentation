@@ -22,7 +22,7 @@ project. It then shows how to configure and build a new DMN engine instance.
 
 The Operaton DMN engine is released to Maven Central.
 
-Start by importing the [`operaton-engine-dmn` BOM](/get-started/apache-maven.md#operaton-dmn-engine-bom)
+Start by importing the [`operaton-engine-dmn` BOM](/get-started/apache-maven.md#operaton-bom-bill-of-materials)
 to ensure correct dependency management.
 
 Next, include the [`operaton-engine-dmn`](/get-started/apache-maven.md#operaton-dmn)
