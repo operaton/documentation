@@ -82,18 +82,18 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
 
 Now, use Cockpit to check if the decision table is successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit](http://localhost:8080/operaton/app/cockpit). Log in with *demo / demo*. Go to "Decisions" section. Your decision table *Dish* should be listed as deployed decision definition.
 
-![Example image](./img/cockpit-dish-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-dish-dmn.png)
 
 
 ## Verify the Evaluation with Cockpit
 
 Click on the decision *Dish*. This opens a dialog where you see when the decision table was evaluated.
 
-![Example image](./img/cockpit-decision-overview-dish-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-decision-overview-dish-dmn.png)
 
 If you click on the id, you can see the historic data of the evaluation. The matched rules are highlighted and the input and output values are listed in the table below.
 
-![Example image](./img/cockpit-decision-history-dish-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-decision-history-dish-dmn.png)
 
 Verify that the 5th rule was matched and the output value for the desired dish is "Stew".
 

@@ -17,7 +17,7 @@ This document contains information about the features provided by Operaton.
 
 To give you an overview of Operaton, the following illustration shows the most important components along with some typical user roles.
 
-![Operaton Components and Roles](./img/architecture-overview.png)
+![Operaton Components and Roles](/img/documentation/introduction/architecture-overview.png)
 
 
 ## Process Engine & Infrastructure

@@ -20,7 +20,7 @@ See the [Trigger Conditional Events](#trigger-conditional-events) section for de
 
 In the following BPMN model, all supported conditional events are used.
 
-![Example img](./bpmn/event-conditional.svg)Conditional Events Overview
+![Example img](/img/documentation/reference/bpmn20/events/event-conditional.svg)Conditional Events Overview
 
 As you can see, an intermediate conditional event is like a wait until the condition is satisfied. In this example, if
 the processor becomes available and the condition is, for example, `${processorAvailable == true}`, the condition will be satisfied and the execution process continues to the next activity.
@@ -203,7 +203,7 @@ When set from delegation code, variable changes do not trigger conditional event
 
 In the following picture the different activity instance phases are displayed.
 
-![API Services](./img/activityInstanceState.png)
+![API Services](/img/documentation/reference/bpmn20/events/activityInstanceState.png)
 
  * `Starting` corresponds to the starting phase of the activity instance. At this time the input mappings and execution start listeners are called.
  * `Execute` corresponds to the executing phase of the activity instance.

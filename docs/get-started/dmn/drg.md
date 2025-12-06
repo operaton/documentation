@@ -23,24 +23,24 @@ The visual representation of a Decision Requirements Graph (DRG) is called Decis
 
 Open the *Dish* decision table from the previous step. Click on the button "View DRD" to see the Decision Requirements Diagram (DRD). It contains a single decision with the name *Dish*.
 
-![Example image](./img/modeler-drd-step1.png)
+![Example image](/img/get-started/dmn/modeler-drd-step1.png)
 
 ## Set the Name and the Id of the DRD
 
 Click somewhere on the canvas and open the Property Panel on the right. Change the [id](/docs/documentation/reference/dmn/drg/#decision-requirements-graph-id) of the DRD to "dinnerDecisions". Next, change the [name](/docs/documentation/reference/dmn/drg/#decision-requirements-graph-name) of the DRD to "Dinner Decisions".
 
 
-![Example image](./img/modeler-drd-step2.png)
+![Example image](/img/get-started/dmn/modeler-drd-step2.png)
 
 ## Create a new Decision in the DRD
 
 Click on the decision icon of the palette to create a new decision. Then, double-click on the decision and type *Beverages* to set the name. Change the type of the decision to *Decision Table* by clicking on the wrench icon next to the "Beverages" decision and selecting "Decision Table". Use the Property Panel on the right side again to set the id to "beverages".
 
-![Example image](./img/modeler-drd-step3.png)
+![Example image](/img/get-started/dmn/modeler-drd-step3.png)
 
 Next, connect the *Dish* decision to the *Beverages* decision to indicate that the *Dish* decision is a [required decision](/docs/documentation/reference/dmn/drg/#required-decisions) of the *Beverages* decision. That means that it is used as an input for the decision and the output value "desiredDish" can be accessed there.
 
-![Example image](./img/modeler-drd-step4.png)
+![Example image](/img/get-started/dmn/modeler-drd-step4.png)
 
 Click on the top left icon of the *Beverages* decision to open the decision table.
 
@@ -55,7 +55,7 @@ Configure the *Beverages* decision table so that it has:
 
 Then, fill the table with the rules.
 
-![Example image](./img/modeler-drd-step5.png)
+![Example image](/img/get-started/dmn/modeler-drd-step5.png)
 
 Save your changes and replace the existing DMN file in the `src/main/resources` folder.
 
@@ -128,11 +128,11 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
 
 Now, open [Cockpit](http://localhost:8080/operaton/app/cockpit) and go to the "Decisions" section.
 
-![Example image](./img/cockpit-decision-overview-beverages-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-decision-overview-beverages-dmn.png)
 
 Then, click on the decision *Beverages* and select an id to see the historic data of the evaluation.
 
-![Example image](./img/cockpit-decision-history-beverages-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-decision-history-beverages-dmn.png)
 
 Verify that both rules were matched and the output value for the beverages is "Guiness" and "Water".
 

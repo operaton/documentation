@@ -41,7 +41,7 @@ In that case you model the error handling explicitly in the process model but yo
 
 Example:
 
-![Example img](./img/error-result-xor.png)Error Result XOR
+![Example img](/img/documentation/user-guide/process-engine/error-result-xor.png)Error Result XOR
 
 We trigger a "check data completeness" task. The Java Service might throw a "DataIncompleteException". However, if we check for completeness, incomplete data is not an exception, but an expected result, so we prefer to use an XOR-Gateway in the process flow which evaluates a process variable, e.g., ```"#{dataComplete==false}"```.
 
@@ -49,7 +49,7 @@ We trigger a "check data completeness" task. The Java Service might throw a "Dat
 
 The BPMN 2.0 error event gives you the possibility to explicitly model errors, tackling the use case of business errors. The most prominent example is the "intermediate catching error event", which can be attached to the boundary of an activity. Defining a boundary error event makes most sense on an embedded subprocess, a call activity or a Service Task. An error will cause the alternative process flow to be triggered:
 
-![Example img](./img/bpmn.boundary.error.event.png)Error Boundary Event
+![Example img](/img/documentation/user-guide/process-engine/bpmn.boundary.error.event.png)Error Boundary Event
 
 
 See the [Error Events](../../reference/bpmn20/events/error-events.md) section of the [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) and the [Throwing Errors from Delegation Code](../process-engine/delegation-code.md#throw-bpmn-errors-from-delegation-code) section of the [User Guide](../index.md) for more information.
@@ -86,7 +86,7 @@ for (Job failedJob : failedJobs) {
 
 Of course you can always explicitly model a retry mechanism as pointed out in [Where is the retry in BPMN 2.0](http://www.bpm-guide.de/2012/06/15/where-is-the-retry-in-bpmn-2-0/):
 
-![Example img](./img/retry.png)Retry Mechanism
+![Example img](/img/documentation/user-guide/process-engine/retry.png)Retry Mechanism
 
 We would recommend to limit it to cases where you want to see it in the process diagram for a good reason. We prefer asynchronous continuation, as it doesn't bloat your process diagram and basically can do the same thing with even less runtime overhead, as "walking" through the modeled loop involves additional action, e.g., writing an audit log.
 
@@ -94,7 +94,7 @@ We would recommend to limit it to cases where you want to see it in the process 
 
 We often see something like this in projects:
 
-![Example img](./img/error-handling-user-task.png)User Task Error Handling
+![Example img](/img/documentation/user-guide/process-engine/error-handling-user-task.png)User Task Error Handling
 
 Actually this is a valid approach in which you assign errors to an operator as User Tasks and model what options he has to solve the problem. However, this is a strange mixture: We want to handle a technical error we but add it to our business process model. Where do we stop? Do we have to model it on every Service Task now?
 

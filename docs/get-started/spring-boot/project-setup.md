@@ -32,7 +32,7 @@ In the following sections, we go through this process step by step.
 
 First, we set up a new Apache Maven based project. Let's call it *loan-approval-spring-boot*. The screenshot below illustrates the settings we choose in Eclipse.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/spring-boot/eclipse-new-project.png)
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* view.
 

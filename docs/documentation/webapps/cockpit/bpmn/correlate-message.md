@@ -14,7 +14,7 @@ menu:
 When an execution waits in a message-catching flow-node, you can use [Message Correlation][] to 
 continue the execution. Cockpit offers a [Batch Operation][] to correlate messages.
 
-![Correlate Message Batch Operation](./../img/correlate-message/batch-operation.png)
+![Correlate Message Batch Operation](/img/documentation/webapps/cockpit/bpmn/batch-operation.png)
 
 You can configure the batch operation as follows:
 
@@ -30,11 +30,11 @@ You can configure the batch operation as follows:
 You can find a envelope button on the right side next to the BPMN diagram 
 on the process definition and instance view.
 
-![Process action to correlate a message](./../img/correlate-message/process-action.png)
+![Process action to correlate a message](/img/documentation/webapps/cockpit/bpmn/process-action.png)
 
 If you click this button, a modal dialog opens:
 
-![Modal dialog to correlate a message](./../img/correlate-message/modal-dialog.png)
+![Modal dialog to correlate a message](/img/documentation/webapps/cockpit/bpmn/modal-dialog.png)
 
 When you click into the text input field, you can choose a message name from a list of suggestions.
 
@@ -51,7 +51,7 @@ You can open the modal dialog prefilled with the message name by clicking the en
 in the upper right corner of a message-catching flow-node. To make the button visible, hover over a 
 message-catching flow-node.
 
-![Diagram overlay button](./../img/correlate-message/diagram-overlay-button.png)
+![Diagram overlay button](/img/documentation/webapps/cockpit/bpmn/diagram-overlay-button.png)
 
 :::note[Known limitations]
 Not all message-catching flow-nodes in a BPMN diagram are covered with overlays or are present

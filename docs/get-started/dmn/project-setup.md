@@ -29,7 +29,7 @@ You don't have to setup the project manually but can also use a Maven Archetype 
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/dmn/eclipse-new-project.png)
 
 On the first page of the *New Maven Project Wizard* select *Create a simple project (skip archetype selection)*. Click Next.
 
