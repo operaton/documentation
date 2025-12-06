@@ -98,7 +98,7 @@ Finally, save the form as `payment.form`.
 Go to Tasklist ([http://localhost:8080/operaton/app/tasklist/](http://localhost:8080/operaton/app/tasklist/)) and log in with the credentials "demo / demo".
 Click on the Start process button to start a process instance. This opens a dialog where you can select *Payment Retrieval* from the list. Now you can set variables for the process instance using a generic form.
 
-![Example image](./img/start-form-generic.png)
+![Example image](/img/get-started/quick-start/start-form-generic.png)
 
 The generic form can be used whenever you have not added a dedicated form for a User Task or a Start Event.
 Click on the *Add a variable* button to create a new row. Fill in the form as shown in the screenshot. When you're done, click *Start*.

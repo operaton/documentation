@@ -18,7 +18,7 @@ This section describes the concepts of variables in processes. Variables can be 
 
 All entities that can have variables are called *variable scopes*. These are executions (which include process instances) and tasks. As described in the  [Concepts section](../process-engine/process-engine-concepts.md#executions), the runtime state of a process instance is represented by a tree of executions. Consider the following process model where the red dots mark active tasks:
 
-![Example img](./img/variables-3.png)Variables
+![Example img](/img/documentation/user-guide/process-engine/variables-3.png)Variables
 
 The runtime structure of this process is as follows:
 
