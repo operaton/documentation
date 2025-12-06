@@ -15,7 +15,7 @@ menu:
 
 The Java API is the most common way of interacting with the engine. The central starting point is the ProcessEngine, which can be created in several ways as described in the configuration section. From the ProcessEngine, you can obtain the various services that contain the workflow/BPM methods. ProcessEngine and the services objects are thread safe. So you can keep a reference to 1 of those for a whole server.
 
-![Example img](./img/api.services.png)API Services
+![Example img](/img/documentation/user-guide/process-engine/api.services.png)API Services
 
 ```java
 ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();

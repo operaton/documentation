@@ -17,7 +17,7 @@ In our web applications [Cockpit](../../webapps/cockpit/index.md) and [Tasklist]
 
 The previous JavaScript BPMN renderer can still be found at [operaton-bpmn.js](https://github.com/operaton/operaton-bpmn.js), but it is not actively developed anymore.
 
-![Example img](./img/process-diagram-bpmn-js.png)Process Diagram Rendering
+![Example img](/img/documentation/user-guide/process-engine/process-diagram-bpmn-js.png)Process Diagram Rendering
 
 
 ## bpmn.io Diagram Renderer

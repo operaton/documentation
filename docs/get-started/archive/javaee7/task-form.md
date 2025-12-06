@@ -14,7 +14,7 @@ menu:
 
 Now we add a task form and configure it in the BPMN 2.0 process, then, re-deploy the application and go to the Operaton Tasklist to see the JSF form.
 
-![Example image](./img/approve-order.png)
+![Example image](/img/get-started/archive/javaee7/approve-order.png)
 
 After the order has been persisted, a user can approve the order. For that, a task form is needed to display the order information and backend logic to fetch and update business objects.
 
@@ -163,14 +163,14 @@ On form submit, the `approveOrderController.submitForm()` method calls the EJB `
 
 ## Configure the Task Form in the Process
 
-![Example image](./img/pizza-order-process-task-form.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-task-form.png)
 
 Open the process with the modeler. Click on the *Approve Order* user task. In the properties view, set the `Form Key` property to `app:approveorder.jsf`. This means that we want to use an external JSF form and that the form is loaded from the application.
 
 
 ## Configure the Conditional Sequence Flows in the Process
 
-![Example image](./img/pizza-order-process-no.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-no.png)
 
 Open the process with the modeler. In the properties view, set the `Condition` property of the conditional sequence flows after the exclusive gateway to `${orderBusinessLogic.getOrder(orderId).approved}` respectively `${not orderBusinessLogic.getOrder(orderId).approved}`.
 

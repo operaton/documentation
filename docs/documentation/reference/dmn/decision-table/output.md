@@ -13,7 +13,7 @@ menu:
 aliases: [reference/dmn/decision-table/output/]
 ---
 
-![Example img](./img/output.png)Output" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output.png)Output" class="no-lightbox
 
 A decision table can have one or more outputs, also called output clauses. An
 output clause defines the id, label, name and type of a decision table output.
@@ -47,7 +47,7 @@ set as the `id` attribute of the `output` XML element.
 
 ## Output Label
 
-![Example img](./img/output-label.png)Output Label" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-label.png)Output Label" class="no-lightbox
 
 An output label is a short description of the output. It is set on the `output`
 XML element in the `label` attribute. Note that the label is not required but
@@ -59,7 +59,7 @@ recommended, since it helps to understand the decision.
 
 ## Output Name
 
-![Example img](./img/output-name.png)Output Name" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-name.png)Output Name" class="no-lightbox
 
 The name of the output is used to reference the value of the output in the
 [decision table result]. It is specified by the `name` attribute on the
@@ -74,7 +74,7 @@ unique name.
 
 ## Output Type Definition
 
-![Example img](./img/output-type-definition.png)Output Type Definition" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-type-definition.png)Output Type Definition" class="no-lightbox
 
 The type of the output clause can be specified by the `typeRef` attribute on the
 `output` XML element. After an [output entry] is evaluated by the
