@@ -25,11 +25,12 @@ const CONFIG = {
     // Images
     '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.ico',
     // BPMN & Process files
-    '.bpmn', '.dmn', '.cmmn',
+    // Note:.bpmn, .dmn, .cmmn are intentionally excluded
     // Documents (not markdown - those stay in docs/)
     '.pdf', '.odg', '.odt',
     // Scripts & Data
-    '.js', '.json', '.xml', '.csv',
+    '.json', '.xml', '.csv',
+    // .js is intentionally excluded
     // Note: .md and .mdx are intentionally excluded
   ],
   

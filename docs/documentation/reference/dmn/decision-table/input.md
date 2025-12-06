@@ -13,7 +13,7 @@ menu:
 aliases: [reference/dmn/decision-table/input/]
 ---
 
-![Input](./img/input.png)
+![Input](/img/documentation/reference/dmn/decision-table/input.png)
 
 A decision table can have one or more inputs, also called input clauses. An
 input clause defines the id, label, expression and type of a decision table
@@ -57,7 +57,7 @@ the `id` attribute of the `input` XML element.
 
 ## Input Label
 
-![Example img](./img/input-label.png)Input Label" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-label.png)Input Label" class="no-lightbox
 
 An input label is a short description of the input. It is set on the `input`
 XML element in the `label` attribute. Note that the label is not required but
@@ -73,7 +73,7 @@ recommended, since it helps to understand the decision.
 
 ## Input Expression
 
-![Example img](./img/input-expression.png)Input Expression" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-expression.png)Input Expression" class="no-lightbox
 
 An input expression specifies how the value of the input clause is generated.
 It is an expression which will be evaluated by the DMN engine. It is usually
@@ -91,7 +91,7 @@ expression is set inside a `text` element that is a child of the
 
 ## Input Type Definition
 
-![Example img](./img/input-type-definition.png)Input Type Definition" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-type-definition.png)Input Type Definition" class="no-lightbox
 
 The type of the input clause can be specified by the `typeRef` attribute on the
 `inputExpression` XML element. After the input expression is evaluated by the

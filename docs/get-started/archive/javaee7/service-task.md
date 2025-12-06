@@ -163,7 +163,7 @@ public class OrderBusinessLogic {
 
 ### Configure the EJB in the Process
 
-![Example image](./img/pizza-order-process-service-task-expression.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-service-task-expression.png)
 
 Use the properties view of the Persist Service Task in the process (see screenshot). You need to enter `${orderBusinessLogic.persistOrder(execution)}` as the `Expression` property. This will call the `persistOrder` method of the named EJB with the current execution as parameter.
 

@@ -124,7 +124,7 @@ The attributes `operaton:formRef` and `operaton:formRefVersion` can be specified
 </bpmn:userTask>
 ```
 
-![Example img](./img/reference-operaton-form.png)Provide Form Key for Operaton Forms
+![Example img](/img/documentation/user-guide/task-forms/reference-operaton-form.png)Provide Form Key for Operaton Forms
 
 ### Form Key
 
@@ -141,7 +141,7 @@ From the form developers point of view, `formRef` offers more flexibility than `
 
 To define a default value for a form field, a process variable with the same name as the form field key needs to be defined. Local variables (e.g. created by defining an [Input Parameter](../process-engine/variables/#inputoutput-variable-mapping) for the User Task) take precedence over process variables.
 
-![Example img](./img/variable-mapping-operaton-form.png)User Input/Output Mappings for default values for form fields
+![Example img](/img/documentation/user-guide/task-forms/variable-mapping-operaton-form.png)User Input/Output Mappings for default values for form fields
 
 The submitted values of a form are returned as variables to the process engine:
 
@@ -195,7 +195,7 @@ Using [Operaton Run](../../user-guide/operaton-bpm-run.md#starting-with-operaton
 placed inside the `configuration/resources/` directory are automatically deployed.
 :::
 
-![Example img](./img/deploy-form.png)Deploy your Operaton Form file
+![Example img](/img/documentation/user-guide/task-forms/deploy-form.png)Deploy your Operaton Form file
 
 You can also include Operaton Forms from other deployments by using [form references](#form-reference).
 
@@ -232,7 +232,7 @@ These Task forms do not use the form-key attribute to be referenced. They are no
 
 The generic form will be used whenever you have not added a dedicated form for a [UserTask][user-tasks] or a [StartEvent][start-event].
 
-![Example img](./img/tasklist-generic-form.png)Generic Start Form
+![Example img](/img/documentation/user-guide/task-forms/tasklist-generic-form.png)Generic Start Form
 
 
 Hit the *Add a variable* button to add a variable that will be passed to the process instance upon task completion. State a variable name, select the type and enter the desired value. Enter as many variables as you need.
@@ -283,7 +283,7 @@ Form metadata can be graphically edited using the [Camunda Modeler](https://camu
 
 This form would look like this in Tasklist:
 
-![Example img](./img/generated-forms-example.png)Generated Form
+![Example img](/img/documentation/user-guide/task-forms/generated-forms-example.png)Generated Form
 
 As you can see, the `<operaton:formData ... />` element is provided as a child element of the BPMN `<extensionElements>` element. Form metadata consists of multiple form fields which represent individual input fields where a user has to provide some value or selection.
 

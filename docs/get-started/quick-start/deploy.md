@@ -17,10 +17,10 @@ BPMN diagrams must be created for the process engine they intend to be deployed 
 
 In order to deploy the Process, click on the deploy button in the Camunda Modeler, then give it the Deployment Name "Payment Retrieval" and click the Deploy button. From version 3.0.0 on, you will be required to provide an URL for an Endpoint Configuration along with Deployment Details. This can be either the root endpoint to the REST API (e.g. `http://localhost:8080/engine-rest`) or an exact endpoint to the deployment creation method (e.g. `http://localhost:8080/engine-rest/deployment/create`).
 
-![Example image](./img/modeler-deploy1.png)
-![Example image](./img/modeler-deploy2.png)
+![Example image](/img/get-started/quick-start/modeler-deploy1.png)
+![Example image](/img/get-started/quick-start/modeler-deploy2.png)
 You should see a success message in the Camunda Modeler:
-![Example image](./img/modeler-deploy3.png)
+![Example image](/img/get-started/quick-start/modeler-deploy3.png)
 
 More details regarding the deployment from Camunda Modeler you can find [here](https://blog.camunda.com/post/2019/01/camunda-modeler-3.0.0-0-released/#completely-reworked-deployment-tool). For Camunda Modeler 2.2.4 and earlier, read [this blog post](https://blog.operaton.com/post/2018/03/camunda-modeler-1120-alpha-3-released/).
 
@@ -28,7 +28,7 @@ More details regarding the deployment from Camunda Modeler you can find [here](h
 
 Next, use Cockpit to see if the process was successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit/](http://localhost:8080/operaton/app/cockpit/) and log in with the credentials demo / demo. Your process *Payment Retrieval* should be visible on the dashboard.
 
-![Example image](./img/cockpit-payment-retrieval.png)
+![Example image](/img/get-started/quick-start/cockpit-payment-retrieval.png)
 
 
 ## Start a Process Instance
@@ -71,7 +71,7 @@ The JSON Body should look like this:
 
 
 Here's what the request might look like in Postman:
-![Example image](./img/postman-start-instance.png)
+![Example image](/img/get-started/quick-start/postman-start-instance.png)
 
 In your worker console (which we started in the previous section), you should now see an output.
 This means you have successfully started and executed your first simple process.
