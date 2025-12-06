@@ -500,7 +500,7 @@ This additional data is passed into the render function:
 
 **Name:** `cockpit.caseDefinition.diagram.plugin`
 
-![Example img](./../img/plugin-points/plugin-point-case-definition-diagram-overlay.png)Case Definition Diagram Overlay
+![Example img](/img/documentation/webapps/cockpit/extend/plugin-point-case-definition-diagram-overlay.png)Case Definition Diagram Overlay
 
 Diagram overlay plugins are a little different from other plugins.
 This plugin point does not receive a DOM node to render into but an instance of the Diagram viewer to create an overlay. See [Process Definition Diagram Overlay](#process-definition-diagram-overlay) for an example.
@@ -547,7 +547,7 @@ This additional data is passed into the render function:
 
 **Name:** `cockpit.caseInstance.diagram.plugin`
 
-![Example img](./../img/plugin-points/plugin-point-case-instance-diagram-overlay.png)Case Instance Diagram Overlay
+![Example img](/img/documentation/webapps/cockpit/extend/plugin-point-case-instance-diagram-overlay.png)Case Instance Diagram Overlay
 
 Diagram overlay plugins are a little different from other plugins.
 This plugin point does not receive a DOM node to render into but an instance of the Diagram viewer to create an overlay. See [Process Definition Diagram Overlay](#process-definition-diagram-overlay) for an example.

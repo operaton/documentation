@@ -235,7 +235,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         ![Message Start Event Symbol](/img/documentation/reference/bpmn20/message_start_event.svg)
       </td>
       <td>
-        ![Message Start Event Symbol](./img/symbols/events/message_start_event.svg)
+        ![Message Start Event Symbol](/img/documentation/reference/bpmn20/message_start_event.svg)
       </td>
       <td>
         ![Event Subprocess Message Start Event non-interrupting Symbol](/img/documentation/reference/bpmn20/event_subprocess_message_non_interrupting.svg)
@@ -244,7 +244,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         ![Message Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_catch_event.svg)
       </td>
       <td>
-        ![Message Intermediate Catch Event Symbol](./img/symbols/events/message_intermediate_catch_event.svg)
+        ![Message Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_catch_event.svg)
       </td>
       <td>
         ![Message Intermediate Non Interrupting Catch Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_non_interrupting_catch_event.svg)
@@ -262,7 +262,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
             ![Timer Start Event Symbol](/img/documentation/reference/bpmn20/timer_start_event.svg)
         </td>
         <td>
-            ![Event Subprocess Timer Start Event Symbol](./img/symbols/events/timer_start_event.svg)
+            ![Event Subprocess Timer Start Event Symbol](/img/documentation/reference/bpmn20/timer_start_event.svg)
         </td>
         <td>
             ![Event Subprocess Timer Start Event Non Interrupting Symbol](/img/documentation/reference/bpmn20/event_subprocess_timer_non_interrupting.svg)
@@ -271,7 +271,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
             ![Timer Intermediate Interrupting Event Symbol](/img/documentation/reference/bpmn20/timer_intermediate_event.svg)
       </td>
       <td>
-            ![Timer Intermediate Interrupting Event Symbol](./img/symbols/events/timer_intermediate_event.svg)
+            ![Timer Intermediate Interrupting Event Symbol](/img/documentation/reference/bpmn20/timer_intermediate_event.svg)
       </td>
       <td>
             ![Timer Intermediate None Interrupting Event Symbol](/img/documentation/reference/bpmn20/timer_intermediate_none_interrupting_event.svg)
@@ -285,7 +285,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
             ![Conditional Start Event Symbol](/img/documentation/reference/bpmn20/conditional_start_event.svg)
         </td>
         <td class="implemented">
-            ![Conditional Start Event Symbol](./img/symbols/events/conditional_start_event.svg)
+            ![Conditional Start Event Symbol](/img/documentation/reference/bpmn20/conditional_start_event.svg)
         </td>   
         <td class="implemented">
             ![Conditional Event Subprocess Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/event_subprocess_conditional_non_interrupting.svg)
@@ -294,7 +294,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
             ![Conditional Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/conditional_intermediate_catch_event.svg)
         </td>  
         <td class="implemented">
-            ![Conditional Intermediate Catch Event Symbol](./img/symbols/events/conditional_intermediate_catch_event.svg)
+            ![Conditional Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/conditional_intermediate_catch_event.svg)
         </td>  
         <td class="implemented">
             ![Conditional Intermediate Non Interrupting Event Symbol](/img/documentation/reference/bpmn20/conditional_intermediate_non_interrupting_event.svg)
@@ -323,7 +323,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         ![Signal Event Symbol](/img/documentation/reference/bpmn20/signal_start_event.svg)
       </td>
       <td>
-        ![Signal Event Symbol](./img/symbols/events/signal_start_event.svg)
+        ![Signal Event Symbol](/img/documentation/reference/bpmn20/signal_start_event.svg)
       </td>
       <td>
       ![Event Subprocess Signal Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/event_subprocess_signal_non_interrupting_start_event.svg)
@@ -332,7 +332,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         ![Signal Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_catch_event.svg)
       </td>
       <td>
-        ![Signal Intermediate Catch Event Symbol](./img/symbols/events/signal_intermediate_catch_event.svg)
+        ![Signal Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_catch_event.svg)
       </td>
       <td>
         ![Signal Intermediate Non Interrupting Catch Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_non_interrupting_catch_event.svg)
@@ -437,7 +437,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         ![Multiple Start Event Symbol](/img/documentation/reference/bpmn20/multiple_start_event.svg)
       </td>
       <td>
-          ![Multiple Start Event Symbol](./img/symbols/events/multiple_start_event.svg)
+          ![Multiple Start Event Symbol](/img/documentation/reference/bpmn20/multiple_start_event.svg)
       </td>
       <td>
         ![Multiple Event Subprocess Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/multiple_event_subprocess_non_interrupting_start_event.svg)
@@ -446,7 +446,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         ![Multiple Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_intermediate_catch_event.svg)
       </td>
       <td>
-        ![Multiple Intermediate Catch Event Symbol](./img/symbols/events/multiple_intermediate_catch_event.svg)
+        ![Multiple Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_intermediate_catch_event.svg)
       </td>
       <td>
         ![Multiple Boundary Non Interrupting Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_boundary_non_interrupting_event.svg)
@@ -465,7 +465,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
           ![Multiple Parallel Start Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_start_event.svg)
       </td>
       <td>
-            ![Multiple Parallel Start Event Symbol](./img/symbols/events/multiple_parallel_start_event.svg)
+            ![Multiple Parallel Start Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_start_event.svg)
       </td>
       <td>
         ![Multiple Parallel Start Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_non_interrupting_start_event.svg)
@@ -474,7 +474,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
             ![Multiple Parallel Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_catch_event.svg)
       </td>
       <td>
-          ![Multiple Parallel Catch Event Symbol](./img/symbols/events/multiple_parallel_catch_event.svg)
+          ![Multiple Parallel Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_catch_event.svg)
       </td>
       <td>
         ![Multiple Parallel Intermediate Non Interrupting Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_intermediate_non_interrupting_event.svg)
