@@ -5,7 +5,7 @@ sidebar_position: 10
 
 ---
 
-![Example img](./img/dashboard.png)Cockpit Dashboard
+![Example img](/img/documentation/webapps/cockpit/dashboard.png)Cockpit Dashboard
 
 The dashboard of Cockpit provides a quick overview of running and historic operations as well as details about deployments.
 
@@ -18,7 +18,7 @@ Additional [plugins](../cockpit/extend/plugins.md) can be added to the dashboard
 
 ## Metrics
 
-![Example img](./img/dashboard-metrics.png)Cockpit Dashboard Metrics
+![Example img](/img/documentation/webapps/cockpit/dashboard-metrics.png)Cockpit Dashboard Metrics
 
 At the bottom of the dashboard, the metrics plugin displays graphs with metrics for executed activity instances, evaluated decision instances and executed jobs.
 You can select to display the details for the current day, the current week or the current month. By clicking on the metrics graphs and dragging the cursor
@@ -28,6 +28,6 @@ appears under the graph, you are forwarded to the respective search with presele
 
 ## Multi Engine
 
-![Example img](./img/cockpit-multi-engine.png)Multiple Engines
+![Example img](/img/documentation/webapps/cockpit/cockpit-multi-engine.png)Multiple Engines
 
 If you are working with more than one engine, you can select the desired engine via a dropdown selection. Cockpit provides all information of the selected engine.

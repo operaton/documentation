@@ -5,7 +5,7 @@ sidebar_position: 30
 
 ---
 
-![Decision Requirements Graph](./img/drd.png)
+![Decision Requirements Graph](/img/documentation/reference/dmn/drg/drd.png)
 
 A Decision Requirements Graph (DRG) models a domain of decision-making, showing the most important elements involved in it and the dependencies
 between them. The elements modeled are [decisions], [input data], and [knowledge sources].
@@ -27,7 +27,7 @@ In the XML a DRG is represented by the `definitions` element.
 
 ## Decision Requirements Graph Name
 
-![Decision Requirements Graph Name](img/drg-name.png)
+![Decision Requirements Graph Name](/img/documentation/reference/dmn/drg/drg-name.png)
 
 The name describes the DRG. It is set as the `name` attribute on the `definitions` element.
 
@@ -42,7 +42,7 @@ The name describes the DRG. It is set as the `name` attribute on the `definition
 
 ## Decision Requirements Graph Id
 
-![Decision Requirements Graph Id](img/drg-id.png)
+![Decision Requirements Graph Id](/img/documentation/reference/dmn/drg/drg-id.png)
 
 The id is the technical identifier of the DRG. It is set in the `id` attribute on the `definitions` element.
 
@@ -61,7 +61,7 @@ The engine uses the id as the decision requirements definition key of the deploy
 
 ## Decision
 
-![Decision](img/decision.png)
+![Decision](/img/documentation/reference/dmn/drg/decision.png)
 
 A decision requirements graph can have one or more decisions. A decision has a [name] which is shown in the DRD and an [id]. The decision logic inside the decision must be either a [decision table] or a [decision literal expression].
 
@@ -79,7 +79,7 @@ A decision is represented by a `decision` element inside the `definitions` XML e
 
 ### Required Decisions
 
-![Required Decision](img/required-decision.png)
+![Required Decision](/img/documentation/reference/dmn/drg/required-decision.png)
 
 A decision can have one or more required decisions which it depends on. 
 
@@ -97,7 +97,7 @@ It has a `href` attribute and the value starts with `#` followed by the [decisio
 
 ## Input Data
 
-![Input Data](img/input-data.png)
+![Input Data](/img/documentation/reference/dmn/drg/input-data.png)
 
 An input data denotes information used as an input by one or more decisions. 
 
@@ -119,7 +119,7 @@ Note that an input data has no execution semantics and is ignored by the Operato
 
 ## Knowledge Source
 
-![Knowledge Source](img/knowledge-source.png)
+![Knowledge Source](/img/documentation/reference/dmn/drg/knowledge-source.png)
 
 A knowledge source denotes an authority for a Decision.
 

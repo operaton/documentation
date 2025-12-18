@@ -138,7 +138,7 @@ Note that the processes.xml file can contain multiple process archives with diff
 When deploying a set of BPMN 2.0 files to the process engine, a process deployment is created. The process deployment is performed to the process engine database so that when the process engine is stopped and restarted, the process definitions can be restored from the database and execution can continue. When a process application performs a deployment, in addition to the database deployment it will create a registration for this deployment with the process engine. This is illustrated in the following figure:
 
 
-![Example img](./img/process-application-deployment.png)Process Application Deployment
+![Example img](/img/documentation/user-guide/process-applications/process-application-deployment.png)Process Application Deployment
 
 Deployment of the process application "invoice.war" is illustrated on the left hand side:
 
@@ -150,7 +150,7 @@ When the process application is undeployed, the registration for the deployment 
 
 The registration allows the process engine to load additional Java Classes and resources from the process application when executing the processes. In contrast to the database deployment, which can be restored whenever the process engine is restarted, the registration of the process application is kept as in-memory state. This in-memory state is local to an individual cluster node, allowing us to undeploy or redeploy a process application on a particular cluster node without affecting the other nodes and without having to restart the process engine. If the Job Executor is deployment aware, job execution will also stop for jobs created by this process application. However, as a consequence, the registration also needs to be re-created when the application server is restarted. This happens automatically if the process application takes part in the application server deployment lifecycle. For instance, ServletProcessApplications are deployed as ServletContextListeners and when the servlet context is started, it creates the deployment and registration with the process engine. The redeployment process is illustrated in the next figure:
 
-![Example img](./img/process-application-redeployment.png)Process Application Redeployment
+![Example img](/img/documentation/user-guide/process-applications/process-application-redeployment.png)Process Application Redeployment
 
 (a) Left hand side: invoice.bpmn has not changed:
 

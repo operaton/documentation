@@ -30,7 +30,7 @@ In the following sections, we go through this process step by step.
 
 First, we set up a new Apache Maven based project in Eclipse. Let's call it *loanapproval-spring*. The screenshot below illustrates the settings we choose. As we are deploying a web application, make sure to select `Packaging: war`.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/archive/spring/eclipse-new-project.png)
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* view.
 
@@ -176,7 +176,7 @@ public class LoanApplicationContext {
 
 Congratulations, you have completed the project setup. Your project should now look as depicted in the screenshot to the left.
 
-![Example image](./img/project-layout-after-setup.png)
+![Example image](/img/get-started/archive/spring/project-layout-after-setup.png)
 
 You can now perform a full Maven build and deploy the project to a vanilla Apache Tomcat server. You should see the following log output:
 

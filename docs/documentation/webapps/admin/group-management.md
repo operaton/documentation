@@ -13,6 +13,6 @@ menu:
 
 ## Groups Menu
 
-![Example img](./img/admin-groups.png)Groups Menu
+![Example img](/img/documentation/webapps/admin/admin-groups.png)Groups Menu
 
 The Groups menu allows you to add, edit and delete user groups. Besides that you can view the members of groups

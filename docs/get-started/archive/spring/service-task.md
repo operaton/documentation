@@ -29,7 +29,7 @@ model and interact with the process form inside our Spring beans. In this sectio
 
 Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.
 
-![Example image](./img/process-model.png)
+![Example image](/img/get-started/archive/spring/process-model.png)
 
 :::note[Hint]
 If you are unfamiliar with modeling an executable process, you can read the
@@ -108,7 +108,7 @@ public class LoanApplicationContext {
 
 ### Invoke a Spring Bean from a BPMN 2.0 Service Task
 
-![Example image](./img/service-task.png)
+![Example image](/img/get-started/archive/spring/service-task.png)
 
 Referencing a Spring Bean from a BPMN 2.0 Service Task is simple. As shown in the screenshot above, we have to select the service task in the Camunda Modeler and provide an expression. Set *Implementation Type* to *Delegate Expression* and type `${calculateInterestService}` in the *Delegate Expression* field. Again, save the model and refresh the Eclipse project.
 

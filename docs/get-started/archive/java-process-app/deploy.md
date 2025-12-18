@@ -50,14 +50,14 @@ ENGINE-08050 Process application Loan Approval App successfully deployed
 
 Now use Cockpit to check if the process is successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit](http://localhost:8080/operaton/app/cockpit). Log in with demo / demo. Your process *Loan Approval* is visible on the dashboard.
 
-![Example image](./img/cockpit-loan-approval.png)
+![Example image](/img/get-started/archive/java-process-app/cockpit-loan-approval.png)
 
 
 ## Start a Process Instance
 
 Next, go to Operaton Tasklist ([http://localhost:8080/operaton/app/tasklist](http://localhost:8080/operaton/app/tasklist)). Click on the **Start process** button to start a process instance. This opens a dialog where you can select *Loan Approval* from the list. Now you can set variables for the process instance using a generic form.
 
-![Example image](./img/start-form-generic.png)
+![Example image](/img/get-started/archive/java-process-app/start-form-generic.png)
 
 The generic form can be used whenever you have not added a dedicated form for a User Task or a Start Event.
 Click on the *Add a variable* button to get a new row. Fill in the form as shown in the screenshot. When you are done, click *Start*.
@@ -68,11 +68,11 @@ If you now go back to [Operaton Cockpit](http://localhost:8080/operaton/app/cock
 
 To allow the user *john* to see the process definition *Loan Approval*, you have to go to Operaton Admin ([http://localhost:8080/operaton/app/admin/default/#/authorization?resource=6](http://localhost:8080/operaton/app/admin/default/#/authorization?resource=6)). Next, click on the button *Create new authorization* to add a new authorization on the resource *process definition*. Now you can give the user *john* all permissions on process definition *approve-loan*. When you are done, submit the new authorization.
 
-![Example image](./img/create-process-definition-authorization.png)
+![Example image](/img/get-started/archive/java-process-app/create-process-definition-authorization.png)
 
 Now create a second authorization for the *process instance* resource. Set the permission to *CREATE*.
 
-![Example image](./img/create-process-instance-authorization.png)
+![Example image](/img/get-started/archive/java-process-app/create-process-instance-authorization.png)
 
 For further details about authorizations and how to manage them, please read the following sections in the user guide: [Authorization Service](/docs/documentation/user-guide/process-engine/authorization-service) and [Authorization Management](/docs/documentation/webapps/admin/authorization-management).
 
@@ -81,8 +81,8 @@ For further details about authorizations and how to manage them, please read the
 
 Log out of Admin. Go to Tasklist ([http://localhost:8080/operaton/app/tasklist](http://localhost:8080/operaton/app/tasklist)) and log back in with the user credentials "john / john". Now you see the *Approve Loan* task in your Tasklist. Select the task and click on the *Diagram* tab. This displays the process diagram highlighting the User Task that is waiting for you to work on it.
 
-![Example image](./img/diagram.png)
+![Example image](/img/get-started/archive/java-process-app/diagram.png)
 
 To work on the task, select the *Form* tab. Again, there is no task form associated with the process. Click on *Load Variables*. This displays the variables you have put in in the first step.
 
-![Example image](./img/task-form-generic.png)
+![Example image](/img/get-started/archive/java-process-app/task-form-generic.png)
