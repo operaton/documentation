@@ -296,7 +296,7 @@ One of the nice features of the Wildfly Management System is that it will
 
 In some cases, you may find it more convenient to use WildFly's JConsole extension for starting a process engine.
 
-![Example img](/img/documentation/user-guide/runtime-container-integration/jboss-jconsole.png)JConsole
+![Example img](../../../assets/documentation/user-guide/runtime-container-integration/jboss-jconsole.png)JConsole
 
 The JConsole plugin allows you to inspect the management model graphically and build operations using a wizard. To start the JBoss JConsole plugin, start the jconsole.bat/sh file provided in the WildFly distribution. [More Information in the WildFly Docs](https://docs.wildfly.org/23/Admin_Guide.html#JMX).
 
@@ -353,7 +353,7 @@ As a result, the Application Service will add the process engine module to the c
 
 The Operaton Wildfly subsystem manages process engines as JBoss Services in the JBoss Module Service Container. For the Module Service Container to provide the process engine service(s) to the deployed applications, it is important that the dependencies are known. Consider the following example:
 
-![Example img](/img/documentation/user-guide/runtime-container-integration/jboss-service-dependencies.png)JBoss Service Dependencies
+![Example img](../../../assets/documentation/user-guide/runtime-container-integration/jboss-service-dependencies.png)JBoss Service Dependencies
 
 There are three applications deployed and two process engine services exist. Application 1 and Application 2 are using Process Engine 1 and Application 3 is using Process Engine 2.
 

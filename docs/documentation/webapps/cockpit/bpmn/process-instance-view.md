@@ -11,7 +11,7 @@ menu:
 
 ---
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-process-instances-view.png)Process Instance View
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-process-instances-view.png)Process Instance View
 
 Open the process instance view by selecting a process instance from the [process definition view][process-definition-view] instance list. This view allows you to drill down into a single process instance and explore its running activities as well as the variables, tasks, jobs, etc.
 Beside the diagram view the process will be displayed as an [activity instance tree view](#activity-instance-tree). Variables that belong to the instance will be listed in a variables table of the [detailed information panel](#detailed-information-panel). Now you can select single or multiple ('ctrl + click') flow nodes in the interactive BPMN 2.0 diagram or you can select an activity instance within the activity tree view. As diagram, tree view and variables table correspond with each other, the selected flow node will also be selected in the tree and the associated variables will be shown and vice versa.
@@ -23,13 +23,13 @@ Furthermore, you can maximize the diagram view or the detailed information panel
 
 ## Activity Instance Tree
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-activity-instance-tree-view.png)Activity Instance Tree
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-activity-instance-tree-view.png)Activity Instance Tree
 
 The activity instance tree contains a node for each activity that is currently active in the process instance. It allows you to select activity instances to explore their details. Concurrently, the selected instance will be marked in the rendered process diagram and the corresponding variables will be listed in the detailed information panel.
 
 ## Call Activity Drill Down
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-call-activity-instance-drill-down.png)Call Activity Drill Down
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-call-activity-instance-drill-down.png)Call Activity Drill Down
 
 Call activity instances that call at least one process instance have an overlay on the upper right corner that links to their called process instances.
 
@@ -40,7 +40,7 @@ However, if the number of called process instances exceeds one, then clicking th
 
 ## Detailed Information Panel
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-detailed-information-view.png)Detailed Information Panel
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-detailed-information-view.png)Detailed Information Panel
 
 Use the detailed information panel to get an overview of the variables, incidents, called process instances, user tasks and external tasks that the process instance contains. Furthermore, you can access the [instance modification](../bpmn/process-instance-modification.md) tab. Depending on the selected activity instance in the rendered diagram, the panel lists the corresponding information. You can also focus on the activity instance via a scope link in the table.
 
@@ -56,26 +56,26 @@ The external tasks tab displays various information about external tasks, such a
 
 ## Filter for Variables
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/variable-filter.png)Filter Variables
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/variable-filter.png)Filter Variables
 
 In the variables tab, you can filter for variables by variable name, activity instance id and variable value by using search pills. You can filter variable values with the type `String`, `Number`, or `Boolean`. To do so, click in the empty search field and select a criterion. Next, fill in the respective values for the search pill. You can combine multiple search pills to narrow down the results. The total amount of results that suit the search query is displayed to the right. Furthermore, you can copy a link to the current search query to your clipboard by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-link"></i></button> button and you can save search queries to your local browser storage by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and inserting a name in the drop down menu that appears. You can then retrieve the search query by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button> button and selecting the chosen name in the drop down menu.
 
 ## Add Variables
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-add-variables.png)Add Variables
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-add-variables.png)Add Variables
 
 Hit the plus button on the right side to add variables to a process instance. You can choose between different data types. Please note that variables will be overwritten if you add a new variable with an existing name.
 
 
 ## Edit Variables
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-edit-variables.png)Edit Variables
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-edit-variables.png)Edit Variables
 
 Edit variables in the list of variables by using the pencil symbol. This feature allows you to change the value of variables as well as the type. A validation of the date format and for the value of integers happens on client side. If you enter NULL the variable will be converted to a string type.
 
 
 ## Cancel a Process Instance
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-cancel-process-instance.png)Cancel Instances
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-cancel-process-instance.png)Cancel Instances
 
 In the process instance view you can cancel a single process instance. Hit the remove button on the right side. In the dialog that appears, you can choose to skip custom listeners and to skip I/O mappings. After you have completed this step, a confirmation dialog appears and the runtime data of the canceled instance is deleted.

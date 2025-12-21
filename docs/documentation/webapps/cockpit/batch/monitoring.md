@@ -12,7 +12,7 @@ menu:
 
 ---
 
-![Example img](/img/documentation/webapps/cockpit/batch/batch.png)Batch View Page
+![Example img](../../../../assets/documentation/webapps/cockpit/batch/batch.png)Batch View Page
 
 The batch page displays the status of running and completed batches. It allows displaying details of a batch such as the start- and end-time or the number of remaining jobs. For failed jobs, it displays the error message and allows a retry or deletion of the job.
 
@@ -30,7 +30,7 @@ See the [process engine section](../../../user-guide/process-engine/batch.md) fo
 
 ### Search
 
-![Example img](/img/documentation/webapps/cockpit/batch/batch-search.png)Batch Search
+![Example img](../../../../assets/documentation/webapps/cockpit/batch/batch-search.png)Batch Search
 
 Above the in progress batches table, you can search for batches which fulfill certain search criteria.
 To do so, click in the search box and select the parameters to search for.

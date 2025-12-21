@@ -11,7 +11,7 @@ menu:
 ---
 
 
-![Example img](/img/documentation/webapps/admin/admin-system-management.png)System Management
+![Example img](../../../assets/documentation/webapps/admin/admin-system-management.png)System Management
 
 The System Settings menu gives you general information about the process engine. It enables users with system permissions to access certain system information, including diagnostics and metrics.
 
@@ -21,13 +21,13 @@ The System Settings menu is only usable by users which are granted with *All* pe
 
 ## Diagnostics
 
-![Example img](/img/documentation/webapps/admin/admin-diagnostics.png)Diagnostics
+![Example img](../../../assets/documentation/webapps/admin/admin-diagnostics.png)Diagnostics
 
 The **Diagnostics** menu allows you to view and copy diagnostics data about your environment or distribution of Operaton. The main purpose of the **Diagnostics** menu is to increase transparency by giving you easy access to important system diagnostics information. In the event of an issue, this should also improve problem diagnosis by enabling you to quickly understand and share the Operaton environment you are running.
 
 ## Execution Metrics
 
-![Example img](/img/documentation/webapps/admin/admin-execution-metrics.png)Execution Metrics
+![Example img](../../../assets/documentation/webapps/admin/admin-execution-metrics.png)Execution Metrics
 
 The Execution Metrics menu in Admin displays an approximate number of *Flow Nodes Instances (FNI)*,
 *Executed Decision Elements (EDE)*, *Process Instances (PI)* and *Decision

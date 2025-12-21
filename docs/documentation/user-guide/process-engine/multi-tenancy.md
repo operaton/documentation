@@ -19,7 +19,7 @@ Multi-Tenancy can be achieved in two different ways. One way is to use [one proc
 
 Multi-Tenancy can be achieved with one process engine which uses tenant identifiers (i.e., tenant-ids). The data of all tenants is stored in one table (same database and schema). Isolation is provided by the means of a tenant identifier that is stored in a column.
 
-![Example img](/img/documentation/user-guide/process-engine/multi-tenancy-tenant-identifiers.png)One Process Engine with Tenant-Identifiers Architecture
+![Example img](../../../assets/documentation/user-guide/process-engine/multi-tenancy-tenant-identifiers.png)One Process Engine with Tenant-Identifiers Architecture
 
 The tenant identifier is specified on the deployment and is propagated to all data that is created from the deployment (e.g., process definitions, process instances, tasks, etc.). To access the data for a specific tenant, the process engine allows to filter queries by a tenant identifier or specify a tenant identifier for a command (e.g., create a process instance). Additionally, the process engine provides transparent access restrictions in combination with the Identity Service that allows to omit the tenant identifier.
 
@@ -464,7 +464,7 @@ See also:
 
 Multi-Tenancy can be achieved by providing one process engine per tenant. Each process engine is configured to use a different data source which connects the data of the tenant. The data of the tenants can be stored in different databases, in one database with different schemas or in one schema with different tables.
 
-![Example img](/img/documentation/user-guide/process-engine/multi-tenancy-process-engine.png)One Process Engine per Tenant Architecture
+![Example img](../../../assets/documentation/user-guide/process-engine/multi-tenancy-process-engine.png)One Process Engine per Tenant Architecture
 
 The process engines can run on the same server so that all share the same computational resources such as a data source (when isolating via schemas or tables) or a thread pool for asynchronous job execution.
 

@@ -18,15 +18,15 @@ This section describes the concepts of variables in processes. Variables can be 
 
 All entities that can have variables are called *variable scopes*. These are executions (which include process instances) and tasks. As described in the  [Concepts section](../process-engine/process-engine-concepts.md#executions), the runtime state of a process instance is represented by a tree of executions. Consider the following process model where the red dots mark active tasks:
 
-![Example img](/img/documentation/user-guide/process-engine/variables-3.png)Variables
+![Example img](../../../assets/documentation/user-guide/process-engine/variables-3.png)Variables
 
 The runtime structure of this process is as follows:
 
-![Example img](/img/documentation/user-guide/process-engine/variables-4.png)Variables
+![Example img](../../../assets/documentation/user-guide/process-engine/variables-4.png)Variables
 
 There is a process instance with two child executions, each of which has created a task. All these five entities are variable scopes and the arrows mark a parent-child relationship. A variable that is defined on a parent scope is accessible in every child scope unless a child scope defines a variable of the same name. The other way around, child variables are not accessible from a parent scope. Variables that are directly attached to the scope in question are called *local* variables. Consider the following assignment of variables to scopes:
 
-![Example img](/img/documentation/user-guide/process-engine/variables-5.png)Variables
+![Example img](../../../assets/documentation/user-guide/process-engine/variables-5.png)Variables
 
 In this case, when working on *Task 1* the variables *worker* and *customer* are accessible. Note that due to the structure of scopes, the variable *worker* can be defined twice, so that *Task 1* accesses a different *worker* variable than *Task 2*. However, both share the variable *customer* which means that if that variable is updated by one of the tasks, this change is also visible to the other.
 
@@ -34,7 +34,7 @@ Both tasks can access two variables each while none of these is a local variable
 
 Now let's say, we set a local variable *customer* on *Task 1*:
 
-![Example img](/img/documentation/user-guide/process-engine/variables-6.png)Variables
+![Example img](../../../assets/documentation/user-guide/process-engine/variables-6.png)Variables
 
 While two variables named *customer* and *worker* can still be accessed from *Task 1*, the *customer* variable on *Execution 1* is hidden, so the accessible *customer* variable is the local variable of *Task 1*.
 
@@ -109,7 +109,7 @@ here variable will be set locally in "aSubProcess" and not propagated to the par
 
 The process engine supports the following variable value types:
 
-![Example img](/img/documentation/user-guide/process-engine/variables-1.png)Variables
+![Example img](../../../assets/documentation/user-guide/process-engine/variables-1.png)Variables
 
 Depending on the actual value of a variable, a different type is assigned. Out of the available types, there are nine *primitive* value types, meaning that they store values of simple standard JDK classes without additional metadata:
 

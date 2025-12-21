@@ -14,7 +14,7 @@ menu:
 
 In order to understand how to provide a custom history backend, it is useful to first look at a more detailed view of the history architecture:
 
-![Example img](/img/documentation/user-guide/process-engine/history/process-engine-history-architecture.png)History Architecture
+![Example img](../../../../assets/documentation/user-guide/process-engine/history/process-engine-history-architecture.png)History Architecture
 
 Whenever the state of a runtime entity is changed, the core execution component of the process engine fires History Events. In order to make this flexible, the actual creation of the History Events as well as populating the history events with data from the runtime structures is delegated to the History Event Producer. The producer is handed in the runtime data structures (such as an ExecutionEntity or a TaskEntity), creates a new History Event and populates it with data extracted from the runtime structures.
 

@@ -60,7 +60,7 @@ It is not advisable to define a repetition rule without entry criteria on a mile
 
 Consider the following excerpt of a CMMN case definition:
 
-![Example img](/img/documentation/reference/cmmn11/markers/repetition-rule-example.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/repetition-rule-example.png)
 
 The corresponding XML representation could look like this:
 
@@ -91,15 +91,15 @@ In our example, the following steps might take place:
 
 1. A user instantiates the case and sets the variable `score` to the value `10`.
 2. An instance *A* for the human task is created. The instance *A* transitions into state `ENABLED`.
-![Example img](/img/documentation/reference/cmmn11/markers/state-1.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-1.png)
 3. A user manually starts task *A* and the instance reaches the state `ACTIVE`.
 4. A user completes task *A*. During the transition into state `COMPLETED`, the repetition rule is evaluated. As a consequence that the variable `score` is less than `50`, a new instance `A'` of the corresponding task is created. The new instance moves into state `ENABLED`.
-![Example img](/img/documentation/reference/cmmn11/markers/state-2.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-2.png)
 5. Once again, a user manually starts and completes task *A'*. Since the variable `score` is still less than `50`, the repetition rule evaluates to `true` when *A'* transitions into state `COMPLETED`. As a result, a new instance *A''* is created.
-![Example img](/img/documentation/reference/cmmn11/markers/state-3.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-3.png)
 6. A user changes the value of the variable `score` to `55`.
 7. A user manually starts and completes task *A''* and the instance reaches the state `COMPLETED`. Since the variable `score` has been set to `55` the repetition rule evaluates to `false` and a new instance is not created.
-![Example img](/img/documentation/reference/cmmn11/markers/state-4.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-4.png)
 8. From now on, no more repetitions of *A* can occur.
 
 The transition in which the repetition rule is evaluated can be changed by a Operaton extension attribute named `operaton:repeatOnStandardEvent`. For a task it looks as follows:
@@ -133,7 +133,7 @@ A trigger for a repetition of a milestone, stage or task is a satisfied [sentry]
 
 Consider the following excerpt of a CMMN case definition, where the repetition of the tasks depends on the occurrence of an entry criterion:
 
-![Example img](/img/documentation/reference/cmmn11/markers/repetition-rule-example.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/repetition-rule-example.png)
 
 The corresponding XML representation could look like this:
 
@@ -181,18 +181,18 @@ In our example, the following steps might take place:
 
 1. A user instantiates the case and sets the variable `score` to the value `10`.
 2. Two instances for each human task are automatically created and both transition in state `AVAILABLE`.
-![Example img](/img/documentation/reference/cmmn11/markers/state-1.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-1.png)
 1. When the entry criterion (*Sentry_1*) of instance *B* is satisfied, the task *B* reaches the state `ENABLED`. During the transition to the state `ENABLED`, the repetition rule is evaluated. As a consequence that the variable `score` is less than `50`, a new instance *B'* of the corresponding task is created. The instance *B'* moves into state `AVAILABLE`.
-![Example img](/img/documentation/reference/cmmn11/markers/state-2.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-2.png)
 1. A user manually starts and completes task *B* and the instance reaches the state `COMPLETED`.
 2. The completion of instance *B* satisfies the entry criterion (*Sentry_2*) of *A*. In consequence, task *A* becomes `ENABLED` and a new instance *A'* is created, because the evaluation of the repetition rule during the transition returns `true`.
-![Example img](/img/documentation/reference/cmmn11/markers/state-3.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-3.png)
 1. A user changes the value of the variable `score` to `55`.
 2. The entry criterion (*Sentry_1*) of instance *B'* is satisfied (once again). The instance *B'* reaches the state `ENABLED`. As a consequence that the variable `score` has been set to `55`, the repetition rule evaluates to `false`. So, a new instance is not created.
-![Example img](/img/documentation/reference/cmmn11/markers/state-4.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-4.png)
 1. A user manually starts and completes task *B'* and the instance reaches the state `COMPLETED`.
 2. The completion of instance *B'* satisfies the entry criterion (*Sentry_2*) of *A'*. So that *A'* becomes `ENABLED` and a new instance of the corresponding task is not created, because the repetition rule evaluates to `false`.
-![Example img](/img/documentation/reference/cmmn11/markers/state-5.png)
+![Example img](../../../../assets/documentation/reference/cmmn11/markers/state-5.png)
 1.  From now on, no more repetitions of *A* or *B* can occur.
 
 

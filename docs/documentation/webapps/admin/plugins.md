@@ -44,7 +44,7 @@ properties: {
 
 **Name:** `admin.dashboard.section`
 
-![Example img](/img/documentation/webapps/admin/admin-start-page-view.png)Dashboard
+![Example img](../../../assets/documentation/webapps/admin/admin-start-page-view.png)Dashboard
 
 With Operaton.5, the Admin webapp gets a dashboard based on plugins similar to the [Cockpit dashboard ones](../cockpit/extend/plugins.md#dashboard).
 

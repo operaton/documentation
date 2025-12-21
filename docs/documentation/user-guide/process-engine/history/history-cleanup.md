@@ -78,7 +78,7 @@ The end time is persisted in the corresponding instance tables `ACT_HI_PROCINST`
 
 For process and decision instances in a hierarchy (e.g. a process instance that is started by another process instance via a BPMN Call Activity), the removal time of all instances is always equal to the removal time of the root instance.
 
-![Example img](/img/documentation/user-guide/process-engine/history/history-cleanup-process-hierarchy.png)History Cleanup
+![Example img](../../../../assets/documentation/user-guide/process-engine/history/history-cleanup-process-hierarchy.png)History Cleanup
 
 The removal time is persisted in *all* history tables. So in case of a process instance, the removal time is present in `ACT_HI_PROCINST` as well as the corresponding secondary entries in `ACT_HI_ACTINST`, `ACT_HI_TASKINST` etc.
 

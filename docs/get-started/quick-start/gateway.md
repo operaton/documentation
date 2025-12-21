@@ -16,10 +16,10 @@ We want to modify our process so that it's more dynamic.
 To do so, open the process in the Camunda Modeler.
 
 Next, from the Modeler's left-hand menu, select the gateway shape (diamond) and drag it into position between the Start Event and the Service Task. Use the create space tool again as needed. Move the User Task down and add another Gateway after it. Lastly, adjust the Sequence Flows so that the model looks like this:
-![Example image](/img/get-started/quick-start/modeler-gateway1.png)
+![Example image](../../assets/get-started/quick-start/modeler-gateway1.png)
 
 Now also name the new elements accordingly:
-![Example image](/img/get-started/quick-start/modeler-gateway2.png)
+![Example image](../../assets/get-started/quick-start/modeler-gateway2.png)
 
 ## Configure the Gateways
 
@@ -27,19 +27,19 @@ Next, open the properties panel and select the `<1000 €` Sequence Flow after t
 Scroll to the property named `Condition Type` and change it to `Expression`. Then input `${amount<1000}` as the Expression.
 We are using the [Java Unified Expression Language](https://docs.operaton.org/docs/documentation/user-guide/process-engine/expression-language/) to evaluate the Gateway.
 
-![Example image](/img/get-started/quick-start/modeler-gateway3.png)
+![Example image](../../assets/get-started/quick-start/modeler-gateway3.png)
 
 Next, change the Expressions for the other Sequence Flows, too.
 
 For the `$\geq$1000 €` Sequence Flow, use the Expression `${amount$\geq$1000}`:
-![Example image](/img/get-started/quick-start/modeler-gateway4.png)
+![Example image](../../assets/get-started/quick-start/modeler-gateway4.png)
 
 
 For the `Yes` Sequence Flow, use the Expression `${approved}`:
-![Example image](/img/get-started/quick-start/modeler-gateway5.png)
+![Example image](../../assets/get-started/quick-start/modeler-gateway5.png)
 
 For the `No` Sequence Flow, use the Expression `${!approved}`:
-![Example image](/img/get-started/quick-start/modeler-gateway6.png)
+![Example image](../../assets/get-started/quick-start/modeler-gateway6.png)
 
 ## Deploy the Process
 
@@ -51,7 +51,7 @@ Go to Tasklist ([http://localhost:8080/operaton/app/tasklist/](http://localhost:
 Click on the Start process button to start a process instance for the *Payment Retrieval* Process.
 Next, set variables for the process instance using the generic form as we learned in the *User Tasks* section.
 
-![Example image](/img/get-started/quick-start/start-form-generic.png)
+![Example image](../../assets/get-started/quick-start/start-form-generic.png)
 
 Fill in the form as shown in the screenshot and make sure you use an amount that is larger or equal to 1000 in order to see the User Task *Approve Payment*.
 When you are done, click *Start*.
