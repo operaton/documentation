@@ -23,7 +23,11 @@ On any such *external* trigger (i.e., start a process, complete a task, signal a
 
 The [Event Based Gateway](../../reference/bpmn20/gateways/event-based-gateway.md):
 
-<img src="/img/documentation/user-guide/process-engine/event-based-gateway.png" width="150px"/>
+<img 
+  src={require('../../../assets/documentation/user-guide/process-engine/event-based-gateway.png').default} 
+  width={150}
+  alt="Event Based Gateway"
+/>
 
 <div data-bpmn-diagram="./bpmn/event-based-gateway"></div>
 
