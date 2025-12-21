@@ -13,13 +13,13 @@ In this section, you'll learn how to create your first BPMN 2.0 process with the
 
 Create a new BPMN diagram by clicking *File > New File > BPMN Diagram (Operaton Platform)*.
 
-![Example image](/img/get-started/quick-start/modeler-new-bpmn-diagram.png)
+![Example image](../../assets/get-started/quick-start/modeler-new-bpmn-diagram.png)
 
 
 ### Start with a Simple Process
 Start by modeling a simple process.
 
-![Example image](/img/get-started/quick-start/modeler-step1.png)
+![Example image](../../assets/get-started/quick-start/modeler-step1.png)
 
 Double-click on the Start Event. A text box will open. Name the Start Event "Payment Retrieval Requested".
 
@@ -29,11 +29,11 @@ When editing Labels, you can add line breaks using `Shift + Enter`.
 
 Click on the start event. From its context menu, select the activity shape (rounded rectangle). It will be placed automatically on the canvas, and you can drag it to your preferred position. Name it *Charge Credit Card*. Change the activity type to *Service Task* by clicking on the activity shape and using the wrench button.
 
-![Example image](/img/get-started/quick-start/modeler-step2.png)
+![Example image](../../assets/get-started/quick-start/modeler-step2.png)
 
 Add an End Event named *Payment Received*.
 
-![Example image](/img/get-started/quick-start/modeler-step3.png)
+![Example image](../../assets/get-started/quick-start/modeler-step3.png)
 
 
 ### Configure the Service Task
@@ -41,11 +41,11 @@ Add an End Event named *Payment Received*.
 There are different ways to [execute service tasks](https://docs.operaton.org/docs/documentation/reference/bpmn20/tasks/service-task/) using Operaton Platform. In this guide, we'll use the external [task pattern](https://docs.operaton.org/docs/documentation/user-guide/process-engine/external-tasks/).
 Open the Properties Panel within the Camunda Modeler and click on the Service Task you just created. Change the Implementation to `External` and use `charge-card` as the Topic.
 
-![Example image](/img/get-started/quick-start/modeler-step4.png)
+![Example image](../../assets/get-started/quick-start/modeler-step4.png)
 
 ### Configure Properties for Execution
 
-![Example image](/img/get-started/quick-start/modeler-step5.png)
+![Example image](../../assets/get-started/quick-start/modeler-step5.png)
 
 Because we're modeling an executable process, we should give it an *ID* and set the `isExecutable` property to `true`. On the right-hand side of the canvas, you find the properties panel. When you click on empty space on the modeling canvas, the properties panel will display the properties of the process itself.
 
@@ -98,7 +98,7 @@ On the first page of the New Maven Project Wizard, select Create a simple projec
 
 On the second page (see screenshot), configure the Maven coordinates for the project. Since we are setting up a JAR Project, make sure to select Packaging: jar.
 
-![Example image](/img/get-started/quick-start/eclipse-new-project.png)
+![Example image](../../assets/get-started/quick-start/eclipse-new-project.png)
 
 When you're done, click Finish. Eclipse will set up a new Maven project. The project appears in the Project Explorer View.
 

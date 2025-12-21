@@ -17,7 +17,7 @@ The decisions dashboard of Cockpit is the entry point for decision monitoring. I
 
 ## Deployed Decisions
 
-![Example img](/img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-list.png)Deployed Decision Definitions
+![Example img](../../../../assets/documentation/webapps/cockpit/dmn/cockpit-decision-definition-list.png)Deployed Decision Definitions
 
 This plugin provides you with a list of deployed decision definitions. You can click on the name of a decision to go to the [decision definition view][decision-definition-view] and access more details, like the DMN table or executed [decision instances view][decision-instance-view]. 
 You can also click on the name of a decision requirements definition to go to the [decision requirements definition view][decision-requirements-definition-view].
@@ -25,14 +25,14 @@ You can also click on the name of a decision requirements definition to go to th
 
 ## Deployed Decision Requirements Definition
 
-![Example img](/img/documentation/webapps/cockpit/dmn/cockpit-drd-list.png)Deployed Decision Definitions
+![Example img](../../../../assets/documentation/webapps/cockpit/dmn/cockpit-drd-list.png)Deployed Decision Definitions
 
 This plugin provides you with a list of deployed decision requirements definitions. You can click on the name of a decision requirements definition to go to the [decision requirements definition view][decision-requirements-definition-view] and access more details, like the decision requirements definition diagram or executed [decision requirements definition instances view][decision-requirements-definition-instance-view]. 
 
 
 ## Search
 
-![Example img](/img/documentation/webapps/cockpit/dmn/decision-instance-search.png)Decision Instance Search
+![Example img](../../../../assets/documentation/webapps/cockpit/dmn/decision-instance-search.png)Decision Instance Search
 
 At the top of the dashboard, you can search for decision instances which fulfill certain search criteria. To do so, click in the search box and select the parameters to search for. You can also begin typing to find the required parameter faster. Depending on the selected property, you have to specify the value of the property. You can combine multiple search pills to narrow down the search results.
 

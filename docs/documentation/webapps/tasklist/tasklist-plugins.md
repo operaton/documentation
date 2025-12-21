@@ -30,25 +30,25 @@ Here you can see the various points at which you are able to add your own plugin
 
 **Name:** `tasklist.navbar.action`.
 
-![Example img](/img/documentation/webapps/tasklist/tasklist-plugin-navbar-action.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/tasklist/tasklist-plugin-navbar-action.png)Plugin Point
 
 ---
 
 **Name:** `tasklist.task.action`.
 
-![Example img](/img/documentation/webapps/tasklist/tasklist-plugin-task-action.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/tasklist/tasklist-plugin-task-action.png)Plugin Point
 
 ---
 
 **Name:** `tasklist.header`.
 
-![Example img](/img/documentation/webapps/tasklist/tasklist-plugin-tasklist-header.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/tasklist/tasklist-plugin-tasklist-header.png)Plugin Point
 
 ---
 
 **Name:** `tasklist.task.detail`.
 
-![Example img](/img/documentation/webapps/tasklist/tasklist-plugin-task-detail.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/tasklist/tasklist-plugin-task-detail.png)Plugin Point
 
 This plugin points properties contain the attribute `label`, which will be rendered in the navigation even when the plugin is not selected.
 
@@ -66,13 +66,13 @@ This additional data is passed into the render function:
 
 **Name:** `tasklist.list`.
 
-![Example img](/img/documentation/webapps/tasklist/tasklist-plugin-list.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/tasklist/tasklist-plugin-list.png)Plugin Point
 
 ---
 
 **Name:** `tasklist.card`.
 
-![Example img](/img/documentation/webapps/tasklist/tasklist-plugin-card.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/tasklist/tasklist-plugin-card.png)Plugin Point
 
 This additional data is passed into the render function:
 

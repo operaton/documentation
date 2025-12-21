@@ -13,7 +13,7 @@ Operaton can be used both as a standalone process engine server or embedded insi
 
 ## Process Engine Architecture
 
-![Process Engine Architecture](/img/documentation/introduction/process-engine-architecture.png)
+![Process Engine Architecture](../../assets/documentation/introduction/process-engine-architecture.png)
 
 * [Process Engine Public API](../user-guide/process-engine/process-engine-api.md): Service-oriented API allowing Java applications to interact with the process engine. The different responsibilities of the process engine (i.e., Process Repository, Runtime Process Interaction, Task Management, ...) are separated into individual services. The public API features a [command-style access pattern](http://en.wikipedia.org/wiki/Command_pattern): Threads entering the process engine are routed through a Command Interceptor which is used for setting up Thread Context such as Transactions.
 * **BPMN 2.0 Core Engine**: This is the core of the process engine. It features a lightweight execution engine for graph structures (PVM - Process Virtual Machine), a BPMN 2.0 parser which transforms BPMN 2.0 XML files into Java Objects and a set of BPMN Behavior implementations (providing the implementation for BPMN 2.0 constructs such as Gateways or Service Tasks).
@@ -33,21 +33,21 @@ Operaton is a flexible framework which can be deployed in different scenarios. T
 
 ### Embedded Process Engine
 
-![Embedded Process Engine](/img/documentation/introduction/embedded-process-engine.png)
+![Embedded Process Engine](../../assets/documentation/introduction/embedded-process-engine.png)
 
 In this case, the process engine is added as an application library to a custom application. This way, the process engine can easily be started and stopped with the application lifecycle. It is possible to run multiple embedded process engines on top of a shared database.
 
 
 ### Shared, Container-Managed Process Engine
 
-![Shared Process Engine](/img/documentation/introduction/shared-process-engine.png)
+![Shared Process Engine](../../assets/documentation/introduction/shared-process-engine.png)
 
 In this case, the process engine is started inside the runtime container (Servlet Container, Application Server, ...). The process engine is provided as a container service and can be shared by all applications deployed inside the container. The concept can be compared to a JMS Message Queue which is provided by the runtime and can be used by all applications. There is a one-to-one mapping between process deployments and applications: the process engine keeps track of the process definitions deployed by an application and delegates execution to the application in question.
 
 
 ### Standalone (Remote) Process Engine Server
 
-![Standalone Process Engine](/img/documentation/introduction/standalone-process-engine.png)
+![Standalone Process Engine](../../assets/documentation/introduction/standalone-process-engine.png)
 
 In this case, the process engine is provided as a network service. Different applications running on the network can interact with the process engine through a remote communication channel. The easiest way to make the process engine accessible remotely is to use the built-in REST API. Different communication channels such as SOAP Webservices or JMS are possible but need to be implemented by users.
 
@@ -56,7 +56,7 @@ In this case, the process engine is provided as a network service. Different app
 
 In order to provide scale-up or fail-over capabilities, the process engine can be distributed to different nodes in a cluster. Each process engine instance must then connect to a shared database.
 
-![Process Engine Cluster](/img/documentation/introduction/clustered-process-engine.png)
+![Process Engine Cluster](../../assets/documentation/introduction/clustered-process-engine.png)
 
 The individual process engine instances do not maintain session state across transactions. Whenever the process engine runs a transaction, the complete state is flushed out to the shared database. This makes it possible to route subsequent requests which do work in the same process instance to different cluster nodes. This model is very simple and easy to understand and imposes limited restrictions when it comes to deploying a cluster installation. As far as the process engine is concerned, there is no difference between setups for scale-up and setups for fail-over (as the process engine keeps no session state between transactions).
 

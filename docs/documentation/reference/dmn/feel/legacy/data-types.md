@@ -15,14 +15,14 @@ The Operaton DMN engine supports the following FEEL data types.
 
 ## String
 
-![Example img](/img/documentation/reference/dmn/feel/legacy/string-type.png)String" class="no-lightbox
+![Example img](../../../../../assets/documentation/reference/dmn/feel/legacy/string-type.png)String" class="no-lightbox
 
 FEEL supports Strings. They must be encapsulated in double quotes. They
 support only the equal [comparison] operator.
 
 ## Numeric Types
 
-![Example img](/img/documentation/reference/dmn/feel/legacy/integer-type.png)Integer" class="no-lightbox
+![Example img](../../../../../assets/documentation/reference/dmn/feel/legacy/integer-type.png)Integer" class="no-lightbox
 
 FEEL supports numeric types like integer. In the Operaton DMN engine the
 following numeric types are available:
@@ -35,14 +35,14 @@ Numeric types support all [comparison] operators and [ranges].
 
 ## Boolean
 
-![Example img](/img/documentation/reference/dmn/feel/legacy/boolean-type.png)Boolean" class="no-lightbox
+![Example img](../../../../../assets/documentation/reference/dmn/feel/legacy/boolean-type.png)Boolean" class="no-lightbox
 
 FEEL supports the boolean value `true` and `false`. The boolean type only
 supports the equal [comparison] operator.
 
 ## Date
 
-![Example img](/img/documentation/reference/dmn/feel/legacy/date-type.png)Date" class="no-lightbox
+![Example img](../../../../../assets/documentation/reference/dmn/feel/legacy/date-type.png)Date" class="no-lightbox
 
 FEEL supports date types. In the Operaton DMN engine the following date types
 are available:
