@@ -113,6 +113,20 @@ Include interactive BPMN diagrams in documentation:
 
 The BPMN viewer component automatically renders interactive diagrams from `.bpmn` files.
 
+## 🔄 Versioning
+
+Create a new documentation version:
+
+```bash
+npm run docusaurus docs:version 1.1.0
+```
+
+**Note:** Docusaurus versioning includes:
+- ✅ All markdown content in `docs/`
+- ✅ All assets in `docs/assets/` (images, diagrams)
+- ✅ Sidebar configuration
+- ❌ Static assets in `static/img/` (shared across versions)
+
 ## 🛠️ Maintenance
 
 ### Update Dependencies
