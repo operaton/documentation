@@ -22,7 +22,7 @@
     "bpmn-js": "^18.9.1",
     "clsx": "^2.1.1",
     "docusaurus-theme-search-typesense": "^0.25.0-0",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.2.4",
     "glob": "^13.0.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.2.0",
