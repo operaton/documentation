@@ -21,7 +21,7 @@
     "@mdx-js/react": "^3.1.1",
     "bpmn-js": "^18.9.1",
     "clsx": "^2.1.1",
-    "docusaurus-theme-search-typesense": "^0.25.0-0",
+    "docusaurus-theme-search-typesense": "^0.26.0",
     "dotenv": "^17.2.4",
     "glob": "^13.0.0",
     "prism-react-renderer": "^2.4.1",
