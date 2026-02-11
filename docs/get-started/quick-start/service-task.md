@@ -117,7 +117,7 @@ Your pom.xml file of your project should look like this:
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<operaton.external-task-client.version>7.22.0</operaton.external-task-client.version>
+		<operaton.external-task-client.version>1.0.3</operaton.external-task-client.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
