@@ -15,6 +15,10 @@ updates:
     target-branch: "main"
     labels:
       - "dependencies:npm"
+    groups:
+      react:
+        patterns:
+          - "react*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
