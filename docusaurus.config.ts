@@ -53,6 +53,20 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          // 1. Set 'current' as the default version
+          lastVersion: 'current',
+
+          versions: {
+            current: {
+              label: 'Next 🚧',
+              path: '', // Serving 'Next' at /docs/ instead of /docs/next/
+            },
+            '1.0.0': {
+              label: '1.0.0',
+              path: '1.0.0', // Serving 1.0.0 at /docs/1.0.0/
+            },
+          },
+
           exclude: [
             '**/_*.{js,jsx,ts,tsx,md,mdx,bpmn}',
             'docs/documentation/introduction/third-party-libraries/camunda-bpm-platform-license-book.md'
@@ -60,7 +74,7 @@ const config: Config = {
 
           // The BPMN remark plugin
           remarkPlugins: [remarkBpmnDiagram],
-          
+
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -111,6 +125,11 @@ const config: Config = {
         src: 'img/operaton-logo.svg',
       },
       items: [
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
         {
           type: 'docSidebar',
           sidebarId: 'getStarted',
