@@ -108,6 +108,36 @@ Please check your existing JavaScript code.
 this might not work with the GraalVM JavaScript engine.
 Please check your JavaScript code and consider migrating them to a more recent version of JavaScript.
 
+## Deprecated
+
+### Module `org.operaton.bpm:operaton-bpm-junit5`
+
+The module `org.operaton.bpm:operaton-bpm-junit5` is **deprecated** and will be removed in a future release.
+
+The classes from this module have been moved into the engine module. Users should replace the dependency:
+
+```xml
+<!-- deprecated, do not use -->
+<dependency>
+  <groupId>org.operaton.bpm</groupId>
+  <artifactId>operaton-bpm-junit5</artifactId>
+  <version>${version.operaton}</version>
+  <scope>test</scope>
+</dependency>
+```
+
+with the following:
+
+```xml
+<dependency>
+  <groupId>org.operaton.bpm</groupId>
+  <artifactId>operaton-engine</artifactId>
+  <classifier>junit5</classifier>
+  <version>${version.operaton}</version>
+  <scope>test</scope>
+</dependency>
+```
+
 ## 🧪 Testing and Quality Assurance
 
 ### Database Integration Tests

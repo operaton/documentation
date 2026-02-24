@@ -31,6 +31,11 @@ If you want to use the JUnit 5 `ProcessEngineExtension`, you need to add the fol
     </dependency>
 ```
 
+:::note
+The standalone module `org.operaton.bpm:operaton-bpm-junit5` is **deprecated** as of Operaton 1.1.
+Use the `org.operaton.bpm:operaton-engine` artifact with the `junit5` classifier instead (as shown above).
+:::
+
 The following code snippets show examples of how to use the extension.
 
 Use the `@ExtendWith` annotation to inject a process engine into a provided field automatically.
