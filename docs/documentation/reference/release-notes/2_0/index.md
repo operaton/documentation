@@ -54,6 +54,11 @@ This may change for the final Operaton 2.0 release.
 
 Operaton 2.0 uses now **Testcontainers 2.0** for testing with databases and other containers.
 
+### OSGi Support Removed
+
+OSGi bundle support has been removed from Operaton 2.0.
+The project no longer generates OSGi-compatible manifests for JAR files.
+
 ## API
 
 ### Database Schema
