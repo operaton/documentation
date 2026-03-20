@@ -83,28 +83,28 @@ In case you need more flexibility and customization for your project, you can ge
 ### Detailed Instructions
 
 1. Go to **Preferences -> Maven -> Archetypes -> Add Remote Catalog**
-![Example img](/img/documentation/user-guide/process-applications/eclipse-00-preferences-maven-archetypes.png)Eclipse Preferences: Maven Archetypes
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-00-preferences-maven-archetypes.png)Eclipse Preferences: Maven Archetypes
 2. Enter the following URL and description, click on **Verify...** to test the connection and if that worked click on **OK** to save the catalog.
 
     Catalog File: **https://artifacts.camunda.com/artifactory/operaton-bpm/**
 
     Description: **Operaton**
-![Example img](/img/documentation/user-guide/process-applications/eclipse-01-add-remote-archetype-catalog.png)Eclipse Preferences: Add Maven Archetype Catalog
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-01-add-remote-archetype-catalog.png)Eclipse Preferences: Add Maven Archetype Catalog
 
 Now you should be able to use the archetypes when creating a new Maven project in Eclipse:
 
 1. Go to **File -> New -> Project...** and select **Maven -> Maven Project**
-![Example img](/img/documentation/user-guide/process-applications/eclipse-02-create-maven-project.png)Create new Maven project
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-02-create-maven-project.png)Create new Maven project
 2. Select a location for the project or just keep the default setting.
-![Example img](/img/documentation/user-guide/process-applications/eclipse-03-select-maven-project-location.png)Eclipse: Select Maven project location
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-03-select-maven-project-location.png)Eclipse: Select Maven project location
 3. Select the archetype from the catalog that you created before.
-![Example img](/img/documentation/user-guide/process-applications/eclipse-04-select-archetype-from-catalog.png)Eclipse: Select Maven archetype from catalog
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-04-select-archetype-from-catalog.png)Eclipse: Select Maven archetype from catalog
 4. Specify Maven coordinates and Operaton version and finish the project creation.
-![Example img](/img/documentation/user-guide/process-applications/eclipse-05-specify-maven-coordinates-and-operaton-version.png)Eclipse: Specify Maven coordinates and Operaton version
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-05-specify-maven-coordinates-and-operaton-version.png)Eclipse: Specify Maven coordinates and Operaton version
 
 The resulting project should look like this:
 
-![Example img](/img/documentation/user-guide/process-applications/eclipse-06-generated-maven-project.png)Generated Maven Project in Eclipse
+![Example img](../../../assets/documentation/user-guide/process-applications/eclipse-06-generated-maven-project.png)Generated Maven Project in Eclipse
 
 
 ### Troubleshooting

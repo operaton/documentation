@@ -188,7 +188,7 @@ If you would like to suspend all process instances of a given process definition
 
 If your process instance contains multiple execution paths (like for instance after a [parallel gateway](../../reference/bpmn20/gateways/parallel-gateway.md), you must be able to differentiate the currently active paths inside the process instance. In the following example, two user tasks *receive payment* and *ship order* can be active at the same time.
 
-![Example img](/img/documentation/user-guide/process-engine/parallel-gw.png)Parallel Gateway
+![Example img](../../../assets/documentation/user-guide/process-engine/parallel-gw.png)Parallel Gateway
 
 Internally, the process engine creates two concurrent executions inside the process instance, one for each concurrent path of execution. Executions are also created for scopes, for example if the process engine reaches a [Embedded Sub Process](../../reference/bpmn20/subprocesses/embedded-subprocess.md) or in case of [Multi Instance](../../reference/bpmn20/tasks/task-markers.md).
 

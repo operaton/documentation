@@ -11,7 +11,7 @@ menu:
 
 ---
 
-![Example img](/img/documentation/webapps/cockpit/cmmn/case-definition-view.png)Case Definition View
+![Example img](../../../../assets/documentation/webapps/cockpit/cmmn/case-definition-view.png)Case Definition View
 
 On the case definition view, you can find a diagram of the deployed case definition. Use the mouse to navigate through the diagram. By turning the mouse wheel you can zoom in and out. Hold the left mouse button to pan the diagram in the desired direction.
 

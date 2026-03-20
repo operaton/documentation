@@ -91,7 +91,7 @@ Bpmn.writeModelToFile(file, modelInstance);
 With the basic helper methods from above it is very easy and straightforward to create simple processes. First, create a
 process with a start event, user task and an end event.
 
-![Example img](/img/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-simple-process.png)Single User Task Example
+![Example img](../../../../assets/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-simple-process.png)Single User Task Example
 
 The following code creates this process using the helper methods from above (without the DI elements).
 
@@ -126,7 +126,7 @@ Bpmn.writeModelToFile(file, modelInstance);
 
 Even more complex processes can be created with a few lines of code with the standard BPMN model API.
 
-![Example img](/img/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-parallel-gateway.png)Parallel Task Example
+![Example img](../../../../assets/documentation/user-guide/model-api/bpmn-model-api/bpmn-model-api-parallel-gateway.png)Parallel Task Example
 
 ```java
 // create an empty model

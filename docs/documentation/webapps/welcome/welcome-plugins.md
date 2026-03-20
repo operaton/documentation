@@ -18,8 +18,8 @@ In addition to the [configurable custom links](../welcome/configuration.md), plu
 
 **Name:** `welcome.dashboard`.
 
-![Example img](/img/documentation/webapps/welcome/welcome-dashboard-plugin.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/welcome/welcome-dashboard-plugin.png)Plugin Point
 
 **Name:** `welcome.profile`.
 
-![Example img](/img/documentation/webapps/welcome/welcome-profile-plugin.png)Plugin Point
+![Example img](../../../assets/documentation/webapps/welcome/welcome-profile-plugin.png)Plugin Point

@@ -28,7 +28,7 @@ model and interact with the process from inside our Spring beans. In this sectio
 
 Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.
 
-![Example image](/img/get-started/spring-boot/loanApproval.png)
+![Example image](../../assets/get-started/spring-boot/loanApproval.png)
 
 :::note[Hint]
 If you are unfamiliar with modeling an executable process, you can read the
@@ -70,4 +70,4 @@ Note that we can easily inject the Operaton engine service via the `@Autowired` 
 
 If you rebuild and restart the application, you should see the task "Check the request" in Tasklist under the "All tasks" filter:
 
-![Example image](/img/get-started/spring-boot/tasklist.png)
+![Example image](../../assets/get-started/spring-boot/tasklist.png)

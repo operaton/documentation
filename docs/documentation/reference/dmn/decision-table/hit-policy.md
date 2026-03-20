@@ -13,7 +13,7 @@ menu:
 aliases: [reference/dmn/decision-table/hit-policy/]
 ---
 
-![Hit Policy](/img/documentation/reference/dmn/decision-table/hit-policy.png)
+![Hit Policy](../../../../assets/documentation/reference/dmn/decision-table/hit-policy.png)
 
 A decision table has a hit policy that specifies what the
 results of the evaluation of a decision table consist of.
@@ -77,7 +77,7 @@ output entries of the satisfied rule.
 If more than one rule is satisfied, the Unique hit policy is violated.
 
 See the following decision table.
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-unique.png)Hit Policy Unique" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-unique.png)Hit Policy Unique" class="no-lightbox
 Depending on the current season the dish should be chosen.
 Only one dish can be chosen, since only one season can exist at the same time.
 
@@ -91,7 +91,7 @@ If multiple rules are satisfied which generate different outputs, the hit policy
 is violated.
 
 See the following example:
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-any.png)Hit Policy Any" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-any.png)Hit Policy Any" class="no-lightbox
 This is a decision table for the leave application. If the applier
 has no vacation days left or is currently in the probation period, the application will be refused.
 Otherwise the application is applied.
@@ -101,7 +101,7 @@ Otherwise the application is applied.
 Multiple rules can be satisfied. The decision table result contains only
 the output of the first satisfied rule.
 
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-first.png)Hit Policy First" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-first.png)Hit Policy First" class="no-lightbox
 See the above decistion table for advertisement. Regarding the current age of the user, which
 advertisement should be shown is decided. For example, the user is 19 years old. All the rules will match, but since
 the hit policy is set to first only, the advertisement for Cars is used.
@@ -111,7 +111,7 @@ the hit policy is set to first only, the advertisement for Cars is used.
 Multiple rules can be satisfied. The decision table result contains the output
 of all satisfied rules in the order of the rules in the decision table.
 
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-rule-order.png)Hit Policy Rule Order" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-rule-order.png)Hit Policy Rule Order" class="no-lightbox
 Again, see the advertisement example with the rule order policy. Say we have a user at the age of 19 again.
 All rules are satisfied so all outputs are given, ordered by the rule ordering.
 It can perhaps be used to indicate the priority of the displayed advertisements.
@@ -121,7 +121,7 @@ It can perhaps be used to indicate the priority of the displayed advertisements.
 Multiple rules can be satisfied. The decision table result contains the output
 of all satisfied rules in an arbitrary order as a list.
 
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect.png)Hit Policy Collect" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-collect.png)Hit Policy Collect" class="no-lightbox
 With this hit policy, the output list has no ordering. So the advertisement will be arbitrary
 if, for example, the age is 19.
 
@@ -175,21 +175,21 @@ the Operaton DMN engine:
 
 #### SUM aggregator
 The SUM aggregator sums up all outputs from the satisfied rules.
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-sum.png)Hit Policy Collect SUM" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-collect-sum.png)Hit Policy Collect SUM" class="no-lightbox
 The showed decision table can be used to sum up the salary bonus for an employee. For example, the employee has been working in the company for
 3.5 years. So the first, second and third rule will match and the result of the decision table is 600, since the output is summed up.
 
 #### MIN aggregator
 The MIN aggregator can be used to return the smallest output value of all satisfied rules.
 See the following example of a car insurance. After years without a car crash the insurance fee will be reduced.
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-min.png)Hit Policy Collect MIN" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-collect-min.png)Hit Policy Collect MIN" class="no-lightbox
 For example, if the input for the decision table is 3.5 years, the result will be 98.83, since the first three rules match
 but the third rule has the minimal output.
 
 #### MAX aggregator
 The MAX aggregator can be used to return the largest output value of all satisfied rules.
 
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-max.png)Hit Policy Collect MAX" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-collect-max.png)Hit Policy Collect MAX" class="no-lightbox
 
 This decision table represents the decision for the amount of pocket money for a child.
 Depending of the age, the amount grows. For example, an input of 9 will satisfy the first and second rules.
@@ -199,7 +199,7 @@ will be 5. A child at the age of 9 will get 5 as pocket money.
 #### COUNT aggregator
 The COUNT aggregator can be use to return the count of satisfied rules.
 
-![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-count.png)Hit Policy Collect COUNT" class="no-lightbox
+![Example img](../../../../assets/documentation/reference/dmn/decision-table/hit-policy-collect-count.png)Hit Policy Collect COUNT" class="no-lightbox
 
 For example, see the salary bonus decision table again, this time with the COUNT aggregator.
 With an input of 4, the first three rules will be satisfied. Therefore, the result from the decision table will be 3, which means

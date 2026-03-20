@@ -33,7 +33,7 @@ In the following sections, we go through this process step by step.
 
 ### Create a new Maven Project in Eclipse
 
-![Example image](/img/get-started/archive/javaee7/maven-project-settings.png)
+![Example image](../../../assets/get-started/archive/javaee7/maven-project-settings.png)
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 

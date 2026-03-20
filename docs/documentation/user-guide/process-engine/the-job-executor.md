@@ -19,7 +19,7 @@ A job is an explicit representation of a task to trigger process execution. A jo
 
 While jobs are created during process execution, job acquisition and execution are the job executor's responsibility. The following diagram illustrates these two steps:
 
-![Example img](/img/documentation/user-guide/process-engine/job-executor-basic-architecture.png)Basic Architecture
+![Example img](../../../assets/documentation/user-guide/process-engine/job-executor-basic-architecture.png)Basic Architecture
 
 
 ## Job Executor Activation
@@ -222,7 +222,7 @@ From now on, all new jobs receive the priorities specified in the BPMN XML again
 
 The following diagram sums up the precedence of priority sources when a job's priority is determined:
 
-![Example img](/img/documentation/user-guide/process-engine/job-executor-priority-precedence.png)^Priority Precedence
+![Example img](../../../assets/documentation/user-guide/process-engine/job-executor-priority-precedence.png)^Priority Precedence
 
 
 ### Set Job Priorities via ManagementService API
@@ -556,7 +556,7 @@ You can configure an custom retry configuration by adding the `customPostBPMNPar
 
 The Job Executor makes sure that **jobs from a single process instance are never executed concurrently**. Why is this? Consider the following process definition:
 
-![Example img](/img/documentation/user-guide/process-engine/job-executor-exclusive-jobs.png)Exclusive Jobs
+![Example img](../../../assets/documentation/user-guide/process-engine/job-executor-exclusive-jobs.png)Exclusive Jobs
 
 We have a parallel gateway followed by three service tasks which all perform an [asynchronous continuation](../process-engine/transactions-in-processes.md#asynchronous-continuations). As a result of this, three jobs are added to the database. Once such a job is present in the database it can be processed by the job executor. It acquires the jobs and delegates them to a thread pool of worker threads which actually process the jobs. This means that using an asynchronous continuation, you can distribute the work to this thread pool (and in a clustered scenario even across multiple thread pools in the cluster).
 
@@ -590,7 +590,7 @@ How does `exclusive` behave when a process contains hierarchies e.g. when multip
 
 By default, the exclusive _acquisition_ & _execution_ is only guaranteed for the jobs that originate from the root process instance. In a multi-instance call activity setting, the subprocess instances that will be spawned can run in parallel despite selecting `exclusive` asynchronous continuation as depicted in the image below.
 
-![Example img](/img/documentation/user-guide/process-engine/exclusive-over-process-hierarchies.png)Single Engine
+![Example img](../../../assets/documentation/user-guide/process-engine/exclusive-over-process-hierarchies.png)Single Engine
 
 If there is a use case where the subprocess-jobs **should not be performed in parallel across each single process instance**, the following configuration can be used:
 
@@ -617,13 +617,13 @@ Use the feature in combination with awareness of your process model.
 
 In the case of a single, application-embedded process engine, the job executor setup is the following:
 
-![Example img](/img/documentation/user-guide/process-engine/job-executor-single-engine.png)Single Engine
+![Example img](../../../assets/documentation/user-guide/process-engine/job-executor-single-engine.png)Single Engine
 
 There is a single job table that the engine adds jobs to and the acquisition consumes from. Creating a second embedded engine would therefore create another acquisition thread and execution thread-pool.
 
 In larger deployments however, this quickly leads to a poorly manageable situation. When running Operaton on Tomcat or an application server, the platform allows to declare multiple process engines shared by multiple process applications. With respect to job execution, one job acquisition may serve multiple job tables (and thus process engines) and a single thread-pool for execution may be used.
 
-![Example img](/img/documentation/user-guide/process-engine/job-executor-multiple-engines.png)Multiple Engines
+![Example img](../../../assets/documentation/user-guide/process-engine/job-executor-multiple-engines.png)Multiple Engines
 
 **This setup enables centralized monitoring of job acquisition and execution**.
 See the platform-specific information in the [Runtime Container Integration](../runtime-container-integration/index.md) section on how the thread pooling is implemented on the different platforms.
@@ -646,11 +646,11 @@ Job acquisitions have to be declared in Operaton's deployment descriptor, see [t
 
 When running Operaton in a cluster, there is a distinction between *homogeneous* and *heterogeneous* setups. We define a cluster as a set of network nodes that all run Operaton against the same database (at least for one engine on each node). In the *homogeneous* case, the same process applications (and thus custom classes like JavaDelegates) are deployed to all of the nodes, as depicted below.
 
-![Example img](/img/documentation/user-guide/process-engine/homogeneous-cluster.png)Homogeneous Cluster
+![Example img](../../../assets/documentation/user-guide/process-engine/homogeneous-cluster.png)Homogeneous Cluster
 
 In the *heterogeneous* case, this is not given, meaning that some process applications are only  deployed to a part of the nodes.
 
-![Example img](/img/documentation/user-guide/process-engine/heterogeneous-cluster.png)Heterogenous Cluster
+![Example img](../../../assets/documentation/user-guide/process-engine/heterogeneous-cluster.png)Heterogenous Cluster
 
 
 ### Job Execution in Heterogeneous Clusters

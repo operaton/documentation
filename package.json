@@ -13,7 +13,10 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "check:refs": "node scripts/check-broken-references.js",
+    "check:refs:verbose": "node scripts/check-broken-references.js --verbose",
+    "test": "npm run check:refs && npm run build"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",

@@ -17,11 +17,11 @@ The processes dashboard of Cockpit is the entry point for process monitoring. It
 
 ## Deployed Processes
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-process-definition-state.png)Deployed Processes
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-process-definition-state.png)Deployed Processes
 
 With this plugin you can easily observe the state of a process definition. Green and red dots signalize running and [failed jobs][failed-jobs]. At this observing level a red dot signifies that there is at least one process instance or a sub process instance which has an unresolved incident. You can localize the problem by using the [process definition view][process-definition-view].
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes-search.png)cockpit Search
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes-search.png)cockpit Search
 
 With the search component above the table, you can search for deployed processes by their name or key.
 To do so, click in the search box and select the property.
@@ -35,7 +35,7 @@ inserting a name in the drop-down menu that appears. You can then retrieve the s
 clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-floppy-disk"></i></button>
 button and selecting the chosen name in the drop-down menu.
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes.png)Rendered Process Preview
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes.png)Rendered Process Preview
 
 You can also switch to the preview tab which displays the rendered process model of each deployed process. Additionally, you get information about how many instances of the process are currently running and about the process state. Green and red dots signalize running and [failed jobs][failed-jobs]. Click on the model to go to the [process definition view][process-definition-view].
 
@@ -44,7 +44,7 @@ You can also switch to the preview tab which displays the rendered process model
 
 ## Process Instances Search
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-search.png)cockpit Search
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-search.png)cockpit Search
 
 At the top of the dashboard, you can search for process instances and incidents which fulfill certain search criteria. To do so, click in the search box and select the parameters to search for. You can also begin typing to find the required parameter faster. Depending on the selected property, you have to specify the value of the property. Some properties also allow operators other than equal, e.g., 'like', which allows searching for process instances where the entered value is a substring of the property value. To search for process variables, you also have to enter the variable name you want to search for. You can search for variable values with the type `String`, `Number`, or `Boolean`. To search for a variable of type string, which has a numeric, boolean or null value, you have to wrap the value in single quotes (e.g., `'93288'` or `'NULL'`). You can combine multiple search pills to narrow down the search results.
 
@@ -67,7 +67,7 @@ not always be solvable from Cockpit if other services or systems are involved. F
 to export affected process instances and their process variable values as CSV spreadsheets. The export feature helps to
 communicate efficiently with other system owners.
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-export.png)CSV Export for Process Instances
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-export.png)CSV Export for Process Instances
 
 To trigger the CSV export, search for process instances and customize what properties you want to export by adding or removing columns. Suppose you are only interested in selecting
 specific process instances; you can checkmark the process instances of interest on the left side or select the whole page by checkmarking
@@ -75,7 +75,7 @@ the box on the left side in the table header. You can select process instances a
 
 When you are satisfied with your configuration of columns, query criteria, and selection of process instances, click <button class="btn btn-xs"><i class="glyphicon glyphicon-save"></i></button>.
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-export-modal-dialog.png)CSV Export for Process Instances: Modal Dialog
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-export-modal-dialog.png)CSV Export for Process Instances: Modal Dialog
 
 Clicking the button opens a modal dialog. You can define if you want to export your previous selection of process instances,
 the currently displayed page, or all pages.
@@ -89,7 +89,7 @@ Additionally, you can specify process variables by name to enrich the export res
 
 When clicking **Export CSV**, the backend crunches the requested data and creates a CSV file. This could take a while, depending on the amounts of process instances you want to export.
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-export-download-as-csv.png)CSV Export for Process Instances: Modal Dialog – Download as CSV
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-export-download-as-csv.png)CSV Export for Process Instances: Modal Dialog – Download as CSV
 
 As soon as the request succeeds, you should see a notification that the CSV creation was successful, and the button changes to **Download as CSV**. When you click the button, the download of the CSV file starts.
 
@@ -108,7 +108,7 @@ The format of the export result is a file of [Comma-separated values (CSV)](http
 
 #### Example
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-export-result.png)CSV Export for Process Instances: Export Result
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-export-result.png)CSV Export for Process Instances: Export Result
 
 ### Limitations
 
@@ -121,7 +121,7 @@ The format of the export result is a file of [Comma-separated values (CSV)](http
 
 ### `IN` operator
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-in-operator.png)IN Operator
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-in-operator.png)IN Operator
 
 Cockpit provides `IN` operator support when filtering for process instances for the following query criteria:
 
@@ -136,11 +136,11 @@ Occasionally, you may search for multiple query criterion values. The `IN` opera
 To use the `IN` operator, select a query criterion that supports the `IN` operator, and provide the values as a comma-separated list. To adjust the comma-separated list of values,
 start editing by clicking on the value. You can expand the value in a modal dialog for easier editing by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button.
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-in-operator-modal.png)IN Operator Modal
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-in-operator-modal.png)IN Operator Modal
 
 ## Delete process definitions
 
-![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-delete-process-definition.png)Delete Process Definition
+![Example img](../../../../assets/documentation/webapps/cockpit/bpmn/cockpit-delete-process-definition.png)Delete Process Definition
 
 Each process definition in the dashboard has a delete action. This action allows to delete all versions of a process definition.
 When proceeding with this action, you can always choose to enable/disable skipping custom listeners. However, if the process definition has process instances running, enabling the cascading flag becomes mandatory.
