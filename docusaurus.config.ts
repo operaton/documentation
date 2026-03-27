@@ -53,6 +53,18 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'v2.0',
+              path: '',
+            },
+            '1': {
+              label: 'v1.0',
+              path: 'v1.0',
+              banner: 'none',
+            },
+          },
           exclude: [
             '**/_*.{js,jsx,ts,tsx,md,mdx,bpmn}',
             'docs/documentation/introduction/third-party-libraries/camunda-bpm-platform-license-book.md'
@@ -128,6 +140,10 @@ const config: Config = {
           sidebarId: 'security',
           position: 'left',
           label: 'Security',
+        },
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
         },
         {
           type: 'search',
