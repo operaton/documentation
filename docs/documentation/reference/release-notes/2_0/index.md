@@ -1,6 +1,6 @@
 ---
 
-title: "2.0 (Draft)"
+title: "2.0"
 sidebar_position: 20
 
 ---
