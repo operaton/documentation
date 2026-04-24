@@ -422,9 +422,8 @@ The following non-test dependencies have been upgraded since Operaton 2.0:
 
 #### RESTEasy 7
 
-The upgrade of RESTEasy from **6.2.15.Final** to **7.0.2.Final** is the most significant
-dependency change in this release. RESTEasy 7 is based on Jakarta EE 10 (Jakarta REST 3.1) and
-is the current supported release line.
+RESTEasy 7 Upgrade The upgrade of RESTEasy from **6.2.15.Final** to **7.0.2.Final** is the most significant dependency change in this release. 
+RESTEasy 7 is based on **Jakarta REST 4.0** and is the current supported release line.
 
-This upgrade is **transparent** for clients using the Operaton REST API or the WildFly
-distribution — no configuration or code changes are required on the client side.
+This upgrade is completely transparent for clients using the Operaton REST API or the WildFly distribution. 
+No configuration or code changes are required on the client side.
