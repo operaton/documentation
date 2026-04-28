@@ -20,28 +20,40 @@ Only these default combinations are recommended (and supported) by Operaton.
     <th>Quarkus version</th>
   </tr>
   <tr>
-    <td>7.16.x, 7.17.x</td>
-    <td>2.1.x.Final</td>
+    <td>1.0.0</td>
+    <td>3.28.3</td>
   </tr>
   <tr>
-    <td>7.18.x</td>
-    <td>2.8.x.Final</td>
+    <td>1.0.1</td>
+    <td>3.28.5</td>
   </tr>
   <tr>
-    <td>7.19.x</td>
-    <td>2.16.x.Final</td>
+    <td>1.0.2</td>
+    <td>3.28.5</td>
   </tr>
   <tr>
-    <td>7.20.x</td>
-    <td>3.2.x.Final</td>
+    <td>1.0.3</td>
+    <td>3.28.5</td>
   </tr>
   <tr>
-    <td>7.21.x</td>
-    <td>3.8.x</td>
+    <td>1.1.0</td>
+    <td>3.30.8</td>
   </tr>
   <tr>
-    <td>7.22.x</td>
-    <td>3.15.x</td>
+    <td>1.1.1</td>
+    <td>3.30.8</td>
+  </tr>
+  <tr>
+    <td>1.1.2</td>
+    <td>3.30.8</td>
+  </tr>
+  <tr>
+    <td>2.0.0</td>
+    <td>3.32.0</td>
+  </tr>
+  <tr>
+    <td>2.1.0</td>
+    <td>3.33.1 (LTS)</td>
   </tr>
 </table>
 

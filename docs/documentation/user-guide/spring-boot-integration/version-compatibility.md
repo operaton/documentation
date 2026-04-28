@@ -15,11 +15,43 @@ Operaton and its compatible Spring Boot Starter always share the same version. E
 
 <table class="table table-striped">
   <tr>
-    <th>Operaton Spring Boot Starter version</th>
+    <th>Operaton version</th>
     <th>Spring Boot version</th>
   </tr>
   <tr>
-    <td>1.0.x</td>
-    <td>3.5.x</td>
+    <td>1.0.0</td>
+    <td>3.5.7</td>
+  </tr>
+  <tr>
+    <td>1.0.1</td>
+    <td>3.5.8</td>
+  </tr>
+  <tr>
+    <td>1.0.2</td>
+    <td>3.5.9</td>
+  </tr>
+  <tr>
+    <td>1.0.3</td>
+    <td>3.5.10</td>
+  </tr>
+  <tr>
+    <td>1.1.0</td>
+    <td>3.5.11</td>
+  </tr>
+  <tr>
+    <td>1.1.1</td>
+    <td>3.5.12</td>
+  </tr>
+  <tr>
+    <td>1.1.2</td>
+    <td>3.5.14</td>
+  </tr>
+  <tr>
+    <td>2.0.0</td>
+    <td>4.0.4</td>
+  </tr>
+  <tr>
+    <td>2.1.0</td>
+    <td>4.0.6</td>
   </tr>
 </table>
