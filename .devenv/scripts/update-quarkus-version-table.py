@@ -267,7 +267,9 @@ def main(dry_run: bool = False) -> None:
     print("Fetching releases from GitHub…")
     releases = get_final_releases()
     release_set = set(releases)
-    print(f"Found {len(releases)} final release(s): {[f'v{a}.{b}.{c}' for a,b,c in releases]}")
+    tags = [f'v{a}.{b}.{c}' for a, b, c in releases]
+    sample = tags if len(tags) <= 6 else tags[:3] + ["…"] + tags[-3:]
+    print(f"Found {len(releases)} final release(s): {sample}")
 
     kept_rows = classify_existing_rows(existing_rows, release_set)
     new_rows = fetch_new_rows(release_set - listed_versions, lts_versions)
