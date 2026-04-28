@@ -1,0 +1,35 @@
+name: Maintenance
+
+on:
+  schedule:
+    - cron: '0 0 25 * *'
+  workflow_dispatch:
+
+jobs:
+  update-version-tables:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Update Quarkus version compatibility table
+        run: python3 .devenv/scripts/update-quarkus-version-table.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Spring Boot version compatibility table
+        run: python3 .devenv/scripts/update-spring-boot-version-table.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v10
+        with:
+          message: 'docs: update version compatibility tables'
+          default_author: github_actions
