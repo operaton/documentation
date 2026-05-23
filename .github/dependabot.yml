@@ -12,6 +12,8 @@ updates:
       interval: "weekly"
     reviewers:
       - "kthoms"
+    cooldown:
+      default-days: 7
     target-branch: "main"
     labels:
       - "dependencies:npm"
@@ -25,6 +27,8 @@ updates:
       interval: "weekly"
     reviewers:
       - "kthoms"
+    cooldown:
+      default-days: 7
     target-branch: "main"
     labels:
       - "dependencies:github-action"
