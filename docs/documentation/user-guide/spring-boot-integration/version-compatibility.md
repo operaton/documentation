@@ -47,11 +47,19 @@ Operaton and its compatible Spring Boot Starter always share the same version. E
     <td>3.5.14</td>
   </tr>
   <tr>
+    <td>1.1.3</td>
+    <td>3.5.14</td>
+  </tr>
+  <tr>
     <td>2.0.0</td>
     <td>4.0.4</td>
   </tr>
   <tr>
     <td>2.1.0</td>
+    <td>4.0.6</td>
+  </tr>
+  <tr>
+    <td>2.1.1</td>
     <td>4.0.6</td>
   </tr>
 </table>
