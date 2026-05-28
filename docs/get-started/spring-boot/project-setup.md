@@ -30,16 +30,23 @@ In the following sections, we go through this process step by step.
 
 ### Create a new Maven Project
 
-First, we set up a new Apache Maven based project. Let's call it *loan-approval-spring-boot*. The screenshot below illustrates the settings we choose in Eclipse.
+First, we set up a new Apache Maven based project. Let's call it *loan-approval-spring-boot*. The screenshot below illustrates the settings we choose in IntelliJ IDEA.
 
-![Example image](/img/get-started/spring-boot/eclipse-new-project.png)
+![Example image](/img/get-started/spring-boot/idea-new-project.png)
 
-When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* view.
+* Name: `LoanApprovalSpringBoot`
+* Build system: Maven
+* JDK: Select a JDK version 17 or newer
+* Advanced settings:
+  * GroupId: `org.operaton.bpm.getstarted`
+  * ArtifactId: `loan-approval-spring-boot`
+
+When you are done, click Create. IntelliJ IDEA sets up a new Maven project.
 
 ### Add Operaton Platform & Spring Boot Dependencies
 
 The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the `pom.xml` file of the project.
-We add the Spring Boot BOM in the "dependency management" section and the Operaton Spring Boot Starter for Webapps, which will automatically include the Operaton engine and webapps in the app.
+We add the Spring Boot & the Operaton BOM in the "dependency management" section and the Operaton Spring Boot Starter for Webapps, which will automatically include the Operaton engine and webapps in the app.
 We also use `spring-boot-maven-plugin`, which does all the magic for packaging Spring Boot application content together.
 
 ```xml
@@ -47,12 +54,14 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.operaton.bpm.getstarted</groupId>
   <artifactId>loan-approval-spring-boot</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
 
   <properties>
-    <operaton.spring-boot.version>1.0.0-beta-5</operaton.spring-boot.version>
-    <spring-boot.version>3.3.3</spring-boot.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>17</java.version>
     <maven.compiler.release>17</maven.compiler.release>
+    <spring-boot.version>4.0.6</spring-boot.version>
+    <operaton.version>2.1.0</operaton.version>
   </properties>
 
   <dependencyManagement>
@@ -64,6 +73,13 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>org.operaton.bpm</groupId>
+        <artifactId>operaton-bom</artifactId>
+        <version>${operaton.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -71,20 +87,29 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
     <dependency>
       <groupId>org.operaton.bpm.springboot</groupId>
       <artifactId>operaton-bpm-spring-boot-starter-webapp</artifactId>
-      <version>${operaton.spring-boot.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-      <version>4.0.3</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.operaton.bpm</groupId>
+      <artifactId>operaton-bpm-junit5</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
-   <build>
+  <build>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -100,11 +125,6 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
       </plugin>
     </plugins>
   </build>
@@ -134,17 +154,25 @@ public class WebappExampleProcessApplication {
 
 ### Build and Run
 
-Now you can perform the first build. Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`.
+Now you can perform the first build. Select the _Maven_ view, open the _Lifecycle_ and double-click on _verify_.
+
+![IDEA Maven](/img/get-started/spring-boot/idea-run-maven-verify.png)
+
 
 Our first Operaton Spring Boot application is ready now. As a result of the build, you will have a JAR-file in your `target` folder. This JAR is a Spring Boot application,
 which embeds inside Tomcat as a web container, Operaton engine and Operaton Web applications resources.
 When started, it will use an in-memory H2 database for Operaton Engine needs.
 
-You can run the application by right-clicking on the `WebappExampleProcessApplication` class and selecting `Run as / Java application`.
+You can run the application opening the `WebappExampleProcessApplication` class and click on the triangle icon in the ruler left of the class name.
 Wait until you see a similar line in the console:
 ```text
-Started WebappExampleProcessApplication in 10.584 seconds
+Started WebappExampleProcessApplication in 2.67 seconds (process running for 3.044)
 ```
 Then go to [http://localhost:8080/](http://localhost:8080/) in your browser and enjoy the Operaton webapps.
 
 Another way to run the app is to simply run the JAR-file with a `java -jar` command.
+
+If your port `8080` is already occupied, you can change the default port by adding an `application.yml` file and add:
+```yml
+server.port: 8081
+```
