@@ -47,9 +47,11 @@ class TestGetVersionFromSbom(unittest.TestCase):
 
 
 class TestResolveVersion(unittest.TestCase):
-    def test_prefers_sbom_over_maven_central(self):
+    @patch("update_versions.get_version_from_maven_central")
+    def test_prefers_sbom(self, mock_mc):
         version = uv.resolve_version(FAKE_SBOM, "org.slf4j", "slf4j-simple")
         self.assertEqual(version, "2.0.9")
+        mock_mc.assert_not_called()
 
     @patch("update_versions.get_version_from_maven_central")
     def test_falls_back_to_maven_central_when_not_in_sbom(self, mock_mc):
