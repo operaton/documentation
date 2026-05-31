@@ -241,8 +241,51 @@ def update_docs(replacements: list["Replacement"], dry_run: bool = False) -> int
 
 # ── Orchestration (Task 6) ────────────────────────────────────────────────────
 
+THIRD_PARTY_ARTIFACTS = [
+    ("slf4j-simple",          "org.slf4j",                "slf4j-simple"),
+    ("jakarta.xml.bind-api",  "jakarta.xml.bind",         "jakarta.xml.bind-api"),
+    ("javax.servlet-api",     "javax.servlet",            "javax.servlet-api"),
+    ("maven-compiler-plugin", "org.apache.maven.plugins", "maven-compiler-plugin"),
+    ("maven-war-plugin",      "org.apache.maven.plugins", "maven-war-plugin"),
+    ("bootstrap",             "org.webjars",              "bootstrap"),
+    ("uuid-creator",          "com.github.f4b6a3",        "uuid-creator"),
+    ("logback-classic",       "ch.qos.logback",           "logback-classic"),
+    ("spring-boot",           "org.springframework.boot", "spring-boot"),
+]
+
+
 def main(dry_run: bool = False) -> None:
-    raise NotImplementedError("Implemented in Task 6")
+    print("Fetching latest Operaton release…")
+    release_data = _github_get(f"/repos/{REPO}/releases/latest")
+    operaton_version = release_data["tag_name"].lstrip("v")
+    print(f"Latest Operaton release: {operaton_version}")
+
+    print("Fetching SBOM…")
+    sbom = get_sbom(release_data)
+
+    print("Resolving third-party versions…")
+    third_party_versions: dict[str, str] = {}
+    for key, group_id, artifact_id in THIRD_PARTY_ARTIFACTS:
+        v = resolve_version(sbom, group_id, artifact_id)
+        print(f"  {group_id}:{artifact_id} → {v}")
+        third_party_versions[key] = v
+
+    replacements = _build_replacements(operaton_version, third_party_versions)
+
+    print(f"\nUpdating docs (dry_run={dry_run})…")
+    changed = update_docs(replacements, dry_run=dry_run)
+    print(f"\n{changed} file(s) {'would be ' if dry_run else ''}updated.")
+
+    print("\nUpdating Spring Boot compatibility table…")
+    sys.path.insert(0, str(SCRIPT_DIR))
+    import update_spring_boot_version_table as sb
+    sb.run(dry_run=dry_run)
+
+    print("\nUpdating Quarkus compatibility table…")
+    import update_quarkus_version_table as qk
+    qk.run(dry_run=dry_run)
+
+    print("\nDone.")
 
 
 if __name__ == "__main__":
