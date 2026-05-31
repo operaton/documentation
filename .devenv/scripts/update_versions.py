@@ -19,11 +19,12 @@ Environment variables:
     GITHUB_TOKEN   Optional GitHub personal-access token.
 """
 
-import io
 import json
 import os
 import re
+import shutil
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 import zipfile
@@ -68,33 +69,40 @@ def get_latest_operaton_release() -> str:
 
 # ── SBOM ──────────────────────────────────────────────────────────────────────
 
-def _download_bytes(url: str) -> bytes:
-    token = os.environ.get("GITHUB_TOKEN", "")
-    req = urllib.request.Request(url)
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req) as resp:
-        return resp.read()
-
-
 def get_sbom(release_data: dict) -> Optional[dict]:
     """Extract sbom.cdx.json from the distribution zip in release assets.
 
     The distribution zip is named operaton-bpm-X.Y.Z.zip. The SBOM is at
     sbom.cdx.json inside the zip root. Returns None if not found.
+
+    Streams the zip to a temporary file to avoid loading large files into memory.
     """
     for asset in release_data.get("assets", []):
         name = asset.get("name", "")
         if name.startswith("operaton-bpm-") and name.endswith(".zip"):
             print(f"Downloading distribution zip for SBOM: {name}")
-            raw = _download_bytes(asset["browser_download_url"])
-            with zipfile.ZipFile(io.BytesIO(raw)) as zf:
-                # sbom.cdx.json may be at root or inside a top-level directory
-                for entry in zf.namelist():
-                    if entry.endswith("sbom.cdx.json"):
-                        with zf.open(entry) as f:
-                            return json.loads(f.read().decode())
-            print("sbom.cdx.json not found inside zip — will use Maven Central only.")
+            token = os.environ.get("GITHUB_TOKEN", "")
+            req = urllib.request.Request(asset["browser_download_url"])
+            if token:
+                req.add_header("Authorization", f"Bearer {token}")
+            try:
+                with urllib.request.urlopen(req) as resp, \
+                     tempfile.NamedTemporaryFile(suffix=".zip", delete=False) as tmp:
+                    shutil.copyfileobj(resp, tmp)
+                    tmp_path = tmp.name
+            except urllib.error.HTTPError as exc:
+                print(f"Failed to download zip {name}: {exc.code} {exc.reason}", file=sys.stderr)
+                return None
+            try:
+                with zipfile.ZipFile(tmp_path) as zf:
+                    # sbom.cdx.json may be at root or inside a top-level directory
+                    for entry in zf.namelist():
+                        if entry.endswith("sbom.cdx.json"):
+                            with zf.open(entry) as f:
+                                return json.loads(f.read().decode())
+                print("sbom.cdx.json not found inside zip — will use Maven Central only.")
+            finally:
+                os.unlink(tmp_path)
             return None
     print("No operaton-bpm-*.zip asset found — will use Maven Central only.")
     return None
@@ -120,7 +128,7 @@ def get_version_from_sbom(sbom: Optional[dict], group_id: str, artifact_id: str)
 
 def get_version_from_maven_central(group_id: str, artifact_id: str) -> str:
     """Return the latest release version for a Maven artifact from Maven Central."""
-    params = f"q=g:{group_id}+AND+a:{artifact_id}&rows=1&wt=json&core=gav"
+    params = f"q=g:{group_id}+AND+a:{artifact_id}&rows=1&wt=json"
     url = f"{MAVEN_CENTRAL_SEARCH}?{params}"
     req = urllib.request.Request(url)
     try:
@@ -129,7 +137,7 @@ def get_version_from_maven_central(group_id: str, artifact_id: str) -> str:
         docs = data["response"]["docs"]
         if not docs:
             raise RuntimeError(f"No results from Maven Central for {group_id}:{artifact_id}")
-        return docs[0]["v"]
+        return docs[0]["latestVersion"]
     except urllib.error.HTTPError as exc:
         print(f"Maven Central error for {group_id}:{artifact_id}: {exc.code}", file=sys.stderr)
         raise
