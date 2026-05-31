@@ -117,7 +117,7 @@ Your pom.xml file of your project should look like this:
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<operaton.external-task-client.version>1.0.3</operaton.external-task-client.version>
+		<operaton.external-task-client.version>2.1.1</operaton.external-task-client.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
@@ -131,12 +131,12 @@ Your pom.xml file of your project should look like this:
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.36</version>
+			<version>2.1.0-alpha1</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>4.0.2</version>
+			<version>4.0.4</version>
 		</dependency>
 	</dependencies>
 </project>
