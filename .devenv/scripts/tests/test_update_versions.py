@@ -19,12 +19,21 @@ class TestGetLatestRelease(unittest.TestCase):
     @patch("update_versions._github_get")
     def test_strips_v_prefix(self, mock_get):
         mock_get.return_value = {"tag_name": "v2.2.0", "assets": []}
-        self.assertEqual(uv.get_latest_operaton_release(), "2.2.0")
+        version, _ = uv.get_latest_operaton_release()
+        self.assertEqual(version, "2.2.0")
 
     @patch("update_versions._github_get")
     def test_strips_v_prefix_single_digit(self, mock_get):
         mock_get.return_value = {"tag_name": "v1.5.3", "assets": []}
-        self.assertEqual(uv.get_latest_operaton_release(), "1.5.3")
+        version, _ = uv.get_latest_operaton_release()
+        self.assertEqual(version, "1.5.3")
+
+    @patch("update_versions._github_get")
+    def test_returns_release_data(self, mock_get):
+        fake_data = {"tag_name": "v2.2.0", "assets": [{"name": "test.zip"}]}
+        mock_get.return_value = fake_data
+        _, release_data = uv.get_latest_operaton_release()
+        self.assertEqual(release_data["assets"][0]["name"], "test.zip")
 
 
 class TestGetVersionFromSbom(unittest.TestCase):
