@@ -133,9 +133,18 @@ def get_version_from_sbom(sbom: Optional[dict], group_id: str, artifact_id: str)
 
 # ── Maven Central ─────────────────────────────────────────────────────────────
 
+_PRE_RELEASE_RE = re.compile(
+    r"(?i)[.-](alpha\d*|beta\d*|rc\d*|m\d+)(\..*)?$"
+)
+
+
+def _is_release_version(version: str) -> bool:
+    return _PRE_RELEASE_RE.search(version) is None
+
+
 def get_version_from_maven_central(group_id: str, artifact_id: str) -> str:
-    """Return the latest release version for a Maven artifact from Maven Central."""
-    params = f"q=g:{group_id}+AND+a:{artifact_id}&rows=1&wt=json"
+    """Return the latest stable release version for a Maven artifact from Maven Central."""
+    params = f"q=g:{group_id}+AND+a:{artifact_id}&core=gav&rows=20&wt=json"
     url = f"{MAVEN_CENTRAL_SEARCH}?{params}"
     req = urllib.request.Request(url)
     try:
@@ -144,7 +153,10 @@ def get_version_from_maven_central(group_id: str, artifact_id: str) -> str:
         docs = data["response"]["docs"]
         if not docs:
             raise RuntimeError(f"No results from Maven Central for {group_id}:{artifact_id}")
-        return docs[0]["latestVersion"]
+        release_versions = [d["v"] for d in docs if _is_release_version(d["v"])]
+        if not release_versions:
+            raise RuntimeError(f"No stable release found on Maven Central for {group_id}:{artifact_id}")
+        return release_versions[0]
     except urllib.error.HTTPError as exc:
         print(f"Maven Central error for {group_id}:{artifact_id}: {exc.code}", file=sys.stderr)
         raise
