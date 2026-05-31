@@ -25,3 +25,8 @@ yarn-error.log*
 
 # Local superpowers specs/plans (not committed)
 docs/superpowers/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
