@@ -19,6 +19,7 @@ Environment variables:
     GITHUB_TOKEN   Optional GitHub personal-access token.
 """
 
+import importlib.util
 import json
 import os
 import re
@@ -239,6 +240,26 @@ def update_docs(replacements: list["Replacement"], dry_run: bool = False) -> int
     return changed
 
 
+# ── Script Loading ────────────────────────────────────────────────────────────
+
+def _load_script(name: str, path: Path) -> object:
+    """Load a Python script as a module by file path (supports hyphenated filenames).
+
+    Args:
+        name: Module name (identifier for the module)
+        path: Path to the .py file to load
+
+    Returns:
+        The loaded module object
+    """
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Cannot load spec from {path}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 # ── Orchestration (Task 6) ────────────────────────────────────────────────────
 
 THIRD_PARTY_ARTIFACTS = [
@@ -277,12 +298,13 @@ def main(dry_run: bool = False) -> None:
     print(f"\n{changed} file(s) {'would be ' if dry_run else ''}updated.")
 
     print("\nUpdating Spring Boot compatibility table…")
-    sys.path.insert(0, str(SCRIPT_DIR))
-    import update_spring_boot_version_table as sb
+    sb = _load_script("update_spring_boot_version_table",
+                      SCRIPT_DIR / "update-spring-boot-version-table.py")
     sb.run(dry_run=dry_run)
 
     print("\nUpdating Quarkus compatibility table…")
-    import update_quarkus_version_table as qk
+    qk = _load_script("update_quarkus_version_table",
+                      SCRIPT_DIR / "update-quarkus-version-table.py")
     qk.run(dry_run=dry_run)
 
     print("\nDone.")
