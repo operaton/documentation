@@ -22,3 +22,6 @@ yarn-error.log*
 .idea
 
 .env
+
+# Local superpowers specs/plans (not committed)
+docs/superpowers/
