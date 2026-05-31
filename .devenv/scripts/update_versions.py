@@ -41,6 +41,7 @@ SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = (SCRIPT_DIR / ".." / "..").resolve()
 DOCS_DIR = REPO_ROOT / "docs"
 ARCHIVE_DIR = DOCS_DIR / "get-started" / "archive"
+SUPERPOWERS_DIR = DOCS_DIR / "superpowers"
 
 
 # ── GitHub API ────────────────────────────────────────────────────────────────
@@ -61,11 +62,16 @@ def _github_get(path: str) -> object:
         raise
 
 
-def get_latest_operaton_release() -> str:
-    """Return latest release version string without 'v' prefix, e.g. '2.2.0'."""
+def get_latest_operaton_release() -> tuple[str, dict]:
+    """Return (version_string, release_data) for the latest release.
+
+    version_string has no 'v' prefix, e.g. '2.2.0'.
+    release_data is the full GitHub API response (includes assets for SBOM).
+    """
     data = _github_get(f"/repos/{REPO}/releases/latest")
     tag = data["tag_name"]
-    return tag.lstrip("v")
+    version = tag.lstrip("v")
+    return version, data
 
 
 # ── SBOM ──────────────────────────────────────────────────────────────────────
@@ -224,6 +230,8 @@ def update_docs(replacements: list["Replacement"], dry_run: bool = False) -> int
     for md_file in sorted(DOCS_DIR.rglob("*.md")):
         if md_file.is_relative_to(ARCHIVE_DIR):
             continue
+        if md_file.is_relative_to(SUPERPOWERS_DIR):
+            continue
         original = md_file.read_text(encoding="utf-8")
         updated, changes = _apply_replacements_to_text(original, replacements)
         if updated != original:
@@ -277,8 +285,7 @@ THIRD_PARTY_ARTIFACTS = [
 
 def main(dry_run: bool = False) -> None:
     print("Fetching latest Operaton release…")
-    release_data = _github_get(f"/repos/{REPO}/releases/latest")
-    operaton_version = release_data["tag_name"].lstrip("v")
+    operaton_version, release_data = get_latest_operaton_release()
     print(f"Latest Operaton release: {operaton_version}")
 
     print("Fetching SBOM…")
