@@ -160,16 +160,83 @@ class Replacement:
     new_version: str
 
 
-def _build_replacements(operaton_version: str, versions: dict) -> list:
-    raise NotImplementedError("Implemented in Task 5")
+def _build_replacements(operaton_version: str, versions: dict[str, str]) -> list["Replacement"]:
+    """Build replacement list from pre-resolved version dict."""
+    ov = operaton_version
+    return [
+        Replacement("<operaton.version> property",
+            re.compile(r"(<operaton\.version>)\d+\.\d+\.\d+(</operaton\.version>)"), ov),
+        Replacement("operaton-bom <version>",
+            re.compile(r"(<artifactId>operaton-bom</artifactId>\s*<version>)\d+\.\d+\.\d+(</version>)", re.DOTALL), ov),
+        Replacement("operaton-engine-dmn-bom <version>",
+            re.compile(r"(<artifactId>operaton-engine-dmn-bom</artifactId>\s*<version>)\d+\.\d+\.\d+(</version>)", re.DOTALL), ov),
+        Replacement("operaton-bpm-junit5 <version>",
+            re.compile(r"(<artifactId>operaton-bpm-junit5</artifactId>\s*<version>)\d+\.\d+\.\d+(</version>)", re.DOTALL), ov),
+        Replacement("<operaton.external-task-client.version> property",
+            re.compile(r"(<operaton\.external-task-client\.version>)\d+\.\d+\.\d+(</operaton\.external-task-client\.version>)"), ov),
+        Replacement("GitHub tree link /tree/vX.Y.Z/",
+            re.compile(r"(github\.com/operaton/operaton/tree/v)\d+\.\d+\.\d+(/)"), ov),
+        Replacement("slf4j-simple <version>",
+            re.compile(r"(<artifactId>slf4j-simple</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["slf4j-simple"]),
+        Replacement("jakarta.xml.bind-api <version>",
+            re.compile(r"(<artifactId>jakarta\.xml\.bind-api</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["jakarta.xml.bind-api"]),
+        Replacement("javax.servlet-api <version>",
+            re.compile(r"(<artifactId>javax\.servlet-api</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["javax.servlet-api"]),
+        Replacement("maven-compiler-plugin <version>",
+            re.compile(r"(<artifactId>maven-compiler-plugin</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["maven-compiler-plugin"]),
+        Replacement("maven-war-plugin <version>",
+            re.compile(r"(<artifactId>maven-war-plugin</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["maven-war-plugin"]),
+        Replacement("bootstrap webjars <version>",
+            re.compile(r"(<artifactId>bootstrap</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["bootstrap"]),
+        Replacement("uuid-creator <version>",
+            re.compile(r"(<artifactId>uuid-creator</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["uuid-creator"]),
+        Replacement("logback-classic <version>",
+            re.compile(r"(<artifactId>logback-classic</artifactId>\s*<version>)\d+[\d.]+\d+(</version>)", re.DOTALL),
+            versions["logback-classic"]),
+        Replacement("<spring-boot.version> property",
+            re.compile(r"(<spring-boot\.version>)\d+[\d.]+\d+(</spring-boot\.version>)"),
+            versions["spring-boot"]),
+    ]
 
 
-def _apply_replacements_to_text(text: str, replacements: list) -> tuple:
-    raise NotImplementedError("Implemented in Task 5")
+def _apply_replacements_to_text(text: str, replacements: list["Replacement"]) -> tuple[str, list[str]]:
+    """Apply all replacements to text. Returns (new_text, list_of_descriptions_that_changed)."""
+    changes = []
+    for rep in replacements:
+        new_text = rep.pattern.sub(lambda m, v=rep.new_version: m.group(1) + v + m.group(2), text)
+        if new_text != text:
+            changes.append(rep.description)
+            text = new_text
+    return text, changes
 
 
-def update_docs(replacements: list, dry_run: bool = False) -> int:
-    raise NotImplementedError("Implemented in Task 5")
+def update_docs(replacements: list["Replacement"], dry_run: bool = False) -> int:
+    """Walk active docs, apply replacements. Returns count of changed files."""
+    changed = 0
+    for md_file in sorted(DOCS_DIR.rglob("*.md")):
+        if md_file.is_relative_to(ARCHIVE_DIR):
+            continue
+        original = md_file.read_text(encoding="utf-8")
+        updated, changes = _apply_replacements_to_text(original, replacements)
+        if updated != original:
+            changed += 1
+            try:
+                rel = md_file.relative_to(REPO_ROOT)
+            except ValueError:
+                rel = md_file
+            if dry_run:
+                print(f"  [dry-run] Would update {rel}: {', '.join(changes)}")
+            else:
+                md_file.write_text(updated, encoding="utf-8")
+                print(f"  Updated {rel}: {', '.join(changes)}")
+    return changed
 
 
 # ── Orchestration (Task 6) ────────────────────────────────────────────────────
