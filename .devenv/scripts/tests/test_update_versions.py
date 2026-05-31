@@ -47,6 +47,54 @@ class TestGetVersionFromSbom(unittest.TestCase):
         self.assertIsNone(uv.get_version_from_sbom(None, "org.slf4j", "slf4j-simple"))
 
 
+class TestIsReleaseVersion(unittest.TestCase):
+    def test_accepts_stable(self):
+        for v in ("2.0.9", "1.0.0", "3.5.0", "10.2.1"):
+            self.assertTrue(uv._is_release_version(v), v)
+
+    def test_rejects_alpha(self):
+        self.assertFalse(uv._is_release_version("2.0.0-alpha"))
+        self.assertFalse(uv._is_release_version("2.0.0.alpha1"))
+
+    def test_rejects_beta(self):
+        self.assertFalse(uv._is_release_version("2.0.0-beta"))
+        self.assertFalse(uv._is_release_version("2.0.0-beta2"))
+
+    def test_rejects_rc(self):
+        self.assertFalse(uv._is_release_version("2.0.0-RC1"))
+        self.assertFalse(uv._is_release_version("2.0.0-rc2"))
+
+    def test_rejects_milestone(self):
+        self.assertFalse(uv._is_release_version("6.0.0-M1"))
+        self.assertFalse(uv._is_release_version("6.0.0-M12"))
+
+
+class TestGetVersionFromMavenCentral(unittest.TestCase):
+    @patch("update_versions.urllib.request.urlopen")
+    def test_skips_prerelease_versions(self, mock_urlopen):
+        docs = [
+            {"v": "6.0.0-M1"},
+            {"v": "5.3.39"},
+            {"v": "5.3.38"},
+        ]
+        payload = json.dumps({"response": {"docs": docs}}).encode()
+        mock_urlopen.return_value.__enter__ = lambda s: s
+        mock_urlopen.return_value.__exit__ = unittest.mock.MagicMock(return_value=False)
+        mock_urlopen.return_value.read = lambda: payload
+        result = uv.get_version_from_maven_central("org.springframework", "spring-core")
+        self.assertEqual(result, "5.3.39")
+
+    @patch("update_versions.urllib.request.urlopen")
+    def test_raises_when_only_prereleases(self, mock_urlopen):
+        docs = [{"v": "6.0.0-M1"}, {"v": "5.0.0-RC1"}]
+        payload = json.dumps({"response": {"docs": docs}}).encode()
+        mock_urlopen.return_value.__enter__ = lambda s: s
+        mock_urlopen.return_value.__exit__ = unittest.mock.MagicMock(return_value=False)
+        mock_urlopen.return_value.read = lambda: payload
+        with self.assertRaises(RuntimeError):
+            uv.get_version_from_maven_central("org.springframework", "spring-core")
+
+
 class TestResolveVersion(unittest.TestCase):
     @patch("update_versions.get_version_from_maven_central")
     def test_prefers_sbom(self, mock_mc):
