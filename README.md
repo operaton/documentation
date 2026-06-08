@@ -6,13 +6,13 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ### Installation
 
-```
-$ npm install
+```bash
+npm install
 ```
 
 ### Local Development
 
-```
+```bash
 npm run start
 ```
 
@@ -20,16 +20,16 @@ This command starts a local development server and opens up a browser window. Mo
 
 ### Build
 
-```
-$ npm run build
+```bash
+npm run build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ### Update dependencies
 
-```
-$ npm update
+```bash
+npm update
 ```
 
 This command update the dependencies from `package.json`
