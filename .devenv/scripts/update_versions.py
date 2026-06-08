@@ -46,8 +46,25 @@ SUPERPOWERS_DIR = DOCS_DIR / "superpowers"
 
 # ── GitHub API ────────────────────────────────────────────────────────────────
 
-def _github_get(path: str) -> object:
+def _get_github_token() -> str:
     token = os.environ.get("GITHUB_TOKEN", "")
+    if token:
+        return token
+    try:
+        import subprocess
+        result = subprocess.run(
+            ["gh", "auth", "token"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except Exception:
+        pass
+    return ""
+
+
+def _github_get(path: str) -> object:
+    token = _get_github_token()
     url = f"{GITHUB_API_BASE}{path}"
     req = urllib.request.Request(url)
     req.add_header("Accept", "application/vnd.github+json")
