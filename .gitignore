@@ -22,3 +22,11 @@ yarn-error.log*
 .idea
 
 .env
+
+# Local superpowers specs/plans (not committed)
+docs/superpowers/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
