@@ -94,7 +94,7 @@ const config: Config = {
             protocol: 'https',
           },
         ],
-        apiKey: process.env.TYPESENSE_API_KEY,
+        apiKey: process.env.TYPESENSE_API_KEY ?? 'placeholder',
         sendApiKeyAsQueryParam: false,
       },
 
