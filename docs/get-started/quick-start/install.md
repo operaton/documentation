@@ -41,7 +41,7 @@ Make sure to use a Java version from [Operaton's list of supported environments]
 
 ## Operaton Platform
 
-First, download a distribution of the Operaton Platform. You can choose from different distributions for [various application servers](/docs/documentation/installation/full/). In this tutorial, we'll use Operaton Platform Run. Download it from [the download page](https://camunda.com/download/).
+First, download a distribution of the Operaton Platform. You can choose from different distributions for [various application servers](/docs/documentation/installation/full/). In this tutorial, we'll use Operaton Platform Run. Download it from [the latest Operaton release](https://github.com/operaton/operaton/releases/latest).
 
 After downloading the distribution, unpack it inside a directory of your choice.
 

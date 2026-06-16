@@ -28,7 +28,7 @@ Make sure you have the following set of tools installed:
 
 ## Operaton Platform
 
-First, download a distribution of the Operaton Platform. You can choose from different distributions for various application servers. In this tutorial, we will use the Apache Tomcat based distribution. Download it from [the download page](https://camunda.com/download/).
+First, download a distribution of the Operaton Platform. You can choose from different distributions for various application servers. In this tutorial, we will use the Apache Tomcat based distribution. Download it from [the latest Operaton release](https://github.com/operaton/operaton/releases/latest).
 
 After having downloaded the distribution, unpack it inside a directory of your choice. We will call that directory `$OPERATON_HOME`.
 
