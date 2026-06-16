@@ -7,14 +7,14 @@ description: "Manually install and configure the Full Distribution on a vanilla 
 ---
 ## Install the Full Distribution on a Tomcat Application Server manually
 
-This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](http://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download a [Tomcat distribution](https://downloads.operaton.cloud/release/operaton-bpm/tomcat/) to fetch the required Operaton modules.
+This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](http://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download the matching Tomcat distribution from the [Operaton GitHub releases](https://github.com/operaton/operaton/releases) to fetch the required Operaton modules.
 
-:::note[Reading the Guide}
+:::note[Reading the Guide]
 Throughout this guide we will use a number of variables to denote common path names and constants:
 
 * `$TOMCAT_HOME` points to the main directory of the tomcat server.
 * `$TOMCAT_VERSION` denotes the version of Tomcat server.
-* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `7.0.0`.
+* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.1`.
 * `$TOMCAT_DISTRIBUTION` represents the downloaded pre-packaged Operaton distribution for Tomcat, e.g. `operaton-bpm-tomcat-$PLATFORM_VERSION.zip` or `operaton-bpm-tomcat-$PLATFORM_VERSION.tar.gz`.
 
 :::
