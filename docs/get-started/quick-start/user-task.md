@@ -13,7 +13,7 @@ In this section, you'll learn how to involve humans in your process by using BPM
 ## Add a User Task
 We want to modify our process so that we can involve humans.
 
-To do so, open the process in the Camunda Modeler.
+To do so, open the process in the Operaton Modeler.
 
 Select the create/remove space tool || from the Modeler's left-hand menu, and use it to create space between the Start Event and the "Charge Credit Card" Service Task (click and drag the cursor to the right).
 
@@ -86,7 +86,7 @@ Finally, save the form as `payment.form`.
 ## Deploy the Process
 
 1. Switch back to the process diagram
-2. Click the Deploy button in the Camunda Modeler
+2. Click the Deploy button in the Operaton Modeler
 3. In the deployment panel, select the `payment.form` file under *include additional files*
 4. Click *Deploy*
 
@@ -111,7 +111,7 @@ You should now see the *Approve Payment* task in your Tasklist. Select the task 
 
 ![Example image](/img/get-started/quick-start/diagram.png)
 
-To work on the task, select the *Form* tab. Because we defined the variables in the Form Tab in the Camunda Modeler, the Tasklist has automatically generated form fields for us.
+To work on the task, select the *Form* tab. Because we defined the variables in the Form tab in the Operaton Modeler, the Tasklist has automatically generated form fields for us.
 
 ![Example image](/img/get-started/quick-start/task-form-generated.png)
 
