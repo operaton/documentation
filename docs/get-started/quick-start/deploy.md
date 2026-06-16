@@ -10,7 +10,7 @@ description: 'Deploy the Process to Operaton and start your first process instan
 In the next step, you'll deploy the Process and start a new instance so you can see that your simple process is working correctly.
 
 :::note[Deployment Support]
-BPMN diagrams must be created for the process engine they intend to be deployed on. You cannot run a BPMN diagram modeled for Operaton Platform in Operaton Cloud, or vice versa, at this time.
+BPMN diagrams must be created for the process engine they intend to be deployed on. In the Camunda Modeler, make sure the execution platform is set to Operaton Platform before deploying to Operaton.
 :::
 
 ## Use the Camunda Modeler to Deploy the Process
