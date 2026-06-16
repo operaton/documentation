@@ -60,7 +60,7 @@ SpinJsonNode json = JSON(reader);
 
 ## Reading JSON using a Script Language
 
-JSON can be read from script languages in the same way as from Java. Since script languages use dynamic typing, you do not need to hint the data format but you can use autodetection. The following example demonstrates how to read JSON in Javascript:
+JSON can be read from script languages in the same way as from Java. Since script languages use dynamic typing, you do not need to hint the data format but you can use autodetection. The following example demonstrates how to read JSON in JavaScript:
 
 ```javascript
 var customer = S('{"customer": "Kermit"}');
@@ -81,7 +81,7 @@ SpinJsonNode customerProperty = json.prop("customer");
 String customerName = customerProperty.stringValue();
 ```
 
-in Javascript:
+in JavaScript:
 
 ```javascript
 var json = S('{"customer": "Kermit"}');
@@ -131,7 +131,7 @@ SpinJsonNode customer = customers.get(0);
 String customerName = customer.stringValue();
 ```
 
-in Javascript:
+in JavaScript:
 
 ```javascript
 var json = S('{"customer": ["Kermit", "Waldo"]}');
@@ -143,7 +143,7 @@ var customerName = customer.value();
 
 ### Fetch Field Names
 
-Spin allows us to use the `.fieldNames()` method to fetch the names of all child nodes and properties in a node. The following example shows you how to use `.fieldNames()` in Java and Javascript.
+Spin allows us to use the `.fieldNames()` method to fetch the names of all child nodes and properties in a node. The following example shows you how to use `.fieldNames()` in Java and JavaScript.
 
 in Java:
 
@@ -155,7 +155,7 @@ ArrayList fieldNames = json.fieldNames();
 String fieldName1 = fieldNames.get(0)
 ```
 
-in Javascript:
+in JavaScript:
 
 ```javascript
 var json = S('{"customer": ["Kermit", "Waldo"]}');
@@ -190,7 +190,7 @@ or one of the 2 following container types:
     json.prop("new_array", list);
     ```
 
-    Example in Javascript:
+    Example in JavaScript:
 
     ```javascript
     var json = S('{"customer": ["Kermit", "Waldo"]}');
@@ -212,7 +212,7 @@ or one of the 2 following container types:
     json.prop("new_object", object);
     ```
 
-    Example in Javascript:
+    Example in JavaScript:
 
     ```javascript
     var json = S('{"customer": ["Kermit", "Waldo"]}');
@@ -231,7 +231,7 @@ There are 2 ways to remove properties from a JSON object.
   * `.deleteProp("name")` - Removes a property with given name.
   * `.deleteProp(<List of names>)` - Removes one or more properties with given names.
 
-For more details see the following examples for Javascript and Java.
+For more details see the following examples for JavaScript and Java.
 
 Java:
 
@@ -250,7 +250,7 @@ json.deleteProp("customer");
 json.deleteProp(list);
 ```
 
-Javascript:
+JavaScript:
 
 ```javascript
 var json = S('{"customer": ["Kermit", "Waldo"], "language": "en"}');
