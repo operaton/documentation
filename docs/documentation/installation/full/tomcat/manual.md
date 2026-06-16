@@ -168,9 +168,9 @@ This section describes how to install optional Operaton dependencies onto a Tomc
 
 The following steps are required to deploy the applications:
 
-1. Download the Operaton web application that contains both applications from our [Artifact Repository](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/).
-    * For [Tomcat 10](https://artifacts.camunda.com/ui/native/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-jakarta-$PLATFORM_VERSION.war`.
-    * For [Tomcat 9](https://artifacts.camunda.com/ui/native/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-$PLATFORM_VERSION.war`.
+1. Download the Operaton web application that contains both applications from our Maven Artifactory.
+    * For [Tomcat 10](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-jakarta-$PLATFORM_VERSION.war`.
+    * For [Tomcat 9](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-$PLATFORM_VERSION.war`.
 2. Copy the war file to `$TOMCAT_HOME/webapps/operaton.war`.
    Optionally you may name it differently or extract it to a folder to deploy it to a different context path.
 3. Startup Tomcat.
@@ -181,10 +181,10 @@ The following steps are required to deploy the applications:
 
 The following steps are required to deploy the REST API:
 
-1. Download the REST API web application archive from our [Artifact Repository](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/operaton-engine-rest/).
+1. Download the REST API web application archive from our Maven Artifactory.
     Choose the correct version named `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
-    * For [Tomcat 10](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-tomcat.war`.
-    * For [Tomcat 9](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
+    * For [Tomcat 10](https://artifacts.operaton.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-tomcat.war`.
+    * For [Tomcat 9](https://artifacts.operaton.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
 2. Copy the war file to `$TOMCAT_HOME/webapps`.
    Optionally you may rename it or extract it to a folder to deploy it to a specific context like `/engine-rest`.
 3. Startup Tomcat.
