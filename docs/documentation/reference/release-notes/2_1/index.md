@@ -368,7 +368,7 @@ The Operaton Quarkus extension is based on **Quarkus 3.33.1 LTS**.
 
 The Tomcat distribution is based on **Tomcat 11.0.21**.
 
-The Wildfly distribution is based on **Wildfly 38.0.1**.
+The WildFly distribution is based on **WildFly 38.0.1**.
 
 ### Database Compatibility
 
