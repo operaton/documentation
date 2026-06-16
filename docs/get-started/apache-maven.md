@@ -74,7 +74,7 @@ The `operaton-engine` Spring integration for Spring Framework 6:
 </dependency>
 ```
 
-## Operaton DMN Engine BOM (Bill of Materials)
+## Operaton DMN Engine BOM (Bill of Materials) {#operaton-dmn-engine-bom}
 This BOM allows to use the DMN engine standalone without the BPMN engine and the rest of the Operaton Platform.
 
 ```xml
@@ -113,6 +113,6 @@ It is not needed when using `operaton-engine` because that already contains the 
 
 * [DMN Engine](/docs/documentation/user-guide/dmn-engine/embed/#maven-coordinates)
 * [Operaton Spin](/docs/documentation/reference/spin)
-* [Operaton Connect](/docs/documentation/reference/connect/#maven-coordinates)
+* [Operaton Connect](/docs/documentation/reference/connect/)
 * [Templating Engines](/docs/documentation/user-guide/process-engine/templating/#install-a-template-engine-for-an-embedded-process-engine)
 * [Spring Boot Integration](/docs/documentation/user-guide/spring-boot-integration/)

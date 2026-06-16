@@ -5,6 +5,31 @@ sidebar_position: 50
 
 ---
 
+<RegisterAnchors ids={[
+  'enableXxeProcessing',
+  'ensureJobDueDateNotNull',
+  'enable-historic-instance-permissions',
+  'jdbcBatchProcessing',
+  'jobExecutorPriorityRangeMin',
+  'jobExecutorPriorityRangeMax',
+  'invocations-per-batch-job-by-batch-type',
+  'javaSerializationFormatEnabled',
+  'deserializationTypeValidationEnabled',
+  'webappsAuthenticationLoggingEnabled',
+  'queryMaxResultsLimit',
+  'dmnFeelEnableLegacyBehavior',
+  'dmnFeelCustomFunctionProviders',
+  'skipOutputMappingOnCanceledActivities',
+  'configureScriptEngineHostAccess',
+  'enableScriptEngineLoadExternalResources',
+  'enableScriptEngineNashornCompatibility',
+  'exception-codes',
+  'logEntriesPerSyncOperationLimit',
+  'historyTimeToLive',
+  'historytimetolive',
+  'enforceHistoryTimeToLive',
+]} />
+
 
 The process engine configuration can be placed in both [processes.xml](../processes-xml.md) and the [bpm-platform.xml](../bpm-platform-xml.md) files. If the process engine is configured in either or both of those files, it will be bootstrapped by the Operaton infrastructure and be made available through `BpmPlatform.getProcessEngineService().getProcessEngine("name of process engine")`.
 
@@ -367,8 +392,8 @@ The following is a list with the most commonly used process engine configuration
     </td>
   </tr>
 
-  <tr>
-      <td><code>enableXxeProcessing</code></td>
+  <tr id="enableXxeProcessing">
+    <td><code>enableXxeProcessing</code></td>
       <td>Boolean</td>
       <td>
         If set to <code>true</code>, enables XML eXternal Entity (XXE) Processing. When disabled, it provides protection against XXE Processing attacks.
@@ -1221,8 +1246,8 @@ The following is a list with the most commonly used process engine configuration
         in the User Guide.
     </td>
   </tr>
-  <tr id="historytimetolive">
-    <td><code>historyTimeToLive</code></td>
+  <tr id="historyTimeToLive">
+    <td><a id="historytimetolive"></a><code>historyTimeToLive</code></td>
     <td>String</td>
     <td>
             Defines history time to live for process definitions and decision definitions if no other value is defined.

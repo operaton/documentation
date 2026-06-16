@@ -51,10 +51,10 @@ Operaton supports the 1.1 version of DMN.
 [modelers]: ../modeling-bpmn/index.md
 [BPMN Modeling Tutorial]: https://operaton.org/bpmn/tutorial/
 [BPMN Modeling Reference]: https://operaton.org/bpmn/reference/
-[Quick Start (Java / JS)]: /get-started/quick-start/
+[Quick Start (Java / JS)]: /docs/get-started/quick-start/
 [BPMN Implementation Reference]: ../reference/bpmn20/index.md
 [CMMN Implementation Reference]: ../reference/cmmn11/index.md
-[DMN Getting Started]: /get-started/dmn/
+[DMN Getting Started]: /docs/get-started/dmn/
 [DMN Implementation Reference]: ../reference/dmn/index.md
 [DMN Modeling Tutorial]: https://operaton.org/dmn/tutorial/
 [Process Engine]: ../user-guide/process-engine/index.md

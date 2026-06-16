@@ -98,4 +98,4 @@ Return to Eclipse. Right-click the project folder and click *Refresh*. This sync
 
 For Eclipse to automatically synchronize the workspace with the filesystem, consider [configuring auto-sync in eclipse][auto-sync].
 
-[auto-sync]: /docs/documentation/modeler/tips/#eclipse-project-synchronization
+[auto-sync]: https://docs.camunda.io/docs/components/modeler/desktop-modeler/sync-project/
