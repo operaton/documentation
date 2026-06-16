@@ -7,7 +7,7 @@ description: "Run the Full Distribution using Docker"
 ---
 ## Run Operaton using Docker
 
-The Community Edition docker images can be found on [Docker Hub](https://hub.docker.com/r/operaton/operaton/).
+The Docker images can be found on [Docker Hub](https://hub.docker.com/r/operaton/operaton/).
 
 ### Start Operaton using Docker
 
