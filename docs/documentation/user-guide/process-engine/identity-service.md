@@ -346,7 +346,7 @@ The LDAP Identity Provider provides the following configuration properties:
         <em>Default:</em> <code>false</code>
       </p>
       <p>
-        <strong>Note:</strong> The support of search result ordering is not be implemented by every LDAP server.
+        <strong>Note:</strong> Support for search result ordering is not implemented by every LDAP server.
         Make sure that your currently used LDAP Server implements the <a href="https://tools.ietf.org/html/rfc2891">RFC 2891</a>.
       </p>
     </td>

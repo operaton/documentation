@@ -39,7 +39,7 @@ Process application context must be declared whenever custom code uses the engin
 
 ### Example
 
-To clarify the use case, we assume that a process application employs the [feature to serialize object-type variables in the JSON format](../../user-guide/data-formats/json.md#serializing-process-variables). However, for that application JSON serialization shall be customized (think about the numerous ways to serialize a date as a JSON string). The process application therefore contains a Operaton Spin data format configurator implementation that configures the Spin JSON data format in the desired way. In turn, the process engine manages a Spin data format for that specific process application to serialize object values with. Now, we assume that a Java servlet calls the process engine API to submit a Java object and serialize it with the JSON format. The code might look as follows:
+To clarify the use case, we assume that a process application employs the [feature to serialize object-type variables in the JSON format](../../user-guide/data-formats/json.md#serializing-process-variables). However, for that application JSON serialization shall be customized (think about the numerous ways to serialize a date as a JSON string). The process application therefore contains an Operaton Spin data format configurator implementation that configures the Spin JSON data format in the desired way. In turn, the process engine manages a Spin data format for that specific process application to serialize object values with. Now, we assume that a Java servlet calls the process engine API to submit a Java object and serialize it with the JSON format. The code might look as follows:
 
 ```java
 public class ObjectValueServlet extends HttpServlet {

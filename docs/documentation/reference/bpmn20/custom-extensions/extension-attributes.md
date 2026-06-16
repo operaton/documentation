@@ -1198,7 +1198,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td>
-      The attribute references a Operaton form definition by its key. See <a href="../user-guide/task-forms/index.md">task forms</a> for more information.
+      The attribute references an Operaton form definition by its key. See <a href="../user-guide/task-forms/index.md">task forms</a> for more information.
     </td>
   </tr>
   <tr>

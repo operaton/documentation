@@ -102,7 +102,7 @@ In our example, the following steps might take place:
 ![Example img](/img/documentation/reference/cmmn11/markers/state-4.png)
 8. From now on, no more repetitions of *A* can occur.
 
-The transition in which the repetition rule is evaluated can be changed by a Operaton extension attribute named `operaton:repeatOnStandardEvent`. For a task it looks as follows:
+The transition in which the repetition rule is evaluated can be changed by an Operaton extension attribute named `operaton:repeatOnStandardEvent`. For a task it looks as follows:
 
 ```xml
 <definitions>

@@ -14,7 +14,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      The configuration of a Operaton connector.
+      The configuration of an Operaton connector.
     </td>
   </tr>
   <tr>

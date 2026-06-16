@@ -214,7 +214,7 @@ For example, let us assume a variable is set in a start execution listener of an
 ### Top-Down Evaluation
 
 A variable change causes condition evaluation and event triggering in a *top-down* fashion.
-That means the evaluation starts at the the conditional events of the BPMN scope in which the variable was changed. It then step by step descends into the instances of nested BPMN scopes (e.g., embedded sub processes). This is done until a conditional event is triggered that interrupts the current scope instance (thereby cancelling all children) or until there are no more deeper nested scopes.
+That means the evaluation starts at the conditional events of the BPMN scope in which the variable was changed. It then step by step descends into the instances of nested BPMN scopes (e.g., embedded sub processes). This is done until a conditional event is triggered that interrupts the current scope instance (thereby cancelling all children) or until there are no more deeper nested scopes.
 
 For example see the following BPMN process model:
 
