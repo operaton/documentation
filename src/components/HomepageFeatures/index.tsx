@@ -13,7 +13,7 @@ const FeatureList: FeatureItem[] = [
     title: 'Easy to Use',
     description: (
       <>
-        Operaton as fork of Camunda 7 was designed from the ground up to be easily installed and used, helping you get your business processes up and running quickly.
+        Operaton builds on the Camunda 7 codebase and keeps BPMN process automation approachable for teams getting started or migrating existing workloads.
       </>
     ),
   },
@@ -35,7 +35,7 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center padding-horiz--md">
