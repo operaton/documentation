@@ -45,7 +45,7 @@ The "General Data" category contains information about the process engine:
 * Installation - an id that is stored as process engine configuration property
 * Product name - the name of the product (i.e., `Operaton BPM Runtime`)
 * Product version - the version of the process engine (i.e., `7.X.Y`)
-* Product edition - the edition of the product (i.e., `community` or `enterprise`)
+* Product edition - a legacy compatibility field. Operaton is open source and reports `community`.
 
 ### Meta and environment data
 The "Meta/Environment Data" category contains information about the environmental setup:
@@ -76,7 +76,7 @@ The counts are collected from the start of the engine or the last reported time 
     "product": {
       "name": "Operaton BPM Runtime",
       "version": "7.14.0",
-      "edition": "enterprise",
+      "edition": "community",
       "internals": {
         "database": {
           "vendor": "h2",
@@ -105,16 +105,6 @@ The counts are collected from the start of the engine or the last reported time 
           "spring-boot-starter",
           "operaton-bpm-run"
         ],
-        "license-key": {
-          "customer": "customer name",
-          "type": "UNIFIED",
-          "valid-until": "2022-09-30",
-          "unlimited": false,
-          "features": {
-            "camundaBPM": "true"
-          },
-          "raw": "customer=customer name;expiryDate=2022-09-30;camundaBPM=true;optimize=false;cawemo=false"
-        },
         "webapps": [
           "cockpit",
           "admin"
