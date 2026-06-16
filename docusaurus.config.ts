@@ -7,6 +7,8 @@ import rehypeRegisterCustomIds from './src/plugins/rehype-register-custom-ids.js
 import remarkBpmnDiagram from './src/plugins/remark-bpmn-diagram.js';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const typesenseApiKey = process.env.TYPESENSE_API_KEY?.trim();
+
 const config: Config = {
   title: 'Operaton Documentation',
   tagline: 'BPMN-Process Automation for Everyone',
@@ -73,7 +75,7 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-  themes: ['docusaurus-theme-search-typesense'],
+  themes: typesenseApiKey ? ['docusaurus-theme-search-typesense'] : [],
 
   themeConfig: {
     // Replace with your project's social card
@@ -83,27 +85,31 @@ const config: Config = {
         autoCollapseCategories: true,
       },
     },
-    typesense: {
-      typesenseCollectionName: 'docusaurus',
+    ...(typesenseApiKey
+      ? {
+          typesense: {
+            typesenseCollectionName: 'docusaurus',
 
-      typesenseServerConfig: {
-        nodes: [
-          {
-            host: 'docs.operaton.org',
-            port: 8108,
-            protocol: 'https',
+            typesenseServerConfig: {
+              nodes: [
+                {
+                  host: 'docs.operaton.org',
+                  port: 8108,
+                  protocol: 'https',
+                },
+              ],
+              apiKey: typesenseApiKey,
+              sendApiKeyAsQueryParam: false,
+            },
+
+            // Optional: Typesense search parameters: https://typesense.org/docs/0.24.0/api/search.html#search-parameters
+            typesenseSearchParameters: {},
+
+            // Optional
+            contextualSearch: true,
           },
-        ],
-        apiKey: process.env.TYPESENSE_API_KEY ?? 'placeholder',
-        sendApiKeyAsQueryParam: false,
-      },
-
-      // Optional: Typesense search parameters: https://typesense.org/docs/0.24.0/api/search.html#search-parameters
-      typesenseSearchParameters: {},
-
-      // Optional
-      contextualSearch: true,
-    },
+        }
+      : {}),
     navbar: {
       title: 'Operaton',
       logo: {
@@ -129,10 +135,14 @@ const config: Config = {
           position: 'left',
           label: 'Security',
         },
-        {
-          type: 'search',
-          position: 'right',
-        },
+        ...(typesenseApiKey
+          ? [
+              {
+                type: 'search' as const,
+                position: 'right' as const,
+              },
+            ]
+          : []),
         {
           href: 'https://github.com/operaton',
           label: 'GitHub',
