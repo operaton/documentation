@@ -253,7 +253,7 @@ The following is a list of all supported configuration properties.
   </tr>
   <tr>
     <td><code>additionalResourceSuffixes</code></td>
-    <td>comma-seperated list</td>
+    <td>comma-separated list</td>
     <td>
       Specifies a list of additional suffixes which are considered as deployment resource if the
       <code>isScanForProcessDefinitions</code> property is set to <code>true</code>. It can be used
