@@ -10,11 +10,11 @@ menu:
 
 ---
 
-Operaton is developed as an open source project in collaboration with the community. The core Operaton product is open source.
+Operaton is developed as an open source project in collaboration with the community. Operaton does not have separate editions; the product is open source.
 
 ## Extensions
 
-Operaton supports the community in its effort to build additional community extensions under the Operaton umbrella. Such community extensions are maintained by the community and are not part of the core Operaton distribution.
+Operaton supports the community in its effort to build additional community extensions under the Operaton umbrella. Such community extensions are maintained by the community and are not part of the official Operaton distribution.
 
 The [Operaton Community Hub](https://github.com/operaton-community-hub) is a GitHub organization that serves as the home of Operaton open source, community-contributed extensions. You can migrate an extension you've built to the Hub, search for existing extensions, or get started with open source by helping community extension maintainers with open issue or pull request triage.
 
