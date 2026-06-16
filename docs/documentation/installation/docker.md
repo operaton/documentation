@@ -15,5 +15,5 @@ To start [Operaton](../user-guide/operaton-bpm-run.md) execute the following com
 
 ```shell
 docker pull operaton/operaton:latest
-docker run -d --name Operaton-p 8080:8080 operaton/operaton:latest
+docker run -d --name operaton -p 8080:8080 operaton/operaton:latest
 ```
