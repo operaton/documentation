@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 # Download and Installation (1/6)
 
-First, you need to install the Operaton Platform and the Camunda Modeler.
+First, you need to install the Operaton Platform and the Operaton Modeler.
 
 In the following section, we'll describe how to install the Operaton Platform locally on your machine.
 
@@ -16,7 +16,7 @@ docker pull operaton/operaton:latest
 docker run -d --name operaton -p 8080:8080 operaton/operaton:latest
 ```
 
-Afterwards, you can [install the Camunda Modeler](#camunda-modeler).
+Afterwards, you can [install the Operaton Modeler](#operaton-modeler).
 
 [More information regarding the docker image](https://hub.docker.com/r/operaton/operaton)
 :::
@@ -49,14 +49,10 @@ After you've successfully unpacked your distribution of the Operaton Platform, e
 
 This script will start the application server. Open your web browser and navigate to [http://localhost:8080/](http://localhost:8080/) to visit the Welcome Page.
 
-## Camunda Modeler
+## Operaton Modeler
 
-Download the Camunda Modeler from [the download page](https://camunda.com/download/modeler/).
-
-After downloading the Modeler, simply unzip the download in a folder of your choice.
-
-After you have successfully unpacked the zip, run `camunda-modeler.exe` (for Windows users), `camunda-modeler.app` (for Mac users), or `camunda-modeler.sh` (for Linux users).
+Follow the instructions in the [Operaton Modeler](/docs/documentation/installation/camunda-modeler) section.
 
 :::note[Next Step]
-Once you've installed the Operaton Platform and the Camunda Modeler, you can move to the next step to [model and execute your first process](/docs/get-started/quick-start/service-task/).
+Once you've installed the Operaton Platform and the Operaton Modeler, you can move to the next step to [model and execute your first process](/docs/get-started/quick-start/service-task/).
 :::

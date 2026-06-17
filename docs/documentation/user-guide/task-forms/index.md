@@ -12,7 +12,7 @@ There are different types of forms which are primarily used in Tasklist. To impl
 Forms are referenced using Form Keys or Form References and can either be embedded in Operaton Tasklist or handled by a custom application. Depending on your use-case, different Form Types can be used:
 
 1. [Embedded Task Forms](#embedded-task-forms) allow you to embed custom HTML and JavaScript forms into Tasklist.
-2. [Operaton Forms](#operaton-forms) offer visual editing of forms in the Camunda Modeler and can be used for less complex forms. Operaton Forms are the only form type that can be referenced either by Form Key or by Form Reference.
+2. [Operaton Forms](#operaton-forms) offer visual editing of forms in the Operaton Modeler and can be used for less complex forms. Operaton Forms are the only form type that can be referenced either by Form Key or by Form Reference.
 3. [External Task Forms](#external-task-forms) can be used to link to custom applications. The Form will not be embedded in Tasklist.
 
 If no form key is present, a [Generic Task Form](#generic-task-forms) will be shown.
@@ -35,7 +35,7 @@ Form keys that are used in Tasklist have the structure `FORM-TYPE:LOCATION:FORM.
     <td>
       Can be either <code>deployment</code> or <code>app</code>:
       <ul>
-        <li><em>deployment</em>: The file is part of your deployment (e.g., <a href="../../reference/deployment-descriptors/tags/process-archive.md">by adding it to your process archive</a> or <a href="/get-started/quick-start/deploy/#use-the-camunda-modeler-to-deploy-the-process">by deploying from the Camunda Modeler</a>), which means that it is stored in the Operaton database. It can then be loaded from there. Note that this allows versioning of your form alongside the process model.</li>
+        <li><em>deployment</em>: The file is part of your deployment (e.g., <a href="../../reference/deployment-descriptors/tags/process-archive.md">by adding it to your process archive</a> or <a href="/get-started/quick-start/deploy/#use-the-camunda-modeler-to-deploy-the-process">by deploying from the Operaton Modeler</a>), which means that it is stored in the Operaton database. It can then be loaded from there. Note that this allows versioning of your form alongside the process model.</li>
         <li><em>app</em>: Add the file to your development project in a folder <code>src/main/webapp/forms</code>. The form file will be packaged into your deployment artifact (typically a WAR archive). During runtime it will be loaded from there.</li>
       </ul>
     </td>
@@ -47,7 +47,7 @@ Form keys that are used in Tasklist have the structure `FORM-TYPE:LOCATION:FORM.
 </table>
 
 
-To configure the form in your process, open the process with the [Camunda Modeler](http://operaton.org/bpmn/tool/) and select the desired [UserTask][user-tasks] or [StartEvent][start-event]. Open the properties panel and enter the Form Key. The relevant XML tag looks like this:
+To configure the form in your process, open the process with the [Operaton Modeler](../../installation/camunda-modeler.md) and select the desired [UserTask][user-tasks] or [StartEvent][start-event]. Open the properties panel and enter the Form Key. The relevant XML tag looks like this:
 
 ```xml
 <userTask id="theTask" operaton:formKey="operaton-forms:deployment:forms/userTask.form"
@@ -83,7 +83,7 @@ The form key for this file could be `embedded:deployment:FORM_NAME.html` or `emb
 
 ## Operaton Forms
 
-Operaton Forms are created as separate files using the Camunda Modeler and can be deployed together with the process models. The form schema is stored in `.form` files.  You can find out how to build Operaton Forms in the [Camunda Modeler documentation](https://docs.operaton.org/docs/documentation/modeler/forms/) to explore all configuration options for form elements.
+Operaton Forms are created as separate files using the Operaton Modeler and can be deployed together with the process models. The form schema is stored in `.form` files. You can find out how to build Operaton Forms in the [Operaton Modeler documentation](https://docs.operaton.org/docs/documentation/modeler/forms/) to explore all configuration options for form elements.
 
 [Process variables](../../user-guide/process-engine/variables.md) are mapped to form fields where the field's key matches the variable name.
 
@@ -154,7 +154,7 @@ The submitted values of a form are returned as variables to the process engine:
 You can bind the available options of some component types (Select, Radio Buttons, Checklist, and Taglist) to a variable.
 Like this, Operaton Forms show available options dynamically based on process data (variables).
 
-To bind a variable to a dynamic component, define its name in Camunda Modeler's form builder in the Properties Panel under **Options Source** -> **Type** -> **Input Data** -> **Dynamic options** -> **Input values key** for the respective component.
+To bind a variable to a dynamic component, define its name in Operaton Modeler's form builder in the Properties Panel under **Options Source** -> **Type** -> **Input Data** -> **Dynamic options** -> **Input values key** for the respective component.
 
 Operaton Forms support the following variable types that can represent JSON:
 
@@ -186,7 +186,7 @@ If you are about to prototype your application, you can also use the shortcut fo
 ```
 
 ### Deployment
-If you want to include your Operaton Form as part of the `deployment`, then you need to deploy the `.form` file in the same deployment as the respective `.bpmn` diagram - for example using the Camunda Modeler (since Modeler Version 5.0.0).
+If you want to include your Operaton Form as part of the `deployment`, then you need to deploy the `.form` file in the same deployment as the respective `.bpmn` diagram, for example using the Operaton Modeler.
 
 :::warning[Automatic deployment]
 Operaton Forms are not automatically deployed as part of a [process archive](../../reference/deployment-descriptors/tags/process-archive.md) by default.
@@ -279,7 +279,7 @@ The Operaton process engine supports generating HTML task forms based on Form Da
 </userTask>
 ```
 
-Form metadata can be graphically edited using the [Camunda Modeler](https://camunda.com/products/operaton-platform/modeler/).
+Form metadata can be graphically edited using the [Operaton Modeler](../../installation/camunda-modeler.md).
 
 This form would look like this in Tasklist:
 

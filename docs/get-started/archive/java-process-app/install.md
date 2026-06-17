@@ -8,11 +8,11 @@ menu:
     name: "Download and Installation"
     parent: "get-started-pa"
     identifier: "get-started-pa-install"
-    description: "Install the Operaton Platform and Camunda Modeler on your machine."
+    description: "Install the Operaton Platform and Operaton Modeler on your machine."
 
 ---
 
-First you need to set up your development environment and install the Operaton Platform and the Camunda Modeler.
+First you need to set up your development environment and install the Operaton Platform and the Operaton Modeler.
 
 
 ## Prerequisites
@@ -40,6 +40,6 @@ If you have trouble setting up the Operaton Platform, you can ask for assistance
 :::
 
 
-## Camunda Modeler
+## Operaton Modeler
 
-Follow the instructions in the [Camunda Modeler](/docs/documentation/installation/camunda-modeler) section.
+Follow the instructions in the [Operaton Modeler](/docs/documentation/installation/camunda-modeler) section.

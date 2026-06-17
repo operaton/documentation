@@ -8,12 +8,12 @@ menu:
     name: "Download and Installation"
     parent: "get-started-dmn"
     identifier: "get-started-dmn-install"
-    description: "Install the Operaton Platform and Camunda Modeler on your machine."
+    description: "Install the Operaton Platform and Operaton Modeler on your machine."
 
 aliases: [/dmn/install/]
 ---
 
-First you need to set up your development environment and install the Operaton Platform and the Camunda Modeler.
+First you need to set up your development environment and install the Operaton Platform and the Operaton Modeler.
 
 
 ## Prerequisites
@@ -40,6 +40,6 @@ This script will start the application server and open a welcome screen in your 
 If you have trouble setting up the Operaton Platform, you can ask for assistance in the [Operaton Users Forum](https://forum.operaton.org/).
 :::
 
-## Camunda Modeler
+## Operaton Modeler
 
-Follow the instructions in the [Camunda Modeler](../../documentation/installation/camunda-modeler) section.
+Follow the instructions in the [Operaton Modeler](../../documentation/installation/camunda-modeler) section.
