@@ -207,8 +207,8 @@ standard.
 Since version 7.11, a [built-in password policy](../user-guide/process-engine/password-policy.md#built-in-password-policy)
 can be enabled that requires passwords to follow specific rules. However, you can achieve a much higher
 level of security by implementing a more sophisticated custom password policy (e.g., with the help of
-[Password Topology Blacklisting] (https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
-also see the [OWASP guide] (https://github.com/OWASP/CheatSheetSeries/blob/7d94e9a29174b8fd76235ca60f47245d1f34df1e/cheatsheets/Authentication_Cheat_Sheet.md#password-complexity)
+[Password Topology Blacklisting](https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
+also see the [OWASP guide](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html#password-complexity)
 on password complexity).
 
 You can find more information on how to enable the base password policy and how to implement a custom password policy in our [User Guide](../user-guide/process-engine/password-policy.md).
@@ -287,7 +287,7 @@ about the several headers, the defaults and how to configure the HTTP headers ac
 Process variables can be submitted as Java objects using the JDK built-in `application/x-java-serialized-object` data format, JSON or XML along with a Java class name via the Operaton REST API and web applications.
 On server side, they can then be deserialized into Java objects, so that Java code can work with them in a native way. See [Operaton Spin](../user-guide/data-formats/configuring-spin-integration.md) for details and this restref page="putLocalExecutionVariable" text="REST API endpoint" tag="Execution for an example.
 
-If an attacker can access these endpoints, they can exploit so-called _serialization gadgets_, i.e. classes that run vulnerable code during deserialization resulting in remote code execution in the general case. For example, consider a class constructor that makes a REST request based on a field value. An attacker could submit a forged variable value so that during deserialization, when the constructor is called, the application server would make an arbitrary REST request to a destination of the attacker's choice. For details, see [OWASP's description of Deserialization of untrusted data](https://www.owasp.org/index.php/Deserialization_of_untrusted_data).
+If an attacker can access these endpoints, they can exploit so-called _serialization gadgets_, i.e. classes that run vulnerable code during deserialization resulting in remote code execution in the general case. For example, consider a class constructor that makes a REST request based on a field value. An attacker could submit a forged variable value so that during deserialization, when the constructor is called, the application server would make an arbitrary REST request to a destination of the attacker's choice. For details, see [OWASP's description of Deserialization of untrusted data](https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data).
 
 ### Java objects using the JDK built-in `application/x-java-serialized-object` data format
 
@@ -376,7 +376,7 @@ When it comes to error handling, from a security perspective, the top goal is to
 from obtaining technical details about the system, which for example, a stack trace could reveal
 (see OWASP's [Improper Error Handling article] for more information).
 
-[Improper Error Handling article]: https://www.owasp.org/index.php/Improper_Error_Handling
+[Improper Error Handling article]: https://owasp.org/www-community/Improper_Error_Handling
 
 In this section, we describe what we do to prevent disclosing technical details about the system.
 
