@@ -63,7 +63,7 @@ In the following [pre-packaged distributions](../../installation/full/index.md),
 
 * WildFly
 * IBM WebSphere
-* Oracle Weblogic
+* Oracle WebLogic
 
 For all other distributions, the <code>SameSite</code> flag is enabled by default.
 
@@ -99,7 +99,7 @@ The following table shows the default configuration of the Web applications.
 </table>
 
 \* The <code>SameSite</code> property is not supported for IBM WebSphere and disabled by default for both cookies.
-The Session Cookie also has no <code>SameSite</code> attribute by default on WildFly and Oracle Weblogic.
+The Session Cookie also has no <code>SameSite</code> attribute by default on WildFly and Oracle WebLogic.
 
 :::note[SameSite & Firefox]
 Firefox prevents sending the Cookie to the server for all subsequent requests until the next restart ...
