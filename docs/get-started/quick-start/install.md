@@ -26,14 +26,14 @@ Afterwards, you can [install the Operaton Modeler](#operaton-modeler).
 
 Please make sure you have the following installed:
 
-* Java Runtime Environment 11
+* Java Runtime Environment 17
 
 You can verify this by using your terminal, shell, or command line:
 
 ```sh
 java -version
 ```
-If you need to install Java Runtime Environment, you can [find the download from Oracle here](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+If you need to install Java Runtime Environment, you can [find the download from Oracle here](https://www.oracle.com/java/technologies/downloads/).
 
 :::note[Supported Java versions]
 Make sure to use a Java version from [Operaton's list of supported environments](/docs/documentation/introduction/supported-environments/#java-runtime).
