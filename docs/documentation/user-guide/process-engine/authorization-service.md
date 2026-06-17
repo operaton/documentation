@@ -21,13 +21,13 @@ Not every Operaton setup needs to enable authorization. In many scenarios, Opera
 Situations in which authorization is required:
 
 * Operaton REST API is made accessible to users who should not have full access, even after authentication.
-* Operaton Webapplication is made accessible to users who should not have full access, even after authentication.
+* The Operaton web application is made accessible to users who should not have full access, even after authentication.
 * Other situations in which an untrusted user can directly construct the queries and commands executed on the process engine.
 
 Situations in which authorization is *not* required
 
 * An application completely controls the API methods invoked on the process engine.
-* Operaton Webapplication is made accessible to users who can have full access after authentication.
+* The Operaton web application is made accessible to users who can have full access after authentication.
 
 **Example**
 
@@ -998,7 +998,7 @@ authorizationService.saveAuthorization(authProcessInstance);
 ```
 ## Operaton Admin Webapp
 
-The Operaton Admin Webapplication provides an out of the box [UI for configuring Authorizations](../../webapps/admin/authorization-management.md).
+The Operaton Admin web application provides an out-of-the-box [UI for configuring Authorizations](../../webapps/admin/authorization-management.md).
 
 ## Performance Considerations
 

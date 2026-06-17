@@ -40,7 +40,7 @@ When using a **shared process engine**, the default is reversed: if you do not s
 
 ## Job Executor in a Unit Test
 
-For unit testing scenarios it is cumbersome to work with this background component. Therefore the Java API offers to query for (`ManagementService.createJobQuery`) and execute jobs (`ManagementService.executeJob`) *by hand*, which allows to control job execution from within a unit test.
+For unit testing scenarios it is cumbersome to work with this background component. Therefore the Java API offers to query for (`ManagementService.createJobQuery`) and execute jobs (`ManagementService.executeJob`) *by hand*, which allows you to control job execution from within a unit test.
 
 ## Job Creation
 
@@ -183,7 +183,7 @@ Sometimes job priorities need to be changed at runtime to deal with unforeseen c
 
 #### Override Priority by Job Definition
 
-While expressions may help in these cases to a certain extent, it is cumbersome to change process data for all involved process instances and to make sure to restore it when the exceptional condition is over. Thus the ManagementService API allows to temporarily set an overriding priority for a job definition. The following operation can be performed to downgrade the priority for all future jobs of a given job definition:
+While expressions may help in these cases to a certain extent, it is cumbersome to change process data for all involved process instances and to make sure to restore it when the exceptional condition is over. Thus the ManagementService API allows you to temporarily set an overriding priority for a job definition. The following operation can be performed to downgrade the priority for all future jobs of a given job definition:
 
 ```java
 // find the job definition
@@ -514,7 +514,7 @@ The following example defines the retries of a multi-instance service task with 
 ```
 
 ### Retry Intervals
-The retry time cycle (e.g. R5/PT5M) allows to define the number of retries and an interval when the failed job should be retried. Regardless of the values, the interval is always (at least) 5 minutes. You can configure the list of retry intervals (separated by comma) on a global level or for a specific job configuration. The local configuration takes precedence.
+The retry time cycle (e.g. R5/PT5M) allows you to define the number of retries and an interval when the failed job should be retried. Regardless of the values, the interval is always (at least) 5 minutes. You can configure the list of retry intervals (separated by comma) on a global level or for a specific job configuration. The local configuration takes precedence.
 Here is an example of a global process engine configuration:
 ```xml
 <process-engine name="default">
@@ -621,7 +621,7 @@ In the case of a single, application-embedded process engine, the job executor s
 
 There is a single job table that the engine adds jobs to and the acquisition consumes from. Creating a second embedded engine would therefore create another acquisition thread and execution thread-pool.
 
-In larger deployments however, this quickly leads to a poorly manageable situation. When running Operaton on Tomcat or an application server, the platform allows to declare multiple process engines shared by multiple process applications. With respect to job execution, one job acquisition may serve multiple job tables (and thus process engines) and a single thread-pool for execution may be used.
+In larger deployments however, this quickly leads to a poorly manageable situation. When running Operaton on Tomcat or an application server, the platform allows you to declare multiple process engines shared by multiple process applications. With respect to job execution, one job acquisition may serve multiple job tables (and thus process engines) and a single thread-pool for execution may be used.
 
 ![Example img](/img/documentation/user-guide/process-engine/job-executor-multiple-engines.png)Multiple Engines
 

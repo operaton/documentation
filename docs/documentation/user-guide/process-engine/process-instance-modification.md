@@ -17,7 +17,7 @@ While the process model contains sequence flows that define in which order activ
 * Testing: Activities can be skipped or repeated for isolated testing of individual process segments
 
 To perform such an operation, the process engine offers the *process instance modification API* that is entered via `RuntimeService.createProcessInstanceModification(...)` or 
-`RuntimeService.createModification(...)`. This API allows to specify multiple *modification instructions* in one call by using a fluent builder. In particular, it is possible to:
+`RuntimeService.createModification(...)`. This API allows you to specify multiple *modification instructions* in one call by using a fluent builder. In particular, it is possible to:
 
 * start execution before an activity
 * start execution on a sequence flow leaving an activity
@@ -43,7 +43,7 @@ ProcessInstance
   Decline Loan Application
 ```
 
-Now the worker performing the task *Decline Loan Application* recognizes an error in the evaluation result and comes to the conclusion that the application should be accepted nevertheless. While such flexibility is not modelled as part of the process, process instance modification allows to correct the running process instance. The following API call does the trick:
+Now the worker performing the task *Decline Loan Application* recognizes an error in the evaluation result and comes to the conclusion that the application should be accepted nevertheless. While such flexibility is not modelled as part of the process, process instance modification allows you to correct the running process instance. The following API call does the trick:
 
 ```java
 ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().singleResult();
@@ -550,7 +550,7 @@ Providing variables is not supported when executing async modification of single
 
 ### Modification of Multiple Process Instances
 
-When there are multiple process instances which fulfill a specific criteria, it is possible to modify them at once using `RuntimeService.createModification(...)`. This method allows to specify
+When there are multiple process instances which fulfill a specific criteria, it is possible to modify them at once using `RuntimeService.createModification(...)`. This method allows you to specify
 the modification instructions and IDs of process instances that should be modified. It is required that the process instances belong to the given process definition. 
 
 The fluent modification builder offers the following instructions to be submitted:
@@ -617,7 +617,7 @@ It will be visible in [User Operation Log](../process-engine/history/user-operat
 
 ### Soundness Checks
 
-Process instance modification is a very powerful tool and allows to start and cancel activities at will. Thus, it is easy to create situations that are unreachable by normal process execution. Assume the following process model:
+Process instance modification is a very powerful tool and allows you to start and cancel activities at will. Thus, it is easy to create situations that are unreachable by normal process execution. Assume the following process model:
 
 <div data-bpmn-diagram="./bpmn/example5"></div>
 

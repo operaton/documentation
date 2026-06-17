@@ -142,5 +142,5 @@ start editing by clicking on the value. You can expand the value in a modal dial
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-delete-process-definition.png)Delete Process Definition
 
-Each process definition in the dashboard has a delete action. This action allows to delete all versions of a process definition.
+Each process definition in the dashboard has a delete action. This action allows you to delete all versions of a process definition.
 When proceeding with this action, you can always choose to enable/disable skipping custom listeners. However, if the process definition has process instances running, enabling the cascading flag becomes mandatory.

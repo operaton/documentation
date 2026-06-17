@@ -307,7 +307,7 @@ The error message and variables are optional. They can provide additional inform
 
 See the documentation for [Catching Escalation Events](../events/escalation-events.md#catching-escalation-events).
 
-Reporting an escalation during user task execution can be achieved via `TaskService#handleEscalation`. The user task should be active to do so. The `escalationCode` is compulsory to invoke the escalation, this code identifies a predefined escalation. If the given `escalationCode` does not exist an Process Engine Exception will be thrown. See the following example:
+Reporting an escalation during user task execution can be achieved via `TaskService#handleEscalation`. The user task should be active to do so. The `escalationCode` is compulsory to invoke the escalation, this code identifies a predefined escalation. If the given `escalationCode` does not exist, a Process Engine Exception will be thrown. See the following example:
 
 ```java
 taskService.handleEscalation(

@@ -60,7 +60,7 @@ public class MyBean {
 
 ## Using JTA transaction integration with WebSphere Liberty
 
-Operaton allows to mark a transaction as "rollback only" by calling `UserTransaction#setRollbackOnly()`.
+Operaton allows you to mark a transaction as "rollback only" by calling `UserTransaction#setRollbackOnly()`.
 If this code is executed within an Operaton job, the job is marked as failed, and can be retried.
 
 WebSphere Liberty doesn't support this behavior of Operaton. When calling `UserTransaction#setRollbackOnly()`

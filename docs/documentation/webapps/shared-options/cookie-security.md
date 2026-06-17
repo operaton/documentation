@@ -56,7 +56,7 @@ Have a look at [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/H
 The following section lists the limitations of the cookie security settings.
 
 ### Absence of HttpOnly for the CSRF Cookie
-For the CSRF Cookie, the <code>HttpOnly</code> flag is absent and not configurable to ensure the functionality of the Web applications. Aforementioned is due to the reason that the CSRF cookie must be readable by the JavaScript HTTP Client to guarantee that the browser sends the token along with every modifying request.
+For the CSRF Cookie, the <code>HttpOnly</code> flag is absent and not configurable to ensure the functionality of the Web applications. This is because the CSRF cookie must be readable by the JavaScript HTTP Client to guarantee that the browser sends the token along with every modifying request.
 
 ### Absence of SameSite for the Session Cookie
 In the following [pre-packaged distributions](../../installation/full/index.md), the <code>SameSite</code> property is absent by default since the Java Container manages the cookie and the latest Servlet specification does currently not support the <code>SameSite</code> property:

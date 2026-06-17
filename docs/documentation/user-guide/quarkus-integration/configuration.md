@@ -89,7 +89,7 @@ A `QuarkusProcessEngineConfiguration` instance provides the following defaults:
 
 </table>
 
-Quarkus allows to configure a Quarkus application via a [MicroProfile Config][mp-config] source. You can read more about
+Quarkus allows you to configure a Quarkus application via a [MicroProfile Config][mp-config] source. You can read more about
 configuring a Quarkus application in the [Quarkus configuration][quarkus-config] page. The Operaton Quarkus extension
 docs use the `application.properties` format in the examples, but you can use any supported Quarkus config source.
 

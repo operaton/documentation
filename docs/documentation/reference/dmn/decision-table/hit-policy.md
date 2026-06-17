@@ -192,12 +192,12 @@ The MAX aggregator can be used to return the largest output value of all satisfi
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-max.png)Hit Policy Collect MAX" class="no-lightbox
 
 This decision table represents the decision for the amount of pocket money for a child.
-Depending of the age, the amount grows. For example, an input of 9 will satisfy the first and second rules.
-The output of the second rule is larger then the output of the first rule, so the output
+Depending on the age, the amount grows. For example, an input of 9 will satisfy the first and second rules.
+The output of the second rule is larger than the output of the first rule, so the output
 will be 5. A child at the age of 9 will get 5 as pocket money.
 
 #### COUNT aggregator
-The COUNT aggregator can be use to return the count of satisfied rules.
+The COUNT aggregator can be used to return the count of satisfied rules.
 
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-count.png)Hit Policy Collect COUNT" class="no-lightbox
 

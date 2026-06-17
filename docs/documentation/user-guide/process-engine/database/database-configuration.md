@@ -63,12 +63,12 @@ Alternatively, a `javax.sql.DataSource` implementation can be used (e.g., DBCP f
     ...
 ```
 
-Note that Operaton does not ship with a library that allows to define such a data source. So you have to make sure that the libraries (e.g., from DBCP) are on your classpath.
+Note that Operaton does not ship with a library that lets you define such a data source. So you have to make sure that the libraries (e.g., from DBCP) are on your classpath.
 
 The following properties can be set, regardless of whether you are using the JDBC or data source approach:
 
 * `databaseType`: It's normally not necessary to specify this property as it is automatically analyzed from the database connection meta data. Should only be specified in case automatic detection fails. Possible values: \{h2, mysql, oracle, postgres, mssql, db2, mariadb\}. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.
-* `databaseSchemaUpdate`: Allows to set the strategy to handle the database schema on process engine boot and shutdown.
+* `databaseSchemaUpdate`: Sets the strategy to handle the database schema on process engine boot and shutdown.
   * `true` (default): Upon building the process engine, a check is performed whether the Operaton tables exist in the database. If they don't exist, they are created. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
   * `false`: Does not perform any checks and assumes that the Operaton table exist in the database. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
   * `create-drop`: Creates the schema when the process engine is being created and drops the schema when the process engine is being closed.
@@ -92,7 +92,7 @@ Here are some sample JDBC urls:
 
 ### Business Key
 
-Since the release of Operaton.0.0-alpha9, the unique constraint for the business key is removed in the runtime and history tables and the database schema create and drop scripts.
+Since the release of Camunda BPM 7.0.0-alpha9, the unique constraint for the business key is removed in the runtime and history tables and the database schema create and drop scripts.
 If you rely on the constraint, you can add it manually to your schema by issuing following sql statements:
 
 DB2

@@ -11,7 +11,7 @@ This page explains how to configure the full distribution for Tomcat Application
 
 ### LDAP
 
-In order to setup LDAP for the Tomcat distribution, you have to perform the following steps:
+In order to set up LDAP for the Tomcat distribution, you have to perform the following steps:
 
 
 ### Add the LDAP Library
