@@ -27,7 +27,7 @@ A Script Task is defined by specifying the script and the scriptFormat.
 ```
 
 The value of the scriptFormat attribute must be a name that is compatible with JSR-223 (Scripting
-for the Java Platform). If you want to use a (JSR-223 compatible) scripting engine, you need to to
+for the Java Platform). If you want to use a (JSR-223 compatible) scripting engine, you need to
 add the corresponding jar to the classpath and use the appropriate name.
 
 The script source code has to be added as the text content of the `script` child element.

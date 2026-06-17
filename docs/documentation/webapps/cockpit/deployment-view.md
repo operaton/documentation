@@ -30,7 +30,7 @@ To delete a deployment, hover over the deployment  and click on the deletion ico
 
 You can redeploy an existing deployment to increase the version of all definitions contained in the deployment and therefore overwrite any changes that happened to the definition since the initial deployment. To do so, click on the redeploy icon that appears when hovering over a deployment. All contained resources in this deployment will then be redeployed. For every contained process, case, or decision definition a new version will be created. This new version will then be the latest version of all definitions with the same key.
 
-You can also only redeploy a single resource within the deployment: Navigate to the resource and click the  Redeploybutton to only redeploy this single resource. This is only possible for resources which contain definitions.
+You can also redeploy only a single resource within the deployment: Navigate to the resource and click the Redeploy button to redeploy this single resource. This is only possible for resources which contain definitions.
 
 ## Create Deployment
 

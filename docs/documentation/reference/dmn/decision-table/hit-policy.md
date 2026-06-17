@@ -92,9 +92,9 @@ is violated.
 
 See the following example:
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-any.png)Hit Policy Any" class="no-lightbox
-This is a decision table for the leave application. If the applier
+This is a decision table for the leave application. If the applicant
 has no vacation days left or is currently in the probation period, the application will be refused.
-Otherwise the application is applied.
+Otherwise the application is approved.
 
 ### First Hit Policy
 

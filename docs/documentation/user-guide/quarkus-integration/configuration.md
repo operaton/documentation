@@ -93,7 +93,7 @@ Quarkus allows to configure a Quarkus application via a [MicroProfile Config][mp
 configuring a Quarkus application in the [Quarkus configuration][quarkus-config] page. The Operaton Quarkus extension
 docs use the `application.properties` format in the examples, but you can use any supported Quarkus config source.
 
-You can set any process engine configuration properties under the `quarkus.camunda` prefix. The
+You can set any process engine configuration properties under the `quarkus.operaton` prefix. The
 [Process Engine Configuration Properties][engine-properties] page documents all the available properties. Please
 convert any property names from `camelCase` to the `kebab-case` format, like in the following example:
 
@@ -163,11 +163,11 @@ the Quarkus-specific properties in the following table:
   <tr><td colspan="4"><b>Data Source</b></td></tr>
 
   <tr>
-    <td rowspan="1"><code>quarkus.camunda</code></td>
+    <td rowspan="1"><code>quarkus.operaton</code></td>
     <td><code>.datasource</code></td>
     <td>
       Specifies which Quarkus datasource to use. If not defined, the primary Quarkus datasource will be used.
-      For configuring a Quarkus Datasource, have a look on the
+      For configuring a Quarkus Datasource, have a look at the
       <a href="https://quarkus.io/guides/datasource">Quarkus Datasource</a> page.
     </td>
     <td><code>&#60;default&#62;</code></td>
@@ -199,7 +199,7 @@ A datasource is required to run the Operaton process engine.
 ### Choose from multiple datasources
 
 When multiple datasources are available in your application, you can choose the one the Engine Extension
-should use by its name via the `camunda.datasource` configuration property. Consider the example configuration below:
+should use by its name via the `quarkus.operaton.datasource` configuration property. Consider the example configuration below:
 
 ```properties
 quarkus.datasource.engine-datasource.db-kind=oracle
