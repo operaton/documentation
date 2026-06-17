@@ -60,7 +60,7 @@ Depending on the user's authorization, [Tasklist](../tasklist/index.md) will sho
 
 ![Example img](/img/documentation/webapps/admin/admin-authorization-users.png)Users Authorization
 
-Now every member of the group *support* is able to see the new users *lemmy* and *Ozzy*.
+Now every member of the group *support* can see the new users *lemmy* and *Ozzy*.
 
 
 ## Application-Specific Permissions
@@ -104,7 +104,7 @@ Now that we know how to grant certain permissions, we might need a second user w
 
 ## Create a User with All Permissions
 
-During the [setup](../admin/user-management.md#initial-user-setup) you had to create one administrator account. In a real-world scenario it could be beneficial to have a second administrator account to manage the users. Basically, an administrator is a user with the `ALL` permission for every possible resource and resource id. For example, to grant the *accounting* group all permissions for authorizations the following entry has to be made:
+During the [setup](../admin/user-management.md#initial-user-setup) you had to create one administrator account. In a real-world scenario it could be beneficial to have a second administrator account to manage the users. Basically, an administrator is a user with the `ALL` permission for every possible resource and resource id. For example, to grant the *accounting* group all permissions for authorizations, create the following entry:
 
 ![Example img](/img/documentation/webapps/admin/admin_auth_edit_full_access.png)Edit Access
 

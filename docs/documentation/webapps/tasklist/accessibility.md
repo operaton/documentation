@@ -10,12 +10,12 @@ menu:
 
 ---
 
-It is possible to use the Tasklist only with the keyboard. You can use the TAB-key to navigate to the sections of the Tasklist. To interact with an element you have focused, press ENTER.
+It is possible to use the Tasklist only with the keyboard. You can use the Tab key to navigate to the sections of the Tasklist. To interact with an element you have focused, press Enter.
 
 
 ## Keyboard Shortcuts
 
-To make working with the Tasklist easier, you can use keyboard shortcuts to jump to certain parts of the Tasklist or perform special operations. Per default, we support the following actions via keyboard shortcuts:
+To make working with the Tasklist easier, you can use keyboard shortcuts to jump to certain parts of the Tasklist or perform special operations. By default, we support the following actions via keyboard shortcuts:
 
 <table class="table table-striped">
   <tr>

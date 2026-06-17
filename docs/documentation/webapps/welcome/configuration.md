@@ -126,4 +126,4 @@ export default {
 };
 ```
 
-**Note:** This does only affect the Welcome login page. For other webapps, you need to adjust the corresponding config file as well.
+**Note:** This only affects the Welcome login page. For other web apps, you need to adjust the corresponding config file as well.

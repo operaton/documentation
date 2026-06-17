@@ -428,7 +428,7 @@ assertThat(externalTask).hasTopicName("Review and approve");
 
 
 ### Finding tasks, events and gateways by name
-You can map the name of a task, event or a gateway to it's ID by the means of a static helper method:
+You can map the name of a task, event, or gateway to its ID by means of a static helper method:
 
 ```java
 findId("My verbose task name");
