@@ -26,7 +26,9 @@ Operaton Run is a full distribution of Operaton. It includes:
 
 ## Starting with Operaton Run
 
-To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) and unpacking it. You will find the following structure:
+To start with Operaton Run, download the `operaton-bpm-<version>.tar.gz` or `operaton-bpm-<version>.zip`
+distribution from the [latest Operaton release](https://github.com/operaton/operaton/releases/latest)
+and unpack it. You will find the following structure:
 
 ```
 operaton-bpm-run

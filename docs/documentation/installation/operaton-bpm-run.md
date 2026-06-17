@@ -24,7 +24,7 @@ java -version
 If you need to install Java Runtime Environment, you can [find the download from Oracle here](https://www.oracle.com/java/technologies/javase-downloads.html).
 
 ## Installation Procedure
-1. Download the pre-packed distribution of  [Operaton here](tbd).
+1. Download the `operaton-bpm-<version>.tar.gz` or `operaton-bpm-<version>.zip` distribution from the [latest Operaton release](https://github.com/operaton/operaton/releases/latest).
 1. Unpack the distro to a directory.
 1. Configure the distro as described in the [User Guide](../user-guide/operaton-bpm-run.md).
 1. Start Operaton Run by executing the start script (start.bat for Windows, start.sh for Linux/Mac).
