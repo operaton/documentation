@@ -121,7 +121,7 @@ An example using Logback could look as follows
 ```
 
 By adding the `context:[%X]` to your configuration, all values that are present in the MDC at the time the log statement is created will be displayed.
-Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](http://logback.qos.ch/manual/layouts.html#mdc).
+Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](https://logback.qos.ch/manual/layouts.html#mdc).
 
 
 ## Logging Categories
@@ -398,7 +398,7 @@ List of modules still using Java Util Logging:
 * operaton-engine-rest
 * Wildfly Subsystems
 
-[slf4j]: http://www.slf4j.org/
-[log4j]: http://logging.apache.org/log4j/
-[logback]: http://logback.qos.ch/
-[slf4j-backends]: http://www.slf4j.org/manual.html#projectDep
+[slf4j]: https://www.slf4j.org/
+[log4j]: https://logging.apache.org/log4j/2.x/
+[logback]: https://logback.qos.ch/
+[slf4j-backends]: https://www.slf4j.org/manual.html#projectDep
