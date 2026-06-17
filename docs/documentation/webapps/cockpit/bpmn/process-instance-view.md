@@ -18,7 +18,7 @@ Beside the diagram view the process will be displayed as an [activity instance t
 
 Furthermore, you can maximize the diagram view or the detailed information panel by clicking on the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button, respectively the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-up"></i></button> button, at the bottom left of the diagram view.
 
-[process-definition-view]: ../bpmn/process-definition-view.md
+[process-definition-view]: ./process-definition-view.md
 
 
 ## Activity Instance Tree
@@ -42,13 +42,13 @@ However, if the number of called process instances exceeds one, then clicking th
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-detailed-information-view.png)Detailed Information Panel
 
-Use the detailed information panel to get an overview of the variables, incidents, called process instances, user tasks and external tasks that the process instance contains. Furthermore, you can access the [instance modification](../bpmn/process-instance-modification.md) tab. Depending on the selected activity instance in the rendered diagram, the panel lists the corresponding information. You can also focus on the activity instance via a scope link in the table.
+Use the detailed information panel to get an overview of the variables, incidents, called process instances, user tasks and external tasks that the process instance contains. Furthermore, you can access the [instance modification](../../../user-guide/process-engine/process-instance-modification.md) tab. Depending on the selected activity instance in the rendered diagram, the panel lists the corresponding information. You can also focus on the activity instance via a scope link in the table.
 
 In addition to the instance information you can [edit variables](#edit-variables) or change the assignees of user tasks.
 
 In the incidents tab you can click on the incident message name, which will open the stacktrace of the selected incident. Furthermore, you can increment the number of retries for a failed job by hitting the repeat button.
 
-The user tasks tab allows managing users and groups for selected user tasks. Hit the user or (tbd) button to open the corresponding menu.
+The user tasks tab allows managing users and groups for selected user tasks. Click the user or group button to open the corresponding menu.
 
 The jobs tab gives you an overview of all currently active jobs. If the job has a duedate, you can edit the duedate by clicking on the time button. A dialogue will open where you can choose to recalculate the duedate based on the current time or its creation time. It is also possible to set a specific duedate. Furthermore, you can suspend or activate a job by pressing the pause or play button respectively.
 
