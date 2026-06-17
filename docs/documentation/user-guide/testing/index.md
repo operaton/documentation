@@ -342,11 +342,13 @@ import static org.assertj.core.api.Assertions.*;
 
 ## Community extensions to support testing
 
-There are a couple of well documented and heavily used community extensions that can make testing much more productive and fun.
+The following historical community extensions may be useful references, but they are not maintained as Operaton-owned projects.
 
-### Operaton Scenario Tests
+### Scenario Tests
 
-[Operaton-bpm-assert-scenario](https://github.com/operaton/operaton-bpm-assert-scenario/) enables you to write more robust test suites. The idea is, that you only have to adapt your tests if your process models changes in a way that affects the tested behavior. It concentrates much less on the concrete path through a given process model, but on the external effects the path through the model has.
+Operaton does not currently publish an Operaton-owned scenario testing extension. If you relied on this type of extension before migrating, the historical upstream project is now [Camunda Platform Scenario](https://github.com/camunda-community-hub/camunda-platform-scenario). Validate compatibility with your Operaton version before using it.
+
+Scenario tests help you write more robust test suites. The idea is that you only have to adapt your tests if your process models change in a way that affects the tested behavior. They concentrate much less on the concrete path through a given process model, but on the external effects the path through the model has.
 
 ```java
 @Test
@@ -362,9 +364,11 @@ public void testHappyPath() {
 }
 ```
 
-### Operaton Test Coverage
+### Process Test Coverage
 
-[Operaton-bpm-process-test-coverage](https://github.com/operaton/operaton-bpm-process-test-coverage/) visualises test process pathes and checks your process model coverage ratio. Running typical JUnit tests leaves html files in the build output.
+Operaton does not currently publish an Operaton-owned process test coverage extension. The historical upstream project is [Camunda Process Test Coverage](https://github.com/camunda-community-hub/camunda-process-test-coverage), which is archived. Treat it as a compatibility reference and validate it carefully before using it with Operaton.
+
+Process test coverage extensions visualize test process paths and check your process model coverage ratio. Running typical JUnit tests leaves HTML files in the build output.
 
 
 ## Resolving Beans Without Spring/CDI
