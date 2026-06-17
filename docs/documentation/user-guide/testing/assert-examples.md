@@ -305,7 +305,7 @@ assertThat(task).isNotAssigned();
 
 ### Task: hasCandidateGroup
 
-Assert that a task is is currently waiting to be assigned
+Assert that a task is currently waiting to be assigned
 to a user of the specified candidate group.
 
 ```java
