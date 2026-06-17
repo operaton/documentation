@@ -16,10 +16,6 @@ Now you are ready to set up your first process application project in the IDE of
 
 ## Set up your project
 
-:::note[Fancy to save work and use a project template instead?]
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
-:::
-
 Now you are ready to set up your Java EE process application project in Eclipse. Setting up a process application project consists of 6 steps:
 
 1. Create a new Maven Project in Eclipse
@@ -145,7 +141,7 @@ Now you can perform the first build. Select the `pom.xml` in the Package Explore
 
 ### Add a WEB-INF/beans.xml Deployment Descriptor
 
-After we have all of our maven dependencies configured, we can add our first deployment descriptor. The `WEB-INF/beans.xml` is used to configure a CDI application. It's presence is always mandatory but it can be empty, as it is in our case. For further information, please see [this explanation](http://www.cdi-spec.org/faq/).
+After we have all of our Maven dependencies configured, we can add our first deployment descriptor. The `WEB-INF/beans.xml` is used to configure a CDI application. Its presence is always mandatory but it can be empty, as it is in our case. For further information, please see [this explanation](https://www.cdi-spec.org/faq/).
 
 This file needs to be added to the `src/main/webapp/WEB-INF` folder of the Maven project.
 

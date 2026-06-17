@@ -55,9 +55,7 @@ Notice the `@ProcessApplication` annotation. This annotation fulfills two purpos
 
 This means that in case you deploy to a Servlet 3.0 compliant container (such as Apache Tomcat) annotating your class with `@ProcessApplication` is sufficient.
 
-:::note
-  There is a [project template for Maven](../../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a servlet process application.
-:::
+For a complete servlet process application project, follow the [Java process application project setup](/docs/get-started/archive/java-process-app/project-setup/).
 
 ### Using Servlet process applications inside an EJB/Jakarta EE/Java EE container such as Wildfly
 
@@ -139,9 +137,9 @@ You could of course use something like the maven shade plugin for adding the cla
 
 :::note
   We always recommend using the Operaton EJB Client over deploying a custom `EjbProcessApplication` class unless you want to customize the behavior of the `EjbProcessApplication`.
-
-  There is a [project template for Maven](../../user-guide/process-applications/maven-archetypes.md) called ```operaton-archetype-servlet-war```, which gives you a complete running project based on a Java EE servlet process application.
 :::
+
+For a complete Java EE process application project, follow the [Java EE project setup](/docs/get-started/archive/javaee7/project-setup/).
 
 
 ### Deploying a Custom `EjbProcessApplication` Class
