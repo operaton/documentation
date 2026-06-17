@@ -99,7 +99,7 @@ The Operaton web applications are based on a RESTful architecture.
 
 Frameworks used:
 
-* [JAX-RS](https://jax-rs-spec.java.net) based Rest API
+* [JAX-RS](https://jax-rs-spec.java.net) based REST API
 * [AngularJS](http://angularjs.org)
 * [RequireJS](http://requirejs.org)
 * [jQuery](http://jquery.com)
