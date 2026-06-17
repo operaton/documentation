@@ -56,7 +56,7 @@ The authorizations set here correspond to the authorizations that can be set in 
 
 ### Member Visibility
 
-Depending on the users authorization, [Tasklist](../tasklist/index.md) will show you information about your colleagues and groups. Currently you can only see the group folder *support* but not your colleague. To change that, log in to the admin application as administrator, enter the Users Authorization menu and create the following rules:
+Depending on the user's authorization, [Tasklist](../tasklist/index.md) will show you information about your colleagues and groups. Currently you can only see the group folder *support* but not your colleague. To change that, log in to the admin application as administrator, enter the Users Authorization menu and create the following rules:
 
 ![Example img](/img/documentation/webapps/admin/admin-authorization-users.png)Users Authorization
 
