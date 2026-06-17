@@ -182,7 +182,7 @@ public class ChargeCardWorker {
           LOGGER.info("Charging credit card with an amount of '" + amount + "'€ for the item '" + item + "'...");
 
           try {
-              Desktop.getDesktop().browse(new URI("https://docs.operaton.org/get-started/quick-start/complete"));
+              Desktop.getDesktop().browse(new URI("https://docs.operaton.org/docs/get-started/quick-start/user-task/"));
           } catch (Exception e) {
               e.printStackTrace();
           }
@@ -268,7 +268,7 @@ const config = { baseUrl: 'http://localhost:8080/engine-rest', use: logger, asyn
 // create a Client instance with custom configuration
 const client = new Client(config);
 
-// susbscribe to the topic: 'charge-card'
+// subscribe to the topic: 'charge-card'
 client.subscribe('charge-card', async function({ task, taskService }) {
   // Put your business logic here
 
@@ -276,9 +276,9 @@ client.subscribe('charge-card', async function({ task, taskService }) {
   const amount = task.variables.get('amount');
   const item = task.variables.get('item');
 
-  console.log(`Charging credit card with an amount of ```${amount}€ for the item '${item}'...`);
+  console.log(`Charging credit card with an amount of ${amount}€ for the item '${item}'...`);
 
-  open('https://docs.operaton.org/get-started/quick-start/success');
+  open('https://docs.operaton.org/docs/get-started/quick-start/user-task/');
 
   // Complete the task
   await taskService.complete(task);
