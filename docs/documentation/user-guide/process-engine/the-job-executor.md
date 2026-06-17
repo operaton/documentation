@@ -374,7 +374,7 @@ To prevent this, you can specify a priority range for the job executor by settin
 
 To avoid job starvation, make sure to have no gaps between Job Executor priority ranges. If, for example, Job Executor A has a priority range of 0 to 100 and Job Executor B executes jobs from priority 200 to `Long.MAX_VALUE` any job that receives a priority of 101 to 199 will never be executed. Job starvation can also occur with `batch jobs` and `history cleanup jobs` as both types of jobs also receive priorities (default: `0`). You can configure them via their respective properties: `batchJobPriority` and `historyCleanupJobPriority`.
 
-This feature is particularly useful if you want to separate multiple types of jobs from each other. For example, short-running, urgent jobs with high priority and long-running jobs that are not urgent but should finish eventually. Setting up a Job Executor priority range for both types will ensure that long-running jobs can not block urgent ones.
+This feature is particularly useful if you want to separate multiple types of jobs from each other. For example, short-running, urgent jobs with high priority and long-running jobs that are not urgent but should finish eventually. Setting up a Job Executor priority range for both types will ensure that long-running jobs cannot block urgent ones.
 
 ### Backoff Strategy
 The Job Executor uses a backoff strategy to avoid acquisition conflicts in clusters and to reduce the database load when no jobs are due. The second point may result in a delay between job creation and job execution as the job acquisition by default doubles the delay to the next acquisition run.
@@ -525,7 +525,7 @@ Here is an example of a global process engine configuration:
   </properties>
 </process-engine>
 ```
-The retry times would be three and the behaviour for this example would be the following:
+The retry sequence contains three retry times and the behaviour for this example would be the following:
 
 * A job fails for the first time: the job will be retried in 10 minutes (PT10M is applied).
 * A job fails for the second time: the job will be retried in 17 minutes (PT17M is applied).

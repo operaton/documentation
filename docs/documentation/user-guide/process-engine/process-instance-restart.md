@@ -158,7 +158,7 @@ runtimeService.restartProcessInstances(processDefinition.getId())
 ```
 
 
-The initial set of variables can not be set if the historic process instance has no unique start activity. In that case, no variables are taken over.
+The initial set of variables cannot be set if the historic process instance has no unique start activity. In that case, no variables are taken over.
 
 ### Omitting the Business Key of a Historic Process Instance
 
