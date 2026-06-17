@@ -31,7 +31,7 @@ First, download a distribution of the Operaton Platform. You can choose from dif
 
 After having downloaded the distribution, unpack it inside a directory of your choice. We will call that directory `$OPERATON_HOME`.
 
-After you have successfully unpacked your distribution of the Operaton Platform, execute the script named `start-camunda.bat` (for Windows users), respectively `start-camunda.sh` (for Unix users).
+After you have successfully unpacked your distribution of the Operaton Platform, execute the script named `start.bat` (for Windows users) or `start.sh` (for Unix users).
 
 This script will start the application server and open a welcome screen in your web browser. If the page does not open, go to [http://localhost:8080/operaton-welcome/index.html](http://localhost:8080/operaton-welcome/index.html).
 
