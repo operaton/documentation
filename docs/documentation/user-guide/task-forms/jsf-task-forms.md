@@ -151,7 +151,7 @@ In the forms you can access your own CDI beans as usual and also access the Oper
 
 This is rendered to a simple form:
 
-![Example img](/img/documentation/user-guide/task-forms/variablesTaskFormExample.png)Varibales Task Form Example
+![Example img](/img/documentation/user-guide/task-forms/variablesTaskFormExample.png)Variables Task Form Example
 
 The same mechanism can be used to start a new process instance:
 

@@ -12,7 +12,7 @@ menu:
 
 ---
 
-If you come from a Operaton version $\leq$ 7.12.x and already use FEEL, it might be that you need to
+If you come from an Operaton version $\leq$ 7.12.x and already use FEEL, it might be that you need to
 migrate your DMN models. To do this, please check out the [Migration Guide], where we've documented
 all breaking changes.
 

@@ -19,7 +19,7 @@ With this release we focused on:
 ### Distribution specific SBOMs & License Book
 
 With this release we are providing distribution specific SBOMs (Software Bill of Materials) and License Book document
-for the 3 distributions (Tomcat, Wildfly, and Spring Boot).
+for the 3 distributions (Tomcat, WildFly, and Spring Boot).
 
 With 1.0, Operaton provided a single SBOM and License Book document for all distributions, 
 which was not ideal as the distributions have different dependencies.
@@ -75,7 +75,7 @@ The Operaton Quarkus extension is based on **Quarkus 3.30.8**.
 
 The Tomcat distribution is based on **Tomcat 11.0.18**.
 
-The Wildfly distribution is based on **Wildfly 38.0.1**.
+The WildFly distribution is based on **WildFly 38.0.1**.
 
 ### Standards Compliance
 

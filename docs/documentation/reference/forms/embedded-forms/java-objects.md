@@ -23,7 +23,7 @@ to the embedded form. Java Objects serialized using Java Serialization cannot be
 
 The Form SDK will only fetch those variables which are actually used in a form. Since a Complex Java
 Object is usually not bound to a single input field, we cannot use the `cam-variable-name` directive.
-We thus need to fetch the variable programatically:
+We thus need to fetch the variable programmatically:
 
 ```html
 <script cam-script type="text/form-script">
@@ -50,7 +50,7 @@ In case the variable does not yet exist (for instance in a Start Form), you have
 
   camForm.on('form-loaded', function() {
 
-    // declare variable 'customerData' incuding metadata for serialization
+    // declare variable 'customerData' including metadata for serialization
     camForm.variableManager.createVariable({
       name: 'customerData',
       type: 'Object',
@@ -67,8 +67,3 @@ In case the variable does not yet exist (for instance in a Start Form), you have
 
 </script>
 ```
-
-
-## Full Example
-
-A full example of this feature can be found in the [Operaton Examples Repository](https://github.com/operaton/operaton-bpm-examples/tree/master/usertask/task-form-embedded-serialized-java-object).

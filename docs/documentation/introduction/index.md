@@ -29,7 +29,7 @@ To give you an overview of Operaton, the following illustration shows the most i
 
 ## Modeler
 
-* [Camunda Modeler](../modeling-bpmn/index.md): Modeling tool for BPMN 2.0 and CMMN 1.1 diagrams as well as DMN 1.3 decision tables.
+* [Operaton Modeler](../modeling-bpmn/index.md): Modeling tool for BPMN 2.0 and CMMN 1.1 diagrams as well as DMN 1.3 decision tables.
 * [bpmn.io](http://bpmn.io/): Open-source project for the modeling framework and toolkits.
 
 ## Web Applications

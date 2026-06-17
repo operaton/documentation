@@ -11,7 +11,7 @@ menu:
 
 ---
 
-The following attributes are extension attributes for the `camunda` namespace `http://operaton.org/schema/1.0/cmmn`.
+The following attributes are extension attributes for the `operaton` namespace `http://operaton.org/schema/1.0/cmmn`.
 
 ## assignee
 

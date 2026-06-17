@@ -15,17 +15,16 @@ This guide uses a number of variables to denote common path names and constants:
 * `$WILDFLY_HOME` points to the WildFly application server main directory.
 * `$WILDFLY_VERSION` denotes the version of WildFly application server.
 * `$WILDFLY_DISTRIBUTION` represents the downloaded pre-packaged Operaton distribution for WildFly, e.g. `operaton-bpm-wildfly-$PLATFORM_VERSION.zip` or `operaton-bpm-wildfly-$PLATFORM_VERSION.tar.gz`.
-* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `7.0.0`.
+* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.1`.
 :::
 
 ### Setup
 
-* For WildFly ≥27 / JBoss EAP 8, download the [Operaton WildFly distribution](https://downloads.operaton.cloud/release/operaton-bpm/wildfly/).
-* For WildFly ≤26 / JBoss EAP 7, download the [`operaton-wildfly26-modules`](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/wildfly/operaton-wildfly26-modules/).
+Download the matching `operaton-bpm-wildfly-$PLATFORM_VERSION` distribution from the [Operaton GitHub releases](https://github.com/operaton/operaton/releases). Release assets are attached to version tags such as `v$PLATFORM_VERSION`; snapshot assets are published as GitHub prereleases with tags such as `2.2.0-SNAPSHOT`.
 
 ### Copy Modules
 
-Copy the modules from the `modules/` folder of the Operaton distribution, or extract the `operaton-wildfly-modules` archive, to the `$WILDFLY_HOME/modules/` of your WildFly application server.
+Copy the modules from the `modules/` folder of the extracted Operaton WildFly distribution to the `$WILDFLY_HOME/modules/` of your WildFly application server.
 
 :::note[Replace H2 Database]
 The WildFly distribution ships a different version of the H2 database than the one that is shipped with WildFly itself.
@@ -150,9 +149,7 @@ This section describes how to install optional dependencies. None of these are r
 
 The following steps are required to deploy the web application:
 
-1. Download the Operaton web application that contains the web applications from our Maven Artifactory.
-    * For [WildFly ≥27 / JBoss EAP 8](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-wildfly/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-wildfly-$PLATFORM_VERSION.war`.
-    * For [WildFly ≤26 / JBoss EAP 7](https://artifacts.operaton.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-jboss/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-jboss-$PLATFORM_VERSION.war`.
+1. Extract the Operaton web application archive from the matching [Operaton WildFly distribution](https://github.com/operaton/operaton/releases). The distribution archive is named `operaton-bpm-wildfly-$PLATFORM_VERSION.zip` or `operaton-bpm-wildfly-$PLATFORM_VERSION.tar.gz`; inside it, the web application is located under `server/wildfly-$WILDFLY_VERSION/standalone/deployments/`.
 2. Optionally, you may change the context path to which the application will be deployed (default is `/operaton`).
     Edit the file `WEB-INF/jboss-web.xml` in the war file and update the `context-root` element accordingly.
 3. Copy the war file to `$WILDFLY_HOME/standalone/deployments`.
@@ -164,9 +161,9 @@ The following steps are required to deploy the web application:
 
 The following steps are required to deploy the REST API:
 
-1. Download the REST API web application archive from our Maven Artifactory.
-    * For [WildFly ≥27 / JBoss EAP 8](https://artifacts.operaton.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-wildfly.war`.
-    * For [WildFly ≤26 / JBoss EAP 7](https://artifacts.operaton.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-wildfly.war`.
+1. Download the REST API web application archive from Maven Central.
+    * Releases are published as [`org.operaton.bpm:operaton-engine-rest`](https://repo.maven.apache.org/maven2/org/operaton/bpm/operaton-engine-rest/); the WildFly artifact is named `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-wildfly.war`.
+    * Snapshots are published to Central's snapshot repository. Configure Maven with `https://central.sonatype.com/repository/maven-snapshots/` and use the same `org.operaton.bpm:operaton-engine-rest` artifact with the `wildfly` classifier.
 2. Optionally, you may change the context path to which the REST API will be deployed (default is `/engine-rest`).
    Edit the file `WEB-INF/jboss-web.xml` in the war file and update the `context-root` element accordingly.
 3. Copy the war file to `$WILDFLY_HOME/standalone/deployments`.

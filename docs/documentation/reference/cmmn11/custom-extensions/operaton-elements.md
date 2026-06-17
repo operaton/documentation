@@ -12,7 +12,7 @@ menu:
 ---
 
 
-The following elements are extension elements for the `camunda` namespace `http://operaton.org/schema/1.0/cmmn`.
+The following elements are extension elements for the `operaton` namespace `http://operaton.org/schema/1.0/cmmn`.
 
 ## caseExecutionListener
 

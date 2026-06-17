@@ -2,7 +2,7 @@
 
 title: 'DMN'
 sidebar_position: 3
-description: "Learn how to create a DMN 1.3 decision table using the Camunda Modeler. Package it as a web application and deploy it to an Apache Tomcat Server."
+description: "Learn how to create a DMN 1.3 decision table using the Operaton Modeler. Package it as a web application and deploy it to an Apache Tomcat Server."
 
 ---
 

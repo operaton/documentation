@@ -52,7 +52,7 @@ Furthermore, declare the dependency on the JNDI binding inside the `WEB-INF/web.
 
 **Note**: You can choose different resource link names for the Process Engine Service and Process Application Service. The resource link name has to match the value inside the `<res-ref-name>`-element inside the corresponding `<resource-ref>`-element in `WEB-INF/web.xml`. We propose the name `ProcessEngineService` for the Process Engine Service and `ProcessApplicationService` for the Process Application Service.
 
-To do a lookup for a Operaton Service you have to use the resource link name to get the linked global resource. For example:
+To do a lookup for an Operaton service you have to use the resource link name to get the linked global resource. For example:
 
 * Process Engine Service: `java:comp/env/ProcessEngineService`
 * Process Application Service: `java:comp/env/ProcessApplicationService`

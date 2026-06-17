@@ -15,7 +15,7 @@ A decision table is represented by a `decisionTable` element inside a
 `decision` XML element.
 
 ```xml
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="definitions" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" id="definitions" name="definitions" namespace="http://operaton.org/schema/1.0/dmn">
   <decision id="dish" name="Dish">
     <decisionTable id="decisionTable">
     <!-- ... -->

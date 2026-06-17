@@ -32,9 +32,9 @@ The following archetypes are currently provided. They are distributed via our Ma
     </tr>
     <tr>
       <td><a href="https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/archetype/operaton-archetype-ejb-war/">Process Application (EJB, WAR)</a></td>
-      <td>Process application that uses a shared Operaton engine in a Java EE Container, e.g., Wildfly.
+      <td>Process application that uses a shared Operaton engine in a Java EE Container, e.g., WildFly.
           Contains: Operaton EJB Client, Operaton CDI Integration, BPMN Process, Java Delegate as CDI bean, HTML5- & JSF-based start and task forms,
-          configuration for JPA (Hibernate), JUnit Test with in-memory engine and visual process test coverage, Arquillian Test for Wildfly, Maven Plugins or Ant build script for one-click deployment in Eclipse</td>
+          configuration for JPA (Hibernate), JUnit Test with in-memory engine and visual process test coverage, Arquillian Test for WildFly, Maven Plugins or Ant build script for one-click deployment in Eclipse</td>
     </tr>
     <tr>
       <td><a href="https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/archetype/operaton-archetype-servlet-war/">Process Application (Servlet, WAR)</a></td>

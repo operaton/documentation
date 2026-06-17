@@ -31,4 +31,4 @@ In case you get stuck on a problem make sure to [ask for Help in the Forums](htt
 
 ## Community Extensions
 
-A number of Community Extensions enhance Operaton with additional capabilities. Browse the Operaton Community Hub for information on building a Operaton Community Extension, discover new Operaton Community Extension open source projects to contribute to, and more.
+A number of Community Extensions enhance Operaton with additional capabilities. Browse the Operaton Community Hub for information on building an Operaton Community Extension, discover new Operaton Community Extension open source projects to contribute to, and more.
