@@ -25,8 +25,9 @@ If you need to install Java Runtime Environment, you can [find the download from
 
 ## Installation Procedure
 1. Download the `operaton-bpm-<version>.tar.gz` or `operaton-bpm-<version>.zip` distribution from the [latest Operaton release](https://github.com/operaton/operaton/releases/latest).
+   Snapshot assets are published in the [Operaton GitHub releases](https://github.com/operaton/operaton/releases) as prereleases with tags such as `2.2.0-SNAPSHOT`.
 1. Unpack the distro to a directory.
 1. Configure the distro as described in the [User Guide](../user-guide/operaton-bpm-run.md).
-1. Start Operaton Run by executing the start script (start.bat for Windows, start.sh for Linux/Mac).
+1. Start Operaton Run by executing the start script (`start.bat` on Windows, `start.sh` on Linux/macOS).
 1. Access the Operaton webapps (Cockpit, Tasklist, Admin) via http://localhost:8080/operaton/app/.
 1. Access the [REST API](../reference/rest/overview/index.md) via http://localhost:8080/engine-rest (e.g. http://localhost:8080/engine-rest/engine).
