@@ -7,14 +7,14 @@ description: "Manually install and configure the Full Distribution on a vanilla 
 ---
 ## Install the Full Distribution on a Tomcat Application Server manually
 
-This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](http://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download a [Tomcat distribution](https://downloads.operaton.cloud/release/operaton-bpm/tomcat/) to fetch the required Operaton modules.
+This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](http://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download the matching Tomcat distribution from the [Operaton GitHub releases](https://github.com/operaton/operaton/releases) to fetch the required Operaton modules. Release assets are attached to version tags such as `v$PLATFORM_VERSION`; snapshot assets are published as GitHub prereleases with tags such as `2.2.0-SNAPSHOT`.
 
-:::note[Reading the Guide}
+:::note[Reading the Guide]
 Throughout this guide we will use a number of variables to denote common path names and constants:
 
 * `$TOMCAT_HOME` points to the main directory of the tomcat server.
 * `$TOMCAT_VERSION` denotes the version of Tomcat server.
-* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `7.0.0`.
+* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.1`.
 * `$TOMCAT_DISTRIBUTION` represents the downloaded pre-packaged Operaton distribution for Tomcat, e.g. `operaton-bpm-tomcat-$PLATFORM_VERSION.zip` or `operaton-bpm-tomcat-$PLATFORM_VERSION.tar.gz`.
 
 :::
@@ -168,9 +168,9 @@ This section describes how to install optional Operaton dependencies onto a Tomc
 
 The following steps are required to deploy the applications:
 
-1. Download the Operaton web application that contains both applications from our [Artifact Repository](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/).
-    * For [Tomcat 10](https://artifacts.camunda.com/ui/native/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-jakarta-$PLATFORM_VERSION.war`.
-    * For [Tomcat 9](https://artifacts.camunda.com/ui/native/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-$PLATFORM_VERSION.war`.
+1. Download the Operaton web application that contains the web applications from Maven Central.
+    * Releases are published as [`org.operaton.bpm.webapp:operaton-webapp`](https://repo.maven.apache.org/maven2/org/operaton/bpm/webapp/operaton-webapp/); the artifact is named `$PLATFORM_VERSION/operaton-webapp-$PLATFORM_VERSION.war`.
+    * Snapshots are published to Central's snapshot repository. Configure Maven with `https://central.sonatype.com/repository/maven-snapshots/` and use the same `org.operaton.bpm.webapp:operaton-webapp` artifact.
 2. Copy the war file to `$TOMCAT_HOME/webapps/operaton.war`.
    Optionally you may name it differently or extract it to a folder to deploy it to a different context path.
 3. Startup Tomcat.
@@ -181,10 +181,9 @@ The following steps are required to deploy the applications:
 
 The following steps are required to deploy the REST API:
 
-1. Download the REST API web application archive from our [Artifact Repository](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/operaton-engine-rest/).
-    Choose the correct version named `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
-    * For [Tomcat 10](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-tomcat.war`.
-    * For [Tomcat 9](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
+1. Download the REST API web application archive from Maven Central.
+    * Releases are published as [`org.operaton.bpm:operaton-engine-rest`](https://repo.maven.apache.org/maven2/org/operaton/bpm/operaton-engine-rest/); the Tomcat artifact is named `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
+    * Snapshots are published to Central's snapshot repository. Configure Maven with `https://central.sonatype.com/repository/maven-snapshots/` and use the same `org.operaton.bpm:operaton-engine-rest` artifact with the `tomcat` classifier.
 2. Copy the war file to `$TOMCAT_HOME/webapps`.
    Optionally you may rename it or extract it to a folder to deploy it to a specific context like `/engine-rest`.
 3. Startup Tomcat.
