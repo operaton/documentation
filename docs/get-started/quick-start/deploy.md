@@ -7,7 +7,7 @@ description: 'Deploy the Process to Operaton and start your first process instan
 ---
 # Deploy the Process (3/6)
 
-In the next step, you'll deploy the Process and start a new instance so you can see that your simple process is working correctly.
+In the next step, you'll deploy the process and start a new instance so you can see that your simple process is working correctly.
 
 :::note[Deployment Support]
 BPMN diagrams must be created for the process engine they intend to be deployed on. In the Operaton Modeler, make sure the execution platform is set to Operaton Platform before deploying to Operaton.
@@ -17,7 +17,7 @@ BPMN diagrams must be created for the process engine they intend to be deployed 
 
 ## Use the Operaton Modeler to Deploy the Process
 
-In order to deploy the process, click on the deploy button in the Operaton Modeler, then give it the Deployment Name "Payment Retrieval" and click the Deploy button. When prompted for an Endpoint Configuration, use either the root endpoint to the REST API (e.g. `http://localhost:8080/engine-rest`) or the exact endpoint to the deployment creation method (e.g. `http://localhost:8080/engine-rest/deployment/create`).
+To deploy the process, click the deploy button in the Operaton Modeler, give it the deployment name "Payment Retrieval", and click the Deploy button. When prompted for an Endpoint Configuration, use either the root endpoint to the REST API (e.g. `http://localhost:8080/engine-rest`) or the exact endpoint to the deployment creation method (e.g. `http://localhost:8080/engine-rest/deployment/create`).
 
 ![Example image](/img/get-started/quick-start/modeler-deploy1.png)
 ![Example image](/img/get-started/quick-start/modeler-deploy2.png)
@@ -34,7 +34,7 @@ Next, use Cockpit to see if the process was successfully deployed. Go to [http:/
 ## Start a Process Instance
 
 In Operaton, there are different ways to start a new process instance.
-You can leverage the Operaton REST API to start a new process instance by sending a POST Request.
+You can leverage the Operaton REST API to start a new process instance by sending a POST request.
 
 ### a) curl
 
@@ -52,7 +52,7 @@ If you don't feel comfortable using curl for the REST request, you can instead m
 Make a POST request to the following endpoint:
 `http://localhost:8080/engine-rest/process-definition/key/payment-retrieval/start`
 
-The JSON Body should look like this:
+The JSON body should look like this:
 ```JSON
 {
 	"variables": {
@@ -77,5 +77,5 @@ In your worker console (which we started in the previous section), you should no
 This means you have successfully started and executed your first simple process.
 
 :::note[Next Step]
-In some cases, we'll want to involve humans in our process. Move onto the next step to [learn how you can involve humans in your process](/docs/get-started/quick-start/user-task/).
+In some cases, we'll want to involve humans in our process. Move on to the next step to [learn how you can involve humans in your process](/docs/get-started/quick-start/user-task/).
 :::

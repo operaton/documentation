@@ -7,7 +7,7 @@ description: 'Learn the basics of handling the Operaton Modeler, learn how to mo
 ---
 # Executing automated steps (2/6)
 
-In this section, you'll learn how to create your first BPMN 2.0 process with the Operaton Modeler and how to execute automated steps. Start by opening up Operaton Modeler.
+In this section, you'll learn how to create your first BPMN 2.0 process with the Operaton Modeler and how to execute automated steps. Start by opening Operaton Modeler.
 
 ## Create a new BPMN Diagram
 
@@ -85,7 +85,7 @@ In this section, you'll learn how to implement an external task worker in Java.
 
 Make sure you have the following tools installed:
 
-* JDK 11
+* JDK 17
 * An IDE for Java projects (e.g. [Eclipse](https://eclipse.org/))
 
 #### Create a new Maven project
@@ -105,7 +105,7 @@ When you're done, click Finish. Eclipse will set up a new Maven project. The pro
 #### Add Operaton External Task Client Dependency
 
 The next step consists of setting up the Maven dependency to the external task client for your new process application.
-Your pom.xml file of your project should look like this:
+Your project's `pom.xml` file should look like this:
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -118,8 +118,8 @@ Your pom.xml file of your project should look like this:
 
 	<properties>
 		<operaton.external-task-client.version>1.0.3</operaton.external-task-client.version>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -197,7 +197,7 @@ public class ChargeCardWorker {
 
 #### Run the worker
 
-You can run the Java application by right clicking on the class `ChargeCardWorker` and choosing `Run as Java`.
+You can run the Java application by right-clicking the class `ChargeCardWorker` and choosing `Run as Java`.
 
 Note that the worker should remain running throughout the entirety of this quick start guide.
 
