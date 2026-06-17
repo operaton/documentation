@@ -136,7 +136,7 @@ The Operaton Quarkus extension is based on **Quarkus 3.30**.
 
 The Tomcat distribution is based on **Tomcat 11**.
 
-The Wildfly distribution is based on **Wildfly 38**.
+The WildFly distribution is based on **WildFly 38**.
 
 ### Standards Compliance
 
