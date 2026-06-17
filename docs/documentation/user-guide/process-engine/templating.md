@@ -20,7 +20,7 @@ box:
 * [FreeMarker][freemarker]
 
 The script engine Freemarker wrapper implementation can be found in the
-[operaton-bpmn-platform](https://github.com/operaton/operaton/tree/master/freemarker-template-engine) repository.
+[Operaton repository](https://github.com/operaton/operaton/tree/main/freemarker-template-engine).
 
 The following template engines are provided as optional community extensions:
 
