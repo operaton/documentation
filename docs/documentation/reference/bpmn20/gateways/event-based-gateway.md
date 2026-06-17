@@ -95,4 +95,4 @@ The corresponding xml looks like this:
 
 ## Additional Resources
 
-*   [Event-based Gateways](http://operaton.org/bpmn/reference.html#gateways-event-based-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Gateways](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)

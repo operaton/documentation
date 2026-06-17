@@ -202,5 +202,5 @@ In addition to the above, a Business Rule Task can be implemented via the [Exter
 
 * [Decisions](../../../user-guide/process-engine/decisions/index.md)
 * [Service Tasks](./service-task.md)
-* [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Tasks](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)
 * [Demo using Drools on the Business Rule Task](https://github.com/operaton/operaton-consulting/tree/master/one-time-examples/order-confirmation-rules)

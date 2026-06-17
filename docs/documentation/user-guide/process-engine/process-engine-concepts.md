@@ -16,13 +16,13 @@ This section explains some core process engine concepts that are used in both th
 
 ## Process Definitions
 
-A process definition defines the structure of a process. You could say that the process definition *is* the process. Operaton uses [BPMN 2.0](http://operaton.org/bpmn/tutorial.html) as its primary modeling language for modeling process definitions.
+A process definition defines the structure of a process. You could say that the process definition *is* the process. Operaton uses [BPMN 2.0](../../reference/bpmn20/index.md) as its primary modeling language for modeling process definitions.
 
 :::note[BPMN 2.0 Reference]
   Operaton comes with two BPMN 2.0 References:
 
-* The [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html#!/reference) introduces the fundamentals of BPMN 2.0 and helps you to get started modeling processes. (Make sure to read the [Tutorial](http://operaton.org/bpmn/tutorial.html) as well.)
-* The [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) covers the implementation of the individual BPMN 2.0 constructs Operaton. You should consult this reference if you want to implement and execute BPMN processes.
+* The [BPMN 2.0 Quick Start](/docs/get-started/quick-start/) helps you get started modeling and running a process.
+* The [BPMN 2.0 Implementation Reference](../../reference/bpmn20/index.md) covers the implementation of the individual BPMN 2.0 constructs in Operaton. You should consult this reference if you want to implement and execute BPMN processes.
 :::
 
 

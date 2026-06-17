@@ -204,5 +204,5 @@ To declare an activity to be a compensation handler, we need to set the attribut
 
 ## Additional Resources
 
-* [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Tasks](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)
 * [Transaction Subprocess](../subprocesses/transaction-subprocess.md)

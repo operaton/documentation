@@ -185,4 +185,4 @@ The XML representation of a compensation start event is the normal start event d
 ### Additional Resources
 
 * [Transaction subprocess](../subprocesses/transaction-subprocess.md)
-* [Compensation Events](http://operaton.org/bpmn/reference.html#events-compensation) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Events](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)

@@ -101,4 +101,4 @@ These two differences can help you decide whether a boundary event or an embedde
 
 ## Additional Resources
 
-*   [Event subprocess](http://operaton.org/bpmn/reference.html#activities-event-subprocess) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Subprocesses](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)

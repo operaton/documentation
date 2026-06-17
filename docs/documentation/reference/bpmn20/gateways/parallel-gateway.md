@@ -118,4 +118,4 @@ Note that a parallel gateway does not need to be 'balanced' (i.e., a matching nu
 
 ## Additional Resources
 
-*   [Parallel Gateways](http://operaton.org/bpmn/reference.html#gateways-parallel-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Gateways](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)

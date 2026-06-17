@@ -163,5 +163,5 @@ To declare a Service Task to be handled externally, the attribute `operaton:type
 
 ## Additional Resources
 
-* [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html) section
+* [Tasks](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)
 * [How to call a Webservice from BPMN](http://www.bpm-guide.de/2010/12/09/how-to-call-a-webservice-from-bpmn/). Please note that this article is outdated. However, it is still valid regarding how you would call a Web Service using the process engine.

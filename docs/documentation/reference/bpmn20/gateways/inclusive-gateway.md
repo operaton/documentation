@@ -162,5 +162,5 @@ The following examples show under which conditions an inclusive gateway will tri
 
 ## Additional Resources
 
-*   [Inclusive Gateways](http://operaton.org/bpmn/reference.html#gateways-data-based-inclusive-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Gateways](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)
 *   [Conditional and Default Sequence Flows](../gateways/sequence-flow.md)

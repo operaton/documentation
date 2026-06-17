@@ -79,4 +79,4 @@ A subprocess is defined by the subprocess element. All activities, gateways, eve
 
 ### Additional Resources
 
-*   [Subprocesses](http://operaton.org/bpmn/reference.html#activities-subprocess) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Subprocesses](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)
