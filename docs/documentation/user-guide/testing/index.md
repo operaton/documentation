@@ -140,9 +140,7 @@ public class MyBusinessProcessTest {
 }
 ```
 
-:::note
-  Our [Project Templates for Maven](../../user-guide/process-applications/maven-archetypes.md) give you a complete running project including a JUnit test out of the box.
-:::
+The [Java process application project setup](/docs/get-started/archive/java-process-app/project-setup/) shows a complete project structure that you can extend with tests like the examples below.
 
 
 ### JUnit 3
