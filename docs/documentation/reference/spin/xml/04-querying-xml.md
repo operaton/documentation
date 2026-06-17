@@ -116,7 +116,7 @@ String xml = "<root xmlns:t=\"http://operaton.org\"><t:child id=\"child\"><a id=
 
 Map<String, String> namespaceMap = new HashMap<String, String>();
 namespaceMap.put("t", "http://operaton.org");
-namespaceMap.put("s", "http://camunda.com");
+namespaceMap.put("s", "http://example.com/secondary");
 
 SpinXmlTreeElement child = XML(xml).xPath("/root/t:child")
                                    .ns(namespaceMap);
