@@ -17,6 +17,14 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link className="button button--secondary button--lg" to="/docs/get-started/">
+            Get Started
+          </Link>
+          <Link className="button button--outline button--secondary button--lg" to="/docs/documentation/">
+            Browse Documentation
+          </Link>
+        </div>
       </div>
     </header>
   );
@@ -26,8 +34,8 @@ export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description="Operaton documentation for BPMN, DMN, CMMN, installation, operations, and APIs.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

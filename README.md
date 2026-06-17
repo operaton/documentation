@@ -1,35 +1,38 @@
-# This documentation is still in progress.
-
 # Operaton Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This repository contains the public documentation website for [Operaton](https://operaton.org/), built with [Docusaurus](https://docusaurus.io/).
 
-### Installation
+## Requirements
+
+- Node.js 18 or newer
+- npm
+
+## Install
 
 ```bash
-npm install
+npm ci
 ```
 
-### Local Development
+## Local Development
 
 ```bash
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This starts a local development server. Most content and styling changes are reflected without restarting the server.
 
-### Build
+## Build
 
 ```bash
 npm run build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+The static site is generated in the `build` directory.
 
-### Update dependencies
+## Typecheck
 
 ```bash
-npm update
+npm run typecheck
 ```
 
-This command update the dependencies from `package.json`
+Run the typecheck and production build before opening a pull request.
