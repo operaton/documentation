@@ -156,7 +156,7 @@ If disabled, the metrics can still be displayed on-demand via a checkbox.
 ## Advanced styles customization
 
 In addition to the basic `user-styles.css` file, you can edit the source style and layout files
-using [less](http://lesscss.org/) to change the overall appearance of Admin.
+using [less](https://lesscss.org/) to change the overall appearance of Admin.
 
 To customize the interface with `less`, start by having a look
 at the variables defined in the following files:
