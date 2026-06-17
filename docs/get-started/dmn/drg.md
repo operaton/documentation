@@ -143,4 +143,4 @@ Note that the *Dish* decision is evaluated as part of the evaluation of the *Bev
 Next,
 
 * learn more about DRG by reading the [DMN Reference](/docs/documentation/reference/dmn/drg),
-* learn more about [DMN in Cockpit](https://docs.operaton.org/docs/documentation/webapps/cockpit/dmn/)
+* learn more about [DMN in Cockpit](/docs/documentation/webapps/cockpit/dmn/)
