@@ -9,7 +9,7 @@ This guide gives an introduction to Operaton Run, a pre-packaged, lightweight di
 
 ## Prerequisites and audience
 
-To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](https://docs.operaton.org/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
+To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](/docs/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
 
 This guide will teach you about Operaton Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install Operaton Run. Head over to the [Installation guide](../installation/operaton-bpm-run.md) for details on how to install and start Operaton Run.
 
