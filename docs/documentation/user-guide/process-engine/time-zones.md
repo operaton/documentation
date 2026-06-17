@@ -36,4 +36,4 @@ It is possible to use the Operaton Web Applications in different timezones. All 
 
 In case the process engine is running in a [cluster](../../introduction/architecture.md#clustering-model),
 all cluster nodes must run in one and the same time zone. In case cluster nodes exist in different time zones,
-correct behaviour when operating with DateTime values can not be guaranteed.
+correct behaviour when operating with DateTime values cannot be guaranteed.

@@ -4,7 +4,7 @@ title: 'Database Configuration'
 sidebar_position: 20
 menu:
   main:
-    identifier: "user-guide-process-engine-database-configuraton"
+    identifier: "user-guide-process-engine-database-configuration"
     parent: "user-guide-process-engine-database"
 
 ---
