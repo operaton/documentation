@@ -10,7 +10,7 @@ menu:
 
 ---
 
-Operaton allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc...
+Operaton allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc.
 
 Authorization has a performance cost and introduces some complexity. It should only be used if required.
 
@@ -71,7 +71,7 @@ The basic permissions available in the engine are:
 Note that the permission **None** does not mean no permissions are granted. Instead, it represents "no action".
 Additionally, the **All** permission will vanish from a user if a single permission is revoked.
 
-For detailed list of available permissions please check [Permission by resource](#permissions-by-resource) section.
+For a detailed list of available permissions, please check the [Permission by resource](#permissions-by-resource) section.
 
 A single authorization object may assign multiple permissions to a single user and resource:
 
@@ -862,7 +862,7 @@ Operaton has no explicit concept of "administrator" beyond it being a user who h
 
 When downloading the Operaton distribution, the invoice example application creates a group with id `operaton-admin` and grants all authorizations on all resources to this group.
 
-In absence of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton web application is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
+In the absence of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton web application is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
 
 :::note[LDAP]
 The group "operaton-admin" is not created when using LDAP (since LDAP is only accessed in a read-only way). Also see the below section on the administrator authorization plugin.
@@ -1006,7 +1006,7 @@ Authorizations are calculated by the database which is most efficient. Example: 
 
 ### Performance of Checking Grant Authorizations
 
-When only Grant authorizations are used, the check is very efficient since the authorization table can be joined with the resource table (task table, process instance table,    etc...).
+When only Grant authorizations are used, the check is very efficient since the authorization table can be joined with the resource table (task table, process instance table, etc.).
 
 ### Performance of Checking Revoke Authorizations
 
