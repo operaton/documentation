@@ -8,7 +8,7 @@ menu:
     name: "Model a Process"
     parent: "get-started-spring-boot"
     identifier: "get-started-spring-boot-model"
-    description: "Learn the basics of handling the Camunda Modeler and learn how to model and configure a fully executable process."
+    description: "Learn the basics of handling the Operaton Modeler and learn how to model and configure a fully executable process."
 
 ---
 
@@ -26,7 +26,7 @@ model and interact with the process from inside our Spring beans. In this sectio
 
 ### Model an Executable BPMN 2.0 Process and Deploy It
 
-Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.
+Start by modeling an executable process using the Operaton Modeler. The process should look as depicted in the screenshot below.
 
 ![Example image](/img/get-started/spring-boot/loanApproval.png)
 

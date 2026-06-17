@@ -8,18 +8,18 @@ menu:
     name: "Model a Process"
     parent: "get-started-java-ee"
     identifier: "get-started-java-ee-model"
-    description: "Learn the basics of handling the Camunda Modeler and learn how to model and configure a fully executable process."
+    description: "Learn the basics of handling the Operaton Modeler and learn how to model and configure a fully executable process."
 
 ---
 
-In this section we model our sample process with the Camunda Modeler.
+In this section we model our sample process with the Operaton Modeler.
 
 
 ## Create a new BPMN 2.0 Diagram
 
 ![Example image](/img/get-started/archive/javaee7/modeler-new-bpmn-diagram.png)
 
-Open Camunda Modeler and create a new BPMN diagram by Clicking *File > New File > BPMN Diagram*.
+Open Operaton Modeler and create a new BPMN diagram by clicking *File > New File > BPMN Diagram*.
 
 ### Create the Sample Pizza Order Process
 
