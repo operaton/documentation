@@ -32,7 +32,7 @@ String jdkVersion = productInternals.getJdk().getVersion();
 
 ### REST API
 
-You can fetch the collected data via the REST API by calling the restref page="getTelemetryData" text="Get Telemetry Data" tag="Telemetry endpoint.
+You can fetch the collected data via the REST API by calling the <RestRef page="getTelemetryData" text="Get Telemetry Data" tag="Telemetry" /> endpoint.
 
 ## Collected data
 

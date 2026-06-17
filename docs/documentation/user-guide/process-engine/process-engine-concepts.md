@@ -43,7 +43,7 @@ List<ProcessDefinition> processDefinitions = repositoryService.createProcessDefi
 
 The above query returns all deployed process definitions for the key `invoice` ordered by their `version` property.
 
-You can also restref page="getProcessDefinitions" text="query for process definitions using the REST API" tag="Process-Definition.
+You can also <RestRef page="getProcessDefinitions" text="query for process definitions using the REST API" tag="Process-Definition" />.
 
 
 ### Keys and Versions
@@ -89,7 +89,7 @@ You may optionally pass in a couple of variables:
 
 Process variables are available to all tasks in a process instance and are automatically persisted to the database in case the process instance reaches a wait state.
 
-It is also possible to restref page="startProcessInstance" text="start a process instance using the REST API" tag="Process-Definition.
+It is also possible to <RestRef page="startProcessInstance" text="start a process instance using the REST API" tag="Process-Definition" />.
 
 ### Start Process Instances via Tasklist
 
@@ -153,7 +153,7 @@ You can query for all currently running process instances using the `ProcessInst
 
 The above query would select all process instances for the `invoice` process where the `creditor` is `Nice Pizza Inc.`.
 
-You can also restref page="getProcessInstances" text="query for process instances using the REST API" tag="Process-Instance.
+You can also <RestRef page="getProcessInstances" text="query for process instances using the REST API" tag="Process-Instance" />.
 
 
 ### Interact With a Process Instance
@@ -207,7 +207,7 @@ runtimeService.createExecutionQuery()
 
 The above query returns all executions for a given process instance.
 
-You can also restref page="getExecutions" text="query for executions using the REST API" tag="Execution.
+You can also <RestRef page="getExecutions" text="query for executions using the REST API" tag="Execution" />.
 
 
 ## Activity Instances
@@ -273,7 +273,7 @@ Currently, activity instances can only be retrieved for a process instance:
 ActivityInstance rootActivityInstance = runtimeService.getActivityInstance(processInstance.getProcessInstanceId());
 ```
 
-You can restref page="getActivityInstanceTree" text="retrieve the activity instance tree using the REST API" tag="Process-Instance as well.
+You can <RestRef page="getActivityInstanceTree" text="retrieve the activity instance tree using the REST API" tag="Process-Instance" /> as well.
 
 
 ### Identity & Uniqueness

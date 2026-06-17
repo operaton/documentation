@@ -87,7 +87,7 @@ The expression is evaluated on invocations of `ExternalTaskService#complete` and
 
 Further information on the functionality of error event definitions on external tasks can be found in the [expression language user guide](../process-engine/expression-language.md#external-task-error-handling).
 
-### Rest API
+### REST API
 
 See the <RestRef text="REST API documentation" section="External-Task" /> for how the API operations can be accessed via HTTP.
 

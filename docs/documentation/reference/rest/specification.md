@@ -5,4 +5,4 @@ sidebar_position: 20
 
 ---
 
-You can find the RestApi Specification <RestRef text="here" />.
+You can find the REST API specification <RestRef text="here" />.

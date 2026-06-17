@@ -1,8 +1,10 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-export default function RestRef({ text, section, operation }) {
+export default function RestRef({ text, section, tag, operation, page }) {
   const { siteConfig } = useDocusaurusContext();
   const hrefBase = siteConfig.customFields.restApiDocUrl;
+  const restTag = tag ?? section;
+  const restOperation = operation ?? page;
   
   if (!hrefBase) {
     // Will fail loudly.
@@ -14,26 +16,26 @@ export default function RestRef({ text, section, operation }) {
     throw new Error('RestRef: "text" is required');
   }
 
-  if (!section && operation) {
+  if (!restTag && restOperation) {
     // Will fail loudly.
-    throw new Error('RestRef: "section" is required when "operation" is provided');
+    throw new Error('RestRef: "tag" or "section" is required when "operation" or "page" is provided');
   }
 
-  const href = buildHref({ hrefBase, section, operation });
+  const href = buildHref({ hrefBase, tag: restTag, operation: restOperation });
   
   return (
-    <a target="_blank" href={href}>{text}</a>
+    <a target="_blank" rel="noreferrer" href={href}>{text}</a>
   );
 }
 
-function buildHref({hrefBase, section, operation}) {
-  if (!section) {
+function buildHref({ hrefBase, tag, operation }) {
+  if (!tag) {
     return hrefBase;
   }
 
   if (!operation) {
-    return `${hrefBase}/#tag/${section}`;
+    return `${hrefBase}/#tag/${tag}`;
   }
 
-  return `${hrefBase}/#tag/${section}/operation/${operation}`;
+  return `${hrefBase}/#tag/${tag}/operation/${operation}`;
 }
