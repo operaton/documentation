@@ -211,7 +211,7 @@ A declarative mechanism like `@Resource` could be
 ```
 
 :::warning[Look Up a Process Engine From JNDI Using Spring]
-  On WildFly, Spring users should always [create a resource-ref for the process engine in web.xml](#manage-service-dependencies) and then lookup the local name in the `java:comp/env/` namespace. [For an example, see this Quickstart](https://github.com/operaton/operaton-bpm-examples/tree/master/deployment/spring-wildfly-non-pa)
+  On WildFly, Spring users should always [create a resource-ref for the process engine in web.xml](#manage-service-dependencies) and then lookup the local name in the `java:comp/env/` namespace.
 :::
 
 

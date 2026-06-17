@@ -90,10 +90,6 @@ export default {
 ```
 This includes a `custom-module/module.js` file. The path is relative to the `app/tasklist` folder in the Operaton webapp .war file.
 
-You can find a complete example about how to use `customScripts` to develop a Tasklist Plugin in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/tasklist/cats-plugin).
-
-
-
 ## Shortcuts
 
 If you want to change the keyboard shortcuts for certain tasklist operations, you can change the key-combination and the description of the shortcuts in the `shortcuts` section of the config file.

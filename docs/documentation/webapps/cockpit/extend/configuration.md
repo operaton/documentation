@@ -99,8 +99,6 @@ export default {
 ```
 This includes a `custom-module/module.js` file. The path is relative to the `app/cockpit` folder in the Operaton webapp .war file.
 
-You can find a complete example about how to use `customScripts` to develop a Cockpit Plugin in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-cats).
-
 ## BPMN Diagram Viewer (bpmn.js)
 
 The diagram viewer (bpmn.js) can be either customized by moddle extensions or
@@ -120,8 +118,6 @@ export default {
   }
 }
 ```
-
-You can find an example on how to add an additional bpmn.js module to Cockpit in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-bpmn-js-module).
 
 ### Moddle Extensions
 The BPMN moddle can be extended by adding a `moddleExtensions` property. Each moddle extension has a unique name (key)

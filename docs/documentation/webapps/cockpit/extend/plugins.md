@@ -81,10 +81,6 @@ As runtime relevant resource it defines
 8. a js file that exports a frontend module. This file must be named `plugin.js` and be located in the `app` directory of the plugin asset directory
 9. a css file that contains the style definitions for the client-side plugin. This file must be named `plugin.css` and be located in the `app` directory of the plugin asset directory
 
-:::note[Related Example]
-  [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes)
-:::
-
 ### Structure of a Frontend Module
 A frontend module always follows the same structure. This is how a sample `plugin.js` could look like:
 
@@ -165,8 +161,6 @@ In this section you will find all Cockpit plugin points.
 To configure where you place your plugin, enter the ID into the `pluginPoint` attribute of you frontend module.
 
 Plugin Points describe where a Plugin will be rendered and define which additional data is passed into the second argument of the render function.
-
-For more information on creating and configuring your own plugin, please see [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes).
 
 ### Data
 

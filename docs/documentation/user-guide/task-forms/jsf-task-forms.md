@@ -19,8 +19,6 @@ The required CDI beans for this functionality are currently not available in [Qu
 If you add JSF forms as described below, you can easily use them as <br/>
 [external task forms](../task-forms/index.md#external-task-forms).
 
-A working example can be found in the [examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/usertask/task-form-external-jsf).
-
 The BPMN process used for this example is shown in the image below:
 
 ![Example img](/img/documentation/user-guide/task-forms/task-form-process.png)Task Form Process

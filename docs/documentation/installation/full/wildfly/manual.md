@@ -260,7 +260,6 @@ See one of the following ways to fix this:
 2. Exclude implicitly added JAX-RS dependencies.
  * Add a `jboss-deployment-structure.xml` file to you application in the WEB-INF folder.
  * Exclude the JAX-RS subsystem and add the Jackson dependencies, with the version which is used by the Operaton Spin Plugin.
- * This solution is also shown in the [Jackson Annotation Example for WildFly](https://github.com/operaton/operaton-bpm-examples/blob/master/wildfly/jackson-annotations) in the Operaton example repository.
 
 See this [Forum Post](https://forum.operaton.org/t/operaton-json-marshalling-and-jsonignore/271/19) for other approaches and information.
 

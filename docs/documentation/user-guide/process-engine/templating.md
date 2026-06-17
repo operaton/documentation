@@ -194,13 +194,8 @@ attribute.
 Finally, the input of the transformation must be mapped using the special variable `operaton_source`
 using a `<operaton:inputParameter ... />` mapping.
 
-A [full example of the XSLT Template Engine][xslt-example] in Operaton can be found in the
-examples' repository.
-
-
 [freemarker]: http://freemarker.org/
 [velocity]: http://velocity.apache.org/
 [operaton-template-engines-jsr223]: https://github.com/operaton-community-hub/operaton-template-engines-jsr223
 [use-scripts]: ../process-engine/scripting.md
 [script-source]: ../process-engine/scripting.md#script-source
-[xslt-example]: https://github.com/operaton/operaton-bpm-examples/tree/master/scripttask/xslt-scripttask

@@ -126,7 +126,7 @@ This artifact contains the HTTP and SOAP connectors as well as their dependencie
 
 To use a connector, you have to add the Operaton extension element [connector](../../reference/bpmn20/custom-extensions/extension-elements.md#connector). The connector is configured by a unique [connectorId](../../reference/bpmn20/custom-extensions/extension-elements.md#connectorid), which specifies the used connector implementation. The ids of the currently supported connectors can be found at the beginning of this section. Additionally, an [input/output mapping](../process-engine/variables.md#inputoutput-variable-mapping) is used to configure the connector. The required input parameters and the available output parameters depend on the connector implementation. Additional input parameters can also be provided to be used within the connector.
 
-As an example, a shortened configuration of the Operaton SOAP connector implementation is shown. A complete [example](https://github.com/operaton/operaton-bpm-examples/tree/master/servicetask/soap-service) can be found in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples) on GitHub.
+As an example, a shortened configuration of the Operaton SOAP connector implementation is shown. A current [connector example](https://github.com/operaton/operaton-examples/tree/main/examples/integration-connectors) can be found in the Operaton examples repository on GitHub.
 
 ```xml
 <serviceTask id="soapRequest" name="Simple SOAP Request">
@@ -155,4 +155,4 @@ As an example, a shortened configuration of the Operaton SOAP connector implemen
 </serviceTask>
 ```
 
-A full [example](https://github.com/operaton/operaton-bpm-examples/tree/master/servicetask/rest-service) of the REST connector can also be found in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples) on GitHub.
+A current [connector example](https://github.com/operaton/operaton-examples/tree/main/examples/integration-connectors) can also be found in the Operaton examples repository on GitHub.
