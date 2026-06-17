@@ -83,7 +83,7 @@ The form key for this file could be `embedded:deployment:FORM_NAME.html` or `emb
 
 ## Operaton Forms
 
-Operaton Forms are created as separate files using the Operaton Modeler and can be deployed together with the process models. The form schema is stored in `.form` files. You can find out how to build Operaton Forms in the [Operaton Modeler documentation](https://docs.operaton.org/docs/documentation/modeler/forms/) to explore all configuration options for form elements.
+Operaton Forms are created as separate files using the Operaton Modeler and can be deployed together with the process models. The form schema is stored in `.form` files. For current form editor implementation details, see the [Operaton Modeler form editor source](https://github.com/operaton/operaton-modeler/tree/develop/client/src/app/tabs/form).
 
 [Process variables](../../user-guide/process-engine/variables.md) are mapped to form fields where the field's key matches the variable name.
 
