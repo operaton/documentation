@@ -20,7 +20,7 @@ For further details about the concepts behind plugins, please read the [Cockpit 
 
 :::warning[Difference between Cockpit and Tasklist plugins:]
   * To publish the plugin with Tasklist, its class name must be put into a file called ```org.operaton.bpm.tasklist.plugin.spi.TasklistPlugin``` that resides in the directory ```META-INF/services```.
-  * The plugin mechanism of Tasklist does not allow to provide additional SQL queries by using [MyBatis](https://mybatis.org/mybatis-3/) mappings.
+  * The plugin mechanism of Tasklist does not allow providing additional SQL queries by using [MyBatis](https://mybatis.org/mybatis-3/) mappings.
 :::
 
 ## Plugin Points

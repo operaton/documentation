@@ -10,9 +10,9 @@ menu:
 
 ---
 
-This page provides an overview of how to secure a Operaton installation. For Operaton's security policy, a list of security notices and a guide how to report vulnerabilities, please visit the [general security documentation](/security).
+This page provides an overview of how to secure an Operaton installation. For Operaton's security policy, a list of security notices and a guide to reporting vulnerabilities, please visit the [general security documentation](/security).
 
-In order to secure a Operaton installation, Operaton itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific Operaton product and listed those in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others
+To secure an Operaton installation, Operaton itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific Operaton product and lists them in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others.
 
 ## Deployment Options and Components
 
@@ -164,7 +164,7 @@ To prevent this:
 1. Use group instead of user authorizations when possible.
 2. Complete tasks that were assigned to to-be-deleted users.
 3. Delete user authorizations via Admin web app or APIs.
-4. Don't allow to reuse an id of a deleted user.
+4. Don't allow reuse of the id of a deleted user.
 
 
 ### Spring Security OAuth2
@@ -263,7 +263,7 @@ Operaton handles many XML files containing configurations of process engines, de
 
 If the limitations on XML files introduced by XXE prevention need to be removed, XXE processing can be enabled via `enableXxeProcessing` in the [process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdx#enableXxeProcessing).
 
-FSP itself can not be disabled in the engine. All properties that are influenced by this can however be configured in the environment via system properties and the `jaxp.properties` file. See the [Oracle documentation](https://docs.oracle.com/javase/tutorial/jaxp/limits/using.html) on how to determine the right limits and how to set them.
+FSP itself cannot be disabled in the engine. All properties that are influenced by this can however be configured in the environment via system properties and the `jaxp.properties` file. See the [Oracle documentation](https://docs.oracle.com/javase/tutorial/jaxp/limits/using.html) on how to determine the right limits and how to set them.
 
 Since BPMN schema validation requires external XSD documents, the property `http://javax.xml.XMLConstants/property/accessExternalSchema` is by default configured to value `all`, which enables referencing XML schemas by any supported protocol. This can be overridden via the system property `javax.xml.accessExternalSchema`, however a value set via `jaxp.properties` does not take effect.
 
