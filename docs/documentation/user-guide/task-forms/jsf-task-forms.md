@@ -124,7 +124,7 @@ In the forms you can access your own CDI beans as usual and also access the Oper
   <table>
     <tr>
       <td>
-        Process variable <strong>x</strong> (given in in the start form):
+        Process variable <strong>x</strong> (given in the start form):
       </td>
       <td>
         <h:outputText value="#{processVariables['x']}" />
