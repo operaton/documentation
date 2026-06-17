@@ -24,7 +24,7 @@ Save your changes and deploy the updated process using the `Deploy` Button in th
 First, create a new DMN diagram by clicking *File > New File > DMN Diagram*.
 ![Example image](/img/get-started/quick-start/modeler-new-dmn-diagram.png)
 
-Now the newly created diagram will already have a decision element added to it. Select it by clicking it and then give it a name of *Approve Payment* and an ID of `approve-payment` (the decision ID must match the the `Decision Ref` in your BPMN process).
+Now the newly created diagram will already have a decision element added to it. Select it by clicking it and then give it a name of *Approve Payment* and an ID of `approve-payment` (the decision ID must match the `Decision Ref` in your BPMN process).
 ![Example image](/img/get-started/quick-start/modeler-new-dmn-diagram-properties.png)
 
 Next, create a new DMN table by clicking the table button.

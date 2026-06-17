@@ -66,7 +66,7 @@ The following types are supported by the DMN engine:
 </table>
 
 Each data type transformer produces a typed value which contains the value and
-additional type informations.
+additional type information.
 
 If the given type does not match one of the above types then the value is
 transformed into an untyped value by default.
@@ -74,7 +74,7 @@ transformed into an untyped value by default.
 ### Working with Dates
 
 The DMN engine supports a `date` type which is a combination of date and time.
-By default, the data type transformer accept objects of the types:
+By default, the data type transformers accept objects of the types:
 
 * `java.util.Date`
 * Strings having the format `yyyy-MM-dd'T'HH:mm:ss`

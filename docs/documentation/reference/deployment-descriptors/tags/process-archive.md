@@ -244,7 +244,7 @@ The following is a list of all supported configuration properties.
                  </pre>
              If the process archive(s) defined in (1) uses a path prefixed with <code>pa:</code>, like for instance <code>pa:opps/</code>,
              only the <code>opps/</code>-folder of sales-processes.jar is scanned. More precisely, a "pa-local path", is resolved
-             relative to the the parent directory of the META-INF-directory containing the defining processes.xml file.
+             relative to the parent directory of the META-INF-directory containing the defining processes.xml file.
              This implies that when using a pa-local path in (1), no processes from (2) are visible.
             </li>
           </ul>
@@ -253,7 +253,7 @@ The following is a list of all supported configuration properties.
   </tr>
   <tr>
     <td><code>additionalResourceSuffixes</code></td>
-    <td>comma-seperated list</td>
+    <td>comma-separated list</td>
     <td>
       Specifies a list of additional suffixes which are considered as deployment resource if the
       <code>isScanForProcessDefinitions</code> property is set to <code>true</code>. It can be used
