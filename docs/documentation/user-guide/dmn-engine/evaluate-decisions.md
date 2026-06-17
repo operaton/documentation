@@ -244,7 +244,7 @@ decisionResult.getSingleEntry();
 ```
 
 Note that the decision can also be evaluated using the
-<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnEngine.html##evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision, java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnEngine.html#evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision,java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
 `DmnDecisionResult`.
 
 ### Decisions with Required Decisions
