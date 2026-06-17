@@ -15,19 +15,19 @@ transition. Multiple products have already started to use Operaton in production
 more are actively testing it. Major effort has been put into **automated testing to ensure stability
 and reliability**.
 
-From now on, Operaton is the successor to the open-source BPM platform formerly known as
-_Camunda 7 Community Edition_ (archived on Nov 4th 2025).
+From now on, Operaton is the successor to the open-source Camunda 7 BPM platform
+(archived on Nov 4th 2025).
 The engine is already battle-tested in production environments,
-and is safe to transition from existing Camunda 7 CE installations.
+and is safe to transition from existing open-source Camunda 7 installations.
 It is important to note that Operaton focuses on the core BPM/CMMN/DMN engine and its related components.
 
 We are excited to embark on this new journey and look forward to building a vibrant
 community around Operaton. We welcome contributions, feedback, and collaboration from developers
 worldwide. Together, we can shape the future of business process management with Operaton!
 
-## 🛠️ Migration from Camunda 7 CE
+## 🛠️ Migration from Camunda 7
 
-Migrating from Camunda 7 Community Edition to Operaton is straightforward. Operaton 1.0 is fully
+Migrating from Camunda 7 to Operaton is straightforward. Operaton 1.0 is fully
 compatible with Camunda 7.24, allowing for a seamless transition. We recommend upgrading to
 Camunda 7.24 first, and then switch to Operaton 1.0.
 
@@ -60,7 +60,7 @@ Operaton is tested and supported on **Java 17**, **Java 21**, and **Java 25**.
 
 ### Camunda 7 Compatibility
 
-This release is feature complete and API-compatible with [**Camunda 7.24**](https://docs.camunda.org/enterprise/announcement/#camunda-platform-7-24).
+This release is feature complete and API-compatible with [**Camunda 7.24**](https://docs.camunda.org/manual/7.24/).
 
 ### Spring
 
