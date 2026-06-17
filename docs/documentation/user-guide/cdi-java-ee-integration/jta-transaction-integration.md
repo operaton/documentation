@@ -32,7 +32,7 @@ To achieve JTA transaction integration on these containers, users should use the
 
 ## Shared Process Engine
 
-The shared process engine distributions for Java EE and Jakarta EE Application Servers (Wildfly, JBoss EAP, IBM WebSphere Application Server, Oracle WebLogic Application Server)
+The shared process engine distributions for Java EE and Jakarta EE Application Servers (WildFly, JBoss EAP, IBM WebSphere Application Server, Oracle WebLogic Application Server)
 provide JTA or Jakarta Transactions integration out of the box.
 
 ## Example

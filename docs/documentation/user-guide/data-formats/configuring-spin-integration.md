@@ -97,7 +97,7 @@ If you use a shared process engine, Spin is usually installed as a shared librar
 Depending on the type of application server, `operaton-engine-plugin-spin` should be used with either `operaton-spin-core` or `operaton-spin-dataformat-all`. In the pre-packaged distributions, the following artifacts are used:
 
 * Tomcat: `operaton-spin-dataformat-all` is provided in Tomcat's shared library path. Using `operaton-spin-dataformat-all` avoids classpath pollution with Spin's dependencies. For example, this ensures that applications are not forced to use Spin's version of Jackson.
-* Wildfly: `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom`) are deployed as modules. Thanks to Wildfly's module system, classpath pollution is not an issue. Whenever a process application is deployed, it receives an implicit module dependency to `operaton-spin-core`.
+* WildFly: `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom`) are deployed as modules. Thanks to WildFly's module system, classpath pollution is not an issue. Whenever a process application is deployed, it receives an implicit module dependency to `operaton-spin-core`.
 
 If you want to program against the Spin APIs in your process application, you need to declare a dependency to Spin in your application. As Spin is provided by the application server, the following is important:
 

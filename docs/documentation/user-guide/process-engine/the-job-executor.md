@@ -648,16 +648,16 @@ When running Operaton in a cluster, there is a distinction between *homogeneous*
 
 ![Example img](/img/documentation/user-guide/process-engine/homogeneous-cluster.png)Homogeneous Cluster
 
-In the *heterogeneous* case, this is not given, meaning that some process applications are only  deployed to a part of the nodes.
+In the *heterogeneous* case, this is not given, meaning that some process applications are only deployed to a part of the nodes.
 
-![Example img](/img/documentation/user-guide/process-engine/heterogeneous-cluster.png)Heterogenous Cluster
+![Example img](/img/documentation/user-guide/process-engine/heterogeneous-cluster.png)Heterogeneous Cluster
 
 
 ### Job Execution in Heterogeneous Clusters
 
-A heterogeneous cluster setup as described above poses additional challenges to the job executor. Both platforms declare the same engine, i.e. they run against the same database. This means that jobs will be inserted into the same table. However, in the default configuration the job acquisition thread of node 1 will lock any executable jobs of that table and submit them to the local job execution pool. This means that jobs created in the context of process application B (so on node 2) may be executed on node 1 and vice versa. As the job execution may involve classes that are part of B's deployment, you are likely going to see a `ClassNotFoundExeception` or any of the likes.
+A heterogeneous cluster setup as described above poses additional challenges to the job executor. Both platforms declare the same engine, i.e. they run against the same database. This means that jobs will be inserted into the same table. However, in the default configuration the job acquisition thread of node 1 will lock any executable jobs of that table and submit them to the local job execution pool. This means that jobs created in the context of process application B (so on node 2) may be executed on node 1 and vice versa. As the job execution may involve classes that are part of B's deployment, you are likely going to see a `ClassNotFoundException` or any of the likes.
 
-To prevent the job acquisition on node 1 from picking jobs that *belong* to node 2, the process engine can be configured as *deployment aware*, by the setting following property in the process engine configuration:
+To prevent the job acquisition on node 1 from picking jobs that *belong* to node 2, the process engine can be configured as *deployment aware* by setting the following property in the process engine configuration:
 
 ```xml
 <process-engine name="default">

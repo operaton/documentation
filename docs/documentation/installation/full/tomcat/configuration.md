@@ -82,9 +82,9 @@ See our user guide for complete documentation on the [LDAP Identity Provider Plu
 
 ### HAL Resource Caching
 
-If you use LDAP as Indentity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
-Users and Groups in the Operaton webapplication. In order to activate this, add the following
-configuration to the `web.xml` file of Operaton webapplication
+If you use LDAP as Identity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
+Users and Groups in the Operaton web application. In order to activate this, add the following
+configuration to the `web.xml` file of Operaton web application
 (`operaton-webapp-tomcat-$PLATFORM_VERSION.war/WEB-INF/web.xml`):
 
 ```xml

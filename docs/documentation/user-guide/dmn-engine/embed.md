@@ -50,7 +50,7 @@ This section gives more insights of embedded DMN engine configuration. In case y
 
 ### Decision Table Evaluation Listeners
 
-The DMN engine configuration allows you add a custom decision table [evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html).
+The DMN engine configuration allows you to add a custom decision table [evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html).
 A decision table evaluation listener is notified after a decision table has been evaluated. It receives an evaluation event which contains the result of the evaluation. You can decide if the listener should be notified before or after the default listeners.
 
 ```java
@@ -87,7 +87,7 @@ configuration.setEngineMetricCollector(metricCollector);
 ```
 ### Decision Evaluation Listeners
 
-The DMN engine configuration allows you add a custom [decision evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.html). A decision evaluation listener is
+The DMN engine configuration allows you to add a custom [decision evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.html). A decision evaluation listener is
 notified after a decision with all the required decisions has been evaluated. It receives an evaluation event
 which contains the result of the evaluation. You can decide if the
 listener should be notified before or after the default listeners.

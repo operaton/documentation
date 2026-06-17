@@ -76,7 +76,7 @@ If neither of the above approaches are implemented in a cluster setup, connectio
 The process engine [job executor](../user-guide/process-engine/the-job-executor.md) is also clustered and runs on each node. This way, there is no single point of failure as far as the process engine is concerned. The job executor can run in both [homogeneous and heterogeneous clusters](../user-guide/process-engine/the-job-executor.md#cluster-setups).
 
 :::note[Time zones]
-The are some limitations on [time zone usage in a cluster](../user-guide/process-engine/time-zones.md#cluster-setup).
+There are some limitations on [time zone usage in a cluster](../user-guide/process-engine/time-zones.md#cluster-setup).
 :::
 
 

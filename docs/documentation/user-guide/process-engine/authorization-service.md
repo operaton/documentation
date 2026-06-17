@@ -20,7 +20,7 @@ Not every Operaton setup needs to enable authorization. In many scenarios, Opera
 
 Situations in which authorization is required:
 
-* Operaton Rest API is made accessible to users who should not have full access, even after authentication.
+* Operaton REST API is made accessible to users who should not have full access, even after authentication.
 * Operaton Webapplication is made accessible to users who should not have full access, even after authentication.
 * Other situations in which an untrusted user can directly construct the queries and commands executed on the process engine.
 
@@ -35,7 +35,7 @@ Assume that you have the following authorization requirement: *As a regular user
 
 If the engine is embedded into a Java application, the application can easily ensure this by restricting the task query on the `assignee` property. The application can guarantee this since the Operaton API is not directly exposed to the user.
 
-By contrast, if the Operaton Rest API is directly exposed over the network to a Javascript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.
+By contrast, if the Operaton REST API is directly exposed over the network to a JavaScript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.
 
 ## Basic Principles
 
@@ -862,7 +862,7 @@ Operaton has no explicit concept of "administrator" beyond it being a user who h
 
 When downloading the Operaton distribution, the invoice example application creates a group with id `operaton-admin` and grants all authorizations on all resources to this group.
 
-In absense of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton webapplication is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
+In absence of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton web application is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
 
 :::note[LDAP]
 The group "operaton-admin" is not created when using LDAP (since LDAP is only accessed in a read-only way). Also see the below section on the administrator authorization plugin.
@@ -893,7 +893,7 @@ The following is an example of how to configure the administrator authorization 
 The plugin will make sure that administrator authorizations (ALL permissions) are granted on all resources whenever the process engine is started.
 
 :::note
-  It is not necessary to configure all LDAP users and groups which should have administrator authorization. It is usually enough to configure a single user and use that user to log into the webapplication and create additional authorizations using the User Interface.
+  It is not necessary to configure all LDAP users and groups which should have administrator authorization. It is usually enough to configure a single user and use that user to log into the web application and create additional authorizations using the User Interface.
 :::
 
 Complete list of configuration properties:
