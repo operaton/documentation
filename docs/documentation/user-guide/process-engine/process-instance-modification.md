@@ -192,7 +192,7 @@ Starting a transition via `startTransition` translates to starting execution on 
 ProcessInstanceModificationBuilder#cancelActivityInstance(String activityInstanceId)
 ```
 
-A specific activity instance can be canceled by `cancelActivityInstance`. This can either be a leaf activity instance, such as an instance of a user task, as well as an instance of a scope higher in the hierarchy, such as an instance of a sub process. See the [details on activity instances](#activity-instance-based-api) how to retrieve the activity instances of a process instance.
+A specific activity instance can be canceled by `cancelActivityInstance`. This can be either a leaf activity instance, such as an instance of a user task, or an instance of a scope higher in the hierarchy, such as an instance of a subprocess. See the [details on activity instances](#activity-instance-based-api) how to retrieve the activity instances of a process instance.
 
 
 ### Cancel a Transition Instance
@@ -271,7 +271,7 @@ Compared to activity instances, *transition instances* do not represent active a
 
 ### Nested Instantiation
 
-Assume a process instance of the above example process where the activity *Decline Loan Application* is active. Now we submit the instruction to start before the activity *Assess Credit Worthiness*. When applying this instruction, the process engine makes sure to instantiate all parent scopes that are not active yet. In this case, before starting the activity, the process engine instantiates the *Evaluate Loan Application* sub process. Where before the activity instance tree was
+Assume a process instance of the above example process where the activity *Decline Loan Application* is active. Now we submit the instruction to start before the activity *Assess Credit Worthiness*. When applying this instruction, the process engine makes sure to instantiate all parent scopes that are not active yet. In this case, before starting the activity, the process engine instantiates the *Evaluate Loan Application* subprocess. Where before the activity instance tree was
 
 ```
 ProcessInstance
@@ -291,7 +291,7 @@ Apart from instantiating these parent scopes, the engine also ensures to registe
 
 <div data-bpmn-diagram="./bpmn/example2"></div>
 
-Starting the activity *Assess Credit Worthiness* also registers an event subscription for the message boundary event *Cancellation Notice Received* such that it is possible to cancel the sub process this way.
+Starting the activity *Assess Credit Worthiness* also registers an event subscription for the message boundary event *Cancellation Notice Received* such that it is possible to cancel the subprocess this way.
 
 
 ### Ancestor Selection for Instantiation
@@ -312,7 +312,7 @@ ProcessInstance
     Assess Credit Worthiness
 ```
 
-The sub process scope has been instantiated as well. Now assume that the sub process is already instantiated, such as in the following tree:
+The subprocess scope has been instantiated as well. Now assume that the subprocess is already instantiated, such as in the following tree:
 
 ```
 ProcessInstance
@@ -320,7 +320,7 @@ ProcessInstance
     Assess Credit Worthiness
 ```
 
-Starting *Assess Credit Worthiness* again will start it in the context of the existing sub process instance, such that the resulting tree is:
+Starting *Assess Credit Worthiness* again will start it in the context of the existing subprocess instance, such that the resulting tree is:
 
 ```
 ProcessInstance
@@ -329,7 +329,7 @@ ProcessInstance
     Assess Credit Worthiness
 ```
 
-If you want to avoid this behavior and instead want to instantiate the sub process a second time, an id of an ancestor activity instance can be supplied by using the method `startBeforeActivity(String activityId, String ancestorActivityInstanceId)` - similar methods exist for starting after an activity and starting a transition. The parameter `ancestorActivityInstanceId` takes the id of an activity instance that is currently active and that belongs to an *ancestor* activity of the activity to be started. An activity is a valid ancestor, if it contains the activity to be started (either directly, or indirectly with other activities in between).
+If you want to avoid this behavior and instead want to instantiate the subprocess a second time, an id of an ancestor activity instance can be supplied by using the method `startBeforeActivity(String activityId, String ancestorActivityInstanceId)` - similar methods exist for starting after an activity and starting a transition. The parameter `ancestorActivityInstanceId` takes the id of an activity instance that is currently active and that belongs to an *ancestor* activity of the activity to be started. An activity is a valid ancestor, if it contains the activity to be started (either directly, or indirectly with other activities in between).
 
 With a given ancestor activity instance id, all scopes in between the ancestor activity and the activity to be started will be instantiated, regardless of whether they are already instantiated. In the example, the following code starts the activity *Assess Credit Worthiness* with the process instance (being the root activity instance) as the ancestor:
 
@@ -351,12 +351,12 @@ ProcessInstance
     Assess Credit Worthiness
 ```
 
-The sub process was started a second time.
+The subprocess was started a second time.
 
 
 ### Cancellation Propagation
 
-Canceling an activity instance propagates to parent activity instances that do not contain other activity instances. This behavior ensures that the process instance is not left in an execution state that makes no sense. This means, when a single activity is active in a sub process and that activity instance is canceled, the sub process is canceled as well. Consider the following activity instance tree:
+Canceling an activity instance propagates to parent activity instances that do not contain other activity instances. This behavior ensures that the process instance is not left in an execution state that makes no sense. This means, when a single activity is active in a subprocess and that activity instance is canceled, the subprocess is canceled as well. Consider the following activity instance tree:
 
 ```
 ProcessInstance
@@ -412,7 +412,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
   .execute();
 ```
 
-Due to [cancellation propagation](#cancellation-propagation), the sub process instance is canceled when the cancellation instruction is executed only to be re-instantiated when the instantiation instruction is executed. This means, after the modification has been executed, there is a different instance of the *Evaluate Loan Application* sub process. Any entities associated with the previous instance have been removed, such as variables or event subscriptions.
+Due to [cancellation propagation](#cancellation-propagation), the subprocess instance is canceled when the cancellation instruction is executed only to be re-instantiated when the instantiation instruction is executed. This means, after the modification has been executed, there is a different instance of the *Evaluate Loan Application* subprocess. Any entities associated with the previous instance have been removed, such as variables or event subscriptions.
 
 In contrast, consider the case where the instantiation is performed first:
 
@@ -424,16 +424,16 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
   .execute();
 ```
 
-Due to the [default ancestor selection](#ancestor-selection-for-instantiation) during instantiation and the fact that cancellation does not propagate to the sub process instance in this case, the sub process instance is the same after modification as it was before. Related entities like variables and event subscriptions are preserved.
+Due to the [default ancestor selection](#ancestor-selection-for-instantiation) during instantiation and the fact that cancellation does not propagate to the subprocess instance in this case, the subprocess instance is the same after modification as it was before. Related entities like variables and event subscriptions are preserved.
 
 
 ### Start Activities with Interrupting/Canceling Semantics
 
-Process instance modification respects any interrupting or canceling semantics of the activities to be started. In particular, starting an interrupting boundary event or an interrupting event sub process will cancel/interrupt the activity it is defined on/in. Consider the following process:
+Process instance modification respects any interrupting or canceling semantics of the activities to be started. In particular, starting an interrupting boundary event or an interrupting event subprocess will cancel/interrupt the activity it is defined on/in. Consider the following process:
 
 <div data-bpmn-diagram="./bpmn/example3"></div>
 
-Assume that the activity *Assess Credit Worthiness* is currently active. The event sub process can be started with the following code:
+Assume that the activity *Assess Credit Worthiness* is currently active. The event subprocess can be started with the following code:
 
 ```java
 ProcessInstance processInstance = ...;
@@ -442,7 +442,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
   .execute();
 ```
 
-Since the start event of the *Cancel Evaluation* sub process is interrupting, it will cancel the running instance of *Assess Credit Worthiness*. The same happens when the start event of the event subprocess is started via:
+Since the start event of the *Cancel Evaluation* subprocess is interrupting, it will cancel the running instance of *Assess Credit Worthiness*. The same happens when the start event of the event subprocess is started via:
 
 ```java
 ProcessInstance processInstance = ...;
@@ -451,7 +451,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
   .execute();
 ```
 
-However, when an activity located in the event sub process is directly started, the interruption is not executed. Consider the following code:
+However, when an activity located in the event subprocess is directly started, the interruption is not executed. Consider the following code:
 
 ```java
 ProcessInstance processInstance = ...;

@@ -238,11 +238,11 @@ See the [Performance Considerations](#performance-considerations) section on thi
 
 Authorizations may range over all users, an individual user or a group of users, or they may apply to an individual resource instance or all instances of the same type (resourceId = ANY). The precedence is as follows:
 
-* An authorization applying to an individual resource instance precedes over an authorization applying to all instances of the same resource type.
-* An authorization for an individual user precedes over an authorization for a group.
-* A Group authorization precedes over a GLOBAL authorization.
-* A Group GRANT authorization precedes over a Group REVOKE authorization.
-* A User GRANT authorization precedes over a User REVOKE authorization.
+* An authorization applying to an individual resource instance takes precedence over an authorization applying to all instances of the same resource type.
+* An authorization for an individual user takes precedence over an authorization for a group.
+* A Group authorization takes precedence over a GLOBAL authorization.
+* A Group GRANT authorization takes precedence over a Group REVOKE authorization.
+* A User GRANT authorization takes precedence over a User REVOKE authorization.
 
 ### When are Authorizations checked?
 
@@ -550,7 +550,7 @@ The table below shows a detailed overview on which permissions authorize a user 
   </tbody>
 </table>
 
-GRANT and REVOKE authorizations with **Task Work**, **Task Assign**, and **Update Variable** permissions precede over **Update** and **Update Task**.
+GRANT and REVOKE authorizations with **Task Work**, **Task Assign**, and **Update Variable** permissions take precedence over **Update** and **Update Task**.
 
 ### Default Task Permissions
 
@@ -588,8 +588,8 @@ The **Create Instance** permission is required to start new process instances.
 
 :::
 
-GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, **Suspend Instance**, **Update Instance Variable**, and **Update Task Variable** permissions precede over **Update**.
-Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.
+GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, **Suspend Instance**, **Update Instance Variable**, and **Update Task Variable** permissions take precedence over **Update**.
+Keep in mind that a user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, it could trigger the successful evaluation of a conditional event related to this variable.
 
 ### Additional Process Instance Permissions
 
@@ -599,8 +599,8 @@ In addition to **Create**, **Read**, **Update**, and **Delete**, the following p
 * Suspend
 * Update Variable
 
-GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, and **Update Variable** permissions precede over **Update**.
-Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.
+GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, and **Update Variable** permissions take precedence over **Update**.
+Keep in mind that a user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, it could trigger the successful evaluation of a conditional event related to this variable.
 
 ### Additional Decision Definition Permissions
 
@@ -631,7 +631,7 @@ In addition to **Create**, **Update**, **Read**, and **Delete**, the following p
 * Create Batch Set Variables
 * Create Batch Correlate Messages
 
-GRANT and REVOKE authorizations with "Create Batch …" permissions precede over Create.
+GRANT and REVOKE authorizations with "Create Batch …" permissions take precedence over Create.
 
 ### Default Read Variable Permissions
 When the `enforceSpecificVariablePermission` process engine configuration is enabled, in order to read variables, the user needs to be granted the following permissions:

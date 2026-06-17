@@ -176,7 +176,7 @@ the Operaton DMN engine:
 #### SUM aggregator
 The SUM aggregator sums up all outputs from the satisfied rules.
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-sum.png)Hit Policy Collect SUM" class="no-lightbox
-The showed decision table can be used to sum up the salary bonus for an employee. For example, the employee has been working in the company for
+The shown decision table can be used to sum up the salary bonus for an employee. For example, the employee has been working in the company for
 3.5 years. So the first, second and third rule will match and the result of the decision table is 600, since the output is summed up.
 
 #### MIN aggregator

@@ -491,7 +491,7 @@ Reminder: a retry may be required if there are any failures during the transacti
 
 If the retry configuration is set for a multi-instance activity then the configuration is applied to the [multi-instance body](../process-engine/transactions-in-processes.md#asynchronous-continuations-of-multi-instance-activities). Additionally, the retries of the inner activities can also be configured using the extension element as child of the `multiInstanceLoopCharacteristics` element.
 
-The following example defines the retries of a multi-instance service task with asynchronous continuation of the multi-instance body and the inner activity. If a failure occur during one of the five parallel instances then the job of the failed instance will be retried up to 3 times with a delay of 5 seconds. In case all instances ended successful and a failure occur during the transaction which follows the task, the job will be retried up to 5 times with a delay of 5 minutes.
+The following example defines the retries of a multi-instance service task with asynchronous continuation of the multi-instance body and the inner activity. If a failure occurs during one of the five parallel instances then the job of the failed instance will be retried up to 3 times with a delay of 5 seconds. If all instances end successfully and a failure occurs during the transaction which follows the task, the job will be retried up to 5 times with a delay of 5 minutes.
 
 ```xml
 <definitions xmlns:operaton="http://operaton.org/schema/1.0/bpmn">
