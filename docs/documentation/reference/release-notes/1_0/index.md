@@ -7,7 +7,7 @@ sidebar_position: 10
 
 # About release 1.0
 
-This is the first official, stable release of Operaton. After forking the [Camunda 7 Community Edition codebase](https://github.com/camunda/camunda-bpm-platform) in 2024,
+This is the first official, stable release of Operaton. After forking the [Camunda 7 platform](https://github.com/camunda/camunda-bpm-platform) in 2024,
 we have been working hard to modernize the code base and prepare for the 1.0.0 stable release.
 
 Several beta releases have been published to gather feedback from the community and ensure a smooth
@@ -37,7 +37,7 @@ in our [Operaton Migration Repository](https://github.com/operaton/migrate-from-
 
 ## 📊 Facts & Numbers
 
-Since forking [Camunda 7 Community Edition](https://github.com/camunda/camunda-bpm-platform) in 2024, we have made significant progress in modernizing the codebase. Here are some key statistics:
+Since forking [Camunda 7 Platform](https://github.com/camunda/camunda-bpm-platform) in 2024, we have made significant progress in modernizing the codebase. Here are some key statistics:
 
 - **Battle-Tested**: Operaton is already in production use by multiple organizations, showcasing its reliability and performance in real-world scenarios.
 - **Commits**: Over **1,500 commits** have been made to the Operaton codebase since initiation of the fork until this release.
