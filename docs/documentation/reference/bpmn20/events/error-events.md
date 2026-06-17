@@ -28,7 +28,7 @@ An error event definition references an error element. The following is an examp
 
 ```xml
 <definitions>
-  <error id="myError" errorCode="ERROR-OCCURED" name="ERROR-OCCURED"/>
+  <error id="myError" errorCode="ERROR-OCCURRED" name="ERROR-OCCURRED"/>
   <!-- ... -->
   <process>
     <!-- ... -->
@@ -67,7 +67,7 @@ The referencing error event definition must specify <a href="../custom-extension
 
 ```xml
 <definitions>
-  <error id="myError" errorCode="ERROR-OCCURED" name="ERROR-OCCURED"
+  <error id="myError" errorCode="ERROR-OCCURRED" name="ERROR-OCCURRED"
       operaton:errorMessage="Something went wrong: ```${errorCause}" />
   <!-- ... -->
   <process>
@@ -192,7 +192,7 @@ A error boundary event is defined as a typical boundary event. As with the other
 
 ```xml
 <definitions>
-  <error id="myError" errorCode="ERROR-OCCURED" name="name of error"/>
+  <error id="myError" errorCode="ERROR-OCCURRED" name="name of error"/>
   <!-- ... -->
   <process>
     <!-- ... -->
