@@ -93,7 +93,7 @@ classpath. The procedure for this depends on the application server. In Apache T
 libraries have to be added to the shared `lib/` folder.
 
 :::note
-  [FreeMarker](http://freemarker.org/) is pre-installed in the Operaton pre-packaged distribution.
+  [FreeMarker](https://freemarker.apache.org/) is pre-installed in the Operaton pre-packaged distribution.
 :::
 
 
@@ -194,8 +194,8 @@ attribute.
 Finally, the input of the transformation must be mapped using the special variable `operaton_source`
 using a `<operaton:inputParameter ... />` mapping.
 
-[freemarker]: http://freemarker.org/
-[velocity]: http://velocity.apache.org/
+[freemarker]: https://freemarker.apache.org/
+[velocity]: https://velocity.apache.org/
 [operaton-template-engines-jsr223]: https://github.com/operaton-community-hub/operaton-template-engines-jsr223
 [use-scripts]: ../process-engine/scripting.md
 [script-source]: ../process-engine/scripting.md#script-source

@@ -21,7 +21,7 @@ For further details about the concepts behind plugins, please read the [Cockpit 
 
 :::warning[Difference between Cockpit and Admin plugins:]
   * To publish the plugin with Admin, its class name must be put into a file called ```org.operaton.bpm.admin.plugin.spi.AdminPlugin``` that resides in the directory ```META-INF/services```.
-  * The plugin mechanism of Admin does not allow to provide additional SQL queries by using [MyBatis](http://www.mybatis.org/) mappings.
+  * The plugin mechanism of Admin does not allow to provide additional SQL queries by using [MyBatis](https://mybatis.org/mybatis-3/) mappings.
 :::
 
 

@@ -19,7 +19,7 @@ available:
 
 Dates can be configured by specifying a `dateFormat` object. The values of the properties of this
 object must be strings representing date formats in accordance with
-[moment.js](http://momentjs.com). Following date formats are used within Tasklist:
+[moment.js](https://momentjs.com). Following date formats are used within Tasklist:
 
 * `monthName` represents the name of a month (e.g., January).
 * `day` represents the number of a day in a month (1..31).
@@ -179,7 +179,7 @@ export default {
 ## Advanced Styles Customization
 
 In addition to the basic `user-styles.css` file, you can edit the source style- and layout files
-using [less](http://lesscss.org/) to change the overall appearance of Tasklist.
+using [Less](https://lesscss.org/) to change the overall appearance of Tasklist.
 
 If you want to customize the interface with `less`, you should probably start by having a look
 at the variables defined in the following files:

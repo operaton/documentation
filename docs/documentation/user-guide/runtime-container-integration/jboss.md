@@ -175,7 +175,7 @@ The restrictions which apply for [providing a custom process engine configuratio
 
 To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., `${PROPERTY_KEY}`).
 Expression resolution is supported for all elements and attributes except for the `name` attribute on the elements `process-engine` and `job-acquisition`.
-System properties may be set via command line (`-D`option). Read more on expressions in the documentation for [WildFly](http://docs.wildfly.org/23/Extending_WildFly.html#expressions).
+System properties may be set via command line (`-D`option). Read more on expressions in the documentation for [WildFly](https://docs.wildfly.org/23/Extending_WildFly.html#expressions).
 
 ### Example
 

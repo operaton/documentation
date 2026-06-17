@@ -7,7 +7,7 @@ description: "Install and configure the Full Distribution on a vanilla WildFly A
 ---
 ## Install the Full Distribution on a WildFly Application Server manually
 
-This document describes the installation of Operaton and its components on a vanilla [WildFly Application Server](http://www.wildfly.org) or JBoss EAP 7 / 8.
+This document describes the installation of Operaton and its components on a vanilla [WildFly Application Server](https://www.wildfly.org/) or JBoss EAP 7 / 8.
 
 :::note[Reading this Guide]
 This guide uses a number of variables to denote common path names and constants:
@@ -137,8 +137,8 @@ typically `bin`.
 Using H2 as a database is ideal for development purposes but is not recommended for usage in a productive environment.
 These links point you to resources for other databases:
 
-* [How to configure an Oracle database](http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle)
-* [How to configure a MySQL database](http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql)
+* [How to configure an Oracle database](https://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle)
+* [How to configure a MySQL database](https://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql)
 
 ### Optional Components
 

@@ -113,4 +113,4 @@ public boolean isHistoryEventProduced(HistoryEventType eventType, Object entity)
 
 
 
-[1]: http://docs.operaton.org/latest/api-references/javadoc/org/operaton/bpm/engine/impl/history/event/HistoryEventTypes.html
+[1]: https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/history/event/HistoryEventTypes.html
