@@ -412,8 +412,8 @@ Please find below external documentation on how to configure your application se
     * [Servlet Container Configuration](https://docs.jboss.org/author/display/WFLY/Undertow%20subsystem%20configuration.html#108626010_Undertowsubsystemconfiguration-Servletcontainerconfiguration)
     * [Model Reference](https://wildscribe.github.io/WildFly/12.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
 * JBoss EAP 7.0+: Official Documentation
-    * [Servlet Container Configuration](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/reference_material#idm139812627222560)
-    * [Model Refernce](https://wildscribe.github.io/JBoss%20EAP/7.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
+    * [Servlet Container Configuration](https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/reference_material)
+    * [Model Reference](https://wildscribe.github.io/JBoss%20EAP/7.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
 * Operaton Run/Spring Boot 2.3+
     * Official Documentation
         * [Javadocs about ErrorProperties.IncludeStacktrace](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/api/org/springframework/boot/autoconfigure/web/ErrorProperties.IncludeStacktrace.html)
