@@ -10,7 +10,7 @@ menu:
 
 ---
 
-After a process instance termination, its historic data still exists and can be accessed to restore a process instance, provided that the history level is set to FULL. 
+After a process instance termination, its historic data still exists and can be accessed to restore a process instance, provided that the history level is set to FULL.
 This can, for example, be useful when termination did not proceed in a desired way. Use cases for this API may be:
 
 * Restoring the last state of process instances that have been erroneously canceled
@@ -43,7 +43,7 @@ runtimeService.restartProcessInstance(processInstance.getProcessDefinitionId())
 	.execute();
 ```
 
-The process instance has been restarted with the last set of variables. However, only global variables are set in the restarted process instance. 
+The process instance has been restarted with the last set of variables. However, only global variables are set in the restarted process instance.
 Local variables can be set manually, for example by calling `RuntimeService.setVariableLocal(...)`.
 
 :::note
@@ -230,9 +230,9 @@ Batch batch = runtimeService.restartProcessInstances(processDefinition.getId())
 
 Using a batch, the process instance restart is split into several jobs which
 are executed asynchronously. These batch jobs are executed by the job executor.
-See the [batch](../process-engine/batch.md) section for more 
-information. A batch is completed if all batch execution jobs are successfully 
-completed. However, in contrast to the synchronous execution, it is not guaranteed 
+See the [batch](../process-engine/batch.md) section for more
+information. A batch is completed if all batch execution jobs are successfully
+completed. However, in contrast to the synchronous execution, it is not guaranteed
 that either all or no process instances are restarted. As the restart is split into
 several independent jobs, every single job may fail or succeed.
 

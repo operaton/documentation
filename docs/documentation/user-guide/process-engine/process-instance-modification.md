@@ -16,7 +16,7 @@ While the process model contains sequence flows that define in which order activ
 * Migrating process instances from one version of a process definition to another
 * Testing: Activities can be skipped or repeated for isolated testing of individual process segments
 
-To perform such an operation, the process engine offers the *process instance modification API* that is entered via `RuntimeService.createProcessInstanceModification(...)` or 
+To perform such an operation, the process engine offers the *process instance modification API* that is entered via `RuntimeService.createProcessInstanceModification(...)` or
 `RuntimeService.createModification(...)`. This API allows you to specify multiple *modification instructions* in one call by using a fluent builder. In particular, it is possible to:
 
 * start execution before an activity
@@ -546,12 +546,12 @@ Batch modificationBatch = runtimeService.createProcessInstanceModification(proce
         .executeAsync();
 ```
 This would create a modification [batch](../process-engine/batch.md) which will be executed asynchronously.
-Providing variables is not supported when executing async modification of single process instance. 
+Providing variables is not supported when executing async modification of single process instance.
 
 ### Modification of Multiple Process Instances
 
 When there are multiple process instances which fulfill a specific criteria, it is possible to modify them at once using `RuntimeService.createModification(...)`. This method allows you to specify
-the modification instructions and IDs of process instances that should be modified. It is required that the process instances belong to the given process definition. 
+the modification instructions and IDs of process instances that should be modified. It is required that the process instances belong to the given process definition.
 
 The fluent modification builder offers the following instructions to be submitted:
 
@@ -560,7 +560,7 @@ The fluent modification builder offers the following instructions to be submitte
 * `startTransition(String transitionId)`
 * `cancelAllForActivity(String activityId)`
 
-Process instances can be selected for modification by either providing a set of process instance IDs or providing a process instance query. 
+Process instances can be selected for modification by either providing a set of process instance IDs or providing a process instance query.
 It is also possible to specify both, a list of process instance IDs and a query. The process instances to be modified will then be the union of the resulting sets.
 
 ```java
