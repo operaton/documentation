@@ -21,6 +21,10 @@ Operaton supports the following ways of installing the database schema:
 * Use the database migration tool [Liquibase](https://www.liquibase.org/) with the provided changelog for a semi-automatic installation and update. Liquibase keeps track of database schema changes. This allows you to focus on *when* changes should be applied rather than also on *which* changes are relevant. Starting with version `7.16.0`, Operaton comes with a curated *changelog file* that Liquibase can consume.
 * Use the provided SQL scripts with the tools related to your database for a fully manual installation and update. A manual procedure allows you to fully control the SQL statements that are executed on your database instance and to adjust those statements to your needs if necessary.
 
+SQL script archives are attached to the [Operaton GitHub releases](https://github.com/operaton/operaton/releases).
+Stable release assets are attached to tags such as `v2.1.1`; snapshot assets are attached to prerelease tags such as `2.2.0-SNAPSHOT`.
+The archive is named `operaton-sql-scripts-<schema-version>.tar.gz` and extracts to `operaton-sql-scripts-<schema-version>`.
+
 :::note[Isolation level]
 READ COMMITED is the required isolation level for database systems to run Operaton with.
 You may have to change the default setting on your database when installing Operaton.
@@ -37,9 +41,8 @@ The [update](#update) paragraph provides more details on this topic.
 
 Operaton comes with a maintained changelog file that Liquibase can consume.
 This changelog defines which SQL statements to execute on a database.
-You can find the changelog and its referenced resources on our [Artifact Repository].
-Select the respective version (`$PLATFORM_VERSION`) and download the resources as a `zip` or `tar.gz` file.
-Open the `operaton-sql-scripts-$PLATFORM_VERSION/liquibase` folder to find the changelog.
+Select the matching Operaton release and download the `operaton-sql-scripts-<schema-version>.tar.gz` asset.
+Open the `operaton-sql-scripts-<schema-version>/liquibase` folder to find the changelog.
 In case you are using a [pre-packaged distribution], the Liquibase resources already reside in the `sql/liquibase` folder of the distribution.
 
 The `liquibase` folder contains the following resources:
@@ -71,9 +74,9 @@ Furthermore, if you have defined a specific prefix for the entities of your data
 ### Manual installation
 
 To install the database schema required for Operaton, we provide a set of scripts with prepared DDL statements.
-Those scripts create all required tables and default indices. You can find the provided SQL scripts on our [Artifact Repository].
-Select the respective version (`$PLATFORM_VERSION`) and download the scripts as a `zip` or `tar.gz` file.
-Open the `operaton-sql-scripts-$PLATFORM_VERSION/create` folder to find all available scripts.
+Those scripts create all required tables and default indices.
+Select the matching Operaton release and download the `operaton-sql-scripts-<schema-version>.tar.gz` asset.
+Open the `operaton-sql-scripts-<schema-version>/create` folder to find all available scripts.
 In case you are using a [pre-packaged distribution], the SQL scripts already reside in the `sql/create` folder of the distribution.
 
 The `create` folder contains the following SQL scripts:
@@ -112,8 +115,8 @@ Based on that changelog and the tracking tables, Liquibase determines which chan
 
 Perform the following steps to update the database schema on your database instance:
 
-1. Select the respective version you want to update to (`$Y`) on our [Artifact Repository] and download the resources as a `zip` or `tar.gz` file.
-Open the `operaton-sql-scripts-$Y/liquibase` folder to find the changelog file.
+1. Select the Operaton release you want to update to (`$Y`) and download the `operaton-sql-scripts-<schema-version>.tar.gz` asset.
+Open the `operaton-sql-scripts-<schema-version>/liquibase` folder to find the changelog file.
 In case you are using a [pre-packaged distribution], the Liquibase resources already reside in the `sql/liquibase` folder of the distribution with version `$Y`.
 1. Run Liquibase's [update command](https://docs.liquibase.com/commands/community/update.html) referencing the new `operaton-changelog.xml` of version `$Y`.
 Liquibase takes care of determining the necessary changes and applying them to your database according to the new changelog.
@@ -152,9 +155,8 @@ Updating from your current minor version (`$X`) to its follow-up version (`$Y`) 
 Follow the outlined procedure to perform this update:
 
 1. Check for [available database patch scripts](#patch-level-update) for your database that are within the bounds of your update path.
-You can find the scripts on our [Artifact Repository].
-Select the respective version you want to update to (`$Y`) and download the scripts as a `zip` or `tar.gz` file.
-Open the `operaton-sql-scripts-$Y/upgrade` folder to find all available scripts.
+Select the Operaton release you want to update to (`$Y`) and download the `operaton-sql-scripts-<schema-version>.tar.gz` asset.
+Open the `operaton-sql-scripts-<schema-version>/upgrade` folder to find all available scripts.
 In case you are using a [pre-packaged distribution], the SQL scripts already reside in the `sql/upgrade` folder of the distribution with version `$Y`.
 We highly recommend executing these patches before updating.
 Execute those related to your database type (`$DATABASENAME`) in ascending order by version number.
