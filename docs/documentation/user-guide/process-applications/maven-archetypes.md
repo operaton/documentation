@@ -13,7 +13,7 @@ menu:
 Maven Archetypes are project templates that can generate a ready-to-use Maven project.
 
 :::caution[Current Availability]
-Operaton does not currently publish public Maven archetype artifacts or an archetype catalog. Older documentation pointed to a Camunda Artifactory repository and to a former archetype template repository, but those locations are not available for Operaton and should not be used.
+Operaton does not currently publish public Maven archetype artifacts or an archetype catalog. Older documentation pointed to artifact and template repositories that are not available for Operaton and should not be used.
 :::
 
 ## Recommended Project Setup
