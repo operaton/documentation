@@ -237,7 +237,7 @@ ProcessInstance processInstance = ...;
 ActivityInstance activityInstance = runtimeService.getActivityInstance(processInstance.getId());
 ```
 
-`ActivityInstance` is a recursive data structure where the activity instance returned by the above method call represents the process instance. The IDs of `ActivityInstance` objects can be used for [cancelation of specific instances](#cancel-an-activity-instance) or for [ancestor selection during instantiation](#ancestor-selection-for-instantiation).
+`ActivityInstance` is a recursive data structure where the activity instance returned by the above method call represents the process instance. The IDs of `ActivityInstance` objects can be used for [cancellation of specific instances](#cancel-an-activity-instance) or for [ancestor selection during instantiation](#ancestor-selection-for-instantiation).
 
 The interface `ActivityInstance` has methods `getChildActivityInstances` and `getChildTransitionInstances` to drill down in the activity instance tree. For example, assume that the activities *Assess Credit Worthiness* and *Register Application* are active. Then the activity instance tree looks as follows:
 
@@ -291,7 +291,7 @@ Apart from instantiating these parent scopes, the engine also ensures to registe
 
 <div data-bpmn-diagram="./bpmn/example2"></div>
 
-Starting the activity *Assess Credit Worthiness* also registers an event subscription for the message boundary event *Cancelation Notice Received* such that it is possible to cancel the sub process this way.
+Starting the activity *Assess Credit Worthiness* also registers an event subscription for the message boundary event *Cancellation Notice Received* such that it is possible to cancel the sub process this way.
 
 
 ### Ancestor Selection for Instantiation
@@ -354,7 +354,7 @@ ProcessInstance
 The sub process was started a second time.
 
 
-### Cancelation Propagation
+### Cancellation Propagation
 
 Canceling an activity instance propagates to parent activity instances that do not contain other activity instances. This behavior ensures that the process instance is not left in an execution state that makes no sense. This means, when a single activity is active in a sub process and that activity instance is canceled, the sub process is canceled as well. Consider the following activity instance tree:
 
@@ -381,7 +381,7 @@ ProcessInstance
   Decline Loan Application
 ```
 
-The following modification operation succeeds although the process instance has no active activity instance directly after the cancelation instruction has been executed:
+The following modification operation succeeds although the process instance has no active activity instance directly after the cancellation instruction has been executed:
 
 ```java
 ProcessInstance processInstance = ...;
@@ -402,7 +402,7 @@ ProcessInstance
     Assess Credit Worthiness
 ```
 
-Assume you have the task of canceling the instance of *Assess Credit Worthiness* and starting the activity *Register Application*. There are two orderings for these two instructions: Either the cancelation is performed first, or the instantiation is performed first. In the former case, the code looks as follows:
+Assume you have the task of canceling the instance of *Assess Credit Worthiness* and starting the activity *Register Application*. There are two orderings for these two instructions: Either the cancellation is performed first, or the instantiation is performed first. In the former case, the code looks as follows:
 
 ```java
 ProcessInstance processInstance = ...;
@@ -412,7 +412,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
   .execute();
 ```
 
-Due to [cancelation propagation](#cancelation-propagation), the sub process instance is canceled when the cancelation instruction is executed only to be re-instantiated when the instantiation instruction is executed. This means, after the modification has been executed, there is a different instance of the *Evaluate Loan Application* sub process. Any entities associated with the previous instance have been removed, such as variables or event subscriptions.
+Due to [cancellation propagation](#cancellation-propagation), the sub process instance is canceled when the cancellation instruction is executed only to be re-instantiated when the instantiation instruction is executed. This means, after the modification has been executed, there is a different instance of the *Evaluate Loan Application* sub process. Any entities associated with the previous instance have been removed, such as variables or event subscriptions.
 
 In contrast, consider the case where the instantiation is performed first:
 
@@ -424,7 +424,7 @@ runtimeService.createProcessInstanceModification(processInstance.getId())
   .execute();
 ```
 
-Due to the [default ancestor selection](#ancestor-selection-for-instantiation) during instantiation and the fact that cancelation does not propagate to the sub process instance in this case, the sub process instance is the same after modification as it was before. Related entities like variables and event subscriptions are preserved.
+Due to the [default ancestor selection](#ancestor-selection-for-instantiation) during instantiation and the fact that cancellation does not propagate to the sub process instance in this case, the sub process instance is the same after modification as it was before. Related entities like variables and event subscriptions are preserved.
 
 
 ### Start Activities with Interrupting/Canceling Semantics
