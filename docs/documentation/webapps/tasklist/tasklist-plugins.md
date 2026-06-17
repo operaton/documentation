@@ -52,7 +52,7 @@ Here you can see the various points at which you are able to add your own plugin
 
 This plugin points properties contain the attribute `label`, which will be rendered in the navigation even when the plugin is not selected.
 
-```Javascript
+```javascript
 properties: {
   label: "My Plugin"
 }
