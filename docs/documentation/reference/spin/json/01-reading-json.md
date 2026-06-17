@@ -47,7 +47,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinJsonNode json = S(reader, json());
 ```
 
-The `JSON(...)` method also supports readers. The following example shows how to read JSON from a file (error handling ommitted):
+The `JSON(...)` method also supports readers. The following example shows how to read JSON from a file (error handling omitted):
 
 ```java
 import static org.operaton.spin.Spin.*;
