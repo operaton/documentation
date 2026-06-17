@@ -76,5 +76,5 @@ A single DMN table that was executed could look like this in Operaton Cockpit:
 ![Example image](/img/get-started/quick-start/cockpit-dmn-table.png)
 
 :::note[Success!]
-Congratulations! You've successfully completed the Operaton Platform Quick Start. Ready to continue? We recommend the [Operaton Platform documentation](https://docs.operaton.org/docs/documentation/).
+Congratulations! You've successfully completed the Operaton Platform Quick Start. Ready to continue? We recommend the [Operaton Platform documentation](/docs/documentation/).
 :::
