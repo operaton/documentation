@@ -48,8 +48,8 @@ The full distribution bundles
   pre-installed in the container.
 :::
 
-:::note[Wildfly Application Server]
-  Wildfly Application Server is provided as part of the archives as a convenience. For a copy of the source code, the full set of attribution notices, and other relevant information please see https://github.com/wildfly/wildfly. We will also provide you with a copy of the source code if you [contact our Open-Source Compliance Team](./licenses.md#contact) at any time within three years of you downloading an archive (for which we may charge a nominal sum). Wildfly Application Server is copyright © JBoss, Home of Professional Open Source, 2010, Red Hat Middleware LLC [..and contributors].
+:::note[WildFly Application Server]
+  WildFly Application Server is provided as part of the archives as a convenience. For a copy of the source code, the full set of attribution notices, and other relevant information please see https://github.com/wildfly/wildfly. We will also provide you with a copy of the source code if you [contact our Open-Source Compliance Team](./licenses.md#contact) at any time within three years of you downloading an archive (for which we may charge a nominal sum). WildFly Application Server is copyright © JBoss, Home of Professional Open Source, 2010, Red Hat Middleware LLC [..and contributors].
 :::
 
 Download stable distribution assets from the [latest Operaton release][operaton-releases-latest].
@@ -61,7 +61,7 @@ See the [Installation Guide][installation-guide-full] for additional details.
 
 ## Download Operaton Modeler
 
-Operaton Modeler is a modeling tool for BPMN 2.0 and DMN 1.3. You can find installation
+Operaton Modeler supports BPMN 2.0, DMN 1.3, CMMN 1.1, and Operaton Forms. You can find installation
 instructions in the [Operaton Modeler installation guide][operaton-modeler-install].
 
 
