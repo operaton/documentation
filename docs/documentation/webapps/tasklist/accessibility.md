@@ -30,22 +30,22 @@ To make working with the Tasklist easier, you can use keyboard shortcuts to jump
   <tr>
     <td>CTRL + SHIFT + F</td>
     <td><code>Set the keyboard focus to the first filter in the filter list</code></td>
-   
+
   </tr>
   <tr>
     <td>CTRL + ALT + L</td>
     <td><code>Set the keyboard focus to the first task in the list of tasks</code></td>
-   
+
   </tr>
   <tr>
     <td>CTRL + ALT + F</td>
     <td><code>Set the keyboard focus to the first input field in an embedded task form</code></td>
-  
+
   </tr>
   <tr>
     <td>CTRL + ALT + P</td>
     <td><code>Open the start process modal dialog</code></td>
-   
+
   </tr>
 </table>
 
