@@ -125,7 +125,7 @@ The transition in which the repetition rule is evaluated can be changed by an Op
 </definitions>
 ```
 
-This means that the repetition rule is  evaluated in the transition `disable`. So, whenever an instance of the defined human task gets disabled, the repetition rule is evaluated and if this rule evaluates to `true`, a new instance is created. As a consequence, the repetition rule is not evaluated when an instance transitions in state `COMPLETED` anymore.
+This means that the repetition rule is evaluated in the transition `disable`. So, whenever an instance of the defined human task gets disabled, the repetition rule is evaluated and if this rule evaluates to `true`, a new instance is created. As a consequence, the repetition rule is not evaluated when an instance transitions in state `COMPLETED` anymore.
 
 ## Repetition triggered by entry criteria
 

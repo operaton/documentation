@@ -42,7 +42,7 @@ It is important not to confuse the BPMN transaction subprocess with technical (A
 
 A BPMN transaction differs from a technical transaction in the following ways:
 
-*   While an ACID transaction is typically short lived, a BPMN transaction may take hours, days or even months to complete. (Consider a case where one of the activities grouped by a transaction is a usertask; typically, people have longer response times than applications. Or, in another situation, a BPMN transaction might wait for some business event to occur, like the fact that a particular order has been fulfilled.) Such operations usually take considerably longer to complete than updating a record in a database or storing a message using a transactional queue.
+*   While an ACID transaction is typically short lived, a BPMN transaction may take hours, days or even months to complete. (Consider a case where one of the activities grouped by a transaction is a user task; typically, people have longer response times than applications. Or, in another situation, a BPMN transaction might wait for some business event to occur, like the fact that a particular order has been fulfilled.) Such operations usually take considerably longer to complete than updating a record in a database or storing a message using a transactional queue.
 
 *   Because it is impossible to scope a technical transaction to the duration of a business activity, a BPMN transaction typically spans multiple ACID transactions.
 

@@ -6,7 +6,7 @@ sidebar_position: 160
 ---
 
 
-The process engine is a piece of passive Java code which works in the Thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's http-thread-pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
+The process engine is a piece of passive Java code which works in the thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's HTTP thread pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
 
 On any such *external* trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed *later*, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an *internal* trigger. That is why the engine also needs an active component, the [job executor](../process-engine/the-job-executor.md), which is able to fetch registered jobs and process them asynchronously.
 
@@ -54,7 +54,7 @@ The most common motivation is the requirement to scope *logical units of work*. 
 
 ![Example img](/img/documentation/user-guide/process-engine/transactions-2.png)Asynchronous Continuations
 
-We are completing the user task, generating an invoice and then sending that invoice to the customer. It can be argued that the generation of the invoice is not part of the same unit of work: we do not want to roll back the completion of the usertask if generating an invoice fails.
+We are completing the user task, generating an invoice and then sending that invoice to the customer. It can be argued that the generation of the invoice is not part of the same unit of work: we do not want to roll back the completion of the user task if generating an invoice fails.
 Ideally, the process engine would complete the user task (**1**), commit the transaction and return
 control to the calling application (**2**). In a background thread (**3**), it would generate the invoice.
 This is the exact behavior offered by asynchronous continuations: they allow us to scope transaction

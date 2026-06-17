@@ -67,10 +67,10 @@ Note that Operaton does not ship with a library that lets you define such a data
 
 The following properties can be set, regardless of whether you are using the JDBC or data source approach:
 
-* `databaseType`: It's normally not necessary to specify this property as it is automatically analyzed from the database connection meta data. Should only be specified in case automatic detection fails. Possible values: \{h2, mysql, oracle, postgres, mssql, db2, mariadb\}. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.
+* `databaseType`: It's normally not necessary to specify this property as it is automatically analyzed from the database connection metadata. Should only be specified in case automatic detection fails. Possible values: \{h2, mysql, oracle, postgres, mssql, db2, mariadb\}. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.
 * `databaseSchemaUpdate`: Sets the strategy to handle the database schema on process engine boot and shutdown.
   * `true` (default): Upon building the process engine, a check is performed whether the Operaton tables exist in the database. If they don't exist, they are created. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
-  * `false`: Does not perform any checks and assumes that the Operaton table exist in the database. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
+  * `false`: Does not perform any checks and assumes that the Operaton tables exist in the database. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
   * `create-drop`: Creates the schema when the process engine is being created and drops the schema when the process engine is being closed.
 
 :::note[Supported Databases]
@@ -93,7 +93,7 @@ Here are some sample JDBC urls:
 ### Business Key
 
 Since the release of Camunda BPM 7.0.0-alpha9, the unique constraint for the business key is removed in the runtime and history tables and the database schema create and drop scripts.
-If you rely on the constraint, you can add it manually to your schema by issuing following sql statements:
+If you rely on the constraint, you can add it manually to your schema by issuing the following SQL statements:
 
 DB2
 
@@ -165,7 +165,7 @@ alter table ACT_HI_PROCINST add constraint ACT_UNIQ_HI_BUS_KEY UNIQUE (PROC_DEF_
 
 ## Isolation Level Configuration
 
-Most database management systems provide four different isolation levels to be set. For instance the levels defined by ANSI/USO SQL are (from low to high isolation):
+Most database management systems provide four different isolation levels. For instance, the levels defined by ANSI/ISO SQL are (from low to high isolation):
 
 * READ UNCOMMITTED
 * READ COMMITTED

@@ -584,7 +584,7 @@ section of the [Custom Extensions](../../reference/bpmn20/custom-extensions/inde
 
 ## JavaScript Considerations
 
-JavaScript code execution is part of the Java Runtime (JRE) with the **Nashorn** script engine until Java 14 and thus only there available out of the box.
+JavaScript code execution is part of the Java Runtime (JRE) with the **Nashorn** script engine until Java 14 and is therefore only available there out of the box.
 We include **GraalVM JavaScript** in the pre-packaged Operaton distributions as a replacement regardless of the JRE version.
 JavaScript code executes on GraalVM JavaScript with preference in the process engine context if this script engine is available.
 If this script engine cannot be found, the process engine defaults to let the JVM select an appropriate script engine.
