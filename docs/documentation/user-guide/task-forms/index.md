@@ -47,7 +47,7 @@ Form keys that are used in Tasklist have the structure `FORM-TYPE:LOCATION:FORM.
 </table>
 
 
-To configure the form in your process, open the process with the [Operaton Modeler](../../installation/camunda-modeler.md) and select the desired [UserTask][user-tasks] or [StartEvent][start-event]. Open the properties panel and enter the Form Key. The relevant XML tag looks like this:
+To configure the form in your process, open the process with the [Operaton Modeler](../../installation/operaton-modeler.md) and select the desired [UserTask][user-tasks] or [StartEvent][start-event]. Open the properties panel and enter the Form Key. The relevant XML tag looks like this:
 
 ```xml
 <userTask id="theTask" operaton:formKey="operaton-forms:deployment:forms/userTask.form"
@@ -279,7 +279,7 @@ The Operaton process engine supports generating HTML task forms based on Form Da
 </userTask>
 ```
 
-Form metadata can be graphically edited using the [Operaton Modeler](../../installation/camunda-modeler.md).
+Form metadata can be graphically edited using the [Operaton Modeler](../../installation/operaton-modeler.md).
 
 This form would look like this in Tasklist:
 

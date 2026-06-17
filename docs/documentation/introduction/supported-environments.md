@@ -82,7 +82,7 @@ Clustered or replicated databases are supported given the following conditions. 
 
 ## Operaton Modeler
 
-Operaton Modeler is documented separately. See the [Operaton Modeler installation guide](../installation/camunda-modeler.md)
+Operaton Modeler is documented separately. See the [Operaton Modeler installation guide](../installation/operaton-modeler.md)
 and the [Operaton Modeler repository](https://github.com/operaton/operaton-modeler) for current installation and build information.
 
 ## Maintenance Policy
