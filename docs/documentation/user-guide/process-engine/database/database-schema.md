@@ -87,7 +87,7 @@ The default configuration of the [MetricsReporter](../../process-engine/metrics.
 ## Task Metrics Log (ACT_RU_TASK_METER_LOG)
 
 The `ACT_RU_TASK_METER_LOG` table contains a collection of task related metrics that can help draw conclusions about usage, load
-and performance of the BPM platform. Task metrics contain a pseudonymized and fixed-length value of task assignees and their time of appearance. Please find detailed information about how task metrics are collected in the [Metrics User Guide](../../process-engine/metrics.md).
+and performance of Operaton. Task metrics contain a pseudonymized and fixed-length value of task assignees and their time of appearance. Please find detailed information about how task metrics are collected in the [Metrics User Guide](../../process-engine/metrics.md).
 
 Every assignment of a task to an assignee will create one row in `ACT_RU_TASK_METER_LOG`.
 
