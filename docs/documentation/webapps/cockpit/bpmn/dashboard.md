@@ -19,7 +19,7 @@ The processes dashboard of Cockpit is the entry point for process monitoring. It
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-process-definition-state.png)Deployed Processes
 
-With this plugin you can easily observe the state of a process definition. Green and red dots signalize running and [failed jobs][failed-jobs]. At this observing level a red dot signifies that there is at least one process instance or a sub process instance which has an unresolved incident. You can localize the problem by using the [process definition view][process-definition-view].
+With this plugin you can easily observe the state of a process definition. Green and red dots indicate running and [failed jobs][failed-jobs]. At this observing level a red dot signifies that there is at least one process instance or a subprocess instance which has an unresolved incident. You can locate the problem by using the [process definition view][process-definition-view].
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes-search.png)cockpit Search
 
@@ -37,7 +37,7 @@ button and selecting the chosen name in the drop-down menu.
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-deployed-processes.png)Rendered Process Preview
 
-You can also switch to the preview tab which displays the rendered process model of each deployed process. Additionally, you get information about how many instances of the process are currently running and about the process state. Green and red dots signalize running and [failed jobs][failed-jobs]. Click on the model to go to the [process definition view][process-definition-view].
+You can also switch to the preview tab which displays the rendered process model of each deployed process. Additionally, you get information about how many instances of the process are currently running and about the process state. Green and red dots indicate running and [failed jobs][failed-jobs]. Click on the model to go to the [process definition view][process-definition-view].
 
 [process-definition-view]: ../bpmn/process-definition-view.md
 [failed-jobs]: ../bpmn/failed-jobs.md
@@ -87,7 +87,7 @@ Additionally, you can specify process variables by name to enrich the export res
 * For security reasons, you can limit the maximum number of process instances that can be exported via the [Query Maximum Results Limit](../../../user-guide/process-engine/process-engine-api.md#query-maximum-results-limit).
 :::
 
-When clicking **Export CSV**, the backend crunches the requested data and creates a CSV file. This could take a while, depending on the amounts of process instances you want to export.
+When clicking **Export CSV**, the backend crunches the requested data and creates a CSV file. This could take a while, depending on the number of process instances you want to export.
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-export-download-as-csv.png)CSV Export for Process Instances: Modal Dialog – Download as CSV
 

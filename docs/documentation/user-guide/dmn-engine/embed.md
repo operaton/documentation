@@ -15,7 +15,7 @@ menu:
 The Operaton DMN engine can be used as a library in a custom application. To achieve this,
 add the `operaton-engine-dmn` artifact to the classpath of the application and then
 configure and build a decision engine instance. This section provides the
-required maven coordinates to add the DMN engine as a dependency to your
+required Maven coordinates to add the DMN engine as a dependency to your
 project. It then shows how to configure and build a new DMN engine instance.
 
 ## Maven Coordinates
@@ -327,7 +327,7 @@ configuration.setScriptEngineResolver(new MyScriptEngineResolver());
 
 The DMN engine uses [SLF4J] as logging API. The `operaton-dmn-engine` artifact
 does not have a dependency to any of the existing [SLF4J] backends. This means that
-you can choose which backend you want to use. One example would be [LOGBack], or
+you can choose which backend you want to use. One example would be [Logback], or
 if you want to use Java util logging, you could use the `slf4j-jdk14` artifact.
 For more information on how to configure and use SLF4J, please refer to the
 [user manual].
@@ -338,7 +338,7 @@ For more information on how to configure and use SLF4J, please refer to the
 [data types]: ../../user-guide/dmn-engine/data-types.md
 [hit policies]: ../reference/dmn/decision-table/hit-policy.md
 [SLF4J]: http://www.slf4j.org/
-[LOGBack]: http://logback.qos.ch/
+[Logback]: http://logback.qos.ch/
 [user manual]: http://www.slf4j.org/manual.html
 [DMN decision table]: ../reference/dmn/decision-table/index.md
 [DMN decision literal expression]: ../reference/dmn/decision-literal-expression/index.md

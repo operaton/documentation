@@ -653,7 +653,7 @@ In case of Process Definitions
 ### Application Permissions
 
 The resource "Application" uniquely supports the **Access** permission.
-The **Access** permission controls whether a user has access to a Operaton web application or not. Out of the box, it can be granted for the following applications (resource ids):
+The **Access** permission controls whether a user has access to an Operaton web application or not. Out of the box, it can be granted for the following applications (resource ids):
 
 * `admin`
 * `cockpit`
