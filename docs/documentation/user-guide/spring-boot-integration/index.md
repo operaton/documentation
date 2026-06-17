@@ -6,7 +6,7 @@ sidebar_position: 60
 ---
 
 The Operaton Engine can be used in a Spring Boot application by using provided Spring Boot starters.
-Spring boot starters allow to enable behavior of your spring-boot application by adding dependencies to the classpath.
+Spring Boot starters let you enable behavior in your Spring Boot application by adding dependencies to the classpath.
 
 These starters will pre-configure the Operaton process engine, REST API and Web applications, so they can easily be used in a standalone process application.
 
