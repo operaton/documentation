@@ -28,9 +28,6 @@ The following template engines are provided as optional community extensions:
 * [Saxon XQuery](https://www.saxonica.com/html/documentation12/using-xquery/)
 * [Saxon XSLT](https://www.saxonica.com/html/documentation12/using-xsl/)
 
-The script engine wrapper implementations can be found in the
-[operaton-template-engines-jsr223][operaton-template-engines-jsr223] community hub repository.
-
 ## Install a Template Engine
 
 ### Install a Template Engine for an Embedded Process Engine
@@ -196,6 +193,5 @@ using a `<operaton:inputParameter ... />` mapping.
 
 [freemarker]: https://freemarker.apache.org/
 [velocity]: https://velocity.apache.org/
-[operaton-template-engines-jsr223]: https://github.com/operaton-community-hub/operaton-template-engines-jsr223
 [use-scripts]: ../process-engine/scripting.md
 [script-source]: ../process-engine/scripting.md#script-source

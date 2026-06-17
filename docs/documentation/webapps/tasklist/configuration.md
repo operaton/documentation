@@ -45,7 +45,7 @@ export default {
 ## Localization
 
 Tasklist can be localized. Operaton maintains English and German translation files.
-You can find and download community maintained translation files at the [Operaton webapp translations repository](https://github.com/operaton/operaton-webapp-translations).
+You can find the current Tasklist locale files in the [Operaton repository](https://github.com/operaton/operaton/tree/main/webapps/frontend/public/app/tasklist/locales).
 
 The localization of Tasklist is contained in the `app/tasklist/locales/` directory. This
 directory contains a separate localization file for every available language. The file name
