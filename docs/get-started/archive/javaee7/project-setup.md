@@ -141,7 +141,7 @@ Now you can perform the first build. Select the `pom.xml` in the Package Explore
 
 ### Add a WEB-INF/beans.xml Deployment Descriptor
 
-After we have all of our Maven dependencies configured, we can add our first deployment descriptor. The `WEB-INF/beans.xml` is used to configure a CDI application. Its presence is always mandatory but it can be empty, as it is in our case. For further information, please see [this explanation](http://www.cdi-spec.org/faq/).
+After we have all of our Maven dependencies configured, we can add our first deployment descriptor. The `WEB-INF/beans.xml` is used to configure a CDI application. Its presence is always mandatory but it can be empty, as it is in our case. For further information, please see [this explanation](https://www.cdi-spec.org/faq/).
 
 This file needs to be added to the `src/main/webapp/WEB-INF` folder of the Maven project.
 
