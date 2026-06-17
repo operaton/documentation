@@ -241,8 +241,8 @@ Please also see the detailed overview about the [Cookie Security](../../../webap
 
 ### Security-related HTTP headers in Webapps
 
-To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
-to be adjusted. You can find it under `WEB-INF/web.xml`.
+To customize the configuration of security-related HTTP headers in the web applications, adjust each web application's
+deployment descriptor. You can find it under `WEB-INF/web.xml`.
 
 Please watch out for the following section:
 ```xml

@@ -242,14 +242,14 @@ as soon as the Command returns. However, it should be noted that the
 current transaction may be committed at a later time.
 
 If a Process Engine Command is nested into another Command, i.e. a Command
-is executed within another command, the default behaviour is to reuse the
+is executed within another command, the default behavior is to reuse the
 existing Process Engine Context. This means that the nested Command will
 have access to the same cached entities and the changes made to them.
 
 When the nested Command is to be executed in a new transaction, a new Process
 Engine Context needs to be created for its execution. In this case, the nested
 Command will use a new cache for the database entities, independent of the
-previous (outer) Command cache. This means that, the changes in the cache of
+previous (outer) Command cache. This means that the changes in the cache of
 one Command are invisible to the other Command and vice versa. When the nested
 Command returns, the changes are flushed to the database independently of the
 Process Engine Context of the outer Command.

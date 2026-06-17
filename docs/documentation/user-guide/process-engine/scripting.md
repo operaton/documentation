@@ -443,18 +443,18 @@ Be aware that the process engine flag `enableFetchScriptEngineFromProcessApplica
 ## Variables Available During Script Execution
 
 During the execution of scripts, all process variables visible in the current scope are available.
-They can be accessed directly by the name of the variable (i.e., `sum`). This does not apply for
-JRuby where you have to access the variable as a ruby global variable (prepend with a dollar sign,
-i.e., `$sum`)
+They can be accessed directly by the name of the variable (i.e., `sum`). This does not apply to
+JRuby, where you have to access the variable as a Ruby global variable (prepend with a dollar sign,
+i.e., `$sum`).
 
 There are also special variables:
 
 1. `execution`, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>).
 1. `task`, which is available if the script is executed in a task scope (e.g., a task listener) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>).
-1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a operaton:connector) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
+1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of an `operaton:connector`) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
 
-These variables correspond to the `DelegateExecution`, `DelegateTask` or resp. `ConnectorVariableScope`
-interface which means that it can be used to get and set variables or access process engine services.
+These variables correspond to the `DelegateExecution`, `DelegateTask`, and `ConnectorVariableScope`
+interfaces, respectively. They can be used to get and set variables or access process engine services.
 
 ```java
 // get process variable
@@ -547,7 +547,7 @@ You can also specify the attribute `operaton:resource` on the `scriptTask` and `
 element, respectively the `resource` attribute on the `operaton:script` element. This extension
 attribute specifies the location of an external resource which should be used as script source code.
 Optionally, the resource path can be prefixed with an URL-like scheme to specify if the resource is
-contained in the deployment or classpath. The default behaviour is that the resource is part of the
+contained in the deployment or classpath. The default behavior is that the resource is part of the
 classpath. This means that the first two script task elements in the following examples are equal.
 
 ```xml

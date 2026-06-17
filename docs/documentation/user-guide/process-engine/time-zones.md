@@ -30,10 +30,10 @@ to avoid unexpected job executions.
 
 ## Operaton Web Applications
 
-It is possible to use the Operaton Web Applications in different timezones. All dates are translated to/from the local timezone when working with the UI.
+It is possible to use the Operaton web applications in different time zones. All dates are translated to/from the local time zone when working with the UI.
 
 ## Cluster Setup
 
-In case the process engine is running in a [cluster](../../introduction/architecture.md#clustering-model),
-all cluster nodes must run in one and the same time zone. In case cluster nodes exist in different time zones,
-correct behaviour when operating with DateTime values cannot be guaranteed.
+If the process engine is running in a [cluster](../../introduction/architecture.md#clustering-model),
+all cluster nodes must run in the same time zone. If cluster nodes exist in different time zones,
+correct behavior when operating with DateTime values cannot be guaranteed.

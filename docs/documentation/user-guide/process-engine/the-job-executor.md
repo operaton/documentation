@@ -525,7 +525,7 @@ Here is an example of a global process engine configuration:
   </properties>
 </process-engine>
 ```
-The retry sequence contains three retry times and the behaviour for this example would be the following:
+The retry sequence contains three retry times and the behavior for this example would be the following:
 
 * A job fails for the first time: the job will be retried in 10 minutes (PT10M is applied).
 * A job fails for the second time: the job will be retried in 17 minutes (PT17M is applied).
@@ -536,7 +536,7 @@ If the user decides to increase the retry number during retries, the last interv
 
 ### Custom Retry Configuration
 
-You can configure an custom retry configuration by adding the `customPostBPMNParseListeners` property and specify your custom `FailedJobParseListener` to the process engine configuration:
+You can configure a custom retry configuration by adding the `customPostBPMNParseListeners` property and specifying your custom `FailedJobParseListener` in the process engine configuration:
 
 ```xml
 <bean id="processEngineConfiguration" class="org.operaton.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">

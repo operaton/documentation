@@ -64,10 +64,10 @@ The individual process engine instances do not maintain session state across tra
 
 Operaton doesn't provide load-balancing capabilities or session replication capabilities out of the box. The load-balancing function would need to be provided by a third-party system, and session replication would need to be provided by the host application server.
 
-In a clustered setup, if users are going to login to the web applications, an extra step will need to be taken to ensure that users aren't asked to login multiple times. Two options exist:
+In a clustered setup, if users are going to log in to the web applications, an extra step will need to be taken to ensure that users aren't asked to log in multiple times. Two options exist:
 
 1. "Sticky sessions" could be configured and enabled within your load balancing solution. This would ensure that all requests from a given user are directed to the same instance over a configurable period of time.
-2. Session sharing can be enabled in your application server such that the application server instances share session state. This would allow users to connect to multiple instances in the cluster without being asked to login multiple times.
+2. Session sharing can be enabled in your application server such that the application server instances share session state. This would allow users to connect to multiple instances in the cluster without being asked to log in multiple times.
 
 If neither of the above approaches are implemented in a cluster setup, connections to multiple nodes - intentionally or via a load-balancing solution - will result in multiple login requests.
 

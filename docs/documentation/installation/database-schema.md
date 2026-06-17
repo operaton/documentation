@@ -131,7 +131,7 @@ Liquibase provides additional commands to preview all changes applied by command
 #### Migrate to Liquibase
 
 Liquibase provides workflows to update databases that were not set up using Liquibase from the very beginning.
-For such a scenario to work, you need to populate a tracking table that represents the current state of your database with regards to the changelog file you want to update against.
+For such a scenario to work, you need to populate a tracking table that represents the current state of your database with regard to the changelog file you want to update against.
 In other words, you need to let Liquibase know which parts of the changelog your database already contains.
 
 Perform the following steps to migrate your manual installation to Liquibase:

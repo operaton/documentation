@@ -321,7 +321,7 @@ The variables are optional. They will be passed to the execution if the escalati
 
 ## Completion
 
-Complete is part of the [task lifecycle](../../../webapps/tasklist/task-lifecycle.md) operation along with create, set candidate, assign, etc. (also available via Java API). Complete a task by passing variables; optionally, the process variables can be retrieved:
+Completing a task is part of the [task lifecycle](../../../webapps/tasklist/task-lifecycle.md), along with create, set candidate, assign, etc. (also available via Java API). Complete a task by passing variables; optionally, the process variables can be retrieved:
 
 ```java
 taskService.complete(taskId, variables);

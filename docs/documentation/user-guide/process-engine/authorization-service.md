@@ -893,7 +893,7 @@ The following is an example of how to configure the administrator authorization 
 The plugin will make sure that administrator authorizations (ALL permissions) are granted on all resources whenever the process engine is started.
 
 :::note
-  It is not necessary to configure all LDAP users and groups which should have administrator authorization. It is usually enough to configure a single user and use that user to log into the web application and create additional authorizations using the User Interface.
+  It is not necessary to configure all LDAP users and groups which should have administrator authorization. It is usually enough to configure a single user and use that user to log into the web application and create additional authorizations using the user interface.
 :::
 
 Complete list of configuration properties:
