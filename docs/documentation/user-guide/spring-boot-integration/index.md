@@ -24,7 +24,7 @@ To enable Operaton auto configuration, add the following dependency to your ```p
 
 This will add the Operaton engine v1.0.0 to your dependencies.
 
-Other starters that can be used are: 
+Other starters that can be used are:
 
 * [`Operaton-bpm-spring-boot-starter-rest`](rest-api)
 * [`Operaton-bpm-spring-boot-starter-webapp`](webapps)

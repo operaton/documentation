@@ -167,4 +167,4 @@ To evaluate a referenced decision, the integration of the Operaton DMN engine is
   </tr>
 </table>
 
-[DMN 1.3]: ../../dmn/index.md 
+[DMN 1.3]: ../../dmn/index.md
