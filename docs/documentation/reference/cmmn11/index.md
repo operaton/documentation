@@ -8,22 +8,22 @@ layout: "single"
 
 This page provides an overview of the CMMN 1.1 elements and the current coverage of the process engine.
 
-The CMMN editor is disabled using a flag per default in the latest version (4.5) of the Camunda Modeler. But you have full power to modify the flags and therefore you can still enable it if you wish!
+The CMMN editor is hidden by default in Operaton Modeler, but it can be enabled with a flag.
 
-In order to do that, you need to set a “flag”. You can choose between two options to do that:
+You can choose between two options to set the flag:
 
-#### Option 1. Pass the `--no-disable-cmmn` flag via the Comand Line Interface
+#### Option 1. Pass the `--no-disable-cmmn` flag via the Command Line Interface
 
-When starting the Modeler, you need to pass the `--no-disable-cmmn` via the Command Line.
-So for example on linux, you run a command:
+When starting Operaton Modeler, pass `--no-disable-cmmn` via the command line.
+For example on Linux, run:
 
-```$ ./camunda-modeler --no-disable-cmmn```
+```$ ./operaton-modeler --no-disable-cmmn```
 
-Likewise for example on Windows, you could start the .exe over the commandLine with the flag, or you could create a shortcut to the camunda-modeler.exe and append `--no-disable-cmmn` to the `target` of the shortcut.
+Likewise on Windows, you can start `Operaton Modeler.exe` from the command line with the flag, or you can create a shortcut to `Operaton Modeler.exe` and append `--no-disable-cmmn` to the `target` of the shortcut.
 
 #### Option 2. Define a flags.json file
 
-You can locally create a file called `flags.json`, which defines the flags which the Camunda-Modeler should pick up when starting. In the file you would need to save the following text content:
+You can locally create a file called `flags.json`, which defines the flags that Operaton Modeler should pick up when starting. Save the following text content in the file:
 
 ```
 {
@@ -33,9 +33,7 @@ You can locally create a file called `flags.json`, which defines the flags which
 
 The `flags.json` file needs to be saved either in your user-data-directory or application-data-directory.
 
-There are more flags and therefore more options how to customize the Camunda Modeler to your specific use-case with flags. Please refer to the [flags documentation](https://docs.camunda.io/docs/components/modeler/desktop-modeler/flags/) to find out more.
-
-> Thx Max for this detailed information, which comes from this [forum post](https://forum.camunda.io/t/how-to-access-cmmn-in-the-modeler/25127/4).
+For the current list of supported flags, see the [Operaton Modeler flags source](https://github.com/operaton/operaton-modeler/blob/develop/client/src/util/Flags.js).
  
 # Coverage
 
