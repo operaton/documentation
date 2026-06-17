@@ -10,7 +10,7 @@ description: "Learn how to integrate DMN decision tables in the Process."
 In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](/docs/documentation/reference/bpmn20/tasks/business-rule-task/) and [DMN 1.3 Decision Tables](/docs/documentation/reference/dmn/).
 
 ## Add a Business Rule Task to the Process
-Use the Camunda Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.
+Use the Operaton Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.
 
 ![Example image](/img/get-started/quick-start/modeler-businessrule-task1.png)
 
@@ -18,9 +18,9 @@ Next, link the Business Rule Task to a DMN table by changing `Implementation` to
 
 ![Example image](/img/get-started/quick-start/modeler-businessrule-task2.png)
 
-Save your changes and deploy the updated process using the `Deploy` Button in the Camunda Modeler.
+Save your changes and deploy the updated process using the `Deploy` button in the Operaton Modeler.
 
-## Create a DMN table using the Camunda Modeler
+## Create a DMN table using the Operaton Modeler
 First, create a new DMN diagram by clicking *File > New File > DMN Diagram*.
 ![Example image](/img/get-started/quick-start/modeler-new-dmn-diagram.png)
 
@@ -46,7 +46,7 @@ After setup, your DMN table should look like this:
 ![Example image](/img/get-started/quick-start/modeler-dmn5.png)
 
 ## Deploy the DMN table
-To deploy the Decision Table, click on the Deploy button in the Camunda Modeler, give it Deployment Name "Payment Retrieval Decision", then hit the Deploy button.
+To deploy the Decision Table, click on the Deploy button in the Operaton Modeler, give it Deployment Name "Payment Retrieval Decision", then hit the Deploy button.
 ![Example image](/img/get-started/quick-start/modeler-dmn6.png)
 
 ## Verify the Deployment with Cockpit

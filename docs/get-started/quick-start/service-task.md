@@ -2,12 +2,12 @@
 
 title: 'Executable Process'
 sidebar_position: 2
-description: 'Learn the basics of handling the Camunda Modeler, learn how to model and configure a fully executable process and learn how to integrate your own business logic.'
+description: 'Learn the basics of handling the Operaton Modeler, learn how to model and configure a fully executable process and learn how to integrate your own business logic.'
 
 ---
 # Executing automated steps (2/6)
 
-In this section, you'll learn how to create your first BPMN 2.0 process with the Camunda Modeler and how to execute automated steps. Start by opening up Camunda Modeler.
+In this section, you'll learn how to create your first BPMN 2.0 process with the Operaton Modeler and how to execute automated steps. Start by opening up Operaton Modeler.
 
 ## Create a new BPMN Diagram
 
@@ -39,7 +39,7 @@ Add an End Event named *Payment Received*.
 ### Configure the Service Task
 
 There are different ways to [execute service tasks](https://docs.operaton.org/docs/documentation/reference/bpmn20/tasks/service-task/) using Operaton Platform. In this guide, we'll use the external [task pattern](https://docs.operaton.org/docs/documentation/user-guide/process-engine/external-tasks/).
-Open the Properties Panel within the Camunda Modeler and click on the Service Task you just created. Change the Implementation to `External` and use `charge-card` as the Topic.
+Open the Properties Panel within the Operaton Modeler and click on the Service Task you just created. Change the Implementation to `External` and use `charge-card` as the Topic.
 
 ![Example image](/img/get-started/quick-start/modeler-step4.png)
 
