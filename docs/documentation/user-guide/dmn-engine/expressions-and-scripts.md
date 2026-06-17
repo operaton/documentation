@@ -206,8 +206,8 @@ the script engine before using it.
 [juel]: https://juel.sourceforge.net/
 [EL]: https://jakarta.ee/specifications/expression-language/4.0/
 [DMN 1.2]: https://www.omg.org/spec/DMN/
-[Rhino]: https://developer.mozilla.org/de/docs/Rhino
-[Nashorn]: https://blogs.oracle.com/nashorn/
+[Rhino]: https://rhino.github.io/
+[Nashorn]: https://openjdk.org/projects/nashorn/
 [JSR-223]: https://www.jcp.org/en/jsr/detail?id=223
 [default EL]: ../../user-guide/dmn-engine/embed.md#change-default-expression-languages
 [configure EL]: ../../user-guide/dmn-engine/embed.md#customize-expression-and-script-resolving

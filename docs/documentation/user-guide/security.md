@@ -305,7 +305,7 @@ In case you want to rely on allowed package and class names from the engine conf
 An implementation of this interface registered as validator will be provided with the defined packages and classes from the engine configuration upon initialization of the engine via `#setAllowedClasses` and `#setAllowedPackages`.
 
 :::note[Jackson Type Whitelisting]
-  Spin's JSON implementation is based on Jackson. If you configure Operaton Spin to deserialize polymorphic classes based on type information included in the JSON itself (i.e. where the JSON contains explicit class names), we strongly recommend to additionally enable Jackson's [Whitelisting feature](https://medium.com/@cowtowncoder/jackson-2-10-safe-default-typing-2d018f0ce2ba) starting with version 2.10. Operaton's whitelisting feature does not cover this case.
+  Spin's JSON implementation is based on Jackson. If you configure Operaton Spin to deserialize polymorphic classes based on type information included in the JSON itself (i.e. where the JSON contains explicit class names), we strongly recommend to additionally enable Jackson's [PolymorphicTypeValidator feature](https://github.com/FasterXML/jackson/wiki/Jackson-Release-2.10#safe-default-typing) starting with version 2.10. Operaton's whitelisting feature does not cover this case.
 :::
 
 ### User operation log settings for synchronous operations affecting multiple entities
@@ -417,5 +417,4 @@ Please find below external documentation on how to configure your application se
 * Operaton Run/Spring Boot 2.3+
     * Official Documentation
         * [Javadocs about ErrorProperties.IncludeStacktrace](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/api/org/springframework/boot/autoconfigure/web/ErrorProperties.IncludeStacktrace.html)
-    * Alternative Resources
-        * [Error Handling on Baeldung](https://www.baeldung.com/spring-boot-configure-tomcat#2-error-handling)
+        * [Common application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
