@@ -327,19 +327,19 @@ configuration.setScriptEngineResolver(new MyScriptEngineResolver());
 
 The DMN engine uses [SLF4J] as logging API. The `operaton-dmn-engine` artifact
 does not have a dependency to any of the existing [SLF4J] backends. This means that
-you can choose which backend you want to use. One example would be [LOGBack], or
+you can choose which backend you want to use. One example would be [Logback], or
 if you want to use Java util logging, you could use the `slf4j-jdk14` artifact.
 For more information on how to configure and use SLF4J, please refer to the
 [user manual].
 
 
 [evaluation listener]: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html">DmnDecisionTableEvaluationListener</a> Interface
-[DMN model API]: https://github.com/operaton/operaton-dmn-model
+[DMN model API]: ../model-api/dmn-model-api/
 [data types]: ../../user-guide/dmn-engine/data-types.md
 [hit policies]: ../reference/dmn/decision-table/hit-policy.md
-[SLF4J]: http://www.slf4j.org/
-[LOGBack]: http://logback.qos.ch/
-[user manual]: http://www.slf4j.org/manual.html
+[SLF4J]: https://www.slf4j.org/
+[Logback]: https://logback.qos.ch/
+[user manual]: https://www.slf4j.org/manual.html
 [DMN decision table]: ../reference/dmn/decision-table/index.md
 [DMN decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
 [expressions]: ../../user-guide/dmn-engine/expressions-and-scripts.md
