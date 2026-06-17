@@ -893,7 +893,7 @@ The following is an example of how to configure the administrator authorization 
 The plugin will make sure that administrator authorizations (ALL permissions) are granted on all resources whenever the process engine is started.
 
 :::note
-  It is not necessary to configure all LDAP users and groups which should have administrator authorization. It is usually enough to configure a single user and use that user to log into the web application and create additional authorizations using the user interface.
+  It is not necessary to configure all LDAP users and groups that should have administrator authorization. It is usually enough to configure a single user and use that user to log in to the web application and create additional authorizations using the user interface.
 :::
 
 Complete list of configuration properties:
@@ -935,7 +935,7 @@ Available values are:
 
 * `never`: Never checks for revoke authorizations. This mode has best performance and effectively disables the use of revoke authorizations. *Note*: It is strongly recommended to use this mode.
 
-* `auto` (**default value**): This mode only checks for revoke authorizations if at least one revoke authorization currently exits for the current user or one of the groups the user is a member of. To achieve this it is checked once per command whether potentially applicable revoke authorizations exist. Based on the outcome, the authorization check then uses revoke or not. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases.
+* `auto` (**default value**): This mode only checks for revoke authorizations if at least one revoke authorization currently exists for the current user or one of the groups the user is a member of. To achieve this it is checked once per command whether potentially applicable revoke authorizations exist. Based on the outcome, the authorization check then uses revoke or not. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases.
 
 Also see the [Performance Considerations](#performance-considerations) section on this page.
 

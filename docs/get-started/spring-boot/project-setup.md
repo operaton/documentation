@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Spring Boot Project'
+title: 'Set Up a Spring Boot Project'
 sidebar_position: 10
 
 menu:

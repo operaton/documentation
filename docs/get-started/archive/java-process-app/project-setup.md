@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Java Project for BPMN 2.0'
+title: 'Set Up a Java Project for BPMN 2.0'
 sidebar_position: 20
 
 menu:

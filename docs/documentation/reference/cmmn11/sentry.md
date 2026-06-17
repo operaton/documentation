@@ -10,7 +10,7 @@ menu:
 
 ---
 
-A *sentry* captures the occurrence of a certain event occurring or a condition being fulfilled within a case. Sentries are used as [entry and exit criteria](../cmmn11/concepts/entry-exit-criteria.md). Note that the black and white diamonds represent the criteria. A sentry itself has no graphical representation.
+A *sentry* captures the occurrence of a certain event or a condition being fulfilled within a case. Sentries are used as [entry and exit criteria](../cmmn11/concepts/entry-exit-criteria.md). Note that the black and white diamonds represent the criteria. A sentry itself has no graphical representation.
 
 <a href="#" class="cmmn-symbol" data-type="marker-entry-criterion"></a>
 
@@ -110,19 +110,19 @@ In the above example, sentry is evaluated when the `create` event on the variabl
 
 ## VariableOnPart Evaluation
 
-Variable event that occurs in the scope of the execution triggers the sentry with variableOnParts in the following conditions:
+A variable event that occurs in the scope of the execution triggers the sentry with variableOnParts under the following conditions:
 
-* `variableName` and `variableEvent` defined in the variableOnPart of the sentry matches the occurred variable event and the associated variable name.
-* There exists no variable of the same name in the ancestory path of the sentry between the execution scope of the sentry and the execution scope of the variable event occurrence (the scope of the variable definition)
+* `variableName` and `variableEvent` defined in the variableOnPart of the sentry match the variable event that occurred and the associated variable name.
+* No variable of the same name exists in the ancestry path of the sentry between the execution scope of the sentry and the execution scope of the variable event occurrence (the scope of the variable definition).
 
 Consider the below example in which there are two human tasks. `HumanTask1` is defined inside the case model and the `HumanTask_2` is defined inside the stage.
-Each human task is attached with a entry criterion sentry and both the sentries are evaluated when the update event for the variable `foo` occurs.
+Each human task is attached to an entry criterion sentry and both sentries are evaluated when the update event for the variable `foo` occurs.
 
 ![Example img](/img/documentation/reference/cmmn11/variableOnPart.png)
 
 Scenario 1:
 
-When a variable `foo` is set and updated in the scope of the case model, then both the sentries are evaluated and results in the transition of `HumanTask1` and `HumanTask_2` from available state to enabled state.
+When a variable `foo` is set and updated in the scope of the case model, then both sentries are evaluated and result in the transition of `HumanTask1` and `HumanTask_2` from available state to enabled state.
 
 Scenario 2:
 

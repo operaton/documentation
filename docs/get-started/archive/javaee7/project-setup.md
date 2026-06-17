@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Java EE Application Project'
+title: 'Set Up a Java EE Application Project'
 sidebar_position: 20
 
 menu:
@@ -215,4 +215,4 @@ This file needs to be added to the `src/main/resources/META-INF` folder of the M
 </process-application>
 ```
 
-At this point you have successfully set up the process application you can start modeling your process.
+At this point, you have successfully set up the process application and can start modeling your process.
