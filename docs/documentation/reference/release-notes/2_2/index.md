@@ -1,5 +1,5 @@
 ---
-title: "2.2"
+title: "2.2 (DRAFT)"
 sidebar_position: 22
 ---
 
@@ -21,9 +21,9 @@ This implements [PR #2844](https://github.com/operaton/operaton/pull/2844).
 
 ---
 
-### WildFly 39 Upgrade & CDI 4.1 Compatibility
+### WildFly 40 Upgrade & CDI 4.1 Compatibility
 
-Operaton 2.2 upgrades the WildFly distribution to **WildFly 39** and adapts the CDI integration
+Operaton 2.2 upgrades the WildFly distribution to **WildFly 40** and adapts the CDI integration
 to the **Jakarta CDI 4.1** standard API.
 
 Key improvements:
@@ -46,15 +46,7 @@ Key improvements:
   `jboss-deployment-structure.xml` to control module visibility. Standard WAR packaging works
   out of the box on WildFly 39+.
 
-This implements [PR #2781](https://github.com/operaton/operaton/pull/2781).
-
----
-
-### WildFly 40 Upgrade
-
-Operaton 2.2 further upgrades the WildFly runtime to **WildFly 40**.
-
-This implements [PR #3153](https://github.com/operaton/operaton/pull/3153).
+This implements [PR #2781](https://github.com/operaton/operaton/pull/2781),  [PR #3153](https://github.com/operaton/operaton/pull/3153).
 
 ---
 
@@ -73,7 +65,7 @@ This implements [PR #3114](https://github.com/operaton/operaton/pull/3114).
 
 Operaton 2.2 improves the robustness of the `DbSqlSession` concurrency handling by detecting
 deadlock conditions more reliably. The fix specifically addresses a scenario where GraalJS script
-task execution could trigger a deadlock that was previously not recognised as a concurrent
+task execution could trigger a deadlock that was previously not recognized as a concurrent
 modification exception, preventing proper retry handling.
 
 ## API
