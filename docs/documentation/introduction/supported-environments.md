@@ -80,9 +80,10 @@ Clustered or replicated databases are supported given the following conditions. 
   * Amazon Corretto
   * Azul Zulu
 
-## Camunda Modeler
+## Operaton Modeler
 
-[Supported environments](https://docs.camunda.io/docs/reference/supported-environments/#camunda-modeler) for Camunda Modeler have moved to [docs.camunda.io](https://docs.camunda.io/).
+Operaton Modeler is documented separately. See the [Operaton Modeler installation guide](../installation/camunda-modeler.md)
+and the [Operaton Modeler repository](https://github.com/operaton/operaton-modeler) for current installation and build information.
 
 ## Maintenance Policy
 
