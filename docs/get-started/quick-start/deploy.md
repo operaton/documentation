@@ -10,19 +10,19 @@ description: 'Deploy the Process to Operaton and start your first process instan
 In the next step, you'll deploy the Process and start a new instance so you can see that your simple process is working correctly.
 
 :::note[Deployment Support]
-BPMN diagrams must be created for the process engine they intend to be deployed on. In the Camunda Modeler, make sure the execution platform is set to Operaton Platform before deploying to Operaton.
+BPMN diagrams must be created for the process engine they intend to be deployed on. In the Operaton Modeler, make sure the execution platform is set to Operaton Platform before deploying to Operaton.
 :::
 
-## Use the Camunda Modeler to Deploy the Process
+<span id="use-the-camunda-modeler-to-deploy-the-process"></span>
 
-In order to deploy the Process, click on the deploy button in the Camunda Modeler, then give it the Deployment Name "Payment Retrieval" and click the Deploy button. From version 3.0.0 on, you will be required to provide an URL for an Endpoint Configuration along with Deployment Details. This can be either the root endpoint to the REST API (e.g. `http://localhost:8080/engine-rest`) or an exact endpoint to the deployment creation method (e.g. `http://localhost:8080/engine-rest/deployment/create`).
+## Use the Operaton Modeler to Deploy the Process
+
+In order to deploy the process, click on the deploy button in the Operaton Modeler, then give it the Deployment Name "Payment Retrieval" and click the Deploy button. When prompted for an Endpoint Configuration, use either the root endpoint to the REST API (e.g. `http://localhost:8080/engine-rest`) or the exact endpoint to the deployment creation method (e.g. `http://localhost:8080/engine-rest/deployment/create`).
 
 ![Example image](/img/get-started/quick-start/modeler-deploy1.png)
 ![Example image](/img/get-started/quick-start/modeler-deploy2.png)
-You should see a success message in the Camunda Modeler:
+You should see a success message in the Operaton Modeler:
 ![Example image](/img/get-started/quick-start/modeler-deploy3.png)
-
-More details regarding the deployment from Camunda Modeler you can find [here](https://blog.camunda.com/post/2019/01/camunda-modeler-3.0.0-0-released/#completely-reworked-deployment-tool). For Camunda Modeler 2.2.4 and earlier, read [this blog post](https://blog.operaton.com/post/2018/03/camunda-modeler-1120-alpha-3-released/).
 
 ## Verify the Deployment with Cockpit
 
