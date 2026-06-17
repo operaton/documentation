@@ -54,8 +54,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           exclude: [
-            '**/_*.{js,jsx,ts,tsx,md,mdx,bpmn}',
-            'docs/documentation/introduction/third-party-libraries/camunda-bpm-platform-license-book.md'
+            '**/_*.{js,jsx,ts,tsx,md,mdx,bpmn}'
           ],
 
           // The BPMN remark plugin
