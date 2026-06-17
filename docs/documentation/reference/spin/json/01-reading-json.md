@@ -23,7 +23,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinJsonNode json = S("{\"customer\": \"Kermit\"}", json());
 ```
 
-The second paramter `json()` hints Spin to use the JSON data format for parsing the JSON.
+The second parameter `json()` hints Spin to use the JSON data format for parsing the JSON.
 
 Alternatively, you can directly use the `JSON(...)` function:
 

@@ -958,7 +958,7 @@ auth.setResource("filter");
 auth.setResourceId("2313");
 // a resource can also be a process definition
 auth.setResource(Resources.PROCESS_INSTANCE);
-// the process defintion key is the resource id
+// the process definition key is the resource id
 auth.setResourceId("invoice");
 
 // finally the permissions to access that resource can be assigned:

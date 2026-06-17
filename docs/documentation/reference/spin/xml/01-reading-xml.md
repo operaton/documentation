@@ -22,7 +22,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinXmlElement xml = S("<order />", xml());
 ```
 
-The second paramter `xml()` hints Spin to use the XML data format for parsing the XML.
+The second parameter `xml()` hints Spin to use the XML data format for parsing the XML.
 
 Alternatively, you can directly use the `XML(...)` function:
 

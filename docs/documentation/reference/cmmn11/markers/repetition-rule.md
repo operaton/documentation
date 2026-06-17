@@ -82,7 +82,7 @@ The corresponding XML representation could look like this:
 
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
 This case contains a human task *A*. Task *A* has a repetition rule indicating that the task is repeatable as long as the variable `score` is less than `50`.
@@ -122,7 +122,7 @@ The transition in which the repetition rule is evaluated can be changed by an Op
 
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
 This means that the repetition rule is  evaluated in the transition `disable`. So, whenever an instance of the defined human task gets disabled, the repetition rule is evaluated and if this rule evaluates to `true`, a new instance is created. As a consequence, the repetition rule is not evaluated when an instance transitions in state `COMPLETED` anymore.
@@ -172,7 +172,7 @@ The corresponding XML representation could look like this:
 
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
 This case contains two human tasks *A* and *B* that are connected by a sentry. Task *B* gets `ENABLED` if any conditions are fulfilled and task *A* gets `ENABLED` if an instance of `B` completes. Furthermore both tasks are repeatable as long as the variable `score` is less than `50`.

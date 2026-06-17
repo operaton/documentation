@@ -22,7 +22,7 @@ Operaton supports the following ways of installing the database schema:
 * Use the provided SQL scripts with the tools related to your database for a fully manual installation and update. A manual procedure allows you to fully control the SQL statements that are executed on your database instance and to adjust those statements to your needs if necessary.
 
 :::note[Isolation level]
-READ COMMITED is the required isolation level for database systems to run Operaton with.
+READ COMMITTED is the required isolation level for database systems to run Operaton with.
 You may have to change the default setting on your database when installing Operaton.
 For more information see the documentation on [isolation levels](../user-guide/process-engine/database/database-configuration.md#isolation-level-configuration).
 :::
