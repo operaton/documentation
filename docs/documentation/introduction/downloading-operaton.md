@@ -39,33 +39,37 @@ The full distribution bundles
 
 * Process Engine configured as [shared process engine][shared-engine],
 * Runtime Web Applications (Tasklist, Cockpit, Admin),
-* Rest Api,
-* Container / Application Server itself.
+* REST API,
+* the application server for the pre-packaged Tomcat and WildFly archives.
 
 :::note[Server/Container]
-  If you download the full distribution for an open-source application
-  server/container, the container itself is included. For example, if you download the Tomcat
-  distribution, Tomcat itself is included and the Operaton binaries (process engine and
-  web apps) are pre-installed in the container. This is not true for the Oracle WebLogic
-  and IBM WebSphere downloads; these downloads do not include the application servers themselves.
+  Operaton publishes pre-packaged Tomcat and WildFly distributions as release assets.
+  Those archives include the application server and the Operaton binaries (process engine and web apps)
+  pre-installed in the container.
 :::
 
 :::note[Wildfly Application Server]
   Wildfly Application Server is provided as part of the archives as a convenience. For a copy of the source code, the full set of attribution notices, and other relevant information please see https://github.com/wildfly/wildfly. We will also provide you with a copy of the source code if you [contact our Open-Source Compliance Team](https://docs.operaton.org/docs/documentation/introduction/licenses/#contact) at any time within three years of you downloading an archive (for which we may charge a nominal sum). Wildfly Application Server is copyright © JBoss, Home of Professional Open Source, 2010, Red Hat Middleware LLC [..and contributors].
 :::
 
+Download stable distribution assets from the [latest Operaton release][operaton-releases-latest].
+Snapshot distribution assets are published in the [Operaton GitHub releases][operaton-releases]
+as prereleases with tags such as `2.2.0-SNAPSHOT`.
+
 See the [Installation Guide][installation-guide-full] for additional details.
 
 
-## Download Camunda Modeler
+## Download Operaton Modeler
 
-Camunda Modeler is a modeling Tool for BPMN 2.0 and DMN 1.3. Camunda Modeler can be downloaded
-from the [community download page][community-download-page].
+Operaton Modeler is a modeling tool for BPMN 2.0 and DMN 1.3. You can find installation
+instructions in the [Operaton Modeler installation guide][operaton-modeler-install].
 
 
 
 [get-jdk]: https://www.oracle.com/technetwork/java/javase/downloads/index.html
-[community-download-page]: https://camunda.com/download/
+[operaton-modeler-install]: ../installation/camunda-modeler.md
+[operaton-releases]: https://github.com/operaton/operaton/releases
+[operaton-releases-latest]: https://github.com/operaton/operaton/releases/latest
 [shared-engine]: ./architecture.md#shared-container-managed-process-engine
 [installation-guide-full]: ../installation/index.md
 [run-with-spring-boot]: ../user-guide/spring-boot-integration/index.md
