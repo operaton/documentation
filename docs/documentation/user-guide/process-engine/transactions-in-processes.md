@@ -36,7 +36,7 @@ Keep in mind that [Asynchronous Continuations](#asynchronous-continuations) can 
 
 ## Transaction Boundaries
 
-The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occuring during its execution. This is illustrated in the following example:
+The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occurring during its execution. This is illustrated in the following example:
 
 ![Example img](/img/documentation/user-guide/process-engine/transactions-1.png)Transaction Boundaries
 
