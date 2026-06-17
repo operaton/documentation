@@ -658,7 +658,6 @@ The **Access** permission controls whether a user has access to an Operaton web 
 * `admin`
 * `cockpit`
 * `tasklist`
-* `optimize`
 * `*` (Any / All)
 
 ### User Operation Log Permissions
