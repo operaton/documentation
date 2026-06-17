@@ -89,7 +89,7 @@ Now that we have one group that can see everything in Cockpit, we want to have a
 
 ## Restrict Process Permissions
 
-Not every process has to be managed by every user/group and with regards to different organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.
+Not every process has to be managed by every user/group, and depending on organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.
 
 In this use case we want to give the group *accounting*, which we will assume is already present and has access to Cockpit (see [Application-Specific Permission](../admin/authorization-management.md#application-specific-permissions) and [Application Access](#application-access)), full access to the "invoice" process and only to this process.
 
