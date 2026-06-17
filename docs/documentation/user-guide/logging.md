@@ -121,7 +121,7 @@ An example using Logback could look as follows
 ```
 
 By adding the `context:[%X]` to your configuration, all values that are present in the MDC at the time the log statement is created will be displayed.
-Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](http://logback.qos.ch/manual/layouts.html#mdc).
+Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](https://logback.qos.ch/manual/layouts.html#mdc).
 
 
 ## Logging Categories
@@ -309,7 +309,7 @@ Here is an example of how the server log will look like:
 25-Nov-2019 15:17:17.076 FINE [thread-2] o.a.i.l.j.BaseJdbcLogger.debug ==> Parameters: 2(Integer), Dev-Department(String), DEV(String), development(String), 1(Integer)
 ```
 
-To enable the logging for a specific database entity, please provide the namespace of the MyBatis mapper ([all mappers](https://github.com/operaton/operaton/tree/master/engine/src/main/resources/org/operaton/bpm/engine/impl/mapping/entity)). Usually it is the full class name of that entity, e.g.:
+To enable the logging for a specific database entity, please provide the namespace of the MyBatis mapper ([all mappers](https://github.com/operaton/operaton/tree/main/engine/src/main/resources/org/operaton/bpm/engine/impl/mapping/entity)). Usually it is the full class name of that entity, e.g.:
 
 * `org.operaton.bpm.engine.impl.batch.BatchEntity`
 * `org.operaton.bpm.engine.impl.persistence.entity.JobEntity`
@@ -341,7 +341,7 @@ The server log will contain logs similar to:
 25-Nov-2019 15:45:27.706 FINE [Thread-6] o.c.c.l.BaseLogger.logDebug ENGINE-13006 Finishing command -------------------- AcquireJobsCmd ----------------------
 ```
 
-Find more information for Diagnosing the Job Executor in this blog post - [The Job Executor: What Is Going on in My Process Engine?](https://blog.camunda.com/post/2019/10/job-executor-what-is-going-on-in-my-process-engine/).
+For more background on job acquisition and execution, see [The Job Executor](process-engine/the-job-executor.md).
 
 #### Diagnosing Deadlocks
 
@@ -398,7 +398,7 @@ List of modules still using Java Util Logging:
 * operaton-engine-rest
 * Wildfly Subsystems
 
-[slf4j]: http://www.slf4j.org/
-[log4j]: http://logging.apache.org/log4j/
-[logback]: http://logback.qos.ch/
-[slf4j-backends]: http://www.slf4j.org/manual.html#projectDep
+[slf4j]: https://www.slf4j.org/
+[log4j]: https://logging.apache.org/log4j/2.x/
+[logback]: https://logback.qos.ch/
+[slf4j-backends]: https://www.slf4j.org/manual.html#projectDep

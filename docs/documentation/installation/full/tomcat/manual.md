@@ -7,7 +7,7 @@ description: "Manually install and configure the Full Distribution on a vanilla 
 ---
 ## Install the Full Distribution on a Tomcat Application Server manually
 
-This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](http://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download the matching Tomcat distribution from the [Operaton GitHub releases](https://github.com/operaton/operaton/releases) to fetch the required Operaton modules. Release assets are attached to version tags such as `v$PLATFORM_VERSION`; snapshot assets are published as GitHub prereleases with tags such as `2.2.0-SNAPSHOT`.
+This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](https://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download the matching Tomcat distribution from the [Operaton GitHub releases](https://github.com/operaton/operaton/releases) to fetch the required Operaton modules. Release assets are attached to version tags such as `v$PLATFORM_VERSION`; snapshot assets are published as GitHub prereleases with tags such as `2.2.0-SNAPSHOT`.
 
 :::note[Reading the Guide]
 Throughout this guide we will use a number of variables to denote common path names and constants:
@@ -30,8 +30,8 @@ The above workaround is not guaranteed to work for cases with bean references be
 
 The following test scenarios fail on Tomcat 10:
 
-* [CallActivityContextSwitchTest](https://github.com/operaton/operaton-bpm-platform/blob/f37877b822dabcbf3cee5806bd5833d18cdcb543/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/context/CallActivityContextSwitchTest.java)
-* [CdiBeanCallActivityResolutionTest](https://github.com/operaton/operaton-bpm-platform/blob/f37877b822dabcbf3cee5806bd5833d18cdcb543/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/cdi/CdiBeanCallActivityResolutionTest.java)
+* [CallActivityContextSwitchTest](https://github.com/operaton/operaton/blob/main/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/context/CallActivityContextSwitchTest.java)
+* [CdiBeanCallActivityResolutionTest](https://github.com/operaton/operaton/blob/main/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/cdi/CdiBeanCallActivityResolutionTest.java)
 :::
 
 

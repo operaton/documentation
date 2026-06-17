@@ -10,19 +10,14 @@ menu:
 
 ---
 
-# Manual Download
+# Source
 
-The Forms SDK library can be downloaded from
-[GitHub](https://github.com/operaton/bower-operaton-bpm-sdk-js/releases).
+The Forms SDK source is maintained in the
+[Operaton repository](https://github.com/operaton/operaton/tree/main/webapps/frontend/operaton-bpm-sdk-js).
 
-
-# Bower
-
-Alternatively, the Forms SDK can be installed using the Bower package manager:
-
-```
-bower install operaton-bpm-sdk-js --save
-```
+Operaton does not currently publish a standalone Bower package or a separate Bower release repository.
+Use the SDK files from your Operaton distribution, or build them from the source tree when embedding
+forms in a custom application.
 
 
 # Dependency Management

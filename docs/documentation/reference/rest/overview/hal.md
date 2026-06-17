@@ -11,7 +11,7 @@ menu:
 ---
 
 The REST API provides some resources in an additional media type. The
-[HAL](http://stateless.co/hal_specification.html) media type `application/hal+json` describes a format which contains
+[HAL](https://datatracker.ietf.org/doc/html/draft-kelly-json-hal-08) media type `application/hal+json` describes a format which contains
 links and information about other resources. This allows us to embed the
 process definition or assignee of a task directly into the response, which in turn
 reduces the number of necessary requests to gather all information about a

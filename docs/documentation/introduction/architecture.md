@@ -15,7 +15,7 @@ Operaton can be used both as a standalone process engine server or embedded insi
 
 ![Process Engine Architecture](/img/documentation/introduction/process-engine-architecture.png)
 
-* [Process Engine Public API](../user-guide/process-engine/process-engine-api.md): Service-oriented API allowing Java applications to interact with the process engine. The different responsibilities of the process engine (i.e., Process Repository, Runtime Process Interaction, Task Management, ...) are separated into individual services. The public API features a [command-style access pattern](http://en.wikipedia.org/wiki/Command_pattern): Threads entering the process engine are routed through a Command Interceptor which is used for setting up Thread Context such as Transactions.
+* [Process Engine Public API](../user-guide/process-engine/process-engine-api.md): Service-oriented API allowing Java applications to interact with the process engine. The different responsibilities of the process engine (i.e., Process Repository, Runtime Process Interaction, Task Management, ...) are separated into individual services. The public API features a [command-style access pattern](https://en.wikipedia.org/wiki/Command_pattern): Threads entering the process engine are routed through a Command Interceptor which is used for setting up Thread Context such as Transactions.
 * **BPMN 2.0 Core Engine**: This is the core of the process engine. It features a lightweight execution engine for graph structures (PVM - Process Virtual Machine), a BPMN 2.0 parser which transforms BPMN 2.0 XML files into Java Objects and a set of BPMN Behavior implementations (providing the implementation for BPMN 2.0 constructs such as Gateways or Service Tasks).
 * [Job Executor](../user-guide/process-engine/the-job-executor.md): The Job Executor is responsible for processing asynchronous background work such as Timers or asynchronous continuations in a process.
 * **The Persistence Layer**: The process engine features a persistence layer responsible for persisting process instance state to a relational database. We use the MyBatis mapping engine for object relational mapping.
@@ -99,14 +99,13 @@ The Operaton web applications are based on a RESTful architecture.
 
 Frameworks used:
 
-* [JAX-RS](https://jax-rs-spec.java.net) based REST API
-* [AngularJS](http://angularjs.org)
-* [RequireJS](http://requirejs.org)
-* [jQuery](http://jquery.com)
-* [Twitter Bootstrap](http://getbootstrap.com)
+* [JAX-RS / Jakarta REST](https://jakarta.ee/specifications/restful-ws/) based REST API
+* [AngularJS](https://angularjs.org)
+* [RequireJS](https://requirejs.org)
+* [jQuery](https://jquery.com)
+* [Twitter Bootstrap](https://getbootstrap.com)
 
 Additional custom frameworks developed by Operaton hackers:
 
-* [operaton-bpmn.js](https://github.com/operaton/operaton-bpmn.js): Operaton BPMN 2.0 JavaScript libraries
 * [ngDefine](https://github.com/Nikku/requirejs-angular-define): integration of AngularJS into RequireJS powered applications
 * [angular-data-depend](https://github.com/Nikku/angular-data-depend): toolkit for implementing complex, data heavy AngularJS applications
