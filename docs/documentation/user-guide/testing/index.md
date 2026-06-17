@@ -272,16 +272,16 @@ Also, you will have to add the AssertJ library to your dependencies. Make sure t
 </dependency>
 ```
 
-If Operaton Assert is used in combination with [Spring Boot](https://spring.io/projects/spring-boot) or the 
-[Operaton Spring Boot Starter](https://docs.operaton.org/docs/documentation/user-guide/spring-boot-integration/), 
+If Operaton Assert is used in combination with [Spring Boot](https://spring.io/projects/spring-boot) or the
+[Operaton Spring Boot Starter](../spring-boot-integration/),
 the AssertJ dependency will be present in your project already.
 
 ### Assertions Version Compatibility
 
 Each version of Operaton Assert is bound to a specific version of Operaton and AssertJ. Only these default combinations are recommended (and supported) by Operaton.
 Nevertheless, each version of Operaton Assert can be combined with newer patch versions of the Operaton engine, though such combinations must be thoroughly tested before being used in production.
-All versions prior to 3.0.0 belong to the community extension are not part of the official Operaton product support.
-With Operaton.17.0 the project was moved into the [Operaton repository](https://github.com/operaton/operaton) and will use the same versioning as Operaton in the future.
+All versions prior to 3.0.0 belong to the community extension and are not part of the official Operaton product support.
+With Camunda 7.17.0, the project was moved into the platform repository; Operaton now maintains it in the [Operaton repository](https://github.com/operaton/operaton) and uses the same versioning as Operaton.
 
 <table class="table table-striped">
   <tr>
