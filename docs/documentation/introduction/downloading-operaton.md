@@ -67,7 +67,7 @@ instructions in the [Operaton Modeler installation guide][operaton-modeler-insta
 
 
 [get-jdk]: https://www.oracle.com/technetwork/java/javase/downloads/index.html
-[operaton-modeler-install]: ../installation/camunda-modeler.md
+[operaton-modeler-install]: ../installation/operaton-modeler.md
 [operaton-releases]: https://github.com/operaton/operaton/releases
 [operaton-releases-latest]: https://github.com/operaton/operaton/releases/latest
 [shared-engine]: ./architecture.md#shared-container-managed-process-engine

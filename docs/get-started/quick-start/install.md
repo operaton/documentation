@@ -51,7 +51,7 @@ This script will start the application server. Open your web browser and navigat
 
 ## Operaton Modeler
 
-Follow the instructions in the [Operaton Modeler](/docs/documentation/installation/camunda-modeler) section.
+Follow the instructions in the [Operaton Modeler](/docs/documentation/installation/operaton-modeler) section.
 
 :::note[Next Step]
 Once you've installed the Operaton Platform and the Operaton Modeler, you can move to the next step to [model and execute your first process](/docs/get-started/quick-start/service-task/).
