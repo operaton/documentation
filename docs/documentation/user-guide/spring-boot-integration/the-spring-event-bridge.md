@@ -77,13 +77,13 @@ class MyListener {
 
 :::note
   If the method, annotated with `EventListener` returns a non-`void` result, Spring will
-  throw it as a new event on Spring event bus. This allows to build event handler chains
+  throw it as a new event on the Spring event bus. This lets you build event handler chains
   for processing. For more information on eventing, please consult the Spring manual.
 :::
 
 ## Specifying event type
 
-Spring allows to specify the event delivered to the listener by providing a SpEL condition in the
+Spring lets you specify the event delivered to the listener by providing a SpEL condition in the
 `@EventListener` annotation. For example, you could register a listener for a task event fired by
 creating of the user task with a specific task definition key. Here is the code example:
 
