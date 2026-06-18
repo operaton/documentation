@@ -174,7 +174,7 @@ Once deployed, TTL can be updated via Java API:
   processEngine.getRepositoryService().updateProcessDefinitionHistoryTimeToLive(processDefinitionId, 5);
 ```
 
-Setting the value to `null` clears the TTL. The same can be done via <RestRef page="updateHistoryTimeToLiveByProcessDefinitionKeyAndTenantId" text="REST API" tag="Process-Definition" />.
+Setting the value to `null` clears the TTL. The same can be done via <RestRef operation="updateHistoryTimeToLiveByProcessDefinitionKeyAndTenantId" text="REST API" tag="Process-Definition" />.
 
 For decision and case definitions, TTL can be defined in a similar way.
 

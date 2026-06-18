@@ -52,7 +52,7 @@ Custom incidents must always be related to an existing Execution.
 
 An incident of any type, except for **failedJob** and **failedExternalTask**, can be resolved by calling `RuntimeService#resolveIncident`.
 
-Incidents can be <RestRef page="createIncident" text="created" tag="Execution" /> and <RestRef page="resolveIncident" text="resolved" tag="Incident" /> through the REST API as well.
+Incidents can be <RestRef operation="createIncident" text="created" tag="Execution" /> and <RestRef operation="resolveIncident" text="resolved" tag="Incident" /> through the REST API as well.
 
 
 ## (De-)Activate Incidents

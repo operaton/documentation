@@ -18,7 +18,7 @@ This can, for example, be useful when termination did not proceed in a desired w
 
 To perform such an operation, the process engine offers *the process instance restart API*, which is entered via `RuntimeService.restartProcessInstances(...)`. This API allows you to specify multiple instantiation instructions in one call by using a fluent builder.
 
-Note that these operations are also available via REST: <RestRef page="restartProcessInstance" text="Restart Process Instance" tag="Process-Definition" /> and <RestRef page="restartProcessInstanceAsyncOperation" text="Restart Process Instance (async)" tag="Process-Definition" />.
+Note that these operations are also available via REST: <RestRef operation="restartProcessInstance" text="Restart Process Instance" tag="Process-Definition" /> and <RestRef operation="restartProcessInstanceAsyncOperation" text="Restart Process Instance (async)" tag="Process-Definition" />.
 
 ## Process Instance Restart by Example
 

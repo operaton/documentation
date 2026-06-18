@@ -343,7 +343,7 @@ TypedValue typedTransientFileValue = Variables.fileValue("file.txt", true)
   .create();
 ```
 
-Transient variables can be used via REST API, e.g. <RestRef page="startProcessInstance" text="when starting a new process instance" tag="Process-Definition" />.
+Transient variables can be used via REST API, e.g. <RestRef operation="startProcessInstance" text="when starting a new process instance" tag="Process-Definition" />.
 
 ### Set Multiple Typed Values
 
