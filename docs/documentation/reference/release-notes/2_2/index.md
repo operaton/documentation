@@ -68,6 +68,50 @@ deadlock conditions more reliably. The fix specifically addresses a scenario whe
 task execution could trigger a deadlock that was previously not recognized as a concurrent
 modification exception, preventing proper retry handling.
 
+---
+
+### Task Authorization Query Performance
+
+Task list and task count queries that use authorization checks now use an `EXISTS` subquery
+instead of joining `ACT_RU_AUTHORIZATION` into the main result set.
+
+Under high load or with large authorization tables, the previous join approach could inflate the
+intermediate result set, causing slow task queries. The new `EXISTS` path short-circuits the
+authorization check as soon as a matching row is found.
+
+This resolves [PR #3152](https://github.com/operaton/operaton/pull/3152).
+
+---
+
+### MDC Logging: Process Definition Key from Stored Execution Property
+
+When the MDC logging context requires the process definition key, the engine now reads it from
+the already stored `ExecutionEntity#getProcessDefinitionKey()` property instead of resolving the
+full process definition via a database lookup, avoiding unnecessary database round-trips during
+logging.
+
+This resolves [PR #3109](https://github.com/operaton/operaton/pull/3109).
+
+---
+
+### Date Form Values Accepted Correctly
+
+A bug in the deprecated `DateFormType.convertFormValueToModelValue(Object)` path caused an error
+when a date entered in one task was reused as the default value of another task's form field: the
+converter received an already-converted `Date` object instead of a `String`, and rejected it.
+The converter now accepts `Date` values directly in addition to `String` values.
+
+This resolves [PR #3089](https://github.com/operaton/operaton/pull/3089).
+
+---
+
+### Attachment Delete Null Pointer Exception Fixed
+
+A `NullPointerException` that could occur when deleting a task attachment without an associated
+content byte array has been fixed.
+
+This resolves [PR #3088](https://github.com/operaton/operaton/pull/3088).
+
 ## API
 
 ### Database Schema
@@ -110,8 +154,8 @@ This release is feature complete and API-compatible with [**Camunda 7 CE 7.24**]
 
 Operaton is based on:
 
-- **Spring Boot 4.1.x**
-- **Spring Framework 7.x** (aligned with Spring Boot 4.1)
+- **Spring Boot 4.1.0**
+- **Spring Framework 7.0.7**
 
 ### Quarkus Extension
 
@@ -119,9 +163,9 @@ The Operaton Quarkus extension is based on **Quarkus 3.33.1 LTS**.
 
 ### Distributions
 
-The Tomcat distribution is based on **Tomcat 11.0.x**.
+The Tomcat distribution is based on **Tomcat 11.0.22**.
 
-The WildFly distribution is based on **WildFly 40**.
+The WildFly distribution is based on **WildFly 40.0.0.Final**.
 
 ### Database Compatibility
 
@@ -149,7 +193,7 @@ Operaton supports the following scripting languages:
 | Language   | Engine             | Version  |
 |------------|--------------------|----------|
 | JavaScript | GraalVM JavaScript | 25.0.3   |
-| Groovy     | Groovy             | 5.0.5    |
+| Groovy     | Groovy             | 5.0.6    |
 | Python     | Jython             | 2.7.4    |
 | Ruby       | GraalVM Ruby       | 9.1.17.0 |
 
@@ -159,5 +203,8 @@ The following non-test dependencies have been upgraded since Operaton 2.1:
 
 | Dependency               | 2.1            | 2.2            |
 |--------------------------|----------------|----------------|
-| Spring Boot              | 4.0.6          | 4.1.x          |
-| WildFly                  | 38.0.1         | 40             |
+| Spring Boot              | 4.0.6          | 4.1.0          |
+| Apache Tomcat            | 11.0.21        | 11.0.22        |
+| WildFly                  | 38.0.1.Final   | 40.0.0.Final   |
+| Jackson                  | 2.21.2         | 2.21.4         |
+| Groovy                   | 5.0.5          | 5.0.6          |
