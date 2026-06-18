@@ -10,7 +10,7 @@ menu:
 
 ---
 
-The XML dataformat supports reading XML from Strings or input streams.
+The XML data format supports reading XML from strings or input streams.
 
 
 ## Reading XML from a String:
@@ -22,7 +22,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinXmlElement xml = S("<order />", xml());
 ```
 
-The second paramter `xml()` hints Spin to use the XML data format for parsing the XML.
+The second parameter `xml()` hints Spin to use the XML data format for parsing the XML.
 
 Alternatively, you can directly use the `XML(...)` function:
 
@@ -44,7 +44,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinXmlElement xml = S(reader, xml());
 ```
 
-The `XML(...)` method also supports readers. The following example shows how to read the XML from a file (error handling ommitted):
+The `XML(...)` method also supports readers. The following example shows how to read the XML from a file (error handling omitted):
 
 ```java
 import static org.operaton.spin.Spin.*;

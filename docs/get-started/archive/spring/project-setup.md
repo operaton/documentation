@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Spring Web Application Project'
+title: 'Set Up a Spring Web Application Project'
 sidebar_position: 10
 
 menu:

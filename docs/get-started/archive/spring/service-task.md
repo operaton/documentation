@@ -27,7 +27,7 @@ model and interact with the process form inside our Spring beans. In this sectio
 
 ### Model an Executable BPMN 2.0 Process
 
-Start by modeling an executable process using the Camunda Modeler. The process should look as depicted in the screenshot below.
+Start by modeling an executable process using the Operaton Modeler. The process should look as depicted in the screenshot below.
 
 ![Example image](/img/get-started/archive/spring/process-model.png)
 
@@ -110,7 +110,7 @@ public class LoanApplicationContext {
 
 ![Example image](/img/get-started/archive/spring/service-task.png)
 
-Referencing a Spring Bean from a BPMN 2.0 Service Task is simple. As shown in the screenshot above, we have to select the service task in the Camunda Modeler and provide an expression. Set *Implementation Type* to *Delegate Expression* and type `${calculateInterestService}` in the *Delegate Expression* field. Again, save the model and refresh the Eclipse project.
+Referencing a Spring Bean from a BPMN 2.0 Service Task is simple. As shown in the screenshot above, we have to select the service task in the Operaton Modeler and provide an expression. Set *Implementation Type* to *Delegate Expression* and type `${calculateInterestService}` in the *Delegate Expression* field. Again, save the model and refresh the Eclipse project.
 
 Finally, we add the Java class implementing the `JavaDelegate` interface.
 
@@ -151,7 +151,7 @@ public class LoanApplicationContext {
 }
 ```
 
-If you redeploy the application, you should see the following message in the logfile, meaning that the service task was executed.
+If you redeploy the application, you should see the following message in the log file, meaning that the service task was executed.
 
 <pre class="console">
 INFO org.operaton.commons.logging.BaseLogger.logInfo

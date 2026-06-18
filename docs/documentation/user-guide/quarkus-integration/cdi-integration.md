@@ -113,8 +113,7 @@ when trying to persist the beans as process variables.
 
 #### Destroying Bean Instances is unsupported
 
-Programmatically destroying a `@BusinessProcessScoped` bean instance is
-[currently unsupported][destroy-jira-issue].
+Programmatically destroying a `@BusinessProcessScoped` bean instance is currently unsupported.
 
 The following API methods will throw an `UnsupportedOperationException`:
 
@@ -126,7 +125,7 @@ The following API methods will throw an `UnsupportedOperationException`:
 ### Task form beans
 
 Associating beans with [Conversational Scope][cdi-conversational-scope] is currently [not supported][quarkus-bean-scopes] by Quarkus ArC.
-Furthermore, Quarkus does not allow to set a different default scope for beans that are outside of the extension's control.
+Furthermore, Quarkus does not allow setting a different default scope for beans that are outside of the extension's control.
 As a result, the following conversational scoped beans are not available in a Quarkus application out of the box:
 
 * `org.operaton.bpm.engine.cdi.jsf.TaskForm`
@@ -144,6 +143,5 @@ You can learn about the available beans and programming model in the [CDI and Ja
 [arc-config-reference]: https://quarkus.io/guides/cdi-reference#quarkus-arc_quarkus.arc.auto-inject-fields
 [business-process-scoped]: ../cdi-java-ee-integration/contextual-programming-model.md#work-with-businessprocessscoped-beans
 [cdi-passivation]: https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#passivating_scope
-[destroy-jira-issue]: https://jira.camunda.com/browse/CAM-13755
 [jsf-task-forms]: ../task-forms/jsf-task-forms.md
 [quarkus-bean-scopes]: https://quarkus.io/guides/cdi#bean-scope-available

@@ -16,8 +16,8 @@ It is used to configure Operaton in the following distributions:
 
 *   [Apache Tomcat](../../installation/full/tomcat/index.md)
 
-:::warning[Wildfly]
-The <code>bpm-platform.xml</code> file is not used in the Operaton distribution for Wildfly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="../../../user-guide/runtime-container-integration/jboss.md">The Operaton Wildfly Subsystem</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
+:::warning[WildFly]
+The <code>bpm-platform.xml</code> file is not used in the Operaton distribution for WildFly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="../../../user-guide/runtime-container-integration/jboss.md">The Operaton WildFly Subsystem</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
 :::
 
 
@@ -93,7 +93,7 @@ This feature is available for:
 
 *   [Apache Tomcat](../../installation/full/tomcat/index.md)
 
-It is not available for the Wildfly subsystem implementation, because the subsystem implementation uses the JBoss specific `standalone.xml` to configure the platform.
+It is not available for the WildFly subsystem implementation, because the subsystem implementation uses the JBoss specific `standalone.xml` to configure the platform.
 
 To specify the location, you have to provide an absolute path or an http/https url pointing to the `bpm-platform.xml` file, e.g., `/home/operaton/.operaton/bpm-platform.xml` or `http://operaton.org/bpm-platform.xml`.
 
@@ -105,7 +105,7 @@ During startup of the operaton-bpm-platform, it tries to discover the location o
 4. `META-INF/bpm-platform.xml` exists on the classpath
 5. (For Tomcat only): checks if there is a `bpm-platform.xml` inside the folder specified by `${CATALINA_BASE} || ```${CATALINA_HOME} + /conf/`
 
-The discovery stops when one of the above mentioned sources is found or, in case none is found, it falls back to the `bpm-platform.xml` on the classpath, respectively `${CATALINA_BASE} || ```${CATALINA_HOME} + /conf/` for Tomcat. We ship a default `bpm-platform.xml` file inside the operaton-bpm-platform.ear, except when you use the Tomcat or Wildfly version of the platform.
+The discovery stops when one of the above mentioned sources is found or, in case none is found, it falls back to the `bpm-platform.xml` on the classpath, respectively `${CATALINA_BASE} || ```${CATALINA_HOME} + /conf/` for Tomcat. We ship a default `bpm-platform.xml` file inside the operaton-bpm-platform.ear, except when you use the Tomcat or WildFly version of the platform.
 
 
 ## Using System Properties

@@ -62,14 +62,14 @@ menu:
     </ul>
   </li>
   <li>
-    Finally, the form is completed. Triggering an [BPMN error or escalation event](../../../reference/bpmn20/tasks/user-task.md#reporting-bpmn-error) will submit the form .<br/>
+    Finally, the form is completed. Triggering a [BPMN error or escalation event](../../../reference/bpmn20/tasks/user-task.md#reporting-bpmn-error) will submit the form.<br/>
     <em>Events:</em>
     <ul>
       <li><code>submit</code>, <code>error</code> or <code>escalation</code> is fired <strong>before</strong> the submit request is sent to the server. An event handler may
       prevent the form from being submitted by setting the property `submitPrevented`, `errorPrevented` or `escalationPrevented` to true.</li>
-      <li><code>submit-success</code>, <code>error-success</code> or <code>escalation-success</code> is fired <strong>after</strong> the server successfully treated the submission.</li>
-      <li><code>submit-failed</code>, <code>error-failed</code> or <code>escalation-failed</code> is fired <strong>after</strong> the server failed at treating the submission
-      or when a network error happened.</li>
+      <li><code>submit-success</code>, <code>error-success</code> or <code>escalation-success</code> is fired <strong>after</strong> the server successfully processed the submission.</li>
+      <li><code>submit-failed</code>, <code>error-failed</code> or <code>escalation-failed</code> is fired <strong>after</strong> the server failed to process the submission
+      or when a network error occurred.</li>
     </ul>
   </li>
 </ol>

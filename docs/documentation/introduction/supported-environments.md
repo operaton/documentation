@@ -92,7 +92,7 @@ Whenever a new version of one of the following environments is released, we targ
 
 * Java Language (LTS)
 * Spring Boot
-* Wildfly Application Server
+* WildFly Application Server
 * PostgreSQL
 
 The exact release in which we support a new environment depends on factors such as the release date of the environment and the required implementation effort.
@@ -103,6 +103,6 @@ Version support for other environments is decided case by case, much of which is
 
 Whenever a new version of one of the following environments is supported, we usually discontinue support of the oldest version with the same release:
 
-* Wildfly Application Server
+* WildFly Application Server
 
 Note that we may decide to deviate from this policy on a case-by-case basis.

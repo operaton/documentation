@@ -233,7 +233,7 @@ history cleanup jobs. The property accepts values in the ISO-8601 date format. N
 
 #### Task metrics
 
-The process engine reports [runtime metrics](../../process-engine/metrics.md) to the database that can help draw conclusions about usage, load, and performance of the BPM platform.
+The process engine reports [runtime metrics](../../process-engine/metrics.md) to the database that can help draw conclusions about usage, load, and performance of Operaton.
 With every assignment of a user task, the related task worker is stored as a pseudonymized, fixed-length value in the `ACT_RU_TASK_METER_LOG` table together with a timestamp. Cleanup for this data needs to
 be configured explicitly if needed.
 

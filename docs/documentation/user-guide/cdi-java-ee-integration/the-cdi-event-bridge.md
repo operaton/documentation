@@ -113,7 +113,7 @@ public void beforeShippingGoods(@Observes @BusinessProcessDefinition("shippingPr
 ```
 
 In the default configuration, event listeners are invoked synchronously and in the context of the same transaction.
-CDI transactional observers (only available in combination with JakartaEE / JavaEE / EJB), allow to control when the
+CDI transactional observers, which are only available in combination with JakartaEE / JavaEE / EJB, let you control when the
 event is handed to the observer method. Using transactional observers, we can for example assure that an observer is
 only notified if the transaction in which the event is fired succeeds:
 

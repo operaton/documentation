@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
 
       - name: Set up Node.js
         uses: actions/setup-node@v6
@@ -19,13 +19,13 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Operaton site
         env:
           TYPESENSE_API_KEY: ${{ secrets.TYPESENSE_API_KEY }}
         run: |
-          npm run build || echo "Build failed, proceeding anyway if build/ exists"
+          npm run build
           .github/script/release-assets.sh
 
       - name: Check if build directory exists
@@ -67,7 +67,7 @@ jobs:
           port: 8108
           
           # The protocol to use when connecting to your Typesense server. Optional. Default: http.
-          protocol: https
+          protocol: http
           
           # The path to your DocSearch config file. Optional. Default: docsearch.config.json.
           config: docsearch.config.json

@@ -74,8 +74,8 @@ The Operaton DMN engine supports two expression languages out of the box:
 - `JUEL`: A Operaton-maintained [implementation][juel] of the Java [Unified Expression Language][EL]
 - `FEEL`: The Friendly Enough Expression Language of the [DMN 1.2] standard.
 
-Depending on the JDK you use, there may also be a `Javascript` implementation
-available like [Rhino] or [Nashhorn].
+Depending on the JDK you use, there may also be a `JavaScript` implementation
+available like [Rhino] or [Nashorn].
 
 You can also use every other script language which provides a [JSR-223]
 implementation. This includes `groovy`, `python` and `ruby`. To use these
@@ -207,7 +207,7 @@ the script engine before using it.
 [EL]: https://jakarta.ee/specifications/expression-language/4.0/
 [DMN 1.2]: http://www.omg.org/spec/DMN/
 [Rhino]: https://developer.mozilla.org/de/docs/Rhino
-[Nashhorn]: https://blogs.oracle.com/nashorn/
+[Nashorn]: https://blogs.oracle.com/nashorn/
 [JSR-223]: https://www.jcp.org/en/jsr/detail?id=223
 [default EL]: ../../user-guide/dmn-engine/embed.md#change-default-expression-languages
 [configure EL]: ../../user-guide/dmn-engine/embed.md#customize-expression-and-script-resolving

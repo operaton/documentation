@@ -45,8 +45,8 @@ The following JSF2 snippet begins a new conversation and associates it with a us
 
 ## Declaratively controlling the process
 
-Operaton CDI allows declaratively starting process instances and completing tasks using annotations.
-The `@org.operaton.bpm.engine.cdi.annotation.StartProcess` annotation allows to start a process instance either by "key" or by "name".
+Operaton CDI lets you declaratively start process instances and complete tasks using annotations.
+The `@org.operaton.bpm.engine.cdi.annotation.StartProcess` annotation lets you start a process instance either by "key" or by "name".
 Note that the process instance is started after the annotated method returns. Example:
 
 ```java

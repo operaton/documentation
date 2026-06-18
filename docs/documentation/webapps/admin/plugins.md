@@ -34,7 +34,7 @@ Here you can see the various points at which you are able to add your own plugin
 
 This plugin points properties contain the attribute `path`, which stands for the hashRoute for this page. This will be rendered when the user navigates in the browser to the url, e.g. `#/my-path`.
 
-```Javascript
+```javascript
 properties: {
   path: "/my-path"
 }
@@ -50,7 +50,7 @@ With Operaton.5, the Admin webapp gets a dashboard based on plugins similar to t
 
 This plugin points properties contain the attributes `label` and `pagePath`, which are the heading of the new Section as well as the linked sub-page of the heading. If `pagePath` is `undefined`, the label will not be rendered as a link.
 
-```Javascript
+```javascript
 properties: {
   label: "My Plugin",
   pagePath: '#/myPage'

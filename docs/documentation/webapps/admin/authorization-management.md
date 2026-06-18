@@ -56,11 +56,11 @@ The authorizations set here correspond to the authorizations that can be set in 
 
 ### Member Visibility
 
-Depending on the users authorization, [Tasklist](../tasklist/index.md) will show you information about your colleagues and groups. Currently you can only see the group folder *support* but not your colleague. To change that, log in to the admin application as administrator, enter the Users Authorization menu and create the following rules:
+Depending on the user's authorization, [Tasklist](../tasklist/index.md) will show you information about your colleagues and groups. Currently you can only see the group folder *support* but not your colleague. To change that, log in to the admin application as administrator, enter the Users Authorization menu and create the following rules:
 
 ![Example img](/img/documentation/webapps/admin/admin-authorization-users.png)Users Authorization
 
-Now every member of the group *support* is able to see the new users *lemmy* and *Ozzy*.
+Now every member of the group *support* can see the new users *lemmy* and *Ozzy*.
 
 
 ## Application-Specific Permissions
@@ -89,7 +89,7 @@ Now that we have one group that can see everything in Cockpit, we want to have a
 
 ## Restrict Process Permissions
 
-Not every process has to be managed by every user/group and with regards to different organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.
+Not every process has to be managed by every user/group, and depending on organizational levels, not every group should be aware of every process present in the process engine. Therefore it might be necessary to restrict the access of users/groups to certain processes.
 
 In this use case we want to give the group *accounting*, which we will assume is already present and has access to Cockpit (see [Application-Specific Permission](../admin/authorization-management.md#application-specific-permissions) and [Application Access](#application-access)), full access to the "invoice" process and only to this process.
 
@@ -104,7 +104,7 @@ Now that we know how to grant certain permissions, we might need a second user w
 
 ## Create a User with All Permissions
 
-During the [setup](../admin/user-management.md#initial-user-setup) you had to create one administrator account. In a real-world scenario it could be beneficial to have a second administrator account to manage the users. Basically, an administrator is a user with the `ALL` permission for every possible resource and resource id. For example, to grant the *accounting* group all permissions for authorizations the following entry has to be made:
+During the [setup](../admin/user-management.md#initial-user-setup) you had to create one administrator account. In a real-world scenario it could be beneficial to have a second administrator account to manage the users. Basically, an administrator is a user with the `ALL` permission for every possible resource and resource id. For example, to grant the *accounting* group all permissions for authorizations, create the following entry:
 
 ![Example img](/img/documentation/webapps/admin/admin_auth_edit_full_access.png)Edit Access
 

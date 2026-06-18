@@ -60,7 +60,7 @@ Operaton is tested and supported on **Java 17**, **Java 21**, and **Java 25**.
 
 ### Camunda 7 Compatibility
 
-This release is feature complete and API-compatible with [**Camunda 7.24**](https://docs.camunda.org/enterprise/announcement/#camunda-platform-7-24).
+This release is feature complete and API-compatible with [**Camunda 7 CE 7.24**](https://docs.camunda.org/manual/7.24/).
 
 ### Spring
 
@@ -78,7 +78,7 @@ The Operaton Quarkus extension is based on **Quarkus 3.28.3**.
 
 The Tomcat distribution is based on **Tomcat 11.0.12**.
 
-The Wildfly distribution is based on **Wildfly 37.0.1**.
+The WildFly distribution is based on **WildFly 37.0.1**.
 
 ### Standards Compliance
 

@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Spring Boot Project'
+title: 'Set Up a Spring Boot Project'
 sidebar_position: 10
 
 menu:
@@ -46,8 +46,8 @@ When you are done, click Create. IntelliJ IDEA sets up a new Maven project.
 ### Add Operaton Platform & Spring Boot Dependencies
 
 The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the `pom.xml` file of the project.
-We add the Spring Boot & the Operaton BOM in the "dependency management" section and the Operaton Spring Boot Starter for Webapps, which will automatically include the Operaton engine and webapps in the app.
-We also use `spring-boot-maven-plugin`, which does all the magic for packaging Spring Boot application content together.
+We add the Spring Boot and Operaton BOMs in the "dependency management" section and the Operaton Spring Boot Starter for web apps, which will automatically include the Operaton engine and web apps in the app.
+We also use `spring-boot-maven-plugin`, which packages the Spring Boot application content together.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -134,8 +134,8 @@ We also use `spring-boot-maven-plugin`, which does all the magic for packaging S
 
 ### Add Main Class to our Spring Boot Application
 
-Next, we add an application class with a main method that will be the entry point for launching the Spring Boot application. The class has the annotation `@SpringBootApplication` on it,
-which implicitly adds several convenient features (autoconfiguration, component scan, etc. - see Spring Boot docs).
+Next, we add an application class with a main method that will be the entry point for launching the Spring Boot application. The class is annotated with `@SpringBootApplication`,
+which implicitly adds several convenient features (auto-configuration, component scan, etc. - see Spring Boot docs).
 The class is added in the `src/main/java` folder in the `org.operaton.bpm.getstarted.loanapproval` package.
 
 ```java
@@ -159,20 +159,20 @@ Now you can perform the first build. Select the _Maven_ view, open the _Lifecycl
 ![IDEA Maven](/img/get-started/spring-boot/idea-run-maven-verify.png)
 
 
-Our first Operaton Spring Boot application is ready now. As a result of the build, you will have a JAR-file in your `target` folder. This JAR is a Spring Boot application,
-which embeds inside Tomcat as a web container, Operaton engine and Operaton Web applications resources.
-When started, it will use an in-memory H2 database for Operaton Engine needs.
+Our first Operaton Spring Boot application is ready now. As a result of the build, you will have a JAR file in your `target` folder. This JAR is a Spring Boot application,
+which embeds Tomcat as a web container and includes the Operaton engine and Operaton web application resources.
+When started, it will use an in-memory H2 database for the Operaton engine.
 
-You can run the application opening the `WebappExampleProcessApplication` class and click on the triangle icon in the ruler left of the class name.
+You can run the application by opening the `WebappExampleProcessApplication` class and clicking the triangle icon in the ruler left of the class name.
 Wait until you see a similar line in the console:
 ```text
 Started WebappExampleProcessApplication in 2.67 seconds (process running for 3.044)
 ```
-Then go to [http://localhost:8080/](http://localhost:8080/) in your browser and enjoy the Operaton webapps.
+Then go to [http://localhost:8080/](http://localhost:8080/) in your browser and enjoy the Operaton web apps.
 
-Another way to run the app is to simply run the JAR-file with a `java -jar` command.
+Another way to run the app is to run the JAR file with a `java -jar` command.
 
-If your port `8080` is already occupied, you can change the default port by adding an `application.yml` file and add:
+If port `8080` is already in use, you can change the default port by adding an `application.yml` file with:
 ```yml
 server.port: 8081
 ```

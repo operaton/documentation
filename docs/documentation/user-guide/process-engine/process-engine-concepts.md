@@ -140,7 +140,7 @@ ProcessInstanceWithVariables instance = runtimeService.createProcessInstanceByKe
   .executeWithVariablesInReturn();
 ```
 
-The `executeWithVariablesInReturn` returns if the process instance ends or reaches a wait state. The returned `ProcessInstanceWithVariables` object contains the informations of the process instance and the latest variables.
+The `executeWithVariablesInReturn` returns if the process instance ends or reaches a wait state. The returned `ProcessInstanceWithVariables` object contains the information of the process instance and the latest variables.
 
 ### Query for Process Instances
 

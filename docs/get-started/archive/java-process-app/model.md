@@ -8,11 +8,11 @@ menu:
     name: "Model a Process"
     parent: "get-started-pa"
     identifier: "get-started-pa-model"
-    description: "Learn the basics of handling the Camunda Modeler and learn how to model and configure a fully executable process."
+    description: "Learn the basics of handling the Operaton Modeler and learn how to model and configure a fully executable process."
 
 ---
 
-In this section you learn how to create your first BPMN 2.0 process with the Camunda Modeler. Start up the Camunda Modeler now.
+In this section you learn how to create your first BPMN 2.0 process with the Operaton Modeler. Start up the Operaton Modeler now.
 
 ## Create a new BPMN Diagram
 

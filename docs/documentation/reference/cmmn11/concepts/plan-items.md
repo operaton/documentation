@@ -25,7 +25,7 @@ As an example, consider the following fragment of a case definition:
       <humanTask id="HumanTask_1" operaton:assignee="kermit" />
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
 This model contains one plan item definition, namely the `humanTask` element. This definition is referenced by two plan items, `PlanItem_HumanTask_1` and `PlanItem_HumanTask_2`. When a new case of this model is created, there will be two human task instances, one for each plan item. The plan item definition is the single point at which the human task is configured. Thus, the assignee specification by the attribute `operaton:assignee="kermit"` is valid for both plan items.

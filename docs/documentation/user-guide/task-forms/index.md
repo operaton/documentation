@@ -96,7 +96,7 @@ Forms can be used on top of the task completion API to render form fields and va
 
 ### Form Reference
 
-With Form References, Operaton Forms provide a flexible way of linking an element in a BPMN diagram to a form. To link a BPMN element ([StartEvent][start-event] or [UserTask][user-tasks]) to a Operaton Form, you have to specify the Id of the Operaton Form as the `operaton:formRef` attribute. Additionally, the `operaton:formRefBinding` attribute specifies which version of the Operaton Form to reference.
+With Form References, Operaton Forms provide a flexible way of linking an element in a BPMN diagram to a form. To link a BPMN element ([StartEvent][start-event] or [UserTask][user-tasks]) to an Operaton Form, you have to specify the Id of the Operaton Form as the `operaton:formRef` attribute. Additionally, the `operaton:formRefBinding` attribute specifies which version of the Operaton Form to reference.
 
 Valid values are:
 
@@ -128,7 +128,7 @@ The attributes `operaton:formRef` and `operaton:formRefVersion` can be specified
 
 ### Form Key
 
-Aa an alternative to `formRef` you can reference a Operaton Form file with a `deployment` or `app` [form key](../../user-guide/task-forms/index.md#form-key-details):
+As an alternative to `formRef` you can reference an Operaton Form file with a `deployment` or `app` [form key](../../user-guide/task-forms/index.md#form-key-details):
 
 * `operaton-forms:deployment:FORM_NAME.form`
 * `operaton-forms:app:forms/FORM_NAME.form`

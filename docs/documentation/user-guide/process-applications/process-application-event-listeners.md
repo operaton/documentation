@@ -12,7 +12,7 @@ menu:
 
 
 The process engine supports defining two types of event listeners: [Task Event Listeners and Execution Event Listeners](../../user-guide/process-engine/delegation-code.md#execution-listener).
-Task Event listeners allow to react to Task Events (Tasks are Created, Assigned, Completed). Execution Listeners allow to react to events fired as execution progresses through the diagram: Activities are Started, Ended and Transitions are being taken.
+Task event listeners let you react to task events (tasks are created, assigned, or completed). Execution listeners let you react to events fired as execution progresses through the diagram: activities are started or ended, and transitions are taken.
 
 When using the process application API, the process engine makes sure that Events are delegated to the right process application. For example, assume there is a process application deployed as "invoice.war" which deploys a process definition named "invoice". The invoice process has a task named "archive invoice". The application "invoice.war" further provides a Java Class implementing the [ExecutionListener](../../user-guide/process-engine/delegation-code.md#execution-listener) interface and is configured to be invoked whenever the END event is fired on the "archive invoice" activity. The process engine makes sure that the event is delegated to the listener class located inside the process application:
 

@@ -8,7 +8,7 @@ sidebar_position: 30
 
 Operaton is a Java-based framework. The main components are written in Java and we have a general focus on providing Java developers with the tools they need for designing, implementing and running business processes and workflows on the JVM. Nevertheless, we also want to make the process engine technology available to non-Java developers. This is why Operaton also provides a REST API which allows you to build applications connecting to a remote process engine.
 
-Operaton can be used both as a standalone process engine server or embedded inside custom Java applications. The embeddability requirement is at the heart of many architectural decisions within Operaton. For instance, we work hard to make the process engine component a lightweight component with as little dependencies on [third-party libraries](./third-party-libraries/index.md) as possible. Furthermore, the embeddability motivates programming model choices such as the capabilities of the process engine to participate in Spring Managed or JTA [transactions and the threading model](../user-guide/process-engine/transactions-in-processes.md).
+Operaton can be used both as a standalone process engine server or embedded inside custom Java applications. The embeddability requirement is at the heart of many architectural decisions within Operaton. For instance, we work hard to make the process engine component a lightweight component with as few dependencies on [third-party libraries](./third-party-libraries/index.md) as possible. Furthermore, the embeddability motivates programming model choices such as the capabilities of the process engine to participate in Spring Managed or JTA [transactions and the threading model](../user-guide/process-engine/transactions-in-processes.md).
 
 
 ## Process Engine Architecture
@@ -64,10 +64,10 @@ The individual process engine instances do not maintain session state across tra
 
 Operaton doesn't provide load-balancing capabilities or session replication capabilities out of the box. The load-balancing function would need to be provided by a third-party system, and session replication would need to be provided by the host application server.
 
-In a clustered setup, if users are going to login to the web applications, an extra step will need to be taken to ensure that users aren't asked to login multiple times. Two options exist:
+In a clustered setup, if users are going to log in to the web applications, an extra step will need to be taken to ensure that users aren't asked to log in multiple times. Two options exist:
 
 1. "Sticky sessions" could be configured and enabled within your load balancing solution. This would ensure that all requests from a given user are directed to the same instance over a configurable period of time.
-2. Session sharing can be enabled in your application server such that the application server instances share session state. This would allow users to connect to multiple instances in the cluster without being asked to login multiple times.
+2. Session sharing can be enabled in your application server such that the application server instances share session state. This would allow users to connect to multiple instances in the cluster without being asked to log in multiple times.
 
 If neither of the above approaches are implemented in a cluster setup, connections to multiple nodes - intentionally or via a load-balancing solution - will result in multiple login requests.
 
@@ -76,7 +76,7 @@ If neither of the above approaches are implemented in a cluster setup, connectio
 The process engine [job executor](../user-guide/process-engine/the-job-executor.md) is also clustered and runs on each node. This way, there is no single point of failure as far as the process engine is concerned. The job executor can run in both [homogeneous and heterogeneous clusters](../user-guide/process-engine/the-job-executor.md#cluster-setups).
 
 :::note[Time zones]
-The are some limitations on [time zone usage in a cluster](../user-guide/process-engine/time-zones.md#cluster-setup).
+There are some limitations on [time zone usage in a cluster](../user-guide/process-engine/time-zones.md#cluster-setup).
 :::
 
 
@@ -99,7 +99,7 @@ The Operaton web applications are based on a RESTful architecture.
 
 Frameworks used:
 
-* [JAX-RS](https://jax-rs-spec.java.net) based Rest API
+* [JAX-RS](https://jax-rs-spec.java.net) based REST API
 * [AngularJS](http://angularjs.org)
 * [RequireJS](http://requirejs.org)
 * [jQuery](http://jquery.com)

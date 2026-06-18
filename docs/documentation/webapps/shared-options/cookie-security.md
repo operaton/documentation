@@ -11,14 +11,14 @@ menu:
     description: "Get more insights about cookie security settings"
 ---
 
-Operatons Web applications use cookies to preserve user sessions and to prevent CSRF attacks. This page explains how these cookies should be configured to increase the security.
+Operaton's web applications use cookies to preserve user sessions and to prevent CSRF attacks. This page explains how these cookies should be configured to increase security.
 
-The Web applications set the following cookies:
+The web applications set the following cookies:
 
 * **Session Cookie** (<code>JSESSIONID</code>)
-  * Supposed to remember the authenticated user after the login
+  * Remembers the authenticated user after login
 * **CSRF Prevention Cookie** (<code>XSRF-TOKEN</code>)
-  * Supposed to prevent Cross-Site Request Forgery (CSRF) by sending a newly generated token along with each modifying request
+  * Prevents Cross-Site Request Forgery (CSRF) by sending a newly generated token along with each modifying request
 
 ## What are the properties supposed to be?
 
@@ -32,7 +32,7 @@ in Mozilla’s Developer Guide.
 
 When enabling the <code>Secure</code> flag, the browser does not send the cookie via a plain (insecure) HTTP connection.
 
-To provide a seamless getting started experience, we disabled the <code>Secure</code> flag by default for all cookies. However, you can easily enable the <code>Secure</code> flag. When the Secure flag is present, some browsers prevent cookies from being sent via a plain (insecure) HTTP connection.
+To provide a seamless getting-started experience, we disabled the <code>Secure</code> flag by default for all cookies. However, you can easily enable the <code>Secure</code> flag. When the Secure flag is present, some browsers prevent cookies from being sent via a plain (insecure) HTTP connection.
 
 :::note[Heads-up!]
 It is highly recommended to use an HTTPS connection and enable the <code>Secure</code> flag.
@@ -47,7 +47,7 @@ When enabling the <code>HttpOnly</code> flag, the cookie cannot be read via Java
 When enabling the <code>SameSite</code> flag, the browser only sends the cookie if the client performs the request from the same domain that initially set the cookie. In case of a cross-site request, the browser will not send the cookie.
 
 :::note[Heads-up!]
-The standard related to <code>SameSite</code> recently changed. Most current browser versions treat cookies without <code>SameSite</code> attributes as 'SameSite=Lax'.
+The standard for <code>SameSite</code> recently changed. Most current browser versions treat cookies without <code>SameSite</code> attributes as 'SameSite=Lax'.
 Have a look at [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute) in Mozilla’s Developer Guide.
 :::
 
@@ -56,24 +56,24 @@ Have a look at [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/H
 The following section lists the limitations of the cookie security settings.
 
 ### Absence of HttpOnly for the CSRF Cookie
-For the CSRF Cookie, the <code>HttpOnly</code> flag is absent and not configurable to ensure the functionality of the Web applications. Aforementioned is due to the reason that the CSRF cookie must be readable by the JavaScript HTTP Client to guarantee that the browser sends the token along with every modifying request.
+For the CSRF Cookie, the <code>HttpOnly</code> flag is absent and not configurable to ensure the functionality of the web applications. This is because the CSRF cookie must be readable by the JavaScript HTTP Client to guarantee that the browser sends the token along with every modifying request.
 
 ### Absence of SameSite for the Session Cookie
-In the following [pre-packaged distributions](../../installation/full/index.md), the <code>SameSite</code> property is absent by default since the Java Container manages the cookie and the latest Servlet specification does currently not support the <code>SameSite</code> property:
+In the following [pre-packaged distributions](../../installation/full/index.md), the <code>SameSite</code> property is absent by default since the Java Container manages the cookie and the latest Servlet specification currently does not support the <code>SameSite</code> property:
 
 * WildFly
 * IBM WebSphere
-* Oracle Weblogic
+* Oracle WebLogic
 
 For all other distributions, the <code>SameSite</code> flag is enabled by default.
 
 :::note[Heads-up!]
-The absence of the <code>SameSite</code> property does not have any negative impact on the security of the Web applications: The <code>SameSite</code> property is supposed to ensure protection from CSRF attacks. With the CSRF Protection Filter, there already exists a dedicated protection mechanism for such scenarios.
+The absence of the <code>SameSite</code> property does not have any negative impact on the security of the web applications: The <code>SameSite</code> property is supposed to ensure protection from CSRF attacks. With the CSRF Protection Filter, there is already a dedicated protection mechanism for such scenarios.
 :::
 
 ## What are the defaults?
 
-The following table shows the default configuration of the Web applications.
+The following table shows the default configuration of the web applications.
 
 <table class="table table-striped">
   <tr>
@@ -99,13 +99,13 @@ The following table shows the default configuration of the Web applications.
 </table>
 
 \* The <code>SameSite</code> property is not supported for IBM WebSphere and disabled by default for both cookies.
-The Session Cookie also has no <code>SameSite</code> attribute by default on WildFly and Oracle Weblogic.
+The Session Cookie also has no <code>SameSite</code> attribute by default on WildFly and Oracle WebLogic.
 
 :::note[SameSite & Firefox]
 Firefox prevents sending the Cookie to the server for all subsequent requests until the next restart ...
 
-* ... on **Strict** when opening the Webapps from a cross-origin (GET)
-* ... on **Lax** when a modifying request (e. g. POST) is performed from a cross-origin
+* ... on **Strict** when opening the web apps from a cross-origin (GET)
+* ... on **Lax** when a modifying request (e.g., POST) is performed from a cross-origin
 :::
 
 ## How to configure?
@@ -114,10 +114,10 @@ This section describes how to configure the **Session Cookie** as well as the **
 
 ### Session Cookie
 
-Here you can find how to configure the session cookie for the following containers:
+Here you can find out how to configure the session cookie for the following containers:
 
 * [Tomcat](../../installation/full/tomcat/configuration.md#session-cookie-in-webapps)
-* [Wildfly](../../installation/full/wildfly/configuration.md#session-cookie-in-webapps)
+* [WildFly](../../installation/full/wildfly/configuration.md#session-cookie-in-webapps)
 * [Spring Boot](../../user-guide/spring-boot-integration/configuration.mdx#session-cookie)
 
 ### CSRF Cookie

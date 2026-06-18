@@ -13,7 +13,7 @@ menu:
 # Manual Download
 
 The Forms SDK library can be downloaded from
-[Github](https://github.com/operaton/bower-operaton-bpm-sdk-js/releases).
+[GitHub](https://github.com/operaton/bower-operaton-bpm-sdk-js/releases).
 
 
 # Bower

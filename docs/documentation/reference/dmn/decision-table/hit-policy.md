@@ -92,9 +92,9 @@ is violated.
 
 See the following example:
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-any.png)Hit Policy Any" class="no-lightbox
-This is a decision table for the leave application. If the applier
+This is a decision table for the leave application. If the applicant
 has no vacation days left or is currently in the probation period, the application will be refused.
-Otherwise the application is applied.
+Otherwise the application is approved.
 
 ### First Hit Policy
 
@@ -176,7 +176,7 @@ the Operaton DMN engine:
 #### SUM aggregator
 The SUM aggregator sums up all outputs from the satisfied rules.
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-sum.png)Hit Policy Collect SUM" class="no-lightbox
-The showed decision table can be used to sum up the salary bonus for an employee. For example, the employee has been working in the company for
+The shown decision table can be used to sum up the salary bonus for an employee. For example, the employee has been working in the company for
 3.5 years. So the first, second and third rule will match and the result of the decision table is 600, since the output is summed up.
 
 #### MIN aggregator
@@ -192,12 +192,12 @@ The MAX aggregator can be used to return the largest output value of all satisfi
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-max.png)Hit Policy Collect MAX" class="no-lightbox
 
 This decision table represents the decision for the amount of pocket money for a child.
-Depending of the age, the amount grows. For example, an input of 9 will satisfy the first and second rules.
-The output of the second rule is larger then the output of the first rule, so the output
+Depending on the age, the amount grows. For example, an input of 9 will satisfy the first and second rules.
+The output of the second rule is larger than the output of the first rule, so the output
 will be 5. A child at the age of 9 will get 5 as pocket money.
 
 #### COUNT aggregator
-The COUNT aggregator can be use to return the count of satisfied rules.
+The COUNT aggregator can be used to return the count of satisfied rules.
 
 ![Example img](/img/documentation/reference/dmn/decision-table/hit-policy-collect-count.png)Hit Policy Collect COUNT" class="no-lightbox
 

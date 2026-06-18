@@ -13,7 +13,7 @@ In this section, you'll learn how to make your process more dynamic by using BPM
 ## Add Two Gateways
 We want to modify our process so that it's more dynamic.
 
-To do so, open the process in the Camunda Modeler.
+To do so, open the process in the Operaton Modeler.
 
 Next, from the Modeler's left-hand menu, select the gateway shape (diamond) and drag it into position between the Start Event and the Service Task. Use the create space tool again as needed. Move the User Task down and add another Gateway after it. Lastly, adjust the Sequence Flows so that the model looks like this:
 ![Example image](/img/get-started/quick-start/modeler-gateway1.png)
@@ -43,7 +43,7 @@ For the `No` Sequence Flow, use the Expression `${!approved}`:
 
 ## Deploy the Process
 
-Use the `Deploy` Button in the Camunda Modeler to deploy the updated process to Operaton.
+Use the `Deploy` button in the Operaton Modeler to deploy the updated process to Operaton.
 
 ## Work on the Task
 

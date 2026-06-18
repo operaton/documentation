@@ -350,7 +350,7 @@ Operaton is tested and supported on **Java 17**, **Java 21**, and **Java 25**.
 
 ### Camunda 7 Compatibility
 
-This release is feature complete and API-compatible with [**Camunda 7.24**](https://docs.camunda.org/enterprise/announcement/#camunda-platform-7-24).
+This release is feature complete and API-compatible with [**Camunda 7 CE 7.24**](https://docs.camunda.org/manual/7.24/).
 
 ### Spring
 
@@ -368,7 +368,7 @@ The Operaton Quarkus extension is based on **Quarkus 3.33.1 LTS**.
 
 The Tomcat distribution is based on **Tomcat 11.0.21**.
 
-The Wildfly distribution is based on **Wildfly 38.0.1**.
+The WildFly distribution is based on **WildFly 38.0.1**.
 
 ### Database Compatibility
 
@@ -427,3 +427,13 @@ RESTEasy 7 is based on **Jakarta REST 4.0** and is the current supported release
 
 This upgrade is completely transparent for clients using the Operaton REST API or the WildFly distribution. 
 No configuration or code changes are required on the client side.
+
+## Patch Releases
+
+### 2.1.2
+
+#### Bug Fixes
+
+- **[fix(engine): use stored process definition key for MDC](https://github.com/operaton/operaton/pull/3109)** — The process definition key used in MDC (Mapped Diagnostic Context) logging is now taken from the stored database value rather than the in-memory object, ensuring consistency in log correlation. (#3109)
+- **[fix(engine): accept date form values](https://github.com/operaton/operaton/pull/3089)** — Engine now correctly handles date-typed form field values submitted via task forms. (#3089)
+- **[fix(engine): prevent attachment delete NPE](https://github.com/operaton/operaton/pull/3088)** — Fixed a NullPointerException when deleting a task attachment that had already been removed. (#3088)
