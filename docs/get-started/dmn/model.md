@@ -8,14 +8,14 @@ menu:
     name: "Create a Decision Table"
     parent: "get-started-dmn"
     identifier: "get-started-dmn-model"
-    description: "Learn the basics of handling the Camunda Modeler and learn how to create and configure a fully executable decision table."
+    description: "Learn the basics of handling the Operaton Modeler and learn how to create and configure a fully executable decision table."
 
 aliases: [/dmn/model/]
 ---
 
-In this section you learn how to create your first [DMN Decision Table](/docs/documentation/reference/dmn/decision-table/) with the Camunda Modeler. The table will contain the decision logic about the desired dish for a given season and guest count.
+In this section you learn how to create your first [DMN Decision Table](/docs/documentation/reference/dmn/decision-table/) with the Operaton Modeler. The table will contain the decision logic about the desired dish for a given season and guest count.
 
-Now start up the Camunda Modeler.
+Now start up the Operaton Modeler.
 
 ## Create a new Decision Diagram
 

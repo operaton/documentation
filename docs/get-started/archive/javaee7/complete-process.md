@@ -57,7 +57,7 @@ A new conversation is started again before the view is rendered and the task is 
 
 ![Example image](/img/get-started/archive/javaee7/pizza-order-process-prepare-pizza.png)
 
-Open the process with Camunda Modeler. Click on the prepare pizza user task. In the properties view, set the `Form Key` property to `app:preparepizza.jsf`.
+Open the process with Operaton Modeler. Click on the prepare pizza user task. In the properties view, set the `Form Key` property to `app:preparepizza.jsf`.
 
 When you are done, save all resources, [perform a Maven build](../deploy/#build-the-process-application), and [redeploy](../deploy/#deploy-to-wildfly) the process application.
 
@@ -98,7 +98,7 @@ public class OrderBusinessLogic {
 
 ![Example image](/img/get-started/archive/javaee7/pizza-order-process-send-rejection-email.png)
 
-Open the process with Camunda Modeler. Click on the reject email service task. In the properties view, set the `Expression` property to `${orderBusinessLogic.rejectOrder(execution)}`.
+Open the process with Operaton Modeler. Click on the reject email service task. In the properties view, set the `Expression` property to `${orderBusinessLogic.rejectOrder(execution)}`.
 
 When you are done, save all resources, [perform a Maven build](../deploy/#build-the-process-application) and [redeploy](../deploy/#deploy-to-wildfly) the process application. You can now approve and reject an order in [Tasklist](http://localhost:8080/operaton/app/tasklist). The output of the `Send Rejection Email` task can be checked by looking into the logfile of the WildFly server. It should state that a rejection email has been sent:
 
