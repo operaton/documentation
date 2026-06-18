@@ -12,7 +12,7 @@ menu:
 ---
 
 :::note[Installation Guide]
-  If you [download a full distribution](http://operaton.org/download/), the Operaton WildFly subsystem is readily installed into the application server.
+  If you [download a full distribution](../../introduction/downloading-operaton.md), the Operaton WildFly subsystem is readily installed into the application server.
 
   [Read the installation guide](../../installation/full/wildfly/index.md) to learn how to install the Operaton WildFly subsystem into your WildFly Server.
 :::

@@ -25,10 +25,11 @@ const config: Config = {
   organizationName: 'Operaton', // Usually your GitHub org/user name.
   projectName: 'Operaton', // Usually your repo name.
 
-  onBrokenLinks: 'warn', //'throw',
+  onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'warn',//'throw'
+      onBrokenMarkdownLinks: 'throw'
     }
   },
 

@@ -10,14 +10,9 @@ import { visit } from 'unist-util-visit';
 import path from 'path';
 
 export default function remarkBpmnDiagram() {
-  console.log('[remark-bpmn] Plugin loaded!');
-  
   return (tree, file) => {
     const filePath = file.history?.[0] || 'unknown';
-    console.log(`[remark-bpmn] Processing file: ${filePath}`);
-    
-    let transformCount = 0;
-    
+
     visit(tree, (node) => {
       let bpmnPath = null;
       
@@ -30,7 +25,6 @@ export default function remarkBpmnDiagram() {
         );
         
         if (attr && attr.value) {
-          console.log(`[remark-bpmn] Found JSX div with data-bpmn-diagram: "${attr.value}"`);
           bpmnPath = processPath(attr.value, filePath);
         }
       }
@@ -39,15 +33,11 @@ export default function remarkBpmnDiagram() {
       if (node.type === 'html' && node.value?.includes('data-bpmn-diagram')) {
         const match = node.value.match(/data-bpmn-diagram\s*=\s*["']([^"']+)["']/i);
         if (match) {
-          console.log(`[remark-bpmn] Found HTML with data-bpmn-diagram: "${match[1]}"`);
           bpmnPath = processPath(match[1], filePath);
         }
       }
       
       if (bpmnPath) {
-        transformCount++;
-        console.log(`[remark-bpmn] Transforming to: <BpmnViewer diagramPath="${bpmnPath}" />`);
-        
         node.type = 'mdxJsxFlowElement';
         node.name = 'BpmnViewer';
         node.attributes = [
@@ -60,8 +50,6 @@ export default function remarkBpmnDiagram() {
         node.children = [];
       }
     });
-    
-    console.log(`[remark-bpmn] File complete. Transforms: ${transformCount}`);
   };
 }
 
@@ -95,12 +83,9 @@ function processPath(relativePath, fullFilePath) {
     }
   }
   
-  console.log(`[remark-bpmn] Doc relative path: ${docRelativePath}`);
-  
   // Get the directory of the markdown file (relative to docs/)
   const fileDir = path.posix.dirname(docRelativePath);
-  console.log(`[remark-bpmn] File directory: ${fileDir}`);
-  
+
   // Resolve the relative BPMN path against the file's directory
   // Example: fileDir = "documentation/reference/bpmn20/events"
   //          relativePath = "../bpmn/event-error"
@@ -116,8 +101,6 @@ function processPath(relativePath, fullFilePath) {
     resolvedPath = path.posix.normalize(joined);
   }
   
-  console.log(`[remark-bpmn] Resolved path: ${resolvedPath}`);
-  
   // Add .bpmn extension if not present
   if (!resolvedPath.endsWith('.bpmn')) {
     resolvedPath += '.bpmn';
@@ -128,8 +111,5 @@ function processPath(relativePath, fullFilePath) {
     resolvedPath = resolvedPath.substring(2);
   }
   
-  const finalPath = `/bpmn/${resolvedPath}`;
-  console.log(`[remark-bpmn] Final path: ${finalPath}`);
-  
-  return finalPath;
+  return `/bpmn/${resolvedPath}`;
 }

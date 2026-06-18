@@ -9,7 +9,7 @@ This page gives you an overview of the BPMN 2.0 elements and the current coverag
 
 :::note[BPMN - Business Process Model and Notation]
 If you are unfamiliar with BPMN 2.0, you might want to check out the
-<a href="http://operaton.org/bpmn/tutorial.html">BPMN Tutorial</a> first.
+<a href="/docs/get-started/quick-start/">BPMN Quick Start</a> first.
 :::
 
 ## Coverage
@@ -181,8 +181,7 @@ In BPMN there are start events, intermediate events and end events. These three 
 
 :::note[Understanding BPMN Events]
 To help understand the principle behavior of events in BPMN, we recommend to check the
-[Events: Basic Concepts](http://operaton.org/bpmn/reference.html#events-basic-concepts)
-chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html).
+[Events](./events/index.md) section of this BPMN 2.0 implementation reference.
 :::
 
 <table class="table table-responsive table-bordered bpmn-events" style={{width: '100%', fontSize:'13px'}}>

@@ -9,7 +9,7 @@ This guide gives an introduction to Operaton Run, a pre-packaged, lightweight di
 
 ## Prerequisites and audience
 
-To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](https://docs.operaton.org/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
+To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](/docs/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
 
 This guide will teach you about Operaton Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install Operaton Run. Head over to the [Installation guide](../installation/operaton-bpm-run.md) for details on how to install and start Operaton Run.
 
@@ -26,7 +26,7 @@ Operaton Run is a full distribution of Operaton. It includes:
 
 ## Starting with Operaton Run
 
-To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) and unpacking it. You will find the following structure:
+To start with Operaton Run, download the [distribution](https://github.com/operaton/operaton/releases/latest) and unpack it. You will find the following structure:
 
 ```
 operaton-bpm-run
@@ -323,7 +323,7 @@ Operaton Run also supports configuration options for customizing the deployment.
             <li>When set to <code>false</code>, all deployments will be deployed without filtering their resources.</li>
           </ul>
           The property can be useful for controlling the deployment behaviour of the engine in case of restarts, similar to the
-          <a href="..user-guide/spring-framework-integration/deployment">Spring Framework Integration</a>
+          <a href="./spring-framework-integration/deployment.md">Spring Framework Integration</a>
       </td>
       <td><code>true</code></td>
   </tr>

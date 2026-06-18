@@ -37,7 +37,7 @@ A single deployment (process-archive) is declared. The process archive has the n
 See [Deployment Descriptor Reference](../../reference/deployment-descriptors/processes-xml.md) for complete documentation of the syntax of the `processes.xml` file.
 
 
-## Empty processes.xml
+## Empty processes.xml {#empty-processes-xml}
 
 The processes.xml may optionally be empty (left blank). In this case default values are used. The empty processes.xml corresponds to the following configuration:
 

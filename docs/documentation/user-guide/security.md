@@ -10,7 +10,7 @@ menu:
 
 ---
 
-This page provides an overview of how to secure a Operaton installation. For Operaton's security policy, a list of security notices and a guide how to report vulnerabilities, please visit the [general security documentation](/security).
+This page provides an overview of how to secure a Operaton installation. For Operaton's security policy, a list of security notices and a guide how to report vulnerabilities, please visit the [general security documentation](/docs/security/).
 
 In order to secure a Operaton installation, Operaton itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific Operaton product and listed those in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others
 
@@ -24,7 +24,7 @@ There are different ways of using Operaton and different components are provided
 * Web applications (Cockpit, Tasklist, ...): similar considerations to the REST API apply.
 
 
-Keep in mind that it is not recommended to use the pre-packaged distribution in production environment rather install the full distribution manually (for example [Tomcat manual installation](https://docs.operaton.org/docs/documentation/installation/full/tomcat/manual/)).
+Keep in mind that it is not recommended to use the pre-packaged distribution in production environment rather install the full distribution manually (for example [Tomcat manual installation](/docs/documentation/installation/full/tomcat/manual/)).
 
 :::warning[Security Consideration]
   The pre-packaged distribution is intended for users who want a getting started experience. In case

@@ -21,8 +21,8 @@ Business Process Model and Notation (BPMN) is a standard for Workflow and Proces
 Operaton supports the 2.0 version of BPMN.
 
 * Getting started implementing BPMN Processes: [Quick Start (Java / JS)]
-* Getting to Know BPMN as a Modeling Language: [BPMN Modeling Tutorial]
-* Modeling BPMN: [BPMN Modeling Reference]
+* Getting to Know BPMN as a Modeling Language: [Quick Start (Java / JS)]
+* Modeling BPMN: [BPMN Implementation Reference]
 * Tool for modeling BPMN: [BPMN Modeler][modelers]
 * Implementing BPMN Processes: [BPMN Implementation Reference]
 * Executing BPMN: [Process Engine]
@@ -49,13 +49,11 @@ Operaton supports the 1.1 version of DMN.
 
 [OMG]: http://www.omg.org/
 [modelers]: ../modeling-bpmn/index.md
-[BPMN Modeling Tutorial]: https://operaton.org/bpmn/tutorial/
-[BPMN Modeling Reference]: https://operaton.org/bpmn/reference/
-[Quick Start (Java / JS)]: /get-started/quick-start/
+[Quick Start (Java / JS)]: /docs/get-started/quick-start/
 [BPMN Implementation Reference]: ../reference/bpmn20/index.md
 [CMMN Implementation Reference]: ../reference/cmmn11/index.md
-[DMN Getting Started]: /get-started/dmn/
+[DMN Getting Started]: /docs/get-started/dmn/
 [DMN Implementation Reference]: ../reference/dmn/index.md
-[DMN Modeling Tutorial]: https://operaton.org/dmn/tutorial/
+[DMN Modeling Tutorial]: /docs/get-started/dmn/
 [Process Engine]: ../user-guide/process-engine/index.md
 [DMN Engine]: ../user-guide/dmn-engine/index.md

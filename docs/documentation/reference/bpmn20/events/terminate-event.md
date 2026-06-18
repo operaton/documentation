@@ -61,4 +61,4 @@ A terminate event is modeled as an end event with an additional definition eleme
 
 ### Additional Resources
 
-* [Terminate Events](http://operaton.org/bpmn/reference.html#events-termination) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Events](./index.md) in the [BPMN 2.0 Implementation Reference](../index.md)

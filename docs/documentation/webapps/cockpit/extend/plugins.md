@@ -12,7 +12,7 @@ menu:
 ---
 
 :::note[Plugin Compatibility]
-Please note that we updated the frontend plugin interface with Operaton Runtime 7.14. Plugins written for Operaton Runtime 7.13 and earlier might no longer work with Operaton Runtime 7.14. Checkout the [update guide](../update/minor/713-to-714) for more details.
+Please note that we updated the frontend plugin interface with Operaton Runtime 7.14. Plugins written for Operaton Runtime 7.13 and earlier might no longer work with Operaton Runtime 7.14.
 :::
 
 Cockpit defines a plugin concept to add own functionality without being forced to extend or hack the Cockpit web application. You can add plugins at various plugin points, e.g., the processes dashboard as shown in the following example:
@@ -117,7 +117,7 @@ This file can also be included standalone as a [custom script](../../cockpit/ext
 The second argument contains API endpoints and CSRF cookie information, as well as constants like a `processDefinitionId`. The `api` key is always present and contains
   * `engine`: the engine name
   * `CSRFToken`: the current CSRF token for your requests
-  * `baseApi`, `adminApi`, `cockpitApi`, `engineApi`: The paths to different API endpoints. The engineApi corresponds to the [Rest Api](../reference/rest)
+  * `baseApi`, `adminApi`, `cockpitApi`, `engineApi`: The paths to different API endpoints. The engineApi corresponds to the [Rest API](../../../reference/rest/index.md)
 The details of which data is passed into the plugin can be found at the [plugin point reference](#plugin-points).
 
 * `result`: Function, only available in data plugins. Argument is a (`Promise`).
@@ -157,7 +157,7 @@ Plugins created for Operaton.13 or earlier can be included for compatibility. To
 
 Please note that all Plugins with this prefix will be included using the 7.13 plugin mechanism. You cannot create new Plugins with IDs starting with `legacy`.
 
-For more details about legacy Plugins, check out the legacy [Plugin documentation](https://docs.operaton.org/docs/documentation/webapps/cockpit/extend/plugins/). Please note that this link will take you to the documentation of Operaton.
+For more details about legacy Plugins, see the plugin points below.
 
 ## Plugin points
 

@@ -5,6 +5,8 @@ sidebar_position: 20
 
 ---
 
+<RegisterAnchors ids={['auth-cache', 'csrf']} />
+
 The auto starter uses the  `org.operaton.bpm.engine.impl.cfg.ProcessEnginePlugin` mechanism to configure the engine.
 
 The configuration is divided into _sections_. These _sections_ are represented by the marker interfaces:
@@ -191,7 +193,7 @@ public class MyCustomConfiguration extends AbstractOperatonConfiguration {
 ## Operaton Engine Properties
 In addition to the bean-based way of overriding process engine configuration properties, it is also possible
 to set those properties via an <code>application.yaml</code> configuration file. Instructions on how to use it
-can be found in the <a href="https://docs.operaton.org/get-started/spring-boot/configuration/">Spring Boot Starter Guide</a>.
+can be found in the <a href="/docs/get-started/spring-boot/configuration/">Spring Boot Starter Guide</a>.
 
 The available properties are as follows:
 
