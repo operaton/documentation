@@ -79,7 +79,7 @@ Note that the tenant id of the calling case instance is not taken into account i
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
-The `operaton:processTenantId` attribute allows to explicitly specify a tenant id:
+The `operaton:processTenantId` attribute lets you explicitly specify a tenant id:
 
 ```xml
 <processTask id="checkCreditProcess" processRef="checkCreditProcess"
@@ -105,7 +105,7 @@ An expression also allows using the tenant id of the calling case instance inste
 
 ## Exchange Variables
 
-The Operaton custom extensions elements `in` and `out` allow to exchange variables between the process task (in a case instance) and the process instance that it creates: `in` elements of a process task map case variables to input variables of the launched process instance and `out` mappings of a process task map output variables of the process instance to case variables, e.g.,:
+The Operaton custom extension elements `in` and `out` let you exchange variables between the process task (in a case instance) and the process instance that it creates: `in` elements of a process task map case variables to input variables of the launched process instance and `out` mappings of a process task map output variables of the process instance to case variables, e.g.,:
 
 ```xml
 <processTask id="checkCreditProcess" name="Check credit" processRef="checkCreditProcess">
@@ -182,7 +182,7 @@ The following example shows how the business key of the calling case instance ca
 </processTask>
 ```
 
-If the business key of the called process instance should be different than the business key of the calling case instance, it is possible to use an expression that, for example, references a variable:
+If the business key of the called process instance should be different from the business key of the calling case instance, it is possible to use an expression that, for example, references a variable:
 
 ```xml
 <processTask id="checkCreditProcess" name="Check credit" processRef="checkCreditProcess">

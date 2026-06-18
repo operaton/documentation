@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Java Project for DMN'
+title: 'Set Up a Java Project for DMN'
 sidebar_position: 20
 
 menu:

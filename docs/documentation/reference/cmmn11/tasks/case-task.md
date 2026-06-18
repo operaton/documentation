@@ -80,12 +80,12 @@ Note that the tenant id of the calling case instance is not taken into account i
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
-The `operaton:caseTenantId` attribute allows to explicitly specify a tenant id:
+The `operaton:caseTenantId` attribute lets you explicitly specify a tenant id:
 
 ```xml
 <caseTask id="checkCreditCase" caseRef="checkCreditCase"
   operaton:caseTenantId="TENANT_1">
-</casetask>
+</caseTask>
 ```
 
 If the tenant id is not known at design time, an expression can be used as well:
@@ -106,7 +106,7 @@ An expression also allows using the tenant id of the calling case instance inste
 
 ## Exchange Variables
 
-The Operaton custom extensions elements `in` and `out` allow to exchange variables between the case task (in a case instance) and the case instance that it creates: `in` elements of a case task map variables of the calling case to input variables of the launched case instance and `out` mappings of a case task map output variables of the called case instance to variables of the calling case, e.g.,:
+The Operaton custom extension elements `in` and `out` let you exchange variables between the case task (in a case instance) and the case instance that it creates: `in` elements of a case task map variables of the calling case to input variables of the launched case instance and `out` mappings of a case task map output variables of the called case instance to variables of the calling case, e.g.,:
 
 ```xml
 <caseTask id="checkCreditCase" name="Check credit" caseRef="checkCreditCase">
@@ -145,7 +145,7 @@ Furthermore, the case task can be configured to pass all variables to the called
 </caseTask>
 ```
 
-Note: The variables keeps their names.
+Note: The variables keep their names.
 
 It is possible, at runtime, to decide which variables are mapped into the called case instance. This can be declared with the `local` attribute on the `operaton:in` element as follows:
 

@@ -150,7 +150,7 @@ The name of the variable can be specified by the `operaton:inputVariable`
 name is `cellInput`.
 
 To use the attribute you have to define the Operaton DMN namespace
-`xmlns:operaton="http://operaton.org/schema/1.0/dmn` in the XML.
+`xmlns:operaton="http://operaton.org/schema/1.0/dmn"` in the XML.
 
 ```xml
 <definitions id="definitions"

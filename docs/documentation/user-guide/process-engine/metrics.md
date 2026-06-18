@@ -168,7 +168,7 @@ Task metric entries are created on every assignment of a user task. This behavio
 
 ### Reporter Identifier
 
-Metrics are reported with an identifier of the reporting party. This identifier allows to attribute
+Metrics are reported with an identifier of the reporting party. This identifier lets you attribute
 reports to individual engine instances when making a metrics query. For example in a cluster, load
 metrics can be related to individual cluster nodes. By default the process engine generates a
 reporter id as `<local IP>$<engine name>`. The generation can be customized by implementing the

@@ -21,7 +21,7 @@
       <bpmn2:outgoing>SequenceFlow_5</bpmn2:outgoing>
       <bpmn2:messageEventDefinition id="MessageEventDefinition_3"/>
     </bpmn2:boundaryEvent>
-    <bpmn2:task id="Task_2" name="Handle cancelation">
+    <bpmn2:task id="Task_2" name="Handle cancellation">
       <bpmn2:incoming>SequenceFlow_5</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_6</bpmn2:outgoing>
     </bpmn2:task>

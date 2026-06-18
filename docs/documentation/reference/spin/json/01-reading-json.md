@@ -23,7 +23,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinJsonNode json = S("{\"customer\": \"Kermit\"}", json());
 ```
 
-The second paramter `json()` hints Spin to use the JSON data format for parsing the JSON.
+The second parameter `json()` hints Spin to use the JSON data format for parsing the JSON.
 
 Alternatively, you can directly use the `JSON(...)` function:
 
@@ -47,7 +47,7 @@ import static org.operaton.spin.DataFormats.*;
 SpinJsonNode json = S(reader, json());
 ```
 
-The `JSON(...)` method also supports readers. The following example shows how to read JSON from a file (error handling ommitted):
+The `JSON(...)` method also supports readers. The following example shows how to read JSON from a file (error handling omitted):
 
 ```java
 import static org.operaton.spin.Spin.*;

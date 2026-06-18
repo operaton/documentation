@@ -32,7 +32,7 @@ To achieve JTA transaction integration on these containers, users should use the
 
 ## Shared Process Engine
 
-The shared process engine distributions for Java EE and Jakarta EE Application Servers (Wildfly, JBoss EAP, IBM WebSphere Application Server, Oracle WebLogic Application Server)
+The shared process engine distributions for Java EE and Jakarta EE Application Servers (WildFly, JBoss EAP, IBM WebSphere Application Server, Oracle WebLogic Application Server)
 provide JTA or Jakarta Transactions integration out of the box.
 
 ## Example
@@ -60,7 +60,7 @@ public class MyBean {
 
 ## Using JTA transaction integration with WebSphere Liberty
 
-Operaton allows to mark a transaction as "rollback only" by calling `UserTransaction#setRollbackOnly()`.
+Operaton allows you to mark a transaction as "rollback only" by calling `UserTransaction#setRollbackOnly()`.
 If this code is executed within an Operaton job, the job is marked as failed, and can be retried.
 
 WebSphere Liberty doesn't support this behavior of Operaton. When calling `UserTransaction#setRollbackOnly()`
