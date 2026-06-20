@@ -58,6 +58,6 @@ Clicking the <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon
 
 ### Completed Batch Details
 
-The displayed information corresponds to the response of the restref page="getBatch" text="REST API query" tag="Batch.
+The displayed information corresponds to the response of the <RestRef operation="getBatch" text="REST API query" tag="Batch" />.
 
 Clicking the <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i></button> button above the details table deletes the batch history.

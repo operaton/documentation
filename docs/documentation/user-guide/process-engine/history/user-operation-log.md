@@ -19,7 +19,7 @@ If it is desired that operations are logged regardless whether they are performe
 
 ## Access the user operation log
 
-The user operation log can be accessed via the Java API. The history service can be used to execute a `UserOperationLogQuery` by calling `historyService.createUserOperationLogQuery().execute()`. The query can be restricted with various filtering options. The query is also restref page="queryUserOperationEntries" text="exposed in the REST API" tag="Historic-User-Operation-Log.
+The user operation log can be accessed via the Java API. The history service can be used to execute a `UserOperationLogQuery` by calling `historyService.createUserOperationLogQuery().execute()`. The query can be restricted with various filtering options. The query is also <RestRef operation="queryUserOperationEntries" text="exposed in the REST API" tag="Historic-User-Operation-Log" />.
 
 
 ## User operation log entries
@@ -68,8 +68,8 @@ historyService.clearAnnotationForOperationLogById(operationId);
 
 **Please note:** Annotations are present on all entries that belong to an operation log.
 
-Please also see the REST API reference for restref page="setAnnotationUserOperationLog" text="setting" tag="Historic-User-Operation-Log and
-restref page="clearAnnotationUserOperationLog" text="clearing" tag="Historic-User-Operation-Log annotations.
+Please also see the REST API reference for <RestRef operation="setAnnotationUserOperationLog" text="setting" tag="Historic-User-Operation-Log" /> and
+<RestRef operation="clearAnnotationUserOperationLog" text="clearing" tag="Historic-User-Operation-Log" /> annotations.
 
 ## Glossary of operations logged in the user operation log
 
