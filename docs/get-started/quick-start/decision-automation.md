@@ -10,17 +10,17 @@ description: "Learn how to integrate DMN decision tables in the Process."
 In this section, you'll learn how to add decision automation to your process by using [BPMN 2.0 *Business Rule Tasks*](/docs/documentation/reference/bpmn20/tasks/business-rule-task/) and [DMN 1.3 Decision Tables](/docs/documentation/reference/dmn/).
 
 ## Add a Business Rule Task to the Process
-Use the Camunda Modeler to open the Payment Retrieval process then click on the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.
+Use the Operaton Modeler to open the Payment Retrieval process, then click the Approve Payment Task. Change the activity type to *Business Rule Task* in the wrench button menu.
 
 ![Example image](/img/get-started/quick-start/modeler-businessrule-task1.png)
 
-Next, link the Business Rule Task to a DMN table by changing `Implementation` to `DMN` and `Decision Ref` to `approve-payment` in the properties panel. In order to retrieve the result of the evaluation and save it automatically as a process instance variable in our process, we also need to change the `Result Variable` to `approved` and use `singleEntry` as the `Map Decision Result` in the properties panel.
+Next, link the Business Rule Task to a DMN table by changing `Implementation` to `DMN` and `Decision Ref` to `approve-payment` in the properties panel. To retrieve the result of the evaluation and save it automatically as a process instance variable in our process, we also need to change the `Result Variable` to `approved` and use `singleEntry` as the `Map Decision Result` in the properties panel.
 
 ![Example image](/img/get-started/quick-start/modeler-businessrule-task2.png)
 
-Save your changes and deploy the updated process using the `Deploy` Button in the Camunda Modeler.
+Save your changes and deploy the updated process using the `Deploy` button in the Operaton Modeler.
 
-## Create a DMN table using the Camunda Modeler
+## Create a DMN table using the Operaton Modeler
 First, create a new DMN diagram by clicking *File > New File > DMN Diagram*.
 ![Example image](/img/get-started/quick-start/modeler-new-dmn-diagram.png)
 
@@ -46,7 +46,7 @@ After setup, your DMN table should look like this:
 ![Example image](/img/get-started/quick-start/modeler-dmn5.png)
 
 ## Deploy the DMN table
-To deploy the Decision Table, click on the Deploy button in the Camunda Modeler, give it Deployment Name "Payment Retrieval Decision", then hit the Deploy button.
+To deploy the decision table, click the Deploy button in the Operaton Modeler, give it the deployment name "Payment Retrieval Decision", then click the Deploy button.
 ![Example image](/img/get-started/quick-start/modeler-dmn6.png)
 
 ## Verify the Deployment with Cockpit
@@ -56,7 +56,7 @@ Now, use Cockpit to see if the decision table was successfully deployed. Go to [
 
 ## Inspect using Cockpit and Tasklist
 
-Next, use Tasklist to start two new Process Instances and verify that depending on your input, the Process Instance will be routed differently.
+Next, use Tasklist to start two new process instances and verify that depending on your input, the process instance will be routed differently.
 To do so, go to [http://localhost:8080/operaton/app/tasklist/](http://localhost:8080/operaton/app/tasklist/). Log in with *demo / demo*.
 
 Click on the Start process button to start a process instance and choose the `Payment` process.
@@ -70,11 +70,11 @@ Use the generic form to add the variables as follows:
 ![Example image](/img/get-started/quick-start/tasklist-dmn2.png)
 
 You'll see that depending on the input, the worker will either charge or not charge the credit card.
-You can also verify that the DMN tables were evaluated by using Operaton Cockpit. Go to [http://localhost:8080/operaton/app/cockpit/](http://localhost:8080/operaton/app/cockpit/). Log in with the credentials *demo / demo*. Navigate to the "Decisions" section and click on Approve Payment. Check the different Decision Instances that were evaluated by clicking on the ID in the table.
+You can also verify that the DMN tables were evaluated by using Operaton Cockpit. Go to [http://localhost:8080/operaton/app/cockpit/](http://localhost:8080/operaton/app/cockpit/). Log in with the credentials *demo / demo*. Navigate to the "Decisions" section and click on Approve Payment. Check the different decision instances that were evaluated by clicking on the ID in the table.
 
 A single DMN table that was executed could look like this in Operaton Cockpit:
 ![Example image](/img/get-started/quick-start/cockpit-dmn-table.png)
 
 :::note[Success!]
-Congratulations! You've successfully completed the Operaton Platform Quick Start. Ready to continue? We recommend the [Operaton Platform documentation](https://docs.operaton.org/docs/documentation/).
+Congratulations! You've successfully completed the Operaton Platform Quick Start. Ready to continue? We recommend the [Operaton Platform documentation](/docs/documentation/).
 :::
