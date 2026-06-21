@@ -246,7 +246,7 @@ To include CSS and JavaScript libraries in your project you can add them to your
   <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>3.1.1</version>
+    <version>5.3.7</version>
   </dependency>
 
 </dependencies>

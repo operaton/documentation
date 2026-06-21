@@ -51,7 +51,7 @@ The next step consists of setting up the Maven dependencies for your new process
   <packaging>war</packaging>
 
   <properties>
-    <operaton.version>1.0.0</operaton.version>
+    <operaton.version>2.1.1</operaton.version>
     <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
@@ -77,7 +77,7 @@ The next step consists of setting up the Maven dependencies for your new process
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
+      <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -87,12 +87,12 @@ The next step consists of setting up the Maven dependencies for your new process
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>4.0.0-beta-4</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.2</version>
+        <version>3.5.1</version>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
