@@ -14,7 +14,7 @@ menu:
 Run Operaton in every Java-runnable environment. Operaton is supported with our QA infrastructure in the following environments.
 
 :::note[Supported Environments]
-  Please note that the environments listed in this section depend on the version of Operaton. Please select the corresponding version of this documentation to see the environment that fits to your version of Operaton. e.g., [supported environments for version 7.15](http://docs.operaton.org/7.15/guides/user-guide/#introduction-supported-environments)
+  Please note that the environments listed in this section depend on the version of Operaton. Please select the corresponding version of this documentation to see the environment that fits your version of Operaton.
 :::
 
 
@@ -68,21 +68,22 @@ Clustered or replicated databases are supported given the following conditions. 
 
 ## Java
 
-* Java 11 / 17 / 21 (if supported by your application server/container)
+* Java 17 / 21 / 25 (if supported by your application server/container)
 
 
 ## Java Runtime
 
-* Oracle JDK 11 / 17 / 21
-* OpenJDK 11 / 17 / 21, including builds of the following products:
+* Oracle JDK 17 / 21 / 25
+* OpenJDK 17 / 21 / 25, including builds of the following products:
   * Oracle OpenJDK
   * Eclipse Temurin JDK
   * Amazon Corretto
   * Azul Zulu
 
-## Camunda Modeler
+## Operaton Modeler
 
-[Supported environments](https://docs.camunda.io/docs/reference/supported-environments/#camunda-modeler) for Camunda Modeler have moved to [docs.camunda.io](https://docs.camunda.io/).
+Operaton Modeler is documented separately. See the [Operaton Modeler installation guide](../installation/operaton-modeler.md)
+and the [Operaton Modeler repository](https://github.com/operaton/operaton-modeler) for current installation and build information.
 
 ## Maintenance Policy
 

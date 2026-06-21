@@ -9,7 +9,7 @@ This guide gives an introduction to Operaton Run, a pre-packaged, lightweight di
 
 ## Prerequisites and audience
 
-To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](https://docs.operaton.org/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
+To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](/docs/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
 
 This guide will teach you about Operaton Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install Operaton Run. Head over to the [Installation guide](../installation/operaton-bpm-run.md) for details on how to install and start Operaton Run.
 
@@ -26,7 +26,9 @@ Operaton Run is a full distribution of Operaton. It includes:
 
 ## Starting with Operaton Run
 
-To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) and unpacking it. You will find the following structure:
+To start with Operaton Run, download the `operaton-bpm-<version>.tar.gz` or `operaton-bpm-<version>.zip`
+distribution from the [latest Operaton release](https://github.com/operaton/operaton/releases/latest)
+and unpack it. You will find the following structure:
 
 ```
 operaton-bpm-run
@@ -256,7 +258,7 @@ If you want to allow cross-origin requests to the [REST API](../reference/rest/o
   </tr>
   <tr>
       <td><code>.allowed-origins</code></td>
-      <td>Origins that are allowed to make CORS requests. Multiple origins can be separated with commas. To support both HTTP authentication and CORS, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials"><code>allowed-origins</code> must not be</a> <code>\*</code>. To allow Camunda Modeler to deploy with authentication, including <code>file://</code> in the allowed origins.</td>
+      <td>Origins that are allowed to make CORS requests. Multiple origins can be separated with commas. To support both HTTP authentication and CORS, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials"><code>allowed-origins</code> must not be</a> <code>\*</code>. To allow Operaton Modeler to deploy with authentication, include <code>file://</code> in the allowed origins.</td>
       <td><code>\*</code> (all origins, including <code>file://</code>)</td>
   </tr>
   <tr>
