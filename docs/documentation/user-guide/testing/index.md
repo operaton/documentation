@@ -26,7 +26,7 @@ If you want to use the JUnit 5 `ProcessEngineExtension`, you need to add the fol
       <groupId>org.operaton.bpm</groupId>
       <artifactId>operaton-engine</artifactId>
       <classifier>junit5</classifier>
-      <version>1.0.0</version>
+      <version>2.1.2</version>
       <scope>test</scope>
     </dependency>
 ```

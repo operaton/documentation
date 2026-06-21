@@ -14,7 +14,7 @@ Throughout this guide we will use a number of variables to denote common path na
 
 * `$TOMCAT_HOME` points to the main directory of the tomcat server.
 * `$TOMCAT_VERSION` denotes the version of Tomcat server.
-* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.1`.
+* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.2`.
 * `$TOMCAT_DISTRIBUTION` represents the downloaded pre-packaged Operaton distribution for Tomcat, e.g. `operaton-bpm-tomcat-$PLATFORM_VERSION.zip` or `operaton-bpm-tomcat-$PLATFORM_VERSION.tar.gz`.
 
 :::

@@ -15,7 +15,7 @@ This guide uses a number of variables to denote common path names and constants:
 * `$WILDFLY_HOME` points to the WildFly application server main directory.
 * `$WILDFLY_VERSION` denotes the version of WildFly application server.
 * `$WILDFLY_DISTRIBUTION` represents the downloaded pre-packaged Operaton distribution for WildFly, e.g. `operaton-bpm-wildfly-$PLATFORM_VERSION.zip` or `operaton-bpm-wildfly-$PLATFORM_VERSION.tar.gz`.
-* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.1`.
+* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.2`.
 :::
 
 ### Setup

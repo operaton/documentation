@@ -45,7 +45,7 @@ The next step consists of setting up the Maven dependencies for your new process
   <packaging>war</packaging>
 
   <properties>
-    <operaton.version>1.0.0</operaton.version>
+    <operaton.version>2.1.2</operaton.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
