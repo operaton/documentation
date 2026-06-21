@@ -204,7 +204,7 @@ When using the identity management provided by the engine (i.e., not the LDAP id
 it is possible to configure a password policy to ensure that all user passwords meet a certain security
 standard.
 
-Since version 7.11, a [built-in password policy](../user-guide/process-engine/password-policy.md#built-in-password-policy)
+A [built-in password policy](../user-guide/process-engine/password-policy.md#built-in-password-policy)
 can be enabled that requires passwords to follow specific rules. However, you can achieve a much higher
 level of security by implementing a more sophisticated custom password policy (e.g., with the help of
 [Password Topology Blacklisting] (https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
@@ -291,7 +291,7 @@ If an attacker can access these endpoints, they can exploit so-called _serializa
 
 ### Java objects using the JDK built-in `application/x-java-serialized-object` data format
 
-Starting with version 7.9, by default, it is not possible to set variables of type `Object` **AND** the data format `application/x-java-serialized-object`.
+By default, it is not possible to set variables of type `Object` **AND** the data format `application/x-java-serialized-object`.
 The behavior can be restored with the process engine configuration flag [`javaSerializationFormatEnabled`](../reference/deployment-descriptors/tags/process-engine.mdx#javaSerializationFormatEnabled).
 However, please bear in mind that enabling the java serialization format might make the process engine vulnerable against the aforementioned attacking scenario.
 

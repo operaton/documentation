@@ -372,9 +372,6 @@ for (LockedExternalTask task : tasks) {
 }
 ```
 
-:::note
-External tasks created with engine versions < 7.21.0 will not have the `createTime` attribute. When using fetch and lock by `createTime` on them the behavior depends on how your database handles sorting of null values.
-:::
 
 #### Multi-level sorting
 

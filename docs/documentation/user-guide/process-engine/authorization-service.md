@@ -690,7 +690,6 @@ The feature is disabled by default because of two reasons:
    More complex queries may degrade the performance.
 2. When enabled and an Identity Link is added to a Task, the respective User or Group is authorized
    to read the associated history (e. g. for the Task, Variable, or Identity Link History).
-   For Operaton versions $\leq$ 7.12, the history is not readable in this case.
 
 ### Historic Task Permissions
 
@@ -930,7 +929,7 @@ The configuration option `authorizationCheckRevokes` controls whether authorizat
 
 Available values are:
 
-* `always`: Always enables check for revoke authorizations. This mode is equal to the &lt; 7.5 behavior. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases. You are therefore strongly discouraged from using this mode.
+* `always`: Always enables check for revoke authorizations. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases. You are therefore strongly discouraged from using this mode.
 
 * `never`: Never checks for revoke authorizations. This mode has best performance and effectively disables the use of revoke authorizations. *Note*: It is strongly recommended to use this mode.
 

@@ -18,7 +18,7 @@ Operaton supports a variety of databases that are documented in the [supported e
 
 Operaton supports the following ways of installing the database schema:
 
-* Use the database migration tool [Liquibase](https://www.liquibase.org/) with the provided changelog for a semi-automatic installation and update. Liquibase keeps track of database schema changes. This allows you to focus on *when* changes should be applied rather than also on *which* changes are relevant. Starting with version `7.16.0`, Operaton comes with a curated *changelog file* that Liquibase can consume.
+* Use the database migration tool [Liquibase](https://www.liquibase.org/) with the provided changelog for a semi-automatic installation and update. Liquibase keeps track of database schema changes. This allows you to focus on *when* changes should be applied rather than also on *which* changes are relevant. Operaton comes with a curated *changelog file* that Liquibase can consume.
 * Use the provided SQL scripts with the tools related to your database for a fully manual installation and update. A manual procedure allows you to fully control the SQL statements that are executed on your database instance and to adjust those statements to your needs if necessary.
 
 :::note[Isolation level]

@@ -54,8 +54,7 @@ Add the Operaton subsystem as extension:
 
 Configure the thread pool for the Operaton Job Executor:
 
-Since Operaton.5, the configuration of the thread pool is done in the Operaton subsystem, not in the JBoss Threads subsystem anymore like it was done before 7.5.
-The thread pool creation and shutdown is now controlled through the Operaton subsystem.
+The thread pool creation and shutdown is controlled through the Operaton subsystem.
 You are able to configure it through the following new configuration elements in the `job-executor` element of the subsystem XML configuration.
 
 Mandatory configuration elements are:
