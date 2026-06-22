@@ -11,7 +11,7 @@ menu:
 ---
 This chapter is about configuring and using a password policy for engine-managed user accounts. A password policy makes sure that only passwords that meet certain criteria are allowed. A policy can consist of any number of rules. Violation of one of the policy's rules results in an error and the user not being saved.
 
-Since version 7.11.0, the engine comes with a standard password policy that is disabled by default and must be configured to use.
+The engine comes with a standard password policy that is disabled by default and must be configured to use.
 
 **Note:** This only applies to users that are managed within the Operaton engine. If you use LDAP for your user management a password policy has no effect on these users.
 

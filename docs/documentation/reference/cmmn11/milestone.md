@@ -41,10 +41,10 @@ When referenced in a case plan, a milestone gets completed as soon as its entry 
       <milestone id="Milestone_1" name="A Milestone" />
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
-In this case, the milestone will complete as soon as as the human task completes.
+In this case, the milestone will complete as soon as the human task completes.
 
 A milestone cannot have exit criteria.
 

@@ -62,14 +62,14 @@ The classes that are referenced in the process definition (i.e., by using
 Only when a process execution arrives at the point in the process where the class is used for the
 first time, an instance of that class will be created. If the class cannot be found,
 a `ProcessEngineException` will be thrown. The reason for this is that the environment (and
-more specifically the classpath) when you are deploying is often different than the actual runtime
+more specifically the classpath) when you are deploying is often different from the actual runtime
 environment.
 
 
 ## Activity Behavior
 
 Instead of writing a Java Delegate, it is also possible to provide a class that implements the `org.operaton.bpm.engine.impl.pvm.delegate.ActivityBehavior`
-interface. Implementations then have access to the more powerful `ActivityExecution` that for example also allows to influence the control flow of the process. However, note that this is not a very good practice and should be avoided as much as possible. So, it is advised to only use the `ActivityBehavior` interface for advanced use cases and if you know exactly what you're doing.
+interface. Implementations then have access to the more powerful `ActivityExecution` that, for example, also lets you influence the control flow of the process. However, note that this is not a very good practice and should be avoided as much as possible. So, it is advised to only use the `ActivityBehavior` interface for advanced use cases and if you know exactly what you're doing.
 
 
 ## Field Injection
@@ -422,7 +422,7 @@ A task listener supports the following attributes:
     <operaton:taskListener event="create" expression="${myObject.callMethod(task, task.eventName)}" />
     ```
 
-* **delegateExpression**: allows to specify an expression that resolves to an object implementing the TaskListener interface, similar to a service task.
+* **delegateExpression**: lets you specify an expression that resolves to an object implementing the TaskListener interface, similar to a service task.
 
     ```xml
     <operaton:taskListener event="create" delegateExpression="${myTaskListenerBean}" />

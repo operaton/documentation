@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Spring Web Application Project'
+title: 'Set Up a Spring Web Application Project'
 sidebar_position: 10
 
 menu:
@@ -47,7 +47,7 @@ The next step consists of setting up the Maven dependencies for the new project.
   <packaging>war</packaging>
 
   <properties>
-    <operaton.version>1.0.0</operaton.version>
+    <operaton.version>2.1.2</operaton.version>
     <spring.version>5.3.22</spring.version>
     <h2.version>2.1.214</h2.version>
     <slf4j.version>1.7.36</slf4j.version>

@@ -40,4 +40,4 @@ HTTP API (REST API):
 
 ## Backwards Compatibility for Public API
 
-The Operaton versioning scheme follows the MAJOR.MINOR.PATCH pattern put forward by [Semantic Versioning](http://semver.org/). Operaton will maintain public API backwards compatibility for MINOR version updates. Example: Update from version `7.1.x` to `7.2.x` will not break the public API.
+The Operaton versioning scheme follows the MAJOR.MINOR.PATCH pattern put forward by [Semantic Versioning](http://semver.org/). Operaton will maintain public API backwards compatibility for MINOR version updates. Example: Update from version `1.0.x` to `1.1.x` will not break the public API.

@@ -23,7 +23,7 @@ There are three types of Spin artifacts as follows.
 
 ### operaton-spin-core
 
-`operaton-spin-core` is a jar that contains only the core Spin classes. It can be combined with single data format artifacts. Operaton provides the artifacts `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` (`operaton-spin-dataformat-xml-dom-jakarta` for Jakarta XML Binding 4.0 support) that implement JSON and XML processing. These artifacts transitively pull in libraries they need. For example, `operaton-spin-dataformat-json-jackson` has a dependency to `jackson-databind`.
+`operaton-spin-core` is a jar that contains only the core Spin classes. It can be combined with single data format artifacts. Operaton provides the artifacts `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` (`operaton-spin-dataformat-xml-dom-jakarta` for Jakarta XML Binding 4.0 support) that implement JSON and XML processing. These artifacts transitively pull in libraries they need. For example, `operaton-spin-dataformat-json-jackson` has a dependency on `jackson-databind`.
 
 ### operaton-spin-dataformat-all
 
@@ -87,7 +87,7 @@ If your application manages its own process engine, then using `operaton-engine-
 
 ### Application with Operaton Spring Boot Starter
 
-Add the dependencies to `operaton-engine-plugin-spin` and `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` as needed) to your application. If you need to use Jakarta XML Binding 4.0 (e.g. Springboot version 3.x.x), use `operaton-spin-dataformat-xml-dom-jakarta` instead of `operaton-spin-dataformat-xml-dom`.
+Add dependencies on `operaton-engine-plugin-spin` and `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom` as needed) to your application. If you need to use Jakarta XML Binding 4.0 (e.g. Spring Boot version 3.x.x), use `operaton-spin-dataformat-xml-dom-jakarta` instead of `operaton-spin-dataformat-xml-dom`.
 The Spin process engine plugin will be automatically registered with the process engine.
 
 ### Shared Process Engine
@@ -97,9 +97,9 @@ If you use a shared process engine, Spin is usually installed as a shared librar
 Depending on the type of application server, `operaton-engine-plugin-spin` should be used with either `operaton-spin-core` or `operaton-spin-dataformat-all`. In the pre-packaged distributions, the following artifacts are used:
 
 * Tomcat: `operaton-spin-dataformat-all` is provided in Tomcat's shared library path. Using `operaton-spin-dataformat-all` avoids classpath pollution with Spin's dependencies. For example, this ensures that applications are not forced to use Spin's version of Jackson.
-* Wildfly: `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom`) are deployed as modules. Thanks to Wildfly's module system, classpath pollution is not an issue. Whenever a process application is deployed, it receives an implicit module dependency to `operaton-spin-core`.
+* WildFly: `operaton-spin-core` (along with `operaton-spin-dataformat-json-jackson` and `operaton-spin-dataformat-xml-dom`) are deployed as modules. Thanks to WildFly's module system, classpath pollution is not an issue. Whenever a process application is deployed, it receives an implicit module dependency on `operaton-spin-core`.
 
-If you want to program against the Spin APIs in your process application, you need to declare a dependency to Spin in your application. As Spin is provided by the application server, the following is important:
+If you want to program against the Spin APIs in your process application, you need to declare a dependency on Spin in your application. As Spin is provided by the application server, the following is important:
 
-* Make sure to set the dependencies to scope `provided`. This avoids that a copy of the dependencies is packaged with your application, resulting in various classloading problems at runtime.
+* Make sure to set the dependency scopes to `provided`. This avoids packaging a copy of the dependencies with your application, which can result in various classloading problems at runtime.
 * Make sure to depend on the same Spin artifacts that the application server provides, i.e. either `operaton-spin-core` or `operaton-spin-dataformat-all`.

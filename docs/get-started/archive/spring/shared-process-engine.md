@@ -132,13 +132,13 @@ public class LoanApplicationContext {
 }
 ```
 
-We also removed `Starter` bean as we are going to use Tasklist to manually start the process.
+We also removed the `Starter` bean as we are going to use Tasklist to manually start the process.
 If you like, you can also remove the class itself as it is not used anymore.
 
-After Maven build and redeploy, process definitions will be automatically deployed. Then you
-can go to Tasklist, login with `demo/demo` credentials, click on `Start process` and start
+After a Maven build and redeploy, process definitions will be automatically deployed. Then you
+can go to Tasklist, log in with `demo/demo` credentials, click on `Start process` and start
 the `Loan approval` process.
-You will see in Tomcat logfile:
+You will see this in the Tomcat log file:
 <pre class="console">
 Spring Bean invoked
 </pre>

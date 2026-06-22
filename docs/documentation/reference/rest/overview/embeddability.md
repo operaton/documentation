@@ -73,7 +73,7 @@ The configuration class `JacksonConfigurator` is required to correctly configure
 You may also have to add the following Jackson providers: `com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider`,
 `org.operaton.bpm.engine.rest.exception.JsonMappingExceptionHandler` and `org.operaton.bpm.engine.rest.exception.JsonParseExceptionHandler`.
 Depending on the runtime environment, this may not be necessary.
-On Wildfly, these should be automatically added as an implicit module dependency.
+On WildFly, these should be automatically added as an implicit module dependency.
 
 For proper exception responses of the format as described in the [Introduction](../../../reference/rest/overview/index.md),
 it is necessary to include `RestExceptionHandler`. `ProcessEngineExceptionHandler` is used to translate any exception thrown by the

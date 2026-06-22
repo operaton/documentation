@@ -166,7 +166,7 @@ This is exactly the same as using a potentialOwner construct as defined above. N
 
 ### Assignment based on Data and Service Logic
 
-In the above examples, constant values such as `kermit` or `management` are used. But what if the exact name of an assignee or a candidate group is not known at design time? And what if the assignee is not a constant value but depends on data such as _"The person who started the process"_? Maybe the assigment logic is also more complex and needs to access an external data source such as LDAP to implement a lookup such as _"The manager of the employee who started the process"_.
+In the above examples, constant values such as `kermit` or `management` are used. But what if the exact name of an assignee or a candidate group is not known at design time? And what if the assignee is not a constant value but depends on data such as _"The person who started the process"_? Maybe the assignment logic is also more complex and needs to access an external data source such as LDAP to implement a lookup such as _"The manager of the employee who started the process"_.
 
 Such things can be implemented using assignment expressions or task listeners.
 
@@ -307,7 +307,7 @@ The error message and variables are optional. They can provide additional inform
 
 See the documentation for [Catching Escalation Events](../events/escalation-events.md#catching-escalation-events).
 
-Reporting an escalation during user task execution can be achieved via `TaskService#handleEscalation`. The user task should be active to do so. The `escalationCode` is compulsory to invoke the escalation, this code identifies a predefined escalation. If the given `escalationCode` does not exist an Process Engine Exception will be thrown. See the following example:
+Reporting an escalation during user task execution can be achieved via `TaskService#handleEscalation`. The user task should be active to do so. The `escalationCode` is compulsory to invoke the escalation, this code identifies a predefined escalation. If the given `escalationCode` does not exist, a Process Engine Exception will be thrown. See the following example:
 
 ```java
 taskService.handleEscalation(
@@ -321,7 +321,7 @@ The variables are optional. They will be passed to the execution if the escalati
 
 ## Completion
 
-Complete is part of the [task lifecycle](../../../webapps/tasklist/task-lifecycle.md) operation along with create, set candidate, assign, etc. (allow available via Java API). Complete a task by passing variables, optionally the process variables can be retrieved::
+Completing a task is part of the [task lifecycle](../../../webapps/tasklist/task-lifecycle.md), along with create, set candidate, assign, etc. (also available via Java API). Complete a task by passing variables; optionally, the process variables can be retrieved:
 
 ```java
 taskService.complete(taskId, variables);

@@ -87,9 +87,9 @@ The expression is evaluated on invocations of `ExternalTaskService#complete` and
 
 Further information on the functionality of error event definitions on external tasks can be found in the [expression language user guide](../process-engine/expression-language.md#external-task-error-handling).
 
-### Rest API
+### REST API
 
-See the restref text="REST API documentation" tag="External-Task for how the API operations can be accessed via HTTP.
+See the <RestRef text="REST API documentation" tag="External-Task" /> for how the API operations can be accessed via HTTP.
 
 ### Long Polling to Fetch and Lock External Tasks
 
@@ -106,7 +106,7 @@ configurable period of time (timeout).
 Long polling significantly reduces the number of requests and enables using resources more efficiently on both
 the server and the client side.
 
-Please also see the restref page="fetchAndLock" text="REST API documentation" tag="External-Task.
+Please also see the <RestRef operation="fetchAndLock" text="REST API documentation" tag="External-Task" />.
 
 #### Unique Worker Request
 By default, multiple workers can use the same `workerId`. In order to ensure `workerId` uniqueness on server-side, the
@@ -372,9 +372,6 @@ for (LockedExternalTask task : tasks) {
 }
 ```
 
-:::note
-External tasks created with engine versions < 7.21.0 will not have the `createTime` attribute. When using fetch and lock by `createTime` on them the behavior depends on how your database handles sorting of null values.
-:::
 
 #### Multi-level sorting
 

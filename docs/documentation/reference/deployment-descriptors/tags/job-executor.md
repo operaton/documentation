@@ -80,7 +80,7 @@ The following example shows a job executor XML snippet:
     <td><code>&lt;job-acquisition&gt;</code></td>
     <td>false</td>
     <td>
-        Specifies the fully qualified classname of the job executor.
+        Specifies the fully qualified class name of the job executor.
       <p>
         <strong>Attributes:</strong>
         None.

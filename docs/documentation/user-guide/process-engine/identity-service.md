@@ -283,7 +283,7 @@ The LDAP Identity Provider provides the following configuration properties:
   <tr>
     <td><code>acceptUntrustedCertificates</code></td>
     <td>
-      <p>Accept of untrusted certificates if LDAP server uses SSL. <strong>Warning:</strong> We strongly advise against using this property. Better install untrusted certificates to JDK key store.</p>
+      <p>Accepts untrusted certificates if the LDAP server uses SSL. <strong>Warning:</strong> We strongly advise against using this property. Better install untrusted certificates in the JDK keystore.</p>
     </td>
   </tr>
   <tr>
@@ -318,7 +318,7 @@ The LDAP Identity Provider provides the following configuration properties:
     <td><code>allowAnonymousLogin</code></td>
     <td>
       <p>
-        Allows to login anonymously without a password. <em>Default:</em> <code>false</code>
+        Allows users to log in anonymously without a password. <em>Default:</em> <code>false</code>
       </p>
       <p>
         <strong>Warning:</strong> We strongly advise against using this property. You should configure your LDAP
@@ -384,7 +384,7 @@ See the Spring Security OAuth2 Integration's [OAuth2 Identity Provider](../sprin
 
 ## Throttle login attempts
 
-A mechanism exists for preventing subsequent unsuccessful login attempts.The essence of it is that the user is not able to log in for a specific amount of time after unsuccessful login attempts.
+A mechanism exists for preventing subsequent unsuccessful login attempts. The essence of it is that the user is not able to log in for a specific amount of time after unsuccessful login attempts.
 The amount of time is calculated after each attempt but it is limited by maximum delay time.
 After a predefined number of unsuccessful attempts, the user will be locked and only an administrator has permissions to [unlock](../../webapps/admin/user-management.md) them.
 
@@ -398,8 +398,8 @@ The mechanism is configurable with the following properties and respective defau
 For more information, please check the process engine's [login properties](../../reference/deployment-descriptors/tags/process-engine.mdx#login-parameters) section.
 
 Calculation of the delay is done via the formula: <code>baseTime * factor^(attempt-1)</code>.
-The behaviour with the default configuration will be:
-3 seconds delay after the first unsuccessful attempt, 6 seconds after the 2nd attempt, 12 seconds, 24 seconds, 48 seconds, 60 seconds, 60 seconds, etc. After the 10th attempt, if the user fails to login again, the user will be locked.
+The behavior with the default configuration will be:
+3 seconds delay after the first unsuccessful attempt, 6 seconds after the 2nd attempt, 12 seconds, 24 seconds, 48 seconds, 60 seconds, 60 seconds, etc. After the 10th attempt, if the user fails to log in again, the user will be locked.
 
 ### LDAP specifics
 

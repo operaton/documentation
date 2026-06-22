@@ -300,7 +300,7 @@ By default, compilation of scripts is enabled. If you need to disable script com
 
 If the process engine configuration flag named `enableFetchScriptEngineFromProcessApplication` is set to true, it is also possible to load Script Engines from the classpath of the process application. For that, the Script Engine can be packaged as a library within the process application. It is also possible to install the Script Engine globally.
 
-In case the Script Engine module should be installed globally and Wildfly is used, it is necessary to add a module dependency to the Script Engine. This can be done by adding a `jboss-deployment-structure.xml` to the process application, e.g.,:
+In case the Script Engine module should be installed globally and WildFly is used, it is necessary to add a module dependency to the Script Engine. This can be done by adding a `jboss-deployment-structure.xml` to the process application, e.g.,:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -327,7 +327,7 @@ We provide the following default configurations for supported script engines bef
   <tr>
     <td>GraalVM JavaScript</td>
     <td>
-      Configured to allow host acces and host class lookup by setting <code>polyglot.js.allowHostAccess</code> and
+      Configured to allow host access and host class lookup by setting <code>polyglot.js.allowHostAccess</code> and
       <code>polyglot.js.allowHostClassLookup</code> to <code>true</code>.
     </td>
   </tr>
@@ -364,8 +364,8 @@ Consult the development guides of the script engine you want to configure for fu
 Note that the supported options can differ between versions of the script engine.
 
 You can set system properties either programmatically through `System.setProperty(parameter, value)` or as JVM arguments,
-for example upon application start on command line via `-Dparameter=value`. Most application servers like Wildfly,
-Tomcat, Websphere, and Weblogic support providing JVM arguments via environment variables `JAVA_OPTS` or `JAVA_OPTIONS`.
+for example upon application start on command line via `-Dparameter=value`. Most application servers like WildFly,
+Tomcat, WebSphere, and WebLogic support providing JVM arguments via environment variables `JAVA_OPTS` or `JAVA_OPTIONS`.
 Consult your application server's documentation to learn how to pass on JVM arguments. Operaton Run supports setting
 JVM arguments via the `JAVA_OPTS` environment variable as well.
 
@@ -443,18 +443,18 @@ Be aware that the process engine flag `enableFetchScriptEngineFromProcessApplica
 ## Variables Available During Script Execution
 
 During the execution of scripts, all process variables visible in the current scope are available.
-They can be accessed directly by the name of the variable (i.e., `sum`). This does not apply for
-JRuby where you have to access the variable as a ruby global variable (prepend with a dollar sign,
-i.e., `$sum`)
+They can be accessed directly by the name of the variable (i.e., `sum`). This does not apply to
+JRuby, where you have to access the variable as a Ruby global variable (prepend with a dollar sign,
+i.e., `$sum`).
 
 There are also special variables:
 
 1. `execution`, which is always available if the script is executed in an execution scope (e.g., in a script task) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a>).
 1. `task`, which is available if the script is executed in a task scope (e.g., a task listener) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a>).
-1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of a operaton:connector) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
+1. `connector`, which is available if the script is executed in a connector variable scope (e.g., outputParameter of an `operaton:connector`) (<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/connect/plugin/impl/ConnectorVariableScope.html">ConnectorVariableScope</a>).
 
-These variables correspond to the `DelegateExecution`, `DelegateTask` or resp. `ConnectorVariableScope`
-interface which means that it can be used to get and set variables or access process engine services.
+These variables correspond to the `DelegateExecution`, `DelegateTask`, and `ConnectorVariableScope`
+interfaces, respectively. They can be used to get and set variables or access process engine services.
 
 ```java
 // get process variable
@@ -547,7 +547,7 @@ You can also specify the attribute `operaton:resource` on the `scriptTask` and `
 element, respectively the `resource` attribute on the `operaton:script` element. This extension
 attribute specifies the location of an external resource which should be used as script source code.
 Optionally, the resource path can be prefixed with an URL-like scheme to specify if the resource is
-contained in the deployment or classpath. The default behaviour is that the resource is part of the
+contained in the deployment or classpath. The default behavior is that the resource is part of the
 classpath. This means that the first two script task elements in the following examples are equal.
 
 ```xml
@@ -584,7 +584,7 @@ section of the [Custom Extensions](../../reference/bpmn20/custom-extensions/inde
 
 ## JavaScript Considerations
 
-JavaScript code execution is part of the Java Runtime (JRE) with the **Nashorn** script engine until Java 14 and thus only there available out of the box.
+JavaScript code execution is part of the Java Runtime (JRE) with the **Nashorn** script engine until Java 14 and is therefore only available there out of the box.
 We include **GraalVM JavaScript** in the pre-packaged Operaton distributions as a replacement regardless of the JRE version.
 JavaScript code executes on GraalVM JavaScript with preference in the process engine context if this script engine is available.
 If this script engine cannot be found, the process engine defaults to let the JVM select an appropriate script engine.

@@ -85,7 +85,7 @@ Note that the tenant id of the calling case instance is not taken into account i
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
-The `operaton:decisionTenantId` attribute allows to explicitly specify a tenant id:
+The `operaton:decisionTenantId` attribute lets you explicitly specify a tenant id:
 
 ```xml
 <decisionTask id="checkCreditDecision" decisionRef="checkCreditDecision"
@@ -167,4 +167,4 @@ To evaluate a referenced decision, the integration of the Operaton DMN engine is
   </tr>
 </table>
 
-[DMN 1.3]: ../../dmn/index.md 
+[DMN 1.3]: ../../dmn/index.md

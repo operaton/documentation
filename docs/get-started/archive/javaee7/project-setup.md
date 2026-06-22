@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Java EE Application Project'
+title: 'Set Up a Java EE Application Project'
 sidebar_position: 20
 
 menu:
@@ -62,7 +62,7 @@ The next step consists of setting up the Maven dependencies for your new process
   <packaging>war</packaging>
 
   <properties>
-    <operaton.version>1.0.0</operaton.version>
+    <operaton.version>2.1.2</operaton.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -215,4 +215,4 @@ This file needs to be added to the `src/main/resources/META-INF` folder of the M
 </process-application>
 ```
 
-At this point you have successfully set up the process application you can start modeling your process.
+At this point, you have successfully set up the process application and can start modeling your process.

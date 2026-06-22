@@ -12,7 +12,7 @@ menu:
 
 ---
 
-A decision table allows to specify the types of inputs and outputs. When the
+A decision table lets you specify the types of inputs and outputs. When the
 DMN engine evaluates an input or an output, it checks if the type of the
 value matches the specified type. If the types do not match, the engine
 tries to transform the value into the specified type or throws an exception.

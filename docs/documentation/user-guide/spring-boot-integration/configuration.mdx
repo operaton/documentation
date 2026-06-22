@@ -85,7 +85,7 @@ public HistoryEventHandler customHistoryEventHandler() {
 
 ### `DefaultHistoryLevelAutoHandlingConfiguration`
 
-As Operaton version $\geq$ 7.4 supports `history-level auto`, this configuration adds support for versions $\leq$ 7.3.
+This configuration adds support for `history-level auto` when the automatic database schema inspection is not available.
 
 To have more control over the handling, you can provide your own
 
@@ -274,13 +274,13 @@ The available properties are as follows:
 <tr>
 <td><code>.version</code></td>
 <td>Version of the process engine</td>
-<td>Read only value, e.g., 7.4.0</td>
+<td>Read only value, e.g., 2.1.2</td>
 </tr>
 
 <tr>
 <td><code>.formatted-version</code></td>
 <td>Formatted version of the process engine</td>
-<td>Read only value, e.g., (v7.4.0)</td>
+<td>Read only value, e.g., (v2.1.2)</td>
 </tr>
 
 <tr>

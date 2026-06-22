@@ -130,7 +130,7 @@ To enforce an immediate re-evaluation of a time cycle, follow the steps:
 1. Change the expression of the time cycle (e.g., Adjust the Spring bean that resolves the cycle).
 1. Update the current timer job due date:
   * via Java API: javadocref page="org/operaton/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29" text="ManagementService#setJobDuedate"
-  * via REST API: page="setJobDuedate" text="Job/operation/setJobDuedate" tag="Job"
+  * via REST API: <RestRef operation="setJobDuedate" text="Job/operation/setJobDuedate" tag="Job" />
   * via Cockpit: Navigate to the Job view of the currently running process instance and select "Change due date for this Job" button.
 
 After this job is executed, the next jobs will be created with adjusted time cycle.

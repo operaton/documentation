@@ -33,7 +33,7 @@ You can also access the My Profile menu from any of the web applications by clic
 
 ![Example img](/img/documentation/webapps/admin/admin-initial-user-setup.png)Initial User Setup
 
-If no administrator account is configured, a setup screen will be shown on first access of a process engine through Cockpit or Tasklist . This screen allows you to configure an initial user account with administrator rights.
+If no administrator account is configured, a setup screen will be shown on first access of a process engine through Cockpit or Tasklist. This screen allows you to configure an initial user account with administrator rights.
 Administrator users are not global but per engine. Thus, you will need to set up an admin user for each separate engine.
 
 If you installed the default Operaton webapps and demo content, Operaton was configured with several demo users. The default admin user can be accessed with the following credentials:
@@ -44,4 +44,4 @@ If you installed the default Operaton webapps and demo content, Operaton was con
 
 ## Administrator Account
 
-Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user- and groupmanagement, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](authorization-management.md) for more details.
+Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user and group management, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](authorization-management.md) for more details.

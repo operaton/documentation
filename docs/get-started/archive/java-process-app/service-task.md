@@ -18,7 +18,7 @@ In the last section of this tutorial we learn how to invoke a Java class from a 
 
 ## Add a Service Task to the Process
 
-Use the Camunda Modeler to add a service task after the user task. To do so, select the activity shape (rectangle) and drag it onto a sequence flow (see screenshot). Name it *Process Request*. Change the activity type to *Service Task* by clicking on it and using the wrench button.
+Use the Operaton Modeler to add a service task after the user task. To do so, select the activity shape (rectangle) and drag it onto a sequence flow (see screenshot). Name it *Process Request*. Change the activity type to *Service Task* by clicking on it and using the wrench button.
 
 
 ![Example image](/img/get-started/archive/java-process-app/modeler-service-task1.png)

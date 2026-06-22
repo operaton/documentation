@@ -66,7 +66,7 @@ task.getDescription();
 
 Each task has a field indicating the due date of that task. The Query API can be used to query for tasks that are due on, before or after a certain date.
 
-There is an extension attribute that allows to specify an expression in a task definition to set the initial due date of a task when it is created. The expression should always resolve to a `java.util.Date`, `java.util.String` ([ISO8601](http://en.wikipedia.org/wiki/ISO_8601) formatted) or `null`. When using ISO8601 formatted Strings, you may either specify an exact point in time or a time period relative to the time the task is created.
+There is an extension attribute that lets you specify an expression in a task definition to set the initial due date of a task when it is created. The expression should always resolve to a `java.util.Date`, `java.util.String` ([ISO8601](http://en.wikipedia.org/wiki/ISO_8601) formatted) or `null`. When using ISO8601 formatted Strings, you may either specify an exact point in time or a time period relative to the time the task is created.
 
 ```xml
 <humanTask id="theTask" name="Important task" operaton:dueDate="${dateVariable}"/>

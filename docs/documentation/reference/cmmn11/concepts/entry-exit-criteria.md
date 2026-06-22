@@ -33,7 +33,7 @@ Similar changes in the state of a case instance may be driven by events occurrin
       <humanTask id="HumanTask_1" operaton:assignee="kermit" />
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
 Similarly, `PlanItem_HumanTask_1` with an exit criterion looks as follows:
