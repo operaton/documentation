@@ -722,7 +722,7 @@ ORDER BY evaluations DESC;
 
 ---
 
-See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings.
+See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings.
 
 ---
 
