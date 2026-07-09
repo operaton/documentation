@@ -277,7 +277,7 @@ ORDER BY r.KEY_, d.KEY_;
 
 ---
 
-See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings.
+See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings.
 
 ---
 

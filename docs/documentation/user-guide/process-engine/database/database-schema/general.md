@@ -150,7 +150,7 @@ LIMIT 1;
 
 ---
 
-See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings across PostgreSQL, MySQL/MariaDB, Oracle, MSSQL, H2, and DB2.
+See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings across PostgreSQL, MySQL/MariaDB, Oracle, MSSQL, H2, and DB2.
 
 ---
 

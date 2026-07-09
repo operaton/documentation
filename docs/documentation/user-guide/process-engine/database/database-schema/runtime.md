@@ -670,7 +670,7 @@ GROUP BY 1 ORDER BY 1 DESC;
 
 ---
 
-See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings.
+See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings.
 
 ---
 
