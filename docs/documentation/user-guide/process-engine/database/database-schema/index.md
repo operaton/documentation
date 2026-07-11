@@ -114,29 +114,29 @@ The following Entity Relationship Diagrams visualize the database tables and the
 
 ## Engine BPMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_722_bpmn.svg)BPMN Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_724_bpmn.svg)BPMN Tables
 
 
 ## Engine DMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_722_dmn.svg)DMN Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_724_dmn.svg)DMN Tables
 
 
 ## Engine CMMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_722_cmmn.svg)CMMN Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_724_cmmn.svg)CMMN Tables
 
 
 ## History
 
 To allow different configurations and to keep the tables more flexible, the history tables contain no foreign key constraints.
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_722_history.svg)History Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_724_history.svg)History Tables
 
 
 ## Identity
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_722_identity.svg)Identity Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_724_identity.svg)Identity Tables
 
 # Quick Reference: All Tables
 
