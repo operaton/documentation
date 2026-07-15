@@ -10,7 +10,7 @@ import remarkBpmnDiagram from './src/plugins/remark-bpmn-diagram.js';
 const typesenseApiKey = process.env.TYPESENSE_API_KEY?.trim();
 const typesenseHost = process.env.TYPESENSE_HOST?.trim() || 'docs.operaton.org';
 const typesensePort = Number(process.env.TYPESENSE_PORT) || 8108;
-const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'https';
+const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'http';
 
 const config: Config = {
   title: 'Operaton Documentation',
