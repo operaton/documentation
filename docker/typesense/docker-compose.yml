@@ -1,0 +1,16 @@
+services:
+  typesense:
+    image: typesense/typesense:27.1
+    container_name: operaton-docs-typesense
+    restart: unless-stopped
+    ports:
+      - "8108:8108"
+    volumes:
+      - ./data:/data
+      - ./certs:/certs:ro
+    environment:
+      TYPESENSE_API_KEY: ${TYPESENSE_API_KEY:?Set TYPESENSE_API_KEY in docker/typesense/.env}
+      TYPESENSE_DATA_DIR: /data
+      TYPESENSE_ENABLE_CORS: "true"
+      TYPESENSE_SSL_CERTIFICATE: /certs/cert.pem
+      TYPESENSE_SSL_CERTIFICATE_KEY: /certs/key.pem

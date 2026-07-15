@@ -8,6 +8,9 @@ import remarkBpmnDiagram from './src/plugins/remark-bpmn-diagram.js';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const typesenseApiKey = process.env.TYPESENSE_API_KEY?.trim();
+const typesenseHost = process.env.TYPESENSE_HOST?.trim() || 'docs.operaton.org';
+const typesensePort = Number(process.env.TYPESENSE_PORT) || 8108;
+const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'https';
 
 const config: Config = {
   title: 'Operaton Documentation',
@@ -93,9 +96,9 @@ const config: Config = {
             typesenseServerConfig: {
               nodes: [
                 {
-                  host: 'docs.operaton.org',
-                  port: 8108,
-                  protocol: 'https',
+                  host: typesenseHost,
+                  port: typesensePort,
+                  protocol: typesenseProtocol,
                 },
               ],
               apiKey: typesenseApiKey,
