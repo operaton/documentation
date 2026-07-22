@@ -48,5 +48,11 @@
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "overrides": {
+    "typesense-docsearch-react": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   }
 }
