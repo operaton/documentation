@@ -10,20 +10,20 @@ menu:
 
 ---
 
-This section explains how to work with serialized Java Objects in embedded task forms.
+This section explains how to work with serialized Java objects in embedded task forms.
 
 :::note
-Out of the box, you can only work with Java Objects which are serialized in *JSON format*
-If Java Classes are serialized using JAX-B, you need to add custom XML parsing and writing logic
-to the embedded form. Java Objects serialized using Java Serialization cannot be used in forms.
+Out of the box, you can only work with Java objects that are serialized in *JSON format*.
+If Java classes are serialized using JAX-B, you need to add custom XML parsing and writing logic
+to the embedded form. Java objects serialized using Java Serialization cannot be used in forms.
 :::
 
 
-## Fetching an existing Serialized Java Object Variable
+## Fetching an Existing Serialized Java Object Variable
 
-The Form SDK will only fetch those variables which are actually used in a form. Since a Complex Java
-Object is usually not bound to a single input field, we cannot use the `cam-variable-name` directive.
-We thus need to fetch the variable programmatically:
+The Form SDK will only fetch variables that are actually used in a form. Since a complex Java
+object is usually not bound to a single input field, we cannot use the `cam-variable-name` directive.
+Therefore, we need to fetch the variable programmatically:
 
 ```html
 <script cam-script type="text/form-script">
@@ -39,9 +39,9 @@ We thus need to fetch the variable programmatically:
 ```
 
 
-## Creating a new Serialized Java Object
+## Creating a New Serialized Java Object
 
-In case the variable does not yet exist (for instance in a Start Form), you have to create the variable and specify the necessary meta data in order for the process engine to correctly handle the variable as Java Object.
+In case the variable does not yet exist (for instance in a Start Form), you have to create the variable and specify the necessary metadata in order for the process engine to correctly handle the variable as a Java object.
 
 ```html
 <script cam-script type="text/form-script">
@@ -56,9 +56,9 @@ In case the variable does not yet exist (for instance in a Start Form), you have
       type: 'Object',
       value: dataObject,
       valueInfo: {
-        // indicate that object is serialized as json
+        // indicate that object is serialized as JSON
         serializationDataFormat: 'application/json',
-        // provide classname of java object to map to
+        // provide class name of Java object to map to
         objectTypeName: 'org.operaton.bpm.example.CustomerData'
       }
     });

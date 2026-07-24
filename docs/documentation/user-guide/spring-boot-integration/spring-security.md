@@ -187,27 +187,27 @@ Due to the fallback to DB Identity Service this provider is still defined as wri
 
 OAuth2 doesn't return information about other users or groups. This means users and even admins can only see their own user and groups on the Admin pages.
 
-Furthermore, it only shows groups from OAuth2 and doesn't show groups configured in Operaton database.
+Furthermore, it only shows groups from OAuth2 and doesn't show groups configured in the Operaton database.
 
 ### Disabling Identity Provider
 
 With the [above-mentioned property](#configuration), the identity provider can be deactivated.
-Without identity provider OAuth2 is only used for authentication. This means, that the user needs to
-be also configured with the matching User ID in Operaton database.
+Without the identity provider, OAuth2 is only used for authentication. This means the user also needs to
+be configured with the matching user ID in the Operaton database.
 
 If the user is not available or doesn't have sufficient authorizations, they won't be able to access
-the Webapps.
+the web apps.
 
 ## Logout
 
-We provide support for local and client initiated SSO logout as well.
-In order to support both logouts, the Operaton integration also contains a Frontend Plugin that overrides the Webapps default logout behaviour.
-As a consequence, when the Webapp user clicks on the logout, it invokes Spring's logout endpoint (`/logout`) instead of Operaton's.
+We provide support for local and client-initiated SSO logout as well.
+In order to support both logout flows, the Operaton integration also contains a frontend plugin that overrides the web apps' default logout behavior.
+As a consequence, when a web app user clicks logout, it invokes Spring's logout endpoint (`/logout`) instead of Operaton's.
 
-### Client Initiated SSO Logout
+### Client-Initiated SSO Logout
 
-We support client initiated OIDC SSO logout.
-Please refer Spring's [OpenID Connect 1.0 Client-Initiated Logout][SSOLogout] section for more information.
+We support client-initiated OIDC SSO logout.
+Please refer to Spring's [OpenID Connect 1.0 Client-Initiated Logout][SSOLogout] section for more information.
 
 In order to configure this feature, use the following properties:
 
@@ -231,7 +231,7 @@ The following properties are available:
   </tr>
   <tr>
     <th>enabled</th>
-    <td>Activates the client initiated OIDC logout feature.</td>
+    <td>Activates the client-initiated OIDC logout feature.</td>
     <td><code>false</code></td>
   </tr>
   <tr>

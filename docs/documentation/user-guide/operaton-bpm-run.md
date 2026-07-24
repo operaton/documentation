@@ -9,7 +9,7 @@ This guide gives an introduction to Operaton Run, a pre-packaged, lightweight di
 
 ## Prerequisites and audience
 
-To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](/docs/get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
+To use this guide, you should at least know what Operaton is and what it does. Check out the [Get Started guides](../../get-started/quick-start/) if you have never used Operaton before. The [Installation guide](../installation/operaton-bpm-run.md) is also worth looking at if you are completely new to Operaton.
 
 This guide will teach you about Operaton Run and how to configure it. It can serve as a reference page for configuration and operation options. It will not give you a step-by-step guide on how to install Operaton Run. Head over to the [Installation guide](../installation/operaton-bpm-run.md) for details on how to install and start Operaton Run.
 
@@ -26,7 +26,7 @@ Operaton Run is a full distribution of Operaton. It includes:
 
 ## Starting with Operaton Run
 
-To start with Operaton Run, download the [distribution](https://downloads.camunda.cloud/release/operaton-bpm/run/) and unpacking it. You will find the following structure:
+To start with Operaton Run, download the [distribution](https://github.com/operaton/operaton/releases/latest) and unpack it. You will find the following structure:
 
 ```
 operaton-bpm-run
@@ -137,7 +137,7 @@ However, the example application will not be started.
 
 Disabling the example application with any of those mechanisms will **NOT** delete any deployments or process instances from Operaton Run once they are created.
 You have to delete this data manually through the [web apps](../webapps/cockpit/deployment-view.md#delete), the
-restref page="deleteDeployment" text="REST API" tag="Deployment, or by cleaning the database
+<RestRef operation="deleteDeployment" text="REST API" tag="Deployment" />, or by cleaning the database
 [configured in the application properties](#database).
 
 ### Choose between default and production configuration
@@ -169,7 +169,7 @@ In the unpacked distro, you will find a `resources` folder. All files (including
 
 You can reference forms and scripts in the BPMN diagram with `embedded:deployment:/my-form.html`, `operaton-forms:deployment:/myform.form`, or `deployment:/my-script.js`. The deployment requires adding an extra `/` as a prefix to the filename.
 
-Deployments via the restref page="createDeployment" text="REST API" tag="Deployment are still possible.
+Deployments via the <RestRef operation="createDeployment" text="REST API" tag="Deployment" /> are still possible.
 
 ## Configure Operaton Run
 
@@ -177,7 +177,7 @@ Just like all the other distros, you can tailor Operaton Run to your needs. To d
 
 :::note[Note:]
 Operaton Run is based on the [Operaton Spring Boot Starter](https://github.com/operaton/operaton/tree/main/spring-boot-starter).
-All [configuration properties](spring-boot-integration/configuration.mdx#operaton-engine-properties) from the operaton-spring-boot-starter are available to customize Operaton Run.
+All [configuration properties](spring-boot-integration/configuration.mdx#operaton-engine-properties) from the `operaton-spring-boot-starter` are available to customize Operaton Run.
 :::
 
 ### Database
@@ -323,7 +323,7 @@ Operaton Run also supports configuration options for customizing the deployment.
             <li>When set to <code>false</code>, all deployments will be deployed without filtering their resources.</li>
           </ul>
           The property can be useful for controlling the deployment behaviour of the engine in case of restarts, similar to the
-          <a href="..user-guide/spring-framework-integration/deployment">Spring Framework Integration</a>
+          <a href="../user-guide/spring-framework-integration/deployment">Spring Framework Integration</a>
       </td>
       <td><code>true</code></td>
   </tr>
@@ -334,7 +334,7 @@ Operaton Run also supports configuration options for customizing the deployment.
 Operaton can manage users and authorizations on its own, but if you want to use an existing LDAP authentication database you can enable the [LDAP Identity Service Plugin](process-engine/identity-service.md#the-ldap-identity-service)
 which provides read-only access to the LDAP repository.
 
-Find all available configuration properties in the [LDAP Plugin Guide](process-engine/identity-service.md#configuration-properties-of-the-ldap-plugin)
+Find all available configuration properties in the [LDAP Plugin Guide](process-engine/identity-service.md#configuration-properties-of-the-ldap-plugin).
 
 <table class="table desc-table">
   <tr>
@@ -379,10 +379,10 @@ In the table below, observe the Operaton Run-specific properties for the Adminis
 
 Operaton Run supports two types of plugins.
 
-* [Process engine plugins][engine-plugins] can be used to extend the process engine configuration to add more functionality.
-* [Webapp plugins][cockpit-plugins] are used to extend one of the Operaton webapps (i.e. Cockpit, Tasklist, Admin, Welcome).
+* [**Process engine plugins**](process-engine/process-engine-plugins) can be used to extend the process engine configuration to add more functionality.
+* **Webapp plugins** are used to extend one of the Operaton webapps (i.e. [Cockpit](../webapps/cockpit/extend/plugins), [Tasklist](../webapps/tasklist/tasklist-plugins), [Admin](../webapps/admin/plugins), [Welcome](../webapps/welcome/welcome-plugins)).
 
-Both types of plugins are supported in Operaton Run but have to be registered differently.
+Both types of plugins are supported in Operaton Run, but have to be registered differently.
 
 ### Process engine plugin registration
 
@@ -390,7 +390,7 @@ Operaton provides a process engine plugin mechanism to enable users to add and a
 process engine features by extending the process engine configuration. You can use plugins developed by Operaton, or by
 third-party developers.
 
-Get more details on how process engine plugins work on the dedicated [process engine plugins][engine-plugins]
+Get more details on how process engine plugins work on the dedicated [process engine plugins](process-engine/process-engine-plugins)
 documentation section.
 
 In the table below, observe the Operaton Run-specific properties for registering process engine plugins.
@@ -487,7 +487,7 @@ Operaton provides a mechanism to extend the Operaton Webapps with your own funct
 
 A webapp plugin is a maven jar project that provides a server-side and a client-side extension to the webapp. You can find more information about how to structure your plugins [here](../webapps/cockpit/extend/plugins.md#the-nature-of-a-cockpit-plugin).
 
-To register a webapp plugin, simply drop the jar file into the `configuration/userlib` folder. See [the Starting with Operaton Run section](#starting-with-operaton-run) of this guide to find out how to navigate the directories of Operaton Run.
+To register a webapp plugin, simply drop the jar file into the `configuration/userlib` folder. Refer to the [Starting with Operaton Run](#starting-with-operaton-run) section for guidance on navigating Operaton Run's directory structure.
 
 ### Example application launch
 
@@ -594,6 +594,3 @@ For more information on logging configuration visit the [Spring Boot Logging Gui
       <td><code>-</code></td>
   </tr>
 </table>
-
-
-[cockpit-plugins]: ../webapps/cockpit/extend/plugins.md

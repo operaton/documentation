@@ -8,22 +8,18 @@ menu:
     name: "Legacy Behavior"
     identifier: "user-guide-dmn-engine-feel-legacy-behavior"
     parent: "user-guide-dmn-engine-feel"
-    description: "Only relevant for users coming from Operaton version <= 7.12.0"
 
 ---
 
-If you come from an Operaton version $\leq$ 7.12.x and already use FEEL, it might be that you need to
-migrate your DMN models. To do this, please check out the [Migration Guide], where we've documented
-all breaking changes.
+The FEEL engine supports a legacy mode that restores an older evaluation behavior for FEEL expressions.
+This is primarily useful when migrating DMN models that rely on the legacy FEEL semantics.
 
-If you don't want to migrate your DMN models right now, you can also restore the legacy FEEL
-behavior by flipping a config flag:
+To enable the legacy mode, set the [`dmnFeelEnableLegacyBehavior`][legacy behavior flag] flag in the
+process engine configuration.
 
-* To see how this legacy behavior can be enabled again in Operaton, please see the
-[dmnFeelEnableLegacyBehavior][legacy behavior flag] engine configuration property.
-* To enable this behavior in a standalone DMN Engine setup, please refer to the `DefaultDmnEngineConfiguration`
+To enable this behavior in a standalone DMN Engine setup, refer to the `DefaultDmnEngineConfiguration`
 [enableFeelLegacyBehavior][fluent feel flag setter] and [setEnableFeelLegacyBehavior][feel flag setter]
-methods
+methods.
 
 :::note[Heads Up!]
 By using the legacy FEEL Engine, the Operaton DMN Engine **only** supports `FEEL` for

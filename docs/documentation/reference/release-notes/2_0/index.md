@@ -116,7 +116,7 @@ Operaton is tested and supported on **Java 17**, **Java 21**, and **Java 25**.
 
 ### Camunda 7 Compatibility
 
-This release is feature complete and API-compatible with [**Camunda 7.24**](https://docs.camunda.org/enterprise/announcement/#camunda-platform-7-24).
+This release is feature complete and API-compatible with [**Camunda 7 CE 7.24**](https://docs.camunda.org/manual/7.24/).
 
 ### Spring
 

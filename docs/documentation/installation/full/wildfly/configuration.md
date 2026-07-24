@@ -12,7 +12,7 @@ This page explains how to configure the full distribution for the WildFly applic
 
 ### LDAP
 
-In order to setup LDAP for the WildFly Application Server distribution, you have to perform the following steps:
+In order to set up LDAP for the WildFly Application Server distribution, you have to perform the following steps:
 
 
 ### Adjust the Process Engine Configuration

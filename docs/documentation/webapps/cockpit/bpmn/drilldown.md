@@ -16,16 +16,16 @@ collapsed subprocesses with the drilldown icon.
 
 ## Process diagram
 
-If you have a collapsed subprocess in your diagram, a drilldown icon will appear in the lower right of the activity.
+If you have a collapsed subprocess in your diagram, a drilldown icon appears in the lower right of the activity.
 
 ![A Collapsed Subprocess Shape with a drilldown Action](/img/documentation/webapps/cockpit/bpmn/shape.png)
 
 The collapsed shape indicates if there are running child instances or if an incident occurred in a child activity.
 
-If you click on the drilldown icon, the diagram will show the contents of the collapsed subprocess. Use the breadcrumbs in the upper left corner
+If you click the drilldown icon, the diagram shows the contents of the collapsed subprocess. Use the breadcrumbs in the upper left corner
 of the diagram to navigate back to the parent process.
 
-![Breadcrumb links showing the process hirarchy](/img/documentation/webapps/cockpit/bpmn/breadcrumbs.png)
+![Breadcrumb links showing the process hierarchy](/img/documentation/webapps/cockpit/bpmn/breadcrumbs.png)
 
 The breadcrumbs show the process hierarchy. Opening an expanded subprocess opens the nearest collapsed subprocess.
 

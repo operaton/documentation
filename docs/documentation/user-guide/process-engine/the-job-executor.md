@@ -40,7 +40,7 @@ When using a **shared process engine**, the default is reversed: if you do not s
 
 ## Job Executor in a Unit Test
 
-For unit testing scenarios it is cumbersome to work with this background component. Therefore the Java API offers to query for (`ManagementService.createJobQuery`) and execute jobs (`ManagementService.executeJob`) *by hand*, which allows to control job execution from within a unit test.
+For unit testing scenarios it is cumbersome to work with this background component. Therefore the Java API offers to query for (`ManagementService.createJobQuery`) and execute jobs (`ManagementService.executeJob`) *by hand*, which allows you to control job execution from within a unit test.
 
 ## Job Creation
 
@@ -55,14 +55,14 @@ During creation, jobs can receive a priority for acquisition and execution.
 
 ### Job Prioritization
 
-In practice, the amount of jobs processed is seldomly spread evenly across the day. Instead, there are peaks of high load, for example when batch operations are run overnight. In such a situation, the job executor can be temporarily overloaded: the database contains many more jobs than the job executor can handle at a time. *Job Prioritization* can help cope with these situations in a well-defined matter by defining an order of importance and enabling execution by that order.
+In practice, the number of jobs processed is rarely spread evenly across the day. Instead, there are peaks of high load, for example when batch operations are run overnight. In such a situation, the job executor can be temporarily overloaded: the database contains many more jobs than the job executor can handle at a time. *Job Prioritization* can help cope with these situations in a well-defined manner by defining an order of importance and enabling execution by that order.
 
 In general, there are two types of use cases that can be tackled with job prioritization:
 
 * **Anticipating priorities at Design Time**: In many cases, a high-load scenario can be anticipated when designing a process model. In these scenarios, it is often important to prioritize job execution according to certain business objectives. Examples:
   * A retail store has casual and VIP customers. In case of high load, it is desired to handle orders of VIP customers with higher priority since their satisfaction is more important to the company's business goals.
   * A furniture store has human-centric processes for consulting customers in buying furniture as well as non-time-critical processes for delivery. Prioritization can be used to ensure fast response times in the consulting processes, improving user and customer satisfaction.
-* **Prioritization as a Response to Runtime Conditions**:  Some scenarios for high job executor load result from unforeseen conditions at runtime that cannot be dealt with during process design. Temporarily overriding priorities can help deal with these kind of situations gracefully. Example:
+* **Prioritization as a Response to Runtime Conditions**: Some scenarios for high job executor load result from unforeseen conditions at runtime that cannot be dealt with during process design. Temporarily overriding priorities can help deal with these kinds of situations gracefully. Example:
   * A service task accesses a web service to process a payment. The payment service encounters an overload and responds very slowly. To avoid occupying all the job executor's resources with waiting for the service to respond, the respective jobs' priorities can be temporarily reduced. This way, unrelated process instances and jobs are not slowed down. After the service recovers, the overriding priority can be cleared again.
 
 
@@ -183,7 +183,7 @@ Sometimes job priorities need to be changed at runtime to deal with unforeseen c
 
 #### Override Priority by Job Definition
 
-While expressions may help in these cases to a certain extent, it is cumbersome to change process data for all involved process instances and to make sure to restore it when the exceptional condition is over. Thus the ManagementService API allows to temporarily set an overriding priority for a job definition. The following operation can be performed to downgrade the priority for all future jobs of a given job definition:
+While expressions may help in these cases to a certain extent, it is cumbersome to change process data for all involved process instances and to make sure to restore it when the exceptional condition is over. Thus the ManagementService API allows you to temporarily set an overriding priority for a job definition. The following operation can be performed to downgrade the priority for all future jobs of a given job definition:
 
 ```java
 // find the job definition
@@ -374,7 +374,7 @@ To prevent this, you can specify a priority range for the job executor by settin
 
 To avoid job starvation, make sure to have no gaps between Job Executor priority ranges. If, for example, Job Executor A has a priority range of 0 to 100 and Job Executor B executes jobs from priority 200 to `Long.MAX_VALUE` any job that receives a priority of 101 to 199 will never be executed. Job starvation can also occur with `batch jobs` and `history cleanup jobs` as both types of jobs also receive priorities (default: `0`). You can configure them via their respective properties: `batchJobPriority` and `historyCleanupJobPriority`.
 
-This feature is particularly useful if you want to separate multiple types of jobs from each other. For example, short-running, urgent jobs with high priority and long-running jobs that are not urgent but should finish eventually. Setting up a Job Executor priority range for both types will ensure that long-running jobs can not block urgent ones.
+This feature is particularly useful if you want to separate multiple types of jobs from each other. For example, short-running, urgent jobs with high priority and long-running jobs that are not urgent but should finish eventually. Setting up a Job Executor priority range for both types will ensure that long-running jobs cannot block urgent ones.
 
 ### Backoff Strategy
 The Job Executor uses a backoff strategy to avoid acquisition conflicts in clusters and to reduce the database load when no jobs are due. The second point may result in a delay between job creation and job execution as the job acquisition by default doubles the delay to the next acquisition run.
@@ -491,7 +491,7 @@ Reminder: a retry may be required if there are any failures during the transacti
 
 If the retry configuration is set for a multi-instance activity then the configuration is applied to the [multi-instance body](../process-engine/transactions-in-processes.md#asynchronous-continuations-of-multi-instance-activities). Additionally, the retries of the inner activities can also be configured using the extension element as child of the `multiInstanceLoopCharacteristics` element.
 
-The following example defines the retries of a multi-instance service task with asynchronous continuation of the multi-instance body and the inner activity. If a failure occur during one of the five parallel instances then the job of the failed instance will be retried up to 3 times with a delay of 5 seconds. In case all instances ended successful and a failure occur during the transaction which follows the task, the job will be retried up to 5 times with a delay of 5 minutes.
+The following example defines the retries of a multi-instance service task with asynchronous continuation of the multi-instance body and the inner activity. If a failure occurs during one of the five parallel instances then the job of the failed instance will be retried up to 3 times with a delay of 5 seconds. If all instances end successfully and a failure occurs during the transaction which follows the task, the job will be retried up to 5 times with a delay of 5 minutes.
 
 ```xml
 <definitions xmlns:operaton="http://operaton.org/schema/1.0/bpmn">
@@ -514,7 +514,7 @@ The following example defines the retries of a multi-instance service task with 
 ```
 
 ### Retry Intervals
-The retry time cycle (e.g. R5/PT5M) allows to define the number of retries and an interval when the failed job should be retried. Regardless of the values, the interval is always (at least) 5 minutes. You can configure the list of retry intervals (separated by comma) on a global level or for a specific job configuration. The local configuration takes precedence.
+The retry time cycle (e.g. R5/PT5M) allows you to define the number of retries and an interval when the failed job should be retried. Regardless of the values, the interval is always (at least) 5 minutes. You can configure the list of retry intervals (separated by comma) on a global level or for a specific job configuration. The local configuration takes precedence.
 Here is an example of a global process engine configuration:
 ```xml
 <process-engine name="default">
@@ -525,7 +525,7 @@ Here is an example of a global process engine configuration:
   </properties>
 </process-engine>
 ```
-The retry times would be three and the behaviour for this example would be the following:
+The retry sequence contains three retry times and the behavior for this example would be the following:
 
 * A job fails for the first time: the job will be retried in 10 minutes (PT10M is applied).
 * A job fails for the second time: the job will be retried in 17 minutes (PT17M is applied).
@@ -536,7 +536,7 @@ If the user decides to increase the retry number during retries, the last interv
 
 ### Custom Retry Configuration
 
-You can configure an custom retry configuration by adding the `customPostBPMNParseListeners` property and specify your custom `FailedJobParseListener` to the process engine configuration:
+You can configure a custom retry configuration by adding the `customPostBPMNParseListeners` property and specifying your custom `FailedJobParseListener` in the process engine configuration:
 
 ```xml
 <bean id="processEngineConfiguration" class="org.operaton.bpm.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
@@ -621,7 +621,7 @@ In the case of a single, application-embedded process engine, the job executor s
 
 There is a single job table that the engine adds jobs to and the acquisition consumes from. Creating a second embedded engine would therefore create another acquisition thread and execution thread-pool.
 
-In larger deployments however, this quickly leads to a poorly manageable situation. When running Operaton on Tomcat or an application server, the platform allows to declare multiple process engines shared by multiple process applications. With respect to job execution, one job acquisition may serve multiple job tables (and thus process engines) and a single thread-pool for execution may be used.
+In larger deployments however, this quickly leads to a poorly manageable situation. When running Operaton on Tomcat or an application server, the platform allows you to declare multiple process engines shared by multiple process applications. With respect to job execution, one job acquisition may serve multiple job tables (and thus process engines) and a single thread-pool for execution may be used.
 
 ![Example img](/img/documentation/user-guide/process-engine/job-executor-multiple-engines.png)Multiple Engines
 
@@ -648,16 +648,16 @@ When running Operaton in a cluster, there is a distinction between *homogeneous*
 
 ![Example img](/img/documentation/user-guide/process-engine/homogeneous-cluster.png)Homogeneous Cluster
 
-In the *heterogeneous* case, this is not given, meaning that some process applications are only  deployed to a part of the nodes.
+In the *heterogeneous* case, this is not given, meaning that some process applications are only deployed to a part of the nodes.
 
-![Example img](/img/documentation/user-guide/process-engine/heterogeneous-cluster.png)Heterogenous Cluster
+![Example img](/img/documentation/user-guide/process-engine/heterogeneous-cluster.png)Heterogeneous Cluster
 
 
 ### Job Execution in Heterogeneous Clusters
 
-A heterogeneous cluster setup as described above poses additional challenges to the job executor. Both platforms declare the same engine, i.e. they run against the same database. This means that jobs will be inserted into the same table. However, in the default configuration the job acquisition thread of node 1 will lock any executable jobs of that table and submit them to the local job execution pool. This means that jobs created in the context of process application B (so on node 2) may be executed on node 1 and vice versa. As the job execution may involve classes that are part of B's deployment, you are likely going to see a `ClassNotFoundExeception` or any of the likes.
+A heterogeneous cluster setup as described above poses additional challenges to the job executor. Both platforms declare the same engine, i.e. they run against the same database. This means that jobs will be inserted into the same table. However, in the default configuration the job acquisition thread of node 1 will lock any executable jobs of that table and submit them to the local job execution pool. This means that jobs created in the context of process application B (so on node 2) may be executed on node 1 and vice versa. As the job execution may involve classes that are part of B's deployment, you are likely going to see a `ClassNotFoundException` or any of the likes.
 
-To prevent the job acquisition on node 1 from picking jobs that *belong* to node 2, the process engine can be configured as *deployment aware*, by the setting following property in the process engine configuration:
+To prevent the job acquisition on node 1 from picking jobs that *belong* to node 2, the process engine can be configured as *deployment aware* by setting the following property in the process engine configuration:
 
 ```xml
 <process-engine name="default">

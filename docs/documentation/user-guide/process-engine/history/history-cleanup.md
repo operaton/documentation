@@ -99,7 +99,7 @@ Strengths:
 
 Limitations:
 
-* Can only remove data for which a removal time is set. This is especially not the case for data which has been created with Operaton versions < 7.10.0.
+* Can only remove data for which a removal time is set.
 * Changing the TTL of a definition only applies to history data that is created in the future. It does not dynamically update the removal time of already written history data. However, it is possible to [Set a Removal Time via Batch Operations](../../process-engine/batch-operations.md#set-a-removal-time).
 * History data of case instances is not cleaned up.
 
@@ -174,7 +174,7 @@ Once deployed, TTL can be updated via Java API:
   processEngine.getRepositoryService().updateProcessDefinitionHistoryTimeToLive(processDefinitionId, 5);
 ```
 
-Setting the value to `null` clears the TTL. The same can be done via restref page="updateHistoryTimeToLiveByProcessDefinitionKeyAndTenantId" text="REST API" tag="Process-Definition.
+Setting the value to `null` clears the TTL. The same can be done via <RestRef operation="updateHistoryTimeToLiveByProcessDefinitionKeyAndTenantId" text="REST API" tag="Process-Definition" />.
 
 For decision and case definitions, TTL can be defined in a similar way.
 

@@ -11,12 +11,12 @@ menu:
 ---
 
 Batch is a concept to offload workload from the current execution to be
-processed in the background. This allows to run a process engine command
+processed in the background. This lets you run a process engine command
 asynchronously on a large set of instances without blocking. It also decouples
 the separate command invocations from each other.
 
 For example the [process instance migration][migration] command can be
-[executed using a batch][batch-migration]. This allows to migrate
+[executed using a batch][batch-migration]. This lets you migrate
 process instances asynchronously. In a synchronous process instance migration,
 all migrations are executed in a single transaction.  First of all, this
 requires all of them to succeed to commit the transaction. For a

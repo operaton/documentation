@@ -151,7 +151,7 @@ public class LoanApplicationContext {
 }
 ```
 
-If you redeploy the application, you should see the following message in the logfile, meaning that the service task was executed.
+If you redeploy the application, you should see the following message in the log file, meaning that the service task was executed.
 
 <pre class="console">
 INFO org.operaton.commons.logging.BaseLogger.logInfo

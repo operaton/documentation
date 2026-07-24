@@ -22,3 +22,7 @@ yarn-error.log*
 .idea
 
 .env
+
+# Local Typesense dev server (see docker/typesense)
+/docker/typesense/certs
+/docker/typesense/data

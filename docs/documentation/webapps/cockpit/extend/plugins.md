@@ -11,9 +11,6 @@ menu:
 
 ---
 
-:::note[Plugin Compatibility]
-Please note that we updated the frontend plugin interface with Operaton Runtime 7.14. Plugins written for Operaton Runtime 7.13 and earlier might no longer work with Operaton Runtime 7.14. Checkout the [update guide](../update/minor/713-to-714) for more details.
-:::
 
 Cockpit defines a plugin concept to add own functionality without being forced to extend or hack the Cockpit web application. You can add plugins at various plugin points, e.g., the processes dashboard as shown in the following example:
 
@@ -151,7 +148,7 @@ In this example we deactivate the cancel action in the Cockpit process instance 
 ## Legacy Plugins
 Plugins created for Operaton.13 or earlier can be included for compatibility. To achieve this, simply prefix your Plugin ID with `legacy-`. The AngularJS module name for the entry module will be `cockpit.plugin.legacy-*`.
 
-Please note that all Plugins with this prefix will be included using the 7.13 plugin mechanism. You cannot create new Plugins with IDs starting with `legacy`.
+Plugins with this prefix are included using the legacy plugin mechanism. You cannot create new Plugins with IDs starting with `legacy`.
 
 For more details about legacy Plugins, see the plugin points below.
 

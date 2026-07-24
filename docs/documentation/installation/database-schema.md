@@ -18,11 +18,11 @@ Operaton supports a variety of databases that are documented in the [supported e
 
 Operaton supports the following ways of installing the database schema:
 
-* Use the database migration tool [Liquibase](https://www.liquibase.org/) with the provided changelog for a semi-automatic installation and update. Liquibase keeps track of database schema changes. This allows you to focus on *when* changes should be applied rather than also on *which* changes are relevant. Starting with version `7.16.0`, Operaton comes with a curated *changelog file* that Liquibase can consume.
+* Use the database migration tool [Liquibase](https://www.liquibase.org/) with the provided changelog for a semi-automatic installation and update. Liquibase keeps track of database schema changes. This allows you to focus on *when* changes should be applied rather than also on *which* changes are relevant. Operaton comes with a curated *changelog file* that Liquibase can consume.
 * Use the provided SQL scripts with the tools related to your database for a fully manual installation and update. A manual procedure allows you to fully control the SQL statements that are executed on your database instance and to adjust those statements to your needs if necessary.
 
 :::note[Isolation level]
-READ COMMITED is the required isolation level for database systems to run Operaton with.
+READ COMMITTED is the required isolation level for database systems to run Operaton with.
 You may have to change the default setting on your database when installing Operaton.
 For more information see the documentation on [isolation levels](../user-guide/process-engine/database/database-configuration.md#isolation-level-configuration).
 :::
@@ -131,7 +131,7 @@ Liquibase provides additional commands to preview all changes applied by command
 #### Migrate to Liquibase
 
 Liquibase provides workflows to update databases that were not set up using Liquibase from the very beginning.
-For such a scenario to work, you need to populate a tracking table that represents the current state of your database with regards to the changelog file you want to update against.
+For such a scenario to work, you need to populate a tracking table that represents the current state of your database with regard to the changelog file you want to update against.
 In other words, you need to let Liquibase know which parts of the changelog your database already contains.
 
 Perform the following steps to migrate your manual installation to Liquibase:

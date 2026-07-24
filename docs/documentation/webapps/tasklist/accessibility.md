@@ -10,12 +10,12 @@ menu:
 
 ---
 
-It is possible to use the Tasklist only with the keyboard. You can use the TAB-key to navigate to the sections of the Tasklist. To interact with an element you have focused, press ENTER.
+It is possible to use the Tasklist only with the keyboard. You can use the Tab key to navigate to the sections of the Tasklist. To interact with an element you have focused, press Enter.
 
 
 ## Keyboard Shortcuts
 
-To make working with the Tasklist easier, you can use keyboard shortcuts to jump to certain parts of the Tasklist or perform special operations. Per default, we support the following actions via keyboard shortcuts:
+To make working with the Tasklist easier, you can use keyboard shortcuts to jump to certain parts of the Tasklist or perform special operations. By default, we support the following actions via keyboard shortcuts:
 
 <table class="table table-striped">
   <tr>
@@ -30,22 +30,22 @@ To make working with the Tasklist easier, you can use keyboard shortcuts to jump
   <tr>
     <td>CTRL + SHIFT + F</td>
     <td><code>Set the keyboard focus to the first filter in the filter list</code></td>
-   
+
   </tr>
   <tr>
     <td>CTRL + ALT + L</td>
     <td><code>Set the keyboard focus to the first task in the list of tasks</code></td>
-   
+
   </tr>
   <tr>
     <td>CTRL + ALT + F</td>
     <td><code>Set the keyboard focus to the first input field in an embedded task form</code></td>
-  
+
   </tr>
   <tr>
     <td>CTRL + ALT + P</td>
     <td><code>Open the start process modal dialog</code></td>
-   
+
   </tr>
 </table>
 

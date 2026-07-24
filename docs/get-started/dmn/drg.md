@@ -13,10 +13,10 @@ menu:
 aliases: [/dmn/drg/]
 ---
 
-In this step, we extend the previous example by a second decision *Beverages* which uses the *Dish* decision table as input. We model this dependency between the decisions within a Decision Requirements Graph (DRG) using the Camunda Modeler. Then, we adjust the Application class to evaluate the *Beverages* decision, deploy the web application to Apache Tomcat and verify the result in Cockpit.
+In this step, we extend the previous example by a second decision *Beverages* which uses the *Dish* decision table as input. We model this dependency between the decisions within a Decision Requirements Graph (DRG) using the Operaton Modeler. Then, we adjust the Application class to evaluate the *Beverages* decision, deploy the web application to Apache Tomcat and verify the result in Cockpit.
 
 :::note[Decision Requirements Graph vs. Decision Requirements Diagram]
-The visual representation of a Decision Requirements Graph (DRG) is called Decision Requirements Diagram (DRD). In the context of the Camunda Modeler, we name it DRD because we use the visual representation to model the DRG.
+The visual representation of a Decision Requirements Graph (DRG) is called Decision Requirements Diagram (DRD). In the context of the Operaton Modeler, we name it DRD because we use the visual representation to model the DRG.
 :::
 
 ## Switch from Decision Table to DRD
@@ -143,4 +143,4 @@ Note that the *Dish* decision is evaluated as part of the evaluation of the *Bev
 Next,
 
 * learn more about DRG by reading the [DMN Reference](/docs/documentation/reference/dmn/drg),
-* learn more about [DMN in Cockpit](https://docs.operaton.org/docs/documentation/webapps/cockpit/dmn/)
+* learn more about [DMN in Cockpit](/docs/documentation/webapps/cockpit/dmn/)

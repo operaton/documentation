@@ -32,7 +32,7 @@ String jdkVersion = productInternals.getJdk().getVersion();
 
 ### REST API
 
-You can fetch the collected data via the REST API by calling the restref page="getTelemetryData" text="Get Telemetry Data" tag="Telemetry endpoint.
+You can fetch the collected data via the REST API by calling the <RestRef operation="getTelemetryData" text="Get Telemetry Data" tag="Telemetry" /> endpoint.
 
 ## Collected data
 
@@ -75,7 +75,7 @@ The counts are collected from the start of the engine or the last reported time 
     "installation": "8343cc7a-8ad1-42d4-97d2-43452c0bdfa3",
     "product": {
       "name": "Operaton BPM Runtime",
-      "version": "7.14.0",
+      "version": "2.1.2",
       "edition": "community",
       "internals": {
         "database": {

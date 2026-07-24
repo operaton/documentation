@@ -87,7 +87,7 @@ States:
       completed
     </td>
     <td>
-      The transition <i>complete</i> automatically triggers when all plan items contained in the case plan model are completed, terminated, or disabled.  With automatic completion enabled, only required plan items have to reach theses states. Furthermore, it is possible to manually complete a case instance via the <code>CaseService</code> API if it has no active tasks or stages and all required plan items are either completed, terminated, or disabled.
+      The transition <i>complete</i> automatically triggers when all plan items contained in the case plan model are completed, terminated, or disabled.  With automatic completion enabled, only required plan items have to reach these states. Furthermore, it is possible to manually complete a case instance via the <code>CaseService</code> API if it has no active tasks or stages and all required plan items are either completed, terminated, or disabled.
     </td>
   </tr>
   <tr>
@@ -134,7 +134,7 @@ States:
       enabled
     </td>
     <td>
-      A task or stage becomes <i>enabled</i> as soon as any of its entry criteria is fulfilled. If this is given when a the task/stage becomes available, it immediately becomes enabled or, depending on its manual activation rule, active.
+      A task or stage becomes <i>enabled</i> as soon as any of its entry criteria is fulfilled. If this is given when the task/stage becomes available, it immediately becomes enabled or, depending on its manual activation rule, active.
     </td>
   </tr>
   <tr>
@@ -150,7 +150,7 @@ States:
       active
     </td>
     <td>
-      When a task or stage becomes active, its actual work is performed. For a stage, all contained plan items are instantiated. For a task, its actual work is issued, e.g., for a human task, a task instance is created and needs to be worked on by a user. In order for a task or stage to become active, at least one entry criterion has to be fulfilled. Activation can either be performed manually by a human worker using the <code>CaseService</code> API if the manualActivation rule is specified or automatically if not manualActivation rule is specified.
+      When a task or stage becomes active, its actual work is performed. For a stage, all contained plan items are instantiated. For a task, its actual work is issued, e.g., for a human task, a task instance is created and needs to be worked on by a user. In order for a task or stage to become active, at least one entry criterion has to be fulfilled. Activation can either be performed manually by a human worker using the <code>CaseService</code> API if the manualActivation rule is specified or automatically if no manualActivation rule is specified.
     </td>
   </tr>
   <tr>
@@ -158,7 +158,7 @@ States:
       completed
     </td>
     <td>
-      The <i>complete</i> transition triggers for a task when its actual work is done. For a stage, this transition triggers when all contained tasks/stages are either completed, terminated, or disabled. With automatic completion enabled, only required plan items have to reach theses states. A task/stage in state <i>completed</i> is removed from the runtime database.
+      The <i>complete</i> transition triggers for a task when its actual work is done. For a stage, this transition triggers when all contained tasks/stages are either completed, terminated, or disabled. With automatic completion enabled, only required plan items have to reach these states. A task/stage in state <i>completed</i> is removed from the runtime database.
     </td>
   </tr>
   <tr>
