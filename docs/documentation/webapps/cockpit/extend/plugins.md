@@ -150,7 +150,7 @@ Plugins created for Operaton.13 or earlier can be included for compatibility. To
 
 Plugins with this prefix are included using the legacy plugin mechanism. You cannot create new Plugins with IDs starting with `legacy`.
 
-For more details about legacy Plugins, see the plugin points below.
+For more details about legacy Plugins, check out the legacy [Plugin documentation](https://docs.operaton.org/docs/documentation/webapps/cockpit/extend/plugins/).
 
 ## Plugin points
 
