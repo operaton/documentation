@@ -51,7 +51,7 @@ ProcessEngine processEngine = ProcessEngineConfiguration
   .buildProcessEngine();
 ```
 
-It can also be set using Spring XML or a deployment descriptor (bpm-platform.xml, processes.xml). When using the Operaton Wildfly Subsystem, the property can be set through Wildfly configuration (standalone.xml, domain.xml).
+It can also be set using Spring XML or a deployment descriptor (bpm-platform.xml, processes.xml). When using the Operaton WildFly Subsystem, the property can be set through WildFly configuration (standalone.xml, domain.xml).
 
 ```xml
 <property name="history">audit</property>
@@ -349,7 +349,7 @@ historyService.createHistoricProcessInstanceReport()
 
 Retrieves a report of completed tasks. For the task report there are two possible report types: count and duration.
 
-If you use the method `countByProcessDefinitionKey` or `countByTaskName` in the end of your report query, the report contains a list of completed task counts where an entry contains the task name, the definition key of the task, the process definition id, the process definition key, the process definition name and the count of how many tasks were completed for the specified key in a given period. The methods `countByProcessDefinitionKey` and `countByTaskName` then group the count reports according the criterion 'definition key' or 'task name'. To retrieve a task count report grouped by the task name, one could execute the following query:
+If you use the method `countByProcessDefinitionKey` or `countByTaskName` in the end of your report query, the report contains a list of completed task counts where an entry contains the task name, the definition key of the task, the process definition id, the process definition key, the process definition name and the count of how many tasks were completed for the specified key in a given period. The methods `countByProcessDefinitionKey` and `countByTaskName` then group the count reports according to the criterion 'definition key' or 'task name'. To retrieve a task count report grouped by the task name, one could execute the following query:
 
 ```java
 historyService

@@ -10,7 +10,7 @@ sidebar_position: 50
 ![Example img](/img/documentation/webapps/cockpit/cockpit-cleanup-page.png)Cockpit Cleanup View
 
 The cleanup view in Cockpit provides information about the history cleanup state and statistics about the cleanable and deleted data.
-Moreover, the page allows to manually perform various operations related to the history cleanup.
+Moreover, the page allows you to manually perform various operations related to the history cleanup.
 
 
 ## Cleanup State

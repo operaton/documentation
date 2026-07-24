@@ -11,12 +11,12 @@ menu:
     description: "A CSRF-Prevention Filter for the Operaton Web Applications"
 ---
 
-A CSRF filter is enabled by default, validating each modifying request performed through the webapps. The filter implements a (per-session) _Synchronization Token_ method for CSRF validation with an optional _Same Origin with Standard Headers_ verification.
+A CSRF filter is enabled by default, validating each modifying request performed through the web apps. The filter implements a per-session _Synchronization Token_ method for CSRF validation with an optional _Same Origin with Standard Headers_ verification.
 
-In Spring Boot Starter, the configuration needs to be made in the `application.yaml`.
+With the Spring Boot Starter, the configuration needs to be made in the `application.yaml`.
 Please read more about it [here](../../user-guide/spring-boot-integration/configuration.mdx#csrf).
 
-If you would like to enable the additional _Same Origin with Standard Headers_ verification, the `targetOrigin` init-parameter should be set in the `web.xml` file of your application. That, and some additional optional initialization parameters are:
+To enable the additional _Same Origin with Standard Headers_ verification, set the `targetOrigin` init-parameter in the `web.xml` file of your application. That, and some additional optional initialization parameters are:
 
 ```xml
   <!-- CSRF Prevention filter -->
@@ -61,11 +61,11 @@ If you would like to enable the additional _Same Origin with Standard Headers_ v
   </tr>
   <tr>
     <td>targetOrigin</td>
-    <td>Application expected deployment domain: the domain name through which the webapps are accessed. If nothing is set, the <i>Same Origin with Standard Headers</i> verification is not performed.</td>
+    <td>Expected application deployment domain: the domain name through which the web apps are accessed. If nothing is set, the <i>Same Origin with Standard Headers</i> verification is not performed.</td>
   </tr>
   <tr>
     <td>denyStatus</td>
-    <td>HTTP response status code that is used when rejecting denied request. The default value is 403.</td>
+    <td>HTTP response status code that is used when rejecting a denied request. The default value is 403.</td>
   </tr>
   <tr>
     <td>randomClass</td>
@@ -93,7 +93,7 @@ If you would like to enable the additional _Same Origin with Standard Headers_ v
   <tr>
     <td>sameSiteCookieOption</td>
     <td>
-      Can be configured either to <code>STRICT</code> or <code>LAX</code>.<br/>
+      Can be configured as either <code>STRICT</code> or <code>LAX</code>.<br/>
       <strong>Note:</strong> This property is ignored when <code>enableSameSiteCookie</code> is set to <code>false</code>.
     </td>
   </tr>
@@ -107,10 +107,10 @@ If you would like to enable the additional _Same Origin with Standard Headers_ v
   <tr id="cookie-name">
     <td>cookieName</td>
     <td>
-      A custom value to change the cookie name.<br/>
+      A custom value for the cookie name.<br/>
       The default value is <code>XSRF-TOKEN</code>.<br/>
-      <strong>Note:</strong> Please make sure to additionally change the cookie name for each webapp
-      (e. g. <a href="../webapps/cockpit/extend/configuration.md#change-csrf-cookie-name">Cockpit
+      <strong>Note:</strong> Please make sure to additionally change the cookie name for each web app
+      (e.g., <a href="../webapps/cockpit/extend/configuration.md#change-csrf-cookie-name">Cockpit
       </a>) separately.
     </td>
   </tr>

@@ -124,7 +124,7 @@ In the forms you can access your own CDI beans as usual and also access the Oper
   <table>
     <tr>
       <td>
-        Process variable <strong>x</strong> (given in in the start form):
+        Process variable <strong>x</strong> (given in the start form):
       </td>
       <td>
         <h:outputText value="#{processVariables['x']}" />
@@ -236,7 +236,7 @@ We use [Twitter Bootstrap](http://getbootstrap.com/) in our tasklist - so best a
 
 ![Example img](/img/documentation/user-guide/task-forms/tasklist-forms-layouted-start.png)Tasklist Start Forms layouted
 
-To include CSS and Javascript libraries in your project you can add them to your maven project as dependencies.
+To include CSS and JavaScript libraries in your project you can add them to your Maven project as dependencies.
 
 ```xml
 <dependencies>
@@ -263,7 +263,7 @@ To use them, add tags like the following ones to your JSF page. If you have seve
   <h:outputStylesheet library="webjars/bootstrap/3.1.1/css" name="bootstrap.css"/>
   <h:outputStylesheet library="css" name="style.css"/>
 
-  <!-- Javascript Libraries -->
+  <!-- JavaScript Libraries -->
   <h:outputScript type="text/javascript" library="webjars/bootstrap/3.1.1/js" name="bootstrap.js" />
 </h:head>
 ```

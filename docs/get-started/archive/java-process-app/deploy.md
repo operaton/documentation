@@ -83,6 +83,6 @@ Log out of Admin. Go to Tasklist ([http://localhost:8080/operaton/app/tasklist](
 
 ![Example image](/img/get-started/archive/java-process-app/diagram.png)
 
-To work on the task, select the *Form* tab. Again, there is no task form associated with the process. Click on *Load Variables*. This displays the variables you have put in in the first step.
+To work on the task, select the *Form* tab. Again, there is no task form associated with the process. Click on *Load Variables*. This displays the variables you entered in the first step.
 
 ![Example image](/img/get-started/archive/java-process-app/task-form-generic.png)

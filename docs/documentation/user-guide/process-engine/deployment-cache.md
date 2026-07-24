@@ -34,7 +34,7 @@ In the process engine configuration one can specify the maximum capacity of the 
 </bean>
 ```
 
-__Note:__ The same capacity is used for all of the components stated above and it is not possible to set the capacity size individually for each component. Furthermore, in the default cache implementation corresponds the capacity size to the maximum number of elements in the cache that are used. That means, the absolute amount of physical storage (e.g. mega bytes) you use up depends on the size needed for the respective process definitions.
+__Note:__ The same capacity is used for all of the components stated above and it is not possible to set the capacity size individually for each component. Furthermore, in the default cache implementation, the capacity size corresponds to the maximum number of elements in the cache that are used. That means, the absolute amount of physical storage (e.g. megabytes) you use up depends on the size needed for the respective process definitions.
 
 
 ## Provide a custom Cache Implementation

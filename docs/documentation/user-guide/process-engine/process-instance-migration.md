@@ -114,7 +114,7 @@ From the accountant's perspective, migration is completely transparent while wor
 ## API
 
 The following gives a structured overview of the Java API for process instance migration. Note that these operations are also available
-via restref text="REST" tag="Migration.
+via <RestRef text="REST" tag="Migration" />.
 
 ### Creating a Migration Plan
 

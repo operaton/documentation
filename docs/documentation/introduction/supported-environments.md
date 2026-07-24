@@ -14,7 +14,7 @@ menu:
 Run Operaton in every Java-runnable environment. Operaton is supported with our QA infrastructure in the following environments.
 
 :::note[Supported Environments]
-  Please note that the environments listed in this section depend on the version of Operaton. Please select the corresponding version of this documentation to see the environment that fits your version of Operaton.
+  The environments listed in this section reflect the current Operaton release. Older releases may have supported different environments.
 :::
 
 

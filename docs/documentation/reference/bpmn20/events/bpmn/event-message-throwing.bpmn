@@ -49,7 +49,7 @@
       <outgoing>SequenceFlow_5</outgoing>
       <messageEventDefinition id="sid-ee82440f-a113-4016-b633-53f65fa3d8f2"/>
     </boundaryEvent>
-    <task id="Task_2" name="Handle cancelation">
+    <task id="Task_2" name="Handle cancellation">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc"/>
         <signavio:signavioMetaData metaKey="adaptereventtype" metaValue=""/>

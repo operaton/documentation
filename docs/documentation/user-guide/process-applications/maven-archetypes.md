@@ -144,7 +144,7 @@ mvn archetype:generate \
   -DinteractiveMode=false \
   -DarchetypeGroupId=org.operaton.bpm.archetype \
   -DarchetypeArtifactId=operaton-archetype-ejb-war \
-  -DarchetypeVersion=7.10.0 \
+  -DarchetypeVersion=2.1.2 \
   -DgroupId=org.example.operaton.bpm \
   -DartifactId=operaton-bpm-ejb-project \
   -Dversion=0.0.1-SNAPSHOT \

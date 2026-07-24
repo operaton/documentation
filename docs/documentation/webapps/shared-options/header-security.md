@@ -8,10 +8,10 @@ menu:
   main:
     identifier: "http-header-security"
     parent: "webapps-shared-options"
-    description: "A HTTP Header Security Filter for the Operaton Web Applications"
+    description: "An HTTP Header Security Filter for the Operaton Web Applications"
 ---
 
-The HTTP Header Security mechanism allows you to add security-related response headers which enable browser-side security mechanisms.
+The HTTP Header Security mechanism allows you to add security-related response headers that enable browser-side security mechanisms.
 
 ## What are the headers supposed to be?
 
@@ -24,11 +24,11 @@ header in Mozilla’s Developer Guide.
 
 ### XSS Protection
 
-If the **XSS Protection** header is enabled some cross-site scripting (XSS) attacks are detected, and the malicious parts of the page are either sanitized, or the rendering of the page is blocked entirely.
+If the **XSS Protection** header is enabled, some cross-site scripting (XSS) attacks are detected, and the malicious parts of the page are either sanitized or the rendering of the page is blocked entirely.
 
 ### Content Security Policy
 
-The **Content Security Policy** is a mighty tool to prevent cross-site scripting and code injection attacks.
+The **Content Security Policy** is a powerful tool to prevent cross-site scripting and code injection attacks.
 
 It is a common practice to extend Operaton web applications by custom scripts and forms.
 Our default **Content Security Policy** defines some exceptions to ensure our web apps, your embedded forms, and embedded form scripts work out of the box.
@@ -48,8 +48,8 @@ frame-ancestors 'none';
 object-src 'none';
 sandbox allow-forms allow-scripts allow-same-origin allow-popups allow-downloads;
 ```
-Where `$NONCE` is a placeholder that is replaced by a random generated secure string.
-This nonce can be then used to enable inline scripts in the `index.html` pages using another placeholder called `$CSP_NONCE`:
+Where `$NONCE` is a placeholder that is replaced by a randomly generated secure string.
+This nonce can then be used to enable inline scripts in the `index.html` pages using another placeholder called `$CSP_NONCE`:
 ```html
 <script type="application/javascript" nonce="$CSP_NONCE">
 ```
@@ -67,20 +67,20 @@ This section describes what our default policy contains:
 * `base-uri 'self'`
   * The URI of the HTML Base Tag must not point to a cross-origin
 * `script-src $NONCE 'strict-dynamic' 'unsafe-eval' https: 'self' 'unsafe-inline';`
-  * The browser only executes inline scripts that are explicitly whitelisted by adding a backend generated `nonce` to each script tag included in the `index.html` asset.
+  * The browser only executes inline scripts that are explicitly whitelisted by adding a backend-generated `nonce` to each script tag included in the `index.html` asset.
   * JavaScript's `eval(…)` calls must be allowed to execute `cam-script` in Tasklist.
      * If there are no embedded forms in your application, it's recommended to remove the `'unsafe-eval'` directive.
-  * The second part (`https: 'self' 'unsafe-inline'`) is a fallback for browsers that don't support `strict-dynamic` yet (non CSP3 compliant browser).
+  * The second part (`https: 'self' 'unsafe-inline'`) is a fallback for browsers that don't support `strict-dynamic` yet (non-CSP3-compliant browsers).
      * Script resources must not point to a cross-origin.
-     * Inline scripts must be allowed since the web applications make use of it.
+     * Inline scripts must be allowed since the web applications use them.
 * `style-src 'unsafe-inline' 'self'`
   * Style resources must not point to a cross-origin.
-  * Inline styles must be allowed since the web applications make use of it.
+  * Inline styles must be allowed since the web applications use them.
 * `default-src 'self'`
   * Any other unspecified resources must not point to a cross-origin.
 * `img-src 'self' data:`
   * Images must not point to a cross-origin.
-  * Data URIs are allowed since the web applications make use of it.
+  * Data URIs are allowed since the web applications use them.
 * `block-all-mixed-content`
   * When accessed via HTTPS, all resources loaded via HTTP are blocked.
   * Mixed content is allowed when the site is accessed via HTTP.
@@ -94,7 +94,7 @@ This section describes what our default policy contains:
   * Mitigates the exploitation of bugs that are included in third-party plugins (e.g. Adobe Flash, Java Applets, etc.)
 * `sandbox allow-forms allow-scripts allow-same-origin allow-popups allow-downloads`
   * The site is rendered inside a sandbox.
-  * Submitting forms, executing scripts, accessing the local storage, opening popups as well as downloading files must be allowed since the web applications make use of these mechanisms.
+  * Submitting forms, executing scripts, accessing local storage, opening popups, and downloading files must be allowed since the web applications use these mechanisms.
 
 :::note[Heads-up!]
 Keep in mind a stricter configuration than the one introduced above might break the functionality of the web applications.
@@ -107,15 +107,15 @@ header to render a resource and prevents trying to guess the mime type by inspec
 
 ### Strict Transport Security
 
-When enabled, the browser remembers that the Webapps must be accessed via HTTPS. After the initial
-HTTPS request, all subsequent requests will be redirected to HTTPS on the client-level — even though
-the user tries to access the Webapps via HTTP.
+When enabled, the browser remembers that the web apps must be accessed via HTTPS. After the initial
+HTTPS request, all subsequent requests will be redirected to HTTPS on the client level, even though
+the user tries to access the web apps via HTTP.
 
 :::note[Heads-up!]
 * The **Strict Transport Security** header is disabled by default. When going into production, it is highly
   recommended to enable **Strict Transport Security** and [Strengthen the Base Configuration](#strengthen-the-base-configuration)
-  to protect the Webapps against man-in-the-middle attacks.
-* When accessing the Webapps via HTTP, the **Strict Transport Security** header is ignored. Therefore,
+  to protect the web apps against man-in-the-middle attacks.
+* When accessing the web apps via HTTP, the **Strict Transport Security** header is ignored. Therefore,
   make sure to redirect HTTP requests to HTTPS.
 :::
 
@@ -134,20 +134,20 @@ the Base Configuration. Please also see the section on [How to Configure?](#how-
 
 **Max Age**
 
-The higher the value, the better: after expiration, the Webapps can be accessed via HTTP, which is
-prone to be exploited by attackers.
+The higher the value, the better: after expiration, the web apps can be accessed via HTTP, which is
+prone to exploitation by attackers.
 
 **Include Subdomains**
 
 If you can answer the questions below with **yes**, you should consider enabling the `includeSubdomains` flag:
 
-* Are the Webapps the only web services provided under your domain?
-* Additionally to the main domain, are there any subdomains redirected to the Webapps
+* Are the web apps the only web services provided under your domain?
+* In addition to the main domain, are there any subdomains redirected to the web apps
   (e.g., `www.example.com` is redirected to `example.com`)?
 
 **Preload**
 
-To even avoid the initial HTTP request (redirected to HTTPS), you can submit your domain to the
+To avoid even the initial HTTP request (redirected to HTTPS), you can submit your domain to the
 [Preload List Service](https://hstspreload.org/) maintained by Google and set the
 **Strict Transport Security** header according to the
 [Submission Requirements](https://hstspreload.org/#submission-requirements) with the help of
@@ -176,8 +176,8 @@ The following table shows the possible configuration settings and the default be
     <td><code>X-XSS-Protection</code></td>
     <td><code>xssProtectionDisabled</code></td>
     <td>
-      The header can be entirely disabled if set to <code>true</code>. <br/>
-      Allowed set of values is <code>true</code> and <code>false</code>.
+      The header can be disabled entirely by setting this to <code>true</code>. <br/>
+      Allowed values are <code>true</code> and <code>false</code>.
     </td>
     <td><code>false</code></td>
   </tr>
@@ -185,14 +185,14 @@ The following table shows the possible configuration settings and the default be
     <td></td>
     <td><code>xssProtectionOption</code></td>
     <td>
-      The allowed set of values:
+      The allowed values:
       <ul>
         <li><code>BLOCK</code>: If the browser detects a cross-site scripting attack, the page is blocked completely</li>
         <li><code>SANITIZE</code>: If the browser detects a cross-site scripting attack, the page is sanitized from suspicious parts (value <code>0</code>)</li>
       </ul><br/>
       <strong>Note:</strong>
       <ul>
-        <li>Is ignored when <code>xssProtectionDisabled</code> is set to <code>true</code></li>
+        <li>Ignored when <code>xssProtectionDisabled</code> is set to <code>true</code></li>
         <li>Cannot be set in conjunction with <code>xssProtectionValue</code></li>
       </ul>
     </td>
@@ -205,7 +205,7 @@ The following table shows the possible configuration settings and the default be
       A custom value for the header can be specified.<br/><br/>
       <strong>Note:</strong>
       <ul>
-        <li>Is ignored when <code>xssProtectionDisabled</code> is set to <code>true</code></li>
+        <li>Ignored when <code>xssProtectionDisabled</code> is set to <code>true</code></li>
         <li>Cannot be set in conjunction with <code>xssProtectionOption</code></li>
       </ul>
     </td>
@@ -215,8 +215,8 @@ The following table shows the possible configuration settings and the default be
     <td><code>Content-Security-Policy</code></td>
     <td><code>contentSecurityPolicyDisabled</code></td>
     <td>
-      The header can be entirely disabled if set to <code>true</code>. <br/>
-      Allowed set of values is <code>true</code> and <code>false</code>.
+      The header can be disabled entirely by setting this to <code>true</code>. <br/>
+      Allowed values are <code>true</code> and <code>false</code>.
     </td>
     <td><code>false</code></td>
   </tr>
@@ -225,7 +225,7 @@ The following table shows the possible configuration settings and the default be
     <td><code>contentSecurityPolicyValue</code></td>
     <td>
       A custom value for the header can be specified.<br/><br/>
-      <strong>Note:</strong> Property is ignored when <code>contentSecurityPolicyDisabled</code> is set to <code>true</code>
+      <strong>Note:</strong> This property is ignored when <code>contentSecurityPolicyDisabled</code> is set to <code>true</code>
     </td>
     <td><code>base-uri 'self'</code></td>
   </tr>
@@ -233,8 +233,8 @@ The following table shows the possible configuration settings and the default be
     <td><code>X-Content-Type-Options</code></td>
     <td><code>contentTypeOptionsDisabled</code></td>
     <td>
-      The header can be entirely disabled if set to <code>true</code>. <br/>
-      Allowed set of values is <code>true</code> and <code>false</code>.
+      The header can be disabled entirely by setting this to <code>true</code>. <br/>
+      Allowed values are <code>true</code> and <code>false</code>.
     </td>
     <td><code>false</code></td>
   </tr>
@@ -243,7 +243,7 @@ The following table shows the possible configuration settings and the default be
     <td><code>contentTypeOptionsValue</code></td>
     <td>
       A custom value for the header can be specified.<br/><br/>
-      <strong>Note:</strong> Property is ignored when <code>contentSecurityPolicyDisabled</code> is set to <code>true</code>
+      <strong>Note:</strong> This property is ignored when <code>contentTypeOptionsDisabled</code> is set to <code>true</code>
     </td>
     <td><code>nosniff</code></td>
   </tr>
@@ -252,7 +252,7 @@ The following table shows the possible configuration settings and the default be
     <td><code>hstsDisabled</code></td>
     <td>
       Set to <code>false</code> to enable the header. The header is disabled by default. <br/>
-      Allowed set of values is <code>true</code> and <code>false</code>.
+      Allowed values are <code>true</code> and <code>false</code>.
     </td>
     <td><code>true</code></td>
   </tr>
@@ -260,11 +260,11 @@ The following table shows the possible configuration settings and the default be
     <td></td>
     <td><code>hstsMaxAge</code></td>
     <td>
-      Amount of seconds, the browser should remember to access the webapp via HTTPS.<br/><br/>
+      Number of seconds the browser should remember to access the web app via HTTPS.<br/><br/>
       <strong>Note:</strong>
       <ul>
         <li>Corresponds by default to one year</li>
-        <li>Is ignored when <code>hstsDisabled</code> is <code>true</code></li>
+        <li>Ignored when <code>hstsDisabled</code> is <code>true</code></li>
         <li>Cannot be set in conjunction with <code>hstsValue</code></li>
         <li>Allows a maximum value of 2<sup>31</sup>-1</li>
       </ul>
@@ -275,10 +275,10 @@ The following table shows the possible configuration settings and the default be
     <td></td>
     <td><code>hstsIncludeSubdomainsDisabled</code></td>
     <td>
-      HSTS is additionally to the domain of the webapp enabled for all its subdomains.<br/><br/>
+      In addition to the web app's domain, HSTS is enabled for all its subdomains.<br/><br/>
       <strong>Note:</strong>
       <ul>
-        <li>Is ignored when <code>hstsDisabled</code> is <code>true</code></li>
+        <li>Ignored when <code>hstsDisabled</code> is <code>true</code></li>
         <li>Cannot be set in conjunction with <code>hstsValue</code></li>
       </ul>
     </td>
@@ -291,7 +291,7 @@ The following table shows the possible configuration settings and the default be
       A custom value for the header can be specified.<br/><br/>
       <strong>Note:</strong>
       <ul>
-        <li>Is ignored when <code>hstsDisabled</code> is <code>true</code></li>
+        <li>Ignored when <code>hstsDisabled</code> is <code>true</code></li>
         <li>Cannot be set in conjunction with <code>hstsMaxAge</code> or
         <code>hstsIncludeSubdomainsDisabled</code></li>
       </ul>

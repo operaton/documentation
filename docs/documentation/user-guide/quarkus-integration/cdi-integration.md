@@ -125,7 +125,7 @@ The following API methods will throw an `UnsupportedOperationException`:
 ### Task form beans
 
 Associating beans with [Conversational Scope][cdi-conversational-scope] is currently [not supported][quarkus-bean-scopes] by Quarkus ArC.
-Furthermore, Quarkus does not allow to set a different default scope for beans that are outside of the extension's control.
+Furthermore, Quarkus does not allow setting a different default scope for beans that are outside of the extension's control.
 As a result, the following conversational scoped beans are not available in a Quarkus application out of the box:
 
 * `org.operaton.bpm.engine.cdi.jsf.TaskForm`

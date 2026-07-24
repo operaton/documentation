@@ -2,7 +2,7 @@
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.3.0">
   <bpmn:process id="Process_1" isExecutable="false">
     <bpmn:sequenceFlow id="SequenceFlow_1wjobn4" sourceRef="StartEvent_1" targetRef="Task_1vtii2s" />
-    <bpmn:startEvent id="StartEvent_1" name="Recieved Application">
+    <bpmn:startEvent id="StartEvent_1" name="Received Application">
       <bpmn:outgoing>SequenceFlow_1wjobn4</bpmn:outgoing>
       <bpmn:messageEventDefinition />
     </bpmn:startEvent>

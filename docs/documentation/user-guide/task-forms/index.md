@@ -90,7 +90,7 @@ Operaton Forms are created as separate files using the Operaton Modeler and can 
 :::warning[Process variables access]
 Defining forms does not introduce any permissions on process variables.
 Users can still submit any variables via APIs for form completion like the
-restref page="submit" text="Submit Task Form" tag="Task REST API.
+<RestRef operation="submit" text="Submit Task Form" tag="Task" /> REST API.
 Forms can be used on top of the task completion API to render form fields and validate submitted values.
 :::
 
@@ -309,7 +309,7 @@ A form data can have following attributes:
 :::warning[Process variables access]
 Defining form fields does not introduce any permissions on process variables.
 Users can still submit any variables via APIs for form completion like the
-restref page="submit" text="Submit Task Form" tag="Task REST API.
+<RestRef operation="submit" text="Submit Task Form" tag="Task" /> REST API.
 Form fields can be used on top of the task completion API to render forms and validate submitted values.
 :::
 

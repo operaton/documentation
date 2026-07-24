@@ -8,6 +8,9 @@ import remarkBpmnDiagram from './src/plugins/remark-bpmn-diagram.js';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const typesenseApiKey = process.env.TYPESENSE_API_KEY?.trim();
+const typesenseHost = process.env.TYPESENSE_HOST?.trim() || 'docs.operaton.org';
+const typesensePort = Number(process.env.TYPESENSE_PORT) || 8108;
+const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'http';
 
 const config: Config = {
   title: 'Operaton Documentation',
@@ -39,7 +42,8 @@ const config: Config = {
 
   customFields: {
     javaDocUrl: '/reference/latest/javadoc',
-    restApiDocUrl: '/reference/latest/rest-api'
+    restApiDocSiteUrl: '',
+    restApiDocBasePath: '/reference/latest/rest-api'
   },
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -92,9 +96,9 @@ const config: Config = {
             typesenseServerConfig: {
               nodes: [
                 {
-                  host: 'docs.operaton.org',
-                  port: 8108,
-                  protocol: 'https',
+                  host: typesenseHost,
+                  port: typesensePort,
+                  protocol: typesenseProtocol,
                 },
               ],
               apiKey: typesenseApiKey,

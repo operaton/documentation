@@ -6,7 +6,7 @@ sidebar_position: 160
 ---
 
 
-The process engine is a piece of passive Java code which works in the Thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's http-thread-pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
+The process engine is a piece of passive Java code which works in the thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's HTTP thread pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
 
 On any such *external* trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed *later*, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an *internal* trigger. That is why the engine also needs an active component, the [job executor](../process-engine/the-job-executor.md), which is able to fetch registered jobs and process them asynchronously.
 
@@ -36,7 +36,7 @@ Keep in mind that [Asynchronous Continuations](#asynchronous-continuations) can 
 
 ## Transaction Boundaries
 
-The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occuring during its execution. This is illustrated in the following example:
+The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occurring during its execution. This is illustrated in the following example:
 
 ![Example img](/img/documentation/user-guide/process-engine/transactions-1.png)Transaction Boundaries
 
@@ -54,7 +54,7 @@ The most common motivation is the requirement to scope *logical units of work*. 
 
 ![Example img](/img/documentation/user-guide/process-engine/transactions-2.png)Asynchronous Continuations
 
-We are completing the user task, generating an invoice and then sending that invoice to the customer. It can be argued that the generation of the invoice is not part of the same unit of work: we do not want to roll back the completion of the usertask if generating an invoice fails.
+We are completing the user task, generating an invoice and then sending that invoice to the customer. It can be argued that the generation of the invoice is not part of the same unit of work: we do not want to roll back the completion of the user task if generating an invoice fails.
 Ideally, the process engine would complete the user task (**1**), commit the transaction and return
 control to the calling application (**2**). In a background thread (**3**), it would generate the invoice.
 This is the exact behavior offered by asynchronous continuations: they allow us to scope transaction
@@ -242,14 +242,14 @@ as soon as the Command returns. However, it should be noted that the
 current transaction may be committed at a later time.
 
 If a Process Engine Command is nested into another Command, i.e. a Command
-is executed within another command, the default behaviour is to reuse the
+is executed within another command, the default behavior is to reuse the
 existing Process Engine Context. This means that the nested Command will
 have access to the same cached entities and the changes made to them.
 
 When the nested Command is to be executed in a new transaction, a new Process
 Engine Context needs to be created for its execution. In this case, the nested
 Command will use a new cache for the database entities, independent of the
-previous (outer) Command cache. This means that, the changes in the cache of
+previous (outer) Command cache. This means that the changes in the cache of
 one Command are invisible to the other Command and vice versa. When the nested
 Command returns, the changes are flushed to the database independently of the
 Process Engine Context of the outer Command.

@@ -204,7 +204,7 @@ When using the identity management provided by the engine (i.e., not the LDAP id
 it is possible to configure a password policy to ensure that all user passwords meet a certain security
 standard.
 
-Since version 7.11, a [built-in password policy](../user-guide/process-engine/password-policy.md#built-in-password-policy)
+A [built-in password policy](../user-guide/process-engine/password-policy.md#built-in-password-policy)
 can be enabled that requires passwords to follow specific rules. However, you can achieve a much higher
 level of security by implementing a more sophisticated custom password policy (e.g., with the help of
 [Password Topology Blacklisting] (https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
@@ -285,13 +285,13 @@ about the several headers, the defaults and how to configure the HTTP headers ac
 ### Variable Values from Untrusted Sources
 
 Process variables can be submitted as Java objects using the JDK built-in `application/x-java-serialized-object` data format, JSON or XML along with a Java class name via the Operaton REST API and web applications.
-On server side, they can then be deserialized into Java objects, so that Java code can work with them in a native way. See [Operaton Spin](../user-guide/data-formats/configuring-spin-integration.md) for details and this restref page="putLocalExecutionVariable" text="REST API endpoint" tag="Execution for an example.
+On server side, they can then be deserialized into Java objects, so that Java code can work with them in a native way. See [Operaton Spin](../user-guide/data-formats/configuring-spin-integration.md) for details and this <RestRef operation="putLocalExecutionVariable" text="REST API endpoint" tag="Execution" /> for an example.
 
 If an attacker can access these endpoints, they can exploit so-called _serialization gadgets_, i.e. classes that run vulnerable code during deserialization resulting in remote code execution in the general case. For example, consider a class constructor that makes a REST request based on a field value. An attacker could submit a forged variable value so that during deserialization, when the constructor is called, the application server would make an arbitrary REST request to a destination of the attacker's choice. For details, see [OWASP's description of Deserialization of untrusted data](https://www.owasp.org/index.php/Deserialization_of_untrusted_data).
 
 ### Java objects using the JDK built-in `application/x-java-serialized-object` data format
 
-Starting with version 7.9, by default, it is not possible to set variables of type `Object` **AND** the data format `application/x-java-serialized-object`.
+By default, it is not possible to set variables of type `Object` **AND** the data format `application/x-java-serialized-object`.
 The behavior can be restored with the process engine configuration flag [`javaSerializationFormatEnabled`](../reference/deployment-descriptors/tags/process-engine.mdx#javaSerializationFormatEnabled).
 However, please bear in mind that enabling the java serialization format might make the process engine vulnerable against the aforementioned attacking scenario.
 

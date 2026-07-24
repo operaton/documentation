@@ -11,7 +11,7 @@ This page explains how to configure the full distribution for Tomcat Application
 
 ### LDAP
 
-In order to setup LDAP for the Tomcat distribution, you have to perform the following steps:
+In order to set up LDAP for the Tomcat distribution, you have to perform the following steps:
 
 
 ### Add the LDAP Library
@@ -82,9 +82,9 @@ See our user guide for complete documentation on the [LDAP Identity Provider Plu
 
 ### HAL Resource Caching
 
-If you use LDAP as Indentity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
-Users and Groups in the Operaton webapplication. In order to activate this, add the following
-configuration to the `web.xml` file of Operaton webapplication
+If you use LDAP as Identity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
+Users and Groups in the Operaton web application. In order to activate this, add the following
+configuration to the `web.xml` file of Operaton web application
 (`operaton-webapp-tomcat-$PLATFORM_VERSION.war/WEB-INF/web.xml`):
 
 ```xml
@@ -241,8 +241,8 @@ Please also see the detailed overview about the [Cookie Security](../../../webap
 
 ### Security-related HTTP headers in Webapps
 
-To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
-to be adjusted. You can find it under `WEB-INF/web.xml`.
+To customize the configuration of security-related HTTP headers in the web applications, adjust each web application's
+deployment descriptor. You can find it under `WEB-INF/web.xml`.
 
 Please watch out for the following section:
 ```xml

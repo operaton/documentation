@@ -146,7 +146,7 @@ List<MessageCorrelationResult> results = runtimeService
   .correlateAllWithResult();
 ```
 
-In this case the matching execution will be selected based on variables existing in it's scope (ignoring all parent scopes).
+In this case, the matching execution will be selected based on variables existing in its scope (ignoring all parent scopes).
 
 In case of successful correlation, the correlated or newly created process instance is updated with the variables from the `processVariables` map.
 
@@ -292,12 +292,12 @@ The following example shows different message events in a process model:
 </intermediateCatchEvent>
 ```
 
-Instead of the message intermediate catching event you might want to think about a <a href="../tasks/receive-task.md">Receive Task</a> instead, which can serve similar purposes but is able to be used in combination with boundary events. In combination with the message intermediate catching event you might want to use an <a href="../gateways/event-based-gateway.md">Event-based Gateway</a>.
+Instead of the message intermediate catching event, you might want to use a <a href="../tasks/receive-task.md">Receive Task</a>, which can serve similar purposes and can be used in combination with boundary events. In combination with the message intermediate catching event, you might want to use an <a href="../gateways/event-based-gateway.md">Event-based Gateway</a>.
 
 
 ## Message Boundary Event
 
-Boundary events are catching events that are attached to an activity. This means that while the activity is running, the message boundary event is listening for named message. When this is caught, two things might happen, depending on the configuration of the boundary event:
+Boundary events are catching events that are attached to an activity. This means that while the activity is running, the message boundary event is listening for a named message. When this is caught, two things might happen, depending on the configuration of the boundary event:
 
 * Interrupting boundary event: The activity is interrupted and the sequence flow going out of the event is followed.
 * Non-interrupting boundary event: One token stays in the activity and an additional token is created which follows the sequence flow going out of the event.
