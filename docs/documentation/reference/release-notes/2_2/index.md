@@ -112,6 +112,49 @@ content byte array has been fixed.
 
 This resolves [PR #3088](https://github.com/operaton/operaton/pull/3088).
 
+---
+
+### FEEL Engine Switched to the Unshaded Artifact
+
+Operaton 2.2 replaces the shaded `feel-engine` classifier from `org.camunda.feel` with the
+plain, unshaded artifact, and manages its real dependency tree (Scala, fastparse, geny,
+sourcecode, jackson-module-scala) explicitly instead.
+
+The shaded jar relocated Scala and fastparse to `camundajar.impl.*`, but bundled Jackson and
+paranamer without relocation. This caused duplicate-class conflicts with applications' own
+Jackson dependency (flagged by Maven Enforcer's `banDuplicateClasses`), and classpath-order
+dependent version mixing when the bundled Jackson classes clashed with a differing
+`jackson-annotations` version on the classpath. With the unshaded artifact, FEEL deterministically
+uses the platform's Jackson, governed by the shared `jackson-bom` import.
+
+Applications embedding the engine no longer need to work around these conflicts; the WildFly and
+Tomcat distributions now ship proper modules/libraries for the additional third-party jars this
+change pulls in.
+
+This implements [PR #3342](https://github.com/operaton/operaton/pull/3342).
+
+---
+
+### Security: Pinned Vulnerable Transitive Netty and Jackson Versions
+
+Operaton 2.2 pins `netty-bom` to **4.2.16.Final** and adds a `jackson-bom` (Jackson 3,
+`tools.jackson`) import at **3.1.5**, overriding the vulnerable transitive versions still
+managed by the current Quarkus (Netty **4.2.15**, affected by CVE-2026-56745 and related
+advisories) and Spring Boot (Jackson 3 **3.1.4**, affected by CVE-2026-59889) dependency
+platforms. Both pins are temporary and documented as removable once the respective upstream
+BOMs ship a fixed version.
+
+This resolves [PR #3390](https://github.com/operaton/operaton/pull/3390).
+
+---
+
+### Quarkus Updated to 3.33.2.1
+
+The Quarkus platform dependency has been updated to **3.33.2.1**, the latest patch release on
+the 3.33 LTS line.
+
+This implements [PR #3386](https://github.com/operaton/operaton/pull/3386).
+
 ## API
 
 ### Database Schema
@@ -159,7 +202,7 @@ Operaton is based on:
 
 ### Quarkus Extension
 
-The Operaton Quarkus extension is based on **Quarkus 3.33.1 LTS**.
+The Operaton Quarkus extension is based on **Quarkus 3.33.2.1 LTS**.
 
 ### Distributions
 
