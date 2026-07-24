@@ -28,10 +28,7 @@ Note that transparent tenant separation is not implemented for all APIs. For exa
 It is also possible for all tenants to share the same process and decision definitions without deploying them for each tenant. Shared definitions can simplify management of the deployments in case of a larger amount of tenants.
 
 :::note[Examples]
-Find [examples on GitHub](https://github.com/operaton/operaton-bpm-examples) that show how to use tenant-identifiers with
-
-* [Embedded Process Engine](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-embedded)
-* [Shared Process Engine](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared)
+Find a current [multi-tenancy example](https://github.com/operaton/operaton-examples/tree/main/examples/multi-tenancy) on GitHub that shows tenant identifiers with a shared engine.
 :::
 
 
@@ -341,10 +338,6 @@ Then, when a new instance is created by a particular tenant, it should  be only 
 This can be achieved by a usage pattern we call "Shared Definitions".
 By the term *usage pattern* we mean that it is not a feature of Operaton per se but rather a specific way to use it to achieve the desired behavior.
 
-:::note[Example]
-You can find an [example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions) on [GitHub](https://github.com/operaton/operaton-bpm-examples) that shows how to use shared definitions.
-:::
-
 ### Deploy a Shared Definition
 
 Deploying a shared definition is just a "regular" deployment not assigning a Tenant Id to the deployment:
@@ -451,11 +444,10 @@ So far, we have seen that shared resources are a useful pattern if tenants have 
 
 A common pattern of how to deal with this is to extract the tenant-specific behavior in a separate process which is then invoked using a call activity. Tenant specific decision logic (i.e., decision tables) using a business rules task are also common.
 
-To realize this, the call activity or business rule task needs to select the correct definition to invoke based on the tenant id of the current process instance. The [Shared Resources Example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions) shows how to achieve this.
+To realize this, the call activity or business rule task needs to select the correct definition to invoke based on the tenant id of the current process instance.
 
 See also:
 
-* [Shared Resources Example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions)
 * [Called Element Tenant Id](../../reference/bpmn20/subprocesses/call-activity.md#calledelement-tenant-id)
 * [Case Tenant Id](../../reference/bpmn20/subprocesses/call-activity.md#case-tenant-id) for call activities.
 * [Decision Ref Tenant Id](../../reference/bpmn20/tasks/business-rule-task.md#decisionref-tenant-id) for business rule tasks.
@@ -467,10 +459,6 @@ Multi-Tenancy can be achieved by providing one process engine per tenant. Each p
 ![Example img](/img/documentation/user-guide/process-engine/multi-tenancy-process-engine.png)One Process Engine per Tenant Architecture
 
 The process engines can run on the same server so that all share the same computational resources such as a data source (when isolating via schemas or tables) or a thread pool for asynchronous job execution.
-
-:::note[Tutorial]
-  You can see the [example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/schema-isolation) how to implement multi-tenancy with data isolation by schemas.
-:::
 
 ### Configure the Process Engines
 
