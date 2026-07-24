@@ -65,7 +65,7 @@ const config: Config = {
 
           // The BPMN remark plugin
           remarkPlugins: [remarkBpmnDiagram],
-          
+
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -207,6 +207,7 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
 };
 
 export default config;
