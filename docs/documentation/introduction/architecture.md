@@ -103,7 +103,7 @@ Frameworks used:
 * [AngularJS](https://angularjs.org)
 * [RequireJS](https://requirejs.org)
 * [jQuery](https://jquery.com)
-* [Twitter Bootstrap](https://getbootstrap.com)
+* [Bootstrap](https://getbootstrap.com)
 
 Additional custom frameworks developed by Operaton hackers:
 
