@@ -430,6 +430,12 @@ No configuration or code changes are required on the client side.
 
 ## Patch Releases
 
+### 2.1.3
+
+#### Security Vulnerabilities
+
+- **[fix(deps): pin vulnerable transitive dependencies](https://github.com/operaton/operaton/pull/3401)** — Pinned `netty` to `4.2.16.Final` (fixes [CVE-2026-56745](https://nvd.nist.gov/vuln/detail/CVE-2026-56745) and related netty advisories) and `jackson-bom` to `3.1.5` (fixes [CVE-2026-59889](https://nvd.nist.gov/vuln/detail/CVE-2026-59889)), overriding the vulnerable transitive versions managed by Spring Boot 4 and the Quarkus extension until those frameworks ship fixed versions. Backport of [#3390](https://github.com/operaton/operaton/pull/3390). (#3401)
+
 ### 2.1.2
 
 #### Bug Fixes
