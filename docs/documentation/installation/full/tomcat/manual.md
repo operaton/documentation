@@ -28,7 +28,7 @@ To resolve this, move the weld library away from the war and place it into the `
 
 The above workaround is not guaranteed to work for cases with bean references between WAR deployments (WAR A referencing a bean from WAR B).
 
-The following test scenarios fail on Tomcat 10:
+The following test scenarios fail on Tomcat 11:
 
 * [CallActivityContextSwitchTest](https://github.com/operaton/operaton/blob/main/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/context/CallActivityContextSwitchTest.java)
 * [CdiBeanCallActivityResolutionTest](https://github.com/operaton/operaton/blob/main/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/cdi/CdiBeanCallActivityResolutionTest.java)
