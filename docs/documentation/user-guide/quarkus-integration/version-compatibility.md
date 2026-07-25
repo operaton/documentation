@@ -56,6 +56,10 @@ Only these default combinations are recommended (and supported) by Operaton.
     <td>3.30.8</td>
   </tr>
   <tr>
+    <td>1.1.5</td>
+    <td>3.30.8</td>
+  </tr>
+  <tr>
     <td>2.0.0</td>
     <td>3.32.0</td>
   </tr>
@@ -70,6 +74,10 @@ Only these default combinations are recommended (and supported) by Operaton.
   <tr>
     <td>2.1.2</td>
     <td>3.33.2.1 (LTS)</td>
+  </tr>
+  <tr>
+    <td>2.1.3</td>
+    <td>3.33.3 (LTS)</td>
   </tr>
 </table>
 
