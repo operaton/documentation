@@ -100,7 +100,7 @@ Someone could use brute force to produce arbitrary amounts of log statements and
 
 To perform authentication, Operaton can use two sources: a database or LDAP.
 
-When using the database, usernames and passwords are stored inside the `ACT_ID_USER` table (see [documentation on database schema](../user-guide/process-engine/database/database-schema.md#identity)). To protect the passwords stored in the database, Operaton uses two concepts:
+When using the database, usernames and passwords are stored inside the `ACT_ID_USER` table (see [documentation on database schema](process-engine/database/database-schema/database-schema.md#identity)). To protect the passwords stored in the database, Operaton uses two concepts:
 
 * **hashing**: instead of storing the password in plain text, a hash is stored. When authenticating, the same hash is generated from the user's input and compared against the hash in the database. If both hashes are equal the authentication attempt is successful. Operaton allows users to configure and customize the hash function used. Please refer the [documentation section on password hashing](../user-guide/process-engine/password-hashing.md) for details.
 * **salted hashes** to protect the database against rainbow table attacks, Operaton uses salted hashes. Similar to hashing itself, this function can be configured and extended to a user's needs. Please refer the [documentation section on password hashing](../user-guide/process-engine/password-hashing.md) for details.

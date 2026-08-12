@@ -7,7 +7,7 @@ description: "Install and update the Operaton database schema used by the Proces
 ---
 ## Install the Database Schema
 
-This document will guide you through the installation and update of the Operaton [database schema](../user-guide/process-engine/database/database-schema.md) used by the process engine.
+This document will guide you through the installation and update of the Operaton [database schema](../user-guide/process-engine/database/database-schema/database-schema.md) used by the process engine.
 Regardless of the [architecture of your application setup](../introduction/architecture.md), the process engine always requires this database schema.
 In a production environment, we recommend setting up this schema yourself and reference the prepared database instance in your application configuration.
 Consult the installation guide related to your setup to configure the database for a [remote engine](../installation/operaton-bpm-run.md), [shared engine](../installation/full/index.md), or [embedded engine](../installation/spring-boot.md) accordingly.

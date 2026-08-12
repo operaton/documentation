@@ -1,0 +1,996 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#f5f5f5', 'primaryBorderColor': '#999'}}}%%
+erDiagram
+    classDef default fill:#f5f5f5,stroke:#999,stroke-width:1px
+    classDef ge fill:#d0e4f7,stroke:#4a6fa5,stroke-width:2px
+    classDef re fill:#d4edda,stroke:#2e8b57,stroke-width:2px
+    classDef ru fill:#fff3cd,stroke:#b8860b,stroke-width:2px
+    classDef hi fill:#fde8cc,stroke:#cd853f,stroke-width:2px
+    classDef id fill:#e8d5f5,stroke:#7b5ea7,stroke-width:2px
+
+    %% =========================================================
+    %% GENERAL (GE) — infrastructure tables
+    %% =========================================================
+
+    ACT_GE_PROPERTY {
+        varchar NAME_ PK
+        varchar VALUE_
+        integer REV_
+    }
+
+    ACT_GE_BYTEARRAY {
+        varchar ID_ PK
+        integer REV_
+        varchar NAME_
+        varchar DEPLOYMENT_ID_ FK
+        bytea   BYTES_
+        boolean GENERATED_
+        varchar TENANT_ID_
+        integer TYPE_
+        timestamp CREATE_TIME_
+        varchar ROOT_PROC_INST_ID_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_GE_SCHEMA_LOG {
+        varchar   ID_ PK
+        timestamp TIMESTAMP_
+        varchar   VERSION_
+    }
+
+    %% =========================================================
+    %% REPOSITORY (RE) — definitions and deployments
+    %% =========================================================
+
+    ACT_RE_DEPLOYMENT {
+        varchar   ID_ PK
+        varchar   NAME_
+        timestamp DEPLOY_TIME_
+        varchar   SOURCE_
+        varchar   TENANT_ID_
+    }
+
+    ACT_RE_PROCDEF {
+        varchar ID_ PK
+        integer REV_
+        varchar CATEGORY_
+        varchar NAME_
+        varchar KEY_
+        integer VERSION_
+        varchar DEPLOYMENT_ID_ FK
+        varchar RESOURCE_NAME_
+        varchar DGRM_RESOURCE_NAME_
+        boolean HAS_START_FORM_KEY_
+        integer SUSPENSION_STATE_
+        varchar TENANT_ID_
+        varchar VERSION_TAG_
+        integer HISTORY_TTL_
+        boolean STARTABLE_
+    }
+
+    ACT_RE_CAMFORMDEF {
+        varchar ID_ PK
+        integer REV_
+        varchar KEY_
+        integer VERSION_
+        varchar DEPLOYMENT_ID_ FK
+        varchar RESOURCE_NAME_
+        varchar TENANT_ID_
+    }
+
+    ACT_RE_CASE_DEF {
+        varchar ID_ PK
+        integer REV_
+        varchar CATEGORY_
+        varchar NAME_
+        varchar KEY_
+        integer VERSION_
+        varchar DEPLOYMENT_ID_ FK
+        varchar RESOURCE_NAME_
+        varchar DGRM_RESOURCE_NAME_
+        varchar TENANT_ID_
+        integer HISTORY_TTL_
+    }
+
+    ACT_RE_DECISION_DEF {
+        varchar ID_ PK
+        integer REV_
+        varchar CATEGORY_
+        varchar NAME_
+        varchar KEY_
+        integer VERSION_
+        varchar DEPLOYMENT_ID_ FK
+        varchar RESOURCE_NAME_
+        varchar DGRM_RESOURCE_NAME_
+        varchar DEC_REQ_ID_ FK
+        varchar DEC_REQ_KEY_
+        varchar TENANT_ID_
+        integer HISTORY_TTL_
+        varchar VERSION_TAG_
+    }
+
+    ACT_RE_DECISION_REQ_DEF {
+        varchar ID_ PK
+        integer REV_
+        varchar CATEGORY_
+        varchar NAME_
+        varchar KEY_
+        integer VERSION_
+        varchar DEPLOYMENT_ID_ FK
+        varchar RESOURCE_NAME_
+        varchar DGRM_RESOURCE_NAME_
+        varchar TENANT_ID_
+    }
+
+    %% =========================================================
+    %% RUNTIME (RU) — active process/case/job state
+    %% =========================================================
+
+    ACT_RU_EXECUTION {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_ FK
+        varchar   BUSINESS_KEY_
+        varchar   PARENT_ID_ FK
+        varchar   PROC_DEF_ID_ FK
+        varchar   SUPER_EXEC_ FK
+        varchar   SUPER_CASE_EXEC_
+        varchar   CASE_INST_ID_
+        varchar   ACT_ID_
+        varchar   ACT_INST_ID_
+        boolean   IS_ACTIVE_
+        boolean   IS_CONCURRENT_
+        boolean   IS_SCOPE_
+        boolean   IS_EVENT_SCOPE_
+        integer   SUSPENSION_STATE_
+        integer   CACHED_ENT_STATE_
+        bigint    SEQUENCE_COUNTER_
+        varchar   TENANT_ID_
+        varchar   PROC_DEF_KEY_
+    }
+
+    ACT_RU_JOB {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   TYPE_
+        timestamp LOCK_EXP_TIME_
+        varchar   LOCK_OWNER_
+        boolean   EXCLUSIVE_
+        varchar   EXECUTION_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROCESS_INSTANCE_ID_
+        varchar   PROCESS_DEF_ID_
+        varchar   PROCESS_DEF_KEY_
+        integer   RETRIES_
+        varchar   EXCEPTION_STACK_ID_ FK
+        varchar   EXCEPTION_MSG_
+        varchar   FAILED_ACT_ID_
+        timestamp DUEDATE_
+        varchar   REPEAT_
+        bigint    REPEAT_OFFSET_
+        varchar   HANDLER_TYPE_
+        varchar   HANDLER_CFG_
+        varchar   DEPLOYMENT_ID_
+        integer   SUSPENSION_STATE_
+        varchar   JOB_DEF_ID_ FK
+        bigint    PRIORITY_
+        bigint    SEQUENCE_COUNTER_
+        varchar   TENANT_ID_
+        timestamp CREATE_TIME_
+        varchar   LAST_FAILURE_LOG_ID_
+        varchar   BATCH_ID_
+    }
+
+    ACT_RU_JOBDEF {
+        varchar ID_ PK
+        integer REV_
+        varchar PROC_DEF_ID_
+        varchar PROC_DEF_KEY_
+        varchar ACT_ID_
+        varchar JOB_TYPE_
+        varchar JOB_CONFIGURATION_
+        integer SUSPENSION_STATE_
+        bigint  JOB_PRIORITY_
+        varchar TENANT_ID_
+        varchar DEPLOYMENT_ID_
+    }
+
+    ACT_RU_TASK {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   EXECUTION_ID_ FK
+        varchar   PROC_INST_ID_ FK
+        varchar   PROC_DEF_ID_ FK
+        varchar   CASE_EXECUTION_ID_ FK
+        varchar   CASE_INST_ID_
+        varchar   CASE_DEF_ID_ FK
+        varchar   NAME_
+        varchar   PARENT_TASK_ID_
+        varchar   DESCRIPTION_
+        varchar   TASK_DEF_KEY_
+        varchar   OWNER_
+        varchar   ASSIGNEE_
+        varchar   DELEGATION_
+        integer   PRIORITY_
+        timestamp CREATE_TIME_
+        timestamp LAST_UPDATED_
+        timestamp DUE_DATE_
+        timestamp FOLLOW_UP_DATE_
+        integer   SUSPENSION_STATE_
+        varchar   TENANT_ID_
+        varchar   TASK_STATE_
+    }
+
+    ACT_RU_IDENTITYLINK {
+        varchar ID_ PK
+        integer REV_
+        varchar GROUP_ID_
+        varchar TYPE_
+        varchar USER_ID_
+        varchar TASK_ID_ FK
+        varchar PROC_DEF_ID_ FK
+        varchar TENANT_ID_
+    }
+
+    ACT_RU_VARIABLE {
+        varchar ID_ PK
+        integer REV_
+        varchar TYPE_
+        varchar NAME_
+        varchar EXECUTION_ID_ FK
+        varchar PROC_INST_ID_ FK
+        varchar PROC_DEF_ID_
+        varchar CASE_EXECUTION_ID_ FK
+        varchar CASE_INST_ID_ FK
+        varchar TASK_ID_
+        varchar BATCH_ID_ FK
+        varchar BYTEARRAY_ID_ FK
+        double  DOUBLE_
+        bigint  LONG_
+        varchar TEXT_
+        varchar TEXT2_
+        varchar VAR_SCOPE_
+        bigint  SEQUENCE_COUNTER_
+        boolean IS_CONCURRENT_LOCAL_
+        varchar TENANT_ID_
+    }
+
+    ACT_RU_EVENT_SUBSCR {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   EVENT_TYPE_
+        varchar   EVENT_NAME_
+        varchar   EXECUTION_ID_ FK
+        varchar   PROC_INST_ID_
+        varchar   ACTIVITY_ID_
+        varchar   CONFIGURATION_
+        timestamp CREATED_
+        varchar   TENANT_ID_
+    }
+
+    ACT_RU_INCIDENT {
+        varchar   ID_ PK
+        integer   REV_
+        timestamp INCIDENT_TIMESTAMP_
+        varchar   INCIDENT_MSG_
+        varchar   INCIDENT_TYPE_
+        varchar   EXECUTION_ID_ FK
+        varchar   ACTIVITY_ID_
+        varchar   FAILED_ACTIVITY_ID_
+        varchar   PROC_INST_ID_ FK
+        varchar   PROC_DEF_ID_ FK
+        varchar   CAUSE_INCIDENT_ID_ FK
+        varchar   ROOT_CAUSE_INCIDENT_ID_ FK
+        varchar   CONFIGURATION_
+        varchar   TENANT_ID_
+        varchar   JOB_DEF_ID_ FK
+        varchar   ANNOTATION_
+    }
+
+    ACT_RU_AUTHORIZATION {
+        varchar   ID_ PK
+        integer   REV_
+        integer   TYPE_
+        varchar   GROUP_ID_
+        varchar   USER_ID_
+        integer   RESOURCE_TYPE_
+        varchar   RESOURCE_ID_
+        integer   PERMS_
+        timestamp REMOVAL_TIME_
+        varchar   ROOT_PROC_INST_ID_
+    }
+
+    ACT_RU_FILTER {
+        varchar ID_ PK
+        integer REV_
+        varchar RESOURCE_TYPE_
+        varchar NAME_
+        varchar OWNER_
+        text    QUERY_
+        text    PROPERTIES_
+    }
+
+    ACT_RU_METER_LOG {
+        varchar   ID_ PK
+        varchar   NAME_
+        varchar   REPORTER_
+        bigint    VALUE_
+        timestamp TIMESTAMP_
+        bigint    MILLISECONDS_
+    }
+
+    ACT_RU_TASK_METER_LOG {
+        varchar   ID_ PK
+        bigint    ASSIGNEE_HASH_
+        timestamp TIMESTAMP_
+    }
+
+    ACT_RU_EXT_TASK {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   WORKER_ID_
+        varchar   TOPIC_NAME_
+        integer   RETRIES_
+        varchar   ERROR_MSG_
+        varchar   ERROR_DETAILS_ID_ FK
+        timestamp LOCK_EXP_TIME_
+        timestamp CREATE_TIME_
+        integer   SUSPENSION_STATE_
+        varchar   EXECUTION_ID_ FK
+        varchar   PROC_INST_ID_
+        varchar   PROC_DEF_ID_
+        varchar   PROC_DEF_KEY_
+        varchar   ACT_ID_
+        varchar   ACT_INST_ID_
+        varchar   TENANT_ID_
+        bigint    PRIORITY_
+        varchar   LAST_FAILURE_LOG_ID_
+    }
+
+    ACT_RU_BATCH {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   TYPE_
+        integer   TOTAL_JOBS_
+        integer   JOBS_CREATED_
+        integer   JOBS_PER_SEED_
+        integer   INVOCATIONS_PER_JOB_
+        varchar   SEED_JOB_DEF_ID_ FK
+        varchar   BATCH_JOB_DEF_ID_ FK
+        varchar   MONITOR_JOB_DEF_ID_ FK
+        integer   SUSPENSION_STATE_
+        varchar   CONFIGURATION_
+        varchar   TENANT_ID_
+        varchar   CREATE_USER_ID_
+        timestamp START_TIME_
+        timestamp EXEC_START_TIME_
+    }
+
+    ACT_RU_CASE_EXECUTION {
+        varchar ID_ PK
+        integer REV_
+        varchar CASE_INST_ID_ FK
+        varchar SUPER_CASE_EXEC_
+        varchar SUPER_EXEC_
+        varchar BUSINESS_KEY_
+        varchar PARENT_ID_ FK
+        varchar CASE_DEF_ID_ FK
+        varchar ACT_ID_
+        integer PREV_STATE_
+        integer CURRENT_STATE_
+        boolean REQUIRED_
+        varchar TENANT_ID_
+    }
+
+    ACT_RU_CASE_SENTRY_PART {
+        varchar ID_ PK
+        integer REV_
+        varchar CASE_INST_ID_ FK
+        varchar CASE_EXEC_ID_ FK
+        varchar SENTRY_ID_
+        varchar TYPE_
+        varchar SOURCE_CASE_EXEC_ID_
+        varchar STANDARD_EVENT_
+        varchar SOURCE_
+        varchar VARIABLE_EVENT_
+        varchar VARIABLE_NAME_
+        boolean SATISFIED_
+        varchar TENANT_ID_
+    }
+
+    %% =========================================================
+    %% HISTORY (HI) — completed/archived records
+    %% =========================================================
+
+    ACT_HI_PROCINST {
+        varchar   ID_ PK
+        varchar   PROC_INST_ID_ UK
+        varchar   BUSINESS_KEY_
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        timestamp START_TIME_
+        timestamp END_TIME_
+        timestamp REMOVAL_TIME_
+        bigint    DURATION_
+        varchar   START_USER_ID_
+        varchar   START_ACT_ID_
+        varchar   END_ACT_ID_
+        varchar   SUPER_PROCESS_INSTANCE_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   SUPER_CASE_INSTANCE_ID_
+        varchar   CASE_INST_ID_
+        varchar   DELETE_REASON_
+        varchar   TENANT_ID_
+        varchar   STATE_
+        varchar   RESTARTED_PROC_INST_ID_
+    }
+
+    ACT_HI_ACTINST {
+        varchar   ID_ PK
+        varchar   PARENT_ACT_INST_ID_
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   EXECUTION_ID_
+        varchar   ACT_ID_
+        varchar   TASK_ID_
+        varchar   CALL_PROC_INST_ID_
+        varchar   CALL_CASE_INST_ID_
+        varchar   ACT_NAME_
+        varchar   ACT_TYPE_
+        varchar   ASSIGNEE_
+        timestamp START_TIME_
+        timestamp END_TIME_
+        bigint    DURATION_
+        integer   ACT_INST_STATE_
+        bigint    SEQUENCE_COUNTER_
+        varchar   TENANT_ID_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_TASKINST {
+        varchar   ID_ PK
+        varchar   TASK_DEF_KEY_
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   EXECUTION_ID_
+        varchar   CASE_DEF_KEY_
+        varchar   CASE_DEF_ID_
+        varchar   CASE_INST_ID_
+        varchar   CASE_EXECUTION_ID_
+        varchar   ACT_INST_ID_
+        varchar   NAME_
+        varchar   PARENT_TASK_ID_
+        varchar   DESCRIPTION_
+        varchar   OWNER_
+        varchar   ASSIGNEE_
+        timestamp START_TIME_
+        timestamp END_TIME_
+        bigint    DURATION_
+        varchar   DELETE_REASON_
+        integer   PRIORITY_
+        timestamp DUE_DATE_
+        timestamp FOLLOW_UP_DATE_
+        varchar   TENANT_ID_
+        timestamp REMOVAL_TIME_
+        varchar   TASK_STATE_
+    }
+
+    ACT_HI_VARINST {
+        varchar   ID_ PK
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   EXECUTION_ID_
+        varchar   ACT_INST_ID_
+        varchar   CASE_DEF_KEY_
+        varchar   CASE_DEF_ID_
+        varchar   CASE_INST_ID_
+        varchar   CASE_EXECUTION_ID_
+        varchar   TASK_ID_
+        varchar   NAME_
+        varchar   VAR_TYPE_
+        timestamp CREATE_TIME_
+        integer   REV_
+        varchar   BYTEARRAY_ID_
+        double    DOUBLE_
+        bigint    LONG_
+        varchar   TEXT_
+        varchar   TEXT2_
+        varchar   TENANT_ID_
+        varchar   STATE_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_DETAIL {
+        varchar   ID_ PK
+        varchar   TYPE_
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   EXECUTION_ID_
+        varchar   CASE_DEF_KEY_
+        varchar   CASE_DEF_ID_
+        varchar   CASE_INST_ID_
+        varchar   CASE_EXECUTION_ID_
+        varchar   TASK_ID_
+        varchar   ACT_INST_ID_
+        varchar   VAR_INST_ID_
+        varchar   NAME_
+        varchar   VAR_TYPE_
+        integer   REV_
+        timestamp TIME_
+        varchar   BYTEARRAY_ID_
+        double    DOUBLE_
+        bigint    LONG_
+        varchar   TEXT_
+        varchar   TEXT2_
+        bigint    SEQUENCE_COUNTER_
+        varchar   TENANT_ID_
+        varchar   OPERATION_ID_
+        timestamp REMOVAL_TIME_
+        boolean   INITIAL_
+    }
+
+    ACT_HI_IDENTITYLINK {
+        varchar   ID_ PK
+        timestamp TIMESTAMP_
+        varchar   TYPE_
+        varchar   USER_ID_
+        varchar   GROUP_ID_
+        varchar   TASK_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_DEF_ID_
+        varchar   OPERATION_TYPE_
+        varchar   ASSIGNER_ID_
+        varchar   PROC_DEF_KEY_
+        varchar   TENANT_ID_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_COMMENT {
+        varchar   ID_ PK
+        varchar   TYPE_
+        timestamp TIME_
+        varchar   USER_ID_
+        varchar   TASK_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   ACTION_
+        varchar   MESSAGE_
+        bytea     FULL_MSG_
+        varchar   TENANT_ID_
+        timestamp REMOVAL_TIME_
+        integer   REV_
+    }
+
+    ACT_HI_ATTACHMENT {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   USER_ID_
+        varchar   NAME_
+        varchar   DESCRIPTION_
+        varchar   TYPE_
+        varchar   TASK_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   URL_
+        varchar   CONTENT_ID_
+        varchar   TENANT_ID_
+        timestamp CREATE_TIME_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_OP_LOG {
+        varchar   ID_ PK
+        varchar   DEPLOYMENT_ID_
+        varchar   PROC_DEF_ID_
+        varchar   PROC_DEF_KEY_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   EXECUTION_ID_
+        varchar   CASE_DEF_ID_
+        varchar   CASE_INST_ID_
+        varchar   CASE_EXECUTION_ID_
+        varchar   TASK_ID_
+        varchar   JOB_ID_
+        varchar   JOB_DEF_ID_
+        varchar   BATCH_ID_
+        varchar   USER_ID_
+        timestamp TIMESTAMP_
+        varchar   OPERATION_TYPE_
+        varchar   OPERATION_ID_
+        varchar   ENTITY_TYPE_
+        varchar   PROPERTY_
+        varchar   ORG_VALUE_
+        varchar   NEW_VALUE_
+        varchar   TENANT_ID_
+        timestamp REMOVAL_TIME_
+        varchar   CATEGORY_
+        varchar   EXTERNAL_TASK_ID_
+        varchar   ANNOTATION_
+    }
+
+    ACT_HI_INCIDENT {
+        varchar   ID_ PK
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_INST_ID_
+        varchar   EXECUTION_ID_
+        timestamp CREATE_TIME_
+        timestamp END_TIME_
+        varchar   INCIDENT_MSG_
+        varchar   INCIDENT_TYPE_
+        varchar   ACTIVITY_ID_
+        varchar   FAILED_ACTIVITY_ID_
+        varchar   CAUSE_INCIDENT_ID_
+        varchar   ROOT_CAUSE_INCIDENT_ID_
+        varchar   CONFIGURATION_
+        varchar   HISTORY_CONFIGURATION_
+        integer   INCIDENT_STATE_
+        varchar   TENANT_ID_
+        varchar   JOB_DEF_ID_
+        varchar   ANNOTATION_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_JOB_LOG {
+        varchar   ID_ PK
+        timestamp TIMESTAMP_
+        varchar   JOB_ID_
+        timestamp JOB_DUEDATE_
+        integer   JOB_RETRIES_
+        bigint    JOB_PRIORITY_
+        varchar   JOB_EXCEPTION_MSG_
+        varchar   JOB_EXCEPTION_STACK_ID_
+        integer   JOB_STATE_
+        varchar   JOB_DEF_ID_
+        varchar   JOB_DEF_TYPE_
+        varchar   JOB_DEF_CONFIGURATION_
+        varchar   ACT_ID_
+        varchar   FAILED_ACT_ID_
+        varchar   EXECUTION_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROCESS_INSTANCE_ID_
+        varchar   PROCESS_DEF_ID_
+        varchar   PROCESS_DEF_KEY_
+        varchar   DEPLOYMENT_ID_
+        bigint    SEQUENCE_COUNTER_
+        varchar   TENANT_ID_
+        varchar   HOSTNAME_
+        timestamp REMOVAL_TIME_
+        varchar   BATCH_ID_
+    }
+
+    ACT_HI_BATCH {
+        varchar   ID_ PK
+        varchar   TYPE_
+        integer   TOTAL_JOBS_
+        integer   JOBS_PER_SEED_
+        integer   INVOCATIONS_PER_JOB_
+        varchar   SEED_JOB_DEF_ID_
+        varchar   MONITOR_JOB_DEF_ID_
+        varchar   BATCH_JOB_DEF_ID_
+        varchar   TENANT_ID_
+        varchar   CREATE_USER_ID_
+        timestamp START_TIME_
+        timestamp END_TIME_
+        timestamp REMOVAL_TIME_
+        timestamp EXEC_START_TIME_
+    }
+
+    ACT_HI_EXT_TASK_LOG {
+        varchar   ID_ PK
+        timestamp TIMESTAMP_
+        varchar   EXT_TASK_ID_
+        integer   RETRIES_
+        varchar   TOPIC_NAME_
+        varchar   WORKER_ID_
+        bigint    PRIORITY_
+        varchar   ERROR_MSG_
+        varchar   ERROR_DETAILS_ID_
+        varchar   ACT_ID_
+        varchar   ACT_INST_ID_
+        varchar   EXECUTION_ID_
+        varchar   PROC_INST_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   PROC_DEF_ID_
+        varchar   PROC_DEF_KEY_
+        varchar   TENANT_ID_
+        integer   STATE_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_CASEINST {
+        varchar   ID_ PK
+        varchar   CASE_INST_ID_ UK
+        varchar   BUSINESS_KEY_
+        varchar   CASE_DEF_ID_
+        timestamp CREATE_TIME_
+        timestamp CLOSE_TIME_
+        bigint    DURATION_
+        integer   STATE_
+        varchar   CREATE_USER_ID_
+        varchar   SUPER_CASE_INSTANCE_ID_
+        varchar   SUPER_PROCESS_INSTANCE_ID_
+        varchar   TENANT_ID_
+    }
+
+    ACT_HI_CASEACTINST {
+        varchar   ID_ PK
+        varchar   PARENT_ACT_INST_ID_
+        varchar   CASE_DEF_ID_
+        varchar   CASE_INST_ID_
+        varchar   CASE_ACT_ID_
+        varchar   TASK_ID_
+        varchar   CALL_PROC_INST_ID_
+        varchar   CALL_CASE_INST_ID_
+        varchar   CASE_ACT_NAME_
+        varchar   CASE_ACT_TYPE_
+        timestamp CREATE_TIME_
+        timestamp END_TIME_
+        bigint    DURATION_
+        integer   STATE_
+        boolean   REQUIRED_
+        varchar   TENANT_ID_
+    }
+
+    ACT_HI_DECINST {
+        varchar   ID_ PK
+        varchar   DEC_DEF_ID_
+        varchar   DEC_DEF_KEY_
+        varchar   DEC_DEF_NAME_
+        varchar   PROC_DEF_KEY_
+        varchar   PROC_DEF_ID_
+        varchar   PROC_INST_ID_
+        varchar   CASE_DEF_KEY_
+        varchar   CASE_DEF_ID_
+        varchar   CASE_INST_ID_
+        varchar   ACT_INST_ID_
+        varchar   ACT_ID_
+        timestamp EVAL_TIME_
+        timestamp REMOVAL_TIME_
+        double    COLLECT_VALUE_
+        varchar   USER_ID_
+        varchar   ROOT_DEC_INST_ID_
+        varchar   ROOT_PROC_INST_ID_
+        varchar   DEC_REQ_ID_
+        varchar   DEC_REQ_KEY_
+        varchar   TENANT_ID_
+    }
+
+    ACT_HI_DEC_IN {
+        varchar   ID_ PK
+        varchar   DEC_INST_ID_ FK
+        varchar   CLAUSE_ID_
+        varchar   CLAUSE_NAME_
+        varchar   VAR_TYPE_
+        varchar   BYTEARRAY_ID_
+        double    DOUBLE_
+        bigint    LONG_
+        varchar   TEXT_
+        varchar   TEXT2_
+        varchar   TENANT_ID_
+        timestamp CREATE_TIME_
+        varchar   ROOT_PROC_INST_ID_
+        timestamp REMOVAL_TIME_
+    }
+
+    ACT_HI_DEC_OUT {
+        varchar   ID_ PK
+        varchar   DEC_INST_ID_ FK
+        varchar   CLAUSE_ID_
+        varchar   CLAUSE_NAME_
+        varchar   RULE_ID_
+        integer   RULE_ORDER_
+        varchar   VAR_NAME_
+        varchar   VAR_TYPE_
+        varchar   BYTEARRAY_ID_
+        double    DOUBLE_
+        bigint    LONG_
+        varchar   TEXT_
+        varchar   TEXT2_
+        varchar   TENANT_ID_
+        timestamp CREATE_TIME_
+        varchar   ROOT_PROC_INST_ID_
+        timestamp REMOVAL_TIME_
+    }
+
+    %% =========================================================
+    %% IDENTITY (ID) — users, groups, tenants
+    %% =========================================================
+
+    ACT_ID_GROUP {
+        varchar ID_ PK
+        integer REV_
+        varchar NAME_
+        varchar TYPE_
+    }
+
+    ACT_ID_MEMBERSHIP {
+        varchar USER_ID_ PK
+        varchar GROUP_ID_ PK
+    }
+
+    ACT_ID_USER {
+        varchar   ID_ PK
+        integer   REV_
+        varchar   FIRST_
+        varchar   LAST_
+        varchar   EMAIL_
+        varchar   PWD_
+        varchar   SALT_
+        timestamp LOCK_EXP_TIME_
+        integer   ATTEMPTS_
+        varchar   PICTURE_ID_
+    }
+
+    ACT_ID_INFO {
+        varchar ID_ PK
+        integer REV_
+        varchar USER_ID_
+        varchar TYPE_
+        varchar KEY_
+        varchar VALUE_
+        bytea   PASSWORD_
+        varchar PARENT_ID_
+    }
+
+    ACT_ID_TENANT {
+        varchar ID_ PK
+        integer REV_
+        varchar NAME_
+    }
+
+    ACT_ID_TENANT_MEMBER {
+        varchar ID_ PK
+        varchar TENANT_ID_ FK
+        varchar USER_ID_ FK
+        varchar GROUP_ID_ FK
+    }
+
+    %% =========================================================
+    %% RELATIONSHIPS — derived from SQL FOREIGN KEY constraints
+    %% =========================================================
+
+    %% General
+    ACT_GE_BYTEARRAY }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+
+    %% Repository
+    ACT_RE_PROCDEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_CAMFORMDEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_CASE_DEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_DECISION_REQ_DEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_DECISION_DEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_DECISION_DEF }o--o| ACT_RE_DECISION_REQ_DEF : "DEC_REQ_ID_"
+
+    %% Runtime — Execution
+    ACT_RU_EXECUTION }o--o| ACT_RU_EXECUTION : "PROC_INST_ID_"
+    ACT_RU_EXECUTION }o--o| ACT_RU_EXECUTION : "PARENT_ID_"
+    ACT_RU_EXECUTION }o--o| ACT_RU_EXECUTION : "SUPER_EXEC_"
+    ACT_RU_EXECUTION }o--|| ACT_RE_PROCDEF : "PROC_DEF_ID_"
+
+    %% Runtime — Task
+    ACT_RU_TASK }o--o| ACT_RU_EXECUTION : "EXECUTION_ID_"
+    ACT_RU_TASK }o--o| ACT_RU_EXECUTION : "PROC_INST_ID_"
+    ACT_RU_TASK }o--o| ACT_RE_PROCDEF : "PROC_DEF_ID_"
+    ACT_RU_TASK }o--o| ACT_RU_CASE_EXECUTION : "CASE_EXECUTION_ID_"
+    ACT_RU_TASK }o--o| ACT_RE_CASE_DEF : "CASE_DEF_ID_"
+
+    %% Runtime — Identity Link
+    ACT_RU_IDENTITYLINK }o--o| ACT_RU_TASK : "TASK_ID_"
+    ACT_RU_IDENTITYLINK }o--o| ACT_RE_PROCDEF : "PROC_DEF_ID_"
+
+    %% Runtime — Variable
+    ACT_RU_VARIABLE }o--o| ACT_RU_EXECUTION : "EXECUTION_ID_"
+    ACT_RU_VARIABLE }o--o| ACT_RU_EXECUTION : "PROC_INST_ID_"
+    ACT_RU_VARIABLE }o--o| ACT_GE_BYTEARRAY : "BYTEARRAY_ID_"
+    ACT_RU_VARIABLE }o--o| ACT_RU_BATCH : "BATCH_ID_"
+    ACT_RU_VARIABLE }o--o| ACT_RU_CASE_EXECUTION : "CASE_EXECUTION_ID_"
+    ACT_RU_VARIABLE }o--o| ACT_RU_CASE_EXECUTION : "CASE_INST_ID_"
+
+    %% Runtime — Job
+    ACT_RU_JOB }o--o| ACT_GE_BYTEARRAY : "EXCEPTION_STACK_ID_"
+    ACT_RU_JOB }o--o| ACT_RU_JOBDEF : "JOB_DEF_ID_"
+
+    %% Runtime — Incident
+    ACT_RU_INCIDENT }o--o| ACT_RU_EXECUTION : "EXECUTION_ID_"
+    ACT_RU_INCIDENT }o--o| ACT_RU_EXECUTION : "PROC_INST_ID_"
+    ACT_RU_INCIDENT }o--o| ACT_RE_PROCDEF : "PROC_DEF_ID_"
+    ACT_RU_INCIDENT }o--o| ACT_RU_INCIDENT : "CAUSE_INCIDENT_ID_"
+    ACT_RU_INCIDENT }o--o| ACT_RU_INCIDENT : "ROOT_CAUSE_INCIDENT_ID_"
+    ACT_RU_INCIDENT }o--o| ACT_RU_JOBDEF : "JOB_DEF_ID_"
+
+    %% Runtime — Event Subscription
+    ACT_RU_EVENT_SUBSCR }o--o| ACT_RU_EXECUTION : "EXECUTION_ID_"
+
+    %% Runtime — External Task
+    ACT_RU_EXT_TASK }o--|| ACT_RU_EXECUTION : "EXECUTION_ID_"
+    ACT_RU_EXT_TASK }o--o| ACT_GE_BYTEARRAY : "ERROR_DETAILS_ID_"
+
+    %% Runtime — Batch
+    ACT_RU_BATCH }o--o| ACT_RU_JOBDEF : "SEED_JOB_DEF_ID_"
+    ACT_RU_BATCH }o--o| ACT_RU_JOBDEF : "MONITOR_JOB_DEF_ID_"
+    ACT_RU_BATCH }o--o| ACT_RU_JOBDEF : "BATCH_JOB_DEF_ID_"
+
+    %% Runtime — Case
+    ACT_RU_CASE_EXECUTION }o--o| ACT_RU_CASE_EXECUTION : "CASE_INST_ID_"
+    ACT_RU_CASE_EXECUTION }o--o| ACT_RU_CASE_EXECUTION : "PARENT_ID_"
+    ACT_RU_CASE_EXECUTION }o--|| ACT_RE_CASE_DEF : "CASE_DEF_ID_"
+    ACT_RU_CASE_SENTRY_PART }o--o| ACT_RU_CASE_EXECUTION : "CASE_INST_ID_"
+    ACT_RU_CASE_SENTRY_PART }o--o| ACT_RU_CASE_EXECUTION : "CASE_EXEC_ID_"
+
+    %% History — Decision
+    ACT_HI_DEC_IN }o--|| ACT_HI_DECINST : "DEC_INST_ID_"
+    ACT_HI_DEC_OUT }o--|| ACT_HI_DECINST : "DEC_INST_ID_"
+
+    %% Identity
+    ACT_ID_MEMBERSHIP }o--|| ACT_ID_GROUP : "GROUP_ID_"
+    ACT_ID_MEMBERSHIP }o--|| ACT_ID_USER : "USER_ID_"
+    ACT_ID_TENANT_MEMBER }o--|| ACT_ID_TENANT : "TENANT_ID_"
+    ACT_ID_TENANT_MEMBER }o--o| ACT_ID_USER : "USER_ID_"
+    ACT_ID_TENANT_MEMBER }o--o| ACT_ID_GROUP : "GROUP_ID_"
+
+    %% =========================================================
+    %% CLASS ASSIGNMENTS — domain colors
+    %% =========================================================
+
+    class ACT_GE_PROPERTY ge
+    class ACT_GE_BYTEARRAY ge
+    class ACT_GE_SCHEMA_LOG ge
+
+    class ACT_RE_DEPLOYMENT re
+    class ACT_RE_PROCDEF re
+    class ACT_RE_CAMFORMDEF re
+    class ACT_RE_CASE_DEF re
+    class ACT_RE_DECISION_DEF re
+    class ACT_RE_DECISION_REQ_DEF re
+
+    class ACT_RU_EXECUTION ru
+    class ACT_RU_JOB ru
+    class ACT_RU_JOBDEF ru
+    class ACT_RU_TASK ru
+    class ACT_RU_IDENTITYLINK ru
+    class ACT_RU_VARIABLE ru
+    class ACT_RU_EVENT_SUBSCR ru
+    class ACT_RU_INCIDENT ru
+    class ACT_RU_AUTHORIZATION ru
+    class ACT_RU_FILTER ru
+    class ACT_RU_METER_LOG ru
+    class ACT_RU_TASK_METER_LOG ru
+    class ACT_RU_EXT_TASK ru
+    class ACT_RU_BATCH ru
+    class ACT_RU_CASE_EXECUTION ru
+    class ACT_RU_CASE_SENTRY_PART ru
+
+    class ACT_HI_PROCINST hi
+    class ACT_HI_ACTINST hi
+    class ACT_HI_TASKINST hi
+    class ACT_HI_VARINST hi
+    class ACT_HI_DETAIL hi
+    class ACT_HI_IDENTITYLINK hi
+    class ACT_HI_COMMENT hi
+    class ACT_HI_ATTACHMENT hi
+    class ACT_HI_OP_LOG hi
+    class ACT_HI_INCIDENT hi
+    class ACT_HI_JOB_LOG hi
+    class ACT_HI_BATCH hi
+    class ACT_HI_EXT_TASK_LOG hi
+    class ACT_HI_CASEINST hi
+    class ACT_HI_CASEACTINST hi
+    class ACT_HI_DECINST hi
+    class ACT_HI_DEC_IN hi
+    class ACT_HI_DEC_OUT hi
+
+    class ACT_ID_GROUP id
+    class ACT_ID_MEMBERSHIP id
+    class ACT_ID_USER id
+    class ACT_ID_INFO id
+    class ACT_ID_TENANT id
+    class ACT_ID_TENANT_MEMBER id
