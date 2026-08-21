@@ -430,6 +430,12 @@ No configuration or code changes are required on the client side.
 
 ## Patch Releases
 
+### 2.1.4
+
+#### Dependency Upgrades
+
+- **[chore: Update Spring Boot 4.0.8 & Spring 7.0.9](https://github.com/operaton/operaton/commit/b68825979183f1bf3f4954427ee5801f59ce9237)** — Bumped the Spring Boot baseline from `4.0.7` to `4.0.8` and Spring Framework from `7.0.8` to `7.0.9`, picking up upstream fixes on the 4.0.x/7.0.x maintenance lines.
+
 ### 2.1.3
 
 #### Security Vulnerabilities
