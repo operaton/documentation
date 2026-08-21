@@ -7,6 +7,24 @@ sidebar_position: 22
 
 ## New and Noteworthy
 
+### New Web Applications (webapps-neo) — Technical Preview
+
+Operaton 2.2 integrates a new, Preact-based implementation of the web applications
+(`webapps-neo`) into the main repository as a technical preview alongside the existing legacy
+web applications. It reuses the same backend Java logic as the legacy webapps and ships a first
+administrator setup screen for initial deployment.
+
+The initial integration was followed up with fixes to make the packaged distribution usable and
+to close security defects found while reviewing it against a real build: the SPA's own bundle
+was being blocked by the Content-Security-Policy, login for the new app id was rejected, CSP
+nonces were not scoped per request, error responses were missing security headers, and an
+authorization rule that should have denied `/api/admin/**` did not.
+
+This implements [PR #3296](https://github.com/operaton/operaton/pull/3296) and
+[PR #3515](https://github.com/operaton/operaton/pull/3515).
+
+---
+
 ### Spring Boot 4.1 Upgrade
 
 Operaton 2.2 upgrades the Spring Boot baseline from **4.0.x** to **Spring Boot 4.1**. This
@@ -21,9 +39,9 @@ This implements [PR #2844](https://github.com/operaton/operaton/pull/2844).
 
 ---
 
-### WildFly 40 Upgrade & CDI 4.1 Compatibility
+### WildFly 41 Upgrade & CDI 4.1 Compatibility
 
-Operaton 2.2 upgrades the WildFly distribution to **WildFly 40** and adapts the CDI integration
+Operaton 2.2 upgrades the WildFly distribution to **WildFly 41** and adapts the CDI integration
 to the **Jakarta CDI 4.1** standard API.
 
 Key improvements:
@@ -148,12 +166,13 @@ This resolves [PR #3390](https://github.com/operaton/operaton/pull/3390).
 
 ---
 
-### Quarkus Updated to 3.33.2.1
+### Quarkus Updated to 3.33.3.1
 
-The Quarkus platform dependency has been updated to **3.33.2.1**, the latest patch release on
+The Quarkus platform dependency has been updated to **3.33.3.1**, the latest patch release on
 the 3.33 LTS line.
 
-This implements [PR #3386](https://github.com/operaton/operaton/pull/3386).
+This implements [PR #3386](https://github.com/operaton/operaton/pull/3386),
+[PR #3507](https://github.com/operaton/operaton/pull/3507).
 
 ## API
 
@@ -202,13 +221,13 @@ Operaton is based on:
 
 ### Quarkus Extension
 
-The Operaton Quarkus extension is based on **Quarkus 3.33.2.1 LTS**.
+The Operaton Quarkus extension is based on **Quarkus 3.33.3.1 LTS**.
 
 ### Distributions
 
-The Tomcat distribution is based on **Tomcat 11.0.22**.
+The Tomcat distribution is based on **Tomcat 11.0.25**.
 
-The WildFly distribution is based on **WildFly 40.0.0.Final**.
+The WildFly distribution is based on **WildFly 41.0.0.Final**.
 
 ### Database Compatibility
 
@@ -236,7 +255,7 @@ Operaton supports the following scripting languages:
 | Language   | Engine             | Version  |
 |------------|--------------------|----------|
 | JavaScript | GraalVM JavaScript | 25.0.3   |
-| Groovy     | Groovy             | 5.0.6    |
+| Groovy     | Groovy             | 5.1.0    |
 | Python     | Jython             | 2.7.4    |
 | Ruby       | GraalVM Ruby       | 9.1.17.0 |
 
@@ -247,7 +266,8 @@ The following non-test dependencies have been upgraded since Operaton 2.1:
 | Dependency               | 2.1            | 2.2            |
 |--------------------------|----------------|----------------|
 | Spring Boot              | 4.0.6          | 4.1.0          |
-| Apache Tomcat            | 11.0.21        | 11.0.22        |
-| WildFly                  | 38.0.1.Final   | 40.0.0.Final   |
+| Apache Tomcat            | 11.0.21        | 11.0.25        |
+| WildFly                  | 38.0.1.Final   | 41.0.0.Final   |
 | Jackson                  | 2.21.2         | 2.21.4         |
-| Groovy                   | 5.0.5          | 5.0.6          |
+| Groovy                   | 5.0.5          | 5.1.0          |
+| Quarkus                  | —              | 3.33.3.1       |
