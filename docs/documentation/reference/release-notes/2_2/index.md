@@ -25,6 +25,46 @@ This implements [PR #3296](https://github.com/operaton/operaton/pull/3296) and
 
 ---
 
+### `SKIP LOCKED` Job Acquisition
+
+This is a preview feature we publish to gather real feedback. There is no guarantee that the config
+properties, API or behavior won't change until the final release.
+
+The job executor can now acquire jobs using `FOR UPDATE SKIP LOCKED`, so that parallel nodes
+skip rows another node has already locked instead of blocking on them. In clustered setups this
+removes the contention that previously showed up as rejected job executions when many nodes
+polled the same set of due jobs. This is not an automatic performance improvement, as the feature
+puts more load on the database itself, so its value depends on database sizing, database type and 
+the quality of the network connection between Operaton and the database. 
+
+Activate it through `ProcessEngineConfiguration#setJobExecutorAcquireWithSkipLocked(true)`, or
+in Spring Boot:
+
+```yaml
+operaton:
+  bpm:
+    job-executor-acquire-with-skip-locked: true
+```
+
+Existing installations keep the previous acquisition behaviour until the property is set.
+
+Two details are worth knowing before switching it on:
+
+- Exclusive jobs keep their previous semantics. With SKIP LOCKED active, exclusive and
+  non-exclusive jobs are acquired in separate queries. Exclusive jobs are deliberately acquired
+  without SKIP LOCKED, because their contention-based serialization is what guarantees that
+  jobs of the same process instance are not executed in parallel. Expect the throughput gain on
+  non-exclusive jobs.
+- The statement is database-specific. Where the standard syntax does not apply, Operaton
+  ships a dedicated query: Oracle tolerates neither a subquery wrapper nor a row limit alongside
+  FOR UPDATE SKIP LOCKED, DB2 uses FOR UPDATE WITH RS USE AND KEEP UPDATE LOCKS SKIP LOCKED DATA, and SQL Server uses the UPDLOCK/READPAST hints instead. PostgreSQL, MySQL, MariaDB
+  and H2 use the standard form.
+
+This implements issue #264 (https://github.com/operaton/operaton/issues/264) via
+PR #326 (https://github.com/operaton/operaton/pull/326).
+
+---
+
 ### Spring Boot 4.1 Upgrade
 
 Operaton 2.2 upgrades the Spring Boot baseline from **4.0.x** to **Spring Boot 4.1**. This
