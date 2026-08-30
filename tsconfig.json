@@ -1,8 +1,27 @@
 {
   // This file is not used in compilation. It is here just for a nice editor experience.
-  "extends": "@docusaurus/tsconfig",
+  //
+  // Not extending "@docusaurus/tsconfig" here: as of Docusaurus 3.10.2 that
+  // preset still declares baseUrl, which TypeScript 7 removed outright.
+  // TypeScript's removed-option check runs on the fully-resolved
+  // compilerOptions, so a inherited baseUrl can't be overridden away via
+  // extends - only not-inheriting it works. The options below are copied
+  // from @docusaurus/tsconfig's tsconfig.json, minus baseUrl. Revisit once
+  // upstream drops baseUrl (https://github.com/facebook/docusaurus, package
+  // packages/docusaurus-tsconfig).
   "compilerOptions": {
-    "baseUrl": ".",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "noEmit": true,
+    "paths": {
+      "@site/*": ["./*"]
+    },
+    "skipLibCheck": true,
     "ignoreDeprecations": "6.0"
   },
   "exclude": [".docusaurus", "build"]
