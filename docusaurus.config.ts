@@ -7,10 +7,16 @@ import rehypeRegisterCustomIds from './src/plugins/rehype-register-custom-ids.js
 import remarkBpmnDiagram from './src/plugins/remark-bpmn-diagram.js';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+// Defaults match the nginx reverse proxy at /typesense/ on the production
+// domain (see docker/typesense/README or the root README's Local Search
+// section) - the site is served over HTTPS, so the browser can't reach a
+// bare-HTTP endpoint on a different port (mixed content). Local dev overrides
+// all of these via .env to talk to the Docker Typesense instance directly.
 const typesenseApiKey = process.env.TYPESENSE_API_KEY?.trim();
 const typesenseHost = process.env.TYPESENSE_HOST?.trim() || 'docs.operaton.org';
-const typesensePort = Number(process.env.TYPESENSE_PORT) || 8108;
-const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'http';
+const typesensePort = Number(process.env.TYPESENSE_PORT) || 443;
+const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'https';
+const typesensePath = process.env.TYPESENSE_PATH?.trim() ?? '/typesense';
 
 const config: Config = {
   title: 'Operaton Documentation',
@@ -99,6 +105,7 @@ const config: Config = {
                   host: typesenseHost,
                   port: typesensePort,
                   protocol: typesenseProtocol,
+                  path: typesensePath,
                 },
               ],
               apiKey: typesenseApiKey,

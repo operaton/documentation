@@ -112,13 +112,34 @@ store.
 
 ### Background: issue #161
 
-Search on the production site failed because `docusaurus.config.ts` was
-configured to connect over HTTPS while the Typesense server at
+Search on the production site originally failed because `docusaurus.config.ts`
+was configured to connect over HTTPS while the Typesense server at
 `docs.operaton.org:8108` only ever served plain HTTP — the TLS handshake
 fails before any CORS headers can be returned, which browsers surface as a
-CORS error. Confirmed via direct query against the production server (over
-HTTP, using the public search key from the deployed site) that the
-`docusaurus` collection is indexed correctly (15k+ documents, real search
-results) — only the protocol mismatch was broken. The fix is to keep
-`docusaurus.config.ts` and the scraper step in
-`.github/workflows/deploy.yml` on `protocol: http`, matching the server.
+CORS error. The first fix switched the client config to `protocol: http` to
+match the server.
+
+That traded one broken state for another: `docs.operaton.org` is served over
+HTTPS, and browsers block an HTTPS page from making a plain-HTTP XHR request
+to anything ("mixed content"), regardless of whether the server would have
+answered correctly. Search still failed in a real browser — silently, with no
+network request even showing up in devtools, only a `Mixed Content` console
+error and an `ERR_NETWORK` from the Typesense client. A visible symptom of
+the same root cause: the "See all N results" footer in the search modal
+stayed stuck on the literal `{count}` placeholder, because `nbHits` never
+got populated. A direct `curl` against the production server (over HTTP,
+using the public search key) had confirmed the `docusaurus` collection was
+indexed correctly (15k+ documents) — that check bypasses the browser's
+mixed-content policy, so it didn't catch this.
+
+The actual fix: nginx on `docs.operaton.org` reverse-proxies `/typesense/` to
+the local Typesense container (`proxy_pass http://127.0.0.1:8108/`), so the
+browser talks to Typesense same-origin over HTTPS. `docusaurus.config.ts`
+defaults to `protocol: https`, `port: 443`, `path: /typesense` accordingly.
+Local dev keeps talking to the Docker Typesense instance directly — see
+`.env` above, which sets `TYPESENSE_PROTOCOL=http`, `TYPESENSE_PORT=8108`,
+and `TYPESENSE_PATH=` (empty, no proxy prefix) to override those defaults.
+The CI scraper step in `.github/workflows/deploy.yml` is unaffected: it runs
+on a GitHub Actions runner, not in a browser, so it keeps talking to
+`docs.operaton.org:8108` directly over plain HTTP — mixed content is a
+browser-only restriction.
