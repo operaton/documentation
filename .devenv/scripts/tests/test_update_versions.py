@@ -60,6 +60,13 @@ class TestIsReleaseVersion(unittest.TestCase):
         self.assertFalse(uv._is_release_version("2.0.0-beta"))
         self.assertFalse(uv._is_release_version("2.0.0-beta2"))
 
+    def test_rejects_hyphenated_qualifier_digits(self):
+        # maven-compiler-plugin publishes prereleases as "4.0.0-beta-4",
+        # not "4.0.0-beta4" - the qualifier and its digits are separated
+        # by their own hyphen.
+        self.assertFalse(uv._is_release_version("4.0.0-beta-4"))
+        self.assertFalse(uv._is_release_version("2.0.0-alpha-1"))
+
     def test_rejects_rc(self):
         self.assertFalse(uv._is_release_version("2.0.0-RC1"))
         self.assertFalse(uv._is_release_version("2.0.0-rc2"))

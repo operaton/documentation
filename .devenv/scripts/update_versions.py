@@ -13,7 +13,7 @@ purl format in SBOM: pkg:maven/<groupId>/<artifactId>@<version>?type=jar
 Matching uses prefix: pkg:maven/<groupId>/<artifactId>@
 
 Usage:
-    python3 .devenv/scripts/update-versions.py [--dry-run]
+    python3 .devenv/scripts/update_versions.py [--dry-run]
 
 Environment variables:
     GITHUB_TOKEN   Optional GitHub personal-access token.
@@ -150,8 +150,11 @@ def get_version_from_sbom(sbom: Optional[dict], group_id: str, artifact_id: str)
 
 # ── Maven Central ─────────────────────────────────────────────────────────────
 
+# The qualifier and its digits may be separated by another "-" (e.g.
+# "4.0.0-beta-4", as seen on maven-compiler-plugin), not just attached
+# directly (e.g. "2.1.0-alpha1") - both forms show up on Maven Central.
 _PRE_RELEASE_RE = re.compile(
-    r"(?i)[.-](alpha\d*|beta\d*|rc\d*|m\d+)(\..*)?$"
+    r"(?i)[.-](alpha|beta|rc|m)[-.]?\d*(\..*)?$"
 )
 
 
