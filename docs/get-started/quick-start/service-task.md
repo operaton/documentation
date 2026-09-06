@@ -131,7 +131,7 @@ Your pom.xml file of your project should look like this:
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.36</version>
+			<version>2.0.17</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>

@@ -26,3 +26,11 @@ yarn-error.log*
 # Local Typesense dev server (see docker/typesense)
 /docker/typesense/certs
 /docker/typesense/data
+
+# Local superpowers specs/plans (not committed)
+docs/superpowers/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

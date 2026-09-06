@@ -246,7 +246,7 @@ To include CSS and JavaScript libraries in your project you can add them to your
   <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>3.1.1</version>
+    <version>5.3.7</version>
   </dependency>
 
 </dependencies>
@@ -260,10 +260,10 @@ To use them, add tags like the following ones to your JSF page. If you have seve
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <!-- CSS Stylesheets -->
-  <h:outputStylesheet library="webjars/bootstrap/3.1.1/css" name="bootstrap.css"/>
+  <h:outputStylesheet library="webjars/bootstrap/5.3.7/css" name="bootstrap.css"/>
   <h:outputStylesheet library="css" name="style.css"/>
 
   <!-- JavaScript Libraries -->
-  <h:outputScript type="text/javascript" library="webjars/bootstrap/3.1.1/js" name="bootstrap.js" />
+  <h:outputScript type="text/javascript" library="webjars/bootstrap/5.3.7/js" name="bootstrap.js" />
 </h:head>
 ```

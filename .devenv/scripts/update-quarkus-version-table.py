@@ -242,7 +242,7 @@ def fetch_new_rows(
     return new_rows
 
 
-def main(dry_run: bool = False) -> None:
+def run(dry_run: bool = False) -> None:
     script_dir = os.path.dirname(os.path.abspath(__file__))
     repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
     docs_path = os.path.join(repo_root, DOCS_FILE)
@@ -292,5 +292,9 @@ def main(dry_run: bool = False) -> None:
         print(f"\nUpdated {DOCS_FILE}")
 
 
+def main() -> None:
+    run(dry_run="--dry-run" in sys.argv)
+
+
 if __name__ == "__main__":
-    main(dry_run="--dry-run" in sys.argv)
+    main()
