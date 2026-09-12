@@ -86,8 +86,6 @@ handles such history events. If the method returns `false`, the engine will not 
 any history events of this type again. This means that if your history level only wants to generate the history
 event for some instances of an event it must still return `true` if `entity` is `null`.
 
-Please have a look at this [complete example][2] to get a better overview.
-
 ### Removal time inheritance
 Historic instances inherit the removal time from the respective historic top-level
 instance. If the custom history level is configured in a way, so that the historic top-level instance is not written,
@@ -115,5 +113,4 @@ public boolean isHistoryEventProduced(HistoryEventType eventType, Object entity)
 
 
 
-[1]: http://docs.operaton.org/latest/api-references/javadoc/org/operaton/bpm/engine/impl/history/event/HistoryEventTypes.html
-[2]: https://github.com/operaton/operaton-bpm-examples/tree/master/process-engine-plugin/custom-history-level
+[1]: https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/history/event/HistoryEventTypes.html

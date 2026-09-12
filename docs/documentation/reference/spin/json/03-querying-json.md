@@ -10,7 +10,7 @@ menu:
 
 ---
 
-The JSON datatype supports querying with the [JSONPath](http://goessner.net/articles/JsonPath/) query language.
+The JSON datatype supports querying with the [JSONPath](https://goessner.net/articles/JsonPath/) query language.
 
 
 ## Querying an Element

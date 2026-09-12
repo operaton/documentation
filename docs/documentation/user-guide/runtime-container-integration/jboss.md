@@ -12,7 +12,7 @@ menu:
 ---
 
 :::note[Installation Guide]
-  If you [download a full distribution](http://operaton.org/download/), the Operaton WildFly subsystem is readily installed into the application server.
+  If you [download a full distribution](../../introduction/downloading-operaton.md#full-distribution), the Operaton WildFly subsystem is readily installed into the application server.
 
   [Read the installation guide](../../installation/full/wildfly/index.md) to learn how to install the Operaton WildFly subsystem into your WildFly Server.
 :::
@@ -175,7 +175,7 @@ The restrictions which apply for [providing a custom process engine configuratio
 
 To externalize environment specific parts of the configuration, it is possible to reference system properties using Ant-style expressions (i.e., `${PROPERTY_KEY}`).
 Expression resolution is supported for all elements and attributes except for the `name` attribute on the elements `process-engine` and `job-acquisition`.
-System properties may be set via command line (`-D`option). Read more on expressions in the documentation for [WildFly](http://docs.wildfly.org/23/Extending_WildFly.html#expressions).
+System properties may be set via command line (`-D`option). Read more on expressions in the documentation for [WildFly](https://docs.wildfly.org/23/Extending_WildFly.html#expressions).
 
 ### Example
 
@@ -211,7 +211,7 @@ A declarative mechanism like `@Resource` could be
 ```
 
 :::warning[Look Up a Process Engine From JNDI Using Spring]
-  On WildFly, Spring users should always [create a resource-ref for the process engine in web.xml](#manage-service-dependencies) and then lookup the local name in the `java:comp/env/` namespace. [For an example, see this Quickstart](https://github.com/operaton/operaton-bpm-examples/tree/master/deployment/spring-wildfly-non-pa)
+  On WildFly, Spring users should always [create a resource-ref for the process engine in web.xml](#manage-service-dependencies) and then lookup the local name in the `java:comp/env/` namespace.
 :::
 
 

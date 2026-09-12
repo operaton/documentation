@@ -21,7 +21,7 @@ Cockpit defines a plugin concept to add own functionality without being forced t
 
 A Cockpit plugin is a maven jar project that is included in the Cockpit webapplication as a library dependency. It provides a server-side and a client-side extension to Cockpit.
 
-On the server-side, it can extend Cockpit with custom SQL queries and JAX-RS resource classes. Queries (defined via [MyBatis](http://www.mybatis.org/)) may be used to squeeze additional intel out of an engine database or to execute custom engine operations. JAX-RS resources on the other hand extend the Cockpit API and expose data to the client-side part of the plugin.
+On the server-side, it can extend Cockpit with custom SQL queries and JAX-RS resource classes. Queries (defined via [MyBatis](https://mybatis.org/mybatis-3/)) may be used to squeeze additional intel out of an engine database or to execute custom engine operations. JAX-RS resources on the other hand extend the Cockpit API and expose data to the client-side part of the plugin.
 
 On the client-side a plugin may include Javascript modules to extend the Cockpit webapplication. Via those modules a plugin provides custom views.
 
@@ -63,7 +63,7 @@ As runtime relevant resource it defines
 
 1. a plugin main class
 2. a `META-INF/services` entry that publishes the plugin to Cockpit
-3. a plugin root [JAX-RS](https://jax-rs-spec.java.net/) resource that wires the server-side API.
+3. a plugin root [JAX-RS](https://jakarta.ee/specifications/restful-ws/) resource that wires the server-side API.
    When you want to include a frontend module in your plugin, you can use `AbstractCockpitPluginRootResource` as the plug-in resources base class.
    This allows you to serve static client-side resources under the `/static` path.
    Per convention, these resources must reside in a `/plugin-webapp/$plugin_id` directory absolute to the classpath root.
@@ -73,14 +73,10 @@ As runtime relevant resource it defines
      The default implementation contains two predefined assets: `app/plugin.js` and `app/plugin.css`.
 4. other resources that are part of the server-side API
 5. data transfer objects used by the resources
-6. mapping files that provide additional Cockpit queries as [MyBatis](http://www.mybatis.org/) mappings
+6. mapping files that provide additional Cockpit queries as [MyBatis](https://mybatis.org/mybatis-3/) mappings
 7. resource directory from which client-side plugin assets are served as static files
 8. a js file that exports a frontend module. This file must be named `plugin.js` and be located in the `app` directory of the plugin asset directory
 9. a css file that contains the style definitions for the client-side plugin. This file must be named `plugin.css` and be located in the `app` directory of the plugin asset directory
-
-:::note[Related Example]
-  [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes)
-:::
 
 ### Structure of a Frontend Module
 A frontend module always follows the same structure. This is how a sample `plugin.js` could look like:
@@ -154,7 +150,7 @@ Plugins created for Operaton.13 or earlier can be included for compatibility. To
 
 Plugins with this prefix are included using the legacy plugin mechanism. You cannot create new Plugins with IDs starting with `legacy`.
 
-For more details about legacy Plugins, check out the legacy [Plugin documentation](https://docs.operaton.org/docs/documentation/webapps/cockpit/extend/plugins/). Please note that this link will take you to the documentation of Operaton.
+For more details about legacy Plugins, check out the legacy [Plugin documentation](https://docs.operaton.org/docs/documentation/webapps/cockpit/extend/plugins/).
 
 ## Plugin points
 
@@ -162,8 +158,6 @@ In this section you will find all Cockpit plugin points.
 To configure where you place your plugin, enter the ID into the `pluginPoint` attribute of you frontend module.
 
 Plugin Points describe where a Plugin will be rendered and define which additional data is passed into the second argument of the render function.
-
-For more information on creating and configuring your own plugin, please see [How to develop a Cockpit plugin](https://github.com/operaton/operaton-bpm-examples/tree/master/cockpit/cockpit-fullstack-count-processes).
 
 ### Data
 
