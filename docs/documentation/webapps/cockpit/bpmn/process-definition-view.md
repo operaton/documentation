@@ -125,7 +125,7 @@ Delete the current process definition version by using this feature. In the proc
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-documentation.png)Set Job Priority
 
-This feature allows you to inspect documentation added in the Camunda Modeler. To do so, open the Documentation tab. Elements with a documentation are indicated with a info-sign in the diagram. The documentation table lists all documented elements. Click on a table row to highlight the element in the diagram.
+This feature allows you to inspect documentation added in the Operaton Modeler. To do so, open the Documentation tab. Elements with a documentation are indicated with a info-sign in the diagram. The documentation table lists all documented elements. Click on a table row to highlight the element in the diagram.
 
 To view long documentations, click on the info-sign on the element or the documentation link in the table. This opens a modal which displays the formated documentation in a textbox. To copy the documentation to the clipboard, click on copy button.
 

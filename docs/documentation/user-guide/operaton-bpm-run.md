@@ -26,7 +26,9 @@ Operaton Run is a full distribution of Operaton. It includes:
 
 ## Starting with Operaton Run
 
-To start with Operaton Run, download the [distribution](https://github.com/operaton/operaton/releases/latest) and unpack it. You will find the following structure:
+To start with Operaton Run, download the `operaton-bpm-<version>.tar.gz` or `operaton-bpm-<version>.zip`
+distribution from the [latest Operaton release](https://github.com/operaton/operaton/releases/latest)
+and unpack it. You will find the following structure:
 
 ```
 operaton-bpm-run
@@ -256,7 +258,7 @@ If you want to allow cross-origin requests to the [REST API](../reference/rest/o
   </tr>
   <tr>
       <td><code>.allowed-origins</code></td>
-      <td>Origins that are allowed to make CORS requests. Multiple origins can be separated with commas. To support both HTTP authentication and CORS, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials"><code>allowed-origins</code> must not be</a> <code>\*</code>. To allow Camunda Modeler to deploy with authentication, including <code>file://</code> in the allowed origins.</td>
+      <td>Origins that are allowed to make CORS requests. Multiple origins can be separated with commas. To support both HTTP authentication and CORS, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSNotSupportingCredentials"><code>allowed-origins</code> must not be</a> <code>\*</code>. To allow Operaton Modeler to deploy with authentication, include <code>file://</code> in the allowed origins.</td>
       <td><code>\*</code> (all origins, including <code>file://</code>)</td>
   </tr>
   <tr>

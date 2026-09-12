@@ -12,7 +12,23 @@ menu:
 
 This page lists the most commonly used Apache Maven Coordinates for Operaton.
 
-Most Operaton artifacts are pushed to [maven central](https://central.sonatype.com/search?q=org.operaton.bpm).
+Operaton release artifacts are published to [Maven Central](https://central.sonatype.com/search?q=org.operaton.bpm).
+Snapshot artifacts are published to Central's snapshot repository. Add it only when you intentionally depend on `*-SNAPSHOT` versions:
+
+```xml
+<repositories>
+  <repository>
+    <id>central-snapshots</id>
+    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+```
 
 
 ## Operaton BOM (Bill of Materials)

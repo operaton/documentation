@@ -7,11 +7,11 @@ menu:
   main:
     parent: "get-started-java-ee"
     identifier: "get-started-java-ee-install"
-    description: "Install Operaton Platform and Camunda Modeler on your machine."
+    description: "Install Operaton Platform and Operaton Modeler on your machine."
 
 ---
 
-First you need to set up your development environment and install the Operaton Platform and the Camunda Modeler.
+First you need to set up your development environment and install the Operaton Platform and the Operaton Modeler.
 
 
 ## Prerequisites
@@ -25,13 +25,13 @@ Make sure you have the following set of tools installed:
 
 ## Install Operaton Platform
 
-First, download a distribution of the Operaton Platform. You can choose from different application servers. In this tutorial, we will use a WildFly-based distribution. Download it from [the download page](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
+First, download a distribution of the Operaton Platform. You can choose from different application servers. In this tutorial, we will use a WildFly-based distribution. Download it from [the latest Operaton release](https://github.com/operaton/operaton/releases/latest).
 
 After having downloaded the distribution, unpack it inside a directory of your choice. We will call that directory
 `$OPERATON_HOME`.
 
 After you have successfully unpacked your distribution of the Operaton Platform, execute the script named
-`start-camunda.bat` for Windows users, respectively `start-camunda.sh` for Unix users.
+`start.bat` for Windows users or `start.sh` for Unix users.
 
 This script will start the application server and open a welcome screen in your Web browser.
 If the page does not open, go to http://localhost:8080/operaton-welcome/index.html.
@@ -40,6 +40,6 @@ If the page does not open, go to http://localhost:8080/operaton-welcome/index.ht
 If you have trouble setting up the Operaton Platform, you can ask for assistance in the [Forum](https://forum.operaton.org/).
 :::
 
-## Install Camunda Modeler
+## Install Operaton Modeler
 
-Follow the instructions in the [Camunda Modeler](/docs/documentation/installation/camunda-modeler) section.
+Follow the instructions in the [Operaton Modeler](/docs/documentation/installation/operaton-modeler) section.

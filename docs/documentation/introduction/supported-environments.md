@@ -68,21 +68,22 @@ Clustered or replicated databases are supported given the following conditions. 
 
 ## Java
 
-* Java 11 / 17 / 21 (if supported by your application server/container)
+* Java 17 / 21 / 25 (if supported by your application server/container)
 
 
 ## Java Runtime
 
-* Oracle JDK 11 / 17 / 21
-* OpenJDK 11 / 17 / 21, including builds of the following products:
+* Oracle JDK 17 / 21 / 25
+* OpenJDK 17 / 21 / 25, including builds of the following products:
   * Oracle OpenJDK
   * Eclipse Temurin JDK
   * Amazon Corretto
   * Azul Zulu
 
-## Camunda Modeler
+## Operaton Modeler
 
-[Supported environments](https://docs.camunda.io/docs/reference/supported-environments/#camunda-modeler) for Camunda Modeler have moved to [docs.camunda.io](https://docs.camunda.io/).
+Operaton Modeler is documented separately. See the [Operaton Modeler installation guide](../installation/operaton-modeler.md)
+and the [Operaton Modeler repository](https://github.com/operaton/operaton-modeler) for current installation and build information.
 
 ## Maintenance Policy
 

@@ -1181,7 +1181,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <td></td>
     <td colspan="2">
       If the parent <code>operaton:properties</code> element is directly added as an extension element,
-      for example by the Camunda Modeler, only the attributes <code>name</code> and <code>value</code>
+      for example by the Operaton Modeler, only the attributes <code>name</code> and <code>value</code>
       are used.
     </td>
   </tr>
