@@ -72,7 +72,7 @@ If you are using Connect in the Operaton process engine, you also need the `oper
 
 # Logging
 
-Operaton Connect uses [operaton-commons-logging](https://github.com/operaton/operaton-bpm-platform/tree/master/commons/logging) which itself uses [SLF4J](http://slf4j.org) as a logging backend. To enable logging a SLF4J implementation has to be part of
+Operaton Connect uses [operaton-commons-logging](https://github.com/operaton/operaton/tree/main/commons/logging) which itself uses [SLF4J](http://slf4j.org) as a logging backend. To enable logging a SLF4J implementation has to be part of
 your classpath. For example `slf4j-simple`, `log4j12` or `logback-classic`.
 
 Apache HTTP Client 5.x has built-in SLF4J support, so no additional bridges are required for HTTP client logging.
