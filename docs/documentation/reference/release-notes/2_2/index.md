@@ -281,7 +281,7 @@ The Operaton Quarkus extension is based on **Quarkus 3.33.3.1 LTS**.
 
 ### Distributions
 
-The Tomcat distribution is based on **Tomcat 11.0.25**.
+The Tomcat distribution is based on **Tomcat 11.0.26**.
 
 The WildFly distribution is based on **WildFly 41.0.0.Final**.
 
@@ -311,7 +311,7 @@ Operaton supports the following scripting languages:
 | Language   | Engine             | Version  |
 |------------|--------------------|----------|
 | JavaScript | GraalVM JavaScript | 25.0.3   |
-| Groovy     | Groovy             | 5.1.0    |
+| Groovy     | Groovy             | 5.1.2    |
 | Python     | Jython             | 2.7.4    |
 | Ruby       | GraalVM Ruby       | 9.1.17.0 |
 
@@ -319,11 +319,11 @@ Operaton supports the following scripting languages:
 
 The following non-test dependencies have been upgraded since Operaton 2.1:
 
-| Dependency               | 2.1            | 2.2            |
-|--------------------------|----------------|----------------|
-| Spring Boot              | 4.0.6          | 4.1.0          |
-| Apache Tomcat            | 11.0.21        | 11.0.25        |
-| WildFly                  | 38.0.1.Final   | 41.0.0.Final   |
-| Jackson                  | 2.21.2         | 2.21.4         |
-| Groovy                   | 5.0.5          | 5.1.0          |
-| Quarkus                  | —              | 3.33.3.1       |
+| Dependency               | 2.1           | 2.2            |
+|--------------------------|---------------|----------------|
+| Spring Boot              | 4.0.6         | 4.1.0          |
+| Apache Tomcat            | 11.0.21       | 11.0.25        |
+| WildFly                  | 38.0.1.Final  | 41.0.0.Final   |
+| Jackson                  | 2.21.2        | 2.21.4         |
+| Groovy                   | 5.0.5         | 5.1.0          |
+| Quarkus                  | 3.33.1 (LTS)  | 3.33.3.1 (LTS) |
