@@ -9,7 +9,10 @@ description: "Download and install WildFly Application Server with the Full Dist
 
 ### Installation Procedure
 
-1. Download the pre-packaged distribution for [WildFly](https://downloads.camunda.cloud/release/operaton-bpm/wildfly/).
+1. Download the pre-packaged distribution for WildFly from the [latest Operaton release](https://github.com/operaton/operaton/releases/latest).
+   Release assets are named `operaton-bpm-wildfly-<version>.tar.gz` or `operaton-bpm-wildfly-<version>.zip`;
+   snapshot assets are published in the [Operaton GitHub releases](https://github.com/operaton/operaton/releases)
+   as prereleases with tags such as `2.2.0-SNAPSHOT`.
 2. Unpack the distro to a directory.
 3. Adjust the datasource according to your needs (see [Manual Installation](manual.md)).
 4. Startup the server by running `operaton-welcome.bat` or by using the `$WILDFLY_HOME/bin/standalone.{bat/sh}` script.
