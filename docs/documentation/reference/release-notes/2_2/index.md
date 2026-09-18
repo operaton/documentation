@@ -50,6 +50,22 @@ This implements [PR #2781](https://github.com/operaton/operaton/pull/2781),  [PR
 
 ---
 
+### Nullability Declarations in the Engine API
+
+Operaton 2.2 begins annotating engine internals with [JSpecify](https://jspecify.dev/)
+`@Nullable`/`@NullMarked` annotations, making the nullability contract of engine APIs explicit and
+tool-checkable (e.g. via IDE inspections or static analysis) instead of relying purely on
+Javadoc or convention.
+
+This is an incremental, non-breaking effort — annotations are being added class by class, package by package, starting
+with engine internals and going through to the public API. For background on the approach and rollout plan, see the forum announcement
+["Introducing declaration of nullability in the API"](https://forum.operaton.org/t/introducing-declaration-of-nullability-in-the-api/445)
+and the underlying [ADR "Null Safety Strategy for Operaton"](https://github.com/operaton/operaton/blob/main/docs/decisions/0001-null-safety-strategy-for-operaton.md).
+
+This implements [PR #3590](https://github.com/operaton/operaton/pull/3590), [PR #3618](https://github.com/operaton/operaton/pull/3618), [PR #3634](https://github.com/operaton/operaton/pull/3634), [PR #3642](https://github.com/operaton/operaton/pull/3642), [PR #3658](https://github.com/operaton/operaton/pull/3658), [PR #3666](https://github.com/operaton/operaton/pull/3666).
+
+---
+
 ### Root Process Instance ID Added to MDC
 
 The **root process instance ID** is now included in the MDC (Mapped Diagnostic Context) under
