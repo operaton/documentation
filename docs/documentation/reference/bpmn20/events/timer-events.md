@@ -39,7 +39,7 @@ Example:
 
 ### Time Duration
 
-To specify how long the timer should run before it is fired, a timeDuration can be specified as a sub-element of timerEventDefinition. It is possible to define the duration in two different [ISO 8601 Durations](http://en.wikipedia.org/wiki/ISO_8601#Durations) formats:
+To specify how long the timer should run before it is fired, a timeDuration can be specified as a sub-element of timerEventDefinition. It is possible to define the duration in two different [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) formats:
 <ul>
   <li>PnYnMnDTnHnMnS</li>
   <li>PnW</li>
@@ -55,7 +55,7 @@ Example (interval lasting 10 days):
 
 ### Time Cycle
 
-Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals) standard.
+Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](https://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals) standard.
 
 Example (3 repeating intervals, each lasting 10 hours):
 
@@ -71,7 +71,7 @@ Additionally, you can specify a time cycle using cron expressions, the example b
 0 0/5 * * * ?
 ```
 
-Please see the <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> for additional information about using cron expressions.
+Please see the <a href="https://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> for additional information about using cron expressions.
 
 Note: The first symbol denotes seconds, not minutes as in normal Unix cron.
 

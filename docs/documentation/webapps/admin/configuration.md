@@ -56,7 +56,7 @@ export default {
 ## Localization
 
 Admin can be localized. Operaton maintains English and German translation files.
-You can find and download community maintained translation files at the [Operaton webapp translations repository](https://github.com/operaton/operaton-webapp-translations).
+You can find the current Admin locale files in the [Operaton repository](https://github.com/operaton/operaton/tree/main/webapps/frontend/public/app/admin/locales).
 
 The localization of Admin is contained in the `app/admin/locales/` directory. This
 directory contains a separate localization file for every available language. The file name
@@ -156,7 +156,7 @@ If disabled, the metrics can still be displayed on-demand via a checkbox.
 ## Advanced styles customization
 
 In addition to the basic `user-styles.css` file, you can edit the source style and layout files
-using [less](http://lesscss.org/) to change the overall appearance of Admin.
+using [less](https://lesscss.org/) to change the overall appearance of Admin.
 
 To customize the interface with `less`, start by having a look
 at the variables defined in the following files:

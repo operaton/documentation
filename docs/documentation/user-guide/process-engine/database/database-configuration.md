@@ -16,7 +16,7 @@ There are two ways to configure the database that the Operaton engine will use. 
 * `jdbcUsername`: username to connect to the database.
 * `jdbcPassword`: password to connect to the database.
 
-Note that the engine uses [Apache MyBatis](http://www.mybatis.org/) internally for persistence.
+Note that the engine uses [Apache MyBatis](https://mybatis.org/mybatis-3/) internally for persistence.
 
 The data source that is constructed based on the provided JDBC properties will have the default MyBatis connection pool settings. The following attributes can optionally be set to tweak that connection pool (taken from the MyBatis documentation):
 

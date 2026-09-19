@@ -203,11 +203,11 @@ the script engine before using it.
 
 [decision table]: ../../reference/dmn/decision-table/index.md
 [decision literal expression]: ../../reference/dmn/decision-literal-expression/index.md
-[juel]: http://juel.sourceforge.net/
+[juel]: https://juel.sourceforge.net/
 [EL]: https://jakarta.ee/specifications/expression-language/4.0/
-[DMN 1.2]: http://www.omg.org/spec/DMN/
-[Rhino]: https://developer.mozilla.org/de/docs/Rhino
-[Nashorn]: https://blogs.oracle.com/nashorn/
+[DMN 1.2]: https://www.omg.org/spec/DMN/
+[Rhino]: https://rhino.github.io/
+[Nashorn]: https://openjdk.org/projects/nashorn/
 [JSR-223]: https://www.jcp.org/en/jsr/detail?id=223
 [default EL]: ../../user-guide/dmn-engine/embed.md#change-default-expression-languages
 [configure EL]: ../../user-guide/dmn-engine/embed.md#customize-expression-and-script-resolving

@@ -11,7 +11,7 @@ menu:
 ---
 
 Diagnostics data is constantly collected and can be collected only by you. This allows you to access the collected data through the Java and REST APIs of Operaton.
-Being able to easily access the collected data is helpful when asking for help in our [forum](https://forum.operaton.org/) or when opening issues in our [issue tracker](https://app.camunda.com/jira) as it contains many of the information that are usually necessary to understand your Operaton setup.
+Being able to easily access the collected data is helpful when asking for help in our [forum](https://forum.operaton.org/) or when opening issues in our [issue tracker](https://github.com/operaton/operaton/issues), as it contains much of the information that is usually necessary to understand your Operaton setup.
 
 ## How to access the data
 
@@ -116,4 +116,4 @@ The counts are collected from the start of the engine or the last reported time 
 
 ## Source code
 
-In case you want further details, you can have a look at the implementation of the diagnostics topic in [our codebase](https://github.com/operaton/operaton/blob/master/engine/src/main/java/org/operaton/bpm/engine/impl/diagnostics/DiagnosticsCollector.java). The link leads you to the current `master` version of the feature.
+In case you want further details, you can have a look at the implementation of the diagnostics topic in [our codebase](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/diagnostics/DiagnosticsCollector.java). The link leads you to the current `main` version of the feature.

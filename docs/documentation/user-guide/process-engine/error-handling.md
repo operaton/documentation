@@ -84,7 +84,7 @@ for (Job failedJob : failedJobs) {
 
 ### Explicit Modeling
 
-Of course you can always explicitly model a retry mechanism as pointed out in [Where is the retry in BPMN 2.0](http://www.bpm-guide.de/2012/06/15/where-is-the-retry-in-bpmn-2-0/):
+Of course you can always explicitly model a retry mechanism:
 
 ![Example img](/img/documentation/user-guide/process-engine/retry.png)Retry Mechanism
 

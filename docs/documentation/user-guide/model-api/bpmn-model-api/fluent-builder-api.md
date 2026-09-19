@@ -11,7 +11,7 @@ menu:
 ---
 
 To create simple BPMN processes we provide a fluent builder API. With this API you can easily create basic
-processes in a few lines of code. In the [generate process fluent api](https://github.com/operaton/operaton-bpm-examples/tree/master/bpmn-model-api/generate-process-fluent-api) quickstart we
+processes in a few lines of code. In the [generate process fluent API](https://github.com/operaton/operaton-examples/tree/main/examples/bpmn-model-api-generate) quickstart we
 demonstrate how to create a rather complex process with 5 tasks and 2 gateways within less than 50 lines of code.
 
 The fluent builder API is not nearly complete but provides you with the following basic elements:

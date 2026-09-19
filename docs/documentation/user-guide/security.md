@@ -10,9 +10,9 @@ menu:
 
 ---
 
-This page provides an overview of how to secure a Operaton installation. For Operaton's security policy, a list of security notices and a guide how to report vulnerabilities, please visit the [general security documentation](/security).
+This page provides an overview of how to secure an Operaton installation. For Operaton's security policy, a list of security notices and a guide to reporting vulnerabilities, please visit the [general security documentation](/security).
 
-In order to secure a Operaton installation, Operaton itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific Operaton product and listed those in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others
+To secure an Operaton installation, Operaton itself must be configured correctly and it must be integrated correctly into its environment. This section also identifies areas where we consider security issues to be relevant for the specific Operaton product and lists them in the subsequent sections. Compliance for those areas is ensured based on common industry best practices and influenced by security requirements of standards like OWASP Top 10 and others.
 
 ## Deployment Options and Components
 
@@ -24,7 +24,7 @@ There are different ways of using Operaton and different components are provided
 * Web applications (Cockpit, Tasklist, ...): similar considerations to the REST API apply.
 
 
-Keep in mind that it is not recommended to use the pre-packaged distribution in production environment rather install the full distribution manually (for example [Tomcat manual installation](https://docs.operaton.org/docs/documentation/installation/full/tomcat/manual/)).
+Keep in mind that it is not recommended to use the pre-packaged distribution in production environments. Install the full distribution manually instead, for example with the [Tomcat manual installation](../installation/full/tomcat/manual.md).
 
 :::warning[Security Consideration]
   The pre-packaged distribution is intended for users who want a getting started experience. In case
@@ -164,7 +164,7 @@ To prevent this:
 1. Use group instead of user authorizations when possible.
 2. Complete tasks that were assigned to to-be-deleted users.
 3. Delete user authorizations via Admin web app or APIs.
-4. Don't allow to reuse an id of a deleted user.
+4. Don't allow reuse of the id of a deleted user.
 
 
 ### Spring Security OAuth2
@@ -207,8 +207,8 @@ standard.
 A [built-in password policy](../user-guide/process-engine/password-policy.md#built-in-password-policy)
 can be enabled that requires passwords to follow specific rules. However, you can achieve a much higher
 level of security by implementing a more sophisticated custom password policy (e.g., with the help of
-[Password Topology Blacklisting] (https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
-also see the [OWASP guide] (https://github.com/OWASP/CheatSheetSeries/blob/7d94e9a29174b8fd76235ca60f47245d1f34df1e/cheatsheets/Authentication_Cheat_Sheet.md#password-complexity)
+[Password Topology Blacklisting](https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
+also see the [OWASP guide](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html#password-complexity)
 on password complexity).
 
 You can find more information on how to enable the base password policy and how to implement a custom password policy in our [User Guide](../user-guide/process-engine/password-policy.md).
@@ -258,12 +258,12 @@ To ensure full security, please consult the documentation about [Cookie Security
 ### XML Security
 Operaton handles many XML files containing configurations of process engines, definitions of process models and more. In order to mitigate possible vulnerabilities that can be introduced by XML files, the following measures are activated by default:
 
-* Prevention against XML eXternal Entity (XXE) injections according to [OWASP](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.md)
+* Prevention against XML eXternal Entity (XXE) injections according to [OWASP](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
 * Feature Secure Processing (FSP) of XML files according to [Oracle](https://docs.oracle.com/javase/8/docs/api/javax/xml/XMLConstants.html#FEATURE_SECURE_PROCESSING) which introduces [limits](https://docs.oracle.com/javase/tutorial/jaxp/limits/limits.html) for several XML properties
 
 If the limitations on XML files introduced by XXE prevention need to be removed, XXE processing can be enabled via `enableXxeProcessing` in the [process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdx#enableXxeProcessing).
 
-FSP itself can not be disabled in the engine. All properties that are influenced by this can however be configured in the environment via system properties and the `jaxp.properties` file. See the [Oracle documentation](https://docs.oracle.com/javase/tutorial/jaxp/limits/using.html) on how to determine the right limits and how to set them.
+FSP itself cannot be disabled in the engine. All properties that are influenced by this can however be configured in the environment via system properties and the `jaxp.properties` file. See the [Oracle documentation](https://docs.oracle.com/javase/tutorial/jaxp/limits/using.html) on how to determine the right limits and how to set them.
 
 Since BPMN schema validation requires external XSD documents, the property `http://javax.xml.XMLConstants/property/accessExternalSchema` is by default configured to value `all`, which enables referencing XML schemas by any supported protocol. This can be overridden via the system property `javax.xml.accessExternalSchema`, however a value set via `jaxp.properties` does not take effect.
 
@@ -287,7 +287,7 @@ about the several headers, the defaults and how to configure the HTTP headers ac
 Process variables can be submitted as Java objects using the JDK built-in `application/x-java-serialized-object` data format, JSON or XML along with a Java class name via the Operaton REST API and web applications.
 On server side, they can then be deserialized into Java objects, so that Java code can work with them in a native way. See [Operaton Spin](../user-guide/data-formats/configuring-spin-integration.md) for details and this <RestRef operation="putLocalExecutionVariable" text="REST API endpoint" tag="Execution" /> for an example.
 
-If an attacker can access these endpoints, they can exploit so-called _serialization gadgets_, i.e. classes that run vulnerable code during deserialization resulting in remote code execution in the general case. For example, consider a class constructor that makes a REST request based on a field value. An attacker could submit a forged variable value so that during deserialization, when the constructor is called, the application server would make an arbitrary REST request to a destination of the attacker's choice. For details, see [OWASP's description of Deserialization of untrusted data](https://www.owasp.org/index.php/Deserialization_of_untrusted_data).
+If an attacker can access these endpoints, they can exploit so-called _serialization gadgets_, i.e. classes that run vulnerable code during deserialization resulting in remote code execution in the general case. For example, consider a class constructor that makes a REST request based on a field value. An attacker could submit a forged variable value so that during deserialization, when the constructor is called, the application server would make an arbitrary REST request to a destination of the attacker's choice. For details, see [OWASP's description of Deserialization of untrusted data](https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data).
 
 ### Java objects using the JDK built-in `application/x-java-serialized-object` data format
 
@@ -305,7 +305,7 @@ In case you want to rely on allowed package and class names from the engine conf
 An implementation of this interface registered as validator will be provided with the defined packages and classes from the engine configuration upon initialization of the engine via `#setAllowedClasses` and `#setAllowedPackages`.
 
 :::note[Jackson Type Whitelisting]
-  Spin's JSON implementation is based on Jackson. If you configure Operaton Spin to deserialize polymorphic classes based on type information included in the JSON itself (i.e. where the JSON contains explicit class names), we strongly recommend to additionally enable Jackson's [Whitelisting feature](https://medium.com/@cowtowncoder/jackson-2-10-safe-default-typing-2d018f0ce2ba) starting with version 2.10. Operaton's whitelisting feature does not cover this case.
+  Spin's JSON implementation is based on Jackson. If you configure Operaton Spin to deserialize polymorphic classes based on type information included in the JSON itself (i.e. where the JSON contains explicit class names), we strongly recommend to additionally enable Jackson's [PolymorphicTypeValidator feature](https://github.com/FasterXML/jackson/wiki/Jackson-Release-2.10#safe-default-typing) starting with version 2.10. Operaton's whitelisting feature does not cover this case.
 :::
 
 ### User operation log settings for synchronous operations affecting multiple entities
@@ -376,7 +376,7 @@ When it comes to error handling, from a security perspective, the top goal is to
 from obtaining technical details about the system, which for example, a stack trace could reveal
 (see OWASP's [Improper Error Handling article] for more information).
 
-[Improper Error Handling article]: https://www.owasp.org/index.php/Improper_Error_Handling
+[Improper Error Handling article]: https://owasp.org/www-community/Improper_Error_Handling
 
 In this section, we describe what we do to prevent disclosing technical details about the system.
 
@@ -412,10 +412,9 @@ Please find below external documentation on how to configure your application se
     * [Servlet Container Configuration](https://docs.jboss.org/author/display/WFLY/Undertow%20subsystem%20configuration.html#108626010_Undertowsubsystemconfiguration-Servletcontainerconfiguration)
     * [Model Reference](https://wildscribe.github.io/WildFly/12.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
 * JBoss EAP 7.0+: Official Documentation
-    * [Servlet Container Configuration](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/reference_material#idm139812627222560)
-    * [Model Refernce](https://wildscribe.github.io/JBoss%20EAP/7.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
+    * [Servlet Container Configuration](https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/reference_material)
+    * [Model Reference](https://wildscribe.github.io/JBoss%20EAP/7.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
 * Operaton Run/Spring Boot 2.3+
     * Official Documentation
         * [Javadocs about ErrorProperties.IncludeStacktrace](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/api/org/springframework/boot/autoconfigure/web/ErrorProperties.IncludeStacktrace.html)
-    * Alternative Resources
-        * [Error Handling on Baeldung](https://www.baeldung.com/spring-boot-configure-tomcat#2-error-handling)
+        * [Common application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
