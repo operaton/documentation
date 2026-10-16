@@ -230,6 +230,36 @@ the 3.33 LTS line.
 This implements [PR #3386](https://github.com/operaton/operaton/pull/3386),
 [PR #3507](https://github.com/operaton/operaton/pull/3507).
 
+---
+
+### Docker Images for Java 17, 21 and 25
+
+The [Operaton Docker images](https://hub.docker.com/r/operaton/operaton) can now be built for
+a specific Java version. A new build argument `JAVA_VERSION` (`17`, `21` or `25`) selects the
+JDK. The default is `17`, so existing tags keep their content.
+
+Images for Java 21 and 25 carry a `-jdk21` or `-jdk25` tag suffix. Java 17 images are
+additionally tagged with `-jdk17`, which is identical to the tag without suffix:
+
+| Tag                | Java |
+|--------------------|------|
+| `<version>`        | 17   |
+| `<version>-jdk17`  | 17   |
+| `<version>-jdk21`  | 21   |
+| `<version>-jdk25`  | 25   |
+
+The suffix applies to snapshot tags as well, for example `SNAPSHOT-jdk25` or
+`2.1.6-SNAPSHOT-jdk21`. The CI workflows now build and test all three Java versions.
+
+To build an image yourself:
+
+```shell
+docker build --build-arg DISTRO=run --build-arg JAVA_VERSION=21 -t operaton/operaton:jdk21 .
+```
+
+This implements [PR #42](https://github.com/operaton/operaton-docker/pull/42) in the
+`operaton-docker` repository.
+
 ## API
 
 ### Database Schema
