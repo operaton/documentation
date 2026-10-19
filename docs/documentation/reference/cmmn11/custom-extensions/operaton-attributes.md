@@ -386,7 +386,7 @@ The following attributes are extension attributes for the `operaton` namespace `
   <tr>
     <th>Possible Values</th>
     <td>
-      An expression which evaluates to a <code>java.util.Date</code>, <code>java.util.String</code> (<a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> formatted) or <code>null</code>, e.g., ```${dueDate```
+      An expression which evaluates to a <code>java.util.Date</code>, <code>java.util.String</code> (<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> formatted) or <code>null</code>, e.g., ```${dueDate```
     </td>
   </tr>
   <tr>

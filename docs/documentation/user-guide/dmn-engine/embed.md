@@ -334,12 +334,12 @@ For more information on how to configure and use SLF4J, please refer to the
 
 
 [evaluation listener]: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html">DmnDecisionTableEvaluationListener</a> Interface
-[DMN model API]: https://github.com/operaton/operaton-dmn-model
+[DMN model API]: ../model-api/dmn-model-api/
 [data types]: ../../user-guide/dmn-engine/data-types.md
 [hit policies]: ../reference/dmn/decision-table/hit-policy.md
-[SLF4J]: http://www.slf4j.org/
-[Logback]: http://logback.qos.ch/
-[user manual]: http://www.slf4j.org/manual.html
+[SLF4J]: https://www.slf4j.org/
+[Logback]: https://logback.qos.ch/
+[user manual]: https://www.slf4j.org/manual.html
 [DMN decision table]: ../reference/dmn/decision-table/index.md
 [DMN decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
 [expressions]: ../../user-guide/dmn-engine/expressions-and-scripts.md

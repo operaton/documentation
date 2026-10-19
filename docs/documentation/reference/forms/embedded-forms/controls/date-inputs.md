@@ -41,7 +41,7 @@ The Form SDK itself does not provide any custom components or widgets. As such i
 Inside Operaton Tasklist, datepicker support is provided through Angular UI.
 :::
 
-You can use the [Angular UI datepicker](http://angular-ui.github.io/bootstrap/)
+You can use the [Angular UI datepicker](https://angular-ui.github.io/bootstrap/)
 directive to offer a datepicker for the date input field. The complete markup of the input field
 including the datepicker button is shown below.
 

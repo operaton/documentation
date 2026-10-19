@@ -361,7 +361,7 @@ Special built-in context functions are available while evaluating expressions:
       <td><code>DateTime</code></td>
       <td>
         Returns a Joda-Time DateTime object of the current date. Please see the
-        <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">Joda-Time</a>
+        <a href="https://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">Joda-Time</a>
         documentation for all available functions.
       </td>
     </tr>
@@ -387,7 +387,7 @@ If the Operaton Spin process engine plugin is activated, the Spin functions `S`,
 
 
 [JakartaEL](https://jakarta.ee/specifications/expression-language/4.0/)
-[JUEL](http://juel.sourceforge.net/)
+[JUEL](https://juel.sourceforge.net/)
 [official documentation](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html)
 [variables](#availability-of-variables-and-functions-inside-expression-language)
 [Spring](../spring-framework-integration/index.md)

@@ -20,16 +20,13 @@ box:
 * [FreeMarker][freemarker]
 
 The script engine Freemarker wrapper implementation can be found in the
-[operaton-bpmn-platform](https://github.com/operaton/operaton/tree/master/freemarker-template-engine) repository.
+[Operaton repository](https://github.com/operaton/operaton/tree/main/freemarker-template-engine).
 
 The following template engines are provided as optional community extensions:
 
 * [Apache Velocity][velocity]
 * [Saxon XQuery](https://www.saxonica.com/html/documentation12/using-xquery/)
 * [Saxon XSLT](https://www.saxonica.com/html/documentation12/using-xsl/)
-
-The script engine wrapper implementations can be found in the
-[operaton-template-engines-jsr223][operaton-template-engines-jsr223] community hub repository.
 
 ## Install a Template Engine
 
@@ -93,7 +90,7 @@ classpath. The procedure for this depends on the application server. In Apache T
 libraries have to be added to the shared `lib/` folder.
 
 :::note
-  [FreeMarker](http://freemarker.org/) is pre-installed in the Operaton pre-packaged distribution.
+  [FreeMarker](https://freemarker.apache.org/) is pre-installed in the Operaton pre-packaged distribution.
 :::
 
 
@@ -194,13 +191,7 @@ attribute.
 Finally, the input of the transformation must be mapped using the special variable `operaton_source`
 using a `<operaton:inputParameter ... />` mapping.
 
-A [full example of the XSLT Template Engine][xslt-example] in Operaton can be found in the
-examples' repository.
-
-
-[freemarker]: http://freemarker.org/
-[velocity]: http://velocity.apache.org/
-[operaton-template-engines-jsr223]: https://github.com/operaton-community-hub/operaton-template-engines-jsr223
+[freemarker]: https://freemarker.apache.org/
+[velocity]: https://velocity.apache.org/
 [use-scripts]: ../process-engine/scripting.md
 [script-source]: ../process-engine/scripting.md#script-source
-[xslt-example]: https://github.com/operaton/operaton-bpm-examples/tree/master/scripttask/xslt-scripttask
