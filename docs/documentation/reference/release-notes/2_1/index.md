@@ -430,6 +430,22 @@ No configuration or code changes are required on the client side.
 
 ## Patch Releases
 
+### 2.1.6
+
+#### Security Vulnerabilities
+
+- **[fix(deps): patch vulnerable transitive dependencies on 2.1](https://github.com/operaton/operaton/pull/3859)** — Pinned patched versions of vulnerable transitive dependencies: `httpcore5-h2` (`5.3.6` → `5.4.4`, [GHSA-v3jc-474w-2wm6](https://github.com/advisories/GHSA-v3jc-474w-2wm6)), `jakarta.mail` (`2.0.1` → `2.0.2`, [GHSA-9342-92gg-6v29](https://github.com/advisories/GHSA-9342-92gg-6v29)), and refreshed the webapp npm transitive packages `form-data` (`4.0.5` → `4.0.6`, [GHSA-hmw2-7cc7-3qxx](https://github.com/advisories/GHSA-hmw2-7cc7-3qxx)) and `qs` (`6.14.2` → `6.16.1`). (#3859)
+
+#### Bug Fixes
+
+- **[fix(engine): `CollectEntriesDecisionResultMapper#mapDecisionResult` must always return an immutable list](https://github.com/operaton/operaton/pull/3741)** — A DMN decision with the `Collect` hit policy previously returned an immutable empty list when no rules matched but a mutable list when rules matched, causing an `UnsupportedOperationException` when scripts tried to modify the result. The mapper now consistently returns an immutable list. Fixes [#3713](https://github.com/operaton/operaton/issues/3713). (#3741)
+
+### 2.1.5
+
+#### Dependency Upgrades
+
+- Routine maintenance release rolling up dependency and GitHub Actions updates (including a bump of `httpcore5` to `5.4.4` and `resteasy-bom` to `7.0.5.Final`). No functional changes.
+
 ### 2.1.4
 
 #### Dependency Upgrades
