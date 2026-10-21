@@ -1,5 +1,5 @@
 ---
-title: "2.2 (DRAFT)"
+title: "2.2"
 sidebar_position: 22
 ---
 
