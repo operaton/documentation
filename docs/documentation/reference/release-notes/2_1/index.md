@@ -435,6 +435,11 @@ No configuration or code changes are required on the client side.
 #### Security Vulnerabilities
 
 - **[fix(deps): patch vulnerable transitive dependencies on 2.1](https://github.com/operaton/operaton/pull/3859)** — Pinned patched versions of vulnerable transitive dependencies: `httpcore5-h2` (`5.3.6` → `5.4.4`, [GHSA-v3jc-474w-2wm6](https://github.com/advisories/GHSA-v3jc-474w-2wm6)), `jakarta.mail` (`2.0.1` → `2.0.2`, [GHSA-9342-92gg-6v29](https://github.com/advisories/GHSA-9342-92gg-6v29)), and refreshed the webapp npm transitive packages `form-data` (`4.0.5` → `4.0.6`, [GHSA-hmw2-7cc7-3qxx](https://github.com/advisories/GHSA-hmw2-7cc7-3qxx)) and `qs` (`6.14.2` → `6.16.1`). (#3859)
+- **[fix(engine-rest): bump dompurify to 3.4.17 in REST API docs](https://github.com/operaton/operaton/pull/3935)** — The REST API documentation page now bundles DOMPurify `3.4.17` (was `3.4.0`), fixing [GHSA-mrv2-3pqr-j5jr](https://github.com/advisories/GHSA-mrv2-3pqr-j5jr). (#3935)
+
+#### Dependency Upgrades
+
+- **[Update Spring Boot to 4.0.9](https://github.com/operaton/operaton/pull/3920)** — Spring Boot `4.0.8` → `4.0.9` and Spring Framework `7.0.9` → `7.0.10`. The Run distribution now resolves Tomcat `11.0.27`. (#3920)
 
 #### Bug Fixes
 
