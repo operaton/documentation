@@ -293,7 +293,14 @@ This implements [PR #42](https://github.com/operaton/operaton-docker/pull/42) in
 
 ### Database Schema
 
-Operaton 2.2 does not introduce changes to the database schema.
+Operaton 2.2 raises the database schema version from **7.24** to **7.25**. The tables, columns and indexes
+do not change: the upgrade scripts `<database>_engine_7.24_to_7.25.sql` only record the new version in
+`ACT_GE_SCHEMA_LOG`.
+
+Run the upgrade script for your database, or apply the Liquibase changelog, so that `ACT_GE_SCHEMA_LOG`
+reports the version that matches the engine. The scripts are part of the `operaton-sql-scripts-7.25.0.tar.gz`
+asset of the [2.2.0 GitHub release](https://github.com/operaton/operaton/releases/tag/v2.2.0). See
+[Database schema](../../../installation/database-schema.md) for the update procedure.
 
 ### REST API
 
