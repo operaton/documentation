@@ -302,6 +302,8 @@ reports the version that matches the engine. The scripts are part of the `operat
 asset of the [2.2.0 GitHub release](https://github.com/operaton/operaton/releases/tag/v2.2.0). See
 [Database schema](../../../installation/database-schema.md) for the update procedure.
 
+This was introduced by [PR #3225](https://github.com/operaton/operaton/pull/3225).
+
 ### REST API
 
 No REST API contract changes in this milestone release.
