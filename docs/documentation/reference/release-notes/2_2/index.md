@@ -27,6 +27,15 @@ The Tomcat and WildFly distributions now ship the new web apps as well, **disabl
 the legacy web apps remain the standard. Enable them with the system property
 `operaton.bpm.webapp.neo.enabled=true` or the environment variable
 `OPERATON_BPM_WEBAPP_NEO_ENABLED=true` (the same property as in the Spring Boot starter).
+When enabled, they are served at the server root (`http://localhost:8080/`); the legacy web apps
+stay at `/operaton/`. While disabled, `/` redirects to `/operaton/`.
+
+:::note Tomcat distribution: `ROOT` web app replaced
+The new web apps are deployed as `webapps/ROOT` in the Tomcat distribution, so Tomcat's default
+`ROOT` application is no longer shipped. If you deploy your own application as `ROOT` into the
+distribution, remove or replace the shipped `webapps/ROOT` when upgrading.
+:::
+
 In Spring Boot, the new web apps can also be served from a sub-path configured via
 `operaton.bpm.webapp.neo.application-path`.
 
@@ -78,7 +87,7 @@ PR #326 (https://github.com/operaton/operaton/pull/326).
 
 ### Spring Boot 4.1 Upgrade
 
-Operaton 2.2 upgrades the Spring Boot baseline from **4.0.x** to **Spring Boot 4.1**. This
+Operaton 2.2 upgrades the Spring Boot baseline from **4.0.x** to **Spring Boot 4.1** (4.1.2 at release). This
 upgrade brings in the latest Spring Framework improvements, updated dependency baselines, and
 continued alignment with the Spring ecosystem's active release line.
 
@@ -86,7 +95,8 @@ Existing Spring Boot applications built on Operaton 2.1 should migrate smoothly.
 [Spring Boot 4.1 migration guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.1-Release-Notes)
 for any application-level adjustments.
 
-This implements [PR #2844](https://github.com/operaton/operaton/pull/2844).
+This implements [PR #2844](https://github.com/operaton/operaton/pull/2844),
+[PR #3913](https://github.com/operaton/operaton/pull/3913).
 
 ---
 
