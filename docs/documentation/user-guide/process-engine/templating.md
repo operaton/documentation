@@ -145,6 +145,25 @@ payload of a `operaton:connector`.
 </bpmn2:serviceTask>
 ```
 
+For inline scripts in an input parameter, template engines other than JUEL are subject to
+dynamic script-source detection: if the script content starts with `${` or `#{` after
+leading and trailing whitespace is trimmed, Operaton treats it as an expression that resolves
+to a script source.
+If those characters are part of the template itself, prefix the content with a comment
+recognized by the template engine, or use an external resource instead. For example, an
+inline FreeMarker template can start with an escaped FreeMarker comment:
+
+```xml
+<operaton:inputParameter name="message">
+  <operaton:script scriptFormat="freemarker">
+    &lt;#-- Keep this as an inline FreeMarker template. --&gt;${name} likes:
+    &lt;#list icecreamtypes as ict&gt;
+      * ${ict}
+    &lt;/#list&gt;
+  </operaton:script>
+</operaton:inputParameter>
+```
+
 ## Use XSLT as Template Engine
 
 ### Use XSLT Template Engine with an embedded process engine
