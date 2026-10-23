@@ -1,5 +1,5 @@
 ---
-title: "2.2 (DRAFT)"
+title: "2.2"
 sidebar_position: 22
 ---
 
@@ -22,6 +22,17 @@ authorization rule that should have denied `/api/admin/**` did not.
 
 This implements [PR #3296](https://github.com/operaton/operaton/pull/3296) and
 [PR #3515](https://github.com/operaton/operaton/pull/3515).
+
+The Tomcat and WildFly distributions now ship the new web apps as well, **disabled by default**;
+the legacy web apps remain the standard. Enable them with the system property
+`operaton.bpm.webapp.neo.enabled=true` or the environment variable
+`OPERATON_BPM_WEBAPP_NEO_ENABLED=true` (the same property as in the Spring Boot starter).
+In Spring Boot, the new web apps can also be served from a sub-path configured via
+`operaton.bpm.webapp.neo.application-path`.
+
+This implements [PR #3884](https://github.com/operaton/operaton/pull/3884),
+[PR #3905](https://github.com/operaton/operaton/pull/3905) and
+[PR #3678](https://github.com/operaton/operaton/pull/3678).
 
 ---
 
@@ -211,24 +222,32 @@ This implements [PR #3342](https://github.com/operaton/operaton/pull/3342).
 
 ### Security: Pinned Vulnerable Transitive Netty and Jackson Versions
 
-Operaton 2.2 pins `netty-bom` to **4.2.16.Final** and adds a `jackson-bom` (Jackson 3,
-`tools.jackson`) import at **3.1.5**, overriding the vulnerable transitive versions still
-managed by the current Quarkus (Netty **4.2.15**, affected by CVE-2026-56745 and related
+Operaton 2.2 pins `netty-bom` (now at **4.2.19.Final**) and adds a `jackson-bom` (Jackson 3,
+`tools.jackson`) import (now at **3.1.8**), overriding vulnerable transitive versions
+managed by the Quarkus (Netty **4.2.15**, affected by CVE-2026-56745 and related
 advisories) and Spring Boot (Jackson 3 **3.1.4**, affected by CVE-2026-59889) dependency
 platforms. Both pins are temporary and documented as removable once the respective upstream
 BOMs ship a fixed version.
 
 This resolves [PR #3390](https://github.com/operaton/operaton/pull/3390).
 
+The REST API documentation page now bundles DOMPurify **3.4.17**, fixing
+[GHSA-cg2g-xh64-v4q7](https://github.com/advisories/GHSA-cg2g-xh64-v4q7) and
+[GHSA-mrv2-3pqr-j5jr](https://github.com/advisories/GHSA-mrv2-3pqr-j5jr)
+([PR #3933](https://github.com/operaton/operaton/pull/3933)).
+
 ---
 
-### Quarkus Updated to 3.33.3.1
+### Quarkus Updated to 3.40 LTS
 
-The Quarkus platform dependency has been updated to **3.33.3.1**, the latest patch release on
-the 3.33 LTS line.
+The Quarkus platform dependency has been updated from the 3.33 LTS line to **3.40.1.1**, on
+the new Quarkus 3.40 LTS line. Quarkus applications using the Operaton extension should align
+their Quarkus platform version accordingly.
 
 This implements [PR #3386](https://github.com/operaton/operaton/pull/3386),
-[PR #3507](https://github.com/operaton/operaton/pull/3507).
+[PR #3507](https://github.com/operaton/operaton/pull/3507),
+[PR #3849](https://github.com/operaton/operaton/pull/3849),
+[PR #3903](https://github.com/operaton/operaton/pull/3903).
 
 ---
 
@@ -302,18 +321,18 @@ This release is feature complete and API-compatible with [**Camunda 7 CE 7.24**]
 
 Operaton is based on:
 
-- **Spring Boot 4.1.0**
-- **Spring Framework 7.0.7**
+- **Spring Boot 4.1.2**
+- **Spring Framework 7.0.10**
 
 ### Quarkus Extension
 
-The Operaton Quarkus extension is based on **Quarkus 3.33.3.1 LTS**.
+The Operaton Quarkus extension is based on **Quarkus 3.40.1.1 LTS**.
 
 ### Distributions
 
-The Tomcat distribution is based on **Tomcat 11.0.26**.
+The Tomcat distribution is based on **Tomcat 11.0.27**.
 
-The WildFly distribution is based on **WildFly 41.0.0.Final**.
+The WildFly distribution is based on **WildFly 41.0.1.Final**.
 
 ### Database Compatibility
 
@@ -340,8 +359,8 @@ Operaton supports the following scripting languages:
 
 | Language   | Engine             | Version  |
 |------------|--------------------|----------|
-| JavaScript | GraalVM JavaScript | 25.0.3   |
-| Groovy     | Groovy             | 5.1.2    |
+| JavaScript | GraalVM JavaScript | 25.4.4.1.1 |
+| Groovy     | Groovy             | 5.1.3    |
 | Python     | Jython             | 2.7.4    |
 | Ruby       | GraalVM Ruby       | 9.1.17.0 |
 
@@ -351,9 +370,10 @@ The following non-test dependencies have been upgraded since Operaton 2.1:
 
 | Dependency               | 2.1           | 2.2            |
 |--------------------------|---------------|----------------|
-| Spring Boot              | 4.0.6         | 4.1.0          |
-| Apache Tomcat            | 11.0.21       | 11.0.25        |
-| WildFly                  | 38.0.1.Final  | 41.0.0.Final   |
-| Jackson                  | 2.21.2        | 2.21.4         |
-| Groovy                   | 5.0.5         | 5.1.0          |
-| Quarkus                  | 3.33.1 (LTS)  | 3.33.3.1 (LTS) |
+| Spring Boot              | 4.0.6         | 4.1.2          |
+| Apache Tomcat            | 11.0.21       | 11.0.27        |
+| WildFly                  | 38.0.1.Final  | 41.0.1.Final   |
+| Jackson                  | 2.21.2        | 2.22.4         |
+| Groovy                   | 5.0.5         | 5.1.3          |
+| Quarkus                  | 3.33.1 (LTS)  | 3.40.1.1 (LTS) |
+| GraalVM JavaScript       | 25.0.3        | 25.4.4.1.1     |
