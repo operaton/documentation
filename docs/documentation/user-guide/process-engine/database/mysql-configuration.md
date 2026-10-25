@@ -49,4 +49,4 @@ Please find below examples of unwanted behavior that occurs, in case the flag `s
   e.g., `2021-01-01 15:00:46.731` is rounded to `2021-01-01 15:00:47`. Please also see the official [MySQL documentation](https://dev.mysql.com/doc/refman/5.6/en/fractional-seconds.html).
 
 [mysql-schema-milliseconds]: #database-schema
-[mysql-fract-secs]: https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-connp-props-datetime-types-processing.html#cj-conn-prop_sendFractionalSeconds
+[mysql-fract-secs]: https://dev.mysql.com/doc/connector-j/en/connector-j-connp-props-datetime-types-processing.html#cj-conn-prop_sendFractionalSeconds
