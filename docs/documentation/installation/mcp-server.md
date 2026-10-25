@@ -9,7 +9,7 @@ description: "Install the Operaton MCP server to connect AI assistants to the Op
 
 The [Operaton MCP server](https://github.com/operaton/operaton-mcp) is a [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that exposes the Operaton REST API to AI assistants such as Claude. It is published on npm as [`@operaton/mcp`](https://www.npmjs.com/package/@operaton/mcp).
 
-See the [User Guide](../user-guide/mcp-server/index.md) for an overview, the configuration reference and the available tools.
+See the [User Guide](../user-guide/mcp-server/index.md) for an overview, the [configuration reference](../user-guide/mcp-server/configuration.md) and the available tools.
 
 ## Prerequisites
 
@@ -54,6 +54,8 @@ MCP clients start the server as a local process and pass the configuration as en
 ```
 
 Restart Claude Desktop afterwards. Other MCP clients use the same `command`, `args` and `env` settings in their own configuration format.
+
+The [Configuration](../user-guide/mcp-server/configuration.md) page in the User Guide describes the setup in detail: all environment variables, OIDC authentication, configuration files and access control guards.
 
 On startup, the server checks that the Operaton REST API is reachable and exits with an error if it is not.
 
