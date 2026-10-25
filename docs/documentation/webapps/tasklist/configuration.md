@@ -19,7 +19,7 @@ available:
 
 Dates can be configured by specifying a `dateFormat` object. The values of the properties of this
 object must be strings representing date formats in accordance with
-[moment.js](http://momentjs.com). Following date formats are used within Tasklist:
+[moment.js](https://momentjs.com). Following date formats are used within Tasklist:
 
 * `monthName` represents the name of a month (e.g., January).
 * `day` represents the number of a day in a month (1..31).
@@ -45,7 +45,7 @@ export default {
 ## Localization
 
 Tasklist can be localized. Operaton maintains English and German translation files.
-You can find and download community maintained translation files at the [Operaton webapp translations repository](https://github.com/operaton/operaton-webapp-translations).
+You can find the current Tasklist locale files in the [Operaton repository](https://github.com/operaton/operaton/tree/main/webapps/frontend/public/app/tasklist/locales).
 
 The localization of Tasklist is contained in the `app/tasklist/locales/` directory. This
 directory contains a separate localization file for every available language. The file name
@@ -89,10 +89,6 @@ export default {
 }
 ```
 This includes a `custom-module/module.js` file. The path is relative to the `app/tasklist` folder in the Operaton webapp .war file.
-
-You can find a complete example about how to use `customScripts` to develop a Tasklist Plugin in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/tasklist/cats-plugin).
-
-
 
 ## Shortcuts
 
@@ -183,7 +179,7 @@ export default {
 ## Advanced Styles Customization
 
 In addition to the basic `user-styles.css` file, you can edit the source style- and layout files
-using [less](http://lesscss.org/) to change the overall appearance of Tasklist.
+using [Less](https://lesscss.org/) to change the overall appearance of Tasklist.
 
 If you want to customize the interface with `less`, you should probably start by having a look
 at the variables defined in the following files:

@@ -7,7 +7,7 @@ description: "Install and configure the Full Distribution on a vanilla WildFly A
 ---
 ## Install the Full Distribution on a WildFly Application Server manually
 
-This document describes the installation of Operaton and its components on a vanilla [WildFly Application Server](http://www.wildfly.org) or JBoss EAP 7 / 8.
+This document describes the installation of Operaton and its components on a vanilla [WildFly Application Server](https://www.wildfly.org/) or JBoss EAP 7 / 8.
 
 :::note[Reading this Guide]
 This guide uses a number of variables to denote common path names and constants:
@@ -136,8 +136,8 @@ typically `bin`.
 Using H2 as a database is ideal for development purposes but is not recommended for usage in a productive environment.
 These links point you to resources for other databases:
 
-* [How to configure an Oracle database](http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle)
-* [How to configure a MySQL database](http://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql)
+* [How to configure an Oracle database](https://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle)
+* [How to configure a MySQL database](https://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql)
 
 ### Optional Components
 
@@ -259,7 +259,6 @@ See one of the following ways to fix this:
 2. Exclude implicitly added JAX-RS dependencies.
  * Add a `jboss-deployment-structure.xml` file to you application in the WEB-INF folder.
  * Exclude the JAX-RS subsystem and add the Jackson dependencies, with the version which is used by the Operaton Spin Plugin.
- * This solution is also shown in the [Jackson Annotation Example for WildFly](https://github.com/operaton/operaton-bpm-examples/blob/master/wildfly/jackson-annotations) in the Operaton example repository.
 
 See this [Forum Post](https://forum.operaton.org/t/operaton-json-marshalling-and-jsonignore/271/19) for other approaches and information.
 
