@@ -87,6 +87,14 @@ Only these default combinations are recommended (and supported) by Operaton.
     <td>2.1.5</td>
     <td>3.33.3.2 (LTS)</td>
   </tr>
+  <tr>
+    <td>2.1.6</td>
+    <td>3.33.4.1 (LTS)</td>
+  </tr>
+  <tr>
+    <td>2.2.0</td>
+    <td>3.40.1.1 (LTS)</td>
+  </tr>
 </table>
 
 In case a certain Quarkus version has a bug, you can override the existing Quarkus version by adding the following

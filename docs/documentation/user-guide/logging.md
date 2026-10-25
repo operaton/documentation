@@ -51,7 +51,7 @@ Add the logback dependency
 <dependency>
   <groupId>ch.qos.logback</groupId>
   <artifactId>logback-classic</artifactId>
-  <version>1.5.38</version>
+  <version>1.6.5</version>
 </dependency>
 ```
 
