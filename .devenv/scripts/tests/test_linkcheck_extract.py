@@ -81,6 +81,10 @@ class TestExtractText(unittest.TestCase):
         text = "1. Step\n   ```xml\n   <a href=\"http://nope\"/>\n   ```\n2. [b](yes.md)\n"
         self.assertEqual(raws(text), [(5, "yes.md")])
 
+    def test_triple_backtick_inline_code_is_not_a_fence(self):
+        text = "```$ ./run --flag```\n[a](yes.md)\n```\ncode\n```\n[b](yes2.md)\n"
+        self.assertEqual(raws(text), [(2, "yes.md"), (6, "yes2.md")])
+
     def test_longer_fence_needs_longer_close(self):
         text = "````md\n```\n[a](nope.md)\n```\n````\n[b](yes.md)\n"
         self.assertEqual(raws(text), [(6, "yes.md")])
