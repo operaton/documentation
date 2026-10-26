@@ -248,8 +248,8 @@ If a variable is set in the context of the `SubProcess` instance, then only the 
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#variablename">operaton:variableName</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#variableevents">operaton:variableEvents</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#variablename">operaton:variableName</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#variableevents">operaton:variableEvents</a>,
     </td>
   </tr>
   <tr>

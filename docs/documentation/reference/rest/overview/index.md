@@ -190,7 +190,7 @@ A JSON object with the following properties:
     <td>
         The code allows your client application to identify the error in an automated fashion.
         You can look up the meaning of all built-in codes and learn how to add custom codes in the
-        <a href="../../../user-guide/process-engine/error-handling.md#exception-codes">User Guide</a>.
+        <a href="/docs/documentation/user-guide/process-engine/error-handling#exception-codes">User Guide</a>.
     </td>
   </tr>
   <tr>

@@ -7,7 +7,7 @@ sidebar_position: 20
 
 :::note[Heads Up!]
 This page provides information on the legacy FEEL Engine, that was used before the
-current <a href="../user-guide/dmn-engine/feel/index.md">Scala-based FEEL Engine</a>
+current <a href="/docs/documentation/user-guide/dmn-engine/feel/">Scala-based FEEL Engine</a>
 was integrated into Operaton.
 :::
 

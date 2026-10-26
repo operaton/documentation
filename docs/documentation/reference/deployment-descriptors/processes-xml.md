@@ -65,12 +65,12 @@ The `processes.xml` may be left blank (can be empty). In this case, default valu
     <td><code>&lt;process-engine&gt;</code></td>
     <td><code>&lt;process-application&gt;</code></td>
     <td>false</td>
-    <td>See <a href="../reference/deployment-descriptors/tags/process-engine.mdx">process-engine Reference</a></td>
+    <td>See <a href="/docs/documentation/reference/deployment-descriptors/tags/process-engine">process-engine Reference</a></td>
   </tr>
     <tr>
     <td><code>&lt;process-archive&gt;</code></td>
     <td><code>&lt;process-application&gt;</code></td>
     <td>false</td>
-    <td>See <a href="../reference/deployment-descriptors/tags/process-archive.md">process-archive Reference</a></td>
+    <td>See <a href="/docs/documentation/reference/deployment-descriptors/tags/process-archive">process-archive Reference</a></td>
   </tr>
 </table>

@@ -41,24 +41,24 @@ This will ensure that the process engine creates a process instance when the pro
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formhandlerclass">operaton:formHandlerClass</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formkey">operaton:formKey</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formref">operaton:formRef</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formrefbinding">operaton:formRefBinding</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formrefversion">operaton:formRefVersion</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#initiator">operaton:initiator</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formhandlerclass">operaton:formHandlerClass</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formkey">operaton:formKey</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formref">operaton:formRef</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formrefbinding">operaton:formRefBinding</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formrefversion">operaton:formRefVersion</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#initiator">operaton:initiator</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formdata">operaton:formData</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formproperty">operaton:formProperty</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formdata">operaton:formData</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formproperty">operaton:formProperty</a>,
     </td>
   </tr>
   <tr>

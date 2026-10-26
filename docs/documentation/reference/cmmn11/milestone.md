@@ -75,7 +75,7 @@ milestoneInstance.isCompleted(); // true if milestone occurred
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>
     </td>
   </tr>
 </table>

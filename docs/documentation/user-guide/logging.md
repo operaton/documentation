@@ -176,7 +176,7 @@ The process engine logs on the following categories
     <td>
       command context logs including executing atomic operations and bpmn stack traces during exceptions<br/>
       You can override the default <code>DEBUG</code> log level for bpmn stack traces, see the
-      <a href="../reference/deployment-descriptors/tags/process-engine.mdx#logLevelBpmnStackTrace">Logging level parameters</a> section.
+      <a href="/docs/documentation/reference/deployment-descriptors/tags/process-engine#logLevelBpmnStackTrace">Logging level parameters</a> section.
     </td>
   </tr>
   <tr>

@@ -202,7 +202,7 @@ In our example, the following steps might take place:
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#repeatonstandardevent">operaton:repeatOnStandardEvent</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#repeatonstandardevent">operaton:repeatOnStandardEvent</a>
     </td>
   </tr>
   <tr>

@@ -23,7 +23,7 @@ methods.
 
 :::note[Heads Up!]
 By using the legacy FEEL Engine, the Operaton DMN Engine **only** supports `FEEL` for
-<a href="../../../reference/dmn/decision-table/rule.md#input-entry-condition">Input Entries</a> of a decision table – this corresponds to FEEL
+<a href="/docs/documentation/reference/dmn/decision-table/rule#input-entry-condition">Input Entries</a> of a decision table – this corresponds to FEEL
 simple unary tests.
 :::
 

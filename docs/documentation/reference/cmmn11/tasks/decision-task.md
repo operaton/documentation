@@ -144,18 +144,18 @@ To evaluate a referenced decision, the integration of the Operaton DMN engine is
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#decisionbinding">operaton:decisionBinding</a>,
-            <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#decisiontenantid">operaton:decisionTenantId</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#decisionversion">operaton:decisionVersion</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#mapdecisionresult">operaton:mapDecisionResult</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#resultvariable">operaton:resultVariable</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#decisionbinding">operaton:decisionBinding</a>,
+            <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#decisiontenantid">operaton:decisionTenantId</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#decisionversion">operaton:decisionVersion</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#mapdecisionresult">operaton:mapDecisionResult</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#resultvariable">operaton:resultVariable</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>
     </td>
   </tr>
   <tr>

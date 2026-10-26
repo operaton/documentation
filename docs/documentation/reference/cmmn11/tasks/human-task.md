@@ -171,22 +171,22 @@ make sure the form keys are initialized.
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#assignee">operaton:assignee</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#candidategroups">operaton:candidateGroups</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#candidateusers">operaton:candidateUsers</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#duedate">operaton:dueDate</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#formkey">operaton:formKey</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#priority">operaton:priority</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#assignee">operaton:assignee</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#candidategroups">operaton:candidateGroups</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#candidateusers">operaton:candidateUsers</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#duedate">operaton:dueDate</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#formkey">operaton:formKey</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#priority">operaton:priority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#in">operaton:in</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#out">operaton:out</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#tasklistener">operaton:taskListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#in">operaton:in</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#out">operaton:out</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#tasklistener">operaton:taskListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>
     </td>
   </tr>
   <tr>

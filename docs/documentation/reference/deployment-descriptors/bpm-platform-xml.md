@@ -17,7 +17,7 @@ It is used to configure Operaton in the following distributions:
 *   [Apache Tomcat](../../installation/full/tomcat/index.md)
 
 :::warning[WildFly]
-The <code>bpm-platform.xml</code> file is not used in the Operaton distribution for WildFly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="../../../user-guide/runtime-container-integration/jboss.md">The Operaton WildFly Subsystem</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
+The <code>bpm-platform.xml</code> file is not used in the Operaton distribution for WildFly. There, the configuration is added to the central application server configuration file (<code>standalone.xml</code> or <code>domain.xml</code>). The XML schema is the same (i.e., the same elements and properties can be used). See the <a href="/docs/documentation/user-guide/runtime-container-integration/jboss">The Operaton WildFly Subsystem</a> section of the <a href="/docs/documentation/user-guide/">User Guide</a> for more details.
 :::
 
 
@@ -74,13 +74,13 @@ The namespace for the `bpm-platform.xml` file is `http://www.operaton.org/schema
     <td><code>&lt;job-executor&gt;</code></td>
     <td><code>&lt;bpm-platform&gt;</code></td>
     <td>true</td>
-    <td>See <a href="../reference/deployment-descriptors/tags/job-executor.md">job-executor Reference</a></td>
+    <td>See <a href="/docs/documentation/reference/deployment-descriptors/tags/job-executor">job-executor Reference</a></td>
   </tr>
   <tr>
     <td><code>&lt;process-engine&gt;</code></td>
     <td><code>&lt;bpm-platform&gt;</code></td>
     <td>false</td>
-    <td>See <a href="../reference/deployment-descriptors/tags/process-engine.mdx">process-engine Reference</a></td>
+    <td>See <a href="/docs/documentation/reference/deployment-descriptors/tags/process-engine">process-engine Reference</a></td>
   </tr>
 </table>
 

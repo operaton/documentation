@@ -17,10 +17,10 @@ menu:
 
 The attribute `autoComplete` controls the completion of a stage instance. The following table describes the completion criteria of a stage instance based on the `autoComplete` property.
 
-* `autoComplete = true`: There are no children in the `ACTIVE` state, and all required (<a href="../reference/cmmn11/markers/required-rule.md">see Required Rule</a>) children are `COMPLETED`, `DISABLED` or `TERMINATED`.
+* `autoComplete = true`: There are no children in the `ACTIVE` state, and all required (<a href="/docs/documentation/reference/cmmn11/markers/required-rule">see Required Rule</a>) children are `COMPLETED`, `DISABLED` or `TERMINATED`.
 * `autoComplete = false`: There are no children in the `ACTIVE` state, and
     * all children are `COMPLETED`, `DISABLED` or `TERMINATED`, or
-    * on manual completion using `CaseService#completeCaseExecution`, all required (<a href="../reference/cmmn11/markers/required-rule.md">see Required Rule</a>) children are `COMPLETED`, `DISABLED` or `TERMINATED`.
+    * on manual completion using `CaseService#completeCaseExecution`, all required (<a href="/docs/documentation/reference/cmmn11/markers/required-rule">see Required Rule</a>) children are `COMPLETED`, `DISABLED` or `TERMINATED`.
 
 For a CasePlanModel the property `autoComplete` can be set as follows:
 

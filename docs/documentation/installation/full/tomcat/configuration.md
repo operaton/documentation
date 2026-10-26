@@ -188,8 +188,8 @@ The following list describes all possible parameters you can use for the filter 
   <tr>
     <td>enableSecureCookie</td>
     <td>
-      If set to <code>true</code>, the cookie flag <a href="../webapps/shared-options/cookie-security.md#secure">Secure</a> is enabled for the
-      <a href="../webapps/shared-options/cookie-security.md">Session Cookie</a>.<br/><br/>
+      If set to <code>true</code>, the cookie flag <a href="/docs/documentation/webapps/shared-options/cookie-security#secure">Secure</a> is enabled for the
+      <a href="/docs/documentation/webapps/shared-options/cookie-security">Session Cookie</a>.<br/><br/>
       <strong>Note:</strong> If the <code>Secure</code> flag is set in the cookie by any other means already, this property will not remove it by setting it to <code>false</code>.
     </td>
     <td><code>false</code></td>
@@ -197,7 +197,7 @@ The following list describes all possible parameters you can use for the filter 
   <tr>
     <td>enableSameSiteCookie</td>
     <td>
-      If set to <code>false</code>, the cookie flag <a href="../webapps/shared-options/cookie-security.md#samesite">SameSite</a> is disabled. The default value of the <code>SameSite</code> cookie is <code>LAX</code> and it can be changed via <code>same-site-cookie-option</code> configuration property.<br/><br/>
+      If set to <code>false</code>, the cookie flag <a href="/docs/documentation/webapps/shared-options/cookie-security#samesite">SameSite</a> is disabled. The default value of the <code>SameSite</code> cookie is <code>LAX</code> and it can be changed via <code>same-site-cookie-option</code> configuration property.<br/><br/>
       <strong>Note:</strong> If the <code>SameSite</code> flag is set in the cookie by any other means already, this property will not adjust or remove it.
     </td>
     <td><code>true</code></td>

@@ -73,7 +73,7 @@ usage of EL.
   </tr>
   <tr>
     <td>
-      <a href="../process-engine/the-job-executor.md#specifying-priorities-in-bpmn-xml">
+      <a href="/docs/documentation/user-guide/process-engine/the-job-executor#priorities-in-bpmn-xml">
         All Flow Nodes, Process Definition
       </a>
     </td>
@@ -278,7 +278,7 @@ evaluating expressions:
     <tr>
       <td><code>externalTask</code></td>
       <td><code><a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a></code></td>
-      <td>Available during an external task context activity (e.g. in <a href="../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
+      <td>Available during an external task context activity (e.g. in <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
     </tr>
     <tr>
       <td><code>caseExecution</code></td>

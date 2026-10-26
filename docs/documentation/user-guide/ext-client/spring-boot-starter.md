@@ -16,7 +16,7 @@ your `pom.xml` file:
 </dependency>
 ```
 
-Please check out the current [external task worker example](https://github.com/operaton/operaton-examples/tree/main/examples/external-task-worker).
+Please check out the current [external task worker example](https://github.com/operaton/operaton-examples/tree/main/examples/core-examples/external-task-worker).
 
 The Client can subscribe to one or more topic names that are defined in your BPMN process model.
 When the execution waits in an External Task, the Client executes your custom business logic.

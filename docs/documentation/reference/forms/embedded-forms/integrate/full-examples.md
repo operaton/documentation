@@ -12,4 +12,4 @@ menu:
 
 Current form examples are maintained in the [Operaton Examples Repository](https://github.com/operaton/operaton-examples) on GitHub.
 
-* [User task forms example](https://github.com/operaton/operaton-examples/tree/main/examples/user-task-forms)
+* [User task forms example](https://github.com/operaton/operaton-examples/tree/main/examples/core-examples/user-task-forms)

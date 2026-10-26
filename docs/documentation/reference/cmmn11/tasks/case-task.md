@@ -200,18 +200,18 @@ If the business key of the called case instance should be different from the bus
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#casebinding">operaton:caseBinding</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#casetenantid">operaton:caseTenantId</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#caseversion">operaton:caseVersion</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#casebinding">operaton:caseBinding</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#casetenantid">operaton:caseTenantId</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#caseversion">operaton:caseVersion</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#in">operaton:in</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#out">operaton:out</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#in">operaton:in</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#out">operaton:out</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>
     </td>
   </tr>
   <tr>
