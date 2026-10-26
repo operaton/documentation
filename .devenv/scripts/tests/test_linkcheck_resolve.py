@@ -98,6 +98,16 @@ class TestResolve(unittest.TestCase):
         r = resolve_link(Link(SRC, 7, "/get-started/nope.md"), ROUTES, BASE)
         self.assertEqual((r.kind, r.url, r.reason), (UNRESOLVED, "docs/get-started/nope.md", "unresolved-md"))
 
+    def test_html_href_md_is_not_rewritten_by_docusaurus(self):
+        # Docusaurus leaves .md in raw <a href> as is; the browser resolves it against the page URL.
+        r = resolve_link(Link(SRC, 7, "../../user-guide/history.md#x", html=True), ROUTES, BASE)
+        self.assertEqual((r.kind, r.url),
+                         (INTERNAL, BASE + "/docs/documentation/user-guide/history.md#x"))
+
+    def test_html_href_root_relative_md_kept_literal(self):
+        r = resolve_link(Link(SRC, 7, "/docs/get-started/index.md", html=True), ROUTES, BASE)
+        self.assertEqual((r.kind, r.url), (INTERNAL, BASE + "/docs/get-started/index.md"))
+
     def test_root_relative_image(self):
         self.assertEqual(res("/img/a.png"), (INTERNAL, BASE + "/img/a.png"))
 
