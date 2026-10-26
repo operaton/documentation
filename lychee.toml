@@ -1,0 +1,17 @@
+# lychee settings for .devenv/scripts/check-links.py
+# Reference: https://lychee.cli.rs/usage/config/
+
+timeout = 20
+max_retries = 3
+max_concurrency = 16
+user_agent = "Mozilla/5.0 (compatible; operaton-docs-linkcheck; +https://github.com/operaton/documentation)"
+
+# 429 = rate limited, not broken.
+accept = ["100..=103", "200..=299", "429"]
+
+# Regular expressions. Sample URLs in the docs and hosts that block automated checks.
+exclude = [
+  '^https?://localhost:8080',
+  '^https?://127\.0\.0\.1',
+  '^https?://(www\.)?example\.(com|org)',
+]
