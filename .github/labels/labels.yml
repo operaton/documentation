@@ -1,0 +1,59 @@
+# GitHub Labels for Operaton Documentation
+# Format: https://github.com/crazy-max/ghaction-github-labeler
+# Labels missing from this file are deleted by the sync workflow.
+
+# Issue Type
+- name: "bug"
+  color: "#d73a4a"
+  description: "Something isn't working"
+
+- name: "enhancement"
+  color: "#a2eeef"
+  description: "New feature or request"
+
+- name: "documentation"
+  color: "#0075ca"
+  description: "Improvements or additions to documentation"
+
+- name: "documentation:release-notes"
+  color: "#3f57c0"
+  description: "Updates to release notes"
+
+- name: "broken-links"
+  color: "#b60205"
+  description: "Broken links found by the link check workflow"
+
+# Community
+- name: "good first issue"
+  color: "#7057ff"
+  description: "Good for newcomers"
+
+- name: "help wanted"
+  color: "#008672"
+  description: "Extra attention is needed"
+
+- name: "question"
+  color: "#d876e3"
+  description: "Further information is requested"
+
+# Resolution
+- name: "duplicate"
+  color: "#cfd3d7"
+  description: "This issue or pull request already exists"
+
+- name: "invalid"
+  color: "#e4e669"
+  description: "This doesn't seem right"
+
+- name: "wontfix"
+  color: "#ffffff"
+  description: "This will not be worked on"
+
+# Dependencies
+- name: "dependencies:npm"
+  color: "#0366d6"
+  description: "Changed to NPM dependencies"
+
+- name: "dependencies:github-action"
+  color: "#0366d6"
+  description: "Updates of GitHub actions"
