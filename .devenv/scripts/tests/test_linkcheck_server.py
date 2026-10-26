@@ -1,6 +1,8 @@
 import sys
+import tempfile
 import threading
 import unittest
+from unittest.mock import patch
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
@@ -57,6 +59,18 @@ class TestServer(unittest.TestCase):
             with self.assertRaises(ServerError) as ctx:
                 assert_static_server(s.url)
             self.assertIn("npm start", str(ctx.exception))
+
+    def test_build_output_goes_to_stderr(self):
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch("linkcheck.server.probe", return_value=None), \
+             patch("linkcheck.server.wait_until_up", return_value=True), \
+             patch("linkcheck.server.assert_static_server"), \
+             patch("linkcheck.server._stop"), \
+             patch("linkcheck.server.subprocess.Popen"), \
+             patch("linkcheck.server.subprocess.run") as run:
+            with docusaurus_server(Path(tmp), 3999, rebuild=True):
+                pass
+        self.assertIs(run.call_args.kwargs.get("stdout"), sys.stderr)
 
     def test_serve_refuses_busy_port(self):
         with LocalServer(404) as s:

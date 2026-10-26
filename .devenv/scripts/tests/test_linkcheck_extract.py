@@ -45,6 +45,10 @@ class TestExtractText(unittest.TestCase):
         text = "See [JDK][get-jdk].\n\n[get-jdk]: https://www.oracle.com/java/ \"Oracle\"\n"
         self.assertEqual(raws(text), [(3, "https://www.oracle.com/java/")])
 
+    def test_label_followed_by_html_link_is_not_a_definition(self):
+        text = '[listener]: <a class="javadocref" href="https://a.org/L.html">L</a> Interface'
+        self.assertEqual(raws(text), [(1, "https://a.org/L.html")])
+
     def test_footnote_definition_ignored(self):
         self.assertEqual(raws("[^1]: some note text"), [])
 

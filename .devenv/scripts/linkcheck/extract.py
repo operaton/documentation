@@ -8,7 +8,9 @@ from typing import Iterable, List, Optional, Tuple
 from .models import Link
 
 FENCE_RE = re.compile(r"^\s*(`{3,}|~{3,})")
-REF_DEF_RE = re.compile(r"^\s{0,3}\[([^\]]+)\]:\s*(<[^>]*>|\S+)")
+# A definition is the destination plus an optional title, nothing else on the line.
+REF_DEF_RE = re.compile(
+    r"""^\s{0,3}\[([^\]]+)\]:\s*(<[^<>]*>|[^<\s]\S*)\s*("[^"]*"|'[^']*'|\([^)]*\))?\s*$""")
 ATTR_RE = re.compile(r"""\b(?:href|src)\s*=\s*(["'])(.*?)\1""")
 AUTOLINK_RE = re.compile(r"(?<!\]\()<(https?://[^>\s]+)>")
 INLINE_CODE_RE = re.compile(r"(`+)(.+?)\1")

@@ -4,6 +4,7 @@ from __future__ import annotations
 import os
 import signal
 import subprocess
+import sys
 import time
 import urllib.error
 import urllib.request
@@ -69,7 +70,8 @@ def docusaurus_server(repo_root: Path, port: int, rebuild: bool) -> Iterator[str
                               f"or omit --serve to check against it.")
     if rebuild or not (repo_root / "build").is_dir():
         try:
-            subprocess.run(["npm", "run", "build"], cwd=repo_root, check=True)
+            # stdout carries the link report; keep build chatter on stderr.
+            subprocess.run(["npm", "run", "build"], cwd=repo_root, check=True, stdout=sys.stderr)
         except (subprocess.CalledProcessError, OSError) as exc:
             raise ServerError(f"`npm run build` failed: {exc}") from exc
     proc = subprocess.Popen(
