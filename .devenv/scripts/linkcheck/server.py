@@ -21,8 +21,10 @@ class ServerError(Exception):
 
 def probe(url: str, timeout: float = 3.0) -> Optional[int]:
     """HTTP status of a GET, or None when nothing answers."""
+    # Ask for HTML like a browser (and lychee) does: SPA fallbacks only answer such requests.
+    request = urllib.request.Request(url, headers={"Accept": "text/html,*/*;q=0.8"})
     try:
-        with urllib.request.urlopen(url, timeout=timeout) as resp:
+        with urllib.request.urlopen(request, timeout=timeout) as resp:
             return resp.status
     except urllib.error.HTTPError as exc:
         return exc.code

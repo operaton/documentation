@@ -21,9 +21,20 @@ def make_handler(unknown_status):
     return Handler
 
 
+class HtmlFallbackHandler(BaseHTTPRequestHandler):
+    """Like the Docusaurus dev server: unknown paths answer 200 only to requests accepting HTML."""
+    def do_GET(self):
+        html = "text/html" in self.headers.get("Accept", "")
+        self.send_response(200 if self.path == "/" or html else 404)
+        self.end_headers()
+
+    def log_message(self, *args):
+        pass
+
+
 class LocalServer:
-    def __init__(self, unknown_status):
-        self.httpd = HTTPServer(("127.0.0.1", 0), make_handler(unknown_status))
+    def __init__(self, unknown_status, handler=None):
+        self.httpd = HTTPServer(("127.0.0.1", 0), handler or make_handler(unknown_status))
         self.url = f"http://127.0.0.1:{self.httpd.server_port}"
         self.port = self.httpd.server_port
 
@@ -59,6 +70,11 @@ class TestServer(unittest.TestCase):
             with self.assertRaises(ServerError) as ctx:
                 assert_static_server(s.url)
             self.assertIn("npm start", str(ctx.exception))
+
+    def test_html_only_fallback_server_rejected(self):
+        with LocalServer(None, HtmlFallbackHandler) as s:
+            with self.assertRaises(ServerError):
+                assert_static_server(s.url)
 
     def test_build_output_goes_to_stderr(self):
         with tempfile.TemporaryDirectory() as tmp, \
