@@ -104,4 +104,15 @@ for ZIP_FILE in $(find $DOWNLOAD_DIR -type f -name "*.zip"); do
   echo "Unzipping $ZIP_FILE to $ASSET_DIR"
   unzip -q "$ZIP_FILE" -d "$ASSET_DIR"
 done
+# The Redoc page shipped in rest-api.zip loads the unpinned bundle redoc/latest.
+# Redoc 3 dropped the <redoc> web component, so the page renders blank (#198).
+# Pin every published REST API page to the last 2.x bundle.
+REDOC_VERSION="v2.5.1"
+for INDEX_FILE in $(find build/reference -type f -path "*/rest-api/index.html"); do
+  if grep -q "cdn.redoc.ly/redoc/latest/" "$INDEX_FILE"; then
+    echo "Pinning Redoc to $REDOC_VERSION in $INDEX_FILE"
+    sed -i.bak "s#cdn.redoc.ly/redoc/latest/#cdn.redoc.ly/redoc/${REDOC_VERSION}/#g" "$INDEX_FILE"
+    rm -f "$INDEX_FILE.bak"
+  fi
+done
 echo "✅ Done!"
