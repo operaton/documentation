@@ -56,6 +56,10 @@ class TestExtractText(unittest.TestCase):
         text = '<a href="https://a.org/">a</a> <img src=\'/img/b.png\' />'
         self.assertEqual(raws(text), [(1, "https://a.org/"), (1, "/img/b.png")])
 
+    def test_html_attribute_links_are_marked(self):
+        links = extract_text('[m](a.md) <a href="b.md">b</a>', "docs/x.md")
+        self.assertEqual([(l.raw, l.html) for l in links], [("a.md", False), ("b.md", True)])
+
     def test_jsx_expression_ignored(self):
         self.assertEqual(raws("<a href={siteConfig.customFields.javaDocUrl}>x</a>"), [])
 

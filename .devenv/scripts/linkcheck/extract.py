@@ -50,22 +50,23 @@ def parse_destination(text: str, start: int) -> str:
     return text[i:j]
 
 
-def _links_in_line(line: str) -> List[str]:
+def _links_in_line(line: str) -> List[Tuple[str, bool]]:
+    """(destination, is_html_attribute) pairs in order of appearance."""
     ref = REF_DEF_RE.match(line)
     if ref and not ref.group(1).startswith("^"):
         dest = ref.group(2)
-        return [dest[1:-1] if dest.startswith("<") else dest]
-    found: List[Tuple[int, str]] = []
+        return [(dest[1:-1] if dest.startswith("<") else dest, False)]
+    found: List[Tuple[int, str, bool]] = []
     for m in re.finditer(r"\]\(", line):
         raw = parse_destination(line, m.end())
         if raw:
-            found.append((m.start(), raw))
+            found.append((m.start(), raw, False))
     for m in ATTR_RE.finditer(line):
         if m.group(2):
-            found.append((m.start(), m.group(2)))
+            found.append((m.start(), m.group(2), True))
     for m in AUTOLINK_RE.finditer(line):
-        found.append((m.start(), m.group(1)))
-    return [raw for _, raw in sorted(found, key=lambda item: item[0])]
+        found.append((m.start(), m.group(1), False))
+    return [(raw, html) for _, raw, html in sorted(found, key=lambda item: item[0])]
 
 
 def extract_text(text: str, rel_path: str) -> List[Link]:
@@ -102,7 +103,7 @@ def extract_text(text: str, rel_path: str) -> List[Link]:
             line = line[:start]
             in_comment = True
         line = INLINE_CODE_RE.sub(_blank, line)
-        links.extend(Link(rel_path, lineno, raw) for raw in _links_in_line(line))
+        links.extend(Link(rel_path, lineno, raw, html) for raw, html in _links_in_line(line))
     return links
 
 

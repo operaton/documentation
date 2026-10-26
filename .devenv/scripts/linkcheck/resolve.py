@@ -57,7 +57,7 @@ def resolve_link(link: Link, routes: Dict[str, str], base_url: str) -> ResolvedL
             return made(SKIPPED, reason="fragment in file without route")
         return made(INTERNAL, base + page + suffix)
     plain = unquote(path.split("?", 1)[0])
-    if plain.endswith(DOC_SUFFIXES):
+    if plain.endswith(DOC_SUFFIXES) and not link.html:
         candidates = _md_candidates(link.file, plain)
         for target in candidates:
             if target in routes:

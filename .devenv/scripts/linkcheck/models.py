@@ -15,6 +15,7 @@ class Link:
     file: str  # repo-relative POSIX path, e.g. docs/documentation/index.md
     line: int  # 1-based
     raw: str   # destination exactly as written
+    html: bool = False  # from a raw HTML/JSX attribute: Docusaurus does not rewrite .md there
 
 
 @dataclass(frozen=True)
