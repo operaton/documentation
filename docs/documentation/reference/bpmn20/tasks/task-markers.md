@@ -119,12 +119,12 @@ In this example, parallel instances will be created for each element of the assi
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#collection">operaton:collection</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#elementvariable">operaton:elementVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#collection">operaton:collection</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#elementvariable">operaton:elementVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>

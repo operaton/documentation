@@ -198,18 +198,18 @@ If the business key of the called process instance should be different from the 
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#processbinding">operaton:processBinding</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#processtenantid">operaton:processTenantId</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#processversion">operaton:processVersion</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#processbinding">operaton:processBinding</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#processtenantid">operaton:processTenantId</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#processversion">operaton:processVersion</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#in">operaton:in</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#out">operaton:out</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#in">operaton:in</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#out">operaton:out</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>
     </td>
   </tr>
   <tr>

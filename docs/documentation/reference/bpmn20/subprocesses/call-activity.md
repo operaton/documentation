@@ -345,29 +345,29 @@ An expression also allows using the tenant id of the calling process instance in
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#calledelementbinding">operaton:calledElementBinding</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#calledelementversion">operaton:calledElementVersion</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#calledelementversiontag">operaton:calledElementVersionTag</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#calledelementtenantid">operaton:calledElementTenantId</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#casebinding">operaton:caseBinding</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#caseref">operaton:caseRef</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#caseversion">operaton:caseVersion</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#casetenantid">operaton:caseTenantId</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#variablemappingclass">operaton:variableMappingClass</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#variablemappingdelegateexpression">operaton:variableMappingDelegateExpression</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#calledelementbinding">operaton:calledElementBinding</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#calledelementversion">operaton:calledElementVersion</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#calledelementversiontag">operaton:calledElementVersionTag</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#calledelementtenantid">operaton:calledElementTenantId</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#casebinding">operaton:caseBinding</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#caseref">operaton:caseRef</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#caseversion">operaton:caseVersion</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#casetenantid">operaton:caseTenantId</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#variablemappingclass">operaton:variableMappingClass</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#variablemappingdelegateexpression">operaton:variableMappingDelegateExpression</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#in">operaton:in</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#out">operaton:out</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#in">operaton:in</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#out">operaton:out</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>
     </td>
   </tr>
   <tr>

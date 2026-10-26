@@ -605,7 +605,7 @@ If there is a use case where the subprocess-jobs **should not be performed in pa
 ```
 
 :::warning
-The property `jobExecutorAcquireExclusiveOverProcessHierarchies` is by default set to `false`. See the <a href="../../reference/deployment-descriptors/tags/process-engine.mdx#jobExecutorAcquireExclusiveOverProcessHierarchies">property</a> under the `Configuration Properties` section.
+The property `jobExecutorAcquireExclusiveOverProcessHierarchies` is by default set to `false`. See the <a href="/docs/documentation/reference/deployment-descriptors/tags/process-engine#jobExecutorAcquireExclusiveOverProcessHierarchies">property</a> under the `Configuration Properties` section.
 
 Keep in mind that enabling the feature to guarantee exclusive jobs across all subprocesses originating from a root process might have performance implications, especially for process definitions that involve complex and numerous hierarchies.
 

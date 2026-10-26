@@ -40,25 +40,25 @@ The elements marked in <span class="label label-warning label-implemented">orang
     <div class="col-md-12" style={{display:'flex', columnGap: '15px'}}>
       <div class="bpmn-symbol-container implemented">
         ![Subprocess Symbol](/img/documentation/reference/bpmn20/subprocess.svg)
-        <a href="../reference/bpmn20/subprocesses/embedded-subprocess.md">
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/embedded-subprocess">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![CallActivity Symbol](/img/documentation/reference/bpmn20/call_activity.svg)
-        <a href="../reference/bpmn20/subprocesses/call-activity.md">
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![Event Subprocess Symbol](/img/documentation/reference/bpmn20/event_subprocess.svg)
-        <a href="../reference/bpmn20/subprocesses/event-subprocess.md">
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/event-subprocess">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![Transaction Symbol](/img/documentation/reference/bpmn20/transaction.svg)
-        <a href="../reference/bpmn20/subprocesses/transaction-subprocess.md">
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/transaction-subprocess">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
@@ -72,37 +72,37 @@ The elements marked in <span class="label label-warning label-implemented">orang
       
       <div class="bpmn-symbol-container implemented">
         ![ServiceTask Symbol](/img/documentation/reference/bpmn20/service_task.svg)
-        <a href="../reference/bpmn20/tasks/service-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/service-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![UserTask Symbol](/img/documentation/reference/bpmn20/user_task.svg)
-        <a href="../reference/bpmn20/tasks/user-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/user-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![ScriptTask Symbol](/img/documentation/reference/bpmn20/script_task.svg)
-        <a href="../reference/bpmn20/tasks/script-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/script-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![Business Rule Task Symbol](/img/documentation/reference/bpmn20/business_rule_task.svg)
-        <a href="../reference/bpmn20/tasks/business-rule-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/business-rule-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![Manual Task Symbol](/img/documentation/reference/bpmn20/manual_task.svg)
-        <a href="../reference/bpmn20/tasks/manual-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/manual-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
         ![Receive Task Symbol](/img/documentation/reference/bpmn20/receive_task.svg)
-        <a href="../reference/bpmn20/tasks/receive-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/receive-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
@@ -111,7 +111,7 @@ The elements marked in <span class="label label-warning label-implemented">orang
       </div>
       <div class="bpmn-symbol-container implemented">
         ![Send Task Symbol](/img/documentation/reference/bpmn20/send_task.svg)
-        <a href="../reference/bpmn20/tasks/send-task.md">
+        <a href="/docs/documentation/reference/bpmn20/tasks/send-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
@@ -127,25 +127,25 @@ The elements marked in <span class="label label-warning label-implemented">orang
       <div style={{display:'flex'}}>
         <div class="bpmn-symbol-container implemented">
             ![XOR Gateway Symbol](/img/documentation/reference/bpmn20/xor_gateway.svg)
-            <a href="../reference/bpmn20/gateways/exclusive-gateway.md">
+            <a href="/docs/documentation/reference/bpmn20/gateways/exclusive-gateway">
             <span class="glyphicon glyphicon-eye-open"></span>
             </a>
         </div>
         <div class="bpmn-symbol-container implemented">
             ![OR Gateway Symbol](/img/documentation/reference/bpmn20/or_gateway.svg)
-            <a href="../reference/bpmn20/gateways/inclusive-gateway.md">
+            <a href="/docs/documentation/reference/bpmn20/gateways/inclusive-gateway">
             <span class="glyphicon glyphicon-eye-open"></span>
             </a>
         </div>
         <div class="bpmn-symbol-container implemented">
             ![AND Gateway Symbol](/img/documentation/reference/bpmn20/and_gateway.svg)
-            <a href="../reference/bpmn20/gateways/parallel-gateway.md">
+            <a href="/docs/documentation/reference/bpmn20/gateways/parallel-gateway">
             <span class="glyphicon glyphicon-eye-open"></span>
             </a>
         </div>
         <div class="bpmn-symbol-container implemented">
             ![Event Gateway Symbol](/img/documentation/reference/bpmn20/event_gateway.svg)
-            <a href="../reference/bpmn20/gateways/event-based-gateway.md">
+            <a href="/docs/documentation/reference/bpmn20/gateways/event-based-gateway">
             <span class="glyphicon glyphicon-eye-open"></span>
             </a>
         </div>
@@ -213,7 +213,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
   </thead>
   <tbody>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/none-events.md">None</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/none-events">None</a></td>
       <td>
         ![Non Start Event Symbol](/img/documentation/reference/bpmn20/none_start_event.svg)
       </td>
@@ -230,7 +230,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/message-events.md">Message</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/message-events">Message</a></td>
       <td>
         ![Message Start Event Symbol](/img/documentation/reference/bpmn20/message_start_event.svg)
       </td>
@@ -257,7 +257,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-        <td><a href="../reference/bpmn20/events/timer-events.md">Timer</a></td>
+        <td><a href="/docs/documentation/reference/bpmn20/events/timer-events">Timer</a></td>
         <td>
             ![Timer Start Event Symbol](/img/documentation/reference/bpmn20/timer_start_event.svg)
         </td>
@@ -280,7 +280,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       <td></td>        
     </tr>
     <tr>
-        <td><a href="../reference/bpmn20/events/conditional-events.md">Conditional</a></td>
+        <td><a href="/docs/documentation/reference/bpmn20/events/conditional-events">Conditional</a></td>
         <td class="implemented">
             ![Conditional Start Event Symbol](/img/documentation/reference/bpmn20/conditional_start_event.svg)
         </td>
@@ -303,7 +303,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
         <td></td>       
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/link-events.md">Link</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/link-events">Link</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -318,7 +318,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       <td></td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/signal-events.md">Signal</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/signal-events">Signal</a></td>
       <td>
         ![Signal Event Symbol](/img/documentation/reference/bpmn20/signal_start_event.svg)
       </td>
@@ -345,7 +345,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/error-events.md">Error</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/error-events">Error</a></td>
       <td></td>
       <td>
         ![Error EventSubprocess StartEvent Symbol](/img/documentation/reference/bpmn20/error_event_subprocess_start_event.svg)
@@ -362,7 +362,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/escalation-events.md">Escalation</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/escalation-events">Escalation</a></td>
       <td></td>
       <td>
         ![Escalation Event Subprocess Start Event Symbol](/img/documentation/reference/bpmn20/escalation_event_subprocess_start_event.svg)
@@ -385,7 +385,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/terminate-event.md">Termination</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/terminate-event">Termination</a></td>
       <td></td>
       <td></td>
       <td></td>
@@ -398,7 +398,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/cancel-and-compensation-events.md">Compensation</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/cancel-and-compensation-events">Compensation</a></td>
       <td></td>
       <td>
         ![Compensation Event Subprocess Startevent Symbol](/img/documentation/reference/bpmn20/compensation_event_subprocess_start_event.svg)
@@ -417,7 +417,7 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/cancel-and-compensation-events.md">Cancel</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/cancel-and-compensation-events">Cancel</a></td>
       <td></td>
       <td></td>
       <td></td>

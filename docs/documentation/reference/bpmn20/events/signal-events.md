@@ -158,7 +158,7 @@ The following extensions are supported for the Signal Intermediate Catching Even
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -300,9 +300,9 @@ The following extensions are supported for the Signal Intermediate and End Throw
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#in">operaton:in</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#in">operaton:in</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>

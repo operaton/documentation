@@ -47,14 +47,14 @@ registration in the application properties (`spring.security.oauth2.client.regis
 Configuration activates if there is OAuth2 client registration configured. This class configures the Spring
 Security filter chain to secure the Operaton Webapps.
 
-Spring auto configuration class: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OperatonSpringSecurityOAuth2AutoConfiguration.html">OperatonSpringSecurityOAuth2AutoConfiguration</a>
+Spring auto configuration class: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/OperatonSpringSecurityOAuth2AutoConfiguration.html">OperatonSpringSecurityOAuth2AutoConfiguration</a>
 
 ### Spring Security Disabled Auto Configuration
 
 Configuration activates if there is **no** OAuth2 client registration configured. This class configures the Spring
 Security filter chain to a permit all mode.
 
-Spring auto configuration class: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/impl/OperatonBpmSpringSecurityDisableAutoConfiguration.html">OperatonBpmSpringSecurityDisableAutoConfiguration</a>
+Spring auto configuration class: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/spring/boot/starter/security/oauth2/OperatonBpmSpringSecurityDisableAutoConfiguration.html">OperatonBpmSpringSecurityDisableAutoConfiguration</a>
 
 ## OAuth2 Client Registration
 

@@ -49,7 +49,7 @@ A `QuarkusProcessEngineConfiguration` instance provides the following defaults:
   <tr>
     <td><code>databaseSchemaUpdate</code></td>
     <td>
-      The <a href="../../process-engine/database/database-configuration.md#example-database-configuration">Database Configuration</a>
+      The <a href="/docs/documentation/user-guide/process-engine/database/database-configuration#example-database-configuration">Database Configuration</a>
       section goes into more details on this propery and the resulting behavior.
     </td>
     <td><code>true</code></td>
@@ -82,7 +82,7 @@ A `QuarkusProcessEngineConfiguration` instance provides the following defaults:
     </td>
     <td>
       Operaton Cockpit works best with history level
-      <a href="../../process-engine/history/history-configuration.md#choose-a-history-level">FULL</a>.
+      <a href="/docs/documentation/user-guide/process-engine/history/history-configuration#choose-a-history-level">FULL</a>.
     </td>
     <td><code>full</code></td>
   </tr>

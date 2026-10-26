@@ -68,8 +68,8 @@ When the stage becomes `ACTIVE`, the contained plan items are instantiated and r
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>
     </td>
   </tr>
 </table>

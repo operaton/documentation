@@ -110,7 +110,7 @@ This file can also be included standalone as a [custom script](../../cockpit/ext
 The second argument contains API endpoints and CSRF cookie information, as well as constants like a `processDefinitionId`. The `api` key is always present and contains
   * `engine`: the engine name
   * `CSRFToken`: the current CSRF token for your requests
-  * `baseApi`, `adminApi`, `cockpitApi`, `engineApi`: The paths to different API endpoints. The engineApi corresponds to the [Rest Api](../reference/rest)
+  * `baseApi`, `adminApi`, `cockpitApi`, `engineApi`: The paths to different API endpoints. The engineApi corresponds to the [Rest Api](../../../reference/rest/index.md)
 The details of which data is passed into the plugin can be found at the [plugin point reference](#plugin-points).
 
 * `result`: Function, only available in data plugins. Argument is a (`Promise`).

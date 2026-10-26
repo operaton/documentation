@@ -134,32 +134,32 @@ In addition to the above, a Business Rule Task can be implemented via the [Exter
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionref">operaton:decisionRef</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionrefbinding">operaton:decisionRefBinding</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionreftenantid">operaton:decisionRefTenantId</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionrefversion">operaton:decisionRefVersion</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionrefversiontag">operaton:decisionRefVersionTag</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#mapdecisionresult">operaton:mapDecisionResult</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#topic">operaton:topic</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#type">operaton:type</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#taskpriority">operaton:taskPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionref">operaton:decisionRef</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionrefbinding">operaton:decisionRefBinding</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionreftenantid">operaton:decisionRefTenantId</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionrefversion">operaton:decisionRefVersion</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionrefversiontag">operaton:decisionRefVersionTag</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#mapdecisionresult">operaton:mapDecisionResult</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#topic">operaton:topic</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#type">operaton:type</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#taskpriority">operaton:taskPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>

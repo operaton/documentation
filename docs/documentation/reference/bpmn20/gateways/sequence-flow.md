@@ -26,7 +26,7 @@ A sequence flow is the connector between two elements of a process. After an ele
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#executionlistener">operaton:executionListener</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#executionlistener">operaton:executionListener</a>
     </td>
   </tr>
   <tr>
@@ -94,7 +94,7 @@ on [script source](../../../user-guide/process-engine/scripting.md#script-source
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resource">operaton:resource</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resource">operaton:resource</a>
     </td>
   </tr>
   <tr>

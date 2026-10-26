@@ -61,16 +61,16 @@ By using expressions within the message name, you can influence the message name
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -292,7 +292,7 @@ The following example shows different message events in a process model:
 </intermediateCatchEvent>
 ```
 
-Instead of the message intermediate catching event, you might want to use a <a href="../tasks/receive-task.md">Receive Task</a>, which can serve similar purposes and can be used in combination with boundary events. In combination with the message intermediate catching event, you might want to use an <a href="../gateways/event-based-gateway.md">Event-based Gateway</a>.
+Instead of the message intermediate catching event, you might want to use a <a href="/docs/documentation/reference/bpmn20/tasks/receive-task">Receive Task</a>, which can serve similar purposes and can be used in combination with boundary events. In combination with the message intermediate catching event, you might want to use an <a href="/docs/documentation/reference/bpmn20/gateways/event-based-gateway">Event-based Gateway</a>.
 
 
 ## Message Boundary Event
@@ -322,20 +322,20 @@ A Message Intermediate Throwing event sends a message to an external service. Th
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#topic">operaton:topic</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#type">operaton:type</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#taskpriority">operaton:taskPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#topic">operaton:topic</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#type">operaton:type</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#taskpriority">operaton:taskPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>
     </td>
   </tr>
   <tr>
@@ -388,20 +388,20 @@ When process execution arrives at a Message End Event, the current path of execu
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#topic">operaton:topic</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#type">operaton:type</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#taskpriority">operaton:taskPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#topic">operaton:topic</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#type">operaton:type</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#taskpriority">operaton:taskPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>
     </td>
   </tr>
   <tr>

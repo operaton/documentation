@@ -143,7 +143,7 @@ reference].
 
 ### Historic Decision Input Instance
 
-The [HistoricDecisionInputInstance](org/operaton/bpm/engine/history/HistoricDecisionInputInstance) represents one input of an
+The [HistoricDecisionInputInstance](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/HistoricDecisionInputInstance.html) represents one input of an
 evaluated decision (e.g., an input clause of a decision table).
 
 ```java
@@ -168,7 +168,7 @@ input specifies a type.
 
 ### Historic Decision Output Instance
 
-The [HistoricDecisionOutputInstance](org/operaton/bpm/engine/history/HistoricDecisionOutputInstance) represents one output entry of an
+The [HistoricDecisionOutputInstance](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/HistoricDecisionOutputInstance.html) represents one output entry of an
 evaluated decision. If the decision is implemented as decision table, the
 `HistoricDecisionInstance` contains one `HistoricDecisionOutputInstance`
 for each output clause and matched rule.

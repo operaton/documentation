@@ -24,7 +24,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Constraints</th>
     <td colspan="2">
-      The <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connectorid">
+      The <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connectorid">
       operaton:connectorId</a> child element is required and must identify a connector implementation
       known to the process engine
     </td>
@@ -32,19 +32,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/tasks/service-task.md">Service Task</a>,
-      <a href="../reference/bpmn20/tasks/business-rule-task.md">Business Rule Task</a>,
-      <a href="../reference/bpmn20/tasks/send-task.md">Send Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/service-task">Service Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/business-rule-task">Business Rule Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/send-task">Send Task</a>,
       Message Event Definition of
-      <a href="../reference/bpmn20/events/message-events.md#message-intermediate-throwing-event">Message Intermediate Throwing Event</a> or
-      <a href="../reference/bpmn20/events/message-events.md#message-end-event">Message End Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/message-events#message-intermediate-throwing-event">Message Intermediate Throwing Event</a> or
+      <a href="/docs/documentation/reference/bpmn20/events/message-events#message-end-event">Message End Event</a>,
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connectorid">operaton:connectorId</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connectorid">operaton:connectorId</a>
     </td>
   </tr>
 </table>
@@ -72,7 +72,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>
     </td>
   </tr>
   <tr>
@@ -88,7 +88,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Metadata of an individual validation constraint for a form field (see <a href="../user-guide/task-forms/index.md#form-field-validation">Form Field Validation</a>).
+      Metadata of an individual validation constraint for a form field (see <a href="/docs/documentation/user-guide/task-forms/#form-field-validation">Form Field Validation</a>).
     </td>
   </tr>
   <tr>
@@ -115,7 +115,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#validation">operaton:validation</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#validation">operaton:validation</a>
     </td>
   </tr>
   <tr>
@@ -153,15 +153,15 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#map">operaton:map</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#map">operaton:map</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#map">operaton:map</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#map">operaton:map</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
@@ -174,7 +174,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <td colspan="2">
       Definition of an error event that can be triggered by an expression.
       This element extends the
-      <a href="../reference/bpmn20/events/error-events.md#defining-an-error">errorEventDefinition</a>
+      <a href="/docs/documentation/reference/bpmn20/events/error-events#defining-an-error">errorEventDefinition</a>
       element from the bpmn namespace inheriting all of its attributes: <code>id</code>, <code>errorRef</code>
     </td>
   </tr>
@@ -194,7 +194,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/tasks/service-task.md">Service Task</a> of type <code>external</code>
+      <a href="/docs/documentation/reference/bpmn20/tasks/service-task">Service Task</a> of type <code>external</code>
     </td>
   </tr>
   <tr>
@@ -225,21 +225,21 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <td></td>
     <td><code>class</code></td>
     <td>
-      see <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>
+      see <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>expression</code></td>
     <td>
-      see <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>
+      see <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>delegateExpression</code></td>
     <td>
-      see <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>
+      see <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>
     </td>
   </tr>
   <tr>
@@ -259,34 +259,34 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <td colspan="2">
       Process,
       Task,
-      <a href="../reference/bpmn20/tasks/service-task.md">Service Task</a>,
-      <a href="../reference/bpmn20/tasks/send-task.md">Send Task</a>,
-      <a href="../reference/bpmn20/tasks/user-task.md">User Task</a>,
-      <a href="../reference/bpmn20/tasks/business-rule-task.md">Business Rule Task</a>,
-      <a href="../reference/bpmn20/tasks/script-task.md">Script Task</a>,
-      <a href="../reference/bpmn20/tasks/receive-task.md">Receive Task</a>,
-      <a href="../reference/bpmn20/tasks/manual-task.md">Manual Task</a>,
-      <a href="../reference/bpmn20/gateways/exclusive-gateway.md">Exclusive Gateway</a>,
-      <a href="../reference/bpmn20/gateways/sequence-flow.md">Sequence Flow</a>,
-      <a href="../reference/bpmn20/gateways/parallel-gateway.md">Parallel Gateway</a>,
-      <a href="../reference/bpmn20/gateways/inclusive-gateway.md">Inclusive Gateway</a>,
-      <a href="../reference/bpmn20/gateways/event-based-gateway.md">Event Based Gateway</a>,
-      <a href="../reference/bpmn20/events/start-events.md">Start Event</a>,
-      <a href="../reference/bpmn20/events/index.md">Intermediate Catch Event</a>,
-      <a href="../reference/bpmn20/events/index.md">Intermediate Throw Event</a>,
-      <a href="../reference/bpmn20/events/index.md">End Events</a>,
-      <a href="../reference/bpmn20/events/index.md">Boundary Events</a>,
-      <a href="../reference/bpmn20/subprocesses/embedded-subprocess.md">Embedded Subprocess</a>,
-      <a href="../reference/bpmn20/subprocesses/call-activity.md">Call Activity</a>,
-      <a href="../reference/bpmn20/subprocesses/event-subprocess.md">Event Subprocess</a>,
-      <a href="../reference/bpmn20/subprocesses/transaction-subprocess.md">Transaction Subprocess</a>
+      <a href="/docs/documentation/reference/bpmn20/tasks/service-task">Service Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/send-task">Send Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/user-task">User Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/business-rule-task">Business Rule Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/script-task">Script Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/receive-task">Receive Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/manual-task">Manual Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/gateways/exclusive-gateway">Exclusive Gateway</a>,
+      <a href="/docs/documentation/reference/bpmn20/gateways/sequence-flow">Sequence Flow</a>,
+      <a href="/docs/documentation/reference/bpmn20/gateways/parallel-gateway">Parallel Gateway</a>,
+      <a href="/docs/documentation/reference/bpmn20/gateways/inclusive-gateway">Inclusive Gateway</a>,
+      <a href="/docs/documentation/reference/bpmn20/gateways/event-based-gateway">Event Based Gateway</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/start-events">Start Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/">Intermediate Catch Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/">Intermediate Throw Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/">End Events</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/">Boundary Events</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/embedded-subprocess">Embedded Subprocess</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">Call Activity</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/event-subprocess">Event Subprocess</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/transaction-subprocess">Transaction Subprocess</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
@@ -297,7 +297,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
 <tr>
   <th>Description</th>
   <td colspan="2">
-    Defines an expression to inject in delegated classes (see <a href="../user-guide/process-engine/delegation-code.md#field-injection">Field Injection</a>).
+    Defines an expression to inject in delegated classes (see <a href="/docs/documentation/user-guide/process-engine/delegation-code#field-injection">Field Injection</a>).
   </td>
 </tr>
 <tr>
@@ -321,7 +321,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
 <tr>
   <th>Parent elements</th>
   <td colspan="2">
-    <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>
+    <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>
   </td>
 </tr>
 <tr>
@@ -338,7 +338,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Defines the custom retry schedule for a failed job (see <a href="../user-guide/process-engine/the-job-executor.md#failed-jobs">Failed Jobs</a>).
+      Defines the custom retry schedule for a failed job (see <a href="/docs/documentation/user-guide/process-engine/the-job-executor#failed-jobs">Failed Jobs</a>).
     </td>
   </tr>
   <tr>
@@ -363,20 +363,20 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <th>Parent elements</th>
     <td colspan="2">
       Task,
-      <a href="../reference/bpmn20/tasks/service-task.md">Service Task</a>,
-      <a href="../reference/bpmn20/tasks/send-task.md">Send Task</a>,
-      <a href="../reference/bpmn20/tasks/user-task.md">User Task</a>,
-      <a href="../reference/bpmn20/tasks/business-rule-task.md">Business Rule Task</a>,
-      <a href="../reference/bpmn20/tasks/script-task.md">Script Task</a>,
-      <a href="../reference/bpmn20/tasks/receive-task.md">Receive Task</a>,
-      <a href="../reference/bpmn20/events/timer-events.md#timer-start-event">Timer Start Event</a>,
-      <a href="../reference/bpmn20/events/timer-events.md#timer-intermediate-catching-event">Timer Intermediate Catching Event</a>,
-      <a href="../reference/bpmn20/events/timer-events.md#timer-boundary-event">Timer Boundary Event</a>,
-      <a href="../reference/bpmn20/events/signal-events.md">Intermediate Signal Throw Event</a>,
-      <a href="../reference/bpmn20/subprocesses/embedded-subprocess.md">Embedded Subprocess</a>,
-      <a href="../reference/bpmn20/subprocesses/call-activity.md">Call Activity</a>,
-      <a href="../reference/bpmn20/subprocesses/transaction-subprocess.md">Transaction Subprocess</a>,
-      <a href="../reference/bpmn20/tasks/task-markers.md#multiple-instance">Multi Instance Loop Characteristics</a>
+      <a href="/docs/documentation/reference/bpmn20/tasks/service-task">Service Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/send-task">Send Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/user-task">User Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/business-rule-task">Business Rule Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/script-task">Script Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/receive-task">Receive Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/timer-events#timer-start-event">Timer Start Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/timer-events#timer-intermediate-catching-event">Timer Intermediate Catching Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/timer-events#timer-boundary-event">Timer Boundary Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/signal-events">Intermediate Signal Throw Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/embedded-subprocess">Embedded Subprocess</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">Call Activity</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/transaction-subprocess">Transaction Subprocess</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/task-markers#multiple-instance">Multi Instance Loop Characteristics</a>
     </td>
   </tr>
   <tr>
@@ -393,7 +393,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Defines the value to inject in delegated classes (see <a href="../user-guide/process-engine/delegation-code.md#field-injection">Field Injection</a>).
+      Defines the value to inject in delegated classes (see <a href="/docs/documentation/user-guide/process-engine/delegation-code#field-injection">Field Injection</a>).
     </td>
   </tr>
   <tr>
@@ -422,19 +422,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/tasks/service-task.md">Service Task</a>,
-      <a href="../reference/bpmn20/tasks/business-rule-task.md">Business Rule Task</a>,
-      <a href="../reference/bpmn20/tasks/send-task.md">Send Task</a>,
-      Message Event Definition of <a href="../reference/bpmn20/events/message-events.md#message-intermediate-throwing-event">Message Intermediate Throwing Event</a> or <a href="../reference/bpmn20/events/message-events.md#message-end-event">Message End Event</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#tasklistener">operaton:taskListener</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#executionlistener">operaton:executionListner</a>
+      <a href="/docs/documentation/reference/bpmn20/tasks/service-task">Service Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/business-rule-task">Business Rule Task</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/send-task">Send Task</a>,
+      Message Event Definition of <a href="/docs/documentation/reference/bpmn20/events/message-events#message-intermediate-throwing-event">Message Intermediate Throwing Event</a> or <a href="/docs/documentation/reference/bpmn20/events/message-events#message-end-event">Message End Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#tasklistener">operaton:taskListener</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#executionlistener">operaton:executionListner</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#expression">operaton:expression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#string">operaton:string</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#string">operaton:string</a>
     </td>
   </tr>
 </table>
@@ -445,7 +445,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Metadata to define fields of a form, which are used to generate task forms (see <a href="../user-guide/task-forms/index.md#generated-task-forms">Generated Task Forms</a>).
+      Metadata to define fields of a form, which are used to generate task forms (see <a href="/docs/documentation/user-guide/task-forms/#generated-task-forms">Generated Task Forms</a>).
     </td>
   </tr>
   <tr>
@@ -463,14 +463,14 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/events/start-events.md">Start Event</a>,
-      <a href="../reference/bpmn20/tasks/user-task.md">User Task</a>
+      <a href="/docs/documentation/reference/bpmn20/events/start-events">Start Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/user-task">User Task</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formfield">operaton:formField</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formfield">operaton:formField</a>
     </td>
   </tr>
 </table>
@@ -481,7 +481,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Metadata to define a single form field (see <a href="../user-guide/task-forms/index.md#generated-task-forms">Generated Task Forms</a>).
+      Metadata to define a single form field (see <a href="/docs/documentation/user-guide/task-forms/#generated-task-forms">Generated Task Forms</a>).
     </td>
   </tr>
   <tr>
@@ -558,15 +558,15 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formdata">operaton:formData</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formdata">operaton:formData</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#properties">operaton:properties</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#validation">operaton:validation</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#value">operaton:value</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#properties">operaton:properties</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#validation">operaton:validation</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#value">operaton:value</a>
     </td>
   </tr>
 </table>
@@ -577,7 +577,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Metadata to define a form field (<strong>Deprecated</strong>, use <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formdata">operaton:formData</a>).
+      Metadata to define a form field (<strong>Deprecated</strong>, use <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formdata">operaton:formData</a>).
     </td>
   </tr>
   <tr>
@@ -677,14 +677,14 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/events/start-events.md">Start Event</a>,
-      <a href="../reference/bpmn20/tasks/user-task.md">User Task</a>
+      <a href="/docs/documentation/reference/bpmn20/events/start-events">Start Event</a>,
+      <a href="/docs/documentation/reference/bpmn20/tasks/user-task">User Task</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#value">operaton:value</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#value">operaton:value</a>
     </td>
   </tr>
 </table>
@@ -695,7 +695,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      The element specifies variables which should be passed to the subprocess, see <a href="../reference/bpmn20/subprocesses/call-activity.md#passing-variables">passing variables</a> for more information.
+      The element specifies variables which should be passed to the subprocess, see <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity#passing-variables">passing variables</a> for more information.
     </td>
   </tr>
   <tr>
@@ -755,8 +755,8 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/subprocesses/call-activity.md">Call Activity</a>,
-      <a href="../reference/bpmn20/events/signal-events.md">Signal Events (in Intermediate and End Throwing Events)</a>
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">Call Activity</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/signal-events">Signal Events (in Intermediate and End Throwing Events)</a>
     </td>
   </tr>
   <tr>
@@ -802,15 +802,15 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#map">operaton:map</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#map">operaton:map</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
@@ -840,19 +840,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/tasks/index.md">All Tasks</a>,
-      <a href="../reference/bpmn20/events/index.md">All Events</a> (except Start and Boundary Events),
-      <a href="../reference/bpmn20/subprocesses/call-activity.md">Call Activity</a>,
-      <a href="../reference/bpmn20/subprocesses/embedded-subprocess.md">Embedded Subprocess</a>,
-      <a href="../reference/bpmn20/subprocesses/transaction-subprocess.md">Transaction Subprocess</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>
+      <a href="/docs/documentation/reference/bpmn20/tasks/">All Tasks</a>,
+      <a href="/docs/documentation/reference/bpmn20/events/">All Events</a> (except Start and Boundary Events),
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">Call Activity</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/embedded-subprocess">Embedded Subprocess</a>,
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/transaction-subprocess">Transaction Subprocess</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputparameter">operaton:inputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#outputparameter">operaton:outputParameter</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputparameter">operaton:inputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#outputparameter">operaton:outputParameter</a>
     </td>
   </tr>
 </table>
@@ -873,7 +873,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
         &nbsp;&nbsp;&lt;operaton:value&gt;three&lt;/operaton:value&gt;<br/>
         &lt;/operaton:list&gt;
       </code><br/>
-      A <a href="../reference/bpmn20/custom-extensions/extension-elements.md#script">
+      A <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#script">
       operaton:script</a> element can also be used as a list element. The return value of the
       script is added to the list. Furthermore, lists can contain nested lists and maps.
     </td>
@@ -893,18 +893,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputparameter">operaton:inputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#outputparameter">operaton:outputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#entry">operaton:entry</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputparameter">operaton:inputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#outputparameter">operaton:outputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#entry">operaton:entry</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
       Any child element,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#map">operaton:map</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#map">operaton:map</a>
     </td>
   </tr>
 </table>
@@ -934,16 +934,16 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputparameter">operaton:inputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#outputparameter">operaton:outputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#entry">operaton:entry</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputparameter">operaton:inputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#outputparameter">operaton:outputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#entry">operaton:entry</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#entry">operaton:entry</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#entry">operaton:entry</a>
     </td>
   </tr>
 </table>
@@ -956,7 +956,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      The element specifies variables which should be passed back from the subprocess, see <a href="../reference/bpmn20/subprocesses/call-activity.md#passing-variables">passing variables</a> for more information.
+      The element specifies variables which should be passed back from the subprocess, see <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity#passing-variables">passing variables</a> for more information.
     </td>
   </tr>
   <tr>
@@ -1009,7 +1009,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/subprocesses/call-activity.md">Call Activity</a>
+      <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">Call Activity</a>
     </td>
   </tr>
   <tr>
@@ -1055,15 +1055,15 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#map">operaton:map</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#map">operaton:map</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
@@ -1129,13 +1129,13 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <th>Parent elements</th>
     <td colspan="2">
       Base Element,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formfield">operaton:formField</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formfield">operaton:formField</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#property">operaton:property</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#property">operaton:property</a>
     </td>
   </tr>
 </table>
@@ -1188,7 +1188,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#properties">operaton:properties</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#properties">operaton:properties</a>
     </td>
   </tr>
   <tr>
@@ -1220,7 +1220,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <td></td>
     <td><code>resource</code></td>
     <td>
-      equivalent to <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resource">
+      equivalent to <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resource">
       operaton:resource</a>
     </td>
   </tr>
@@ -1239,12 +1239,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputparameter">operaton:inputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#outputparameter">operaton:outputParameter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#entry">operaton:entry</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#list">operaton:list</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#executionlistener">operaton:executionListener</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#tasklistener">operaton:taskListener</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputparameter">operaton:inputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#outputparameter">operaton:outputParameter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#entry">operaton:entry</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#list">operaton:list</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#executionlistener">operaton:executionListener</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#tasklistener">operaton:taskListener</a>
     </td>
   </tr>
   <tr>
@@ -1262,7 +1262,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Defines a String value to inject in delegated classes (see <a href="../user-guide/process-engine/delegation-code.md#field-injection">Field Injection</a>).
+      Defines a String value to inject in delegated classes (see <a href="/docs/documentation/user-guide/process-engine/delegation-code#field-injection">Field Injection</a>).
     </td>
   </tr>
   <tr>
@@ -1286,7 +1286,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>
     </td>
   </tr>
   <tr>
@@ -1317,21 +1317,21 @@ The following attributes are extension attributes for the `camunda` namespace `h
     <td></td>
     <td><code>class</code></td>
     <td>
-      see <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>
+      see <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>expression</code></td>
     <td>
-      see <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>
+      see <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>delegateExpression</code></td>
     <td>
-      see <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>
+      see <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>
     </td>
   </tr>
   <tr>
@@ -1358,21 +1358,21 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <td></td>
     <td colspan="2">
-      If the attribute <code>event</code> is set to <code>timeout</code>, the attribute <code>id</code> and exactly one child element of type <a href="../reference/bpmn20/events/timer-events.md#defining-a-timer">timerEventDefinition</a> are mandatory
+      If the attribute <code>event</code> is set to <code>timeout</code>, the attribute <code>id</code> and exactly one child element of type <a href="/docs/documentation/reference/bpmn20/events/timer-events#defining-a-timer">timerEventDefinition</a> are mandatory
     </td>
   </tr>
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/tasks/user-task.md">User Task</a>
+      <a href="/docs/documentation/reference/bpmn20/tasks/user-task">User Task</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#script">operaton:script</a>,
-	  <a href="../reference/bpmn20/events/timer-events.md#defining-a-timer">timerEventDefinition</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#script">operaton:script</a>,
+	  <a href="/docs/documentation/reference/bpmn20/events/timer-events#defining-a-timer">timerEventDefinition</a>
     </td>
   </tr>
 </table>
@@ -1383,7 +1383,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Metadata to define a list of validation constraints for form fields (see <a href="../user-guide/task-forms/index.md#form-field-validation">Form Field Validation</a>).
+      Metadata to define a list of validation constraints for form fields (see <a href="/docs/documentation/user-guide/task-forms/#form-field-validation">Form Field Validation</a>).
     </td>
   </tr>
   <tr>
@@ -1401,13 +1401,13 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formfield">operaton:formField</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formfield">operaton:formField</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#constraint">operaton:constraint</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#constraint">operaton:constraint</a>
     </td>
   </tr>
 </table>
@@ -1444,8 +1444,8 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formfield">operaton:formField</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formproperty">operaton:formProperty</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formfield">operaton:formField</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formproperty">operaton:formProperty</a>
     </td>
   </tr>
   <tr>

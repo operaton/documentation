@@ -62,8 +62,8 @@ The exception type should only be used for business exceptions and not for techn
 
 An error event handler references the same error element to declare that it catches the error.
 
-It is also possible to define an error message with the <a href="../custom-extensions/extension-attributes.md#errormessage">`operaton:errorMessage`</a> extension for an error element to give further information about the error.
-The referencing error event definition must specify <a href="../custom-extensions/extension-attributes.md#errormessagevariable">`operaton:errorMessageVariable`</a> to receive the error message. The error message can also contain <a href="../../../user-guide/process-engine/expression-language.md">expressions</a>.
+It is also possible to define an error message with the <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#errormessage">`operaton:errorMessage`</a> extension for an error element to give further information about the error.
+The referencing error event definition must specify <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#errormessagevariable">`operaton:errorMessageVariable`</a> to receive the error message. The error message can also contain <a href="/docs/documentation/user-guide/process-engine/expression-language">expressions</a>.
 
 ```xml
 <definitions>
@@ -138,18 +138,18 @@ When process execution arrives at an error end event, the current path of execut
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#errorcodevariable">operaton:errorCodeVariable</a>,
-	  <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#errormessagevariable">operaton:errorMessageVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#errorcodevariable">operaton:errorCodeVariable</a>,
+	  <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#errormessagevariable">operaton:errorMessageVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -164,7 +164,7 @@ When process execution arrives at an error end event, the current path of execut
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#errormessage">operaton:errorMessage</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#errormessage">operaton:errorMessage</a>
     </td>
   </tr>
   <tr>

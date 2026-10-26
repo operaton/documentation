@@ -29,7 +29,7 @@ The [Event Based Gateway](../../reference/bpmn20/gateways/event-based-gateway.md
 
 A special type of the [Service Task](../../reference/bpmn20/tasks/service-task.md): [External Task](../process-engine/external-tasks.md)
 
-<a href="../external-tasks">bpmn-symbol service-task</a>
+<a href="/docs/documentation/user-guide/process-engine/external-tasks">bpmn-symbol service-task</a>
 
 Keep in mind that [Asynchronous Continuations](#asynchronous-continuations) can add transaction boundaries to other tasks as well.
 

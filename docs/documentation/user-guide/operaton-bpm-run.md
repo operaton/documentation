@@ -102,7 +102,7 @@ The start scripts (`start.bat` for Windows, `start.sh` for Linux/Mac) accept the
       <td><code>--oauth2</code></td>
       <td>
         Enables Spring Security OAuth2 integration.
-        See dedicated <a href="./spring-boot-integration/spring-security.md">Spring Security OAuth2 Integration</a> documentation for details.
+        See dedicated <a href="/docs/documentation/user-guide/spring-boot-integration/spring-security">Spring Security OAuth2 Integration</a> documentation for details.
       </td>
       <td><code>false</code></td>
   </tr>
@@ -584,7 +584,7 @@ For more information on logging configuration visit the [Spring Boot Logging Gui
   </tr>
   <tr>
       <td>```.level.logger-name```</td>
-      <td>Set a logging level for a specific logging category. Find an overview over the available categories in the <a href="/user-guide/logging.md#process-engine">Logging User Guide</a>.
+      <td>Set a logging level for a specific logging category. Find an overview over the available categories in the <a href="/docs/documentation/user-guide/logging#process-engine">Logging User Guide</a>.
       Value can be one of the following: <code>OFF</code>. <code>ERROR</code>. <code>WARN</code>. <code>INFO</code>. <code>DEBUG</code>. <code>FATAL</code>. <code>TRACE</code></td>
       <td><code>-</code></td>
   </tr>
