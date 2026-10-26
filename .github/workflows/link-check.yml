@@ -1,0 +1,152 @@
+name: Link Check
+
+on:
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 5'  # Fridays 04:00 UTC; the guard job skips odd ISO weeks
+
+permissions:
+  contents: read
+
+concurrency:
+  group: link-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.week.outputs.run }}
+    steps:
+      - name: Biweekly schedule guard
+        id: week
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          week=$((10#$(date -u +%V)))
+          if [ "$EVENT" = "schedule" ] && [ $((week % 2)) -eq 1 ]; then
+            echo "ISO week $week is odd, skipping scheduled run."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  check:
+    needs: guard
+    if: needs.guard.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Install lychee
+        env:
+          LYCHEE_VERSION: '0.24.2'
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          asset="lychee-x86_64-unknown-linux-gnu.tar.gz"
+          dir="$RUNNER_TEMP/lychee"
+          mkdir -p "$dir" && cd "$dir"
+          gh release download "lychee-v${LYCHEE_VERSION}" -R lycheeverse/lychee -p "$asset" -p "$asset.sha256"
+          sha256sum -c "$asset.sha256"
+          tar xzf "$asset"
+          install -D -m 0755 "$(find . -type f -name lychee | head -1)" "$dir/bin/lychee"
+          "$dir/bin/lychee" --version
+          echo "$dir/bin" >> "$GITHUB_PATH"
+
+      - name: Unit tests
+        run: python3 -m unittest discover -s .devenv/scripts/tests -v
+
+      - name: Restore lychee cache
+        uses: actions/cache@v6.1.0
+        with:
+          path: .lycheecache
+          key: lychee-${{ github.run_id }}
+          restore-keys: lychee-
+
+      - name: Check links
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set +e
+          args=(check --serve --no-build --report-md report.md --summary-md summary.md --sha "$HEAD_SHA")
+          if [ "$EVENT" = "pull_request" ]; then
+            mapfile -t changed < <(git diff --name-only --diff-filter=d "origin/$BASE_REF...HEAD" -- 'docs/*.md' 'docs/*.mdx')
+            if [ "${#changed[@]}" -gt 0 ]; then
+              echo "External links checked in: ${changed[*]}"
+              args+=(--scope all --files "${changed[@]}")
+            else
+              echo "No doc files changed, checking internal links only."
+              args+=(--scope internal)
+            fi
+            args+=(--annotations)
+          else
+            args+=(--scope all)
+          fi
+          python3 .devenv/scripts/check-links.py "${args[@]}"
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Job summary
+        if: always()
+        run: |
+          if [ -f summary.md ]; then
+            cat summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Link check did not produce a report, see the 'Check links' step log." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Update broken-links issue
+        # Only results for main may change the tracking issue; manual runs on branches must not.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && (steps.check.outputs.exit == '0' || steps.check.outputs.exit == '1')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHECK_EXIT: ${{ steps.check.outputs.exit }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          number=$(gh issue list --label broken-links --state open --limit 1 --json number --jq '.[0].number // empty')
+          if [ "$CHECK_EXIT" = "1" ]; then
+            if [ -n "$number" ]; then
+              gh issue edit "$number" --body-file report.md
+              echo "Updated issue #$number"
+            else
+              gh issue create --title "Broken links in documentation" --label broken-links --body-file report.md
+            fi
+          elif [ -n "$number" ]; then
+            gh issue close "$number" --comment "All links OK as of $RUN_URL"
+            echo "Closed issue #$number"
+          fi
+
+      - name: Fail on broken links or errors
+        if: steps.check.outputs.exit != '0'
+        env:
+          CHECK_EXIT: ${{ steps.check.outputs.exit }}
+        run: |
+          echo "Link check exit code: ${CHECK_EXIT} (1 = broken links, 2 = setup/tool error)"
+          exit 1

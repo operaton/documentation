@@ -29,6 +29,11 @@ yarn-error.log*
 
 # Local superpowers specs/plans (not committed)
 docs/superpowers/
+.devenv/specs/
+.devenv/plans/
+
+# lychee request cache (link check)
+.lycheecache
 
 # Python cache
 __pycache__/

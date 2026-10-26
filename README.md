@@ -37,6 +37,30 @@ npm run typecheck
 
 Run the typecheck and production build before opening a pull request.
 
+## Link check
+
+`.devenv/scripts/check-links.py` finds broken internal and external links in `docs/` and reports them
+with file and line. It needs [lychee](https://lychee.cli.rs/installation/) (`brew install lychee`).
+
+```bash
+# Build, start a static server, check everything, stop the server
+.devenv/scripts/check-links.py check --serve
+
+# Same, but reuse an existing build/ instead of building again
+.devenv/scripts/check-links.py check --serve --no-build
+
+# Against a server you started with `npm run build && npm run serve`
+.devenv/scripts/check-links.py check --base-url http://localhost:3000
+
+# Only write the link map (file, line, URL; grouped internal/external)
+.devenv/scripts/check-links.py map --out links.json
+```
+
+Internal links need the static build (`npm run serve`); the dev server (`npm start`) answers every
+URL with 200 and is rejected. URL excludes and timeouts live in `lychee.toml`.
+The `Link Check` workflow runs on PRs, on manual dispatch and every second Friday; scheduled runs
+keep an issue labelled `broken-links` up to date.
+
 ## Local Search (Typesense) Setup
 
 The production site queries a Typesense server directly from the browser
