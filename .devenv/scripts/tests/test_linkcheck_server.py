@@ -76,7 +76,7 @@ class TestServer(unittest.TestCase):
             with self.assertRaises(ServerError):
                 assert_static_server(s.url)
 
-    def test_build_output_goes_to_stderr(self):
+    def serve_with_fake_processes(self, build, build_dir_exists):
         with tempfile.TemporaryDirectory() as tmp, \
              patch("linkcheck.server.probe", return_value=None), \
              patch("linkcheck.server.wait_until_up", return_value=True), \
@@ -84,14 +84,32 @@ class TestServer(unittest.TestCase):
              patch("linkcheck.server._stop"), \
              patch("linkcheck.server.subprocess.Popen"), \
              patch("linkcheck.server.subprocess.run") as run:
-            with docusaurus_server(Path(tmp), 3999, rebuild=True):
+            if build_dir_exists:
+                (Path(tmp) / "build").mkdir()
+            with docusaurus_server(Path(tmp), 3999, build=build):
                 pass
+        return run
+
+    def test_build_output_goes_to_stderr(self):
+        run = self.serve_with_fake_processes(build=True, build_dir_exists=False)
         self.assertIs(run.call_args.kwargs.get("stdout"), sys.stderr)
+
+    def test_build_runs_even_when_build_dir_exists(self):
+        run = self.serve_with_fake_processes(build=True, build_dir_exists=True)
+        run.assert_called_once()
+
+    def test_no_build_reuses_existing_build(self):
+        run = self.serve_with_fake_processes(build=False, build_dir_exists=True)
+        run.assert_not_called()
+
+    def test_no_build_still_builds_when_missing(self):
+        run = self.serve_with_fake_processes(build=False, build_dir_exists=False)
+        run.assert_called_once()
 
     def test_serve_refuses_busy_port(self):
         with LocalServer(404) as s:
             with self.assertRaises(ServerError) as ctx:
-                with docusaurus_server(Path("."), s.port, rebuild=False):
+                with docusaurus_server(Path("."), s.port, build=False):
                     pass
             self.assertIn("in use", str(ctx.exception))
 

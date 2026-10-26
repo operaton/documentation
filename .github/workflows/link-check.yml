@@ -96,7 +96,7 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set +e
-          args=(check --serve --report-md report.md --sha "$HEAD_SHA")
+          args=(check --serve --no-build --report-md report.md --summary-md summary.md --sha "$HEAD_SHA")
           if [ "$EVENT" = "pull_request" ]; then
             mapfile -t changed < <(git diff --name-only --diff-filter=d "origin/$BASE_REF...HEAD" -- 'docs/*.md' 'docs/*.mdx')
             if [ "${#changed[@]}" -gt 0 ]; then
@@ -116,14 +116,15 @@ jobs:
       - name: Job summary
         if: always()
         run: |
-          if [ -f report.md ]; then
-            cat report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ -f summary.md ]; then
+            cat summary.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "Link check did not produce a report, see the 'Check links' step log." >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Update broken-links issue
-        if: github.event_name != 'pull_request' && (steps.check.outputs.exit == '0' || steps.check.outputs.exit == '1')
+        # Only results for main may change the tracking issue; manual runs on branches must not.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && (steps.check.outputs.exit == '0' || steps.check.outputs.exit == '1')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CHECK_EXIT: ${{ steps.check.outputs.exit }}

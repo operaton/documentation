@@ -8,6 +8,7 @@ docs server (`npm run serve`, or --serve to start one), external ones on the web
 Examples:
   .devenv/scripts/check-links.py map --out links.json
   .devenv/scripts/check-links.py check --serve
+  .devenv/scripts/check-links.py check --serve --no-build   # reuse build/
   .devenv/scripts/check-links.py check --scope internal --base-url http://localhost:3000
   .devenv/scripts/check-links.py check --scope external --files docs/documentation/index.md
 
@@ -21,6 +22,7 @@ import json
 import os
 import sys
 import tempfile
+import traceback
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional, Set
@@ -31,6 +33,8 @@ from linkcheck.models import EXTERNAL, INTERNAL, SKIPPED, UNRESOLVED, ResolvedLi
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_BASE_URL = "http://localhost:3000"
+REPORT_LIMIT = 60000      # GitHub issue bodies hold 65,536 characters
+SUMMARY_LIMIT = 1000000   # job summaries hold 1 MiB
 
 
 def build_map(repo_root: Path, base_url: str) -> List[ResolvedLink]:
@@ -90,7 +94,7 @@ def cmd_check(args: argparse.Namespace) -> int:
     with contextlib.ExitStack() as stack:
         base_url = args.base_url
         if needs_server and args.serve:
-            base_url = stack.enter_context(server.docusaurus_server(REPO_ROOT, args.port, args.rebuild))
+            base_url = stack.enter_context(server.docusaurus_server(REPO_ROOT, args.port, not args.no_build))
         resolved = build_map(REPO_ROOT, base_url)
         selected = select(resolved, args.scope, _rel_files(REPO_ROOT, args.files))
         internal_urls = sorted({r.url for r in selected if r.kind == INTERNAL})
@@ -100,7 +104,8 @@ def cmd_check(args: argparse.Namespace) -> int:
         tmp = Path(stack.enter_context(tempfile.TemporaryDirectory()))
         statuses = {}
         print(f"Checking {len(internal_urls)} internal URLs against {base_url} ...", file=sys.stderr)
-        statuses.update(lychee.run_lychee(internal_urls, tmp / "internal", config=config,
+        # lychee.toml excludes sample hosts (localhost:8080, 127.0.0.1) that a base URL may use.
+        statuses.update(lychee.run_lychee(internal_urls, tmp / "internal", config=None,
                                           cache=False, cwd=REPO_ROOT))
         print(f"Checking {len(external_urls)} external URLs ...", file=sys.stderr)
         statuses.update(lychee.run_lychee(external_urls, tmp / "external", config=config,
@@ -111,11 +116,13 @@ def cmd_check(args: argparse.Namespace) -> int:
         print(report.format_console(failures))
     if args.annotations and failures:
         print(report.format_annotations(failures))
-    if args.report_md:
-        md = report.format_markdown(
-            failures, checked={"internal": len(internal_urls), "external": len(external_urls)},
-            repo=args.repo, sha=args.sha, run_url=args.run_url, now=datetime.now(timezone.utc))
-        Path(args.report_md).write_text(md, encoding="utf-8")
+    checked = {"internal": len(internal_urls), "external": len(external_urls)}
+    now = datetime.now(timezone.utc)
+    for path, limit in ((args.report_md, args.report_limit), (args.summary_md, SUMMARY_LIMIT)):
+        if path:
+            md = report.format_markdown(failures, checked=checked, repo=args.repo, sha=args.sha,
+                                        run_url=args.run_url, now=now, limit=limit)
+            Path(path).write_text(md, encoding="utf-8")
     print(f"{len(failures)} broken links.", file=sys.stderr)
     return 1 if failures else 0
 
@@ -142,10 +149,14 @@ def parse_args(argv: Optional[List[str]]) -> argparse.Namespace:
                          help="limit external links to these doc files (internal links stay complete)")
     p_check.add_argument("--base-url", default=DEFAULT_BASE_URL,
                          help="running static docs server (`npm run serve`), default %(default)s")
-    p_check.add_argument("--serve", action="store_true", help="build if needed and start `npm run serve`")
+    p_check.add_argument("--serve", action="store_true", help="run `npm run build` and `npm run serve`")
     p_check.add_argument("--port", type=int, default=3000, help="port for --serve (default %(default)s)")
-    p_check.add_argument("--rebuild", action="store_true", help="with --serve: always run `npm run build`")
-    p_check.add_argument("--report-md", help="write a markdown report to this file")
+    p_check.add_argument("--no-build", action="store_true",
+                         help="with --serve: reuse an existing build/ instead of building")
+    p_check.add_argument("--report-md", help="write a markdown report (issue-sized) to this file")
+    p_check.add_argument("--report-limit", type=int, default=REPORT_LIMIT,
+                         help="max characters of --report-md (default %(default)s)")
+    p_check.add_argument("--summary-md", help="write the markdown report with up to 1 MB to this file")
     p_check.add_argument("--annotations", action="store_true", help="print GitHub ::error annotations")
     p_check.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY", "operaton/documentation"))
     p_check.add_argument("--sha", default=os.environ.get("GITHUB_SHA", "main"))
@@ -163,6 +174,9 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 2
     except KeyboardInterrupt:
         print("interrupted", file=sys.stderr)
+        return 2
+    except Exception:  # exit 1 means "broken links"; anything unexpected is a tool error
+        traceback.print_exc()
         return 2
 
 

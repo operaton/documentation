@@ -52,6 +52,17 @@ class TestResolve(unittest.TestCase):
         self.assertEqual(res("https://docs.operaton.org/docs/documentation/webapps/admin/#x"),
                          (INTERNAL, BASE + "/docs/documentation/webapps/admin/#x"))
 
+    def test_prod_docs_url_host_case_insensitive(self):
+        self.assertEqual(res("https://Docs.Operaton.org/docs/get-started/?q=1#x"),
+                         (INTERNAL, BASE + "/docs/get-started/?q=1#x"))
+
+    def test_prod_docs_url_with_explicit_port(self):
+        self.assertEqual(res("https://docs.operaton.org:443/docs/get-started/"),
+                         (INTERNAL, BASE + "/docs/get-started/"))
+
+    def test_prod_docs_bare_host(self):
+        self.assertEqual(res("https://docs.operaton.org"), (INTERNAL, BASE + "/"))
+
     def test_prod_reference_stays_external(self):
         url = "https://docs.operaton.org/reference/latest/javadoc/A.html"
         self.assertEqual(res(url), (EXTERNAL, url))

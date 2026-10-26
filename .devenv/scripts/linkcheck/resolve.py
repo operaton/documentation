@@ -38,8 +38,12 @@ def resolve_link(link: Link, routes: Dict[str, str], base_url: str) -> ResolvedL
     parts = urlsplit(raw)
     if parts.scheme in ("http", "https"):
         if parts.hostname == PROD_HOST and not parts.path.startswith(PROD_ONLY_PREFIXES):
-            rest = raw.split(PROD_HOST, 1)[1]
-            return made(INTERNAL, base + (rest or "/"))
+            rest = parts.path or "/"
+            if parts.query:
+                rest += "?" + parts.query
+            if parts.fragment:
+                rest += "#" + parts.fragment
+            return made(INTERNAL, base + rest)
         return made(EXTERNAL, raw)
     if parts.scheme or raw.startswith("//"):
         return made(SKIPPED, reason="scheme")

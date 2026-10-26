@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import html
 import json
+import posixpath
 import shutil
 import subprocess
 from pathlib import Path
@@ -21,7 +22,8 @@ class LycheeError(Exception):
 def normalize_url(url: str) -> str:
     """Key used to match lychee's (normalized) URLs back to ours."""
     parts = urlsplit(unquote(url.strip()))
-    path = parts.path.rstrip("/")
+    path = posixpath.normpath(parts.path) if parts.path else ""  # lychee resolves "a/../b"
+    path = path.rstrip("/")
     return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), path, parts.query, parts.fragment))
 
 

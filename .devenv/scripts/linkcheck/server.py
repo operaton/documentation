@@ -63,14 +63,15 @@ def _stop(proc: subprocess.Popen) -> None:
 
 
 @contextmanager
-def docusaurus_server(repo_root: Path, port: int, rebuild: bool) -> Iterator[str]:
-    """Build (if needed) and serve the site on `port`; yield its base URL; stop it afterwards."""
+def docusaurus_server(repo_root: Path, port: int, build: bool) -> Iterator[str]:
+    """Build the site (always when `build`, else only if missing), serve it on `port`, yield its
+    base URL, stop it afterwards."""
     base = f"http://localhost:{port}"
     for host in ("localhost", "127.0.0.1"):
         if probe(f"http://{host}:{port}/", timeout=1.0) is not None:
             raise ServerError(f"Port {port} is already in use. Stop that server, pick --port, "
                               f"or omit --serve to check against it.")
-    if rebuild or not (repo_root / "build").is_dir():
+    if build or not (repo_root / "build").is_dir():
         try:
             # stdout carries the link report; keep build chatter on stderr.
             subprocess.run(["npm", "run", "build"], cwd=repo_root, check=True, stdout=sys.stderr)

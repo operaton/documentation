@@ -42,6 +42,33 @@ class TestCollect(unittest.TestCase):
         self.assertEqual(len(collect_failures([link], {"https://a.org/my%20page": "404"})), 1)
 
 
+    def test_dot_segments_match(self):
+        # lychee resolves "a/../b" to "b"
+        link = rl(INTERNAL, "docs/a.md", 1, "../b", "http://localhost:3000/docs/a/../b/")
+        self.assertEqual(len(collect_failures([link], {"http://localhost:3000/docs/b": "404"})), 1)
+
+    def test_unmatched_status_still_fails(self):
+        failures = collect_failures([OK], {"https://xn--bcher-kva.example/": "404"})
+        self.assertEqual(len(failures), 1)
+        self.assertEqual(failures[0].resolved.link.line, 0)
+        self.assertEqual(failures[0].resolved.url, "https://xn--bcher-kva.example/")
+
+
+class TestUnmatchedFormat(unittest.TestCase):
+    def setUp(self):
+        self.failure = collect_failures([], {"https://x.org/": "404"})[0]
+
+    def test_annotation_without_file(self):
+        self.assertEqual(format_annotations([self.failure]),
+                         "::error::Broken link https://x.org/ (source line unknown): 404")
+
+    def test_markdown_without_blob_link(self):
+        md = format_markdown([self.failure], checked={"internal": 0, "external": 1}, repo="o/d",
+                             sha="s", run_url=None, now=NOW)
+        self.assertNotIn("blob/s/", md)
+        self.assertIn("| (source unknown) |  | https://x.org/ | 404 |", md)
+
+
 class TestFormat(unittest.TestCase):
     def setUp(self):
         self.failures = [Failure(UNR, "unresolved-md"), Failure(EXT, "404 Not Found")]
@@ -86,6 +113,19 @@ class TestFormat(unittest.TestCase):
                              run_url=None, now=NOW, limit=5000)
         self.assertLessEqual(len(md), 5200)
         self.assertRegex(md, r"\+\d+ more broken links")
+        self.assertIn("Check links", md)
+        self.assertNotIn("run summary", md)
+
+    def test_truncation_keeps_every_section(self):
+        internal = [Failure(rl(UNRESOLVED, "docs/a.md", i, f"x{i}.md", f"docs/x{i}.md", "unresolved-md"),
+                            "unresolved-md") for i in range(1, 2001)]
+        external = [Failure(rl(EXTERNAL, "docs/b.md", i, f"https://b.org/{i}", f"https://b.org/{i}"), "404")
+                    for i in range(1, 6)]
+        md = format_markdown(internal + external, checked={"internal": 2000, "external": 5}, repo="o/d",
+                             sha="s", run_url=None, now=NOW, limit=8000)
+        self.assertIn("### External", md)
+        self.assertIn("https://b.org/5", md)
+        self.assertLessEqual(len(md), 8200)
 
 
 if __name__ == "__main__":
