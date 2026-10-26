@@ -1,0 +1,70 @@
+import sys
+import threading
+import unittest
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from linkcheck.server import ServerError, assert_static_server, docusaurus_server, probe
+
+
+def make_handler(unknown_status):
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            self.send_response(200 if self.path == "/" else unknown_status)
+            self.end_headers()
+
+        def log_message(self, *args):
+            pass
+    return Handler
+
+
+class LocalServer:
+    def __init__(self, unknown_status):
+        self.httpd = HTTPServer(("127.0.0.1", 0), make_handler(unknown_status))
+        self.url = f"http://127.0.0.1:{self.httpd.server_port}"
+        self.port = self.httpd.server_port
+
+    def __enter__(self):
+        threading.Thread(target=self.httpd.serve_forever, daemon=True).start()
+        return self
+
+    def __exit__(self, *exc):
+        self.httpd.shutdown()
+        self.httpd.server_close()
+
+
+class TestServer(unittest.TestCase):
+    def test_probe_unreachable(self):
+        self.assertIsNone(probe("http://127.0.0.1:9", timeout=0.5))
+
+    def test_probe_status(self):
+        with LocalServer(404) as s:
+            self.assertEqual(probe(s.url + "/"), 200)
+            self.assertEqual(probe(s.url + "/nope"), 404)
+
+    def test_static_server_accepted(self):
+        with LocalServer(404) as s:
+            assert_static_server(s.url)
+
+    def test_no_server_has_hint(self):
+        with self.assertRaises(ServerError) as ctx:
+            assert_static_server("http://127.0.0.1:9")
+        self.assertIn("npm run serve", str(ctx.exception))
+
+    def test_spa_server_rejected(self):
+        with LocalServer(200) as s:
+            with self.assertRaises(ServerError) as ctx:
+                assert_static_server(s.url)
+            self.assertIn("npm start", str(ctx.exception))
+
+    def test_serve_refuses_busy_port(self):
+        with LocalServer(404) as s:
+            with self.assertRaises(ServerError) as ctx:
+                with docusaurus_server(Path("."), s.port, rebuild=False):
+                    pass
+            self.assertIn("in use", str(ctx.exception))
+
+
+if __name__ == "__main__":
+    unittest.main()
