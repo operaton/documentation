@@ -39,15 +39,22 @@ class TestSelect(unittest.TestCase):
         self.assertEqual(cli.select([i, e1, e2], "internal", None), [i])
 
 
+REST_SPEC = {"paths": {"/task": {"get": {
+    "operationId": "getTasks",
+    "description": "[docs](https://docs.operaton.org/docs/b) [old](/manual/x/) [ext](https://r.org/)"}}}}
+
+
 class TestMain(unittest.TestCase):
-    def run_main(self, tmp, argv, statuses):
+    def run_main(self, tmp, argv, statuses, spec=None):
         out, err = io.StringIO(), io.StringIO()
         with patch.object(cli, "REPO_ROOT", tmp), \
+             patch.object(cli.openapi, "load_spec", return_value=spec or {"paths": {}}) as load, \
              patch.object(cli.server, "assert_static_server"), \
              patch.object(cli.lychee, "run_lychee", side_effect=lambda urls, *a, **k: {
                  u: statuses[u] for u in urls if u in statuses}), \
              redirect_stdout(out), redirect_stderr(err):
             code = cli.main(argv)
+        self.load_spec = load
         return code, out.getvalue(), err.getvalue()
 
     def test_map_groups(self):
@@ -74,6 +81,71 @@ class TestMain(unittest.TestCase):
             self.assertIn("docs/b.md:1  https://y.org/  404 Not Found", out)
             self.assertIn("::error file=docs/b.md,line=1::", out)
             self.assertIn("**2 broken links**", report.read_text(encoding="utf-8"))
+
+    def test_check_includes_rest_api_links(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            code, out, _ = self.run_main(tmp, ["check"], {
+                "http://localhost:3000/manual/x/": "404 Not Found", "https://r.org/": "Timeout"}, REST_SPEC)
+            self.assertEqual(code, 1)
+            self.load_spec.assert_called_once_with(cli.openapi.DEFAULT_SPEC_URL)
+            self.assertIn("REST API GET /task  https://docs.operaton.org/manual/x/  404 Not Found", out)
+            self.assertIn("REST API GET /task  https://r.org/  Timeout", out)
+
+    def test_rest_api_external_links_skipped_with_files(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            code, out, _ = self.run_main(tmp, ["check", "--files", "docs/b.md"],
+                                         {"https://r.org/": "Timeout"}, REST_SPEC)
+            self.assertNotIn("r.org", out)
+
+    def test_no_rest_api(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            self.run_main(tmp, ["check", "--no-rest-api"], {}, REST_SPEC)
+            self.load_spec.assert_not_called()
+
+    def test_rest_api_spec_option(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            code, out, _ = self.run_main(tmp, ["map", "--rest-api-spec", "spec.json"], {}, REST_SPEC)
+            self.load_spec.assert_called_once_with("spec.json")
+            self.assertIn("REST API GET /task", out)
+
+    def test_rest_api_spec_error_exits_2(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            with patch.object(cli.openapi, "load_spec", side_effect=cli.openapi.SpecError("cannot load x")), \
+                 patch.object(cli, "REPO_ROOT", tmp), redirect_stdout(io.StringIO()), \
+                 redirect_stderr(io.StringIO()) as err:
+                code = cli.main(["check", "--scope", "internal"])
+            self.assertEqual(code, 2)
+            self.assertIn("cannot load x", err.getvalue())
+
+    def test_report_txt_grouped_by_type(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            txt = tmp / "broken-links.txt"
+            self.run_main(tmp, ["check", "--report-txt", str(txt)], {"https://y.org/": "404 Not Found"})
+            text = txt.read_text(encoding="utf-8")
+            self.assertIn("== Docs, internal: missing page (1) ==", text)
+            self.assertIn("== Docs, external: not found (404/410) (1) ==", text)
+
+    def test_report_txt_written_when_all_ok(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            (tmp / "docs" / "a.md").write_text("ok\n", encoding="utf-8")
+            txt = tmp / "broken-links.txt"
+            code, _, _ = self.run_main(tmp, ["check", "--report-txt", str(txt)], {})
+            self.assertEqual(code, 0)
+            self.assertIn("No broken links.", txt.read_text(encoding="utf-8"))
 
     def test_check_files_filter(self):
         with tempfile.TemporaryDirectory() as t:

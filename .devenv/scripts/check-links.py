@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Check internal and external links in the Operaton documentation.
 
-Phase 1 (`map`) collects every link in docs/**/*.md(x) with file and line and resolves internal
-links to site URLs. Phase 2 (`check`) checks the URLs with lychee: internal ones against a static
+Phase 1 (`map`) collects every link in docs/**/*.md(x) with file and line, plus the links in the
+REST API reference (OpenAPI spec descriptions), and resolves internal links to site URLs. Phase 2 (`check`) checks the URLs with lychee: internal ones against a static
 docs server (`npm run serve`, or --serve to start one), external ones on the web.
 
 Examples:
@@ -11,6 +11,7 @@ Examples:
   .devenv/scripts/check-links.py check --serve --no-build   # reuse build/
   .devenv/scripts/check-links.py check --scope internal --base-url http://localhost:3000
   .devenv/scripts/check-links.py check --scope external --files docs/documentation/index.md
+  .devenv/scripts/check-links.py check --serve --no-rest-api --report-txt broken-links.txt
 
 Exit codes: 0 no broken links, 1 broken links, 2 setup or tool error.
 """
@@ -28,7 +29,7 @@ from pathlib import Path
 from typing import List, Optional, Set
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from linkcheck import extract, lychee, report, resolve, routes, server  # noqa: E402
+from linkcheck import extract, lychee, openapi, report, resolve, routes, server  # noqa: E402
 from linkcheck.models import EXTERNAL, INTERNAL, SKIPPED, UNRESOLVED, ResolvedLink  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -37,8 +38,10 @@ REPORT_LIMIT = 60000      # GitHub issue bodies hold 65,536 characters
 SUMMARY_LIMIT = 1000000   # job summaries hold 1 MiB
 
 
-def build_map(repo_root: Path, base_url: str) -> List[ResolvedLink]:
+def build_map(repo_root: Path, base_url: str, rest_api_spec: Optional[str]) -> List[ResolvedLink]:
     links = extract.extract_files(repo_root, extract.iter_doc_files(repo_root / "docs"))
+    if rest_api_spec:
+        links += openapi.extract_spec(openapi.load_spec(rest_api_spec))
     return resolve.resolve_all(links, routes.load_routes(repo_root), base_url)
 
 
@@ -76,7 +79,7 @@ def _entry(r: ResolvedLink) -> dict:
 
 
 def cmd_map(args: argparse.Namespace) -> int:
-    resolved = build_map(REPO_ROOT, args.base_url)
+    resolved = build_map(REPO_ROOT, args.base_url, args.rest_api_spec)
     groups = {kind: [_entry(r) for r in resolved if r.kind == kind]
               for kind in (INTERNAL, EXTERNAL, UNRESOLVED, SKIPPED)}
     text = json.dumps(groups, indent=2) + "\n"
@@ -95,7 +98,7 @@ def cmd_check(args: argparse.Namespace) -> int:
         base_url = args.base_url
         if needs_server and args.serve:
             base_url = stack.enter_context(server.docusaurus_server(REPO_ROOT, args.port, not args.no_build))
-        resolved = build_map(REPO_ROOT, base_url)
+        resolved = build_map(REPO_ROOT, base_url, args.rest_api_spec)
         selected = select(resolved, args.scope, _rel_files(REPO_ROOT, args.files))
         internal_urls = sorted({r.url for r in selected if r.kind == INTERNAL})
         external_urls = sorted({r.url for r in selected if r.kind == EXTERNAL})
@@ -123,6 +126,9 @@ def cmd_check(args: argparse.Namespace) -> int:
             md = report.format_markdown(failures, checked=checked, repo=args.repo, sha=args.sha,
                                         run_url=args.run_url, now=now, limit=limit)
             Path(path).write_text(md, encoding="utf-8")
+    if args.report_txt:
+        Path(args.report_txt).write_text(report.format_text(failures, sha=args.sha, run_url=args.run_url,
+                                                            now=now), encoding="utf-8")
     print(f"{len(failures)} broken links.", file=sys.stderr)
     return 1 if failures else 0
 
@@ -134,6 +140,13 @@ def _default_run_url() -> Optional[str]:
     return None
 
 
+def _add_rest_api_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--rest-api-spec", default=openapi.DEFAULT_SPEC_URL,
+                        help="OpenAPI spec (URL or file) of the REST API reference, default %(default)s")
+    parser.add_argument("--no-rest-api", dest="rest_api_spec", action="store_const", const=None,
+                        help="do not check the links in the REST API reference")
+
+
 def parse_args(argv: Optional[List[str]]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -141,6 +154,7 @@ def parse_args(argv: Optional[List[str]]) -> argparse.Namespace:
     p_map = sub.add_parser("map", help="write the link map as JSON")
     p_map.add_argument("--out", default="-", help="output file, '-' for stdout (default)")
     p_map.add_argument("--base-url", default=DEFAULT_BASE_URL)
+    _add_rest_api_args(p_map)
     p_map.set_defaults(func=cmd_map)
 
     p_check = sub.add_parser("check", help="check links and report broken ones")
@@ -157,10 +171,12 @@ def parse_args(argv: Optional[List[str]]) -> argparse.Namespace:
     p_check.add_argument("--report-limit", type=int, default=REPORT_LIMIT,
                          help="max characters of --report-md (default %(default)s)")
     p_check.add_argument("--summary-md", help="write the markdown report with up to 1 MB to this file")
+    p_check.add_argument("--report-txt", help="write all broken links, grouped by type, to this text file")
     p_check.add_argument("--annotations", action="store_true", help="print GitHub ::error annotations")
     p_check.add_argument("--repo", default=os.environ.get("GITHUB_REPOSITORY", "operaton/documentation"))
     p_check.add_argument("--sha", default=os.environ.get("GITHUB_SHA", "main"))
     p_check.add_argument("--run-url", default=_default_run_url())
+    _add_rest_api_args(p_check)
     p_check.set_defaults(func=cmd_check)
     return parser.parse_args(argv)
 
@@ -169,7 +185,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     args = parse_args(argv)
     try:
         return args.func(args)
-    except (routes.RoutesError, lychee.LycheeError, server.ServerError) as exc:
+    except (routes.RoutesError, lychee.LycheeError, server.ServerError, openapi.SpecError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     except KeyboardInterrupt:

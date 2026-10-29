@@ -16,6 +16,7 @@ class Link:
     line: int  # 1-based
     raw: str   # destination exactly as written
     html: bool = False  # from a raw HTML/JSX attribute: Docusaurus does not rewrite .md there
+    source_url: str = ""  # page the link is on when it is not a repo file (REST API); line is 0 then
 
 
 @dataclass(frozen=True)
