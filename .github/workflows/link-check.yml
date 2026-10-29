@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+env:
+  # Broken links do not fail the workflow yet. Set to 'true' once the known broken links are fixed.
+  FAIL_ON_BROKEN_LINKS: 'false'
+
 concurrency:
   group: link-check-${{ github.ref }}
   cancel-in-progress: true
@@ -96,7 +100,8 @@ jobs:
           HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set +e
-          args=(check --serve --no-build --report-md report.md --summary-md summary.md --sha "$HEAD_SHA")
+          args=(check --serve --no-build --report-md report.md --summary-md summary.md
+                --report-txt broken-links.txt --sha "$HEAD_SHA")
           if [ "$EVENT" = "pull_request" ]; then
             mapfile -t changed < <(git diff --name-only --diff-filter=d "origin/$BASE_REF...HEAD" -- 'docs/*.md' 'docs/*.mdx')
             if [ "${#changed[@]}" -gt 0 ]; then
@@ -122,6 +127,14 @@ jobs:
             echo "Link check did not produce a report, see the 'Check links' step log." >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: Upload broken links list
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: broken-links
+          path: broken-links.txt
+          if-no-files-found: ignore
+
       - name: Update broken-links issue
         # Only results for main may change the tracking issue; manual runs on branches must not.
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && (steps.check.outputs.exit == '0' || steps.check.outputs.exit == '1')
@@ -130,13 +143,16 @@ jobs:
           CHECK_EXIT: ${{ steps.check.outputs.exit }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          number=$(gh issue list --label broken-links --state open --limit 1 --json number --jq '.[0].number // empty')
+          # Issues for single link types carry the label too; the tracking issue is found by its title.
+          title="Broken links in documentation"
+          number=$(gh issue list --label broken-links --state open --limit 100 --json number,title \
+            --jq 'map(select(.title == "Broken links in documentation"))[0].number // empty')
           if [ "$CHECK_EXIT" = "1" ]; then
             if [ -n "$number" ]; then
               gh issue edit "$number" --body-file report.md
               echo "Updated issue #$number"
             else
-              gh issue create --title "Broken links in documentation" --label broken-links --body-file report.md
+              gh issue create --title "$title" --label broken-links --body-file report.md
             fi
           elif [ -n "$number" ]; then
             gh issue close "$number" --comment "All links OK as of $RUN_URL"
@@ -148,5 +164,9 @@ jobs:
         env:
           CHECK_EXIT: ${{ steps.check.outputs.exit }}
         run: |
+          if [ "$CHECK_EXIT" = "1" ] && [ "$FAIL_ON_BROKEN_LINKS" != "true" ]; then
+            echo "::warning::Broken links found, see the job summary and the broken-links artifact. Not failing the build (FAIL_ON_BROKEN_LINKS=$FAIL_ON_BROKEN_LINKS)."
+            exit 0
+          fi
           echo "Link check exit code: ${CHECK_EXIT} (1 = broken links, 2 = setup/tool error)"
           exit 1

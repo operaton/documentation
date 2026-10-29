@@ -1,6 +1,7 @@
 """Join check results with the link map and render reports."""
 from __future__ import annotations
 
+import re
 from datetime import datetime
 from typing import Dict, Iterable, List, Optional
 
@@ -33,12 +34,16 @@ def collect_failures(resolved: Iterable[ResolvedLink], statuses: Dict[str, str])
     return failures
 
 
+def _where(link: Link) -> str:
+    return f"{link.file}:{link.line}" if link.line else link.file
+
+
 def format_console(failures: List[Failure]) -> str:
     lines = []
     for f in failures:
         link = f.resolved.link
         target = f"  -> {f.resolved.url}" if f.resolved.kind == INTERNAL else ""
-        lines.append(f"{link.file}:{link.line}  {link.raw}  {f.status}{target}")
+        lines.append(f"{_where(link)}  {link.raw}  {f.status}{target}")
     return "\n".join(lines)
 
 
@@ -52,6 +57,8 @@ def _escape_property(text: str) -> str:
 
 def _annotation(f: Failure) -> str:
     link = f.resolved.link
+    if link.source_url:
+        return f"::error::{_escape_data(f'Broken link {link.raw} in {link.file}: {f.status}')}"
     if link.line == 0:
         return f"::error::{_escape_data(f'Broken link {link.raw} (source line unknown): {f.status}')}"
     return (f"::error file={_escape_property(link.file)},line={link.line}"
@@ -68,7 +75,9 @@ def _cell(text: str) -> str:
 
 def _row(f: Failure, repo: str, sha: str) -> str:
     link = f.resolved.link
-    if link.line == 0:
+    if link.source_url:
+        page, line = f"[{_cell(link.file)}]({link.source_url})", ""
+    elif link.line == 0:
         page, line = link.file, ""
     else:
         page = f"[{link.file}](https://github.com/{repo}/blob/{sha}/{link.file}#L{link.line})"
@@ -128,3 +137,56 @@ def format_markdown(failures: List[Failure], *, checked: Dict[str, int], repo: s
         out += (f"\n+{len(failures) - shown} more broken links. The full list is in the log of the "
                 f"\"Check links\" step of the workflow run, or run the check locally.\n")
     return out
+
+
+# (pattern on the lychee status, problem), first match wins
+PROBLEMS = (
+    (r"^unresolved-md$", "missing page"),
+    (r"fragment", "missing anchor"),
+    (r"\b(404|410)\b", "not found (404/410)"),
+    (r"\b(401|403)\b", "access denied (401/403)"),
+    (r"timeout", "timeout"),
+    (r"network error", "network error"),
+)
+OTHER = "other error"
+PROBLEM_ORDER = [problem for _, problem in PROBLEMS] + [OTHER]
+
+
+def _type_key(f: Failure) -> tuple:
+    source = "REST API" if f.resolved.link.source_url else "Docs"
+    scope = "external" if f.resolved.kind == EXTERNAL else "internal"
+    problem = next((p for pattern, p in PROBLEMS if re.search(pattern, f.status, re.IGNORECASE)), OTHER)
+    return source, scope, problem
+
+
+def link_type(f: Failure) -> str:
+    """Group name of a failure, e.g. "Docs, external: not found (404/410)"."""
+    source, scope, problem = _type_key(f)
+    return f"{source}, {scope}: {problem}"
+
+
+def _type_order(f: Failure) -> tuple:
+    source, scope, problem = _type_key(f)
+    return source != "Docs", scope != "internal", PROBLEM_ORDER.index(problem)
+
+
+def format_text(failures: List[Failure], *, sha: str, run_url: Optional[str], now: datetime) -> str:
+    """Plain text list of all broken links, grouped by link type."""
+    meta = f"{now.strftime('%Y-%m-%d %H:%M')} UTC, commit {sha[:12]}"
+    if run_url:
+        meta += f", {run_url}"
+    if not failures:
+        return f"Link check: No broken links.\n{meta}\n"
+    groups: Dict[str, List[Failure]] = {}
+    for f in sorted(failures, key=_type_order):
+        groups.setdefault(link_type(f), []).append(f)
+    out = [f"Link check: {len(failures)} broken links in {len(groups)} types", meta]
+    for name, members in groups.items():
+        out += ["", f"== {name} ({len(members)}) =="]
+        for f in members:
+            link = f.resolved.link
+            line = f"{_where(link)}  {link.raw}  [{f.status}]"
+            if link.source_url:
+                line += f"  ({link.source_url})"
+            out.append(line)
+    return "\n".join(out) + "\n"

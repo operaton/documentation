@@ -40,7 +40,9 @@ Run the typecheck and production build before opening a pull request.
 ## Link check
 
 `.devenv/scripts/check-links.py` finds broken internal and external links in `docs/` and reports them
-with file and line. It needs [lychee](https://lychee.cli.rs/installation/) (`brew install lychee`).
+with file and line. It also checks the links in the
+[REST API reference](https://docs.operaton.org/reference/latest/rest-api/): the descriptions in its
+OpenAPI spec, reported with the operation they belong to. It needs [lychee](https://lychee.cli.rs/installation/) (`brew install lychee`).
 
 ```bash
 # Build, start a static server, check everything, stop the server
@@ -54,12 +56,17 @@ with file and line. It needs [lychee](https://lychee.cli.rs/installation/) (`bre
 
 # Only write the link map (file, line, URL; grouped internal/external)
 .devenv/scripts/check-links.py map --out links.json
+
+# Skip the REST API reference, write all broken links grouped by type to a text file
+.devenv/scripts/check-links.py check --serve --no-rest-api --report-txt broken-links.txt
 ```
 
 Internal links need the static build (`npm run serve`); the dev server (`npm start`) answers every
 URL with 200 and is rejected. URL excludes and timeouts live in `lychee.toml`.
 The `Link Check` workflow runs on PRs, on manual dispatch and every second Friday; scheduled runs
-keep an issue labelled `broken-links` up to date.
+keep the issue "Broken links in documentation" (label `broken-links`) up to date. Every run uploads
+the `broken-links` artifact, a text file with all broken links grouped by type. Broken links do not
+fail the workflow while `FAIL_ON_BROKEN_LINKS` in `.github/workflows/link-check.yml` is `'false'`.
 
 ## Local Search (Typesense) Setup
 

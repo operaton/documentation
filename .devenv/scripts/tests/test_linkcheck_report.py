@@ -5,7 +5,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from linkcheck.models import EXTERNAL, INTERNAL, SKIPPED, UNRESOLVED, Failure, Link, ResolvedLink
-from linkcheck.report import collect_failures, format_annotations, format_console, format_markdown
+from linkcheck.report import (collect_failures, format_annotations, format_console, format_markdown,
+                              format_text, link_type)
 
 NOW = datetime(2026, 10, 30, 4, 0, tzinfo=timezone.utc)
 
@@ -126,6 +127,69 @@ class TestFormat(unittest.TestCase):
         self.assertIn("### External", md)
         self.assertIn("https://b.org/5", md)
         self.assertLessEqual(len(md), 8200)
+
+
+REST_PAGE = "https://docs.operaton.org/reference/latest/rest-api/#operation/getTask"
+REST = ResolvedLink(Link("REST API GET /task", 0, "https://docs.operaton.org/manual/x/", source_url=REST_PAGE),
+                    INTERNAL, "http://localhost:3000/manual/x/")
+
+
+class TestRestApiSource(unittest.TestCase):
+    def setUp(self):
+        self.failure = Failure(REST, "404 Not Found")
+
+    def test_markdown_links_to_rest_api_page(self):
+        md = format_markdown([self.failure], checked={"internal": 1, "external": 0}, repo="o/d",
+                             sha="s", run_url=None, now=NOW)
+        self.assertIn(f"| [REST API GET /task]({REST_PAGE}) |  | https://docs.operaton.org/manual/x/ |", md)
+
+    def test_annotation_without_file(self):
+        self.assertEqual(format_annotations([self.failure]),
+                         "::error::Broken link https://docs.operaton.org/manual/x/ in REST API GET /task: "
+                         "404 Not Found")
+
+    def test_console_without_line(self):
+        self.assertTrue(format_console([self.failure]).startswith(
+            "REST API GET /task  https://docs.operaton.org/manual/x/  404 Not Found"))
+
+
+class TestLinkType(unittest.TestCase):
+    def test_types(self):
+        cases = [
+            (Failure(UNR, "unresolved-md"), "Docs, internal: missing page"),
+            (Failure(INT, "Cannot find fragment"), "Docs, internal: missing anchor"),
+            (Failure(EXT, "Rejected status code: 404 Not Found"), "Docs, external: not found (404/410)"),
+            (Failure(EXT, "Rejected status code: 410 Gone"), "Docs, external: not found (404/410)"),
+            (Failure(EXT, "Rejected status code: 403 Forbidden"), "Docs, external: access denied (401/403)"),
+            (Failure(EXT, "Timeout"), "Docs, external: timeout"),
+            (Failure(EXT, "Network error: Connection failed"), "Docs, external: network error"),
+            (Failure(EXT, "Rejected status code: 500 Internal Server Error"), "Docs, external: other error"),
+            (Failure(REST, "404 Not Found"), "REST API, internal: not found (404/410)"),
+        ]
+        for failure, expected in cases:
+            self.assertEqual(link_type(failure), expected, failure.status)
+
+
+class TestFormatText(unittest.TestCase):
+    def test_grouped_by_type(self):
+        failures = [Failure(EXT, "Rejected status code: 404 Not Found"), Failure(UNR, "unresolved-md"),
+                    Failure(REST, "Rejected status code: 404 Not Found"),
+                    Failure(rl(EXTERNAL, "docs/z.md", 8, "https://z.org", "https://z.org"),
+                            "Rejected status code: 404 Not Found")]
+        text = format_text(failures, sha="abc123def4567", run_url="https://run", now=NOW)
+        self.assertIn("4 broken links in 3 types", text)
+        self.assertIn("2026-10-30 04:00 UTC, commit abc123def456, https://run", text)
+        self.assertLess(text.index("== Docs, internal: missing page (1) =="),
+                        text.index("== Docs, external: not found (404/410) (2) =="))
+        self.assertLess(text.index("== Docs, external: not found (404/410) (2) =="),
+                        text.index("== REST API, internal: not found (404/410) (1) =="))
+        self.assertIn("docs/a.md:5  gone.md  [unresolved-md]", text)
+        self.assertIn("docs/b.md:3  https://a.org  [Rejected status code: 404 Not Found]", text)
+        self.assertIn(f"REST API GET /task  https://docs.operaton.org/manual/x/  "
+                      f"[Rejected status code: 404 Not Found]  ({REST_PAGE})", text)
+
+    def test_no_failures(self):
+        self.assertIn("No broken links.", format_text([], sha="s", run_url=None, now=NOW))
 
 
 if __name__ == "__main__":
