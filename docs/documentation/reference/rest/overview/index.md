@@ -31,15 +31,155 @@ You may prepend `/engine/{name}` to any of the methods (unless otherwise documen
 
 For every method this documentation gives possible HTTP status codes. The error explanations do not cover all possible error causes that may arise when the request is served, for example, most of the requests will not work properly if there are problems with database access. Any of these undocumented errors will be translated to a HTTP 500 error.
 
-All errors also provide a JSON response body of the form:
+### Error Response Body
+
+Errors are returned with the content type `application/json`, regardless of the media type requested by the client. The response body has the following form:
 
 ```json
-  {
-    "type" : "SomeExceptionClass",
-    "message" : "a detailed message",
-    "code" : 10000
-  }
+{
+  "type" : "SomeExceptionClass",
+  "message" : "a detailed message",
+  "code" : 10000
+}
 ```
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>type</td>
+    <td>String</td>
+    <td>
+      The simple class name of the exception that caused the error, e.g., <code>AuthorizationException</code>.
+      If the REST API wraps an engine exception, this is the name of the wrapping exception
+      (<code>InvalidRequestException</code> or <code>RestException</code>), not the name of the engine exception.
+    </td>
+  </tr>
+  <tr>
+    <td>message</td>
+    <td>String</td>
+    <td>
+      A human-readable error message. The message is meant for logging and display; it may change with
+      newer versions, so do not parse it in your client.
+    </td>
+  </tr>
+  <tr>
+    <td>code</td>
+    <td>Number</td>
+    <td>
+      A numeric code identifying the error, or <code>null</code> if the error did not originate from
+      the process engine. See <a href="#exception-codes">Exception Codes</a>.
+    </td>
+  </tr>
+</table>
+
+Some exception types extend this body with additional properties. These are described in the sections below.
+
+### HTTP Status Codes
+
+The REST API maps exceptions to HTTP status codes as follows:
+
+<table class="table table-striped">
+  <tr>
+    <th>Status</th>
+    <th>Cause</th>
+    <th>Response body</th>
+  </tr>
+  <tr>
+    <td>400 Bad Request</td>
+    <td>
+      Invalid request parameters or request body, e.g., malformed JSON, invalid variable values, or an exceeded
+      <a href="#query-maximum-results-limit-exceptions">query maximum results limit</a>.
+      Engine exceptions of type <code>BadUserRequestException</code> and its subclasses
+      (e.g., <code>NotValidException</code>, <code>NotFoundException</code>), as well as
+      <a href="#parse-exceptions"><code>ParseException</code></a> and the
+      <a href="#migration-validation-exceptions">migration validation exceptions</a>.
+    </td>
+    <td>Error response body; specific properties for parse and migration validation exceptions</td>
+  </tr>
+  <tr>
+    <td>401 Unauthorized</td>
+    <td>
+      <a href="authentication.md">Authentication</a> is enabled and the request does not contain valid credentials.
+    </td>
+    <td>No body; the <code>WWW-Authenticate</code> response header contains the authentication challenge</td>
+  </tr>
+  <tr>
+    <td>403 Forbidden</td>
+    <td>
+      The authenticated user lacks a required permission
+      (<a href="#authorization-exceptions"><code>AuthorizationException</code></a>), or the operation is
+      forbidden for other reasons documented for the specific method.
+    </td>
+    <td>Error response body; specific properties for <code>AuthorizationException</code></td>
+  </tr>
+  <tr>
+    <td>404 Not Found</td>
+    <td>
+      The resource addressed by the request path does not exist, e.g., a process instance with the given id,
+      or the process engine addressed as described in <a href="#engine-usage">Engine Usage</a>. Also returned for unknown URLs.
+    </td>
+    <td>Error response body</td>
+  </tr>
+  <tr>
+    <td>405, 406, 415</td>
+    <td>
+      The HTTP method is not supported for the URL, the requested media type cannot be produced,
+      or the request content type is not supported.
+    </td>
+    <td>Error response body</td>
+  </tr>
+  <tr>
+    <td>500 Internal Server Error</td>
+    <td>
+      Any other error, e.g., database problems or an <code>OptimisticLockingException</code>.
+    </td>
+    <td>Error response body</td>
+  </tr>
+</table>
+
+Note the following details:
+
+* **Not found is not always 404.** By default, an engine `NotFoundException` results in `400 Bad Request`, because it is a subclass of `BadUserRequestException`. Methods that address a resource by its id in the request path translate this into `404 Not Found`. A missing entity referenced elsewhere in the request, for example by an id in the request body, usually results in a `400 Bad Request`. Check the documentation of the specific method for the status codes it returns.
+* **Optimistic locking.** If a concurrent modification is detected, the request fails with `500 Internal Server Error` and `code` `1`. The client can usually retry such a request. See [Optimistic Locking](../../../user-guide/process-engine/transactions-in-processes.md#optimistic-locking).
+* **Malformed JSON.** If the request body is not valid JSON or does not match the expected structure, the response is `400 Bad Request` with type `InvalidRequestException`, an empty `message`, and `code` `null`.
+
+### Exception Codes
+
+Whenever an error originates from the process engine, the REST API exposes a property `"code"` with a
+numeric code as value in the response body of the failed request. Like this, your client application can
+handle the error in a reliable and automated fashion. The `type` property might be too coarse-grained, and
+the `message` property might change with newer versions.
+
+If no specific code applies, `code` is `0`. Notable built-in codes are:
+
+| Code | Meaning |
+|---|---|
+| `0` | Fallback, no specific code assigned |
+| `1` | Optimistic locking: the entity was modified concurrently |
+| `10000` | Database deadlock |
+| `10001` | Foreign key constraint violation |
+| `10002` | Column size too small for the value |
+| `20000` – `39999` | Range for custom codes defined by your application |
+
+If the error did not originate from the process engine, `code` is `null`. This applies to errors raised by
+the REST API itself (e.g., invalid request parameters, malformed JSON, unknown URLs, or unsupported media types)
+and to unexpected server errors. Your client should therefore handle a `null` value.
+
+You can look up the meaning of all built-in codes and learn how to add custom codes in the
+[User Guide](../../../user-guide/process-engine/error-handling.md#exception-codes).
+
+### Handling Errors in a Client
+
+To handle errors reliably, a client should:
+
+1. Evaluate the HTTP status code first.
+2. Use the `code` property to identify specific engine errors, such as optimistic locking (`1`) or [custom exception codes](../../../user-guide/process-engine/error-handling.md#exception-codes) your application defines.
+3. Use the `type` property for coarse-grained distinctions, and to detect responses with additional properties (e.g., `AuthorizationException`, `ParseException`).
+4. Treat `message` as informational text only.
 
 ### Authorization Exceptions
 
@@ -51,14 +191,57 @@ If an already authenticated user interacts with a resource in an unauthorized wa
 
 #### Response Body
 
+In addition to the properties `type`, `message`, and `code`, the response body contains:
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>userId</td>
+    <td>String</td>
+    <td>The id of the user that does not have the required permissions.</td>
+  </tr>
+  <tr>
+    <td>missingAuthorizations</td>
+    <td>Array</td>
+    <td>
+      A JSON array of objects, each with the properties <code>permissionName</code>, <code>resourceName</code>,
+      and <code>resourceId</code>. The user needs <strong>at least one</strong> of the listed permissions to
+      perform the operation.
+    </td>
+  </tr>
+  <tr>
+    <td>permissionName<br/>resourceName<br/>resourceId</td>
+    <td>String</td>
+    <td>
+      <strong>Deprecated</strong>, use <code>missingAuthorizations</code> instead. These properties are only set
+      if exactly one authorization is missing; otherwise they are <code>null</code>.
+    </td>
+  </tr>
+</table>
+
+#### Example
+
 ```json
-{"type" : "AuthorizationException",
- "message" : "The user with id 'jonny' does not have 'DELETE' permission on resource 'Mary' of type 'User'.",
- "code" : 0,
- "userId" : "jonny",
- "permissionName" : "DELETE",
- "resourceName" : "User",
- "resourceId" : "Mary"}
+{
+  "type" : "AuthorizationException",
+  "message" : "The user with id 'jonny' does not have 'DELETE' permission on resource 'Mary' of type 'User'.",
+  "code" : 0,
+  "userId" : "jonny",
+  "permissionName" : "DELETE",
+  "resourceName" : "User",
+  "resourceId" : "Mary",
+  "missingAuthorizations" : [
+    {
+      "permissionName" : "DELETE",
+      "resourceName" : "User",
+      "resourceId" : "Mary"
+    }
+  ]
+}
 ```
 
 ### Migration Validation Exceptions
@@ -68,7 +251,8 @@ valid, a migration exception is thrown. It can be a *migration plan validation
 exception* where the plan itself is not valid, e.g., it contains an invalid
 instruction. Or it can be a *migrating process instance validation exception* when a
 migration plan cannot be applied to a specific process instance, e.g., an active
-activity was not mapped by the migration plan.
+activity was not mapped by the migration plan. In both cases, the status code
+of the response is set to `400 Bad Request`.
 
 ### Migration Plan Validation Exceptions
 
@@ -101,8 +285,7 @@ A JSON object with the following properties:
     <td>Number</td>
     <td>
         The code allows your client application to identify the error in an automated fashion.
-        You can look up the meaning of all built-in codes and learn how to add custom codes in the
-        <a href="../../../user-guide/process-engine/error-handling#exception-codes">User Guide</a>.
+        See <a href="#exception-codes">Exception Codes</a>.
     </td>
   </tr>
   <tr>
@@ -133,6 +316,16 @@ Every validation report object contains the following properties:
       messages for this instruction.
     </td>
   </tr>
+  <tr>
+    <td>variableReports</td>
+    <td>Object</td>
+    <td>
+      A JSON object containing variable key-value pairs. Each key is the name of a variable that
+      cannot be set on the migrated process instances. Each value is a JSON object with the properties
+      <code>type</code>, <code>value</code>, and <code>valueInfo</code> of the variable and a
+      <code>failures</code> array containing the validation messages for this variable.
+    </td>
+  </tr>
 </table>
 
 #### Example
@@ -158,7 +351,8 @@ Every validation report object contains the following properties:
           "Activities have incompatible types (UserTaskActivityBehavior is not compatible with DmnBusinessRuleTaskActivityBehavior)"
         ]
       }
-    ]
+    ],
+    "variableReports": {}
   }
 }
 ```
@@ -189,8 +383,7 @@ A JSON object with the following properties:
     <td>Number</td>
     <td>
         The code allows your client application to identify the error in an automated fashion.
-        You can look up the meaning of all built-in codes and learn how to add custom codes in the
-        <a href="/docs/documentation/user-guide/process-engine/error-handling#exception-codes">User Guide</a>.
+        See <a href="#exception-codes">Exception Codes</a>.
     </td>
   </tr>
   <tr>
@@ -303,54 +496,82 @@ If the process bpmn resource cannot be parsed during deployment, the deployment 
 
 #### Response Body
 
+In addition to the properties `type`, `message`, and `code`, the response body contains a `details` object. Each key is the name of a deployment resource. Each value is a JSON object with the arrays `errors` and `warnings`. Every entry of these arrays has the following properties:
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>message</td>
+    <td>String</td>
+    <td>The message of the error or warning.</td>
+  </tr>
+  <tr>
+    <td>line</td>
+    <td>Number</td>
+    <td>The line of the resource where the problem occurred.</td>
+  </tr>
+  <tr>
+    <td>column</td>
+    <td>Number</td>
+    <td>The column of the resource where the problem occurred.</td>
+  </tr>
+  <tr>
+    <td>mainElementId</td>
+    <td>String</td>
+    <td>The id of the main element causing the problem.</td>
+  </tr>
+  <tr>
+    <td>elementIds</td>
+    <td>Array</td>
+    <td>The ids of all elements involved in the problem.</td>
+  </tr>
+</table>
+
+#### Example
+
 ```json
 {
-	"type": "ParseException",
-	"message": "ENGINE-09005 Could not parse BPMN process. Errors: Exclusive Gateway 'ExclusiveGateway_1' has outgoing sequence flow 'SequenceFlow_0' without condition which is not the default flow.",
-	"code" : 0,
-	"details": {
-		"invoice.bpmn": {
-			"errors": [
-				{
-					"message": "Exclusive Gateway 'ExclusiveGateway_1' has outgoing sequence flow 'SequenceFlow_0' without condition which is not the default flow.",
-					"line": 77,
-					"column": 15,
-					"mainBpmnElementId": "ExclusiveGateway_1",
-					"bpmnElementIds": [
-						"ExclusiveGateway_1",
-						"SequenceFlow_0"
-					]
-				}
-			],
-			"warnings": [
-				{
-					"message": "It is not recommended to use a cancelling boundary timer event with a time cycle.",
-					"line": 87,
-					"column": 20,
-					"mainBpmnElementId": "BoundaryEvent_1",
-					"bpmnElementIds": [
-						"BoundaryEvent_1"
-					]
-				}
-			]
-		}
-	}
+  "type": "ParseException",
+  "message": "ENGINE-09005 Could not parse BPMN process. Errors: Exclusive Gateway 'ExclusiveGateway_1' has outgoing sequence flow 'SequenceFlow_0' without condition which is not the default flow.",
+  "code" : 0,
+  "details": {
+    "invoice.bpmn": {
+      "errors": [
+        {
+          "message": "Exclusive Gateway 'ExclusiveGateway_1' has outgoing sequence flow 'SequenceFlow_0' without condition which is not the default flow.",
+          "line": 77,
+          "column": 15,
+          "mainElementId": "ExclusiveGateway_1",
+          "elementIds": [
+            "ExclusiveGateway_1",
+            "SequenceFlow_0"
+          ]
+        }
+      ],
+      "warnings": [
+        {
+          "message": "It is not recommended to use a cancelling boundary timer event with a time cycle.",
+          "line": 87,
+          "column": 20,
+          "mainElementId": "BoundaryEvent_1",
+          "elementIds": [
+            "BoundaryEvent_1"
+          ]
+        }
+      ]
+    }
+  }
+}
 ```
 
 ### Query Maximum Results Limit Exceptions
 
 When the [maximum results limit of a query](../../../user-guide/process-engine/process-engine-api.md#query-maximum-results-limit)
 is exceeded, an exception is thrown which results in an HTTP status code 400.
-
-### Exception codes
-
-Whenever an error occurs, the REST API exposes a property `"code"` with a numeric code as value in
-the response body of the failed request. Like this, your client application can handle the error in
-a reliable and automated fashion. The `type` property might be too coarse-grained, and the `message`
-property might change with newer versions.
-
-You can look up the meaning of all built-in codes and learn how to add custom codes in the
-[User Guide](../../../user-guide/process-engine/error-handling.md#exception-codes).
 
 ## Authentication
 
