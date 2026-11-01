@@ -266,9 +266,143 @@ long count = taskService.createNativeTaskQuery()
 
 For performance reasons it might sometimes be desirable not to query the engine objects but some own value or DTO objects collecting data from different tables - maybe including your own domain classes.
 
-:::note[Tutorial]
-  [Performance Tuning with Custom Queries](http://blog.operaton.org/post/2017/12/custom-queries).
+A typical example is a task list that has to be filtered by data that lives in your own domain tables, e.g., all tasks belonging to customers of a certain region. The Java Query API cannot express such a condition, and all conditions are combined with a logical AND. Querying a large set of tasks and filtering them afterwards in Java code means loading far more data than needed, which quickly becomes a performance bottleneck. Copying the domain data into process variables works, but has to be kept in sync.
+
+With a custom query you write the SQL yourself, join the engine tables with your own tables and map the result to your own value objects. The engine executes the query using MyBatis, the same persistence framework it uses internally.
+
+Custom queries require that the engine tables and your domain tables live in the same database, so that a single SQL statement can join them.
+
+:::warning[Internal Database Schema]
+Custom queries depend on the [database schema](../process-engine/database/database-schema.md) of the engine, which is not part of the public API. While the schema is fairly stable, it may change between versions. Make sure to test your custom queries whenever you upgrade Operaton.
 :::
+
+#### Set Up a Separate MyBatis Session Factory
+
+To execute custom queries, create a lightweight process engine configuration which reuses the data source of your process engine but loads its own MyBatis configuration. This way the configuration of the process engine itself stays untouched and the mapping files are loaded by the class loader of your application.
+
+```java
+public class CustomQuerySessionFactory extends StandaloneProcessEngineConfiguration {
+
+  protected String resourceName;
+
+  @Override
+  protected void init() {
+    throw new IllegalStateException("Use initFromProcessEngineConfiguration() instead");
+  }
+
+  public void initFromProcessEngineConfiguration(ProcessEngineConfigurationImpl processEngineConfiguration,
+                                                 String resourceName) {
+    this.resourceName = resourceName;
+
+    setDataSource(processEngineConfiguration.getDataSource());
+    setDatabaseTablePrefix(processEngineConfiguration.getDatabaseTablePrefix());
+    setTransactionsExternallyManaged(processEngineConfiguration.isTransactionsExternallyManaged());
+    // exception code providers are not initialized in this lightweight configuration
+    setDisableExceptionCode(true);
+
+    initDataSource();
+    initCommandContextFactory();
+    initTransactionFactory();
+    initTransactionContextFactory();
+    initCommandExecutors();
+    initIdentityProviderSessionFactory();
+    initSqlSessionFactory();
+    initSessionFactories();
+  }
+
+  @Override
+  protected InputStream getMyBatisXmlConfigurationSteam() {
+    return ReflectUtil.getResourceAsStream(resourceName);
+  }
+
+  public <T> T executeQuery(Command<T> command) {
+    return commandExecutorTxRequired.execute(command);
+  }
+}
+```
+
+Initialize it once, e.g., when your application starts:
+
+```java
+ProcessEngineConfigurationImpl processEngineConfiguration =
+    (ProcessEngineConfigurationImpl) processEngine.getProcessEngineConfiguration();
+
+CustomQuerySessionFactory customQuerySessionFactory = new CustomQuerySessionFactory();
+customQuerySessionFactory.initFromProcessEngineConfiguration(processEngineConfiguration, "custom-mappings.xml");
+```
+
+The MyBatis configuration `custom-mappings.xml` only references your own mapping files:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <settings>
+    <setting name="lazyLoadingEnabled" value="false" />
+  </settings>
+  <mappers>
+    <mapper resource="mappings/customTask.xml" />
+  </mappers>
+</configuration>
+```
+
+#### Write the Mapping
+
+The engine passes the same properties to your MyBatis configuration that it uses for its own mappings. Use `${prefix}` for the configured table prefix and `${limitBefore}` and `${limitAfter}` to add database specific paging.
+
+The following mapping selects all tasks that belong to a customer of a given region. The customer id is stored in the process variable `customerId`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="customTask">
+
+  <resultMap id="taskDtoResultMap" type="org.example.TaskDto">
+    <id property="id" column="ID_" jdbcType="VARCHAR" />
+    <result property="name" column="NAME_" jdbcType="VARCHAR" />
+    <result property="assignee" column="ASSIGNEE_" jdbcType="VARCHAR" />
+    <result property="createTime" column="CREATE_TIME_" jdbcType="TIMESTAMP" />
+    <result property="customerName" column="CUSTOMER_NAME" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selectTasksForRegion" parameterType="org.operaton.bpm.engine.impl.db.ListQueryParameterObject"
+          resultMap="taskDtoResultMap">
+    ${limitBefore}
+    select RES.ID_, RES.NAME_, RES.ASSIGNEE_, RES.CREATE_TIME_, C.NAME as CUSTOMER_NAME
+    from ${prefix}ACT_RU_TASK RES
+      inner join ${prefix}ACT_RU_VARIABLE V
+        on V.PROC_INST_ID_ = RES.PROC_INST_ID_ and V.NAME_ = 'customerId'
+      inner join CUSTOMER C
+        on C.ID = V.TEXT_
+    where C.REGION = #{parameter}
+    order by RES.CREATE_TIME_ desc
+    ${limitAfter}
+  </select>
+
+</mapper>
+```
+
+`CUSTOMER` stands for a table of your own domain model.
+
+#### Execute the Query
+
+Custom queries run as a `Command` inside the command context of your session factory:
+
+```java
+List<TaskDto> tasks = customQuerySessionFactory.executeQuery(commandContext -> {
+  ListQueryParameterObject parameter = new ListQueryParameterObject("EMEA", 0, 50);
+  return (List<TaskDto>) commandContext.getDbSqlSession()
+      .selectList("customTask.selectTasksForRegion", parameter);
+});
+```
+
+`ListQueryParameterObject` provides the values `firstResult` and `maxResults` used by `${limitBefore}` and `${limitAfter}`. The value you pass as first constructor argument is available as `#{parameter}` in the mapping.
+
+#### Pitfalls
+
+* **Paging with joined collections**: If you join a collection into the result, e.g., all variables of a task, the query returns one row per variable. The paging statements then limit the number of rows, not the number of tasks. In this case, apply the paging to a subquery which selects the task ids only, and join the collection in the outer query.
+* **Database specifics**: The paging properties cover the common cases. Some databases, like Microsoft SQL Server, additionally require `${limitBetween}` and `${orderBy}`. The engine's own mapping files, e.g., `selectTaskByQueryCriteria` in `org/operaton/bpm/engine/impl/mapping/entity/Task.xml`, show the complete pattern.
+* **Authorization and multi-tenancy**: Custom queries bypass the [authorization checks](../process-engine/authorization-service.md) and the [tenant checks](../process-engine/multi-tenancy.md) of the engine. If your application relies on them, you have to add the respective restrictions to your queries yourself.
 
 
 ### SQL Queries

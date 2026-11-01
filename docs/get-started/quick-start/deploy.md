@@ -22,8 +22,6 @@ In order to deploy the Process, click on the deploy button in the Camunda Modele
 You should see a success message in the Camunda Modeler:
 ![Example image](/img/get-started/quick-start/modeler-deploy3.png)
 
-More details regarding the deployment from Camunda Modeler you can find [here](https://blog.camunda.com/post/2019/01/camunda-modeler-3.0.0-0-released/#completely-reworked-deployment-tool). For Camunda Modeler 2.2.4 and earlier, read [this blog post](https://blog.operaton.com/post/2018/03/camunda-modeler-1120-alpha-3-released/).
-
 ## Verify the Deployment with Cockpit
 
 Next, use Cockpit to see if the process was successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit/](http://localhost:8080/operaton/app/cockpit/) and log in with the credentials demo / demo. Your process *Payment Retrieval* should be visible on the dashboard.
