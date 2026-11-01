@@ -239,10 +239,10 @@ Add the following "type" field to your package.json file:
 }
 ```
 
-#### Add Operaton External Task Client JS library
+#### Add Camunda External Task Client JS library
 
 ```sh
-npm install operaton-external-task-client-js
+npm install camunda-external-task-client-js
 npm install -D open
 ```
 
@@ -256,7 +256,7 @@ We use [Long Polling](https://docs.operaton.org/docs/documentation/user-guide/pr
 Next, you need to create a new JavaScript file, e.g. `worker.js`, that looks like the following:
 
 ```javascript
-import { Client, logger } from 'operaton-external-task-client-js';
+import { Client, logger } from 'camunda-external-task-client-js';
 import open from 'open';
 
 // configuration for the Client:
