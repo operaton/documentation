@@ -159,6 +159,26 @@ jobs:
             echo "Closed issue #$number"
           fi
 
+      - name: Close resolved link type issues
+        # Issues titled "Broken links: <type>" track one group of broken-links.txt, e.g.
+        # "Docs, external: missing anchor". Close those whose group is gone.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && (steps.check.outputs.exit == '0' || steps.check.outputs.exit == '1')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          types=$(sed -n 's/^== \(.*\) ([0-9]*) ==$/\1/p' broken-links.txt)
+          gh issue list --state open --search 'in:title "Broken links:"' --limit 100 --json number,title \
+            --jq '.[] | select(.title | startswith("Broken links: ")) | "\(.number)\t\(.title | ltrimstr("Broken links: "))"' |
+          while IFS=$'\t' read -r number type; do
+            if grep -Fxq -- "$type" <<< "$types"; then
+              echo "#$number still has broken links: $type"
+            else
+              gh issue close "$number" --comment "No broken links of type \"$type\" left as of $RUN_URL"
+              echo "Closed issue #$number ($type)"
+            fi
+          done
+
       - name: Fail on broken links or errors
         if: steps.check.outputs.exit != '0'
         env:
