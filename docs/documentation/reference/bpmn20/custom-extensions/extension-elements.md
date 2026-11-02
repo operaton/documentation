@@ -356,7 +356,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Constraints</th>
     <td colspan="2">
-      The configuration follows the <a href="http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals">ISO 8601 standard for repeating time intervals</a>
+      The configuration follows the <a href="http://en.wikipedia.org/wiki/ISO_8601#mwAzg">ISO 8601 standard for repeating time intervals</a>
     </td>
   </tr>
   <tr>
