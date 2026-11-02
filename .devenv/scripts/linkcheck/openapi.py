@@ -89,13 +89,15 @@ def redoc_anchors(spec: dict) -> Set[str]:
     anchors = {f"tag/{_slug(t['name'])}" for t in spec.get("tags") or [] if t.get("name")}
     for methods in (spec.get("paths") or {}).values():
         for method, operation in methods.items():
-            if method not in HTTP_METHODS or not operation.get("operationId"):
+            if method not in HTTP_METHODS:
+                continue
+            tags = [f"tag/{_slug(tag)}" for tag in operation.get("tags") or []]
+            anchors.update(tags)
+            if not operation.get("operationId"):
                 continue
             op = f"operation/{operation['operationId']}"
             anchors.add(op)
-            for tag in operation.get("tags") or []:
-                anchors.add(f"tag/{_slug(tag)}")
-                anchors.add(f"tag/{_slug(tag)}/{op}")
+            anchors.update(f"{tag}/{op}" for tag in tags)
     return anchors
 
 
