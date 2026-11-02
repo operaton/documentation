@@ -106,6 +106,7 @@ ANCHOR_SPEC = {
     "paths": {"/job/{id}/retries": {
         "parameters": [],
         "put": {"operationId": "setJobRetries", "tags": ["Job"]},
+        "get": {"tags": ["Task"]},
     }},
 }
 
@@ -113,7 +114,8 @@ ANCHOR_SPEC = {
 class TestRedocAnchors(unittest.TestCase):
     def test_tags_and_operations(self):
         self.assertEqual(redoc_anchors(ANCHOR_SPEC), {
-            "tag/Job-Definition", "tag/Job", "operation/setJobRetries", "tag/Job/operation/setJobRetries"})
+            "tag/Job-Definition", "tag/Job", "operation/setJobRetries", "tag/Job/operation/setJobRetries",
+            "tag/Task"})
 
 
 class TestStripRedocFragments(unittest.TestCase):
