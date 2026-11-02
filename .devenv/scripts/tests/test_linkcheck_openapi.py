@@ -6,7 +6,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from linkcheck.models import Link
-from linkcheck.openapi import SpecError, extract_spec, load_spec
+from linkcheck.openapi import (MISSING_FRAGMENT, SpecError, apply_page_statuses, extract_spec, load_spec,
+                               redoc_anchors, strip_redoc_fragments)
 
 PAGE = "https://docs.operaton.org/reference/latest/rest-api/"
 
@@ -98,6 +99,65 @@ class TestLoadSpec(unittest.TestCase):
             path.write_text("<html>", encoding="utf-8")
             with self.assertRaises(SpecError):
                 load_spec(str(path))
+
+
+ANCHOR_SPEC = {
+    "tags": [{"name": "Job Definition"}],
+    "paths": {"/job/{id}/retries": {
+        "parameters": [],
+        "put": {"operationId": "setJobRetries", "tags": ["Job"]},
+    }},
+}
+
+
+class TestRedocAnchors(unittest.TestCase):
+    def test_tags_and_operations(self):
+        self.assertEqual(redoc_anchors(ANCHOR_SPEC), {
+            "tag/Job-Definition", "tag/Job", "operation/setJobRetries", "tag/Job/operation/setJobRetries"})
+
+
+class TestStripRedocFragments(unittest.TestCase):
+    def strip(self, urls, anchors=frozenset({"tag/Job/operation/setJobRetries"})):
+        return strip_redoc_fragments(urls, anchors, PAGE)
+
+    def test_known_fragment_checks_page_only(self):
+        url = PAGE + "#tag/Job/operation/setJobRetries"
+        self.assertEqual(self.strip([url, "https://x.org/#a"]), (
+            [PAGE, "https://x.org/#a"], {}, {url: PAGE}))
+
+    def test_unknown_fragment_fails(self):
+        url = PAGE + "#tag/Job/operation/gone"
+        self.assertEqual(self.strip([url])[1], {url: MISSING_FRAGMENT})
+
+    def test_page_without_trailing_slash(self):
+        url = PAGE.rstrip("/") + "#operation/gone"
+        self.assertEqual(self.strip([url])[1], {url: MISSING_FRAGMENT})
+
+    def test_unvalidated_anchor_kinds_pass(self):
+        self.assertEqual(self.strip([PAGE + "#section/Authentication"])[1], {})
+
+    def test_no_anchors_skips_validation(self):
+        self.assertEqual(self.strip([PAGE + "#operation/gone"], None)[1], {})
+
+
+class TestApplyPageStatuses(unittest.TestCase):
+    def test_failing_page_reported_under_fragment_links(self):
+        url = PAGE + "#operation/x"
+        statuses = {PAGE: "404 Not Found"}
+        apply_page_statuses(statuses, {url: PAGE}, [url])
+        self.assertEqual(statuses, {url: "404 Not Found"})
+
+    def test_page_status_kept_when_linked_directly(self):
+        url = PAGE + "#operation/x"
+        statuses = {PAGE: "404 Not Found"}
+        apply_page_statuses(statuses, {url: PAGE}, [url, PAGE])
+        self.assertEqual(statuses, {url: "404 Not Found", PAGE: "404 Not Found"})
+
+    def test_missing_fragment_not_overwritten(self):
+        url = PAGE + "#operation/x"
+        statuses = {PAGE: "404 Not Found", url: MISSING_FRAGMENT}
+        apply_page_statuses(statuses, {url: PAGE}, [url])
+        self.assertEqual(statuses, {url: MISSING_FRAGMENT})
 
 
 class TestLinkDefault(unittest.TestCase):

@@ -38,10 +38,14 @@ REPORT_LIMIT = 60000      # GitHub issue bodies hold 65,536 characters
 SUMMARY_LIMIT = 1000000   # job summaries hold 1 MiB
 
 
-def build_map(repo_root: Path, base_url: str, rest_api_spec: Optional[str]) -> List[ResolvedLink]:
+def load_spec(rest_api_spec: Optional[str]) -> Optional[dict]:
+    return openapi.load_spec(rest_api_spec) if rest_api_spec else None
+
+
+def build_map(repo_root: Path, base_url: str, spec: Optional[dict]) -> List[ResolvedLink]:
     links = extract.extract_files(repo_root, extract.iter_doc_files(repo_root / "docs"))
-    if rest_api_spec:
-        links += openapi.extract_spec(openapi.load_spec(rest_api_spec))
+    if spec is not None:
+        links += openapi.extract_spec(spec)
     return resolve.resolve_all(links, routes.load_routes(repo_root), base_url)
 
 
@@ -79,7 +83,7 @@ def _entry(r: ResolvedLink) -> dict:
 
 
 def cmd_map(args: argparse.Namespace) -> int:
-    resolved = build_map(REPO_ROOT, args.base_url, args.rest_api_spec)
+    resolved = build_map(REPO_ROOT, args.base_url, load_spec(args.rest_api_spec))
     groups = {kind: [_entry(r) for r in resolved if r.kind == kind]
               for kind in (INTERNAL, EXTERNAL, UNRESOLVED, SKIPPED)}
     text = json.dumps(groups, indent=2) + "\n"
@@ -98,10 +102,14 @@ def cmd_check(args: argparse.Namespace) -> int:
         base_url = args.base_url
         if needs_server and args.serve:
             base_url = stack.enter_context(server.docusaurus_server(REPO_ROOT, args.port, not args.no_build))
-        resolved = build_map(REPO_ROOT, base_url, args.rest_api_spec)
+        spec = load_spec(args.rest_api_spec)
+        resolved = build_map(REPO_ROOT, base_url, spec)
         selected = select(resolved, args.scope, _rel_files(REPO_ROOT, args.files))
         internal_urls = sorted({r.url for r in selected if r.kind == INTERNAL})
         external_urls = sorted({r.url for r in selected if r.kind == EXTERNAL})
+        # Fragments on the REST API page are checked against the spec, the page itself by lychee.
+        anchors = openapi.redoc_anchors(spec) if spec is not None else None
+        lychee_urls, redoc_statuses, redoc_pages = openapi.strip_redoc_fragments(external_urls, anchors)
         if internal_urls and not args.serve:
             server.assert_static_server(base_url)
         tmp = Path(stack.enter_context(tempfile.TemporaryDirectory()))
@@ -111,8 +119,10 @@ def cmd_check(args: argparse.Namespace) -> int:
         statuses.update(lychee.run_lychee(internal_urls, tmp / "internal", config=None,
                                           cache=False, cwd=REPO_ROOT))
         print(f"Checking {len(external_urls)} external URLs ...", file=sys.stderr)
-        statuses.update(lychee.run_lychee(external_urls, tmp / "external", config=config,
+        statuses.update(lychee.run_lychee(lychee_urls, tmp / "external", config=config,
                                           cache=True, cwd=REPO_ROOT))
+        statuses.update(redoc_statuses)
+        openapi.apply_page_statuses(statuses, redoc_pages, external_urls)
 
     failures = report.collect_failures(selected, statuses)
     if failures:

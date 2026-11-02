@@ -51,10 +51,11 @@ class TestMain(unittest.TestCase):
              patch.object(cli.openapi, "load_spec", return_value=spec or {"paths": {}}) as load, \
              patch.object(cli.server, "assert_static_server"), \
              patch.object(cli.lychee, "run_lychee", side_effect=lambda urls, *a, **k: {
-                 u: statuses[u] for u in urls if u in statuses}), \
+                 u: statuses[u] for u in urls if u in statuses}) as run_lychee, \
              redirect_stdout(out), redirect_stderr(err):
             code = cli.main(argv)
         self.load_spec = load
+        self.checked = [u for call in run_lychee.call_args_list for u in call.args[0]]
         return code, out.getvalue(), err.getvalue()
 
     def test_map_groups(self):
@@ -92,6 +93,22 @@ class TestMain(unittest.TestCase):
             self.load_spec.assert_called_once_with(cli.openapi.DEFAULT_SPEC_URL)
             self.assertIn("REST API GET /task  https://docs.operaton.org/manual/x/  404 Not Found", out)
             self.assertIn("REST API GET /task  https://r.org/  Timeout", out)
+
+    def test_redoc_fragments_checked_against_spec(self):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = Path(t)
+            make_repo(tmp)
+            page = cli.openapi.DEFAULT_PAGE_URL
+            (tmp / "docs" / "b.md").write_text(
+                f"[ok]({page}#tag/Task/operation/getTasks)\n[gone](/reference/latest/rest-api/#operation/gone)\n",
+                encoding="utf-8")
+            spec = {"paths": {"/task": {"get": {"operationId": "getTasks", "tags": ["Task"]}}}}
+            code, out, _ = self.run_main(tmp, ["check", "--scope", "external"], {}, spec)
+            self.assertEqual(code, 1)
+            self.assertIn(page, self.checked)
+            self.assertFalse([u for u in self.checked if "rest-api/#" in u])
+            self.assertIn("docs/b.md:2  /reference/latest/rest-api/#operation/gone  Cannot find fragment", out)
+            self.assertNotIn("getTasks", out)
 
     def test_rest_api_external_links_skipped_with_files(self):
         with tempfile.TemporaryDirectory() as t:
