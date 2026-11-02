@@ -2,9 +2,10 @@
 from __future__ import annotations
 
 import json
+import re
 import urllib.request
-from typing import Any, List, Optional
-from urllib.parse import urljoin
+from typing import Any, Dict, Iterable, List, Optional, Set, Tuple
+from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
 
 from .extract import extract_text
 from .models import Link
@@ -15,6 +16,9 @@ HTTP_METHODS = ("get", "put", "post", "delete", "options", "head", "patch", "tra
 SAMPLE_KEYS = ("example", "examples")  # sample payloads, not rendered as links
 URL_PARENTS = ("externalDocs", "license", "contact")
 LABEL = "REST API"
+MISSING_FRAGMENT = "Cannot find fragment"
+# Redoc anchors the spec does not define (description sections, schemas) cannot be validated.
+CHECKED_ANCHOR_PREFIXES = ("tag/", "operation/")
 
 
 class SpecError(Exception):
@@ -73,3 +77,65 @@ def extract_spec(spec: dict, page_url: str = DEFAULT_PAGE_URL) -> List[Link]:
 
     walk(spec, [], None)
     return links
+
+
+def _slug(name: str) -> str:
+    """Redoc's anchor form of a tag name."""
+    return re.sub(r"\s+", "-", name.strip())
+
+
+def redoc_anchors(spec: dict) -> Set[str]:
+    """Fragments the Redoc page renders for the tags and operations in the spec."""
+    anchors = {f"tag/{_slug(t['name'])}" for t in spec.get("tags") or [] if t.get("name")}
+    for methods in (spec.get("paths") or {}).values():
+        for method, operation in methods.items():
+            if method not in HTTP_METHODS or not operation.get("operationId"):
+                continue
+            op = f"operation/{operation['operationId']}"
+            anchors.add(op)
+            for tag in operation.get("tags") or []:
+                anchors.add(f"tag/{_slug(tag)}")
+                anchors.add(f"tag/{_slug(tag)}/{op}")
+    return anchors
+
+
+def _split_redoc(url: str, page_url: str) -> Optional[Tuple[str, str]]:
+    """(page URL, fragment) when `url` points into the Redoc page, else None."""
+    parts = urlsplit(url)
+    page = urlsplit(page_url)
+    if not parts.fragment or (parts.netloc, parts.path.rstrip("/")) != (page.netloc, page.path.rstrip("/")):
+        return None
+    return urlunsplit(parts._replace(fragment="")), unquote(parts.fragment)
+
+
+def strip_redoc_fragments(urls: Iterable[str], anchors: Optional[Set[str]],
+                          page_url: str = DEFAULT_PAGE_URL) -> Tuple[List[str], Dict[str, str], Dict[str, str]]:
+    """Redoc renders its anchors in the browser, so lychee never finds them in the HTML.
+
+    Returns the URLs to give lychee (Redoc fragments removed), statuses for fragments the spec
+    does not define (unchecked when `anchors` is None), and {URL with fragment: page URL}.
+    """
+    to_check: Set[str] = set()
+    statuses: Dict[str, str] = {}
+    pages: Dict[str, str] = {}
+    for url in urls:
+        split = _split_redoc(url, page_url)
+        if split is None:
+            to_check.add(url)
+            continue
+        page, fragment = split
+        to_check.add(page)
+        pages[url] = page
+        if anchors is not None and fragment.startswith(CHECKED_ANCHOR_PREFIXES) and fragment not in anchors:
+            statuses[url] = MISSING_FRAGMENT
+    return sorted(to_check), statuses, pages
+
+
+def apply_page_statuses(statuses: Dict[str, str], pages: Dict[str, str], checked: Iterable[str]) -> None:
+    """Report a failing Redoc page under the links that point into it."""
+    for url, page in pages.items():
+        if page in statuses:
+            statuses.setdefault(url, statuses[page])
+    linked = set(checked)
+    for page in set(pages.values()) - linked:
+        statuses.pop(page, None)
