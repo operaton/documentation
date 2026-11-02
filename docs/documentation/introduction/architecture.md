@@ -100,7 +100,7 @@ The Operaton web applications are based on a RESTful architecture.
 Frameworks used:
 
 * [JAX-RS / Jakarta REST](https://jakarta.ee/specifications/restful-ws/) based REST API
-* [AngularJS](https://angularjs.org)
+* [AngularJS](https://github.com/angular/angular.js)
 * [RequireJS](https://requirejs.org)
 * [jQuery](https://jquery.com)
 * [Bootstrap](https://getbootstrap.com)
