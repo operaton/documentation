@@ -55,7 +55,7 @@ Example (interval lasting 10 days):
 
 ### Time Cycle
 
-Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](https://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals) standard.
+Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](https://en.wikipedia.org/wiki/ISO_8601#mwAzg) standard.
 
 Example (3 repeating intervals, each lasting 10 hours):
 
