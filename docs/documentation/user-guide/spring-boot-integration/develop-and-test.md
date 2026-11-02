@@ -13,7 +13,7 @@ menu:
 
 ## Developing
 
-Spring Boot provides [Developer Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools) which feature options like automatic restart and live reload during the development of an application.
+Spring Boot provides [Developer Tools](https://docs.spring.io/spring-boot/reference/using/devtools.html) which feature options like automatic restart and live reload during the development of an application.
 
 ### Spring Developer Tools and Classloading
 
@@ -26,7 +26,7 @@ The plugin ensures exchanging the application context classloader with the class
 
 ## Testing
 
-Spring offers extensive support for automated [testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testing-introduction).
+Spring offers extensive support for automated [testing](https://docs.spring.io/spring-framework/reference/testing/introduction.html).
 This is covered through dedicated mocking packages, test runners and annotations.
 When testing Spring and Spring Boot applications, a significant amount of time is
 required to load the `ApplicationContext`. That is why Spring caches an `ApplicationContext`

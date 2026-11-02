@@ -31,7 +31,7 @@ Sets the process engine name and automatically adds all `ProcessEnginePlugin` be
 
 Configures the Operaton data source and enables [transaction integration](../spring-framework-integration/transactions.md). By default, the primary `DataSource` and `PlatformTransactionManager` beans are wired with the process engine configuration.
 
-If you want to [configure more than one datasource](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-two-datasources)
+If you want to [configure more than one datasource](https://docs.spring.io/spring-boot/how-to/data-access.html#howto.data-access.configure-two-datasources)
 and don't want to use the `@Primary` one for the process engine, then you can create a separate
 data source with name `operatonBpmDataSource` that will be automatically wired with Operaton instead.
 
@@ -463,7 +463,7 @@ Controls if the engine executes the jdbc statements as Batch or not. It has to b
 Registers a redirect from <code>/</code> to operaton's bundled <code>index.html</code>.
 <br/>
 If this property is set to <code>false</code>, the
-<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-web-applications.html#boot-features-spring-mvc-welcome-page">default</a>
+<a href="https://docs.spring.io/spring-boot/reference/web/servlet.html#web.servlet.spring-mvc.welcome-page">default</a>
 Spring Boot behaviour is taken into account.
 </td>
 <td><code>true</code></td>
@@ -955,7 +955,7 @@ appropriate version tags, will need to be added in the Spring Boot Application's
 ```
 
 Spring Boot also provides some nice configuration properties, to further
-configure the Jackson `ObjectMapper`. They can be found [here](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-customize-the-jackson-objectmapper).
+configure the Jackson `JsonMapper`. They can be found [here](https://docs.spring.io/spring-boot/how-to/spring-mvc.html#howto.spring-mvc.customize-jackson-jsonmapper).
 
 To provide additional configurations, the following actions need to be performed:
 

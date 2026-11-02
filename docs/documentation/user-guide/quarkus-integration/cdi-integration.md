@@ -140,7 +140,7 @@ You can learn about the available beans and programming model in the [CDI and Ja
 [cdi-and-java-ee-integration]: ../cdi-java-ee-integration/index.md
 [cdi-conversational-scope]: https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#conversation_context_ee
 [cdi-request-scope]: https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#request_context_ee
-[arc-config-reference]: https://quarkus.io/guides/cdi-reference#quarkus-arc_quarkus.arc.auto-inject-fields
+[arc-config-reference]: https://quarkus.io/guides/cdi-reference#quarkus-arc_quarkus-arc-auto-inject-fields
 [business-process-scoped]: ../cdi-java-ee-integration/contextual-programming-model.md#work-with-businessprocessscoped-beans
 [cdi-passivation]: https://jakarta.ee/specifications/cdi/4.0/jakarta-cdi-spec-4.0.html#passivating_scope
 [jsf-task-forms]: ../task-forms/jsf-task-forms.md
