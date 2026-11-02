@@ -258,7 +258,7 @@ When using the Operaton Webapps, it is always ensured that a user is authenticat
 When embedding the process engine into a custom application, the application needs to take care of authentication if it needs authorization checks to be performed.
 
 :::info[Authentication vs. Authorization]
-Authentication and Authorization are two distinct concepts as explained [here](https://en.wikipedia.org/wiki/Authentication#Authorization).
+Authentication and Authorization are two distinct concepts as explained [here](https://www.geeksforgeeks.org/computer-networks/difference-between-authentication-and-authorization/).
 :::
 
 ## Permissions by Resource

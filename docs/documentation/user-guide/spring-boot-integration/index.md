@@ -10,7 +10,7 @@ Spring Boot starters let you enable behavior in your Spring Boot application by 
 
 These starters will pre-configure the Operaton process engine, REST API and Web applications, so they can easily be used in a standalone process application.
 
-If you are not familiar with [Spring Boot](http://projects.spring.io/spring-boot/), read the [getting started](http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started) guide.
+If you are not familiar with [Spring Boot](http://projects.spring.io/spring-boot/), read the [getting started](https://docs.spring.io/spring-boot/tutorial/first-application/index.html) guide.
 
 To enable Operaton auto configuration, add the following dependency to your ```pom.xml```:
 

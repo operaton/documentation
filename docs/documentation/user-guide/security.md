@@ -208,7 +208,7 @@ A [built-in password policy](../user-guide/process-engine/password-policy.md#bui
 can be enabled that requires passwords to follow specific rules. However, you can achieve a much higher
 level of security by implementing a more sophisticated custom password policy (e.g., with the help of
 [Password Topology Blacklisting](https://blog.korelogic.com/blog/2014/04/04/pathwell_topologies),
-also see the [OWASP guide](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html#password-complexity)
+also see the [OWASP guide](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html#implement-proper-password-strength-controls)
 on password complexity).
 
 You can find more information on how to enable the base password policy and how to implement a custom password policy in our [User Guide](../user-guide/process-engine/password-policy.md).

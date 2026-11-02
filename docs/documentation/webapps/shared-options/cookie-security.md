@@ -23,9 +23,9 @@ The web applications set the following cookies:
 ## What are the properties supposed to be?
 
 This section describes the purpose of security-related cookie properties. You can find more information about
-[Secure and HttpOnly](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies)
+[Secure and HttpOnly](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies#block_access_to_your_cookies)
 as well as
-[SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute)
+[SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies#controlling_third-party_cookies_with_samesite)
 in Mozilla’s Developer Guide.
 
 ### Secure
@@ -48,7 +48,7 @@ When enabling the <code>SameSite</code> flag, the browser only sends the cookie 
 
 :::note[Heads-up!]
 The standard for <code>SameSite</code> recently changed. Most current browser versions treat cookies without <code>SameSite</code> attributes as 'SameSite=Lax'.
-Have a look at [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#samesite_attribute) in Mozilla’s Developer Guide.
+Have a look at [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies#controlling_third-party_cookies_with_samesite) in Mozilla’s Developer Guide.
 :::
 
 ## What are the limitations?
