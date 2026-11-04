@@ -17,7 +17,7 @@ Now you are ready to set up your first process application project in the IDE of
 ## Create a new Maven Project
 
 :::note[Fancy to save work and use a project template instead?]
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
+You don't have to setup the project manually but can also generate a project with Operaton Starter, see [Project Templates](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The generator will create a project according to our best practices.
 :::
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
