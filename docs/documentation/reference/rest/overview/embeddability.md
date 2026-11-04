@@ -15,8 +15,8 @@ The REST API is an artifact of its own, which means that it can be embedded in a
 
 ## Prerequisites
 
-The REST API classes are tested with [RESTEasy](http://www.jboss.org/resteasy/) and [Jersey](http://jersey.java.net/) as the JAX-RS implementation.
-Furthermore, the engine classes and Jackson's `com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider` artifact (as well as transitive Jackson dependencies) have to be on the classpath.
+The REST API classes are tested with [RESTEasy](https://resteasy.dev/) and [Jersey](https://eclipse-ee4j.github.io/jersey/) as the JAX-RS implementation.
+Furthermore, the engine classes and Jackson's `com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider` artifact (as well as transitive Jackson dependencies) have to be on the classpath.
 
 
 ## Required Steps
@@ -61,7 +61,7 @@ public class MyApplication extends Application {
 To restrict the exposed REST resources to specific types (e.g., only process-definition-related methods), a subclass of `org.operaton.bpm.engine.rest.impl.AbstractProcessEngineRestServiceImpl` can be implemented and registered with the JAX-RS application. Such a subclass can control which resources get exposed by offering JAX-RS-annotated methods. See the sources of `NamedProcessEngineRestServiceImpl` and `DefaultProcessEngineRestServiceImpl` for an example. **Note**: The path to a subresource should always match the path defined in the subresource's interface.
 
 The configuration class `JacksonConfigurator` is required to correctly configure the serialization of date fields.
-You may also have to add the following Jackson providers: `com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider`,
+You may also have to add the following Jackson providers: `com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider`,
 `org.operaton.bpm.engine.rest.exception.JsonMappingExceptionHandler` and `org.operaton.bpm.engine.rest.exception.JsonParseExceptionHandler`.
 Depending on the runtime environment, this may not be necessary.
 On WildFly, these should be automatically added as an implicit module dependency.
