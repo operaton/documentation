@@ -1,11 +1,11 @@
 ---
 
-title: 'Project Templates (Operaton Starter)'
+title: 'Operaton Starter'
 sidebar_position: 40
 
 menu:
   main:
-    identifier: "user-guide-process-application-archetypes"
+    identifier: "user-guide-process-application-operaton-starter"
     parent: "user-guide-process-applications"
 
 ---
