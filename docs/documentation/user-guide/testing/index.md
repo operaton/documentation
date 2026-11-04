@@ -141,7 +141,7 @@ public class MyBusinessProcessTest {
 ```
 
 :::note
-  [Operaton Starter](../../user-guide/process-applications/maven-archetypes.md) generates a complete running project including a JUnit test out of the box.
+  [Operaton Starter](../../user-guide/process-applications/operaton-starter.md) generates a complete running project including a JUnit test out of the box.
 :::
 
 
