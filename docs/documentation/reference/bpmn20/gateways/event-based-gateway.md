@@ -95,4 +95,4 @@ The corresponding xml looks like this:
 
 ## Additional Resources
 
-*   [Event-based Gateways](http://operaton.org/bpmn/reference.html#gateways-event-based-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Event-based Gateways](https://camunda.com/bpmn/reference/#gateways-event-based-gateways) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)
