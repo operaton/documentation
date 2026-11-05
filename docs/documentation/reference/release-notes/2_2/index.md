@@ -136,10 +136,13 @@ Operaton 2.2 begins annotating engine internals with [JSpecify](https://jspecify
 tool-checkable (e.g. via IDE inspections or static analysis) instead of relying purely on
 Javadoc or convention.
 
-This is an incremental, non-breaking effort — annotations are being added class by class, package by package, starting
+This is an incremental effort — annotations are being added class by class, package by package, starting
 with engine internals and going through to the public API. For background on the approach and rollout plan, see the forum announcement
 ["Introducing declaration of nullability in the API"](https://forum.operaton.org/t/introducing-declaration-of-nullability-in-the-api/445)
 and the underlying [ADR "Null Safety Strategy for Operaton"](https://github.com/operaton/operaton/blob/main/docs/decisions/0001-null-safety-strategy-for-operaton.md).
+
+Annotations alone do not change behavior. As part of this work, however, two internal `Context` methods now throw
+instead of returning `null`. See [Changed internal API](#context-null-safety).
 
 This implements [PR #3590](https://github.com/operaton/operaton/pull/3590), [PR #3618](https://github.com/operaton/operaton/pull/3618), [PR #3634](https://github.com/operaton/operaton/pull/3634), [PR #3642](https://github.com/operaton/operaton/pull/3642), [PR #3658](https://github.com/operaton/operaton/pull/3658), [PR #3666](https://github.com/operaton/operaton/pull/3666).
 
@@ -312,7 +315,63 @@ No new public APIs in this milestone release.
 
 ### Removed & Changed APIs
 
-No removed or changed public APIs in this milestone release.
+No removed or changed public APIs. The following **internal** API has changed.
+
+#### Changed internal API: `Context.getProcessEngineConfiguration()` and `Context.getCommandContext()` {#context-null-safety}
+
+`org.operaton.bpm.engine.impl.context.Context.getProcessEngineConfiguration()` and
+`Context.getCommandContext()` now **throw an `IllegalStateException`** when no process engine configuration or
+command context is active on the current thread. Before 2.2 they returned `null`. Both are only active while an
+engine command executes, for example inside a `JavaDelegate`, a listener or a custom `Command`.
+
+Code that calls these methods outside a command, such as from a Spring controller or service running on an HTTP
+request thread, and checks for `null` now fails with:
+
+```
+java.lang.IllegalStateException: No process engine configuration active on thread Thread[...]
+java.lang.IllegalStateException: ENGINE-09025 Operation ... requires active command context. No command context active on thread Thread[...].
+```
+
+New methods cover the case where no active context is expected:
+
+- `Context.findProcessEngineConfiguration()` returns an `Optional<ProcessEngineConfigurationImpl>`
+- `Context.hasActiveProcessEngineConfiguration()` returns a `boolean`
+- `Context.findCommandContext()` returns an `Optional<CommandContext>`
+- `Context.hasActiveCommandContext()` returns a `boolean`
+
+```java
+// before 2.2
+ProcessEngineConfigurationImpl conf = Context.getProcessEngineConfiguration();
+if (conf != null) {
+  ...
+}
+
+// 2.2
+Context.findProcessEngineConfiguration().ifPresent(conf -> ...);
+if (Context.hasActiveCommandContext()) {
+  CommandContext commandContext = Context.getCommandContext();
+  ...
+}
+```
+
+In most cases, application code does not need `Context` at all. Use the public service API instead, such as
+`RuntimeService`, `TaskService` or the `DelegateExecution` passed to your delegate. Each service call already runs
+as its own transactional command and joins a command that is already running.
+
+This was introduced by [PR #3550](https://github.com/operaton/operaton/pull/3550) and reported in
+[#4038](https://github.com/operaton/operaton/issues/4038).
+
+:::warning Internal API
+Classes in packages containing the segment `.impl.` are internal. They are not part of the public API, and they can
+change or be removed in any release, including minor and patch releases, without prior deprecation. Using them
+from application code is discouraged.
+
+Starting with Operaton 2.3, this boundary will be enforced more strictly. We plan to declare the internal packages
+explicitly, so that build tools and IDEs can flag them, and to keep changing internal signatures as the nullability
+work continues. If you depend on internal classes today, please check whether a public API covers your use case. If
+none does, open an issue or start a thread on the [forum](https://forum.operaton.org/) so that we can consider
+providing one.
+:::
 
 ### Usage of deprecated APIs
 
