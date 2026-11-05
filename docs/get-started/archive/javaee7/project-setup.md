@@ -16,10 +16,6 @@ Now you are ready to set up your first process application project in the IDE of
 
 ## Set up your project
 
-:::note[Fancy to save work and use a project template instead?]
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
-:::
-
 Now you are ready to set up your Java EE process application project in Eclipse. Setting up a process application project consists of 6 steps:
 
 1. Create a new Maven Project in Eclipse

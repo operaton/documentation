@@ -402,4 +402,4 @@ An expression also allows using the tenant id of the calling process instance in
 
 ## Additional Resources
 
-*   [Call Activity](http://operaton.org/bpmn/reference.html#activities-call-activity) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Call Activity](https://camunda.com/bpmn/reference/#activities-call-activity) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

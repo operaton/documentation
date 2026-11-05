@@ -230,5 +230,5 @@ An error can be handled by the error start event in the event sub process and th
 
 ### Additional Resources
 
-*   [Error Events](http://operaton.org/bpmn/reference.html#events-error) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Error Events](https://camunda.com/bpmn/reference/#events-error) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)
 *   [Incidents](../../../user-guide/process-engine/incidents.md) in the [User Guide](../../../user-guide/index.md)

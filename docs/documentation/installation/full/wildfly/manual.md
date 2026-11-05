@@ -134,10 +134,7 @@ typically `bin`.
 </datasource>
 ```
 Using H2 as a database is ideal for development purposes but is not recommended for usage in a productive environment.
-These links point you to resources for other databases:
 
-* [How to configure an Oracle database](https://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_oracle)
-* [How to configure a MySQL database](https://www.ironjacamar.org/doc/userguide/1.0/en-US/html_single/#ex_datasources_mysql)
 
 ### Optional Components
 

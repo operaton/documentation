@@ -21,12 +21,6 @@ DMN is a modeling language for *decisions*, whereas BPMN is a language for *proc
 
 ## Create a new Maven Project
 
-:::note[Fancy to save work and use a project template instead?]
-
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](/docs/documentation/user-guide/process-applications/maven-archetypes/) for details. The archetype will create a project according to our best practices.
-
-:::
-
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 
 ![Example image](/img/get-started/dmn/eclipse-new-project.png)

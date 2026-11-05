@@ -266,4 +266,4 @@ If a variable is set in the context of the `SubProcess` instance, then only the 
 
 ## Additional Resources
 
-* [Conditional Events](http://operaton.org/bpmn/reference.html#events-conditional) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Conditional Events](https://camunda.com/bpmn/reference/#events-conditional) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

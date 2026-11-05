@@ -141,7 +141,7 @@ public class MyBusinessProcessTest {
 ```
 
 :::note
-  Our [Project Templates for Maven](../../user-guide/process-applications/maven-archetypes.md) give you a complete running project including a JUnit test out of the box.
+  [Operaton Starter](../../user-guide/process-applications/operaton-starter.md) generates a complete running project including a JUnit test out of the box.
 :::
 
 
@@ -341,33 +341,6 @@ For these versions, use the following Maven coordinates:
 ```java
 import static org.assertj.core.api.Assertions.*;
 ```
-
-## Community extensions to support testing
-
-There are a couple of well documented and heavily used community extensions that can make testing much more productive and fun.
-
-### Operaton Scenario Tests
-
-[Operaton-bpm-assert-scenario](https://github.com/operaton/operaton-bpm-assert-scenario/) enables you to write more robust test suites. The idea is, that you only have to adapt your tests if your process models changes in a way that affects the tested behavior. It concentrates much less on the concrete path through a given process model, but on the external effects the path through the model has.
-
-```java
-@Test
-public void testHappyPath() {
-  // "given" part of the test
-  when(process.waitsAtUserTask("CompleteWork")).thenReturn(
-    (task) -> task.complete()
-  );
-  // "when" part of the test
-  run(process).startByKey("ReadmeProcess").execute();
-  // "then" part of the test
-  verify(process).hasFinished("WorkFinished");
-}
-```
-
-### Operaton Test Coverage
-
-[Operaton-bpm-process-test-coverage](https://github.com/operaton/operaton-bpm-process-test-coverage/) visualises test process pathes and checks your process model coverage ratio. Running typical JUnit tests leaves html files in the build output.
-
 
 ## Resolving Beans Without Spring/CDI
 
