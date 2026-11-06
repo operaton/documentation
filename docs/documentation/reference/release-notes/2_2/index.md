@@ -453,3 +453,15 @@ The following non-test dependencies have been upgraded since Operaton 2.1:
 | Groovy                   | 5.0.5         | 5.1.3          |
 | Quarkus                  | 3.33.1 (LTS)  | 3.40.1.1 (LTS) |
 | GraalVM JavaScript       | 25.0.3        | 25.4.4.1.1     |
+
+## Patch Releases
+
+### 2.2.1
+
+#### Dependency Upgrades
+
+- Routine maintenance updates, among them `netty` `4.2.19.Final` → `4.2.20.Final`, `logback` `1.6.5` → `1.6.6`, `json-smart` `2.6.0` → `2.6.1`, `joda-time` `2.15.0` → `2.15.1`, the Oracle JDBC driver `23.26.3.0.0` → `23.26.4.0.0` and the SQL Server JDBC driver `13.6.1.jre11` → `13.6.2.jre11`.
+
+#### Bug Fixes
+
+- **[fix(engine-rest): fix broken docs links in generated REST API reference](https://github.com/operaton/operaton/pull/4005)** — Links in the generated REST API reference (history cleanup, input/output variable mappings, execution participation and others) point to the correct documentation pages again. (#4005)
