@@ -61,7 +61,7 @@ We also use `spring-boot-maven-plugin`, which packages the Spring Boot applicati
     <java.version>17</java.version>
     <maven.compiler.release>17</maven.compiler.release>
     <spring-boot.version>4.1.2</spring-boot.version>
-    <operaton.version>2.2.0</operaton.version>
+    <operaton.version>2.2.1</operaton.version>
   </properties>
 
   <dependencyManagement>
