@@ -22,6 +22,14 @@ class TestParseSchema(unittest.TestCase):
             rels,
         )
 
+    def test_parses_logical_relationships(self):
+        text = SCHEMA_PATH.read_text()
+        entities, rels, classes = parse_schema(text)
+        self.assertIn(
+            ("ACT_RE_PROCDEF", "}o..||", "ACT_RE_DEPLOYMENT", "DEPLOYMENT_ID_"),
+            rels,
+        )
+
     def test_parses_classes(self):
         text = SCHEMA_PATH.read_text()
         entities, rels, classes = parse_schema(text)

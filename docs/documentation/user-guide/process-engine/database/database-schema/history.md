@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-07-03
-schema_version: 7.24
+last_updated: 2026-11-11
+schema_version: 7.25
 ---
 
 # History (HI_)
@@ -34,7 +34,7 @@ History tables store immutable audit records of completed processes, tasks, acti
 
 ## ACT_HI_PROCINST
 
-**Purpose:** Complete lifecycle record of a process instance from start to finish. Written at process completion or deletion. Includes timing metrics for SLA analysis.
+**Purpose:** Lifecycle record of a process instance. Inserted when the instance starts and updated when it ends, so running instances are included. Includes timing metrics for SLA analysis.
 
 **Columns:**
 
@@ -58,10 +58,10 @@ History tables store immutable audit records of completed processes, tasks, acti
 | CASE_INST_ID_ | VARCHAR(64) | NULL | Associated case instance |
 | DELETE_REASON_ | VARCHAR(4000) | NULL | Reason when deleted/cancelled |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
-| STATE_ | VARCHAR(255) | NULL | `COMPLETED`, `EXTERNALLY_TERMINATED`, `INTERNALLY_TERMINATED`, `ACTIVE` |
+| STATE_ | VARCHAR(255) | NULL | `ACTIVE`, `SUSPENDED`, `COMPLETED`, `EXTERNALLY_TERMINATED`, `INTERNALLY_TERMINATED` |
 | RESTARTED_PROC_INST_ID_ | VARCHAR(64) | NULL | Original instance if this is a restart |
 
-**Indexes:** `ACT_IDX_HI_PRO_INST_END`, `ACT_IDX_HI_PRO_I_BUSKEY`, `ACT_IDX_HI_PRO_INST_TENANT_ID`, `ACT_IDX_HI_PRO_INST_PROC_DEF_KEY`, `ACT_IDX_HI_PRO_INST_PROC_TIME`, `ACT_IDX_HI_PRO_INST_ROOT_PI`, `ACT_IDX_HI_PRO_INST_RM_TIME`
+**Indexes:** `ACT_IDX_HI_PRO_INST_END`, `ACT_IDX_HI_PRO_I_BUSKEY`, `ACT_IDX_HI_PRO_INST_TENANT_ID`, `ACT_IDX_HI_PRO_INST_PROC_DEF_KEY`, `ACT_IDX_HI_PRO_INST_PROC_TIME`, `ACT_IDX_HI_PRO_INST_ROOT_PI`, `ACT_IDX_HI_PRO_INST_RM_TIME`, `ACT_IDX_HI_PI_PDEFID_END_TIME`, `ACT_IDX_HI_PRO_RST_PRO_INST_ID`
 
 **Example Queries:**
 
@@ -110,12 +110,12 @@ ORDER BY REMOVAL_TIME_;
 | START_TIME_ | TIMESTAMP | NOT NULL | Activity start time |
 | END_TIME_ | TIMESTAMP | NULL | Activity end time |
 | DURATION_ | BIGINT | NULL | Duration in milliseconds |
-| ACT_INST_STATE_ | INTEGER | NULL | State: `0`=active, `1`=completed, `2`=cancelled |
+| ACT_INST_STATE_ | INTEGER | NULL | `0`=default (running or ended normally), `1`=scope complete, `2`=canceled |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Ordering counter |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 
-**Indexes:** `ACT_IDX_HI_ACTINST_ROOT_PI`, `ACT_IDX_HI_ACT_INST_START_END`, `ACT_IDX_HI_ACT_INST_END`, `ACT_IDX_HI_ACT_INST_PROCINST`, `ACT_IDX_HI_ACT_INST_COMP`, `ACT_IDX_HI_ACT_INST_STATS`, `ACT_IDX_HI_ACT_INST_TENANT_ID`, `ACT_IDX_HI_ACT_INST_RM_TIME`
+**Indexes:** `ACT_IDX_HI_ACTINST_ROOT_PI`, `ACT_IDX_HI_ACT_INST_START_END`, `ACT_IDX_HI_ACT_INST_END`, `ACT_IDX_HI_ACT_INST_PROCINST`, `ACT_IDX_HI_ACT_INST_COMP`, `ACT_IDX_HI_ACT_INST_STATS`, `ACT_IDX_HI_ACT_INST_TENANT_ID`, `ACT_IDX_HI_ACT_INST_RM_TIME`, `ACT_IDX_HI_ACT_INST_PROC_DEF_KEY`, `ACT_IDX_HI_AI_PDEFID_END_TIME`
 
 **Example Queries:**
 
@@ -167,9 +167,9 @@ ORDER BY avg_ms DESC;
 | FOLLOW_UP_DATE_ | TIMESTAMP | NULL | Follow-up date |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
-| TASK_STATE_ | VARCHAR(64) | NULL | Extended task state |
+| TASK_STATE_ | VARCHAR(64) | NULL | Lifecycle state: `Init`, `Created`, `Updated`, `Completed`, `Deleted` |
 
-**Indexes:** `ACT_IDX_HI_TASKINST_ROOT_PI`, `ACT_IDX_HI_TASK_INST_TENANT_ID`, `ACT_IDX_HI_TASK_INST_PROC_DEF_KEY`, `ACT_IDX_HI_TASKINST_PROCINST`, `ACT_IDX_HI_TASK_INST_RM_TIME`, `ACT_IDX_HI_TASK_INST_START`, `ACT_IDX_HI_TASK_INST_END`
+**Indexes:** `ACT_IDX_HI_TASKINST_ROOT_PI`, `ACT_IDX_HI_TASK_INST_TENANT_ID`, `ACT_IDX_HI_TASK_INST_PROC_DEF_KEY`, `ACT_IDX_HI_TASKINST_PROCINST`, `ACT_IDX_HI_TASK_INST_RM_TIME`, `ACT_IDX_HI_TASK_INST_START`, `ACT_IDX_HI_TASK_INST_END`, `ACT_IDX_HI_TASKINSTID_PROCINST`
 
 **Example Queries:**
 
@@ -220,19 +220,19 @@ LIMIT 50;
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
 | LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value |
-| TEXT2_ | VARCHAR(4000) | NULL | String continuation |
+| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | STATE_ | VARCHAR(20) | NULL | Variable state (`CREATED`, `DELETED`) |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 
-**Indexes:** `ACT_IDX_HI_VARINST_ROOT_PI`, `ACT_IDX_HI_PROCVAR_PROC_INST`, `ACT_IDX_HI_PROCVAR_NAME_TYPE`, `ACT_IDX_HI_VAR_INST_TENANT_ID`, `ACT_IDX_HI_VARINST_BYTEAR`, `ACT_IDX_HI_VARINST_RM_TIME`, `ACT_IDX_HI_VAR_PI_NAME_TYPE`, `ACT_IDX_HI_VARINST_NAME`, `ACT_IDX_HI_VARINST_ACT_INST_ID`
+**Indexes:** `ACT_IDX_HI_VARINST_ROOT_PI`, `ACT_IDX_HI_PROCVAR_PROC_INST`, `ACT_IDX_HI_PROCVAR_NAME_TYPE`, `ACT_IDX_HI_VAR_INST_TENANT_ID`, `ACT_IDX_HI_VARINST_BYTEAR`, `ACT_IDX_HI_VARINST_RM_TIME`, `ACT_IDX_HI_VAR_PI_NAME_TYPE`, `ACT_IDX_HI_VARINST_NAME`, `ACT_IDX_HI_VARINST_ACT_INST_ID`, `ACT_IDX_HI_CASEVAR_CASE_INST`, `ACT_IDX_HI_VAR_INST_PROC_DEF_KEY`
 
 ---
 
 ## ACT_HI_DETAIL
 
-**Purpose:** Fine-grained variable change events. Each row is a single variable update event (name, type, old/new value). Enables full variable audit trail when `HISTORY_LEVEL=FULL`.
+**Purpose:** Fine-grained variable change events. Each row is a single variable update or form property event and holds the value after the change. Form property events are written from history level `AUDIT`; variable updates only with `FULL`, which gives a complete variable audit trail.
 
 **Columns:**
 
@@ -259,15 +259,15 @@ LIMIT 50;
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
 | LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value |
-| TEXT2_ | VARCHAR(4000) | NULL | String continuation |
+| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Ordering counter |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | OPERATION_ID_ | VARCHAR(64) | NULL | Linked operation log entry |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 | INITIAL_ | BOOLEAN | NULL | Whether this is the initial value |
 
-**Indexes:** `ACT_IDX_HI_DETAIL_ROOT_PI`, `ACT_IDX_HI_DETAIL_PROC_INST`, `ACT_IDX_HI_DETAIL_ACT_INST`, `ACT_IDX_HI_DETAIL_TIME`, `ACT_IDX_HI_DETAIL_NAME`, `ACT_IDX_HI_DETAIL_TASK_ID`, `ACT_IDX_HI_DETAIL_RM_TIME`, `ACT_IDX_HI_DETAIL_BYTEAR`, `ACT_IDX_HI_DETAIL_VAR_INST_ID`
+**Indexes:** `ACT_IDX_HI_DETAIL_ROOT_PI`, `ACT_IDX_HI_DETAIL_PROC_INST`, `ACT_IDX_HI_DETAIL_ACT_INST`, `ACT_IDX_HI_DETAIL_TIME`, `ACT_IDX_HI_DETAIL_NAME`, `ACT_IDX_HI_DETAIL_TASK_ID`, `ACT_IDX_HI_DETAIL_RM_TIME`, `ACT_IDX_HI_DETAIL_BYTEAR`, `ACT_IDX_HI_DETAIL_VAR_INST_ID`, `ACT_IDX_HI_DETAIL_CASE_INST`, `ACT_IDX_HI_DETAIL_CASE_EXEC`, `ACT_IDX_HI_DETAIL_TENANT_ID`, `ACT_IDX_HI_DETAIL_PROC_DEF_KEY`, `ACT_IDX_HI_DETAIL_TASK_BYTEAR`
 
 ---
 
@@ -287,19 +287,19 @@ LIMIT 50;
 | TASK_ID_ | VARCHAR(64) | NULL | Associated task |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance |
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Process definition |
-| OPERATION_TYPE_ | VARCHAR(64) | NULL | `ADD` or `DELETE` |
+| OPERATION_TYPE_ | VARCHAR(64) | NULL | `add` or `delete` |
 | ASSIGNER_ID_ | VARCHAR(64) | NULL | User who made the change |
 | PROC_DEF_KEY_ | VARCHAR(255) | NULL | Process key |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 
-**Indexes:** `ACT_IDX_HI_IDENT_LNK_ROOT_PI`, `ACT_IDX_HI_IDENT_LNK_USER`, `ACT_IDX_HI_IDENT_LNK_GROUP`, `ACT_IDX_HI_IDENT_LNK_TENANT_ID`, `ACT_IDX_HI_IDENT_LINK_TASK`, `ACT_IDX_HI_IDENT_LINK_RM_TIME`, `ACT_IDX_HI_IDENT_LNK_TIMESTAMP`
+**Indexes:** `ACT_IDX_HI_IDENT_LNK_ROOT_PI`, `ACT_IDX_HI_IDENT_LNK_USER`, `ACT_IDX_HI_IDENT_LNK_GROUP`, `ACT_IDX_HI_IDENT_LNK_TENANT_ID`, `ACT_IDX_HI_IDENT_LINK_TASK`, `ACT_IDX_HI_IDENT_LINK_RM_TIME`, `ACT_IDX_HI_IDENT_LNK_TIMESTAMP`, `ACT_IDX_HI_IDENT_LNK_PROC_DEF_KEY`
 
 ---
 
 ## ACT_HI_COMMENT
 
-**Purpose:** User and system comments on tasks and process instances. `FULL_MSG_` stores the full comment text as binary when it exceeds the `MESSAGE_` column limit.
+**Purpose:** User and system comments on tasks and process instances. `FULL_MSG_` always stores the full comment text as binary; `MESSAGE_` holds a shortened copy for display.
 
 **Columns:**
 
@@ -443,7 +443,7 @@ ORDER BY TIMESTAMP_ DESC;
 
 ## ACT_HI_JOB_LOG
 
-**Purpose:** Execution log for background jobs — creation, lock acquisition, execution success/failure, and retry events. Essential for debugging asynchronous failures.
+**Purpose:** Execution log for background jobs. One row per job event: created, failed (including each retry), successful, or deleted. Essential for debugging asynchronous failures.
 
 **Columns:**
 
@@ -457,7 +457,7 @@ ORDER BY TIMESTAMP_ DESC;
 | JOB_PRIORITY_ | BIGINT | NOT NULL DEFAULT 0 | Job priority at event |
 | JOB_EXCEPTION_MSG_ | VARCHAR(4000) | NULL | Exception message |
 | JOB_EXCEPTION_STACK_ID_ | VARCHAR(64) | NULL | Stack trace reference |
-| JOB_STATE_ | INTEGER | NULL | `0`=created, `1`=fired, `2`=succeeded, `3`=failed, `4`=deleted |
+| JOB_STATE_ | INTEGER | NULL | `0`=created, `1`=failed, `2`=successful, `3`=deleted |
 | JOB_DEF_ID_ | VARCHAR(64) | NULL | Job definition |
 | JOB_DEF_TYPE_ | VARCHAR(255) | NULL | Job type |
 | JOB_DEF_CONFIGURATION_ | VARCHAR(255) | NULL | Job configuration |
@@ -475,7 +475,7 @@ ORDER BY TIMESTAMP_ DESC;
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 | BATCH_ID_ | VARCHAR(64) | NULL | Associated batch |
 
-**Indexes:** `ACT_IDX_HI_JOB_LOG_ROOT_PI`, `ACT_IDX_HI_JOB_LOG_PROCINST`, `ACT_IDX_HI_JOB_LOG_PROCDEF`, `ACT_IDX_HI_JOB_LOG_TENANT_ID`, `ACT_IDX_HI_JOB_LOG_JOB_DEF_ID`, `ACT_IDX_HI_JOB_LOG_EX_STACK`, `ACT_IDX_HI_JOB_LOG_RM_TIME`, `ACT_IDX_HI_JOB_LOG_JOB_CONF`
+**Indexes:** `ACT_IDX_HI_JOB_LOG_ROOT_PI`, `ACT_IDX_HI_JOB_LOG_PROCINST`, `ACT_IDX_HI_JOB_LOG_PROCDEF`, `ACT_IDX_HI_JOB_LOG_TENANT_ID`, `ACT_IDX_HI_JOB_LOG_JOB_DEF_ID`, `ACT_IDX_HI_JOB_LOG_EX_STACK`, `ACT_IDX_HI_JOB_LOG_RM_TIME`, `ACT_IDX_HI_JOB_LOG_JOB_CONF`, `ACT_IDX_HI_JOB_LOG_PROC_DEF_KEY`
 
 **Example Queries:**
 
@@ -489,7 +489,7 @@ ORDER BY TIMESTAMP_;
 -- Frequently failing jobs
 SELECT PROCESS_DEF_KEY_, ACT_ID_, COUNT(*) AS failures
 FROM ACT_HI_JOB_LOG
-WHERE JOB_STATE_ = 3  -- failed
+WHERE JOB_STATE_ = 1  -- failed
   AND TIMESTAMP_ >= CURRENT_TIMESTAMP - INTERVAL '7 days'
 GROUP BY PROCESS_DEF_KEY_, ACT_ID_
 ORDER BY failures DESC;
@@ -499,7 +499,7 @@ ORDER BY failures DESC;
 
 ## ACT_HI_BATCH
 
-**Purpose:** Historical record of completed batch operations.
+**Purpose:** Historical record of batch operations. Inserted when the batch starts; `END_TIME_` is set when it completes.
 
 **Columns:**
 
@@ -526,7 +526,7 @@ ORDER BY failures DESC;
 
 ## ACT_HI_EXT_TASK_LOG
 
-**Purpose:** Execution log for external tasks — fetch, lock, complete, fail events. Mirrors `ACT_HI_JOB_LOG` for the external task pattern.
+**Purpose:** Execution log for external tasks. One row per event: created, failed, successful, or deleted. Mirrors `ACT_HI_JOB_LOG` for the external task pattern.
 
 **Columns:**
 
@@ -549,7 +549,7 @@ ORDER BY failures DESC;
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Process definition |
 | PROC_DEF_KEY_ | VARCHAR(255) | NULL | Process key |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
-| STATE_ | INTEGER | NULL | `0`=created, `1`=locked, `2`=succeeded, `3`=failed, `4`=deleted |
+| STATE_ | INTEGER | NULL | `0`=created, `1`=failed, `2`=successful, `3`=deleted |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 
 **Indexes:** `ACT_HI_EXT_TASK_LOG_ROOT_PI`, `ACT_HI_EXT_TASK_LOG_PROCINST`, `ACT_HI_EXT_TASK_LOG_PROCDEF`, `ACT_HI_EXT_TASK_LOG_PROC_DEF_KEY`, `ACT_HI_EXT_TASK_LOG_TENANT_ID`, `ACT_IDX_HI_EXTTASKLOG_ERRORDET`, `ACT_HI_EXT_TASK_LOG_RM_TIME`
@@ -640,7 +640,7 @@ ORDER BY failures DESC;
 | DEC_REQ_KEY_ | VARCHAR(255) | NULL | Decision requirement key |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
-**Indexes:** `ACT_IDX_HI_DEC_INST_ID`, `ACT_IDX_HI_DEC_INST_KEY`, `ACT_IDX_HI_DEC_INST_PI`, `ACT_IDX_HI_DEC_INST_TIME`, `ACT_IDX_HI_DEC_INST_TENANT_ID`, `ACT_IDX_HI_DEC_INST_ROOT_PI`, `ACT_IDX_HI_DEC_INST_REQ_ID`, `ACT_IDX_HI_DEC_INST_RM_TIME`
+**Indexes:** `ACT_IDX_HI_DEC_INST_ID`, `ACT_IDX_HI_DEC_INST_KEY`, `ACT_IDX_HI_DEC_INST_PI`, `ACT_IDX_HI_DEC_INST_TIME`, `ACT_IDX_HI_DEC_INST_TENANT_ID`, `ACT_IDX_HI_DEC_INST_ROOT_PI`, `ACT_IDX_HI_DEC_INST_REQ_ID`, `ACT_IDX_HI_DEC_INST_RM_TIME`, `ACT_IDX_HI_DEC_INST_CI`, `ACT_IDX_HI_DEC_INST_ACT`, `ACT_IDX_HI_DEC_INST_ACT_INST`, `ACT_IDX_HI_DEC_INST_ROOT_ID`, `ACT_IDX_HI_DEC_INST_REQ_KEY`
 
 **Example Queries:**
 
@@ -665,15 +665,15 @@ ORDER BY evaluations DESC;
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Input record ID |
-| DEC_INST_ID_ | VARCHAR(64) | FK → ACT_HI_DECINST, NOT NULL | Parent decision evaluation |
+| DEC_INST_ID_ | VARCHAR(64) | NOT NULL | Parent decision evaluation (`ACT_HI_DECINST.ID_`, no FK constraint) |
 | CLAUSE_ID_ | VARCHAR(64) | NULL | Input clause element ID |
 | CLAUSE_NAME_ | VARCHAR(255) | NULL | Input clause name |
 | VAR_TYPE_ | VARCHAR(100) | NULL | Variable type |
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
 | LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value |
-| TEXT2_ | VARCHAR(4000) | NULL | String continuation |
+| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation time |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance |
@@ -692,7 +692,7 @@ ORDER BY evaluations DESC;
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Output record ID |
-| DEC_INST_ID_ | VARCHAR(64) | FK → ACT_HI_DECINST, NOT NULL | Parent decision evaluation |
+| DEC_INST_ID_ | VARCHAR(64) | NOT NULL | Parent decision evaluation (`ACT_HI_DECINST.ID_`, no FK constraint) |
 | CLAUSE_ID_ | VARCHAR(64) | NULL | Output clause element ID |
 | CLAUSE_NAME_ | VARCHAR(255) | NULL | Output clause name |
 | RULE_ID_ | VARCHAR(64) | NULL | Matched rule ID |
@@ -702,8 +702,8 @@ ORDER BY evaluations DESC;
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
 | LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value |
-| TEXT2_ | VARCHAR(4000) | NULL | String continuation |
+| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation time |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance |
@@ -716,8 +716,8 @@ ORDER BY evaluations DESC;
 ## Design Notes
 
 - **History levels**: The amount of data written to history tables is controlled by the engine's history level: `NONE`, `ACTIVITY`, `AUDIT`, `FULL`. `FULL` writes `ACT_HI_DETAIL` for every variable change.
-- **REMOVAL_TIME_**: Set by the history cleanup job based on `HISTORY_TTL_` from the definition. Cleanup runs in batches; set `historyCleanupEnabled=true` in the engine config.
-- **Immutability**: History records are never updated after creation (except `REMOVAL_TIME_` during cleanup scheduling). Treat them as append-only audit events.
+- **REMOVAL_TIME_**: With the default removal-time-based cleanup strategy, the engine sets `REMOVAL_TIME_` when the root process instance ends (end time plus `HISTORY_TTL_` of the definition). The history cleanup job deletes rows whose removal time has passed, in batches within the configured cleanup window.
+- **Updates**: Log-style tables (`ACT_HI_DETAIL`, `ACT_HI_JOB_LOG`, `ACT_HI_EXT_TASK_LOG`, `ACT_HI_IDENTITYLINK`, `ACT_HI_OP_LOG`) are append-only. Instance tables (`ACT_HI_PROCINST`, `ACT_HI_ACTINST`, `ACT_HI_TASKINST`, `ACT_HI_VARINST`, `ACT_HI_INCIDENT`, `ACT_HI_BATCH`, `ACT_HI_CASEINST`, `ACT_HI_CASEACTINST`) are updated while the instance runs.
 - **ACT_HI_PROCINST vs ACT_HI_ACTINST**: `PROCINST` is one row per process instance; `ACTINST` is many rows — one per activity execution within that instance.
 
 ---
@@ -726,4 +726,4 @@ See [Database-Specific Implementation Notes](../index.md#database-specific-imple
 
 ---
 
-**Last Updated:** 2026-07-03 | **Schema Version:** 7.24 | **Operaton Versions:** 1.0.0+
+**Last Updated:** 2026-11-11 | **Schema Version:** 7.25 | **Operaton Versions:** 1.0.0+

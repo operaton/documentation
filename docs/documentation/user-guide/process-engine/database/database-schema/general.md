@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-07-03
-schema_version: 7.24
+last_updated: 2026-11-11
+schema_version: 7.25
 ---
 
 # General (GE_)
@@ -23,33 +23,32 @@ General tables provide shared infrastructure: binary storage, system properties,
 
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
-| NAME_ | VARCHAR(64) | PK NOT NULL | Property name (e.g., `schema.version`, `id.next.value`) |
+| NAME_ | VARCHAR(64) | PK NOT NULL | Property name (e.g., `next.dbid`, `historyLevel`) |
 | VALUE_ | VARCHAR(300) | NULL | Property value |
-| REV_ | INTEGER | NOT NULL DEFAULT 0 | Revision for optimistic locking |
+| REV_ | INTEGER | NULL | Revision for optimistic locking |
 
 **Standard Properties:**
 
 | Name | Purpose |
 |------|---------|
-| `schema.version` | Current schema version (e.g., `7.24.0`) |
-| `schema.history` | Migration history log |
-| `id.next.value` | Engine-wide ID counter |
-| `deployment.lock` | Distributed lock for deployments |
-| `execution.lock` | Distributed lock for process execution |
+| `schema.version` | Legacy marker, always `fox`. It does not hold the schema version; use `ACT_GE_SCHEMA_LOG` instead |
+| `schema.history` | Legacy marker (`create(fox)`) |
+| `next.dbid` | Start of the next ID block handed out by the `DbIdGenerator` |
+| `historyLevel` | ID of the history level the engine was first started with (`0`=none, `1`=activity, `2`=audit, `3`=full) |
+| `deployment.lock` | Exclusive lock row that serializes deployments across cluster nodes |
+| `history.cleanup.job.lock` | Exclusive lock row used when creating the history cleanup jobs |
+| `startup.lock` | Exclusive lock row used during engine bootstrap (e.g., setting the history level) |
+| `installationId.lock` | Exclusive lock row used while generating the installation ID |
+| `operaton.installation.id` | Unique ID of this installation, created on first start |
 
 **Example Queries:**
 
 ```sql
--- Current schema version
-SELECT VALUE_ FROM ACT_GE_PROPERTY WHERE NAME_ = 'schema.version';
+-- Configured history level
+SELECT VALUE_ FROM ACT_GE_PROPERTY WHERE NAME_ = 'historyLevel';
 
 -- All properties with revision
 SELECT NAME_, VALUE_, REV_ FROM ACT_GE_PROPERTY ORDER BY NAME_;
-
--- Safe update pattern (optimistic locking)
-UPDATE ACT_GE_PROPERTY
-SET VALUE_ = '7.25.0', REV_ = REV_ + 1
-WHERE NAME_ = 'schema.version' AND REV_ = <expected_rev>;
 ```
 
 ---
@@ -69,7 +68,7 @@ WHERE NAME_ = 'schema.version' AND REV_ = <expected_rev>;
 | BYTES_ | BYTEA | NULL | Binary content |
 | GENERATED_ | BOOLEAN | NULL | `true` = system-generated (diagram); `false` = user-provided |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
-| TYPE_ | INTEGER | NULL | Type classifier (reserved) |
+| TYPE_ | INTEGER | NULL | Resource type: `1`=repository, `2`=runtime, `3`=history |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation timestamp |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance (for runtime variable/error data) |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled removal time (soft-delete marker) |
@@ -98,10 +97,10 @@ FROM ACT_GE_BYTEARRAY
 WHERE DEPLOYMENT_ID_ = 'deployment-id'
 ORDER BY CREATE_TIME_ DESC;
 
--- Orphaned entries (no deployment and no process instance)
-SELECT ID_, NAME_, CREATE_TIME_
+-- Number and size of entries per resource type
+SELECT TYPE_, COUNT(*) AS entries, SUM(octet_length(BYTES_)) AS total_bytes
 FROM ACT_GE_BYTEARRAY
-WHERE DEPLOYMENT_ID_ IS NULL AND ROOT_PROC_INST_ID_ IS NULL;
+GROUP BY TYPE_;
 
 -- Data scheduled for removal
 SELECT ID_, NAME_, REMOVAL_TIME_
@@ -121,8 +120,8 @@ ORDER BY REMOVAL_TIME_;
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Log entry identifier |
-| TIMESTAMP_ | TIMESTAMP | NOT NULL | When the schema change was applied |
-| VERSION_ | VARCHAR(255) | NOT NULL | Schema version string (e.g., `7.24.0`) |
+| TIMESTAMP_ | TIMESTAMP | NULL | When the schema change was applied |
+| VERSION_ | VARCHAR(255) | NULL | Schema version string (e.g., `7.25.0`) |
 
 **Example Queries:**
 
@@ -132,10 +131,9 @@ SELECT ID_, TIMESTAMP_, VERSION_
 FROM ACT_GE_SCHEMA_LOG
 ORDER BY TIMESTAMP_ DESC;
 
--- When the current version was applied
-SELECT TIMESTAMP_, VERSION_
+-- Current schema version
+SELECT VERSION_, TIMESTAMP_
 FROM ACT_GE_SCHEMA_LOG
-WHERE VERSION_ = '7.24.0'
 ORDER BY TIMESTAMP_ DESC
 LIMIT 1;
 ```
@@ -144,9 +142,10 @@ LIMIT 1;
 
 ## Design Notes
 
-- `ACT_GE_PROPERTY.id.next.value` must not be modified manually — the engine uses it as a global counter.
+- The `next.dbid` property must not be modified manually — the `DbIdGenerator` uses it to hand out unique ID blocks.
+- The `*.lock` properties carry no data. The engine locks these rows to serialize cluster-wide operations.
 - `ACT_GE_BYTEARRAY` serves dual purposes: deployment artifacts (keyed by `DEPLOYMENT_ID_`) and runtime data (keyed by `ROOT_PROC_INST_ID_`). Query performance is optimised via separate indexes for each use case.
-- Periodic cleanup of `ACT_GE_BYTEARRAY` rows where `REMOVAL_TIME_ < CURRENT_TIMESTAMP` reduces table bloat.
+- The history cleanup deletes `ACT_GE_BYTEARRAY` rows of history data once their `REMOVAL_TIME_` has passed. Do not delete rows manually.
 
 ---
 
@@ -154,4 +153,4 @@ See [Database-Specific Implementation Notes](../index.md#database-specific-imple
 
 ---
 
-**Last Updated:** 2026-07-03 | **Schema Version:** 7.24 | **Operaton Versions:** 1.0.0+
+**Last Updated:** 2026-11-11 | **Schema Version:** 7.25 | **Operaton Versions:** 1.0.0+

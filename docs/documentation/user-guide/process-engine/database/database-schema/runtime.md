@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-07-03
-schema_version: 7.24
+last_updated: 2026-11-11
+schema_version: 7.25
 ---
 
 # Runtime (RU_)
@@ -54,7 +54,7 @@ Runtime tables hold the live state of all active process/case executions, tasks,
 | IS_CONCURRENT_ | BOOLEAN | NULL | Parallel branch |
 | IS_SCOPE_ | BOOLEAN | NULL | Creates a new variable scope |
 | IS_EVENT_SCOPE_ | BOOLEAN | NULL | Event scope (boundary events) |
-| SUSPENSION_STATE_ | INTEGER | NULL | `0`=active, `1`=suspended, `2`=suspended by parent |
+| SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | CACHED_ENT_STATE_ | INTEGER | NULL | Internal cache hint |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Global execution ordering counter |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -74,7 +74,7 @@ ORDER BY SEQUENCE_COUNTER_;
 -- Suspended process instances
 SELECT ID_, BUSINESS_KEY_, PROC_DEF_KEY_, SUSPENSION_STATE_
 FROM ACT_RU_EXECUTION
-WHERE PROC_INST_ID_ = ID_ AND SUSPENSION_STATE_ IN (1, 2);
+WHERE PROC_INST_ID_ = ID_ AND SUSPENSION_STATE_ = 2;
 
 -- Execution hierarchy (PostgreSQL recursive)
 WITH RECURSIVE tree AS (
@@ -113,13 +113,13 @@ SELECT * FROM tree ORDER BY depth, ID_;
 | ASSIGNEE_ | VARCHAR(255) | NULL | Currently assigned user ID |
 | DELEGATION_ | VARCHAR(64) | NULL | Delegation state: NULL, `PENDING`, `RESOLVED` |
 | PRIORITY_ | INTEGER | NULL | Priority (higher = more urgent) |
-| CREATE_TIME_ | TIMESTAMP | NOT NULL | Task creation time |
+| CREATE_TIME_ | TIMESTAMP | NULL | Task creation time |
 | LAST_UPDATED_ | TIMESTAMP | NULL | Last modification time |
 | DUE_DATE_ | TIMESTAMP | NULL | Deadline |
 | FOLLOW_UP_DATE_ | TIMESTAMP | NULL | Follow-up reminder date |
-| SUSPENSION_STATE_ | INTEGER | NULL | `0`=active, `1`=suspended |
+| SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
-| TASK_STATE_ | VARCHAR(64) | NULL | Extended task state |
+| TASK_STATE_ | VARCHAR(64) | NULL | Lifecycle state: `Init`, `Created`, `Updated`, `Completed`, `Deleted` |
 
 **Indexes:** `ACT_IDX_TASK_CREATE`, `ACT_IDX_TASK_LAST_UPDATED`, `ACT_IDX_TASK_ASSIGNEE`, `ACT_IDX_TASK_OWNER`, `ACT_IDX_TASK_TENANT_ID`, `ACT_IDX_TASK_EXEC`, `ACT_IDX_TASK_PROCINST`, `ACT_IDX_TASK_PROCDEF`, `ACT_IDX_TASK_CASE_EXEC`, `ACT_IDX_TASK_CASE_DEF_ID`
 
@@ -129,20 +129,20 @@ SELECT * FROM tree ORDER BY depth, ID_;
 -- Unassigned tasks for a process instance
 SELECT ID_, NAME_, PRIORITY_, CREATE_TIME_, DUE_DATE_
 FROM ACT_RU_TASK
-WHERE PROC_INST_ID_ = 'pi-id' AND ASSIGNEE_ IS NULL AND SUSPENSION_STATE_ = 0
+WHERE PROC_INST_ID_ = 'pi-id' AND ASSIGNEE_ IS NULL AND SUSPENSION_STATE_ = 1
 ORDER BY PRIORITY_ DESC, CREATE_TIME_;
 
 -- Overdue tasks
 SELECT ID_, NAME_, ASSIGNEE_, DUE_DATE_
 FROM ACT_RU_TASK
-WHERE DUE_DATE_ < CURRENT_TIMESTAMP AND SUSPENSION_STATE_ = 0
+WHERE DUE_DATE_ < CURRENT_TIMESTAMP AND SUSPENSION_STATE_ = 1
 ORDER BY DUE_DATE_;
 
 -- Task load per user
 SELECT ASSIGNEE_, COUNT(*) AS tasks,
        SUM(CASE WHEN DUE_DATE_ < CURRENT_TIMESTAMP THEN 1 ELSE 0 END) AS overdue
 FROM ACT_RU_TASK
-WHERE ASSIGNEE_ IS NOT NULL AND SUSPENSION_STATE_ = 0
+WHERE ASSIGNEE_ IS NOT NULL AND SUSPENSION_STATE_ = 1
 GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 ```
 
@@ -150,7 +150,7 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 
 ## ACT_RU_VARIABLE
 
-**Purpose:** Runtime variables scoped to a process instance, execution, or task. Stores typed values: scalars in `LONG_`/`DOUBLE_`/`TEXT_`/`TEXT2_`, complex objects via `BYTEARRAY_ID_`. Unique constraint `(VAR_SCOPE_, NAME_)` ensures one variable per name per scope.
+**Purpose:** Runtime variables scoped to a process instance, execution, or task. Stores typed values: scalars in `LONG_`/`DOUBLE_`/`TEXT_`, complex objects via `BYTEARRAY_ID_`. Unique constraint `(VAR_SCOPE_, NAME_)` ensures one variable per name per scope.
 
 **Columns:**
 
@@ -170,8 +170,8 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 | BYTEARRAY_ID_ | VARCHAR(64) | FK → ACT_GE_BYTEARRAY | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float/double value |
 | LONG_ | BIGINT | NULL | Integer/long/boolean/date value |
-| TEXT_ | VARCHAR(4000) | NULL | String value (first 4000 chars) |
-| TEXT2_ | VARCHAR(4000) | NULL | String continuation (chars 4001-8000) |
+| TEXT_ | VARCHAR(4000) | NULL | String value; file name for `File`; serialization format for `Object` |
+| TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value: object type name for `Object`, MIME type and encoding for `File` |
 | VAR_SCOPE_ | VARCHAR(64) | NULL | Scope key for uniqueness check |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Update version counter |
 | IS_CONCURRENT_LOCAL_ | BOOLEAN | NULL | Local to a concurrent branch |
@@ -179,16 +179,18 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 
 **Unique Constraint:** `ACT_UNIQ_VARIABLE` on `(VAR_SCOPE_, NAME_)`
 
-**Indexes:** `ACT_IDX_VAR_EXE`, `ACT_IDX_VAR_PROCINST`, `ACT_IDX_VAR_BYTEARRAY`, `ACT_IDX_VARIABLE_TASK_ID`, `ACT_IDX_VARIABLE_TASK_NAME_TYPE`, `ACT_IDX_BATCH_ID`, `ACT_IDX_VAR_CASE_EXE`, `ACT_IDX_VAR_CASE_INST_ID`
+**Indexes:** `ACT_IDX_VAR_EXE`, `ACT_IDX_VAR_PROCINST`, `ACT_IDX_VAR_BYTEARRAY`, `ACT_IDX_VARIABLE_TASK_ID`, `ACT_IDX_VARIABLE_TASK_NAME_TYPE`, `ACT_IDX_BATCH_ID`, `ACT_IDX_VAR_CASE_EXE`, `ACT_IDX_VAR_CASE_INST_ID`, `ACT_IDX_VARIABLE_TENANT_ID`
 
 **Variable Type→Column Mapping:**
 
 | Type | Column(s) |
 |------|-----------|
-| String | TEXT_ (+ TEXT2_ if > 4000 chars) |
-| Integer, Long, Boolean, Date | LONG_ |
-| Double, Float | DOUBLE_ |
-| Serialized object, File, JSON (large) | BYTEARRAY_ID_ |
+| String | TEXT_ (limited by the column size) |
+| Boolean, Short, Integer, Long, Date | LONG_ |
+| Double | DOUBLE_ |
+| Bytes | BYTEARRAY_ID_ |
+| File | BYTEARRAY_ID_ (content), TEXT_ (file name), TEXT2_ (MIME type, encoding) |
+| Object, JSON, XML | BYTEARRAY_ID_ (serialized value), TEXT_ (serialization format), TEXT2_ (object type name) |
 | Null | all value columns NULL |
 
 **Example Queries:**
@@ -214,7 +216,7 @@ FROM ACT_RU_VARIABLE WHERE TASK_ID_ = 'task-id' ORDER BY NAME_;
 
 ## ACT_RU_IDENTITYLINK
 
-**Purpose:** Links tasks or process definitions to users/groups. `TYPE_` distinguishes `assignee`, `owner`, `candidate` (user or group), `starter`, etc. Used for task candidate pools and process start restrictions.
+**Purpose:** Links tasks or process definitions to users/groups. Task links hold candidate users and groups (`TYPE_ = 'candidate'`) and custom link types. Process definition links hold candidate starters, also with `TYPE_ = 'candidate'`. The assignee and owner of a task are stored in `ACT_RU_TASK`, not here.
 
 **Columns:**
 
@@ -223,7 +225,7 @@ FROM ACT_RU_VARIABLE WHERE TASK_ID_ = 'task-id' ORDER BY NAME_;
 | ID_ | VARCHAR(64) | PK NOT NULL | Link identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | GROUP_ID_ | VARCHAR(255) | NULL | Group identifier |
-| TYPE_ | VARCHAR(255) | NOT NULL | Link type: `assignee`, `owner`, `candidate`, `starter` |
+| TYPE_ | VARCHAR(255) | NULL | Link type, usually `candidate`; custom types are possible |
 | USER_ID_ | VARCHAR(255) | NULL | User identifier |
 | TASK_ID_ | VARCHAR(64) | FK → ACT_RU_TASK | Associated task (NULL for process-scoped) |
 | PROC_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_PROCDEF | Process definition (NULL for task-scoped) |
@@ -239,7 +241,7 @@ SELECT DISTINCT t.ID_, t.NAME_, t.PRIORITY_, t.CREATE_TIME_
 FROM ACT_RU_TASK t
 JOIN ACT_RU_IDENTITYLINK il ON t.ID_ = il.TASK_ID_
 WHERE il.USER_ID_ = 'john.doe' AND il.TYPE_ = 'candidate'
-  AND t.ASSIGNEE_ IS NULL AND t.SUSPENSION_STATE_ = 0;
+  AND t.ASSIGNEE_ IS NULL AND t.SUSPENSION_STATE_ = 1;
 
 -- Candidate groups for a task
 SELECT GROUP_ID_ FROM ACT_RU_IDENTITYLINK
@@ -250,7 +252,7 @@ WHERE TASK_ID_ = 'task-id' AND TYPE_ = 'candidate' AND GROUP_ID_ IS NOT NULL;
 
 ## ACT_RU_JOB
 
-**Purpose:** Background job queue. Timers (`TYPE_='timer'`), async continuations, and message jobs. Distributed execution uses `LOCK_OWNER_`/`LOCK_EXP_TIME_` for coordination. Failed jobs decrement `RETRIES_` and create incidents.
+**Purpose:** Background job queue: timers (`TYPE_='timer'`), asynchronous continuations and batch jobs (`TYPE_='message'`), and the history cleanup job (`TYPE_='ever-living'`). Distributed execution uses `LOCK_OWNER_`/`LOCK_EXP_TIME_` for coordination. Failed jobs decrement `RETRIES_` and create incidents.
 
 **Columns:**
 
@@ -258,7 +260,7 @@ WHERE TASK_ID_ = 'task-id' AND TYPE_ = 'candidate' AND GROUP_ID_ IS NOT NULL;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Job identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| TYPE_ | VARCHAR(255) | NOT NULL | Job type: `message`, `timer`, `async`, … |
+| TYPE_ | VARCHAR(255) | NOT NULL | Job type: `message`, `timer`, `ever-living` |
 | LOCK_EXP_TIME_ | TIMESTAMP | NULL | Lock expiry for distributed execution |
 | LOCK_OWNER_ | VARCHAR(255) | NULL | Engine instance holding the lock |
 | EXCLUSIVE_ | BOOLEAN | NULL | Exclusive execution (no parallel) |
@@ -273,12 +275,12 @@ WHERE TASK_ID_ = 'task-id' AND TYPE_ = 'candidate' AND GROUP_ID_ IS NOT NULL;
 | FAILED_ACT_ID_ | VARCHAR(255) | NULL | Failed activity ID |
 | DUEDATE_ | TIMESTAMP | NULL | Execution due time (for timers) |
 | REPEAT_ | VARCHAR(255) | NULL | ISO 8601 repeat interval |
-| REPEAT_OFFSET_ | BIGINT | NOT NULL DEFAULT 0 | Repeat offset |
+| REPEAT_OFFSET_ | BIGINT | DEFAULT 0 | Repeat offset |
 | HANDLER_TYPE_ | VARCHAR(255) | NULL | Handler class/type |
 | HANDLER_CFG_ | VARCHAR(4000) | NULL | Handler configuration |
 | DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Associated deployment |
-| SUSPENSION_STATE_ | INTEGER | NOT NULL DEFAULT 1 | `1`=active, `0`=suspended |
-| JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Job definition |
+| SUSPENSION_STATE_ | INTEGER | NOT NULL DEFAULT 1 | `1`=active, `2`=suspended |
+| JOB_DEF_ID_ | VARCHAR(64) | NULL | Job definition (logical reference, no FK constraint) |
 | PRIORITY_ | BIGINT | NOT NULL DEFAULT 0 | Execution priority |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Ordering counter |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -295,8 +297,9 @@ WHERE TASK_ID_ = 'task-id' AND TYPE_ = 'candidate' AND GROUP_ID_ IS NOT NULL;
 SELECT ID_, TYPE_, HANDLER_TYPE_, PRIORITY_, DUEDATE_, PROCESS_INSTANCE_ID_, RETRIES_
 FROM ACT_RU_JOB
 WHERE SUSPENSION_STATE_ = 1
+  AND RETRIES_ > 0
   AND (DUEDATE_ IS NULL OR DUEDATE_ <= CURRENT_TIMESTAMP)
-  AND LOCK_OWNER_ IS NULL
+  AND (LOCK_OWNER_ IS NULL OR LOCK_EXP_TIME_ < CURRENT_TIMESTAMP)
 ORDER BY PRIORITY_ DESC, DUEDATE_ ASC;
 
 -- Jobs with failures
@@ -305,10 +308,11 @@ FROM ACT_RU_JOB
 WHERE EXCEPTION_MSG_ IS NOT NULL
 ORDER BY CREATE_TIME_ DESC;
 
--- Acquire lock (distributed execution)
-UPDATE ACT_RU_JOB
-SET LOCK_OWNER_ = 'engine-1', LOCK_EXP_TIME_ = CURRENT_TIMESTAMP + INTERVAL '30 minutes'
-WHERE ID_ = 'job-id' AND LOCK_OWNER_ IS NULL;
+-- Jobs currently locked by job executors
+SELECT LOCK_OWNER_, COUNT(*) AS locked_jobs, MIN(LOCK_EXP_TIME_) AS next_lock_expiry
+FROM ACT_RU_JOB
+WHERE LOCK_OWNER_ IS NOT NULL
+GROUP BY LOCK_OWNER_;
 ```
 
 ---
@@ -328,7 +332,7 @@ WHERE ID_ = 'job-id' AND LOCK_OWNER_ IS NULL;
 | ACT_ID_ | VARCHAR(255) | NULL | Activity element ID |
 | JOB_TYPE_ | VARCHAR(255) | NOT NULL | Job type |
 | JOB_CONFIGURATION_ | VARCHAR(255) | NULL | Configuration data |
-| SUSPENSION_STATE_ | INTEGER | NULL | `0`=active, `1`=suspended |
+| SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | JOB_PRIORITY_ | BIGINT | NULL | Default priority for new jobs |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Associated deployment |
@@ -393,7 +397,7 @@ WHERE e.ROOT_CAUSE_INCIDENT_ID_ = 'root-incident-id';
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Subscription identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| EVENT_TYPE_ | VARCHAR(255) | NOT NULL | Type: `message`, `signal`, `compensate`, … |
+| EVENT_TYPE_ | VARCHAR(255) | NOT NULL | Type: `message`, `signal`, `compensate`, `conditional` |
 | EVENT_NAME_ | VARCHAR(255) | NULL | Event name/correlation key |
 | EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Awaiting execution |
 | PROC_INST_ID_ | VARCHAR(64) | NULL | Process instance |
@@ -433,7 +437,7 @@ ORDER BY CREATED_ ASC;
 | ERROR_DETAILS_ID_ | VARCHAR(64) | FK → ACT_GE_BYTEARRAY | Detailed error (serialized) |
 | LOCK_EXP_TIME_ | TIMESTAMP | NULL | Lock expiry |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation time |
-| SUSPENSION_STATE_ | INTEGER | NULL | `0`=active, `1`=suspended |
+| SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Associated execution |
 | PROC_INST_ID_ | VARCHAR(64) | NULL | Process instance |
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Process definition |
@@ -453,7 +457,7 @@ ORDER BY CREATED_ ASC;
 SELECT ID_, TOPIC_NAME_, PRIORITY_, EXECUTION_ID_, PROC_INST_ID_
 FROM ACT_RU_EXT_TASK
 WHERE TOPIC_NAME_ = 'payment-processing'
-  AND SUSPENSION_STATE_ = 0
+  AND SUSPENSION_STATE_ = 1
   AND (WORKER_ID_ IS NULL OR LOCK_EXP_TIME_ < CURRENT_TIMESTAMP)
 ORDER BY PRIORITY_ DESC, CREATE_TIME_ ASC
 LIMIT 10;
@@ -471,7 +475,7 @@ LIMIT 10;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Batch identifier |
 | REV_ | INTEGER | NOT NULL | Revision for optimistic locking |
-| TYPE_ | VARCHAR(255) | NULL | Batch type (e.g., `migration`, `message_correlation`) |
+| TYPE_ | VARCHAR(255) | NULL | Batch type (e.g., `instance-migration`, `correlate-message`) |
 | TOTAL_JOBS_ | INTEGER | NULL | Total jobs to complete |
 | JOBS_CREATED_ | INTEGER | NULL | Jobs created so far |
 | JOBS_PER_SEED_ | INTEGER | NULL | Jobs per seed invocation |
@@ -479,7 +483,7 @@ LIMIT 10;
 | SEED_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Seed job definition |
 | BATCH_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Batch job definition |
 | MONITOR_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Monitor job definition |
-| SUSPENSION_STATE_ | INTEGER | NULL | `0`=active, `1`=suspended |
+| SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | CONFIGURATION_ | VARCHAR(255) | NULL | Batch configuration |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | CREATE_USER_ID_ | VARCHAR(255) | NULL | User who started the batch |
@@ -491,10 +495,10 @@ LIMIT 10;
 **Example Queries:**
 
 ```sql
--- Batch progress
+-- Batch job creation progress (seeding)
 SELECT ID_, TYPE_, TOTAL_JOBS_, JOBS_CREATED_,
-       ROUND(100.0 * JOBS_CREATED_ / NULLIF(TOTAL_JOBS_, 0), 1) AS pct_complete
-FROM ACT_RU_BATCH WHERE SUSPENSION_STATE_ = 0;
+       ROUND(100.0 * JOBS_CREATED_ / NULLIF(TOTAL_JOBS_, 0), 1) AS pct_jobs_created
+FROM ACT_RU_BATCH WHERE SUSPENSION_STATE_ = 1;
 ```
 
 ---
@@ -511,11 +515,11 @@ FROM ACT_RU_BATCH WHERE SUSPENSION_STATE_ = 0;
 | REV_ | INTEGER | NOT NULL | Revision for optimistic locking |
 | TYPE_ | INTEGER | NOT NULL | `0`=global, `1`=grant, `2`=revoke |
 | GROUP_ID_ | VARCHAR(255) | NULL | Target group (mutually exclusive with USER_ID_) |
-| USER_ID_ | VARCHAR(255) | NULL | Target user (mutually exclusive with GROUP_ID_) |
-| RESOURCE_TYPE_ | INTEGER | NOT NULL | Resource class (1=process def, 2=task, 3=execution, …) |
-| RESOURCE_ID_ | VARCHAR(255) | NULL | Specific resource ID (NULL=all resources of type) |
-| PERMS_ | INTEGER | NULL | Permission bitmask (READ=1, CREATE=2, UPDATE=4, DELETE=8, …) |
-| REMOVAL_TIME_ | TIMESTAMP | NULL | Soft-delete / expiry marker |
+| USER_ID_ | VARCHAR(255) | NULL | Target user (mutually exclusive with GROUP_ID_); `*` for global authorizations |
+| RESOURCE_TYPE_ | INTEGER | NOT NULL | Resource type (`0`=application, `1`=user, `2`=group, `6`=process definition, `7`=task, `8`=process instance, …) |
+| RESOURCE_ID_ | VARCHAR(255) | NULL | Specific resource ID; `*` for all resources of the type |
+| PERMS_ | INTEGER | NULL | Permission bitmask (READ=2, UPDATE=4, CREATE=8, DELETE=16, …) |
+| REMOVAL_TIME_ | TIMESTAMP | NULL | Removal time for authorizations on history data (history cleanup) |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance reference |
 
 **Unique Constraints:**
@@ -524,7 +528,9 @@ FROM ACT_RU_BATCH WHERE SUSPENSION_STATE_ = 0;
 
 **Indexes:** `ACT_IDX_AUTH_GROUP_ID`, `ACT_IDX_AUTH_RESOURCE_ID`, `ACT_IDX_AUTH_ROOT_PI`, `ACT_IDX_AUTH_RM_TIME`
 
-**Permission Flags:** `READ=1`, `CREATE=2`, `UPDATE=4`, `DELETE=8`, `TASK_READ=16`, `TASK_WORK=32`, `PROCESS_DEFINE=64`, …
+**Permission Flags:** `NONE=0`, `READ=2`, `UPDATE=4`, `CREATE=8`, `DELETE=16`, `ACCESS=32`, `READ_TASK=64`, `UPDATE_TASK=128`, `CREATE_INSTANCE=256`, `READ_INSTANCE=512`, `UPDATE_INSTANCE=1024`, `DELETE_INSTANCE=2048`, `READ_HISTORY=4096`, `DELETE_HISTORY=8192`, `TASK_WORK=16384`, `TASK_ASSIGN=32768`, `MIGRATE_INSTANCE=65536`; `ALL` sets every bit (`2147483647`).
+
+**Resource Types:** `APPLICATION=0`, `USER=1`, `GROUP=2`, `GROUP_MEMBERSHIP=3`, `AUTHORIZATION=4`, `FILTER=5`, `PROCESS_DEFINITION=6`, `TASK=7`, `PROCESS_INSTANCE=8`, `DEPLOYMENT=9`, `DECISION_DEFINITION=10`, `TENANT=11`, `TENANT_MEMBERSHIP=12`, `BATCH=13`, `DECISION_REQUIREMENTS_DEFINITION=14`, `REPORT=15`, `DASHBOARD=16`, `OPERATION_LOG_CATEGORY=17`, `OPTIMIZE=18`, `HISTORIC_TASK=19`, `HISTORIC_PROCESS_INSTANCE=20`, `SYSTEM=21`
 
 **Example Queries:**
 
@@ -535,20 +541,22 @@ FROM ACT_RU_AUTHORIZATION
 WHERE USER_ID_ = 'john.doe'
 ORDER BY RESOURCE_TYPE_, RESOURCE_ID_;
 
--- Check READ permission (PostgreSQL/MySQL)
-SELECT COUNT(*) FROM ACT_RU_AUTHORIZATION
+-- Grants with READ on a process definition (PostgreSQL/MySQL)
+-- The engine also evaluates group, global and revoke authorizations.
+SELECT ID_, TYPE_, RESOURCE_ID_, PERMS_
+FROM ACT_RU_AUTHORIZATION
 WHERE USER_ID_ = 'john.doe'
-  AND RESOURCE_TYPE_ = 1
-  AND (RESOURCE_ID_ = 'proc-def-id' OR RESOURCE_ID_ IS NULL)
-  AND TYPE_ IN (0, 1)
-  AND (PERMS_ & 1) = 1;
+  AND RESOURCE_TYPE_ = 6
+  AND RESOURCE_ID_ IN ('invoice_approval', '*')
+  AND TYPE_ = 1
+  AND (PERMS_ & 2) = 2;
 ```
 
 ---
 
 ## ACT_RU_FILTER
 
-**Purpose:** Saved task filter/query definitions for the Tasklist UI. Each filter encapsulates query criteria (assignee, priority, process, etc.) as a serialised expression in `QUERY_`.
+**Purpose:** Saved task filter/query definitions for the Tasklist UI. Each filter stores its query criteria (assignee, priority, process, etc.) as JSON in `QUERY_`.
 
 **Columns:**
 
@@ -556,38 +564,38 @@ WHERE USER_ID_ = 'john.doe'
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Filter identifier |
 | REV_ | INTEGER | NOT NULL | Revision for optimistic locking |
-| RESOURCE_TYPE_ | VARCHAR(255) | NOT NULL | Resource type: `Task`, `ProcessInstance`, … |
+| RESOURCE_TYPE_ | VARCHAR(255) | NOT NULL | Resource type; currently always `Task` |
 | NAME_ | VARCHAR(255) | NOT NULL | Filter display name |
 | OWNER_ | VARCHAR(255) | NULL | Owning user ID |
-| QUERY_ | TEXT | NOT NULL | Filter query (JSON or expression) |
+| QUERY_ | TEXT | NOT NULL | Filter query (JSON) |
 | PROPERTIES_ | TEXT | NULL | Additional metadata (JSON) |
 
 ---
 
 ## ACT_RU_METER_LOG
 
-**Purpose:** Engine-level performance metrics (process instance starts, task completions, job executions). Aggregated at intervals for capacity planning and SLA monitoring.
+**Purpose:** Engine metrics such as `root-process-instance-start`, `activity-instance-start`, `job-successful` or `executed-decision-elements`. The metrics reporter writes one row per metric and reporting interval.
 
 **Columns:**
 
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Log entry identifier |
-| NAME_ | VARCHAR(64) | NOT NULL | Metric name (e.g., `process-instance-starts`) |
+| NAME_ | VARCHAR(64) | NOT NULL | Metric name (e.g., `root-process-instance-start`) |
 | REPORTER_ | VARCHAR(255) | NULL | Reporting engine instance ID |
 | VALUE_ | BIGINT | NULL | Metric value |
-| TIMESTAMP_ | TIMESTAMP | NULL | Timestamp (legacy; prefer MILLISECONDS_) |
-| MILLISECONDS_ | BIGINT | NOT NULL DEFAULT 0 | Time window in milliseconds |
+| TIMESTAMP_ | TIMESTAMP | NULL | End of the reporting interval |
+| MILLISECONDS_ | BIGINT | DEFAULT 0 | `TIMESTAMP_` as epoch milliseconds (indexed for range queries) |
 
 **Indexes:** `ACT_IDX_METER_LOG_MS`, `ACT_IDX_METER_LOG_NAME_MS`, `ACT_IDX_METER_LOG_REPORT`, `ACT_IDX_METER_LOG_TIME`, `ACT_IDX_METER_LOG`
 
 **Example Queries:**
 
 ```sql
--- Hourly task completions (last 7 days)
-SELECT date_trunc('hour', TIMESTAMP_) AS hour, SUM(VALUE_) AS completions
+-- Hourly root process instance starts (last 7 days)
+SELECT date_trunc('hour', TIMESTAMP_) AS hour, SUM(VALUE_) AS starts
 FROM ACT_RU_METER_LOG
-WHERE NAME_ = 'task-completions'
+WHERE NAME_ = 'root-process-instance-start'
   AND TIMESTAMP_ >= CURRENT_TIMESTAMP - INTERVAL '7 days'
 GROUP BY 1 ORDER BY 1 DESC;
 ```
@@ -596,7 +604,7 @@ GROUP BY 1 ORDER BY 1 DESC;
 
 ## ACT_RU_TASK_METER_LOG
 
-**Purpose:** Task-level analytics. Records a row per task completion with an anonymised `ASSIGNEE_HASH_` (hash of user ID) to enable workload distribution analysis without storing PII.
+**Purpose:** Task worker metrics. The engine writes one row each time a task is assigned, with a pseudonymized `ASSIGNEE_HASH_` instead of the user ID. Used to count unique task workers.
 
 **Columns:**
 
@@ -604,7 +612,9 @@ GROUP BY 1 ORDER BY 1 DESC;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Log entry identifier |
 | ASSIGNEE_HASH_ | BIGINT | NULL | Hash of assignee user ID |
-| TIMESTAMP_ | TIMESTAMP | NOT NULL | Task completion time |
+| TIMESTAMP_ | TIMESTAMP | NULL | Time of the assignment |
+
+**Indexes:** `ACT_IDX_TASK_METER_LOG_TIME`
 
 ---
 
@@ -626,7 +636,7 @@ GROUP BY 1 ORDER BY 1 DESC;
 | CASE_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_CASE_DEF | Case definition |
 | ACT_ID_ | VARCHAR(255) | NULL | Current CMMN activity ID |
 | PREV_STATE_ | INTEGER | NULL | Previous state |
-| CURRENT_STATE_ | INTEGER | NULL | Current state (active, completed, terminated, …) |
+| CURRENT_STATE_ | INTEGER | NULL | Current state (`0`=new, `1`=available, `2`=enabled, `3`=disabled, `4`=active, `5`=suspended, `6`=terminated, `7`=completed, …) |
 | REQUIRED_ | BOOLEAN | NULL | Whether completion is required for parent |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
@@ -662,10 +672,10 @@ GROUP BY 1 ORDER BY 1 DESC;
 
 ## Design Notes
 
-- **Optimistic locking**: Every table with `REV_` uses it for concurrent update safety. Always include `WHERE REV_ = <old>` in updates and retry on conflict.
-- **Suspension**: `SUSPENSION_STATE_` is set on executions, tasks, and jobs. Suspended items cannot progress but are not deleted.
+- **Optimistic locking**: The engine checks `REV_` on every update and raises an `OptimisticLockingException` on conflict. Change data through the engine API, not with direct SQL updates.
+- **Suspension**: `SUSPENSION_STATE_` (`1`=active, `2`=suspended) is set on executions, tasks, jobs, job definitions, external tasks and batches. Suspended items cannot progress but are not deleted.
 - **Incident chains**: `CAUSE_INCIDENT_ID_` and `ROOT_CAUSE_INCIDENT_ID_` in `ACT_RU_INCIDENT` enable root cause navigation for cascaded failures.
-- **Lock expiry cleanup**: Regularly clear stale `ACT_RU_JOB` locks (`LOCK_EXP_TIME_ < CURRENT_TIMESTAMP`) from crashed engine nodes.
+- **Job lock expiry**: Locks of crashed engine nodes need no cleanup. Once `LOCK_EXP_TIME_` has passed, any job executor can acquire the job again.
 - **Multi-tenancy**: Always include `TENANT_ID_` predicates in queries on multi-tenant installations.
 
 ---
@@ -674,4 +684,4 @@ See [Database-Specific Implementation Notes](../index.md#database-specific-imple
 
 ---
 
-**Last Updated:** 2026-07-03 | **Schema Version:** 7.24 | **Operaton Versions:** 1.0.0+
+**Last Updated:** 2026-11-11 | **Schema Version:** 7.25 | **Operaton Versions:** 1.0.0+

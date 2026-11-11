@@ -1,11 +1,11 @@
 ---
-last_updated: 2026-07-03
-schema_version: 7.24
+last_updated: 2026-11-11
+schema_version: 7.25
 ---
 
 # Repository (RE_)
 
-Repository tables store immutable definitions — process models, case models, decision tables, form definitions, and their deployment containers. Definitions are never modified after deployment; new deployments create new versions.
+Repository tables store definitions — process models, case models, decision tables, form definitions, and their deployment containers. The deployed models are never changed; a changed model is deployed as a new version. Only a few attributes, such as the suspension state or the history time to live, can be updated after deployment.
 
 ## Tables
 
@@ -28,13 +28,13 @@ Repository tables store immutable definitions — process models, case models, d
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Deployment identifier |
 | NAME_ | VARCHAR(255) | NULL | Human-readable deployment name |
-| DEPLOY_TIME_ | TIMESTAMP | NOT NULL | When deployment occurred |
+| DEPLOY_TIME_ | TIMESTAMP | NULL | When deployment occurred |
 | SOURCE_ | VARCHAR(255) | NULL | Deployment origin (e.g., `api`, filename) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
 **Indexes:** `ACT_IDX_DEPLOYMENT_NAME`, `ACT_IDX_DEPLOYMENT_TENANT_ID`
 
-**Referenced by:** ACT_RE_PROCDEF, ACT_RE_CAMFORMDEF, ACT_RE_CASE_DEF, ACT_RE_DECISION_DEF, ACT_RE_DECISION_REQ_DEF, ACT_GE_BYTEARRAY
+**Referenced by:** `ACT_GE_BYTEARRAY` (FK constraint `ACT_FK_BYTEARR_DEPL`). `ACT_RE_PROCDEF`, `ACT_RE_CAMFORMDEF`, `ACT_RE_CASE_DEF`, `ACT_RE_DECISION_DEF` and `ACT_RE_DECISION_REQ_DEF` reference it without a constraint.
 
 **Example Queries:**
 
@@ -66,7 +66,7 @@ ORDER BY TENANT_ID_;
 
 ## ACT_RE_PROCDEF
 
-**Purpose:** Stores BPMN process definition versions. Same `KEY_` with incrementing `VERSION_` coexist; running instances reference their definition by `ID_`. Definitions are immutable once deployed.
+**Purpose:** Stores BPMN process definition versions. Same `KEY_` with incrementing `VERSION_` coexist; running instances reference their definition by `ID_`.
 
 **Columns:**
 
@@ -78,11 +78,11 @@ ORDER BY TENANT_ID_;
 | NAME_ | VARCHAR(255) | NULL | Display name |
 | KEY_ | VARCHAR(255) | NOT NULL | Logical process key |
 | VERSION_ | INTEGER | NOT NULL | Version number |
-| DEPLOYMENT_ID_ | VARCHAR(64) | FK → ACT_RE_DEPLOYMENT | Containing deployment |
+| DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | BPMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
 | HAS_START_FORM_KEY_ | BOOLEAN | NULL | Start event has a form |
-| SUSPENSION_STATE_ | INTEGER | NULL | `0`=active, `1`=suspended |
+| SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | VERSION_TAG_ | VARCHAR(64) | NULL | Optional version label |
 | HISTORY_TTL_ | INTEGER | NULL | History retention in days (NULL=indefinite) |
@@ -96,10 +96,10 @@ ORDER BY TENANT_ID_;
 -- Latest active version of all process definitions
 SELECT ID_, KEY_, NAME_, VERSION_, DEPLOYMENT_ID_
 FROM ACT_RE_PROCDEF p1
-WHERE SUSPENSION_STATE_ = 0
+WHERE SUSPENSION_STATE_ = 1
   AND (KEY_, VERSION_) IN (
     SELECT KEY_, MAX(VERSION_) FROM ACT_RE_PROCDEF
-    WHERE SUSPENSION_STATE_ = 0 GROUP BY KEY_
+    WHERE SUSPENSION_STATE_ = 1 GROUP BY KEY_
   )
 ORDER BY KEY_;
 
@@ -114,7 +114,7 @@ SELECT p.KEY_, p.VERSION_, COUNT(e.ID_) AS running_instances
 FROM ACT_RE_PROCDEF p
 LEFT JOIN ACT_RU_EXECUTION e ON p.ID_ = e.PROC_DEF_ID_
   AND e.PROC_INST_ID_ = e.ID_
-WHERE p.SUSPENSION_STATE_ = 0
+WHERE p.SUSPENSION_STATE_ = 1
 GROUP BY p.KEY_, p.VERSION_
 ORDER BY running_instances DESC;
 ```
@@ -133,7 +133,7 @@ ORDER BY running_instances DESC;
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | KEY_ | VARCHAR(255) | NOT NULL | Form key |
 | VERSION_ | INTEGER | NOT NULL | Version number |
-| DEPLOYMENT_ID_ | VARCHAR(64) | FK → ACT_RE_DEPLOYMENT | Containing deployment |
+| DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | Form resource filename |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
@@ -169,7 +169,7 @@ ORDER BY KEY_, VERSION_ DESC;
 | NAME_ | VARCHAR(255) | NULL | Display name |
 | KEY_ | VARCHAR(255) | NOT NULL | Logical case key |
 | VERSION_ | INTEGER | NOT NULL | Version number |
-| DEPLOYMENT_ID_ | VARCHAR(64) | FK → ACT_RE_DEPLOYMENT | Containing deployment |
+| DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | CMMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -202,7 +202,7 @@ ORDER BY KEY_, VERSION_ DESC;
 | NAME_ | VARCHAR(255) | NULL | Display name |
 | KEY_ | VARCHAR(255) | NOT NULL | Logical decision key |
 | VERSION_ | INTEGER | NOT NULL | Version number |
-| DEPLOYMENT_ID_ | VARCHAR(64) | FK → ACT_RE_DEPLOYMENT | Containing deployment |
+| DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | DMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
 | DEC_REQ_ID_ | VARCHAR(64) | FK → ACT_RE_DECISION_REQ_DEF | Parent DRG (NULL if standalone) |
@@ -248,7 +248,7 @@ ORDER BY KEY_;
 | NAME_ | VARCHAR(255) | NULL | Display name |
 | KEY_ | VARCHAR(255) | NOT NULL | Logical DRG key |
 | VERSION_ | INTEGER | NOT NULL | Version number |
-| DEPLOYMENT_ID_ | VARCHAR(64) | FK → ACT_RE_DEPLOYMENT | Containing deployment |
+| DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | DMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -271,9 +271,9 @@ ORDER BY r.KEY_, d.KEY_;
 ## Design Notes
 
 - **Versioning**: Definitions are immutable; redeployment creates a new row with an incremented `VERSION_`. Running instances always reference their original `ID_`, ensuring definition stability.
-- **Suspension**: `ACT_RE_PROCDEF.SUSPENSION_STATE_ = 1` prevents new instances from being started without deleting the definition.
-- **HISTORY_TTL_**: Sets the default retention period for history data. The cleanup job uses this to schedule removal of historical records.
-- Binary content (BPMN/DMN XML, diagrams) is stored in `ACT_GE_BYTEARRAY`, referenced via `RESOURCE_NAME_` + `DEPLOYMENT_ID_`.
+- **Suspension**: `ACT_RE_PROCDEF.SUSPENSION_STATE_ = 2` prevents new instances from being started without deleting the definition.
+- **HISTORY_TTL_**: Retention period in days for history data of the definition. The engine derives `REMOVAL_TIME_` of history rows from it, and the history cleanup job deletes rows after that time.
+- Binary content (BPMN/DMN XML, diagrams) is stored in `ACT_GE_BYTEARRAY`. Match `ACT_GE_BYTEARRAY.NAME_` and `DEPLOYMENT_ID_` with the definition's `RESOURCE_NAME_` and `DEPLOYMENT_ID_`.
 
 ---
 
@@ -281,4 +281,4 @@ See [Database-Specific Implementation Notes](../index.md#database-specific-imple
 
 ---
 
-**Last Updated:** 2026-07-03 | **Schema Version:** 7.24 | **Operaton Versions:** 1.0.0+
+**Last Updated:** 2026-11-11 | **Schema Version:** 7.25 | **Operaton Versions:** 1.0.0+

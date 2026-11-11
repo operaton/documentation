@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate grouped 7.24 ER diagram SVGs from schema.mermaid.
+"""Generate grouped ER diagram SVGs from schema.mermaid.
 
 Usage: python3 scripts/generate_erd_diagrams.py
 Requires: npx (Node.js) available on PATH; @mermaid-js/mermaid-cli is
@@ -16,6 +16,7 @@ from erd_build import extract_header, build_subdiagram
 
 REPO_ROOT = Path(__file__).parent.parent
 SCHEMA_PATH = REPO_ROOT / "docs/documentation/reference/db-schema/schema.mermaid"
+SCHEMA_VERSION = "725"
 OUT_DIR = REPO_ROOT / "static/img/documentation/user-guide/process-engine/database"
 
 
@@ -34,7 +35,7 @@ def main():
             mmd_path = tmp_path / f"{group}.mmd"
             mmd_path.write_text(mmd_content)
 
-            svg_path = OUT_DIR / f"erd_724_{group}.svg"
+            svg_path = OUT_DIR / f"erd_{SCHEMA_VERSION}_{group}.svg"
             result = subprocess.run(
                 [
                     "npx", "-y", "@mermaid-js/mermaid-cli",

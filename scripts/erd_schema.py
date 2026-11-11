@@ -3,7 +3,7 @@ import re
 
 ENTITY_RE = re.compile(r'^\s{4}(ACT_\w+)\s*\{(.*?)\n\s{4}\}', re.MULTILINE | re.DOTALL)
 REL_RE = re.compile(
-    r'^\s*(ACT_\w+)\s+([}|][o|]--[o|][|{])\s+(ACT_\w+)\s*:\s*"([^"]+)"',
+    r'^\s*(ACT_\w+)\s+([}|][o|](?:--|\.\.)[o|][|{])\s+(ACT_\w+)\s*:\s*"([^"]+)"',
     re.MULTILINE,
 )
 CLASS_RE = re.compile(r'^\s*class\s+(ACT_\w+)\s+(\w+)', re.MULTILINE)

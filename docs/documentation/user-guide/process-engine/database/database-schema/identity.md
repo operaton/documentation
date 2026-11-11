@@ -1,11 +1,11 @@
 ---
-last_updated: 2026-07-03
-schema_version: 7.24
+last_updated: 2026-11-11
+schema_version: 7.25
 ---
 
 # Identity (ID_)
 
-Identity tables manage users, groups, and tenants for the built-in identity provider. These tables are optional — Operaton supports pluggable identity providers (LDAP, Kerberos, custom) that do not use this schema. When a pluggable provider is configured, `ACT_ID_*` tables may be empty or absent.
+Identity tables manage users, groups, and tenants for the built-in identity provider. These tables are optional — Operaton supports pluggable identity providers (LDAP, Kerberos, custom) that do not use this schema. The `ACT_ID_*` tables are always created; with a different provider they typically stay empty.
 
 ## Tables
 
@@ -178,6 +178,8 @@ SELECT ID_, NAME_ FROM ACT_ID_TENANT ORDER BY NAME_;
 - `ACT_UNIQ_TENANT_MEMB_USER` on `(TENANT_ID_, USER_ID_)`
 - `ACT_UNIQ_TENANT_MEMB_GROUP` on `(TENANT_ID_, GROUP_ID_)`
 
+On DB2 the constraints are unique indexes on the generated helper columns `UNI_USER_ID_` and `UNI_GROUP_ID_`, which replace NULL with `ID_`.
+
 **Indexes:** `ACT_IDX_TENANT_MEMB`, `ACT_IDX_TENANT_MEMB_USER`, `ACT_IDX_TENANT_MEMB_GROUP`
 
 **Example Queries:**
@@ -201,7 +203,7 @@ WHERE USER_ID_ = 'john.doe';
 
 - `ACT_ID_*` tables are only populated when using the **built-in identity provider**.
 - `ACT_RU_AUTHORIZATION.USER_ID_` and `GROUP_ID_` are string references — there are no foreign keys to `ACT_ID_USER`/`ACT_ID_GROUP`. Authorization works with any identity source.
-- Account locking: `LOCK_EXP_TIME_` + `ATTEMPTS_` in `ACT_ID_USER` implement brute-force protection. Unlock by setting `LOCK_EXP_TIME_ = NULL` and `ATTEMPTS_ = 0`.
+- Account locking: `LOCK_EXP_TIME_` + `ATTEMPTS_` in `ACT_ID_USER` implement brute-force protection. Unlock a user with `IdentityService.unlockUser(userId)` instead of updating the row directly.
 - `ACT_ID_INFO.PASSWORD_` stores encrypted bytes (not plain text); use the Operaton API to manage account credentials.
 
 ---
@@ -210,4 +212,4 @@ See [Database-Specific Implementation Notes](../index.md#database-specific-imple
 
 ---
 
-**Last Updated:** 2026-07-03 | **Schema Version:** 7.24 | **Operaton Versions:** 1.0.0+
+**Last Updated:** 2026-11-11 | **Schema Version:** 7.25 | **Operaton Versions:** 1.0.0+

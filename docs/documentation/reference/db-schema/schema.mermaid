@@ -56,7 +56,7 @@ erDiagram
         varchar NAME_
         varchar KEY_
         integer VERSION_
-        varchar DEPLOYMENT_ID_ FK
+        varchar DEPLOYMENT_ID_
         varchar RESOURCE_NAME_
         varchar DGRM_RESOURCE_NAME_
         boolean HAS_START_FORM_KEY_
@@ -72,7 +72,7 @@ erDiagram
         integer REV_
         varchar KEY_
         integer VERSION_
-        varchar DEPLOYMENT_ID_ FK
+        varchar DEPLOYMENT_ID_
         varchar RESOURCE_NAME_
         varchar TENANT_ID_
     }
@@ -84,7 +84,7 @@ erDiagram
         varchar NAME_
         varchar KEY_
         integer VERSION_
-        varchar DEPLOYMENT_ID_ FK
+        varchar DEPLOYMENT_ID_
         varchar RESOURCE_NAME_
         varchar DGRM_RESOURCE_NAME_
         varchar TENANT_ID_
@@ -98,7 +98,7 @@ erDiagram
         varchar NAME_
         varchar KEY_
         integer VERSION_
-        varchar DEPLOYMENT_ID_ FK
+        varchar DEPLOYMENT_ID_
         varchar RESOURCE_NAME_
         varchar DGRM_RESOURCE_NAME_
         varchar DEC_REQ_ID_ FK
@@ -115,7 +115,7 @@ erDiagram
         varchar NAME_
         varchar KEY_
         integer VERSION_
-        varchar DEPLOYMENT_ID_ FK
+        varchar DEPLOYMENT_ID_
         varchar RESOURCE_NAME_
         varchar DGRM_RESOURCE_NAME_
         varchar TENANT_ID_
@@ -172,7 +172,7 @@ erDiagram
         varchar   HANDLER_CFG_
         varchar   DEPLOYMENT_ID_
         integer   SUSPENSION_STATE_
-        varchar   JOB_DEF_ID_ FK
+        varchar   JOB_DEF_ID_
         bigint    PRIORITY_
         bigint    SEQUENCE_COUNTER_
         varchar   TENANT_ID_
@@ -767,7 +767,7 @@ erDiagram
 
     ACT_HI_DEC_IN {
         varchar   ID_ PK
-        varchar   DEC_INST_ID_ FK
+        varchar   DEC_INST_ID_
         varchar   CLAUSE_ID_
         varchar   CLAUSE_NAME_
         varchar   VAR_TYPE_
@@ -784,7 +784,7 @@ erDiagram
 
     ACT_HI_DEC_OUT {
         varchar   ID_ PK
-        varchar   DEC_INST_ID_ FK
+        varchar   DEC_INST_ID_
         varchar   CLAUSE_ID_
         varchar   CLAUSE_NAME_
         varchar   RULE_ID_
@@ -814,8 +814,8 @@ erDiagram
     }
 
     ACT_ID_MEMBERSHIP {
-        varchar USER_ID_ PK
-        varchar GROUP_ID_ PK
+        varchar USER_ID_ PK, FK
+        varchar GROUP_ID_ PK, FK
     }
 
     ACT_ID_USER {
@@ -856,18 +856,19 @@ erDiagram
     }
 
     %% =========================================================
-    %% RELATIONSHIPS — derived from SQL FOREIGN KEY constraints
+    %% RELATIONSHIPS — solid (--) lines are SQL FOREIGN KEY constraints;
+    %% dashed (..) lines are logical references without a constraint
     %% =========================================================
 
     %% General
     ACT_GE_BYTEARRAY }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
 
     %% Repository
-    ACT_RE_PROCDEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
-    ACT_RE_CAMFORMDEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
-    ACT_RE_CASE_DEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
-    ACT_RE_DECISION_REQ_DEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
-    ACT_RE_DECISION_DEF }o--|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_PROCDEF }o..|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_CAMFORMDEF }o..|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_CASE_DEF }o..|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_DECISION_REQ_DEF }o..|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
+    ACT_RE_DECISION_DEF }o..|| ACT_RE_DEPLOYMENT : "DEPLOYMENT_ID_"
     ACT_RE_DECISION_DEF }o--o| ACT_RE_DECISION_REQ_DEF : "DEC_REQ_ID_"
 
     %% Runtime — Execution
@@ -897,7 +898,7 @@ erDiagram
 
     %% Runtime — Job
     ACT_RU_JOB }o--o| ACT_GE_BYTEARRAY : "EXCEPTION_STACK_ID_"
-    ACT_RU_JOB }o--o| ACT_RU_JOBDEF : "JOB_DEF_ID_"
+    ACT_RU_JOB }o..o| ACT_RU_JOBDEF : "JOB_DEF_ID_"
 
     %% Runtime — Incident
     ACT_RU_INCIDENT }o--o| ACT_RU_EXECUTION : "EXECUTION_ID_"
@@ -927,8 +928,8 @@ erDiagram
     ACT_RU_CASE_SENTRY_PART }o--o| ACT_RU_CASE_EXECUTION : "CASE_EXEC_ID_"
 
     %% History — Decision
-    ACT_HI_DEC_IN }o--|| ACT_HI_DECINST : "DEC_INST_ID_"
-    ACT_HI_DEC_OUT }o--|| ACT_HI_DECINST : "DEC_INST_ID_"
+    ACT_HI_DEC_IN }o..|| ACT_HI_DECINST : "DEC_INST_ID_"
+    ACT_HI_DEC_OUT }o..|| ACT_HI_DECINST : "DEC_INST_ID_"
 
     %% Identity
     ACT_ID_MEMBERSHIP }o--|| ACT_ID_GROUP : "GROUP_ID_"

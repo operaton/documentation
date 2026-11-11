@@ -13,6 +13,11 @@ menu:
 | Operaton Version   | Schema Version |
 |--------------------|----------------|
 | 1.0, 1.1, 2.0, 2.1 | 7.24           |
+| 2.2                | 7.25           |
+
+Schema 7.25 has the same tables, columns and indexes as 7.24. The upgrade only records the new version in
+[`ACT_GE_SCHEMA_LOG`](general.md#act_ge_schema_log). To check the schema version of a database, read the latest
+entry of that table.
 
 ---
 
@@ -105,38 +110,38 @@ Every assignment of a task to an assignee will create one row in `ACT_RU_TASK_ME
   The database is not part of the **public API**. The database schema may change for MINOR and MAJOR version updates.
 
   **Please note:**
-  The following diagrams are based on the MySQL database schema. For other databases the diagram may be slightly different.
+  The following diagrams are based on the PostgreSQL database schema. For other databases the column types differ slightly.
 :::
 
 
-The following Entity Relationship Diagrams visualize the database tables and their explicit foreign key constraints, grouped by Engine with focus on BPMN, Engine with focus on DMN, Engine with focus on CMMN, the Engine History and the Identity. Please note that the diagrams do not visualize implicit connections between the tables.
+The following Entity Relationship Diagrams visualize the database tables, grouped by Engine with focus on BPMN, Engine with focus on DMN, Engine with focus on CMMN, the Engine History and the Identity. Solid lines are foreign key constraints. Dashed lines are important references that have no foreign key constraint, such as the `DEPLOYMENT_ID_` of the definition tables. Most other implicit references, for example `PROC_INST_ID_` in the history tables, are not shown.
 
 
 ## Engine BPMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_724_bpmn.svg)BPMN Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_725_bpmn.svg)BPMN Tables
 
 
 ## Engine DMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_724_dmn.svg)DMN Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_725_dmn.svg)DMN Tables
 
 
 ## Engine CMMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_724_cmmn.svg)CMMN Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_725_cmmn.svg)CMMN Tables
 
 
 ## History
 
-To allow different configurations and to keep the tables more flexible, the history tables contain no foreign key constraints.
+To allow different configurations and to keep the tables more flexible, the history tables contain no foreign key constraints. The dashed lines show the logical link between decision instances and their inputs and outputs.
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_724_history.svg)History Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_725_history.svg)History Tables
 
 
 ## Identity
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_724_identity.svg)Identity Tables
+![Example img](/img/documentation/user-guide/process-engine/database/erd_725_identity.svg)Identity Tables
 
 # Quick Reference: All Tables
 
@@ -289,10 +294,11 @@ it. Stale reads result in a zero-row update, triggering a retry.
 Most tables carry `TENANT_ID_ VARCHAR(64)`. All queries should filter by tenant where data isolation
 is required.
 
-### Soft Deletion
+### Removal Time
 
-`REMOVAL_TIME_ TIMESTAMP` marks rows for deferred cleanup. The history cleanup job deletes rows
-where `REMOVAL_TIME_ < NOW()`. Never delete these rows manually while the engine is running.
+`REMOVAL_TIME_ TIMESTAMP` marks history rows for deferred cleanup. The engine sets it from the end time and the
+history time to live of the definition. The history cleanup job deletes rows where `REMOVAL_TIME_` has passed.
+Never delete these rows manually while the engine is running.
 
 ### Hierarchical Execution
 
@@ -325,7 +331,7 @@ Enables root-cause traversal in failure chains.
 | `_KEY_`                     | Stable business key   | `PROC_DEF_KEY_`, `TASK_DEF_KEY_`  |
 | `_NAME_`                    | Human-readable label  | `PROC_NAME_`, `TASK_NAME_`        |
 | `_TIME_` / `_TIMESTAMP_`    | Point in time         | `CREATE_TIME_`, `LOCK_EXP_TIME_`  |
-| `_STATE_`                   | Status integer enum   | `SUSPENSION_STATE_`               |
+| `_STATE_`                   | Status code or name   | `SUSPENSION_STATE_`, `STATE_`     |
 | `_MSG_`                     | Text message / error  | `EXCEPTION_MSG_`, `INCIDENT_MSG_` |
 | `_CFG_` / `_CONFIGURATION_` | Configuration payload | `HANDLER_CFG_`                    |
 
@@ -341,52 +347,58 @@ Enables root-cause traversal in failure chains.
 
 ## Database-Specific Implementation Notes
 
+The tables, columns and indexes are the same on all supported databases, with the exceptions listed below.
+Only the column types differ. The documentation uses the PostgreSQL types.
+
 ### PostgreSQL
 
-Baseline implementation. Native types used throughout:
-
-- `BOOLEAN` / `TIMESTAMP` / `BYTEA` / `BIGINT` / `DOUBLE PRECISION`
-- Multiple NULLs allowed in UNIQUE constraints (standard behavior)
-- Recommended for production
+- `boolean`, `timestamp`, `bytea`, `bigint`, `double precision`
+- `text` for the filter columns `QUERY_` and `PROPERTIES_`
 
 ### MySQL / MariaDB
 
-- `TINYINT(1)` for boolean columns
-- `DATETIME` (MySQL) or `DATETIME(3)` (MariaDB) for timestamps
-- `LONGBLOB` for binary data; `LONGTEXT` for unlimited text
-- Index prefix limitation: VARCHAR(4000) columns use first ~300 chars in indexes
-- Set `max_allowed_packet` ≥ 64 MB for large BPMN/DMN payloads
+- `TINYINT` for boolean columns
+- `datetime` for timestamps (MariaDB: `datetime(3)`)
+- `LONGBLOB` for binary data; `LONGTEXT` for the filter columns
+- Tables use `CHARSET=utf8` with `COLLATE utf8_bin`, so string comparisons are case-sensitive
+- MySQL only: `ACT_HI_EXT_TASK_LOG` has an additional `REV_` column
 
 ### Oracle
 
-- `VARCHAR2(n BYTE)` for text; `NVARCHAR2` for Unicode
-- `NUMBER(19,0)` for BIGINT; `NUMBER(*,10)` for DOUBLE
-- `BLOB` / `CLOB` for binary and large text
-- `NUMBER(1,0)` + CHECK for boolean columns
-- Filtered unique indexes enforce uniqueness on non-NULL values only
+- `NVARCHAR2(n)` for text. Columns of length 4000 on other databases are `NVARCHAR2(2000)` on Oracle
+- `NUMBER(19,0)` for `BIGINT`; `NUMBER(*,10)` for `DOUBLE`
+- `NUMBER(1,0)` with a `CHECK (... IN (1,0))` constraint for boolean columns
+- `TIMESTAMP(6)` for timestamps; `BLOB` for binary data; `NCLOB` for the filter columns
+- The unique authorization constraints are function-based unique indexes, so rows with `NULL` user or group IDs
+  do not collide
 
-### MSSQL
+### Microsoft SQL Server
 
-- `nvarchar(n)` throughout for Unicode
-- `datetime2` for high-precision timestamps
-- `BIT` or `TINYINT` for boolean columns
-- `VARBINARY(max)` for binary data
-- Filtered unique indexes supported
+- `nvarchar(n)` for text; `nvarchar(max)` for the filter columns
+- `datetime2` for timestamps
+- `tinyint` for boolean columns
+- `image` for binary data
+- The unique authorization constraints are filtered unique indexes (`WHERE USER_ID_ IS NOT NULL`)
 
 ### H2
 
-- Behaves like PostgreSQL; suitable for in-memory testing
+- `bit` for boolean columns; `blob` for binary data; `CLOB` for the filter columns
+- Intended for development and testing
 
 ### DB2
 
-- Fixed VARCHAR size limits (`VARCHAR(64)` for IDs, `VARCHAR(255)` for names)
-- `SMALLINT` + CHECK for boolean columns
-- Explicit `NOT NULL` required
+- `smallint` with a `CHECK (... IN (1,0))` constraint for boolean columns
+- `BLOB` for binary data; `CLOB` for the filter columns
+- Unique constraints on nullable columns use generated helper columns: `ACT_RU_AUTHORIZATION` has
+  `UNI_USER_ID_`, `UNI_GROUP_ID_` and `UNI_RESOURCE_ID_`, `ACT_ID_TENANT_MEMBER` has `UNI_USER_ID_` and
+  `UNI_GROUP_ID_`. Each replaces `NULL` with the row's `ID_`.
 
 ### Cross-Platform Notes
 
-- **NULL in UNIQUE constraints:** PostgreSQL, MySQL, MariaDB, H2, MSSQL — multiple NULLs allowed.
-  Oracle — enforced via filtered index on non-NULL values only.
+- **Schema scripts:** The create, drop and upgrade scripts for each database ship in the
+  `operaton-sql-scripts-<schema-version>.tar.gz` asset of each release and in the `operaton-engine` artifact under
+  `org/operaton/bpm/engine/db/`. See [Database schema installation](../../../../installation/database-schema.md).
 - **Collation:** Use UTF-8 character sets in all databases for multi-language process data.
-- **CASCADE deletes:** Behavior varies. Verify FK cascade behavior in your target database before
-  bulk deletes.
+- **Foreign keys:** The engine deletes dependent rows itself, so delete data through the engine API. Only on
+  MySQL and MariaDB do the self-references `ACT_FK_EXE_PROCINST`, `ACT_FK_INC_CAUSE`, `ACT_FK_INC_RCAUSE` and
+  `ACT_FK_CASE_EXE_CASE_INST` use `ON DELETE CASCADE ON UPDATE CASCADE`.

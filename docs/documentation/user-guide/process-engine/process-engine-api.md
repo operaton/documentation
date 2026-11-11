@@ -247,7 +247,7 @@ The Java Query API is exposed as REST service as well, see the [REST documentati
 
 ### Native Queries
 
-Sometimes you need more powerful queries, e.g., queries using an OR operator or restrictions you cannot express using the Query API. For these cases, we introduced native queries, which allow you to write your own SQL queries. The return type is defined by the Query object you use and the data is mapped into the correct objects, e.g., Task, ProcessInstance, Execution, etc. Since the query will be fired at the database you have to use table and column names as they are defined in the [database schema](database/database-schema/database-schema.md). This requires some knowledge about the internal data structure and it is recommended to use native queries with care. The table names can be retrieved via the API to keep the dependency as small as possible.
+Sometimes you need more powerful queries, e.g., queries using an OR operator or restrictions you cannot express using the Query API. For these cases, we introduced native queries, which allow you to write your own SQL queries. The return type is defined by the Query object you use and the data is mapped into the correct objects, e.g., Task, ProcessInstance, Execution, etc. Since the query will be fired at the database you have to use table and column names as they are defined in the [database schema](database/database-schema/index.md). This requires some knowledge about the internal data structure and it is recommended to use native queries with care. The table names can be retrieved via the API to keep the dependency as small as possible.
 
 ```java
 List<Task> tasks = taskService.createNativeTaskQuery()
@@ -273,7 +273,7 @@ With a custom query you write the SQL yourself, join the engine tables with your
 Custom queries require that the engine tables and your domain tables live in the same database, so that a single SQL statement can join them.
 
 :::warning[Internal Database Schema]
-Custom queries depend on the [database schema](../process-engine/database/database-schema.md) of the engine, which is not part of the public API. While the schema is fairly stable, it may change between versions. Make sure to test your custom queries whenever you upgrade Operaton.
+Custom queries depend on the [database schema](database/database-schema/index.md) of the engine, which is not part of the public API. While the schema is fairly stable, it may change between versions. Make sure to test your custom queries whenever you upgrade Operaton.
 :::
 
 #### Set Up a Separate MyBatis Session Factory
@@ -407,4 +407,4 @@ List<TaskDto> tasks = customQuerySessionFactory.executeQuery(commandContext -> {
 
 ### SQL Queries
 
-The [table layout](database/database-schema/database-schema.md) is pretty straightforward - we focused on making it easy to understand. Hence it is OK to do SQL queries for e.g., reporting use cases. Just make sure that you do not mess up the engine data by updating the tables without exactly knowing what you are doing.
+The [table layout](database/database-schema/index.md) is pretty straightforward - we focused on making it easy to understand. Hence it is OK to do SQL queries for e.g., reporting use cases. Just make sure that you do not mess up the engine data by updating the tables without exactly knowing what you are doing.

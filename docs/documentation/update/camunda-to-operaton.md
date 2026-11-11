@@ -38,6 +38,10 @@ Because the Operaton schema is identical to the Camunda 7.24 schema, there is
 - Database tables keep the `ACT_` prefix — no tables are renamed.
 - Once your application runs on Camunda 7.24, its database is already at the
   schema level Operaton expects.
+- Operaton 2.2 and later use schema version 7.25. It has the same tables,
+  columns and indexes as 7.24. Run the `<database>_engine_7.24_to_7.25.sql`
+  upgrade script so that `ACT_GE_SCHEMA_LOG` records the matching version. See
+  [Database schema](../installation/database-schema.md).
 - Already-deployed BPMN, DMN, and CMMN models continue to work. The engine
   accepts both the `operaton:` and the legacy `camunda:` extension namespaces, so
   process definitions deployed under Camunda remain valid.
