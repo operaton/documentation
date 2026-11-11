@@ -23,8 +23,8 @@ Runtime tables hold the live state of all active process/case executions, tasks,
 | [ACT_RU_BATCH](#act_ru_batch) | Batch operation records |
 | [ACT_RU_AUTHORIZATION](#act_ru_authorization) | Permission rules |
 | [ACT_RU_FILTER](#act_ru_filter) | Saved task filters |
-| [ACT_RU_METER_LOG](#act_ru_meter_log) | Engine performance metrics |
-| [ACT_RU_TASK_METER_LOG](#act_ru_task_meter_log) | Task completion metrics |
+| [ACT_RU_METER_LOG](#act_ru_meter_log) | Engine metrics |
+| [ACT_RU_TASK_METER_LOG](#act_ru_task_meter_log) | Task worker (assignment) metrics |
 | [ACT_RU_CASE_EXECUTION](#act_ru_case_execution) | Active case executions (CMMN) |
 | [ACT_RU_CASE_SENTRY_PART](#act_ru_case_sentry_part) | Case sentry parts (CMMN) |
 
@@ -40,7 +40,7 @@ Runtime tables hold the live state of all active process/case executions, tasks,
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Execution identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance ID (same for all scopes in a process) |
+| ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Top-level process instance of the call hierarchy (same for all executions of a process instance and of the instances it calls) |
 | PROC_INST_ID_ | VARCHAR(64) | FK → self | Root execution ID; equals ID_ for root |
 | BUSINESS_KEY_ | VARCHAR(255) | NULL | External correlation key |
 | PARENT_ID_ | VARCHAR(64) | FK → self | Parent execution (NULL for root) |
@@ -53,10 +53,10 @@ Runtime tables hold the live state of all active process/case executions, tasks,
 | IS_ACTIVE_ | BOOLEAN | NULL | Whether execution is active |
 | IS_CONCURRENT_ | BOOLEAN | NULL | Parallel branch |
 | IS_SCOPE_ | BOOLEAN | NULL | Creates a new variable scope |
-| IS_EVENT_SCOPE_ | BOOLEAN | NULL | Event scope (boundary events) |
+| IS_EVENT_SCOPE_ | BOOLEAN | NULL | Event scope execution kept after its scope completed, for compensation |
 | SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
-| CACHED_ENT_STATE_ | INTEGER | NULL | Internal cache hint |
-| SEQUENCE_COUNTER_ | BIGINT | NULL | Global execution ordering counter |
+| CACHED_ENT_STATE_ | INTEGER | NULL | Bitmask of related entities present (event subscriptions, tasks, jobs, incidents, variables, sub-process/case instances, external tasks) |
+| SEQUENCE_COUNTER_ | BIGINT | NULL | Ordering counter for events of this execution (inherited by child executions) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | PROC_DEF_KEY_ | VARCHAR(255) | NULL | Process key (denormalized) |
 
@@ -68,7 +68,7 @@ Runtime tables hold the live state of all active process/case executions, tasks,
 -- All scopes in a process instance
 SELECT ID_, PARENT_ID_, ACT_ID_, IS_SCOPE_, IS_CONCURRENT_, SUSPENSION_STATE_
 FROM ACT_RU_EXECUTION
-WHERE ROOT_PROC_INST_ID_ = 'pi-id'
+WHERE PROC_INST_ID_ = 'pi-id'
 ORDER BY SEQUENCE_COUNTER_;
 
 -- Suspended process instances
@@ -91,7 +91,7 @@ SELECT * FROM tree ORDER BY depth, ID_;
 
 ## ACT_RU_TASK
 
-**Purpose:** Active user or manual task instance. Tracks assignment, delegation, priority, due dates, and suspension state. Deleted when completed or cancelled; history written to `ACT_HI_TASKINST`.
+**Purpose:** Active user task instance (BPMN user task, CMMN human task, or standalone task created via the API). Tracks assignment, delegation, priority, due dates, and suspension state. Deleted when completed or cancelled; history written to `ACT_HI_TASKINST`.
 
 **Columns:**
 
@@ -100,7 +100,7 @@ SELECT * FROM tree ORDER BY depth, ID_;
 | ID_ | VARCHAR(64) | PK NOT NULL | Task identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Enclosing execution scope |
-| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Root process instance |
+| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Process instance |
 | PROC_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_PROCDEF | Process definition |
 | CASE_EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case execution (CMMN) |
 | CASE_INST_ID_ | VARCHAR(64) | NULL | Case instance (CMMN) |
@@ -150,7 +150,7 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 
 ## ACT_RU_VARIABLE
 
-**Purpose:** Runtime variables scoped to a process instance, execution, or task. Stores typed values: scalars in `LONG_`/`DOUBLE_`/`TEXT_`, complex objects via `BYTEARRAY_ID_`. Unique constraint `(VAR_SCOPE_, NAME_)` ensures one variable per name per scope.
+**Purpose:** Runtime variables scoped to a process instance, execution, task, case execution, or batch. Stores typed values: scalars in `LONG_`/`DOUBLE_`/`TEXT_`, complex objects via `BYTEARRAY_ID_`. Unique constraint `(VAR_SCOPE_, NAME_)` ensures one variable per name per scope.
 
 **Columns:**
 
@@ -158,10 +158,10 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Variable identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| TYPE_ | VARCHAR(255) | NOT NULL | Type: `String`, `Integer`, `Long`, `Double`, `Boolean`, `Date`, `Json`, `File`, `Null`, … |
+| TYPE_ | VARCHAR(255) | NOT NULL | Serializer name: `string`, `integer`, `long`, `short`, `double`, `boolean`, `date`, `bytes`, `file`, `null`, `serializable` (Java object), `json`, `xml`, … |
 | NAME_ | VARCHAR(255) | NOT NULL | Variable name |
 | EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Execution scope |
-| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Root process instance |
+| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Process instance |
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Process definition (denormalized) |
 | CASE_EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case execution scope |
 | CASE_INST_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case instance scope |
@@ -170,7 +170,7 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 | BYTEARRAY_ID_ | VARCHAR(64) | FK → ACT_GE_BYTEARRAY | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float/double value |
 | LONG_ | BIGINT | NULL | Integer/long/boolean/date value |
-| TEXT_ | VARCHAR(4000) | NULL | String value; file name for `File`; serialization format for `Object` |
+| TEXT_ | VARCHAR(4000) | NULL | String value; string form of `Short`/`Integer`/`Long`; file name for `File` |
 | TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value: object type name for `Object`, MIME type and encoding for `File` |
 | VAR_SCOPE_ | VARCHAR(64) | NULL | Scope key for uniqueness check |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Update version counter |
@@ -186,11 +186,13 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 | Type | Column(s) |
 |------|-----------|
 | String | TEXT_ (limited by the column size) |
-| Boolean, Short, Integer, Long, Date | LONG_ |
+| Boolean, Date | LONG_ |
+| Short, Integer, Long | LONG_, TEXT_ (string form) |
 | Double | DOUBLE_ |
 | Bytes | BYTEARRAY_ID_ |
 | File | BYTEARRAY_ID_ (content), TEXT_ (file name), TEXT2_ (MIME type, encoding) |
-| Object, JSON, XML | BYTEARRAY_ID_ (serialized value), TEXT_ (serialization format), TEXT2_ (object type name) |
+| Object | BYTEARRAY_ID_ (serialized value), TEXT2_ (object type name); serialization format is given by `TYPE_` |
+| JSON, XML | BYTEARRAY_ID_ (serialized value) |
 | Null | all value columns NULL |
 
 **Example Queries:**
@@ -274,9 +276,9 @@ WHERE TASK_ID_ = 'task-id' AND TYPE_ = 'candidate' AND GROUP_ID_ IS NOT NULL;
 | EXCEPTION_MSG_ | VARCHAR(4000) | NULL | Last exception message |
 | FAILED_ACT_ID_ | VARCHAR(255) | NULL | Failed activity ID |
 | DUEDATE_ | TIMESTAMP | NULL | Execution due time (for timers) |
-| REPEAT_ | VARCHAR(255) | NULL | ISO 8601 repeat interval |
+| REPEAT_ | VARCHAR(255) | NULL | Cycle expression of a repeating timer (ISO 8601 `R…` or cron) |
 | REPEAT_OFFSET_ | BIGINT | DEFAULT 0 | Repeat offset |
-| HANDLER_TYPE_ | VARCHAR(255) | NULL | Handler class/type |
+| HANDLER_TYPE_ | VARCHAR(255) | NULL | Job handler type (e.g., `async-continuation`, `timer-transition`, `batch-seed-job`) |
 | HANDLER_CFG_ | VARCHAR(4000) | NULL | Handler configuration |
 | DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Associated deployment |
 | SUSPENSION_STATE_ | INTEGER | NOT NULL DEFAULT 1 | `1`=active, `2`=suspended |
@@ -319,7 +321,7 @@ GROUP BY LOCK_OWNER_;
 
 ## ACT_RU_JOBDEF
 
-**Purpose:** Defines job execution characteristics for an activity (timer event, async continuation). Stores default priority, job type, and suspension state that apply to all instances of that activity's jobs.
+**Purpose:** Defines job execution characteristics for an activity (timer event, async continuation) or a batch. Stores default priority, job type, and suspension state that apply to all instances of that activity's jobs.
 
 **Columns:**
 
@@ -330,8 +332,8 @@ GROUP BY LOCK_OWNER_;
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Associated process definition |
 | PROC_DEF_KEY_ | VARCHAR(255) | NULL | Process key (denormalized) |
 | ACT_ID_ | VARCHAR(255) | NULL | Activity element ID |
-| JOB_TYPE_ | VARCHAR(255) | NOT NULL | Job type |
-| JOB_CONFIGURATION_ | VARCHAR(255) | NULL | Configuration data |
+| JOB_TYPE_ | VARCHAR(255) | NOT NULL | Job handler type (e.g., `async-continuation`, `timer-transition`, `batch-seed-job`) |
+| JOB_CONFIGURATION_ | VARCHAR(255) | NULL | Handler-specific configuration (e.g., `async-before`/`async-after`, `DURATION: PT5M`, or the batch ID) |
 | SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | JOB_PRIORITY_ | BIGINT | NULL | Default priority for new jobs |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -389,7 +391,7 @@ WHERE e.ROOT_CAUSE_INCIDENT_ID_ = 'root-incident-id';
 
 ## ACT_RU_EVENT_SUBSCR
 
-**Purpose:** An active subscription to a message or signal event. Created when an execution reaches a catch event; deleted when the event is received and execution resumes.
+**Purpose:** An active subscription to a message, signal, compensation or conditional event. Created when an execution reaches a catch event or enters a scope with boundary or event sub-process events; deleted when the event is received and execution resumes. Message, signal and conditional start events have subscriptions without an execution.
 
 **Columns:**
 
@@ -398,11 +400,11 @@ WHERE e.ROOT_CAUSE_INCIDENT_ID_ = 'root-incident-id';
 | ID_ | VARCHAR(64) | PK NOT NULL | Subscription identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | EVENT_TYPE_ | VARCHAR(255) | NOT NULL | Type: `message`, `signal`, `compensate`, `conditional` |
-| EVENT_NAME_ | VARCHAR(255) | NULL | Event name/correlation key |
-| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Awaiting execution |
+| EVENT_NAME_ | VARCHAR(255) | NULL | Message or signal name |
+| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Awaiting execution (NULL for start event subscriptions) |
 | PROC_INST_ID_ | VARCHAR(64) | NULL | Process instance |
 | ACTIVITY_ID_ | VARCHAR(255) | NULL | Catch element activity ID |
-| CONFIGURATION_ | VARCHAR(255) | NULL | Correlation data |
+| CONFIGURATION_ | VARCHAR(255) | NULL | Process definition ID for start event subscriptions; event scope execution ID for `compensate` |
 | CREATED_ | TIMESTAMP | NOT NULL | Creation time |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
@@ -458,7 +460,8 @@ SELECT ID_, TOPIC_NAME_, PRIORITY_, EXECUTION_ID_, PROC_INST_ID_
 FROM ACT_RU_EXT_TASK
 WHERE TOPIC_NAME_ = 'payment-processing'
   AND SUSPENSION_STATE_ = 1
-  AND (WORKER_ID_ IS NULL OR LOCK_EXP_TIME_ < CURRENT_TIMESTAMP)
+  AND (RETRIES_ IS NULL OR RETRIES_ > 0)
+  AND (LOCK_EXP_TIME_ IS NULL OR LOCK_EXP_TIME_ <= CURRENT_TIMESTAMP)
 ORDER BY PRIORITY_ DESC, CREATE_TIME_ ASC
 LIMIT 10;
 ```
@@ -484,7 +487,7 @@ LIMIT 10;
 | BATCH_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Batch job definition |
 | MONITOR_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Monitor job definition |
 | SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
-| CONFIGURATION_ | VARCHAR(255) | NULL | Batch configuration |
+| CONFIGURATION_ | VARCHAR(255) | NULL | ID of the batch configuration in `ACT_GE_BYTEARRAY` |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | CREATE_USER_ID_ | VARCHAR(255) | NULL | User who started the batch |
 | START_TIME_ | TIMESTAMP | NULL | Start time |
@@ -518,7 +521,7 @@ FROM ACT_RU_BATCH WHERE SUSPENSION_STATE_ = 1;
 | USER_ID_ | VARCHAR(255) | NULL | Target user (mutually exclusive with GROUP_ID_); `*` for global authorizations |
 | RESOURCE_TYPE_ | INTEGER | NOT NULL | Resource type (`0`=application, `1`=user, `2`=group, `6`=process definition, `7`=task, `8`=process instance, …) |
 | RESOURCE_ID_ | VARCHAR(255) | NULL | Specific resource ID; `*` for all resources of the type |
-| PERMS_ | INTEGER | NULL | Permission bitmask (READ=2, UPDATE=4, CREATE=8, DELETE=16, …) |
+| PERMS_ | INTEGER | NULL | Permission bitmask (READ=2, UPDATE=4, CREATE=8, DELETE=16, …); for revoke rows a cleared bit means revoked |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Removal time for authorizations on history data (history cleanup) |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance reference |
 
@@ -528,7 +531,7 @@ FROM ACT_RU_BATCH WHERE SUSPENSION_STATE_ = 1;
 
 **Indexes:** `ACT_IDX_AUTH_GROUP_ID`, `ACT_IDX_AUTH_RESOURCE_ID`, `ACT_IDX_AUTH_ROOT_PI`, `ACT_IDX_AUTH_RM_TIME`
 
-**Permission Flags:** `NONE=0`, `READ=2`, `UPDATE=4`, `CREATE=8`, `DELETE=16`, `ACCESS=32`, `READ_TASK=64`, `UPDATE_TASK=128`, `CREATE_INSTANCE=256`, `READ_INSTANCE=512`, `UPDATE_INSTANCE=1024`, `DELETE_INSTANCE=2048`, `READ_HISTORY=4096`, `DELETE_HISTORY=8192`, `TASK_WORK=16384`, `TASK_ASSIGN=32768`, `MIGRATE_INSTANCE=65536`; `ALL` sets every bit (`2147483647`).
+**Permission Flags:** `NONE=0`, `READ=2`, `UPDATE=4`, `CREATE=8`, `DELETE=16`, `ACCESS=32`, `READ_TASK=64`, `UPDATE_TASK=128`, `CREATE_INSTANCE=256`, `READ_INSTANCE=512`, `UPDATE_INSTANCE=1024`, `DELETE_INSTANCE=2048`, `READ_HISTORY=4096`, `DELETE_HISTORY=8192`, `TASK_WORK=16384`, `TASK_ASSIGN=32768`, `MIGRATE_INSTANCE=65536`; `ALL` sets every bit (`2147483647`). Resource-specific permissions (e.g. `ProcessDefinitionPermissions`) add further flags such as `SUSPEND=1048576`, and may reuse bits (`RETRY_JOB=32`).
 
 **Resource Types:** `APPLICATION=0`, `USER=1`, `GROUP=2`, `GROUP_MEMBERSHIP=3`, `AUTHORIZATION=4`, `FILTER=5`, `PROCESS_DEFINITION=6`, `TASK=7`, `PROCESS_INSTANCE=8`, `DEPLOYMENT=9`, `DECISION_DEFINITION=10`, `TENANT=11`, `TENANT_MEMBERSHIP=12`, `BATCH=13`, `DECISION_REQUIREMENTS_DEFINITION=14`, `REPORT=15`, `DASHBOARD=16`, `OPERATION_LOG_CATEGORY=17`, `OPTIMIZE=18`, `HISTORIC_TASK=19`, `HISTORIC_PROCESS_INSTANCE=20`, `SYSTEM=21`
 
@@ -636,7 +639,7 @@ GROUP BY 1 ORDER BY 1 DESC;
 | CASE_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_CASE_DEF | Case definition |
 | ACT_ID_ | VARCHAR(255) | NULL | Current CMMN activity ID |
 | PREV_STATE_ | INTEGER | NULL | Previous state |
-| CURRENT_STATE_ | INTEGER | NULL | Current state (`0`=new, `1`=available, `2`=enabled, `3`=disabled, `4`=active, `5`=suspended, `6`=terminated, `7`=completed, …) |
+| CURRENT_STATE_ | INTEGER | NULL | Current state (`0`=new, `1`=available, `2`=enabled, `3`=disabled, `4`=active, `5`=suspended, `6`=terminated, `7`=completed, `8`=failed, `9`=closed, `10`–`14`=transient terminating/suspending states) |
 | REQUIRED_ | BOOLEAN | NULL | Whether completion is required for parent |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
@@ -657,11 +660,11 @@ GROUP BY 1 ORDER BY 1 DESC;
 | CASE_INST_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case instance |
 | CASE_EXEC_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Associated case execution |
 | SENTRY_ID_ | VARCHAR(255) | NULL | Sentry element ID |
-| TYPE_ | VARCHAR(255) | NULL | Part type: `planItemOnPart`, `ifPart`, `caseFileItemOnPart` |
+| TYPE_ | VARCHAR(255) | NULL | Part type: `planItemOnPart`, `ifPart`, `variableOnPart` |
 | SOURCE_CASE_EXEC_ID_ | VARCHAR(64) | NULL | Source execution for transition conditions |
 | STANDARD_EVENT_ | VARCHAR(255) | NULL | CMMN standard event |
-| SOURCE_ | VARCHAR(255) | NULL | Source element |
-| VARIABLE_EVENT_ | VARCHAR(255) | NULL | Variable change event (for ifPart) |
+| SOURCE_ | VARCHAR(255) | NULL | Source plan item activity ID (for planItemOnPart) |
+| VARIABLE_EVENT_ | VARCHAR(255) | NULL | Variable change event (for variableOnPart) |
 | VARIABLE_NAME_ | VARCHAR(255) | NULL | Observed variable name |
 | SATISFIED_ | BOOLEAN | NULL | Whether this part is satisfied |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |

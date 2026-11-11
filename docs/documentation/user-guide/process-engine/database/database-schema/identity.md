@@ -5,7 +5,7 @@ schema_version: 7.25
 
 # Identity (ID_)
 
-Identity tables manage users, groups, and tenants for the built-in identity provider. These tables are optional — Operaton supports pluggable identity providers (LDAP, Kerberos, custom) that do not use this schema. The `ACT_ID_*` tables are always created; with a different provider they typically stay empty.
+Identity tables manage users, groups, and tenants for the built-in identity provider. These tables are optional — Operaton supports pluggable identity providers (LDAP, Kerberos, custom) that do not use this schema. The `ACT_ID_*` tables are created unless the engine configuration sets `dbIdentityUsed` to `false`; with a different provider they typically stay empty.
 
 ## Tables
 
@@ -33,17 +33,18 @@ Identity tables manage users, groups, and tenants for the built-in identity prov
 | EMAIL_ | VARCHAR(255) | NULL | Email address |
 | PWD_ | VARCHAR(255) | NULL | Hashed password |
 | SALT_ | VARCHAR(255) | NULL | Password salt |
-| LOCK_EXP_TIME_ | TIMESTAMP | NULL | Account lock expiry (NULL = not locked) |
-| ATTEMPTS_ | INTEGER | NULL | Failed login attempts since last success |
-| PICTURE_ID_ | VARCHAR(64) | NULL | Reference to user picture in ACT_GE_BYTEARRAY |
+| LOCK_EXP_TIME_ | TIMESTAMP | NULL | End of the temporary login delay after the last failed attempt; NULL after a successful login or unlock |
+| ATTEMPTS_ | INTEGER | NULL | Failed login attempts since last success; the user is locked permanently once it reaches `loginMaxAttempts` (default 10) |
+| PICTURE_ID_ | VARCHAR(64) | NULL | Not used by the engine; user pictures are referenced from `ACT_ID_INFO` (`KEY_` = `picture`) |
 
 **Example Queries:**
 
 ```sql
--- Find locked accounts
+-- Find locked accounts (10 = default loginMaxAttempts)
 SELECT ID_, FIRST_, LAST_, EMAIL_, LOCK_EXP_TIME_, ATTEMPTS_
 FROM ACT_ID_USER
-WHERE LOCK_EXP_TIME_ IS NOT NULL AND LOCK_EXP_TIME_ > CURRENT_TIMESTAMP
+WHERE (LOCK_EXP_TIME_ IS NOT NULL AND LOCK_EXP_TIME_ > CURRENT_TIMESTAMP)
+   OR ATTEMPTS_ >= 10
 ORDER BY LOCK_EXP_TIME_;
 
 -- Search by email
@@ -122,12 +123,12 @@ WHERE USER_ID_ = 'john.doe';
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Entry identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| USER_ID_ | VARCHAR(64) | NULL | Owning user |
-| TYPE_ | VARCHAR(64) | NULL | Entry type (e.g., `userinfo`, `account`) |
+| USER_ID_ | VARCHAR(64) | NULL | Owning user; NULL for account detail rows |
+| TYPE_ | VARCHAR(64) | NULL | Entry type: `userinfo` or `account`; NULL for account detail rows and the user picture entry |
 | KEY_ | VARCHAR(255) | NULL | Attribute key |
-| VALUE_ | VARCHAR(255) | NULL | Attribute value (plain text) |
-| PASSWORD_ | BYTEA | NULL | Encrypted value (for sensitive attributes like account passwords) |
-| PARENT_ID_ | VARCHAR(255) | NULL | Parent entry ID for hierarchical grouping |
+| VALUE_ | VARCHAR(255) | NULL | Attribute value (plain text); for the `picture` entry, the ID of the picture in `ACT_GE_BYTEARRAY` |
+| PASSWORD_ | BYTEA | NULL | Account password as bytes of the string (not encrypted) |
+| PARENT_ID_ | VARCHAR(255) | NULL | `ID_` of the parent `account` entry (for account detail rows) |
 
 **Example Queries:**
 
@@ -204,7 +205,7 @@ WHERE USER_ID_ = 'john.doe';
 - `ACT_ID_*` tables are only populated when using the **built-in identity provider**.
 - `ACT_RU_AUTHORIZATION.USER_ID_` and `GROUP_ID_` are string references — there are no foreign keys to `ACT_ID_USER`/`ACT_ID_GROUP`. Authorization works with any identity source.
 - Account locking: `LOCK_EXP_TIME_` + `ATTEMPTS_` in `ACT_ID_USER` implement brute-force protection. Unlock a user with `IdentityService.unlockUser(userId)` instead of updating the row directly.
-- `ACT_ID_INFO.PASSWORD_` stores encrypted bytes (not plain text); use the Operaton API to manage account credentials.
+- `ACT_ID_INFO.PASSWORD_` stores the account password as unencrypted bytes; use the Operaton API to manage account credentials.
 
 ---
 

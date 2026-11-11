@@ -157,7 +157,7 @@ To allow different configurations and to keep the tables more flexible, the hist
 
 | Table                                                              | Purpose                                |
 |--------------------------------------------------------------------|----------------------------------------|
-| [`ACT_RE_CAMFORMDEF`](repository.md#act_re_camformdef)             | Camunda form definitions               |
+| [`ACT_RE_CAMFORMDEF`](repository.md#act_re_camformdef)             | Operaton form definitions              |
 | [`ACT_RE_CASE_DEF`](repository.md#act_re_case_def)                 | Case definitions (CMMN)                |
 | [`ACT_RE_DECISION_DEF`](repository.md#act_re_decision_def)         | Decision definitions (DMN)             |
 | [`ACT_RE_DECISION_REQ_DEF`](repository.md#act_re_decision_req_def) | Decision requirement definitions (DRG) |
@@ -180,9 +180,9 @@ To allow different configurations and to keep the tables more flexible, the hist
 | [`ACT_RU_INCIDENT`](runtime.md#act_ru_incident)                 | Runtime incidents/failures  |
 | [`ACT_RU_JOB`](runtime.md#act_ru_job)                           | Async job instances         |
 | [`ACT_RU_JOBDEF`](runtime.md#act_ru_jobdef)                     | Job execution definitions   |
-| [`ACT_RU_METER_LOG`](runtime.md#act_ru_meter_log)               | Engine performance metrics  |
+| [`ACT_RU_METER_LOG`](runtime.md#act_ru_meter_log)               | Engine usage metrics        |
 | [`ACT_RU_TASK`](runtime.md#act_ru_task)                         | Active user tasks           |
-| [`ACT_RU_TASK_METER_LOG`](runtime.md#act_ru_task_meter_log)     | Task metrics                |
+| [`ACT_RU_TASK_METER_LOG`](runtime.md#act_ru_task_meter_log)     | Task assignment metrics     |
 | [`ACT_RU_VARIABLE`](runtime.md#act_ru_variable)                 | Process and task variables  |
 
 ## History
@@ -286,8 +286,10 @@ See [runtime.md → ACT_RU_JOB](runtime.md#act_ru_job)
 
 ### Optimistic Locking
 
-All mutable tables include `REV_ INTEGER`. Every UPDATE must match the current `REV_` and increment
-it. Stale reads result in a zero-row update, triggering a retry.
+Most runtime, repository, identity and general tables include `REV_ INTEGER`. Every UPDATE must match the
+current `REV_` and increment it. A stale read results in a zero-row update, and the engine throws an
+`OptimisticLockingException`. Most history tables, `ACT_RE_DEPLOYMENT`, the membership tables and the meter log
+tables have no `REV_` column.
 
 ### Multi-Tenancy
 
@@ -296,8 +298,10 @@ is required.
 
 ### Removal Time
 
-`REMOVAL_TIME_ TIMESTAMP` marks history rows for deferred cleanup. The engine sets it from the end time and the
-history time to live of the definition. The history cleanup job deletes rows where `REMOVAL_TIME_` has passed.
+`REMOVAL_TIME_ TIMESTAMP` marks history rows for deferred cleanup. Besides the history tables, `ACT_GE_BYTEARRAY`
+and `ACT_RU_AUTHORIZATION` carry it. The engine sets it from the end time and the history time to live of the
+definition. With the default removal-time-based cleanup strategy, the history cleanup job deletes rows where
+`REMOVAL_TIME_` has passed.
 Never delete these rows manually while the engine is running.
 
 ### Hierarchical Execution
@@ -329,7 +333,7 @@ Enables root-cause traversal in failure chains.
 |-----------------------------|-----------------------|-----------------------------------|
 | `_ID_`                      | PK or FK identifier   | `PROC_DEF_ID_`, `TASK_ID_`        |
 | `_KEY_`                     | Stable business key   | `PROC_DEF_KEY_`, `TASK_DEF_KEY_`  |
-| `_NAME_`                    | Human-readable label  | `PROC_NAME_`, `TASK_NAME_`        |
+| `_NAME_`                    | Human-readable label  | `ACT_NAME_`, `TOPIC_NAME_`        |
 | `_TIME_` / `_TIMESTAMP_`    | Point in time         | `CREATE_TIME_`, `LOCK_EXP_TIME_`  |
 | `_STATE_`                   | Status code or name   | `SUSPENSION_STATE_`, `STATE_`     |
 | `_MSG_`                     | Text message / error  | `EXCEPTION_MSG_`, `INCIDENT_MSG_` |
@@ -347,8 +351,15 @@ Enables root-cause traversal in failure chains.
 
 ## Database-Specific Implementation Notes
 
-The tables, columns and indexes are the same on all supported databases, with the exceptions listed below.
-Only the column types differ. The documentation uses the PostgreSQL types.
+All supported databases have the same tables, the same columns and the same foreign keys, with the exceptions
+listed below. Column types differ, and so do some index names and the set of indexes. The documentation uses the
+PostgreSQL types and index names.
+
+Column deviations from PostgreSQL:
+
+- `ACT_RU_VARIABLE.VAR_SCOPE_` is `NOT NULL` on all databases except PostgreSQL
+- `ACT_HI_DETAIL.VAR_TYPE_` is `VARCHAR(255)` on all databases except PostgreSQL and Oracle, where it is 64
+  characters long
 
 ### PostgreSQL
 
@@ -360,8 +371,16 @@ Only the column types differ. The documentation uses the PostgreSQL types.
 - `TINYINT` for boolean columns
 - `datetime` for timestamps (MariaDB: `datetime(3)`)
 - `LONGBLOB` for binary data; `LONGTEXT` for the filter columns
+- `BOOLEAN` (an alias for `TINYINT(1)`) for `EXCLUSIVE_`, `STARTABLE_`, `INITIAL_`, `REQUIRED_` and `SATISFIED_`
+- `timestamp` (MariaDB: `timestamp(3)`) for `ACT_HI_IDENTITYLINK.TIMESTAMP_`, `ACT_HI_OP_LOG.TIMESTAMP_`,
+  `ACT_HI_EXT_TASK_LOG.TIMESTAMP_` and `ACT_HI_INCIDENT.CREATE_TIME_`/`END_TIME_`
 - Tables use `CHARSET=utf8` with `COLLATE utf8_bin`, so string comparisons are case-sensitive
 - MySQL only: `ACT_HI_EXT_TASK_LOG` has an additional `REV_` column
+- No explicit indexes on foreign key columns (for example `ACT_IDX_EXE_PROCINST` or `ACT_IDX_TASK_EXEC`); InnoDB
+  creates an index for each foreign key itself
+- `ACT_IDX_EXE_ROOT_PI` is named `ACT_IDX_EXEC_ROOT_PI`
+- `ACT_IDX_JOB_HANDLER` is a prefix index on `HANDLER_TYPE_(100), HANDLER_CFG_(155)`
+- Additional index `ACT_IDX_HI_CAS_A_I_CASEINST` on `ACT_HI_CASEACTINST (CASE_INST_ID_, CASE_ACT_ID_)`
 
 ### Oracle
 
@@ -369,20 +388,38 @@ Only the column types differ. The documentation uses the PostgreSQL types.
 - `NUMBER(19,0)` for `BIGINT`; `NUMBER(*,10)` for `DOUBLE`
 - `NUMBER(1,0)` with a `CHECK (... IN (1,0))` constraint for boolean columns
 - `TIMESTAMP(6)` for timestamps; `BLOB` for binary data; `NCLOB` for the filter columns
-- The unique authorization constraints are function-based unique indexes, so rows with `NULL` user or group IDs
-  do not collide
+- `ACT_HI_OP_LOG.OPERATION_TYPE_` is `NVARCHAR2(255)`
+- The unique constraints of `ACT_RU_AUTHORIZATION` and `ACT_ID_TENANT_MEMBER` are function-based unique indexes,
+  so rows with `NULL` user or group IDs do not collide
+- Index names are limited to 30 characters, so some are shortened (for example `ACT_IDX_HI_PRO_INST_PROC_KEY`
+  instead of `ACT_IDX_HI_PRO_INST_PROC_DEF_KEY`, `ACT_IDX_EXE_ROOT_PROCINST` instead of `ACT_IDX_EXE_ROOT_PI`)
+- The `TENANT_ID_` indexes are composite indexes on `(TENANT_ID_, 0)`, so rows with a `NULL` tenant are indexed
+- `ACT_IDX_JOB_HANDLER` covers `HANDLER_TYPE_, SUBSTR(HANDLER_CFG_, 1, 1850)`
 
 ### Microsoft SQL Server
 
 - `nvarchar(n)` for text; `nvarchar(max)` for the filter columns
 - `datetime2` for timestamps
-- `tinyint` for boolean columns
+- `tinyint` for most boolean columns; `bit` for `EXCLUSIVE_`, `STARTABLE_` and `INITIAL_`
+- `numeric(19,0)` for `BIGINT`; `tinyint` for the `SUSPENSION_STATE_` and some `STATE_` columns
 - `image` for binary data
-- The unique authorization constraints are filtered unique indexes (`WHERE USER_ID_ IS NOT NULL`)
+- `ACT_RU_AUTHORIZATION.REV_` is nullable
+- The unique constraints of `ACT_RU_AUTHORIZATION` and `ACT_ID_TENANT_MEMBER` are filtered unique indexes
+  (`WHERE USER_ID_ IS NOT NULL`, `WHERE GROUP_ID_ IS NOT NULL`)
+- Several foreign key indexes have other names (for example `ACT_IDX_EXECUTION_PROCINST` instead of
+  `ACT_IDX_EXE_PROCINST`, `ACT_IDX_INCIDENT_CAUSE` instead of `ACT_IDX_INC_CAUSEINCID`)
+- No `ACT_IDX_JOB_HANDLER` and no indexes on the foreign key columns of `ACT_ID_MEMBERSHIP` and
+  `ACT_ID_TENANT_MEMBER`
+- Additional index `ACT_IDX_TASK_PARENT_TASK_ID` on `ACT_RU_TASK (PARENT_TASK_ID_)`
 
 ### H2
 
-- `bit` for boolean columns; `blob` for binary data; `CLOB` for the filter columns
+- `bit` for most boolean columns (`boolean` for `EXCLUSIVE_`, `STARTABLE_` and `INITIAL_`)
+- `blob` for binary data (`longvarbinary` for `ACT_HI_COMMENT.FULL_MSG_` and `ACT_ID_INFO.PASSWORD_`); `CLOB` for
+  the filter columns
+- `integer` for the `SEQUENCE_COUNTER_` columns
+- No explicit indexes on foreign key columns; H2 creates an index for each foreign key itself
+- `ACT_IDX_EXE_ROOT_PI` is named `ACT_IDX_EXEC_ROOT_PI`
 - Intended for development and testing
 
 ### DB2
@@ -392,6 +429,11 @@ Only the column types differ. The documentation uses the PostgreSQL types.
 - Unique constraints on nullable columns use generated helper columns: `ACT_RU_AUTHORIZATION` has
   `UNI_USER_ID_`, `UNI_GROUP_ID_` and `UNI_RESOURCE_ID_`, `ACT_ID_TENANT_MEMBER` has `UNI_USER_ID_` and
   `UNI_GROUP_ID_`. Each replaces `NULL` with the row's `ID_`.
+- The unique constraints are unique indexes on these helper columns
+- Same index names as Microsoft SQL Server (for example `ACT_IDX_EXECUTION_PROCINST`), except
+  `ACT_IDX_EXECUTION_ROOT_PI` instead of `ACT_IDX_EXE_ROOT_PI`
+- No `ACT_IDX_JOB_HANDLER` and no indexes on the foreign key columns of `ACT_ID_MEMBERSHIP` and
+  `ACT_ID_TENANT_MEMBER`
 
 ### Cross-Platform Notes
 

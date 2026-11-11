@@ -110,7 +110,7 @@ ORDER BY REMOVAL_TIME_;
 | START_TIME_ | TIMESTAMP | NOT NULL | Activity start time |
 | END_TIME_ | TIMESTAMP | NULL | Activity end time |
 | DURATION_ | BIGINT | NULL | Duration in milliseconds |
-| ACT_INST_STATE_ | INTEGER | NULL | `0`=default (running or ended normally), `1`=scope complete, `2`=canceled |
+| ACT_INST_STATE_ | INTEGER | NULL | `0`=default (e.g. running), `1`=scope complete, `2`=canceled, `4`=ending (left normally via outgoing flow) |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Ordering counter |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
@@ -161,7 +161,7 @@ ORDER BY avg_ms DESC;
 | START_TIME_ | TIMESTAMP | NOT NULL | Task creation time |
 | END_TIME_ | TIMESTAMP | NULL | Task completion time |
 | DURATION_ | BIGINT | NULL | Duration in milliseconds |
-| DELETE_REASON_ | VARCHAR(4000) | NULL | Reason when deleted |
+| DELETE_REASON_ | VARCHAR(4000) | NULL | `completed` on normal completion; `deleted` or a custom reason when deleted/cancelled |
 | PRIORITY_ | INTEGER | NULL | Task priority |
 | DUE_DATE_ | TIMESTAMP | NULL | Due date |
 | FOLLOW_UP_DATE_ | TIMESTAMP | NULL | Follow-up date |
@@ -178,7 +178,7 @@ ORDER BY avg_ms DESC;
 SELECT TASK_DEF_KEY_, COUNT(*) AS completions,
        AVG(DURATION_) AS avg_ms
 FROM ACT_HI_TASKINST
-WHERE END_TIME_ IS NOT NULL
+WHERE DELETE_REASON_ = 'completed'
   AND START_TIME_ >= CURRENT_TIMESTAMP - INTERVAL '30 days'
 GROUP BY TASK_DEF_KEY_
 ORDER BY avg_ms DESC;
@@ -186,7 +186,7 @@ ORDER BY avg_ms DESC;
 -- Tasks completed by a specific user
 SELECT ID_, NAME_, PROC_INST_ID_, START_TIME_, END_TIME_, DURATION_
 FROM ACT_HI_TASKINST
-WHERE ASSIGNEE_ = 'john.doe' AND END_TIME_ IS NOT NULL
+WHERE ASSIGNEE_ = 'john.doe' AND DELETE_REASON_ = 'completed'
 ORDER BY END_TIME_ DESC
 LIMIT 50;
 ```
@@ -219,8 +219,8 @@ LIMIT 50;
 | REV_ | INTEGER | NULL | Revision |
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
-| LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| LONG_ | BIGINT | NULL | Integer/long/short value; also boolean (`1`/`0`) and date (epoch millis) |
+| TEXT_ | VARCHAR(4000) | NULL | String value; also string form of integer/long/short values, file name for file values |
 | TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | STATE_ | VARCHAR(20) | NULL | Variable state (`CREATED`, `DELETED`) |
@@ -258,8 +258,8 @@ LIMIT 50;
 | TIME_ | TIMESTAMP | NOT NULL | Event timestamp |
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
-| LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| LONG_ | BIGINT | NULL | Integer/long/short value; also boolean (`1`/`0`) and date (epoch millis) |
+| TEXT_ | VARCHAR(4000) | NULL | String value; also string form of integer/long/short values, file name for file values |
 | TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | SEQUENCE_COUNTER_ | BIGINT | NULL | Ordering counter |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -306,13 +306,13 @@ LIMIT 50;
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Comment ID |
-| TYPE_ | VARCHAR(255) | NULL | `comment` or `event` |
+| TYPE_ | VARCHAR(255) | NULL | `comment` (the engine writes only this value; `event` is legacy) |
 | TIME_ | TIMESTAMP | NOT NULL | Comment timestamp |
 | USER_ID_ | VARCHAR(255) | NULL | Author user ID |
 | TASK_ID_ | VARCHAR(64) | NULL | Associated task |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance |
 | PROC_INST_ID_ | VARCHAR(64) | NULL | Process instance |
-| ACTION_ | VARCHAR(255) | NULL | Action type (for event entries) |
+| ACTION_ | VARCHAR(255) | NULL | Last action on the comment: `AddComment` or `UpdateComment` |
 | MESSAGE_ | VARCHAR(4000) | NULL | Comment text (truncated) |
 | FULL_MSG_ | BYTEA | NULL | Full comment text (binary) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -333,7 +333,7 @@ LIMIT 50;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Attachment ID |
 | REV_ | INTEGER | NULL | Revision |
-| USER_ID_ | VARCHAR(255) | NULL | Uploading user |
+| USER_ID_ | VARCHAR(255) | NULL | Not written by the engine (always NULL) |
 | NAME_ | VARCHAR(255) | NULL | Attachment name |
 | DESCRIPTION_ | VARCHAR(4000) | NULL | Description |
 | TYPE_ | VARCHAR(255) | NULL | MIME type or category |
@@ -352,7 +352,7 @@ LIMIT 50;
 
 ## ACT_HI_OP_LOG
 
-**Purpose:** Operator audit log. Records administrative operations (suspend/activate, delete, migrate, reassign) performed by users or the engine itself. Essential for compliance and forensics.
+**Purpose:** Operator audit log. Records administrative operations (suspend/activate, delete, migrate, reassign) performed by users (by default only logged when a user is authenticated). Essential for compliance and forensics.
 
 **Columns:**
 
@@ -382,7 +382,7 @@ LIMIT 50;
 | NEW_VALUE_ | VARCHAR(4000) | NULL | New value |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
-| CATEGORY_ | VARCHAR(64) | NULL | Operation category |
+| CATEGORY_ | VARCHAR(64) | NULL | Operation category: `Operator`, `Admin`, `TaskWorker` |
 | EXTERNAL_TASK_ID_ | VARCHAR(64) | NULL | External task |
 | ANNOTATION_ | VARCHAR(4000) | NULL | Operator notes |
 
@@ -430,7 +430,7 @@ ORDER BY TIMESTAMP_ DESC;
 | CAUSE_INCIDENT_ID_ | VARCHAR(64) | NULL | Cause incident |
 | ROOT_CAUSE_INCIDENT_ID_ | VARCHAR(64) | NULL | Root cause incident |
 | CONFIGURATION_ | VARCHAR(255) | NULL | Configuration (e.g., job ID) |
-| HISTORY_CONFIGURATION_ | VARCHAR(255) | NULL | Historic configuration |
+| HISTORY_CONFIGURATION_ | VARCHAR(255) | NULL | ID of the failure log entry (`ACT_HI_JOB_LOG` / `ACT_HI_EXT_TASK_LOG`) that caused the incident |
 | INCIDENT_STATE_ | INTEGER | NULL | `0`=open, `1`=resolved, `2`=deleted |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | JOB_DEF_ID_ | VARCHAR(64) | NULL | Job definition |
@@ -571,7 +571,7 @@ ORDER BY failures DESC;
 | CREATE_TIME_ | TIMESTAMP | NOT NULL | Case creation time |
 | CLOSE_TIME_ | TIMESTAMP | NULL | Case close time |
 | DURATION_ | BIGINT | NULL | Duration in milliseconds |
-| STATE_ | INTEGER | NULL | Case state |
+| STATE_ | INTEGER | NULL | Case state: `4`=active, `5`=suspended, `6`=terminated, `7`=completed, `8`=failed, `9`=closed |
 | CREATE_USER_ID_ | VARCHAR(255) | NULL | User who created the case |
 | SUPER_CASE_INSTANCE_ID_ | VARCHAR(64) | NULL | Parent case instance |
 | SUPER_PROCESS_INSTANCE_ID_ | VARCHAR(64) | NULL | Parent process instance |
@@ -602,7 +602,7 @@ ORDER BY failures DESC;
 | CREATE_TIME_ | TIMESTAMP | NOT NULL | Activity start time |
 | END_TIME_ | TIMESTAMP | NULL | Activity end time |
 | DURATION_ | BIGINT | NULL | Duration in milliseconds |
-| STATE_ | INTEGER | NULL | State |
+| STATE_ | INTEGER | NULL | State: `1`=available, `2`=enabled, `3`=disabled, `4`=active, `5`=suspended, `6`=terminated, `7`=completed |
 | REQUIRED_ | BOOLEAN | NULL | Required for case completion |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
@@ -633,7 +633,7 @@ ORDER BY failures DESC;
 | EVAL_TIME_ | TIMESTAMP | NOT NULL | Evaluation timestamp |
 | REMOVAL_TIME_ | TIMESTAMP | NULL | Scheduled cleanup time |
 | COLLECT_VALUE_ | DOUBLE PRECISION | NULL | Aggregated collect value (for collect hit policy) |
-| USER_ID_ | VARCHAR(255) | NULL | User who triggered evaluation |
+| USER_ID_ | VARCHAR(255) | NULL | Authenticated user who evaluated the decision (standalone evaluations only) |
 | ROOT_DEC_INST_ID_ | VARCHAR(64) | NULL | Root decision instance (for chained evaluations) |
 | ROOT_PROC_INST_ID_ | VARCHAR(64) | NULL | Root process instance |
 | DEC_REQ_ID_ | VARCHAR(64) | NULL | Decision requirement definition |
@@ -671,8 +671,8 @@ ORDER BY evaluations DESC;
 | VAR_TYPE_ | VARCHAR(100) | NULL | Variable type |
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
-| LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| LONG_ | BIGINT | NULL | Integer/long/short value; also boolean (`1`/`0`) and date (epoch millis) |
+| TEXT_ | VARCHAR(4000) | NULL | String value; also string form of integer/long/short values, file name for file values |
 | TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation time |
@@ -685,7 +685,7 @@ ORDER BY evaluations DESC;
 
 ## ACT_HI_DEC_OUT
 
-**Purpose:** Output clause values produced by a decision evaluation. One row per output clause per matched rule per evaluation.
+**Purpose:** Output clause values produced by a decision evaluation. One row per output clause per matched rule per evaluation (a literal expression decision writes a single row without clause/rule).
 
 **Columns:**
 
@@ -696,13 +696,13 @@ ORDER BY evaluations DESC;
 | CLAUSE_ID_ | VARCHAR(64) | NULL | Output clause element ID |
 | CLAUSE_NAME_ | VARCHAR(255) | NULL | Output clause name |
 | RULE_ID_ | VARCHAR(64) | NULL | Matched rule ID |
-| RULE_ORDER_ | INTEGER | NULL | Rule position in the table |
+| RULE_ORDER_ | INTEGER | NULL | Position of the rule among the matched rules (1-based) |
 | VAR_NAME_ | VARCHAR(255) | NULL | Output variable name |
 | VAR_TYPE_ | VARCHAR(100) | NULL | Variable type |
 | BYTEARRAY_ID_ | VARCHAR(64) | NULL | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float value |
-| LONG_ | BIGINT | NULL | Integer/long value |
-| TEXT_ | VARCHAR(4000) | NULL | String value; file name or serialization format for other types |
+| LONG_ | BIGINT | NULL | Integer/long/short value; also boolean (`1`/`0`) and date (epoch millis) |
+| TEXT_ | VARCHAR(4000) | NULL | String value; also string form of integer/long/short values, file name for file values |
 | TEXT2_ | VARCHAR(4000) | NULL | Type-specific extra value (object type name, MIME type) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation time |
@@ -717,7 +717,7 @@ ORDER BY evaluations DESC;
 
 - **History levels**: The amount of data written to history tables is controlled by the engine's history level: `NONE`, `ACTIVITY`, `AUDIT`, `FULL`. `FULL` writes `ACT_HI_DETAIL` for every variable change.
 - **REMOVAL_TIME_**: With the default removal-time-based cleanup strategy, the engine sets `REMOVAL_TIME_` when the root process instance ends (end time plus `HISTORY_TTL_` of the definition). The history cleanup job deletes rows whose removal time has passed, in batches within the configured cleanup window.
-- **Updates**: Log-style tables (`ACT_HI_DETAIL`, `ACT_HI_JOB_LOG`, `ACT_HI_EXT_TASK_LOG`, `ACT_HI_IDENTITYLINK`, `ACT_HI_OP_LOG`) are append-only. Instance tables (`ACT_HI_PROCINST`, `ACT_HI_ACTINST`, `ACT_HI_TASKINST`, `ACT_HI_VARINST`, `ACT_HI_INCIDENT`, `ACT_HI_BATCH`, `ACT_HI_CASEINST`, `ACT_HI_CASEACTINST`) are updated while the instance runs.
+- **Updates**: Log-style tables (`ACT_HI_DETAIL`, `ACT_HI_JOB_LOG`, `ACT_HI_EXT_TASK_LOG`, `ACT_HI_IDENTITYLINK`, `ACT_HI_OP_LOG`) are append-only, apart from setting `REMOVAL_TIME_` and editing `ACT_HI_OP_LOG.ANNOTATION_`. Instance tables (`ACT_HI_PROCINST`, `ACT_HI_ACTINST`, `ACT_HI_TASKINST`, `ACT_HI_VARINST`, `ACT_HI_INCIDENT`, `ACT_HI_BATCH`, `ACT_HI_CASEINST`, `ACT_HI_CASEACTINST`) are updated while the instance runs.
 - **ACT_HI_PROCINST vs ACT_HI_ACTINST**: `PROCINST` is one row per process instance; `ACTINST` is many rows — one per activity execution within that instance.
 
 ---

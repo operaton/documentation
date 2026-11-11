@@ -11,7 +11,7 @@ Repository tables store definitions — process models, case models, decision ta
 
 - **[`ACT_RE_DEPLOYMENT`](#act_re_deployment)** — Deployment container
 - **[`ACT_RE_PROCDEF`](#act_re_procdef)** — Process definitions (BPMN)
-- **[`ACT_RE_CAMFORMDEF`](#act_re_camformdef)** — Camunda form definitions
+- **[`ACT_RE_CAMFORMDEF`](#act_re_camformdef)** — Operaton Forms definitions
 - **[`ACT_RE_CASE_DEF`](#act_re_case_def)** — Case definitions (CMMN)
 - **[`ACT_RE_DECISION_DEF`](#act_re_decision_def)** — Decision definitions (DMN)
 - **[`ACT_RE_DECISION_REQ_DEF`](#act_re_decision_req_def)** — Decision requirement definitions (DRG)
@@ -29,12 +29,12 @@ Repository tables store definitions — process models, case models, decision ta
 | ID_ | VARCHAR(64) | PK NOT NULL | Deployment identifier |
 | NAME_ | VARCHAR(255) | NULL | Human-readable deployment name |
 | DEPLOY_TIME_ | TIMESTAMP | NULL | When deployment occurred |
-| SOURCE_ | VARCHAR(255) | NULL | Deployment origin (e.g., `api`, filename) |
+| SOURCE_ | VARCHAR(255) | NULL | Free-text origin set via `DeploymentBuilder.source()` (e.g., `process application`); NULL if not set |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
 **Indexes:** `ACT_IDX_DEPLOYMENT_NAME`, `ACT_IDX_DEPLOYMENT_TENANT_ID`
 
-**Referenced by:** `ACT_GE_BYTEARRAY` (FK constraint `ACT_FK_BYTEARR_DEPL`). `ACT_RE_PROCDEF`, `ACT_RE_CAMFORMDEF`, `ACT_RE_CASE_DEF`, `ACT_RE_DECISION_DEF` and `ACT_RE_DECISION_REQ_DEF` reference it without a constraint.
+**Referenced by:** `ACT_GE_BYTEARRAY` (FK constraint `ACT_FK_BYTEARR_DEPL`). `ACT_RE_PROCDEF`, `ACT_RE_CAMFORMDEF`, `ACT_RE_CASE_DEF`, `ACT_RE_DECISION_DEF`, `ACT_RE_DECISION_REQ_DEF`, `ACT_RU_JOB`, `ACT_RU_JOBDEF`, `ACT_HI_JOB_LOG` and `ACT_HI_OP_LOG` reference it without a constraint.
 
 **Example Queries:**
 
@@ -81,12 +81,12 @@ ORDER BY TENANT_ID_;
 | DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | BPMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
-| HAS_START_FORM_KEY_ | BOOLEAN | NULL | Start event has a form |
+| HAS_START_FORM_KEY_ | BOOLEAN | NULL | Start event defines an `operaton:formKey` (not set for `operaton:formRef`) |
 | SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | VERSION_TAG_ | VARCHAR(64) | NULL | Optional version label |
 | HISTORY_TTL_ | INTEGER | NULL | History retention in days (NULL=indefinite) |
-| STARTABLE_ | BOOLEAN | NOT NULL DEFAULT TRUE | Can new instances be started |
+| STARTABLE_ | BOOLEAN | NOT NULL DEFAULT TRUE | `operaton:isStartableInTasklist`: whether Tasklist offers the process for starting (does not restrict starting via API) |
 
 **Indexes:** `ACT_IDX_PROCDEF_DEPLOYMENT_ID`, `ACT_IDX_PROCDEF_TENANT_ID`, `ACT_IDX_PROCDEF_VER_TAG`
 
@@ -123,7 +123,7 @@ ORDER BY running_instances DESC;
 
 ## ACT_RE_CAMFORMDEF
 
-**Purpose:** Form definitions for user task rendering. Forms are versioned independently by `KEY_`/`VERSION_` and linked to a deployment.
+**Purpose:** Operaton Forms definitions (`.form` files) referenced via `operaton:formRef` from user tasks and start events. Forms are versioned independently by `KEY_`/`VERSION_` and linked to a deployment.
 
 **Columns:**
 
@@ -190,7 +190,7 @@ ORDER BY KEY_, VERSION_ DESC;
 
 ## ACT_RE_DECISION_DEF
 
-**Purpose:** DMN decision table definition versions. Decisions are invoked from process/case activities or directly via the decision service.
+**Purpose:** DMN decision definition versions (decision tables and literal expressions). Decisions are invoked from process/case activities or directly via the decision service.
 
 **Columns:**
 
@@ -205,7 +205,7 @@ ORDER BY KEY_, VERSION_ DESC;
 | DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | DMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
-| DEC_REQ_ID_ | VARCHAR(64) | FK → ACT_RE_DECISION_REQ_DEF | Parent DRG (NULL if standalone) |
+| DEC_REQ_ID_ | VARCHAR(64) | FK → ACT_RE_DECISION_REQ_DEF | Parent DRG (NULL if the DMN resource contains only one decision) |
 | DEC_REQ_KEY_ | VARCHAR(255) | NULL | Parent DRG key (denormalized) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | HISTORY_TTL_ | INTEGER | NULL | History retention in days |
@@ -236,7 +236,7 @@ ORDER BY KEY_;
 
 ## ACT_RE_DECISION_REQ_DEF
 
-**Purpose:** Decision Requirement Graph (DRG) — a collection of related decisions with their dependencies. A DRG groups multiple `ACT_RE_DECISION_DEF` entries.
+**Purpose:** Decision Requirement Graph (DRG) — a collection of related decisions with their dependencies. A DRG groups multiple `ACT_RE_DECISION_DEF` entries; a row is only created when a DMN resource contains more than one decision.
 
 **Columns:**
 
