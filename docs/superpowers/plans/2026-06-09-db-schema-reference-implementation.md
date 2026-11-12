@@ -95,13 +95,13 @@ docs/reference/
 
 **Files:**
 - Create: `docs/reference/db-schema/_schema-analysis.txt` (temporary working file)
-- Source: `/Users/kthoms/Development/git/operaton/operaton/engine/src/main/resources/org/operaton/bpm/engine/db/create/`
+- Source: `$OPERATON_REPO/engine/src/main/resources/org/operaton/bpm/engine/db/create/` (`$OPERATON_REPO` = local checkout of `operaton/operaton`)
 
 - [ ] **Step 1: Extract tables from canonical PostgreSQL schema**
 
 Run:
 ```bash
-cat /Users/kthoms/Development/git/operaton/operaton/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.postgres.create.engine.sql | grep "^create table" | sed 's/create table //' | sed 's/ (.*//' | sort
+cat $OPERATON_REPO/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.postgres.create.engine.sql | grep "^create table" | sed 's/create table //' | sed 's/ (.*//' | sort
 ```
 
 Expected output: List of all table names (ACT_*)
@@ -110,7 +110,7 @@ Expected output: List of all table names (ACT_*)
 
 For each table (start with ACT_RE_PROCDEF), run:
 ```bash
-grep -A 50 "create table ACT_RE_PROCDEF" /Users/kthoms/Development/git/operaton/operaton/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.postgres.create.engine.sql
+grep -A 50 "create table ACT_RE_PROCDEF" $OPERATON_REPO/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.postgres.create.engine.sql
 ```
 
 Expected output: CREATE TABLE statement with all columns, types, constraints
@@ -138,7 +138,7 @@ TABLE: ACT_RE_PROCDEF (Process Definition)
 
 Extract all foreign key constraints from the PostgreSQL create script:
 ```bash
-grep -i "foreign key\|constraint" /Users/kthoms/Development/git/operaton/operaton/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.postgres.create.engine.sql
+grep -i "foreign key\|constraint" $OPERATON_REPO/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.postgres.create.engine.sql
 ```
 
 Expected output: All foreign key definitions for relationship mapping
@@ -155,7 +155,7 @@ git commit -m "chore: add schema analysis working file for reference"
 **Files:**
 - Modify: `docs/reference/db-schema/_schema-analysis.txt`
 - Source databases:
-  - H2: `/Users/kthoms/Development/git/operaton/operaton/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.h2.create.engine.sql`
+  - H2: `$OPERATON_REPO/engine/src/main/resources/org/operaton/bpm/engine/db/create/activiti.h2.create.engine.sql`
   - MySQL: `activiti.mysql.create.engine.sql`
   - Oracle: `activiti.oracle.create.engine.sql`
   - MariaDB: `activiti.mariadb.create.engine.sql`

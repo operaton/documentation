@@ -18,14 +18,12 @@
   "dependencies": {
     "@docusaurus/core": "3.10.2",
     "@docusaurus/preset-classic": "3.10.2",
-    "@docusaurus/theme-mermaid": "^3.10.1",
     "@mdx-js/react": "^3.1.1",
     "bpmn-js": "^18.31.1",
     "clsx": "^2.1.1",
     "docusaurus-theme-search-typesense": "^0.27.0",
     "dotenv": "^18.0.9",
     "glob": "^13.0.6",
-    "mermaid": "^11.15.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

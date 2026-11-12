@@ -1,4 +1,4 @@
-Rem# Design: Automated Version Updates on Operaton Release
+# Design: Automated Version Updates on Operaton Release
 
 **Date:** 2026-05-29  
 **Status:** Approved
@@ -8,7 +8,7 @@ Rem# Design: Automated Version Updates on Operaton Release
 When `operaton/operaton` publishes a release, a workflow in this documentation repository should automatically update all version references in the active docs to reflect the latest release. This consolidates the existing Spring Boot and Quarkus compatibility table maintenance into a single script and workflow, and extends version tracking to Operaton Maven snippets and third-party dependencies.
 
 ## Architecture
-3
+
 Three parts:
 
 1. **Master script** — `.devenv/scripts/update-versions.py` — orchestrates all version updates in a single run.
