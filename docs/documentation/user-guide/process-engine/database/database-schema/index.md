@@ -40,41 +40,41 @@ event subscriptions. Their relationship is shown in the following UML model.
 ![Example img](/img/documentation/user-guide/process-engine/database/database-schema.png)Database Schema
 
 
-## Process Definitions (`ACT_RE_PROCDEF`)
+## Process Definitions (ACT_RE_PROCDEF)
 
 The [`ACT_RE_PROCDEF`](repository.md#act_re_procdef) table contains all deployed process definitions. It
 includes information like the version details, the resource name or the
 suspension state.
 
 
-## Executions (`ACT_RU_EXECUTION`)
+## Executions (ACT_RU_EXECUTION)
 
 The [`ACT_RU_EXECUTION`](runtime.md#act_ru_execution) table contains all current executions. It includes information like the process definition, parent execution, business key, the
 current activity and different metadata about the state of the execution.
 
 
-## Tasks (`ACT_RU_TASK`)
+## Tasks (ACT_RU_TASK)
 
 The [`ACT_RU_TASK`](runtime.md#act_ru_task) table contains all open tasks of all running process
 instances. It includes information like the corresponding process instance,
 execution and also metadata such as creation time, assignee or due date.
 
 
-## Variables (`ACT_RU_VARIABLE`)
+## Variables (ACT_RU_VARIABLE)
 
 The [`ACT_RU_VARIABLE`](runtime.md#act_ru_variable) table contains all currently set process or task
 variables. It includes the names, types and values of the variables and
 information about the corresponding process instance or task.
 
 
-## Event Subscriptions (`ACT_RU_EVENT_SUBSCR`)
+## Event Subscriptions (ACT_RU_EVENT_SUBSCR)
 
 The [`ACT_RU_EVENT_SUBSCR`](runtime.md#act_ru_event_subscr) table contains all currently existing event
 subscriptions. It includes the type, name and configuration of the expected
 event along with information about the corresponding process instance and
 execution.
 
-## Schema Log (`ACT_GE_SCHEMA_LOG`)
+## Schema Log (ACT_GE_SCHEMA_LOG)
 
 The [`ACT_GE_SCHEMA_LOG`](general.md#act_ge_schema_log) table contains a history of the database
 schema version. New entries to the table are written when changes to
@@ -89,7 +89,7 @@ used:
 List<SchemaLogEntry> entries = managementService.createSchemaLogQuery().list();
 ```
 
-## Metrics Log (`ACT_RU_METER_LOG`)
+## Metrics Log (ACT_RU_METER_LOG)
 
 The [`ACT_RU_METER_LOG`](runtime.md#act_ru_meter_log) table contains a collection of runtime metrics that can help draw conclusions about usage, load
 and performance of Operaton. Metrics are reported as numbers in the Java `long` range and count the occurrence of
@@ -97,7 +97,7 @@ specific events. Please find detailed information about how metrics are collecte
 
 The default configuration of the [MetricsReporter](../../metrics.md#metrics-reporter) will create one row per [metric](../../metrics.md#built-in-metrics) in `ACT_RU_METER_LOG` every 15 minutes.
 
-## Task Metrics Log (`ACT_RU_TASK_METER_LOG`)
+## Task Metrics Log (ACT_RU_TASK_METER_LOG)
 
 The [`ACT_RU_TASK_METER_LOG`](runtime.md#act_ru_task_meter_log) table contains a collection of task related metrics that can help draw conclusions about usage, load
 and performance of Operaton. Task metrics contain a pseudonymized and fixed-length value of task assignees and their time of appearance. Please find detailed information about how task metrics are collected in the [Metrics User Guide](../../metrics.md).

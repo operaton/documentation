@@ -44,7 +44,7 @@ Runtime tables hold the live state of all active process/case executions, tasks,
 | PROC_INST_ID_ | VARCHAR(64) | FK → self | Root execution ID; equals ID_ for root |
 | BUSINESS_KEY_ | VARCHAR(255) | NULL | External correlation key |
 | PARENT_ID_ | VARCHAR(64) | FK → self | Parent execution (NULL for root) |
-| PROC_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_PROCDEF | Process definition |
+| PROC_DEF_ID_ | VARCHAR(64) | FK → [ACT_RE_PROCDEF](repository.md#act_re_procdef) | Process definition |
 | SUPER_EXEC_ | VARCHAR(64) | FK → self | Caller execution (for call activities) |
 | SUPER_CASE_EXEC_ | VARCHAR(64) | NULL | Caller case execution |
 | CASE_INST_ID_ | VARCHAR(64) | NULL | Associated case instance |
@@ -99,12 +99,12 @@ SELECT * FROM tree ORDER BY depth, ID_;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Task identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Enclosing execution scope |
-| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Process instance |
-| PROC_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_PROCDEF | Process definition |
-| CASE_EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case execution (CMMN) |
+| EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Enclosing execution scope |
+| PROC_INST_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Process instance |
+| PROC_DEF_ID_ | VARCHAR(64) | FK → [ACT_RE_PROCDEF](repository.md#act_re_procdef) | Process definition |
+| CASE_EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_CASE_EXECUTION](#act_ru_case_execution) | Case execution (CMMN) |
 | CASE_INST_ID_ | VARCHAR(64) | NULL | Case instance (CMMN) |
-| CASE_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_CASE_DEF | Case definition (CMMN) |
+| CASE_DEF_ID_ | VARCHAR(64) | FK → [ACT_RE_CASE_DEF](repository.md#act_re_case_def) | Case definition (CMMN) |
 | NAME_ | VARCHAR(255) | NULL | Task display name |
 | PARENT_TASK_ID_ | VARCHAR(64) | NULL | Parent task for subtask hierarchies |
 | DESCRIPTION_ | VARCHAR(4000) | NULL | Task description |
@@ -160,14 +160,14 @@ GROUP BY ASSIGNEE_ ORDER BY tasks DESC;
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | TYPE_ | VARCHAR(255) | NOT NULL | Serializer name: `string`, `integer`, `long`, `short`, `double`, `boolean`, `date`, `bytes`, `file`, `null`, `serializable` (Java object), `json`, `xml`, … |
 | NAME_ | VARCHAR(255) | NOT NULL | Variable name |
-| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Execution scope |
-| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Process instance |
+| EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Execution scope |
+| PROC_INST_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Process instance |
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Process definition (denormalized) |
-| CASE_EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case execution scope |
-| CASE_INST_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case instance scope |
+| CASE_EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_CASE_EXECUTION](#act_ru_case_execution) | Case execution scope |
+| CASE_INST_ID_ | VARCHAR(64) | FK → [ACT_RU_CASE_EXECUTION](#act_ru_case_execution) | Case instance scope |
 | TASK_ID_ | VARCHAR(64) | NULL | Task scope |
-| BATCH_ID_ | VARCHAR(64) | FK → ACT_RU_BATCH | Batch scope |
-| BYTEARRAY_ID_ | VARCHAR(64) | FK → ACT_GE_BYTEARRAY | Binary value reference |
+| BATCH_ID_ | VARCHAR(64) | FK → [ACT_RU_BATCH](#act_ru_batch) | Batch scope |
+| BYTEARRAY_ID_ | VARCHAR(64) | FK → [ACT_GE_BYTEARRAY](general.md#act_ge_bytearray) | Binary value reference |
 | DOUBLE_ | DOUBLE PRECISION | NULL | Float/double value |
 | LONG_ | BIGINT | NULL | Integer/long/boolean/date value |
 | TEXT_ | VARCHAR(4000) | NULL | String value; string form of `Short`/`Integer`/`Long`; file name for `File` |
@@ -229,8 +229,8 @@ FROM ACT_RU_VARIABLE WHERE TASK_ID_ = 'task-id' ORDER BY NAME_;
 | GROUP_ID_ | VARCHAR(255) | NULL | Group identifier |
 | TYPE_ | VARCHAR(255) | NULL | Link type, usually `candidate`; custom types are possible |
 | USER_ID_ | VARCHAR(255) | NULL | User identifier |
-| TASK_ID_ | VARCHAR(64) | FK → ACT_RU_TASK | Associated task (NULL for process-scoped) |
-| PROC_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_PROCDEF | Process definition (NULL for task-scoped) |
+| TASK_ID_ | VARCHAR(64) | FK → [ACT_RU_TASK](#act_ru_task) | Associated task (NULL for process-scoped) |
+| PROC_DEF_ID_ | VARCHAR(64) | FK → [ACT_RE_PROCDEF](repository.md#act_re_procdef) | Process definition (NULL for task-scoped) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 
 **Indexes:** `ACT_IDX_IDENT_LNK_USER`, `ACT_IDX_IDENT_LNK_GROUP`, `ACT_IDX_TSKASS_TASK`, `ACT_IDX_ATHRZ_PROCEDEF`
@@ -272,7 +272,7 @@ WHERE TASK_ID_ = 'task-id' AND TYPE_ = 'candidate' AND GROUP_ID_ IS NOT NULL;
 | PROCESS_DEF_ID_ | VARCHAR(64) | NULL | Process definition |
 | PROCESS_DEF_KEY_ | VARCHAR(255) | NULL | Process key (denormalized) |
 | RETRIES_ | INTEGER | NULL | Remaining retry attempts |
-| EXCEPTION_STACK_ID_ | VARCHAR(64) | FK → ACT_GE_BYTEARRAY | Exception stack trace |
+| EXCEPTION_STACK_ID_ | VARCHAR(64) | FK → [ACT_GE_BYTEARRAY](general.md#act_ge_bytearray) | Exception stack trace |
 | EXCEPTION_MSG_ | VARCHAR(4000) | NULL | Last exception message |
 | FAILED_ACT_ID_ | VARCHAR(255) | NULL | Failed activity ID |
 | DUEDATE_ | TIMESTAMP | NULL | Execution due time (for timers) |
@@ -356,16 +356,16 @@ GROUP BY LOCK_OWNER_;
 | INCIDENT_TIMESTAMP_ | TIMESTAMP | NOT NULL | When the incident occurred |
 | INCIDENT_MSG_ | VARCHAR(4000) | NULL | Error message |
 | INCIDENT_TYPE_ | VARCHAR(255) | NOT NULL | Type: `failedJob`, `failedExternalTask`, … |
-| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Associated execution |
+| EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Associated execution |
 | ACTIVITY_ID_ | VARCHAR(255) | NULL | Activity where incident is attached |
 | FAILED_ACTIVITY_ID_ | VARCHAR(255) | NULL | Activity that actually failed |
-| PROC_INST_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Process instance |
-| PROC_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_PROCDEF | Process definition |
+| PROC_INST_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Process instance |
+| PROC_DEF_ID_ | VARCHAR(64) | FK → [ACT_RE_PROCDEF](repository.md#act_re_procdef) | Process definition |
 | CAUSE_INCIDENT_ID_ | VARCHAR(64) | FK → self | Direct cause incident |
 | ROOT_CAUSE_INCIDENT_ID_ | VARCHAR(64) | FK → self | Root cause incident |
 | CONFIGURATION_ | VARCHAR(255) | NULL | Configuration (e.g., job ID) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
-| JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Related job definition |
+| JOB_DEF_ID_ | VARCHAR(64) | FK → [ACT_RU_JOBDEF](#act_ru_jobdef) | Related job definition |
 | ANNOTATION_ | VARCHAR(4000) | NULL | Operator notes |
 
 **Indexes:** `ACT_IDX_INC_CONFIGURATION`, `ACT_IDX_INC_TENANT_ID`, `ACT_IDX_INC_EXID`, `ACT_IDX_INC_PROCINSTID`, `ACT_IDX_INC_PROCDEFID`, `ACT_IDX_INC_CAUSEINCID`, `ACT_IDX_INC_ROOTCAUSEINCID`, `ACT_IDX_INC_JOB_DEF`
@@ -401,7 +401,7 @@ WHERE e.ROOT_CAUSE_INCIDENT_ID_ = 'root-incident-id';
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | EVENT_TYPE_ | VARCHAR(255) | NOT NULL | Type: `message`, `signal`, `compensate`, `conditional` |
 | EVENT_NAME_ | VARCHAR(255) | NULL | Message or signal name |
-| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Awaiting execution (NULL for start event subscriptions) |
+| EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Awaiting execution (NULL for start event subscriptions) |
 | PROC_INST_ID_ | VARCHAR(64) | NULL | Process instance |
 | ACTIVITY_ID_ | VARCHAR(255) | NULL | Catch element activity ID |
 | CONFIGURATION_ | VARCHAR(255) | NULL | Process definition ID for start event subscriptions; event scope execution ID for `compensate` |
@@ -436,11 +436,11 @@ ORDER BY CREATED_ ASC;
 | TOPIC_NAME_ | VARCHAR(255) | NULL | Worker routing topic |
 | RETRIES_ | INTEGER | NULL | Remaining retry attempts |
 | ERROR_MSG_ | VARCHAR(4000) | NULL | Last error message |
-| ERROR_DETAILS_ID_ | VARCHAR(64) | FK → ACT_GE_BYTEARRAY | Detailed error (serialized) |
+| ERROR_DETAILS_ID_ | VARCHAR(64) | FK → [ACT_GE_BYTEARRAY](general.md#act_ge_bytearray) | Detailed error (serialized) |
 | LOCK_EXP_TIME_ | TIMESTAMP | NULL | Lock expiry |
 | CREATE_TIME_ | TIMESTAMP | NULL | Creation time |
 | SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
-| EXECUTION_ID_ | VARCHAR(64) | FK → ACT_RU_EXECUTION | Associated execution |
+| EXECUTION_ID_ | VARCHAR(64) | FK → [ACT_RU_EXECUTION](#act_ru_execution) | Associated execution |
 | PROC_INST_ID_ | VARCHAR(64) | NULL | Process instance |
 | PROC_DEF_ID_ | VARCHAR(64) | NULL | Process definition |
 | PROC_DEF_KEY_ | VARCHAR(255) | NULL | Process key |
@@ -483,9 +483,9 @@ LIMIT 10;
 | JOBS_CREATED_ | INTEGER | NULL | Jobs created so far |
 | JOBS_PER_SEED_ | INTEGER | NULL | Jobs per seed invocation |
 | INVOCATIONS_PER_JOB_ | INTEGER | NULL | Work units per batch job |
-| SEED_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Seed job definition |
-| BATCH_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Batch job definition |
-| MONITOR_JOB_DEF_ID_ | VARCHAR(64) | FK → ACT_RU_JOBDEF | Monitor job definition |
+| SEED_JOB_DEF_ID_ | VARCHAR(64) | FK → [ACT_RU_JOBDEF](#act_ru_jobdef) | Seed job definition |
+| BATCH_JOB_DEF_ID_ | VARCHAR(64) | FK → [ACT_RU_JOBDEF](#act_ru_jobdef) | Batch job definition |
+| MONITOR_JOB_DEF_ID_ | VARCHAR(64) | FK → [ACT_RU_JOBDEF](#act_ru_jobdef) | Monitor job definition |
 | SUSPENSION_STATE_ | INTEGER | NULL | `1`=active, `2`=suspended |
 | CONFIGURATION_ | VARCHAR(255) | NULL | ID of the batch configuration in `ACT_GE_BYTEARRAY` |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -636,7 +636,7 @@ GROUP BY 1 ORDER BY 1 DESC;
 | SUPER_EXEC_ | VARCHAR(64) | NULL | Caller process execution |
 | BUSINESS_KEY_ | VARCHAR(255) | NULL | External correlation key |
 | PARENT_ID_ | VARCHAR(64) | FK → self | Parent case execution |
-| CASE_DEF_ID_ | VARCHAR(64) | FK → ACT_RE_CASE_DEF | Case definition |
+| CASE_DEF_ID_ | VARCHAR(64) | FK → [ACT_RE_CASE_DEF](repository.md#act_re_case_def) | Case definition |
 | ACT_ID_ | VARCHAR(255) | NULL | Current CMMN activity ID |
 | PREV_STATE_ | INTEGER | NULL | Previous state |
 | CURRENT_STATE_ | INTEGER | NULL | Current state (`0`=new, `1`=available, `2`=enabled, `3`=disabled, `4`=active, `5`=suspended, `6`=terminated, `7`=completed, `8`=failed, `9`=closed, `10`–`14`=transient terminating/suspending states) |
@@ -657,8 +657,8 @@ GROUP BY 1 ORDER BY 1 DESC;
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Sentry part identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
-| CASE_INST_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Case instance |
-| CASE_EXEC_ID_ | VARCHAR(64) | FK → ACT_RU_CASE_EXECUTION | Associated case execution |
+| CASE_INST_ID_ | VARCHAR(64) | FK → [ACT_RU_CASE_EXECUTION](#act_ru_case_execution) | Case instance |
+| CASE_EXEC_ID_ | VARCHAR(64) | FK → [ACT_RU_CASE_EXECUTION](#act_ru_case_execution) | Associated case execution |
 | SENTRY_ID_ | VARCHAR(255) | NULL | Sentry element ID |
 | TYPE_ | VARCHAR(255) | NULL | Part type: `planItemOnPart`, `ifPart`, `variableOnPart` |
 | SOURCE_CASE_EXEC_ID_ | VARCHAR(64) | NULL | Source execution for transition conditions |
@@ -683,7 +683,7 @@ GROUP BY 1 ORDER BY 1 DESC;
 
 ---
 
-See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings.
+See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings.
 
 ---
 

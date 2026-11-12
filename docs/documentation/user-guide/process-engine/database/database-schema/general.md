@@ -64,7 +64,7 @@ SELECT NAME_, VALUE_, REV_ FROM ACT_GE_PROPERTY ORDER BY NAME_;
 | ID_ | VARCHAR(64) | PK NOT NULL | Unique identifier |
 | REV_ | INTEGER | NULL | Revision for optimistic locking |
 | NAME_ | VARCHAR(255) | NULL | Resource filename, variable name, or an engine-assigned name (e.g., `job.exceptionByteArray`) |
-| DEPLOYMENT_ID_ | VARCHAR(64) | FK → ACT_RE_DEPLOYMENT | Associated deployment; NULL for runtime and history data |
+| DEPLOYMENT_ID_ | VARCHAR(64) | FK → [ACT_RE_DEPLOYMENT](repository.md#act_re_deployment) | Associated deployment; NULL for runtime and history data |
 | BYTES_ | BYTEA | NULL | Binary content |
 | GENERATED_ | BOOLEAN | NULL | Marks resources generated during deployment rather than deployed by the user; the engine writes `false` for deployment resources and leaves it NULL for runtime and history data |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
@@ -150,7 +150,7 @@ LIMIT 1;
 
 ---
 
-See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings across PostgreSQL, MySQL/MariaDB, Oracle, MSSQL, H2, and DB2.
+See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings across PostgreSQL, MySQL/MariaDB, Oracle, MSSQL, H2, and DB2.
 
 ---
 

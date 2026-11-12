@@ -93,8 +93,8 @@ ORDER BY g.NAME_;
 
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
-| USER_ID_ | VARCHAR(64) | PK, FK → ACT_ID_USER | User member |
-| GROUP_ID_ | VARCHAR(64) | PK, FK → ACT_ID_GROUP | Group being joined |
+| USER_ID_ | VARCHAR(64) | PK, FK → [ACT_ID_USER](#act_id_user) | User member |
+| GROUP_ID_ | VARCHAR(64) | PK, FK → [ACT_ID_GROUP](#act_id_group) | Group being joined |
 
 **Indexes:** `ACT_IDX_MEMB_GROUP` on GROUP_ID_, `ACT_IDX_MEMB_USER` on USER_ID_
 
@@ -171,9 +171,9 @@ SELECT ID_, NAME_ FROM ACT_ID_TENANT ORDER BY NAME_;
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
 | ID_ | VARCHAR(64) | PK NOT NULL | Member entry identifier |
-| TENANT_ID_ | VARCHAR(64) | FK → ACT_ID_TENANT, NOT NULL | Tenant |
-| USER_ID_ | VARCHAR(64) | FK → ACT_ID_USER, NULL | User member (NULL if group) |
-| GROUP_ID_ | VARCHAR(64) | FK → ACT_ID_GROUP, NULL | Group member (NULL if user) |
+| TENANT_ID_ | VARCHAR(64) | FK → [ACT_ID_TENANT](#act_id_tenant), NOT NULL | Tenant |
+| USER_ID_ | VARCHAR(64) | FK → [ACT_ID_USER](#act_id_user), NULL | User member (NULL if group) |
+| GROUP_ID_ | VARCHAR(64) | FK → [ACT_ID_GROUP](#act_id_group), NULL | Group member (NULL if user) |
 
 **Unique Constraints:**
 - `ACT_UNIQ_TENANT_MEMB_USER` on `(TENANT_ID_, USER_ID_)`
@@ -209,7 +209,7 @@ WHERE USER_ID_ = 'john.doe';
 
 ---
 
-See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings.
+See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings.
 
 ---
 

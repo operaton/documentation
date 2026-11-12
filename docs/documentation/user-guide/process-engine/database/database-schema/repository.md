@@ -205,7 +205,7 @@ ORDER BY KEY_, VERSION_ DESC;
 | DEPLOYMENT_ID_ | VARCHAR(64) | NULL | Containing deployment (logical reference, no FK constraint) |
 | RESOURCE_NAME_ | VARCHAR(4000) | NULL | DMN resource filename |
 | DGRM_RESOURCE_NAME_ | VARCHAR(4000) | NULL | Diagram resource filename |
-| DEC_REQ_ID_ | VARCHAR(64) | FK → ACT_RE_DECISION_REQ_DEF | Parent DRG (NULL if the DMN resource contains only one decision) |
+| DEC_REQ_ID_ | VARCHAR(64) | FK → [ACT_RE_DECISION_REQ_DEF](#act_re_decision_req_def) | Parent DRG (NULL if the DMN resource contains only one decision) |
 | DEC_REQ_KEY_ | VARCHAR(255) | NULL | Parent DRG key (denormalized) |
 | TENANT_ID_ | VARCHAR(64) | NULL | Tenant identifier |
 | HISTORY_TTL_ | INTEGER | NULL | History retention in days |
@@ -277,7 +277,7 @@ ORDER BY r.KEY_, d.KEY_;
 
 ---
 
-See [Database-Specific Implementation Notes](../index.md#database-specific-implementation-notes) for type mappings.
+See [Database-Specific Implementation Notes](index.md#database-specific-implementation-notes) for type mappings.
 
 ---
 
