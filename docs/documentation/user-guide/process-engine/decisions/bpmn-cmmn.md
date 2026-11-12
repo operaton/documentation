@@ -388,9 +388,10 @@ These APIs are **not** part of the [public API](../../../introduction/public-api
 :::
 
 It is possible to add own functions which can be used inside JUEL expressions.
-Therefore a new [FunctionMapper](org/operaton/bpm/engine/impl/javax/el/FunctionMapper.html) has to be implemented. The function mapper than
-has to be added to the process engine configuration after it was
-initialized.
+Therefore a public static method has to be registered with
+`ExpressionManager#addFunction(String, Method)` of the process engine configuration
+after it was initialized. The function name can contain a prefix separated by a colon,
+e.g., `my:function`.
 
 ```java
 ProcessEngineConfigurationImpl processEngineConfiguration = (ProcessEngineConfigurationImpl) processEngine
@@ -398,7 +399,7 @@ ProcessEngineConfigurationImpl processEngineConfiguration = (ProcessEngineConfig
 
 processEngineConfiguration
   .getExpressionManager()
-  .addFunctionMapper(new MyFunctionMapper());
+  .addFunction("my:function", MyFunctions.class.getMethod("function"));
 ```
 
 This can be done, for example, by creating a [process engine plugin].
