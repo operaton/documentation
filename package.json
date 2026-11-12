@@ -23,7 +23,7 @@
     "clsx": "^2.1.1",
     "docusaurus-theme-search-typesense": "^0.27.0",
     "dotenv": "^18.0.9",
-    "glob": "^13.0.6",
+    "glob": "^14.0.3",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
