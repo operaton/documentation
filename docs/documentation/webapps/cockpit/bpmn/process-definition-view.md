@@ -89,28 +89,6 @@ Add a filter for process instances by filtering for a `boolean` value.
 Add a filter for process instances by filtering for a `numeric` (double, integer, long or short) value.
 
 
-### History View
-
-Add a filter to the [process definition history view][process-definition-history-view]. Select filters for variables, the start date and time, the activity ID or the business key of process instances as in [the runtime view](#runtime-view). In addition, select filters for completed, running or process instances with a certain end date and time.
-
-**Filtering for completed and running process instances**
-
-![Example img](/img/documentation/webapps/cockpit/bpmn/history-completed.png)Filter Example
-![Example img](/img/documentation/webapps/cockpit/bpmn/history-running.png)Filter Example
-
-Add a filter for process instances by filtering for already completed or still running process instances.
-
-
-**End Date and Time**
-
-![Example img](/img/documentation/webapps/cockpit/bpmn/history-end-date.png)Filter Example
-
-Add a filter for process instances by end date. Please note that the date must be set in accordance to the [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) standard and that this option is only available in the [process definition history view][process-definition-history-view]. Again choose between `before` and `after` to filter for instances that were ended before or after the given date. For example, click on `before` to obtain the selection..
-
-
-[process-definition-history-view]: ../bpmn/process-history-views.md#process-definition-history-view
-
-
 ## Delete Multiple Running Process Instances
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-bulk-delete.png)Batch Delete Running Process Instances
@@ -160,8 +138,4 @@ However, the called process definition can only be resolved at runtime and is on
 
 ![Example img](/img/documentation/webapps/cockpit/bpmn/cockpit-call-activity-definition-navigation.png)Navigate to called processes definition
 
-For more drill down options on call activities you can check out the [process instance view][process-instance-view]
-and the [process history views][process-history-views].
-
-
-[process-history-views]: ../bpmn/process-history-views.md
+For more drill down options on call activities you can check out the [process instance view][process-instance-view].

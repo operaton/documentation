@@ -6,7 +6,6 @@ sidebar_position: 10
 ---
 
 ![Dish table](/img/documentation/reference/dmn/decision-table/dish-table.png)
-<script type="text/javascript" src="./img/map.js"></script>
 
 A decision table represents decision logic which can be depicted as a table in
 DMN 1.3. It consists of [inputs], [outputs] and [rules].

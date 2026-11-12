@@ -39,7 +39,7 @@ For general information about scripting in the process engine, please see the [S
 
 :::note[Supported Script Languages]
 
-Operaton should work with most of the JSR-223 compatible script engine implementations. We test integration for Groovy, JavaScript, JRuby and Jython. See the <a href="/docs/documentation/introduction/third-party-libraries/#process-engine">Third Party Dependencies</a> section of the <a href="/docs/documentation/user-guide/">User Guide</a> for more details.
+Operaton should work with most of the JSR-223 compatible script engine implementations. We test integration for Groovy, JavaScript, JRuby and Jython. See the [Scripting](../../../user-guide/process-engine/scripting.md) section of the [User Guide][user-guide] for more details.
 
 :::
 
