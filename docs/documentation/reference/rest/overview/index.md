@@ -103,7 +103,7 @@ The REST API maps exceptions to HTTP status codes as follows:
   <tr>
     <td>401 Unauthorized</td>
     <td>
-      <a href="authentication.md">Authentication</a> is enabled and the request does not contain valid credentials.
+      <a href="/docs/documentation/reference/rest/overview/authentication">Authentication</a> is enabled and the request does not contain valid credentials.
     </td>
     <td>No body; the <code>WWW-Authenticate</code> response header contains the authentication challenge</td>
   </tr>

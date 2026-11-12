@@ -20,7 +20,7 @@ In our web applications [Cockpit](../../webapps/cockpit/index.md) and [Tasklist]
 
 ## bpmn.io Diagram Renderer
 
-To render a process diagram, you need to retrieve the diagram XML via the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/RepositoryService.html">Java</a>- or [REST API](../getProcessDefinitionBpmn20XmlByKey#Process-Definition). The following example shows how to render the process XML using bpmn.io. For more documentation regarding the annotation of the diagram and user interaction, please refer to the [bpmn.io](https://github.com/bpmn-io/bpmn-js) page.
+To render a process diagram, you need to retrieve the diagram XML via the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/RepositoryService.html">Java</a>- or <RestRef operation="getProcessDefinitionBpmn20XmlByKey" text="REST API" tag="Process-Definition" />. The following example shows how to render the process XML using bpmn.io. For more documentation regarding the annotation of the diagram and user interaction, please refer to the [bpmn.io](https://github.com/bpmn-io/bpmn-js) page.
 
 ```javascript
 var BpmnViewer = require('bpmn-js');
