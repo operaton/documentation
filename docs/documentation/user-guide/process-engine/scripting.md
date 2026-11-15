@@ -514,6 +514,21 @@ If you use another scripting language than Expression Language, you can also spe
 source as an expression which returns the source code to be executed. This way, the source code can,
 for example, be contained in a process variable.
 
+:::caution[Dynamic script-source detection]
+
+For languages other than JUEL, Operaton treats inline script content as an expression that
+resolves to source code when the content starts with `${` or `#{` after whitespace is trimmed
+for detection. This applies to script tasks, listeners, conditions, and input/output parameters.
+The content is evaluated as an expression before the selected script engine receives source code,
+so an unintended match may cause errors or unexpected output.
+
+Leading whitespace does not prevent detection. If those characters belong to the script or
+template itself, prefix the content with a comment recognized by that language, or load it
+from an external resource. For external resources, this detection applies to the resource
+path, not to the contents of the loaded file.
+
+:::
+
 In the following example snippet the process engine will evaluate the expression `${sourceCode}` in
 the current context every time the element is executed.
 
