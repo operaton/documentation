@@ -514,21 +514,6 @@ If you use another scripting language than Expression Language, you can also spe
 source as an expression which returns the source code to be executed. This way, the source code can,
 for example, be contained in a process variable.
 
-:::caution[Dynamic script-source detection]
-
-For languages other than JUEL, Operaton treats inline script content as an expression that
-resolves to source code when the content starts with `${` or `#{` after whitespace is trimmed
-for detection. This applies to script tasks, listeners, conditions, and input/output parameters.
-The content is evaluated as an expression before the selected script engine receives source code,
-so an unintended match may cause errors or unexpected output.
-
-Leading whitespace does not prevent detection. If those characters belong to the script or
-template itself, prefix the content with a comment recognized by that language, or load it
-from an external resource. For external resources, this detection applies to the resource
-path, not to the contents of the loaded file.
-
-:::
-
 In the following example snippet the process engine will evaluate the expression `${sourceCode}` in
 the current context every time the element is executed.
 
@@ -546,7 +531,7 @@ the current context every time the element is executed.
 <!-- as a condition expression -->
 <sequenceFlow id="flow" sourceRef="theStart" targetRef="theTask">
   <conditionExpression xsi:type="tFormalExpression" language="groovy">
-    ```${sourceCode}
+    ${sourceCode}
   </conditionExpression>
 </sequenceFlow>
 
@@ -592,6 +577,32 @@ script task.
 ```xml
 <scriptTask scriptFormat="groovy" operaton:resource="${scriptPath}"/>
 ```
+
+:::caution[Dynamic script-source detection]
+
+For languages other than JUEL, Operaton treats inline script content as an expression that
+resolves to source code when the content starts with `${` or `#{`. Leading whitespace is ignored
+for this check. The format name is compared case-insensitively, and a script task without a
+`scriptFormat` defaults to `juel`, so no detection takes place in that case. Detection applies to
+script tasks, listeners, conditions, and input/output parameters.
+
+Once the content matches, the whole content is parsed as a single composite expression. Every
+`${...}` and `#{...}` in it is resolved by the expression language and
+the remaining text is passed through literally. An unintended match can therefore:
+
+* replace placeholders that were meant for the script language, for example Groovy GString
+  interpolation such as `"${price}"`;
+* fail at runtime if a referenced variable does not exist;
+* fail the deployment if the content is not valid expression syntax, for example a Groovy
+  closure such as `${ x -> x }`.
+
+If the content legitimately starts with `${` or `#{`, prefix it with a comment recognized by that
+language, or load it from an external resource. The comment itself must not start with `${` or
+`#{`; in languages that use `#` for comments, such as Python or Ruby, write `# {...}` instead of
+`#{...}`. For external resources, detection applies to the resource path, not to the contents of
+the loaded file.
+
+:::
 
 For more information, see the
 [operaton:resource](../../reference/bpmn20/custom-extensions/extension-attributes.md#resource)
