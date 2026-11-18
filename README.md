@@ -70,11 +70,9 @@ fail the workflow while `FAIL_ON_BROKEN_LINKS` in `.github/workflows/link-check.
 
 ## Local Search (Typesense) Setup
 
-The production site queries a Typesense server directly from the browser
-(`typesenseServerConfig` in `docusaurus.config.ts`), over plain **HTTP** on
-port `8108`. The search API key embedded in the built site is a public,
-search-only key (it's shipped in client-side JS, same as any DocSearch-style
-integration), so there's no secret to protect and no TLS requirement.
+The production site queries Typesense from the browser over HTTPS through
+the same-origin `/typesense` reverse proxy on `docs.operaton.org` (port `443`).
+The search API key embedded in the built site is a public, search-only key.
 To develop or test the search integration locally, run a local Typesense
 instance via Docker Compose.
 
@@ -107,11 +105,14 @@ TYPESENSE_API_KEY=some-local-dev-key
 TYPESENSE_HOST=localhost
 TYPESENSE_PORT=8108
 TYPESENSE_PROTOCOL=http
+TYPESENSE_PATH=
 ```
 
-`docusaurus.config.ts` reads `TYPESENSE_HOST`/`TYPESENSE_PORT`/`TYPESENSE_PROTOCOL`
-from the environment, defaulting to the production values
-(`docs.operaton.org`, `8108`, `http`) when unset.
+`docusaurus.config.ts` reads `TYPESENSE_HOST`, `TYPESENSE_PORT`,
+`TYPESENSE_PROTOCOL`, and `TYPESENSE_PATH` from the environment, defaulting to
+the production values (`docs.operaton.org`, `443`, `https`, `/typesense`)
+when unset. The empty `TYPESENSE_PATH=` override prevents the production
+proxy prefix from being added to local API requests.
 
 ### 4. Populate the index and run the site
 
