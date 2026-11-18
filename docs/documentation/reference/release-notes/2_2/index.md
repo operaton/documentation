@@ -456,6 +456,22 @@ The following non-test dependencies have been upgraded since Operaton 2.1:
 
 ## Patch Releases
 
+### 2.2.2
+
+#### Security Vulnerabilities
+
+- **[fix(docker): require patched JRE versions](https://github.com/operaton/operaton-docker/pull/53)** — The [Docker images](https://hub.docker.com/r/operaton/operaton) now require a JRE that contains the fix for CVE-2026-114938: `17.0.21.1_p2-r0` for Java 17, `21.0.13.1_p2-r0` for Java 21 and `25.0.5.1_p2-r0` for Java 25. The build fails if Alpine provides an older JRE. (operaton-docker #53)
+
+#### Dependency Upgrades
+
+- Routine maintenance updates, among them Apache Tomcat `11.0.27` → `11.0.29` for the Tomcat distribution, Quarkus `3.40.1.1` → `3.40.1.2`, `netty` `4.2.20.Final` → `4.2.21.Final`, `logback` `1.6.6` → `1.6.7` and `resteasy-bom` `7.0.5.Final` → `7.0.6.Final`. (#4086, #4112, #4121)
+
+#### Bug Fixes
+
+- **[fix(engine-rest): replace broken docs links in OpenAPI descriptions](https://github.com/operaton/operaton/pull/4100)** — Links in the OpenAPI descriptions pointed to per-endpoint REST pages of the Camunda docs, which do not exist in the Operaton docs. They now point to the referenced operation within the REST API reference. Links to the authorization, message events, multi-tenancy, generated task forms and incident types pages are fixed as well, and the swapped GET/POST links in `POST /history/process-instance/count` are corrected. (#4100)
+- **[fix(engine-rest): correct parallel history cleanup docs link](https://github.com/operaton/operaton/pull/4099)** — The link to the parallel execution of history cleanup now points to the history cleanup page. (#4099)
+- **[fix(engine): reinitialize stale engine in ProcessEngineExtension](https://github.com/operaton/operaton/pull/4070)** — The JUnit 5 `ProcessEngineExtension` kept using a closed process engine when a test called `ProcessEngines.destroy()` and a later test registered a new engine with the same name. Tests that wait for the job executor could then time out, depending on the test class order. The extension now detects a replaced engine and reinitializes it. Fixes [#4052](https://github.com/operaton/operaton/issues/4052). (#4070)
+
 ### 2.2.1
 
 #### Dependency Upgrades
