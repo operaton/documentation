@@ -13,19 +13,19 @@ menu:
 
 Timer events are events which are triggered by a defined timer. They can be used as start event, intermediate event or boundary event. Boundary events can be interrupting or not.
 
-<div data-bpmn-diagram="../bpmn/event-timer" ></div>
+<div data-bpmn-diagram="./bpmn/event-timer" ></div>
 
 
-# Configuration
+## Configuration
 
 Timers are only fired when the [Job Executor](../../../user-guide/process-engine/the-job-executor.md) is enabled.
 
 
-# Defining a Timer
+## Defining a Timer
 
 Timers are configured using an [ISO 8601][iso-8601] time format. A timer definition must have exactly one of the following elements.
 
-## Time Date
+### Time Date
 
 This format specifies a fixed time and date in adhering to the [ISO 8601][iso-8601] format, when the trigger will be fired.
 
@@ -37,9 +37,9 @@ Example:
 </timerEventDefinition>
 ```
 
-## Time Duration
+### Time Duration
 
-To specify how long the timer should run before it is fired, a timeDuration can be specified as a sub-element of timerEventDefinition. It is possible to define the duration in two different [ISO 8601 Durations](http://en.wikipedia.org/wiki/ISO_8601#Durations) formats:
+To specify how long the timer should run before it is fired, a timeDuration can be specified as a sub-element of timerEventDefinition. It is possible to define the duration in two different [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) formats:
 <ul>
   <li>PnYnMnDTnHnMnS</li>
   <li>PnW</li>
@@ -53,9 +53,9 @@ Example (interval lasting 10 days):
 </timerEventDefinition>
 ```
 
-## Time Cycle
+### Time Cycle
 
-Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals) standard.
+Specifies repeating intervals, which can be useful for starting process periodically, or for sending multiple reminders for overdue user tasks. A time cycle element can be in two formats. One option is the format of recurring [time duration](#time-duration), as specified by the [ISO 8601 Repeating Intervals](https://en.wikipedia.org/wiki/ISO_8601#mwAzg) standard.
 
 Example (3 repeating intervals, each lasting 10 hours):
 
@@ -71,7 +71,7 @@ Additionally, you can specify a time cycle using cron expressions, the example b
 0 0/5 * * * ?
 ```
 
-Please see the <a href="http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> for additional information about using cron expressions.
+Please see the <a href="https://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html">CronTrigger Tutorial</a> for additional information about using cron expressions.
 
 Note: The first symbol denotes seconds, not minutes as in normal Unix cron.
 
@@ -93,7 +93,7 @@ managementService.setJobDuedate(String jobId, Date newDuedate, boolean cascade)
 ```
 
 
-## Expressions
+### Expressions
 
 You can use expressions for the timer event definitions. By doing so you can influence the timer definition based on process variables. The process variables must contain the [ISO 8601][iso-8601] (or cron for cycle type) string for the appropriate timer type.
 
@@ -130,32 +130,32 @@ To enforce an immediate re-evaluation of a time cycle, follow the steps:
 1. Change the expression of the time cycle (e.g., Adjust the Spring bean that resolves the cycle).
 1. Update the current timer job due date:
   * via Java API: javadocref page="org/operaton/bpm/engine/ManagementService.html#setJobDuedate%28java.lang.String,java.util.Date%29" text="ManagementService#setJobDuedate"
-  * via REST API: page="setJobDuedate" text="Job/operation/setJobDuedate" tag="Job"
+  * via REST API: <RestRef operation="setJobDuedate" text="Job/operation/setJobDuedate" tag="Job" />
   * via Cockpit: Navigate to the Job view of the currently running process instance and select "Change due date for this Job" button.
 
 After this job is executed, the next jobs will be created with adjusted time cycle.
 :::
-## Handling of Timezones
+### Handling of Timezones
 
 The configuration `2022-03-11T12:13:14` does not specify a time zone. At runtime, such a date is interpreted in the local time zone of the JVM executing the process. This can be problematic in various cases, such as when running multiple Operaton nodes in different time zones or when you cannot assume the time zone the platform runs in. Furthermore, there can be glitches with respect to daylight saving time (DST). If in doubt, specify the time in UTC (e.g., `2022-03-11T12:13:14Z`) or with a UTC-relative offset (e.g., `2022-03-11T12:13:14+01`).
 
-## Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -165,7 +165,7 @@ The configuration `2022-03-11T12:13:14` does not specify a time zone. At runtime
 </table>
 
 
-# Timer Start Event
+## Timer Start Event
 
 A timer start event is used to create process instance at a given time. It can be used both for processes which should start only once and for processes that should start in specific time intervals.
 
@@ -193,7 +193,7 @@ and this process will start once, on a selected date, at Greenwich time:
 </startEvent>
 ```
 
-# Timer Intermediate Catching Event
+## Timer Intermediate Catching Event
 
 A timer intermediate event acts as a stopwatch. When an execution arrives in catching event activity, a timer is started. When the timer fires (e.g., after a specified interval), the sequence flow going out of the timer intermediate event is followed.
 
@@ -208,7 +208,7 @@ A timer intermediate event is defined as an intermediate catching event. The spe
 ```
 
 
-# Timer Boundary Event
+## Timer Boundary Event
 
 A timer boundary event acts as a stopwatch and as an alarm clock. When an execution arrives in the activity to which the boundary event is attached, a timer is started. When the timer fires (e.g.,  after a specified interval), the activity is interrupted and the sequence flow going out of the timer boundary event are followed.
 

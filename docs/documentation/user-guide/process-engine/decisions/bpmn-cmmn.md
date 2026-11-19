@@ -12,11 +12,11 @@ menu:
 ---
 
 
-# BPMN & CMMN Integration
+## BPMN & CMMN Integration
 
 This section explains how to invoke DMN decision from BPMN and CMMN.
 
-## BPMN Business Rule Task
+### BPMN Business Rule Task
 
 The BPMN business rule task can reference a [deployed] decision
 definition. The decision definition is evaluated when the task is executed.
@@ -45,7 +45,7 @@ definition. The decision definition is evaluated when the task is executed.
 For more information on how to reference a decision definition from a business
 rule task, please refer to the [BPMN 2.0 reference][business rule task].
 
-## DMN Decision Task
+### DMN Decision Task
 
 The CMMN decision task references a [deployed] decision definition.
 The decision definition is invoked when the task is activated.
@@ -71,7 +71,7 @@ The decision definition is invoked when the task is activated.
 For more information on how to reference a decision definition from a decision
 task, please refer to the [CMMN 1.1 reference][decision task].
 
-# The Decision Result
+## The Decision Result
 
 The output of the decision, also called decision result, is a complex object of
 type `DmnDecisionResult`. Generally, it is a list of key-value pairs.
@@ -106,13 +106,13 @@ Object value = decisionResult
 It also provides methods to get typed output entries like
 `getSingleEntryTyped()`. Please refer to the [User Guide][Typed Value API] for
 details about typed values. A complete list of all methods can be found in the
-<a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionResult">Java Docs</a>.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecisionResult.html">Java Docs</a>.
 
 The decision result is available in the local scope of the executing task as a
 transient variable named `decisionResult`. It can be passed into a variable by
 using a predefined or a custom mapping of the decision result, if necessary.
 
-## Predefined Mapping of the Decision Result
+### Predefined Mapping of the Decision Result
 
 The engine includes predefined mappings of the decision result for common use
 cases. The mapping is similar to an [output variable mapping]. It extracts a
@@ -191,7 +191,7 @@ exception is thrown while saving the result variable.
 
 :::
 
-## Custom Mapping of the Decision Result
+### Custom Mapping of the Decision Result
 
 Instead of a predefined mapping, a custom decision result mapping can be used
 to pass the decision result into variables.
@@ -287,7 +287,7 @@ public class MyDecisionResultListener implements CaseExecutionListener {
 }
 ```
 
-## Limitations of the Serialization of the Mapping Result
+### Limitations of the Serialization of the Mapping Result
 
 The predefined mappings `singleResult`, `collectEntries` and `resultList` map
 the decision result to Java collections. The implementation of the collections
@@ -314,7 +314,7 @@ To prevent any of these problems, you should use primitive variables only.
 Alternatively, you can use a custom object for serialization that you control
 by yourself.
 
-# Accessing Variables from Decisions
+## Accessing Variables from Decisions
 
 DMN Decision tables and Decision Literal Expressions contain multiple expressions which will be evaluated by the
 DMN engine. For more information about the expressions of a decision
@@ -360,14 +360,14 @@ its unwrapped value.
 </input>
 ```
 
-# Expression Language Integration
+## Expression Language Integration
 
 By default, the DMN engine uses [FEEL] as expression language for input
 expressions, input entries, output entries and literal expressions.
 Please see the [DMN engine][expression languages] guide for more
 information about expression languages.
 
-## Accessing Beans
+### Accessing Beans
 
 If the DMN engine is invoked by Operaton, it uses the same
 JUEL configuration as the Operaton engine. Therefore, it is also
@@ -379,7 +379,7 @@ section in the [Spring] and [CDI] guides.
 Beans cannot be accessed when using FEEL as expression language.
 :::
 
-## Extending the Expression Language
+### Extending the Expression Language
 
 :::warning[Use of Internal API]
 
@@ -388,9 +388,10 @@ These APIs are **not** part of the [public API](../../../introduction/public-api
 :::
 
 It is possible to add own functions which can be used inside JUEL expressions.
-Therefore a new [FunctionMapper](https://jakarta.ee/specifications/platform/9/apidocs/jakarta/el/functionmapper) has to be implemented. The function mapper than
-has to be added to the process engine configuration after it was
-initialized.
+Therefore a public static method has to be registered with
+`ExpressionManager#addFunction(String, Method)` of the process engine configuration
+after it was initialized. The function name can contain a prefix separated by a colon,
+e.g., `my:function`.
 
 ```java
 ProcessEngineConfigurationImpl processEngineConfiguration = (ProcessEngineConfigurationImpl) processEngine
@@ -398,7 +399,7 @@ ProcessEngineConfigurationImpl processEngineConfiguration = (ProcessEngineConfig
 
 processEngineConfiguration
   .getExpressionManager()
-  .addFunctionMapper(new MyFunctionMapper());
+  .addFunction("my:function", MyFunctions.class.getMethod("function"));
 ```
 
 This can be done, for example, by creating a [process engine plugin].
@@ -413,10 +414,10 @@ in the platform, not only in DMN decisions.
 [decision task]: ../../../reference/cmmn11/tasks/decision-task.md
 [Typed Value API]: ../../process-engine/variables.md#typed-value-api
 [object value serialization]: ../../process-engine/variables.md#object-value-serialization
-[output variable mapping]: ../../process-engine/variables.md#input-output-variable-mapping
+[output variable mapping]: ../../process-engine/variables.md#inputoutput-variable-mapping
 [execution listener]: ../../process-engine/delegation-code.md#execution-listener
 [expression languages]: ../../dmn-engine/expressions-and-scripts.md
 [FEEL]: ../../../reference/dmn/feel/index.md
-[Spring]: ../../spring-framework-integration/index.md#expression-resolving
+[Spring]: ../../spring-framework-integration/index.md
 [CDI]: ../../cdi-java-ee-integration/expression-resolving.md
 [process engine plugin]: ../../process-engine/process-engine-plugins.md

@@ -12,11 +12,11 @@ menu:
 
 This chapter is about how cryptographic password hashing is done in Operaton. In particular, the hashing algorithm that is being used and the salt generation. If you are not familiar with these topics, we recommend reading the articles about [cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function), [salt](https://en.wikipedia.org/wiki/Salt_(cryptography)) and [secure password hashing](https://crackstation.net/hashing-security.htm).
 
-The Operaton version 7.6 and earlier use the cryptographic hash function [SHA-1](https://en.wikipedia.org/wiki/SHA-1). Since Operaton version 7.7 the hash function [SHA-512](https://en.wikipedia.org/wiki/SHA-2) is used. If there is a need for another custom hash function, it is possible to plugin a [custom password hashing algorithm](#customize-the-hashing-algorithm) in Operaton.
+Operaton uses [SHA-512](https://en.wikipedia.org/wiki/SHA-2) for password hashing. If there is a need for another custom hash function, it is possible to plugin a [custom password hashing algorithm](#customize-the-hashing-algorithm) in Operaton.
 
 At salt generation, a random 16-byte per-user value is created, which is generated with [SecureRandom](http://docs.oracle.com/javase/6/docs/api/java/security/SecureRandom.html). It is also possible to [customize the salt generation](#customize-the-salt-generation) if desired.
 
-# Customize the Hashing Algorithm
+## Customize the Hashing Algorithm
 
 If it is necessary to use a more secure hash algorithm, you can provide your own implementation.
 
@@ -55,7 +55,7 @@ Please do not use your own implementation of a hash function, but rather a stand
 :::
 
 
-# Customize the Salt generation
+## Customize the Salt generation
 
 Similar to the hashing algorithm, the salt generation can be adjusted. First, implement the `SaltGenerator` interface from the `org.operaton.bpm.engine.impl.digest`. This ensures that all necessary functions are implemented. You can have a look at the classes `Base64EncodedSaltGenerator` and `Default16ByteSaltGenerator` from the `org.operaton.bpm.engine.impl.digest` package to see how this is done in Operaton. A template for your own implementation could look as follows:
 

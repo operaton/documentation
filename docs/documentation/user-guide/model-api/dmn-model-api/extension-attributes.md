@@ -33,6 +33,6 @@ This attribute specifies the variable name which can be used to access the resul
 It can be set and fetched similarly, calling `Input#setOperatonInputVariable()` and `Input#getOperatonInputVariable()`:
 
 ```java
-input.setOperatonInputVariable("camundaInput");
-String camundaInput = input.getOperatonInputVariable();
+input.setOperatonInputVariable("operatonInput");
+String operatonInput = input.getOperatonInputVariable();
 ```

@@ -11,15 +11,15 @@ menu:
 
 ---
 
-The following attributes are extension attributes for the `camunda` namespace `http://operaton.org/schema/1.0/cmmn`.
+The following attributes are extension attributes for the `operaton` namespace `http://operaton.org/schema/1.0/cmmn`.
 
-# assignee
+## assignee
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies a performer of a <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>.
+      This attribute specifies a performer of a <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>.
     </td>
   </tr>
   <tr>
@@ -39,19 +39,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
 </table>
 
 
-# candidateGroups
+## candidateGroups
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies which group(s) will be candidate for performing the <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>.
+      This attribute specifies which group(s) will be candidate for performing the <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>.
     </td>
   </tr>
   <tr>
@@ -71,18 +71,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
 </table>
 
-# candidateUsers
+## candidateUsers
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies which user(s) will be candidate for performing the <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>.
+      This attribute specifies which user(s) will be candidate for performing the <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>.
     </td>
   </tr>
   <tr>
@@ -102,12 +102,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
 </table>
 
-# caseBinding
+## caseBinding
 
 <table class="table table-striped">
   <tr>
@@ -129,7 +129,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Constraints</th>
     <td colspan="2">
-      If the value is set to <code>version</code> the attribute <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#caseversion">operaton:caseVersion</a> is required, see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#casebinding">Case Binding</a> for more information.
+      If the value is set to <code>version</code> the attribute <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#caseversion">operaton:caseVersion</a> is required, see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#casebinding">Case Binding</a> for more information.
     </td>
   </tr>
   <tr>
@@ -139,18 +139,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>
     </td>
   </tr>
 </table>
 
-# caseTenantId
+## caseTenantId
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the tenant id of the case definition which is to be resolved by a case task, see <a href="../reference/cmmn11/tasks/case-task.md#case-tenant-id">Case Tenant Id</a> for more information.
+      The attribute specifies the tenant id of the case definition which is to be resolved by a case task, see <a href="/docs/documentation/reference/cmmn11/tasks/case-task#case-tenant-id">Case Tenant Id</a> for more information.
     </td>
   </tr>
   <tr>
@@ -170,12 +170,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>
     </td>
   </tr>
 </table>
 
-# caseVersion
+## caseVersion
 
 <table class="table table-striped">
   <tr>
@@ -201,18 +201,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>
     </td>
   </tr>
 </table>
 
-# class
+## class
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies which Java class will be executed at runtime. The stated class must implement a <a href="../user-guide/process-engine/delegation-code.md#java-delegate">Java delegate</a> interface.
+      The attribute specifies which Java class will be executed at runtime. The stated class must implement a <a href="/docs/documentation/user-guide/process-engine/delegation-code#java-delegate">Java delegate</a> interface.
     </td>
   </tr>
   <tr>
@@ -222,7 +222,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Possible Values</th>
     <td>
-      Fully qualified Java class name of a class which implements a <a href="../user-guide/process-engine/delegation-code.md#java-delegate">Java Delegate</a> interface, e.g., <code>org.operaton.bpm.MyJavaDelegate</code>
+      Fully qualified Java class name of a class which implements a <a href="/docs/documentation/user-guide/process-engine/delegation-code#java-delegate">Java Delegate</a> interface, e.g., <code>org.operaton.bpm.MyJavaDelegate</code>
     </td>
   </tr>
   <tr>
@@ -232,19 +232,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>,
       operaton:caseExecutionListener
     </td>
   </tr>
 </table>
 
-# decisionBinding
+## decisionBinding
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies which decision definition version should be evaluated inside the <a href="../reference/cmmn11/tasks/decision-task.md">decision task</a>.
+      This attribute specifies which decision definition version should be evaluated inside the <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">decision task</a>.
     </td>
   </tr>
   <tr>
@@ -260,7 +260,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Constraints</th>
     <td colspan="2">
-      If the value is set to <code>version</code> the attribute <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#decisionversion">operaton:decisionVersion</a> is required.
+      If the value is set to <code>version</code> the attribute <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#decisionversion">operaton:decisionVersion</a> is required.
     </td>
   </tr>
   <tr>
@@ -270,18 +270,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/decision-task.md">Decision Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">Decision Task</a>
     </td>
   </tr>
 </table>
 
-# decisionTenantId
+## decisionTenantId
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the tenant id of the decision definition which is to be evaluated by a decision task, see <a href="../reference/cmmn11/tasks/decision-task.md#decision-tenant-id">Decision Tenant Id</a> for more information.
+      The attribute specifies the tenant id of the decision definition which is to be evaluated by a decision task, see <a href="/docs/documentation/reference/cmmn11/tasks/decision-task#decision-tenant-id">Decision Tenant Id</a> for more information.
     </td>
   </tr>
   <tr>
@@ -301,18 +301,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/decision-task.md">Decision Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">Decision Task</a>
     </td>
   </tr>
 </table>
 
-# decisionVersion
+## decisionVersion
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute <strong>explicitly</strong> defines which decision definition version should be called inside the <a href="../reference/cmmn11/tasks/decision-task.md">decision task</a>.
+      This attribute <strong>explicitly</strong> defines which decision definition version should be called inside the <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">decision task</a>.
     </td>
   </tr>
   <tr>
@@ -332,18 +332,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/decision-task.md">Decision Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">Decision Task</a>
     </td>
   </tr>
 </table>
 
-# delegateExpression
+## delegateExpression
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute allows specification of an expression which must resolve to an object that implements the corresponding interface (see <a href="../user-guide/process-engine/delegation-code.md">delegation code</a>).
+      The attribute allows specification of an expression which must resolve to an object that implements the corresponding interface (see <a href="/docs/documentation/user-guide/process-engine/delegation-code">delegation code</a>).
     </td>
   </tr>
   <tr>
@@ -353,7 +353,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Possible Values</th>
     <td>
-      Expression which evaluates to a Java class implementing a <a href="../user-guide/process-engine/delegation-code.md">delegation</a> interface, e.g., ```${myVariableListener```.
+      Expression which evaluates to a Java class implementing a <a href="/docs/documentation/user-guide/process-engine/delegation-code">delegation</a> interface, e.g., ```${myVariableListener```.
     </td>
   </tr>
   <tr>
@@ -363,20 +363,20 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>,
       operaton:caseExecutionListener
     </td>
   </tr>
 </table>
 
 
-# dueDate
+## dueDate
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies the initial due date of a <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a> when it is created.
+      This attribute specifies the initial due date of a <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a> when it is created.
     </td>
   </tr>
   <tr>
@@ -386,7 +386,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Possible Values</th>
     <td>
-      An expression which evaluates to a <code>java.util.Date</code>, <code>java.util.String</code> (<a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> formatted) or <code>null</code>, e.g., ```${dueDate```
+      An expression which evaluates to a <code>java.util.Date</code>, <code>java.util.String</code> (<a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> formatted) or <code>null</code>, e.g., ```${dueDate```
     </td>
   </tr>
   <tr>
@@ -396,13 +396,13 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
 </table>
 
 
-# expression
+## expression
 
 <table class="table table-striped">
   <tr>
@@ -428,19 +428,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>,
       operaton:caseExecutionListener
     </td>
   </tr>
 </table>
 
-# formKey
+## formKey
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies a form resource. See <a href="../user-guide/task-forms/index.md">task forms</a> for more information.
+      This attribute specifies a form resource. See <a href="/docs/documentation/user-guide/task-forms/">task forms</a> for more information.
     </td>
   </tr>
   <tr>
@@ -450,7 +450,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Possible Values</th>
     <td>
-      A <code>java.lang.String</code> of a form resource which can be evaluated by the <a href="../webapps/tasklist/index.md">Tasklist</a>
+      A <code>java.lang.String</code> of a form resource which can be evaluated by the <a href="/docs/documentation/webapps/tasklist/">Tasklist</a>
     </td>
   </tr>
   <tr>
@@ -460,18 +460,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
 </table>
 
-# historyTimeToLive
+## historyTimeToLive
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the history time to live (in days) for the case definition. It is used within <a href="../user-guide/process-engine/history/history-cleanup.md">History cleanup</a>.
+      The attribute specifies the history time to live (in days) for the case definition. It is used within <a href="/docs/documentation/user-guide/process-engine/history/history-cleanup">History cleanup</a>.
     </td>
   </tr>
   <tr>
@@ -496,13 +496,13 @@ The following attributes are extension attributes for the `camunda` namespace `h
   </tr>
 </table>
 
-# mapDecisionResult
+## mapDecisionResult
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute references which <a href="../user-guide/process-engine/decisions/bpmn-cmmn.md#predefined-mapping-of-the-decision-result">built-in Decision Result Mapper</a> is used to pass the result of an evaluated decision to a case variable. It should be used in combination with <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#resultvariable">operaton:resultVariable</a>.
+      The attribute references which <a href="/docs/documentation/user-guide/process-engine/decisions/bpmn-cmmn#predefined-mapping-of-the-decision-result">built-in Decision Result Mapper</a> is used to pass the result of an evaluated decision to a case variable. It should be used in combination with <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#resultvariable">operaton:resultVariable</a>.
     </td>
   </tr>
   <tr>
@@ -522,18 +522,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/decision-task.md">Decision Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">Decision Task</a>
     </td>
   </tr>
 </table>
 
-# priority
+## priority
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      This attribute specifies the initial priority of a <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a> when it is created.
+      This attribute specifies the initial priority of a <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a> when it is created.
     </td>
   </tr>
   <tr>
@@ -553,12 +553,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
 </table>
 
-# processBinding
+## processBinding
 
 <table class="table table-striped">
   <tr>
@@ -580,7 +580,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Constraints</th>
     <td colspan="2">
-      If the value is set to <code>version</code> the attribute <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#processversion">operaton:processVersion</a> is required, see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#processbinding">Process Binding</a> for more information.
+      If the value is set to <code>version</code> the attribute <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#processversion">operaton:processVersion</a> is required, see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#processbinding">Process Binding</a> for more information.
     </td>
   </tr>
   <tr>
@@ -590,18 +590,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>
     </td>
   </tr>
 </table>
 
-# processTenantId
+## processTenantId
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the tenant id of the process definition which is to be resolved by a process task, see <a href="../reference/cmmn11/tasks/process-task.md#process-tenant-id">Process Tenant Id</a> for more information.
+      The attribute specifies the tenant id of the process definition which is to be resolved by a process task, see <a href="/docs/documentation/reference/cmmn11/tasks/process-task#process-tenant-id">Process Tenant Id</a> for more information.
     </td>
   </tr>
   <tr>
@@ -621,12 +621,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>
     </td>
   </tr>
 </table>
 
-# processVersion
+## processVersion
 
 <table class="table table-striped">
   <tr>
@@ -652,12 +652,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>
     </td>
   </tr>
 </table>
 
-# repeatOnStandardEvent
+## repeatOnStandardEvent
 
 <table class="table table-striped">
   <tr>
@@ -686,12 +686,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/markers/repetition-rule.md">Repetition Rule</a>
+      <a href="/docs/documentation/reference/cmmn11/markers/repetition-rule">Repetition Rule</a>
     </td>
   </tr>
 </table>
 
-# resource
+## resource
 
 <table class="table table-striped">
   <tr>
@@ -723,19 +723,19 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>,
       operaton:caseExecutionListener
     </td>
   </tr>
 </table>
 
-# resultVariable
+## resultVariable
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the case variable in which the returned decision result is saved. It can be used in combination with <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#mapdecisionresult">operaton:mapDecisionResult</a> to define a decision result mapping.
+      The attribute specifies the case variable in which the returned decision result is saved. It can be used in combination with <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#mapdecisionresult">operaton:mapDecisionResult</a> to define a decision result mapping.
     </td>
   </tr>
   <tr>
@@ -755,18 +755,18 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>CMMN 1.1 Elements</th>
     <td>
-      <a href="../reference/cmmn11/tasks/decision-task.md">Decision Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/decision-task">Decision Task</a>
     </td>
   </tr>
 </table>
 
-# variableName
+## variableName
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The variable name that is attached to element <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variableonpart">operaton:variableOnPart</a> for which the sentry listens. Sentry is evaluated when the variable event transition occurs.
+      The variable name that is attached to element <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variableonpart">operaton:variableOnPart</a> for which the sentry listens. Sentry is evaluated when the variable event transition occurs.
     </td>
   </tr>
   <tr>
@@ -776,7 +776,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>Operaton extension element</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variableonpart">operaton:variableOnPart</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variableonpart">operaton:variableOnPart</a>
     </td>
   </tr>
 </table>

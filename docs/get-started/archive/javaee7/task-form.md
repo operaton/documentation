@@ -14,11 +14,11 @@ menu:
 
 Now we add a task form and configure it in the BPMN 2.0 process, then, re-deploy the application and go to the Operaton Tasklist to see the JSF form.
 
-![Example image](./img/approve-order.png)
+![Example image](/img/get-started/archive/javaee7/approve-order.png)
 
 After the order has been persisted, a user can approve the order. For that, a task form is needed to display the order information and backend logic to fetch and update business objects.
 
-# Add a CDI Controller Bean
+## Add a CDI Controller Bean
 
 To update the persisted entity we use a named CDI Bean `ApproveOrderController`. To gather the persisted order entity, we get the order id from the process variables of the `businessProcess`. With the id we can load the order entity through the order business logic. After the order has been updated, the detached entity state is merged by the order business logic.
 
@@ -72,7 +72,7 @@ public class ApproveOrderController implements Serializable {
 }
 ```
 
-# Extend Order Business Logic
+## Extend Order Business Logic
 
 The order business logic is extended to provide a method to load an order entity from the database by order id, to merge a detached order entity and to complete the task form. For that, the task form is injected, which is provided by the Operaton CDI artifact.
 
@@ -117,7 +117,7 @@ public class OrderBusinessLogic {
 }
 ```
 
-# Create a JSF Form Task Form
+## Create a JSF Form Task Form
 
 Add a file named `approveorder.xhtml` to the `src/main/webapp` folder. Add the following content:
 
@@ -134,7 +134,7 @@ Add a file named `approveorder.xhtml` to the `src/main/webapp` folder. Add the f
        request parameters and cached in the CDI conversation scope.
       -->
 
-    <f:event type="preRenderView" listener="#{camundaTaskForm.startTaskForm()}" />
+    <f:event type="preRenderView" listener="#{operatonTaskForm.startTaskForm()}" />
   </f:metadata>
   <h:head>
     <title>Approve Order</title>
@@ -161,17 +161,17 @@ When the user approves or disapproves the order, it is directly set on the cache
 On form submit, the `approveOrderController.submitForm()` method calls the EJB `mergeOrderAndCompleteTask` method with the cached order entity. The EJB will merge the updated order entity if necessary and completes the task form.
 
 
-# Configure the Task Form in the Process
+## Configure the Task Form in the Process
 
-![Example image](./img/pizza-order-process-task-form.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-task-form.png)
 
 Open the process with the modeler. Click on the *Approve Order* user task. In the properties view, set the `Form Key` property to `app:approveorder.jsf`. This means that we want to use an external JSF form and that the form is loaded from the application.
 
 
-# Configure the Conditional Sequence Flows in the Process
+## Configure the Conditional Sequence Flows in the Process
 
-![Example image](./img/pizza-order-process-no.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-no.png)
 
 Open the process with the modeler. In the properties view, set the `Condition` property of the conditional sequence flows after the exclusive gateway to `${orderBusinessLogic.getOrder(orderId).approved}` respectively `${not orderBusinessLogic.getOrder(orderId).approved}`.
 
-When you are done, save all resources, [perform a Maven build](deploy.md#build-the-process-application), and [redeploy](deploy.md#deploy-to-wildfly) the process application. Start the process `Order Pizza` in [Tasklist](http://localhost:8080/operaton/app/tasklist). Fill out the emerging form. Select the `All Tasks` element on the left side of Tasklist. An `Approve Order` task should then be listed in the tasklist. Go to the task and press on Claim. Now you can approve the pizza order.
+When you are done, save all resources, [perform a Maven build](deploy#build-the-process-application), and [redeploy](deploy#deploy-to-wildfly) the process application. Start the process `Order Pizza` in [Tasklist](http://localhost:8080/operaton/app/tasklist). Fill out the emerging form. Select the `All Tasks` element on the left side of Tasklist. An `Approve Order` task should then be listed in the tasklist. Go to the task and press on Claim. Now you can approve the pizza order.

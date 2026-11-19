@@ -19,14 +19,14 @@ HttpConnector http = Connectors.getConnector(HttpConnector.ID);
 ```
 
 
-# Configure Apache HTTP Client
+## Configure Apache HTTP Client
 
 Operaton Connect HTTP client uses the Apache HTTP client to make HTTP requests. Accordingly, it supports the same configuration options.
 
-## Default Configuration
+### Default Configuration
 
 By default, the HTTP client uses Apache's default configuration and respects the [system properties that are supported by HTTP client](https://hc.apache.org/httpcomponents-client-4.5.x/current/httpclient/apidocs/org/apache/http/impl/client/HttpClientBuilder.html).
-## Custom Configuration
+### Custom Configuration
 
 If you want to reconfigure the client going beyond the default configuration options, e.g. you want to configure another connection manager, the easiest way is to register
 a new connector configurator.
@@ -65,9 +65,9 @@ information see the [extending Connect](./extending-connect.md) section.
 org.operaton.connect.example.HttpConnectorConfigurator
 ```
 
-# Requests
+## Requests
 
-## Create a Simple HTTP Request
+### Create a Simple HTTP Request
 
 The HTTP connector can be used to create a new request, set a HTTP method, URL,
 content type and payload.
@@ -96,7 +96,7 @@ The HTTP methods PUT, DELETE, PATCH, HEAD, OPTIONS, TRACE
 are also available.
 
 
-## Adding HTTP Headers to a Request
+### Adding HTTP Headers to a Request
 
 To add own headers to the HTTP request the method `header` is
 available.
@@ -109,7 +109,7 @@ HttpResponse response = http.createRequest()
   .execute();
 ```
 
-## Enabling HTTP Response Error Handling
+### Enabling HTTP Response Error Handling
 
 By default, the HTTP connector does not seamlessly handle 4XX and 5XX related response errors during HTTP call.
 To activate the handling of these errors without additional scripting, set the `throw-http-error` property to `TRUE` via the `configOption` method. Once enabled, the client will throw an exception in case of http response errors (status code 400-599).
@@ -122,7 +122,7 @@ HttpResponse response = http.createRequest()
   .execute();
 ```
 
-## Using the Generic API
+### Using the Generic API
 
 Besides the configuration methods also a generic API exists to
 set parameters of a request. The following parameters are
@@ -160,7 +160,7 @@ request.setRequestParameter("url", "http://operaton.org");
 request.setRequestParameter("payload", "hello world!");
 ```
 
-# Response
+## Response
 
 A response contains the status code, response headers and body.
 
@@ -176,7 +176,7 @@ After the response was processed it should be closed.
 response.close()
 ```
 
-## Using the Generic API
+### Using the Generic API
 
 Besides the response methods a generic API is provided
 to gather the response parameters. The following parameters

@@ -15,11 +15,11 @@ You can override the default configuration of Tasklist using a central configura
 located in `app/tasklist/scripts/config.js`. The following configuration options are
 available:
 
-# Date Format
+## Date Format
 
 Dates can be configured by specifying a `dateFormat` object. The values of the properties of this
 object must be strings representing date formats in accordance with
-[moment.js](http://momentjs.com). Following date formats are used within Tasklist:
+[moment.js](https://momentjs.com). Following date formats are used within Tasklist:
 
 * `monthName` represents the name of a month (e.g., January).
 * `day` represents the number of a day in a month (1..31).
@@ -29,7 +29,7 @@ object must be strings representing date formats in accordance with
 * `short` represents a short format of a date excluding time.
 
 
-## Example
+### Example
 
 ```javascript
 export default {
@@ -42,10 +42,10 @@ export default {
 ```
 
 
-# Localization
+## Localization
 
 Tasklist can be localized. Operaton maintains English and German translation files.
-You can find and download community maintained translation files at the [Operaton webapp translations repository](https://github.com/operaton/operaton-webapp-translations).
+You can find the current Tasklist locale files in the [Operaton repository](https://github.com/operaton/operaton/tree/main/webapps/frontend/public/app/tasklist/locales).
 
 The localization of Tasklist is contained in the `app/tasklist/locales/` directory. This
 directory contains a separate localization file for every available language. The file name
@@ -74,7 +74,7 @@ save it as new localization file with the corresponding language code. To make t
 available, add it to the list of available locales in the configuration file.
 
 
-# Custom Scripts
+## Custom Scripts
 
 Tasklist allows you to include arbitrary JavaScript files. This allows you to extend Tasklist with custom code. The script file might contain a
 custom frontend module. Tasklist shares the frontend module structure with [Cockpit Plugins](../cockpit/extend/plugins.md#structure-of-a-frontend-module).
@@ -90,11 +90,7 @@ export default {
 ```
 This includes a `custom-module/module.js` file. The path is relative to the `app/tasklist` folder in the Operaton webapp .war file.
 
-You can find a complete example about how to use `customScripts` to develop a Tasklist Plugin in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/tasklist/cats-plugin).
-
-
-
-# Shortcuts
+## Shortcuts
 
 If you want to change the keyboard shortcuts for certain tasklist operations, you can change the key-combination and the description of the shortcuts in the `shortcuts` section of the config file.
 
@@ -103,7 +99,7 @@ Removing an existing entry from the list will disable this shortcut (you can sti
 You can also add additional shortcuts. If you do so, whenever the user presses the registered combination of keys, an angular event in the form of `shortcut:{{nameOfShortcut}}` will be broadcasted across the application. A Tasklist plugin can then react to this event.
 
 
-# Logo and Header Color
+## Logo and Header Color
 
 You can change the visual aspects of Tasklist. The user stylesheet file is located in
 `app/tasklist/styles/user-styles.css`. This file contains CSS which is loaded into Tasklist
@@ -138,7 +134,7 @@ export default {
 }
 ```
 
-# Change CSRF Cookie Name
+## Change CSRF Cookie Name
 
 The default name of the CSRF Cookie is `XSRF-TOKEN`. When using other applications within the
 same-origin, the CSRF mechanisms could interfere with each other. To avoid the name conflict, you
@@ -150,9 +146,9 @@ export default {
 }
 ```
 
-**Note:** Please make sure to change the CSRF cookie name also on [server-side](../shared-options/csrf-prevention.md#cookie-name).
+**Note:** Please make sure to change the CSRF cookie name also on [server-side](../shared-options/csrf-prevention.md)
 
-# Disable Welcome Message for new Users
+## Disable Welcome Message for new Users
 
 First-time visitors are shown a message directing them to the Operaton welcome page. If you do
 not want this message to be shown, you can disable it by adjusting the `config.js` as follows:
@@ -165,7 +161,7 @@ export default {
 
 **Note:** This does only affect the Tasklist login page. For other webapps, you need to adjust the corresponding config file as well.
 
-# Assign Process Instance Id to Task Comments
+## Assign Process Instance Id to Task Comments
 
 When creating a Task Comment, the process instance ID is not assigned by default.
 Queries for comments by process instance ID will not include those comments.
@@ -180,10 +176,10 @@ export default {
 }
 ```
 
-# Advanced Styles Customization
+## Advanced Styles Customization
 
 In addition to the basic `user-styles.css` file, you can edit the source style- and layout files
-using [less](http://lesscss.org/) to change the overall appearance of Tasklist.
+using [Less](https://lesscss.org/) to change the overall appearance of Tasklist.
 
 If you want to customize the interface with `less`, you should probably start by having a look
 at the variables defined in the following files:
@@ -193,7 +189,7 @@ at the variables defined in the following files:
  - `node_modules/operaton-commons-ui/resources/less/cam-variables.less`
    overrides some Bootstrap variables (above) and add some custom ones
 
-## Compiling with Grunt
+### Compiling with Grunt
 
 From within the `operaton-bpm-webapp` directory:
 

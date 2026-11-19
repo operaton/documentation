@@ -10,10 +10,8 @@ menu:
 
 ---
 
-
-
 Diagnostics data is constantly collected and can be collected only by you. This allows you to access the collected data through the Java and REST APIs of Operaton.
-Being able to easily access the collected data is helpful when asking for help in our [forum](https://forum.operaton.org/) or when opening issues in our [issue tracker](https://app.camunda.com/jira) as it contains many of the information that are usually necessary to understand your Operaton setup.
+Being able to easily access the collected data is helpful when asking for help in our [forum](https://forum.operaton.org/) or when opening issues in our [issue tracker](https://github.com/operaton/operaton/issues), as it contains much of the information that is usually necessary to understand your Operaton setup.
 
 ## How to access the data
 
@@ -34,7 +32,7 @@ String jdkVersion = productInternals.getJdk().getVersion();
 
 ### REST API
 
-You can fetch the collected data via the REST API by calling the restref page="getTelemetryData" text="Get Telemetry Data" tag="Telemetry endpoint.
+You can fetch the collected data via the REST API by calling the <RestRef operation="getTelemetryData" text="Get Telemetry Data" tag="Telemetry" /> endpoint.
 
 ## Collected data
 
@@ -47,6 +45,7 @@ The "General Data" category contains information about the process engine:
 * Installation - an id that is stored as process engine configuration property
 * Product name - the name of the product (i.e., `Operaton BPM Runtime`)
 * Product version - the version of the process engine (i.e., `7.X.Y`)
+* `edition` - a legacy compatibility field. Operaton does not have separate editions and reports `community` for compatibility.
 
 ### Meta and environment data
 The "Meta/Environment Data" category contains information about the environmental setup:
@@ -58,7 +57,7 @@ The "Meta/Environment Data" category contains information about the environmenta
 
 The application server information cannot be obtained in an embedded process engine setup where no web application (e.g. Tasklist, Cockpit, REST application) is deployed and used.
 
-In case of Azul Zulu JDK, the vendor will be send as "Oracle Corporation" as it cannot be distinguished programmatically from an Oracle JDK.
+In case of Azul Zulu JDK, the vendor will be sent as "Oracle Corporation" as it cannot be distinguished programmatically from an Oracle JDK.
 
 
 ### Usage data
@@ -76,8 +75,8 @@ The counts are collected from the start of the engine or the last reported time 
     "installation": "8343cc7a-8ad1-42d4-97d2-43452c0bdfa3",
     "product": {
       "name": "Operaton BPM Runtime",
-      "version": "7.14.0",
-      "edition": "tbd",
+      "version": "2.1.2",
+      "edition": "community",
       "internals": {
         "database": {
           "vendor": "h2",
@@ -101,21 +100,11 @@ The counts are collected from the start of the engine or the last reported time 
           "decision-instances": { "count": 140 },
           "executed-decision-elements": { "count": 732 }
         },
-        "data-collection-start-date": "2022-11-320T15:53:20.386+0100",
+        "data-collection-start-date": "2022-11-30T15:53:20.386+0100",
         "operaton-integration": [
           "spring-boot-starter",
           "operaton-bpm-run"
         ],
-        "license-key": {
-          "customer": "customer name",
-          "type": "UNIFIED",
-          "valid-until": "2022-09-30",
-          "unlimited": false,
-          "features": {
-            "camundaBPM": "true"
-          },
-          "raw": "customer=customer name;expiryDate=2022-09-30;camundaBPM=true;optimize=false;cawemo=false"
-        },
         "webapps": [
           "cockpit",
           "admin"
@@ -127,4 +116,4 @@ The counts are collected from the start of the engine or the last reported time 
 
 ## Source code
 
-In case you want further details, you can have a look at the implementation of the diagnostics topic in [our codebase](https://github.com/operaton/operaton/blob/master/engine/src/main/java/org/operaton/bpm/engine/impl/diagnostics/DiagnosticsCollector.java). The link leads you to the current `master` version of the feature.
+In case you want further details, you can have a look at the implementation of the diagnostics topic in [our codebase](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/diagnostics/DiagnosticsCollector.java). The link leads you to the current `main` version of the feature.

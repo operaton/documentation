@@ -17,10 +17,10 @@ It is useful if you have a parallel token flow in a process and you want to cons
 
 A terminate event on process instance level terminates the complete instance. On subprocess level the current scope and all contained processes instances will be terminated.
 
-<div data-bpmn-diagram="../bpmn/event-terminate"></div>
+<div data-bpmn-diagram="./bpmn/event-terminate"></div>
 
 
-# Terminate Event Definition
+## Terminate Event Definition
 
 A terminate event is modeled as an end event with an additional definition element to mark the termination:
 
@@ -35,22 +35,22 @@ A terminate event is modeled as an end event with an additional definition eleme
 ```
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -59,6 +59,6 @@ A terminate event is modeled as an end event with an additional definition eleme
   </tr>
 </table>
 
-## Additional Resources
+### Additional Resources
 
-* [Terminate Events](http://operaton.org/bpmn/reference.html#events-termination) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Terminate Events](https://camunda.com/bpmn/reference/#events-termination) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

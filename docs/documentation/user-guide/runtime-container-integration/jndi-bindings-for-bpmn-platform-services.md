@@ -15,5 +15,5 @@ The Operaton Services (i.e., Process Engine Service and Process Application Serv
 * Process Engine Service: `java:global/operaton-bpm-platform/process-engine/ProcessEngineService!org.operaton.bpm.ProcessEngineService`
 * Process Application Service: `java:global/operaton-bpm-platform/process-engine/ProcessApplicationService!org.operaton.bpm.ProcessApplicationService`
 
-On JBoss EAP and WildFly, you are able to get any of these Operaton Services through a JNDI lookup.
-However, on Apache Tomcat you have to do quite a bit more to be able to do a lookup to get one of these Operaton Services.
+On JBoss EAP and WildFly, you can get any of these Operaton Services through a JNDI lookup.
+However, on Apache Tomcat you have to do quite a bit more to perform a lookup for one of these Operaton Services.

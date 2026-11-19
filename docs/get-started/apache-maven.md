@@ -12,10 +12,26 @@ menu:
 
 This page lists the most commonly used Apache Maven Coordinates for Operaton.
 
-Most Operaton artifacts are pushed to [maven central](https://central.sonatype.com/).
+Operaton release artifacts are published to [Maven Central](https://central.sonatype.com/search?q=org.operaton.bpm).
+Snapshot artifacts are published to Central's snapshot repository. Add it only when you intentionally depend on `*-SNAPSHOT` versions:
+
+```xml
+<repositories>
+  <repository>
+    <id>central-snapshots</id>
+    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+    <releases>
+      <enabled>false</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+```
 
 
-# Operaton BOM (Bill of Materials)
+## Operaton BOM (Bill of Materials)
 
 ```xml
 <dependencyManagement>
@@ -23,7 +39,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
     <dependency>
       <groupId>org.operaton.bpm</groupId>
       <artifactId>operaton-bom</artifactId>
-      <version>v1.0.0-beta-3</version>
+      <version>2.2.1</version>
       <scope>import</scope>
       <type>pom</type>
     </dependency>
@@ -35,7 +51,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
   Please import the Operaton BOM if you use multiple Operaton projects. The BOM defines versions for all Operaton projects. This way it is ensured that no incompatible versions are imported.
 :::
 
-# Operaton Engine
+## Operaton Engine
 
 ```xml
 <dependency>
@@ -45,7 +61,7 @@ Most Operaton artifacts are pushed to [maven central](https://central.sonatype.c
 ```
 
 
-# Operaton Engine Spring Integration
+## Operaton Engine Spring Integration
 
 The `operaton-engine` Spring integration for Spring Framework 5:
 
@@ -65,7 +81,7 @@ The `operaton-engine` Spring integration for Spring Framework 6:
 </dependency>
 ```
 
-# Operaton Engine CDI Integration
+## Operaton Engine CDI Integration
 
 ```xml
 <dependency>
@@ -74,7 +90,7 @@ The `operaton-engine` Spring integration for Spring Framework 6:
 </dependency>
 ```
 
-# Operaton DMN Engine BOM (Bill of Materials)
+## Operaton DMN Engine BOM (Bill of Materials)
 This BOM allows to use the DMN engine standalone without the BPMN engine and the rest of the Operaton Platform.
 
 ```xml
@@ -82,14 +98,14 @@ This BOM allows to use the DMN engine standalone without the BPMN engine and the
   <dependency>
     <groupId>org.operaton.bpm.dmn</groupId>
     <artifactId>operaton-engine-dmn-bom</artifactId>
-    <version>v1.0.0-beta-3</version>
+    <version>2.2.1</version>
     <type>pom</type>
     <scope>import</scope>
   </dependency>
 </dependencyManagement>
 ```
 
-# Operaton DMN
+## Operaton DMN
 This dependency allows to use DMN engine standalone without the BPMN engine and the rest of the Operaton Platform.
 It is not needed when using `operaton-engine` because that already contains the DMN engine.
 
@@ -100,7 +116,7 @@ It is not needed when using `operaton-engine` because that already contains the 
 </dependency>
 ```
 
-# Process Application EJB Client
+## Process Application EJB Client
 
 ```xml
 <dependency>
@@ -109,10 +125,10 @@ It is not needed when using `operaton-engine` because that already contains the 
 </dependency>
 ```
 
-# Other Operaton Modules:
+## Other Operaton Modules:
 
-* [DMN Engine](../documentation/user-guide/dmn-engine/embed.md#maven-coordinates)
-* [Operaton Spin](../documentation/reference/spin/index.md)
-* [Operaton Connect](../documentation/reference/connect/index.md#maven-coordinates)
-* [Templating Engines](../documentation/user-guide/process-engine/templating.md#install-a-template-engine-for-an-embedded-process-engine)
-* [Spring Boot Integration](../documentation/user-guide/spring-boot-integration/index.md)
+* [DMN Engine](/docs/documentation/user-guide/dmn-engine/embed/#maven-coordinates)
+* [Operaton Spin](/docs/documentation/reference/spin)
+* [Operaton Connect](/docs/documentation/reference/connect/#maven-coordinates)
+* [Templating Engines](/docs/documentation/user-guide/process-engine/templating/#install-a-template-engine-for-an-embedded-process-engine)
+* [Spring Boot Integration](/docs/documentation/user-guide/spring-boot-integration/)

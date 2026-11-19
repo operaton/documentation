@@ -1,0 +1,23 @@
+/* Domain color overrides for rendered Mermaid ER diagram (schema.mermaid).
+   Applied via: mmdc --cssFile schema-theme.css
+   Colors are keyed to table prefixes: GE, RE, RU, HI, ID               */
+
+/* General (GE) — steel blue */
+.node[id*="ACT_GE"] .label { background-color: #d0e4f7; }
+.node[id*="ACT_GE"] rect    { fill: #d0e4f7; stroke: #4a6fa5; stroke-width: 2px; }
+
+/* Repository (RE) — sea green */
+.node[id*="ACT_RE"] .label { background-color: #d4edda; }
+.node[id*="ACT_RE"] rect    { fill: #d4edda; stroke: #2e8b57; stroke-width: 2px; }
+
+/* Runtime (RU) — golden */
+.node[id*="ACT_RU"] .label { background-color: #fff3cd; }
+.node[id*="ACT_RU"] rect    { fill: #fff3cd; stroke: #b8860b; stroke-width: 2px; }
+
+/* History (HI) — warm amber */
+.node[id*="ACT_HI"] .label { background-color: #fde8cc; }
+.node[id*="ACT_HI"] rect    { fill: #fde8cc; stroke: #cd853f; stroke-width: 2px; }
+
+/* Identity (ID) — medium purple */
+.node[id*="ACT_ID"] .label { background-color: #e8d5f5; }
+.node[id*="ACT_ID"] rect    { fill: #e8d5f5; stroke: #7b5ea7; stroke-width: 2px; }

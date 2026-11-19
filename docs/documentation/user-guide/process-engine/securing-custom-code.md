@@ -17,15 +17,15 @@ The process engine offers numerous extension points for customization of process
 
 Only trusted users should be authorized to interact with these endpoints. How access can be restricted is outlined in the next sections.
 
-# Operaton in a Trusted Environment
+## Operaton in a Trusted Environment
 
 When Operaton is deployed in an environment where only trusted parties can access the system (for example due to firewall policies), no untrusted party can access the APIs for submitting custom code and the following suggestions need not be adhered to.
 
-# Deployments
+## Deployments
 
 Access to performing deployments can be restricted by using the [authorization infrastructure](authorization-service.md) and activating authentication checks for any endpoint a potentially untrusted party may access. The crucial permission for making deployments is `Deployment/Create`. Untrusted users should not be granted this permission.
 
-# Queries
+## Queries
 
 Query access cannot be generally restricted with authorizations. Instead, a query's result is reduced to entities a user is authorized to access. Thus, authorization permissions cannot be used to guard expression evaluation in queries.
 

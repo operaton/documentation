@@ -11,7 +11,7 @@ menu:
 ---
 
 
-![Example img](./img/tasklist-create-filter.png)Create Filter
+![Example img](/img/documentation/webapps/tasklist/tasklist-create-filter.png)Create Filter
 
 
 In Tasklist, you can create and select filters. You can use these filters to create lists of tasks, sorted by specified criteria. To create a filter, select *Create a Filter*. You will then see a screen as depicted in the above image. You have several options to configure your filter:
@@ -22,18 +22,18 @@ In Tasklist, you can create and select filters. You can use these filters to cre
 * **Variables** - Specify which variables are displayed in the [filter results](../tasklist/dashboard.md#filter-results) section of the [dashboard](../tasklist/dashboard.md). Setting variables here has no influence on which tasks are displayed. To set the variables, you need to insert a *Name*, which is the coded name of the variable, and a *Label*, which defines what the variable will be named in the [filter results](../tasklist/dashboard.md#filter-results).
 
 
-# Expressions in Filters
+## Expressions in Filters
 
-Several of the filter criteria accept expressions as values. These expressions are written in [JUEL](http://juel.sourceforge.net/). In filters which are related to times and dates, you can use the dateTime class, which returns a [Joda-Time](http://www.joda.org/joda-time/) DateTime object.
+Several of the filter criteria accept expressions as values. These expressions are written in [JUEL](https://juel.sourceforge.net/). In filters which are related to times and dates, you can use the dateTime class, which returns a [Joda-Time](https://www.joda.org/joda-time/) DateTime object.
 
 :::warning[Security Consideration]
-  Filter expressions can be abused to execute arbitrary code when the query is evaluated. It is therefore required that any user authorized to create filters is trusted in this respect. The default behavior of evaluating filter expressions can be deactivated in the process engine configuration. See the section on <a href="../user-guide/process-engine/securing-custom-code.md">security considerations for custom code</a> for details.
+  Filter expressions can be abused to execute arbitrary code when the query is evaluated. It is therefore required that any user authorized to create filters is trusted in this respect. The default behavior of evaluating filter expressions can be deactivated in the process engine configuration. See the section on <a href="/docs/documentation/user-guide/process-engine/securing-custom-code">security considerations for custom code</a> for details.
 :::
 
 
-# Common Filters
+## Common Filters
 
-![Example img](./img/tasklist-filter-detail.png)Filter Details
+![Example img](/img/documentation/webapps/tasklist/tasklist-filter-detail.png)Filter Details
 
 In the table below we list some of the more common and useful filters that you can create in Tasklist and how to set them up.
 
@@ -188,7 +188,7 @@ In the table below we list some of the more common and useful filters that you c
             Due After
           </td>
           <td>
-            The specified date in accordance with <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> (e.g., <code>2015-01-01T00:00:01</code>)
+            The specified date in accordance with <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> (e.g., <code>2015-01-01T00:00:01</code>)
           </td>
         </tr>
         <tr>

@@ -12,7 +12,7 @@ menu:
 
 ---
 
-# Limit the exposed Spring Beans
+## Limit the exposed Spring Beans
 
 When using the `ProcessEngineFactoryBean`, by default, all expressions and scripts in the BPMN processes will also "see" all the Spring beans. It's possible to limit the beans you want to expose or even expose no beans at all using a map that you can configure. The example below exposes a single bean (printer), available to use under the key `printer`. To expose NO beans at all, pass an empty map as `beans` property on the `SpringProcessEngineConfiguration`. When no `beans` property is set, all Spring beans in the context will be available.
 
@@ -31,7 +31,7 @@ When using the `ProcessEngineFactoryBean`, by default, all expressions and scrip
       class="org.operaton.bpm.engine.spring.test.transaction.Printer" />
 ```
 
-# Using Spring Beans in expressions
+## Using Spring Beans in expressions
 
 The exposed beans can be used in expressions. For example, the `SpringTransactionIntegrationTest` `testBasicActivitiSpringIntegration.bpmn20.xml` shows how a method on a Spring bean can be invoked using a UEL method expression:
 
@@ -79,7 +79,7 @@ And the Spring bean configuration (also shown above) looks like this:
 </beans>
 ```
 
-# Expression resolving with the shared process engine
+## Expression resolving with the shared process engine
 
 In a shared process engine deployment scenario, you have a process engine which dispatches to multiple applications. In this case, there is not a single Spring application context but each application may maintain its own application context. The process engine cannot use a single expression resolver for a single application context but must delegate to the appropriate process application, depending on which process is currently being executed.
 
@@ -93,7 +93,7 @@ This functionality is provided by the `org.operaton.bpm.engine.spring.applicatio
   The `SpringProcessApplicationElResolver` class is automatically detected if the `operaton-engine-spring` module is included as a library of the process application, not as a global library.
 :::
 
-# Using Spring Beans in scripting
+## Using Spring Beans in scripting
 
 When using `ProcessEngineFactoryBean`, all Spring beans are accessible in Groovy, JavaScript, and Jython. For example, the `ScriptTaskTest-applicationContext.xml` exposes the bean 'testbean':
 

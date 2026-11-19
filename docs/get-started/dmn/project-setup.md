@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Java Project for DMN'
+title: 'Set Up a Java Project for DMN'
 sidebar_position: 20
 
 menu:
@@ -10,7 +10,7 @@ menu:
     identifier: "get-started-dmn-setup"
     description: "Set up an Apache Maven-based process application inside Eclipse."
 
-aliases: [/dmn11/project-setup/]
+aliases: [/dmn/project-setup/]
 ---
 
 Now you are ready to set up your first process application project in the IDE of your choice, the following description uses Eclipse.
@@ -19,17 +19,11 @@ Now you are ready to set up your first process application project in the IDE of
 DMN is a modeling language for *decisions*, whereas BPMN is a language for *processes*. This tutorial is about decisions. However, due to Operaton's BPMN-focused heritage, the Java project contains classes and files with names like `ProcessApplication` and `processes.xml`. These are in fact generally applicable and can be used with both processes and decisions.
 :::
 
-# Create a new Maven Project
-
-:::note[Fancy to save work and use a project template instead?]
-
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](../../documentation/user-guide/process-applications/maven-archetypes.md) for details. The archetype will create a project according to our best practices.
-
-:::
+## Create a new Maven Project
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/dmn/eclipse-new-project.png)
 
 On the first page of the *New Maven Project Wizard* select *Create a simple project (skip archetype selection)*. Click Next.
 
@@ -37,7 +31,7 @@ On the second page (see screenshot), configure the Maven coordinates for the pro
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* View.
 
-# Add Operaton Maven Dependencies
+## Add Operaton Maven Dependencies
 
 The next step consists of setting up the Maven dependencies for your new process application. Add the following dependencies to the `pom.xml` file of your project:
 
@@ -51,7 +45,7 @@ The next step consists of setting up the Maven dependencies for your new process
   <packaging>war</packaging>
 
   <properties>
-    <camunda.version>7.22.0</camunda.version>
+    <operaton.version>2.2.1</operaton.version>
     <maven.compiler.release>11</maven.compiler.release>
   </properties>
 
@@ -60,7 +54,7 @@ The next step consists of setting up the Maven dependencies for your new process
       <dependency>
         <groupId>org.operaton.bpm</groupId>
         <artifactId>operaton-bom</artifactId>
-        <version>${camunda.version}</version>
+        <version>${operaton.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -77,7 +71,7 @@ The next step consists of setting up the Maven dependencies for your new process
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
+      <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -87,12 +81,12 @@ The next step consists of setting up the Maven dependencies for your new process
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.15.0</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.3.2</version>
+        <version>3.5.1</version>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
@@ -105,7 +99,7 @@ The next step consists of setting up the Maven dependencies for your new process
 
 Now you can perform the first build. Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`.
 
-# Add a Process Application Class
+## Add a Process Application Class
 
 Next, you need to create a package, e.g., `org.operaton.bpm.getstarted.dmn` and add a Process Application class to it. The Process Application class constitutes the interface between your application and the process engine.
 
@@ -123,7 +117,7 @@ public class DinnerApplication extends ServletProcessApplication
 ```
 
 
-# Add a META-INF/processes.xml Deployment Descriptor
+## Add a META-INF/processes.xml Deployment Descriptor
 
 The last step to set up the process application is to add the `META-INF/processes.xml` deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) this process application makes to the process engine.
 

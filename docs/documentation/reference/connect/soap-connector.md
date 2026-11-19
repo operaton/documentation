@@ -23,9 +23,9 @@ the Apache HTTP client in the default implementation. To read about default and 
 please see the corresponding section in the [HTTP connector docs](./http-connector.md).
 
 
-# Request
+## Request
 
-## Creating a Request
+### Creating a Request
 
 The SOAP HTTP connector can be used to create a new request, set a URL, content type
 and payload.
@@ -39,7 +39,7 @@ connector.createRequest()
   .execute();
 ```
 
-## Adding HTTP Headers to a Request
+### Adding HTTP Headers to a Request
 
 To add own headers to the HTTP request the method `header` is
 available.
@@ -54,7 +54,7 @@ connector.createRequest()
   .execute();
 ```
 
-## Using the Generic API
+### Using the Generic API
 
 Besides the configuration methods also a generic API exists to
 set parameters of a request. The following parameters are
@@ -92,7 +92,7 @@ request.setRequestParameter("url", "http://operaton.org");
 request.setRequestParameter("payload", "hello world!");
 ```
 
-# Response
+## Response
 
 A response contains the status code, response headers and body.
 
@@ -108,7 +108,7 @@ After the response was processed it should be closed.
 response.close()
 ```
 
-## Using the Generic API
+### Using the Generic API
 
 Besides the response methods a generic API is provided
 to gather the response parameters. The following parameters

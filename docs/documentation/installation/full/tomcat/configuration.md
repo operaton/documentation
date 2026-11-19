@@ -5,13 +5,13 @@ sidebar_position: 30
 description: "Configure the installation."
 
 ---
-# Configure the Full Distribution for Tomcat
+## Configure the Full Distribution for Tomcat
 
 This page explains how to configure the full distribution for Tomcat Application Server.
 
-## LDAP
+### LDAP
 
-In order to setup LDAP for the Tomcat distribution, you have to perform the following steps:
+In order to set up LDAP for the Tomcat distribution, you have to perform the following steps:
 
 
 ### Add the LDAP Library
@@ -80,11 +80,11 @@ The `administratorUserName` property should contain the user id of the LDAP user
 See our user guide for complete documentation on the [LDAP Identity Provider Plugin](../../../user-guide/process-engine/identity-service.md#the-ldap-identity-service) and the [Administrator Authorization Plugin](../../../user-guide/process-engine/authorization-service.md#the-administrator-authorization-plugin).
 
 
-## HAL Resource Caching
+### HAL Resource Caching
 
-If you use LDAP as Indentity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
-Users and Groups in the Operaton webapplication. In order to activate this, add the following
-configuration to the `web.xml` file of Operaton webapplication
+If you use LDAP as Identity Provider, you should consider [activating caching](../../../reference/rest/overview/hal.md#caching-of-hal-relations) of
+Users and Groups in the Operaton web application. In order to activate this, add the following
+configuration to the `web.xml` file of Operaton web application
 (`operaton-webapp-tomcat-$PLATFORM_VERSION.war/WEB-INF/web.xml`):
 
 ```xml
@@ -123,7 +123,7 @@ configuration to the `web.xml` file of Operaton webapplication
 </web-app>
 ```
 
-## Session Cookie in Webapps
+### Session Cookie in Webapps
 
 To configure the **Session Cookie**, you can adjust the deployment descriptor of the Web applications.
 You can find it in the `WEB-INF/web.xml` in the following section:
@@ -188,8 +188,8 @@ The following list describes all possible parameters you can use for the filter 
   <tr>
     <td>enableSecureCookie</td>
     <td>
-      If set to <code>true</code>, the cookie flag <a href="../webapps/shared-options/cookie-security.md#secure">Secure</a> is enabled for the
-      <a href="../webapps/shared-options/cookie-security.md">Session Cookie</a>.<br/><br/>
+      If set to <code>true</code>, the cookie flag <a href="/docs/documentation/webapps/shared-options/cookie-security#secure">Secure</a> is enabled for the
+      <a href="/docs/documentation/webapps/shared-options/cookie-security">Session Cookie</a>.<br/><br/>
       <strong>Note:</strong> If the <code>Secure</code> flag is set in the cookie by any other means already, this property will not remove it by setting it to <code>false</code>.
     </td>
     <td><code>false</code></td>
@@ -197,7 +197,7 @@ The following list describes all possible parameters you can use for the filter 
   <tr>
     <td>enableSameSiteCookie</td>
     <td>
-      If set to <code>false</code>, the cookie flag <a href="../webapps/shared-options/cookie-security.md#samesite">SameSite</a> is disabled. The default value of the <code>SameSite</code> cookie is <code>LAX</code> and it can be changed via <code>same-site-cookie-option</code> configuration property.<br/><br/>
+      If set to <code>false</code>, the cookie flag <a href="/docs/documentation/webapps/shared-options/cookie-security#samesite">SameSite</a> is disabled. The default value of the <code>SameSite</code> cookie is <code>LAX</code> and it can be changed via <code>same-site-cookie-option</code> configuration property.<br/><br/>
       <strong>Note:</strong> If the <code>SameSite</code> flag is set in the cookie by any other means already, this property will not adjust or remove it.
     </td>
     <td><code>true</code></td>
@@ -239,10 +239,10 @@ The following list describes all possible parameters you can use for the filter 
 
 Please also see the detailed overview about the [Cookie Security](../../../webapps/shared-options/cookie-security.md).
 
-## Security-related HTTP headers in Webapps
+### Security-related HTTP headers in Webapps
 
-To customize the configuration of security-related HTTP headers in the web applications its deployment descriptor needs
-to be adjusted. You can find it under `WEB-INF/web.xml`.
+To customize the configuration of security-related HTTP headers in the web applications, adjust each web application's
+deployment descriptor. You can find it under `WEB-INF/web.xml`.
 
 Please watch out for the following section:
 ```xml

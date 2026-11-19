@@ -20,7 +20,7 @@ box:
 * [FreeMarker][freemarker]
 
 The script engine Freemarker wrapper implementation can be found in the
-[operaton-bpmn-platform](https://github.com/operaton/operaton/tree/master/freemarker-template-engine) repository.
+[Operaton repository](https://github.com/operaton/operaton/tree/main/freemarker-template-engine).
 
 The following template engines are provided as optional community extensions:
 
@@ -28,12 +28,9 @@ The following template engines are provided as optional community extensions:
 * [Saxon XQuery](https://www.saxonica.com/html/documentation12/using-xquery/)
 * [Saxon XSLT](https://www.saxonica.com/html/documentation12/using-xsl/)
 
-The script engine wrapper implementations can be found in the
-[operaton-template-engines-jsr223][operaton-template-engines-jsr223] community hub repository.
+## Install a Template Engine
 
-# Install a Template Engine
-
-## Install a Template Engine for an Embedded Process Engine
+### Install a Template Engine for an Embedded Process Engine
 
 A template engine must be installed in the same way as a script engine. This means that the template
 engine must be added to the process engine classpath.
@@ -43,7 +40,7 @@ application deployment. When using the process engine in a maven `war` project, 
 dependencies must be added as dependencies to the maven `pom.xml` file:
 
 :::note
-  The [Operaton BOM](../../../get-started/apache-maven.md) only contains the officially supported freemarker template engine.
+  The [Operaton BOM](/get-started/apache-maven.md) only contains the officially supported freemarker template engine.
   For the community-driven template engines, please check the Maven coordinates below.
 :::
 
@@ -86,18 +83,18 @@ Here are the Maven coordinates of the community extensions:
 ```
 
 
-## Install a Template Engine for a Shared Process Engine
+### Install a Template Engine for a Shared Process Engine
 
 When using a shared process engine, the template engine must be added to the shared process engine
 classpath. The procedure for this depends on the application server. In Apache Tomcat, the
 libraries have to be added to the shared `lib/` folder.
 
 :::note
-  [FreeMarker](http://freemarker.org/) is pre-installed in the Operaton pre-packaged distribution.
+  [FreeMarker](https://freemarker.apache.org/) is pre-installed in the Operaton pre-packaged distribution.
 :::
 
 
-# Use a Template Engine
+## Use a Template Engine
 
 If the template engine library is in the classpath, you can use templates everywhere in the BPMN
 process where you can [use scripts][use-scripts], for example as a script task or inputOutput mapping.
@@ -145,9 +142,35 @@ payload of a `operaton:connector`.
 </bpmn2:serviceTask>
 ```
 
-# Use XSLT as Template Engine
+:::caution
 
-## Use XSLT Template Engine with an embedded process engine
+For inline script sources (script tasks, listeners, conditions, and input/output parameters),
+script or template languages other than JUEL are subject to
+[dynamic script-source detection][script-source]. If the script content starts with `${` or
+`#{` after leading and trailing whitespace is trimmed for detection, Operaton treats it as
+an expression that resolves to a script source. The content is evaluated as an expression
+first, rather than passed directly to the script or template engine, which may cause errors
+or unexpected output.
+
+If those characters are part of the template itself, prefix the content with a comment
+recognized by the script or template language, or use an external resource instead. For
+example, an inline FreeMarker template can start with an escaped FreeMarker comment:
+
+```xml
+<operaton:inputParameter name="message">
+  <operaton:script scriptFormat="freemarker">&lt;#-- Keep this as an inline FreeMarker template. --&gt;${name} likes:
+    &lt;#list icecreamtypes as ict&gt;
+      * ${ict}
+    &lt;/#list&gt;
+  </operaton:script>
+</operaton:inputParameter>
+```
+
+:::
+
+## Use XSLT as Template Engine
+
+### Use XSLT Template Engine with an embedded process engine
 
 When using an embedded process engine, the XSLT template engine library must be added to the
 application deployment. When using the process engine in a maven `war` project, the template engine
@@ -165,7 +188,7 @@ dependency must be added as dependencies to the maven `pom.xml` file:
 </dependencies>
 ```
 
-## Use XSLT Templates
+### Use XSLT Templates
 
 The following is an example of a BPMN ScriptTask used to execute an XSLT Template:
 
@@ -177,7 +200,7 @@ The following is an example of a BPMN ScriptTask used to execute an XSLT Templat
 
   <bpmn2:extensionElements>
     <operaton:inputOutput>
-      <operaton:inputParameter name="camunda_source">${customers}</operaton:inputParameter>
+      <operaton:inputParameter name="operaton_source">${customers}</operaton:inputParameter>
     </operaton:inputOutput>
   </bpmn2:extensionElements>
 
@@ -191,16 +214,10 @@ described for [script tasks][script-source].
 The result of the transformation can be mapped to a variable using the `operaton:resultVariable`
 attribute.
 
-Finally, the input of the transformation must be mapped using the special variable `camunda_source`
+Finally, the input of the transformation must be mapped using the special variable `operaton_source`
 using a `<operaton:inputParameter ... />` mapping.
 
-A [full example of the XSLT Template Engine][xslt-example] in Operaton can be found in the
-examples' repository.
-
-
-[freemarker]: http://freemarker.org/
-[velocity]: http://velocity.apache.org/
-[operaton-template-engines-jsr223]: https://github.com/operaton-community-hub/operaton-template-engines-jsr223
+[freemarker]: https://freemarker.apache.org/
+[velocity]: https://velocity.apache.org/
 [use-scripts]: ../process-engine/scripting.md
 [script-source]: ../process-engine/scripting.md#script-source
-[xslt-example]: https://github.com/operaton/operaton-bpm-examples/tree/master/scripttask/xslt-scripttask

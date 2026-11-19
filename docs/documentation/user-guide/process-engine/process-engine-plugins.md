@@ -15,16 +15,16 @@ The process engine configuration can be extended through process engine plugins.
 extension to the [process engine configuration](../process-engine/process-engine-bootstrapping.md).
 
 A plugin must provide an implementation of the
-<a class="javadocref" href="org/operaton/bpm/engine/impl/cfg/ProcessEnginePlugin.html">ProcessEnginePlugin</a> interface.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/cfg/ProcessEnginePlugin.html">ProcessEnginePlugin</a> interface.
 
 
-# Configure Process Engine Plugins
+## Configure Process Engine Plugins
 
 Process engine plugins can be configured
 
 * in the [Operaton Deployment Descriptors](../../reference/deployment-descriptors/index.md) (bpm-platform.xml/processes.xml),
-* in the [Wildfly configuration file](../runtime-container-integration/jboss.md) (standalone.xml/domain.xml),
-* using [Spring Beans XML](../spring-framework-integration/index.md#configure-a-process-engine-plugin-in-spring),
+* in the [WildFly configuration file](../runtime-container-integration/jboss.md) (standalone.xml/domain.xml),
+* using [Spring Beans XML](../spring-framework-integration/index.md),
 * in the [Operaton Run YAML configuration files](../operaton-bpm-run.md#process-engine-plugin-registration)
 * programatically.
 
@@ -63,7 +63,7 @@ The following is an example of how to configure a process engine plugin in a bpm
 A process engine plugin class must be visible to the classloader which loads the process engine classes.
 
 
-# List of Built-In Process Engine Plugins
+## List of Built-In Process Engine Plugins
 
 The following is a list of built-in process engine plugins:
 

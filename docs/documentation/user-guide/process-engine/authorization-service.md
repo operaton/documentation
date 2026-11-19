@@ -10,24 +10,24 @@ menu:
 
 ---
 
-Operaton allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc...
+Operaton allows users to authorize access to the data it manages. This makes it possible to configure which user can access which process instances, tasks, etc.
 
 Authorization has a performance cost and introduces some complexity. It should only be used if required.
 
-# When is Authorization required?
+## When is Authorization required?
 
 Not every Operaton setup needs to enable authorization. In many scenarios, Operaton is embedded into an application and the application itself ensures that users can only access data they are authorized to access. Generally speaking, authorization is only required if untrusted parties interact with the process engine API directly. If you embed the process engine into a Java application, you usually do not need to enable authorization. The application can control how the API is accessed.
 
 Situations in which authorization is required:
 
-* Operaton Rest API is made accessible to users who should not have full access, even after authentication.
-* Operaton Webapplication is made accessible to users who should not have full access, even after authentication.
+* Operaton REST API is made accessible to users who should not have full access, even after authentication.
+* The Operaton web application is made accessible to users who should not have full access, even after authentication.
 * Other situations in which an untrusted user can directly construct the queries and commands executed on the process engine.
 
 Situations in which authorization is *not* required
 
 * An application completely controls the API methods invoked on the process engine.
-* Operaton Webapplication is made accessible to users who can have full access after authentication.
+* The Operaton web application is made accessible to users who can have full access after authentication.
 
 **Example**
 
@@ -35,11 +35,11 @@ Assume that you have the following authorization requirement: *As a regular user
 
 If the engine is embedded into a Java application, the application can easily ensure this by restricting the task query on the `assignee` property. The application can guarantee this since the Operaton API is not directly exposed to the user.
 
-By contrast, if the Operaton Rest API is directly exposed over the network to a Javascript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.
+By contrast, if the Operaton REST API is directly exposed over the network to a JavaScript application, then a malicious user, once authenticated, can send a request to the server querying all tasks, even the ones that are not assigned to this user. In this case, authorization needs to be turned on to ensure the user only sees the tasks which he is authorized to see, regardless of the query parameters.
 
-# Basic Principles
+## Basic Principles
 
-## Authorizations
+### Authorizations
 
 An Authorization assigns a set of Permissions to an identity to interact with a given Resource.
 
@@ -49,12 +49,12 @@ An Authorization assigns a set of Permissions to an identity to interact with a 
 * Group 'marketing' is not authorized to delete the Group 'sales'
 * Group 'marketing' is not allowed to use the tasklist application.
 
-## Identities
+### Identities
 
 Operaton distinguishes between two types of identities: users and groups. Authorizations can either range over all users (userId = ANY), an individual user or a group of users.
 
 
-## Permissions
+### Permissions
 
 A Permission defines the way an identity is allowed to interact with a certain resource.
 
@@ -71,7 +71,7 @@ The basic permissions available in the engine are:
 Note that the permission **None** does not mean no permissions are granted. Instead, it represents "no action".
 Additionally, the **All** permission will vanish from a user if a single permission is revoked.
 
-For detailed list of available permissions please check [Permission by resource](#permissions-by-resource) section.
+For a detailed list of available permissions, please check the [Permission by resource](#permissions-by-resource) section.
 
 A single authorization object may assign multiple permissions to a single user and resource:
 
@@ -81,7 +81,7 @@ authorization.addPermission(Permissions.UPDATE);
 authorization.addPermission(Permissions.DELETE);
 ```
 
-## Resources
+### Resources
 
 Resources are the entities the user interacts with.
 
@@ -203,7 +203,7 @@ The following resources are available:
 **Note:** The Resource Id should be '*' when you create new authorization with CREATE permissions only.
 
 
-## Authorization Type
+### Authorization Type
 
 There are three types of authorizations:
 
@@ -234,17 +234,17 @@ There are three types of authorizations:
 See the [Performance Considerations](#performance-considerations) section on this Page.
 :::
 
-## Authorization Precedence
+### Authorization Precedence
 
 Authorizations may range over all users, an individual user or a group of users, or they may apply to an individual resource instance or all instances of the same type (resourceId = ANY). The precedence is as follows:
 
-* An authorization applying to an individual resource instance precedes over an authorization applying to all instances of the same resource type.
-* An authorization for an individual user precedes over an authorization for a group.
-* A Group authorization precedes over a GLOBAL authorization.
-* A Group GRANT authorization precedes over a Group REVOKE authorization.
-* A User GRANT authorization precedes over a User REVOKE authorization.
+* An authorization applying to an individual resource instance takes precedence over an authorization applying to all instances of the same resource type.
+* An authorization for an individual user takes precedence over an authorization for a group.
+* A Group authorization takes precedence over a GLOBAL authorization.
+* A Group GRANT authorization takes precedence over a Group REVOKE authorization.
+* A User GRANT authorization takes precedence over a User REVOKE authorization.
 
-## When are Authorizations checked?
+### When are Authorizations checked?
 
 Authorizations are checked if
 
@@ -258,14 +258,14 @@ When using the Operaton Webapps, it is always ensured that a user is authenticat
 When embedding the process engine into a custom application, the application needs to take care of authentication if it needs authorization checks to be performed.
 
 :::info[Authentication vs. Authorization]
-Authentication and Authorization are two distinct concepts as explained [here](https://en.wikipedia.org/wiki/Authentication#Authorization).
+Authentication and Authorization are two distinct concepts as explained [here](https://www.geeksforgeeks.org/computer-networks/difference-between-authentication-and-authorization/).
 :::
 
-# Permissions by Resource
+## Permissions by Resource
 
 This section explains which permissions are available on which resources.
 
-## Read, Update, Create, Delete
+### Read, Update, Create, Delete
 
 The permissions **Read**, **Update**, **Create**, and **Delete** are available for most of the resources.
 The following table gives an overview for which resources they are available:
@@ -407,7 +407,7 @@ To execute an operation [asynchronously](../process-engine/batch.md), only a **C
 
 For example, a user without the **Update** permission on the **Process Instance Resource** and granted **Create** permission on the **Batch Resource** can modify multiple process instances asynchronously by creating a batch. However, the user can't execute this operation synchronously.
 
-## Additional Task Permissions
+### Additional Task Permissions
 
 In addition to **Update**, **Read**, and **Delete**, the following permissions are available on the Task Resource:
 
@@ -550,7 +550,7 @@ The table below shows a detailed overview on which permissions authorize a user 
   </tbody>
 </table>
 
-GRANT and REVOKE authorizations with **Task Work**, **Task Assign**, and **Update Variable** permissions precede over **Update** and **Update Task**.
+GRANT and REVOKE authorizations with **Task Work**, **Task Assign**, and **Update Variable** permissions take precedence over **Update** and **Update Task**.
 
 ### Default Task Permissions
 
@@ -559,7 +559,7 @@ obtain the default permissions as either **Task Work** or **Update**, based on t
 
 If the "defaultUserPermissionNameForTask" configuration option is not set, then by default **Update** permission is granted.
 
-## Additional Process Definition Permissions
+### Additional Process Definition Permissions
 
 In Addition to **Update**, **Read** and **Delete**, the following permissions are available on the Process Definition Resource:
 
@@ -588,10 +588,10 @@ The **Create Instance** permission is required to start new process instances.
 
 :::
 
-GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, **Suspend Instance**, **Update Instance Variable**, and **Update Task Variable** permissions precede over **Update**.
-Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.
+GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, **Suspend Instance**, **Update Instance Variable**, and **Update Task Variable** permissions take precedence over **Update**.
+Keep in mind that a user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, it could trigger the successful evaluation of a conditional event related to this variable.
 
-## Additional Process Instance Permissions
+### Additional Process Instance Permissions
 
 In addition to **Create**, **Read**, **Update**, and **Delete**, the following permissions are available on the Process Instance Resource:
 
@@ -599,10 +599,10 @@ In addition to **Create**, **Read**, **Update**, and **Delete**, the following p
 * Suspend
 * Update Variable
 
-GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, and **Update Variable** permissions precede over **Update**.
-Keep in mind that user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, successful evaluation of conditional event related to this variable.
+GRANT and REVOKE authorizations with **Retry Job**, **Suspend**, and **Update Variable** permissions take precedence over **Update**.
+Keep in mind that a user who is allowed to perform variable updates could trigger other changes in the process by updating a variable. For example, it could trigger the successful evaluation of a conditional event related to this variable.
 
-## Additional Decision Definition Permissions
+### Additional Decision Definition Permissions
 
 In addition to **Update**, **Read**, and **Delete**, the following permissions are available on the Decision Definition Resource:
 
@@ -612,7 +612,7 @@ In addition to **Update**, **Read**, and **Delete**, the following permissions a
 
 The **Create Instance** permission is required to evaluate decisions with the decision service.
 
-## Additional Batch Permissions
+### Additional Batch Permissions
 
 In addition to **Create**, **Update**, **Read**, and **Delete**, the following permissions are available on the Batch Resource:
 
@@ -631,9 +631,9 @@ In addition to **Create**, **Update**, **Read**, and **Delete**, the following p
 * Create Batch Set Variables
 * Create Batch Correlate Messages
 
-GRANT and REVOKE authorizations with "Create Batch …" permissions precede over Create.
+GRANT and REVOKE authorizations with "Create Batch …" permissions take precedence over Create.
 
-## Default Read Variable Permissions
+### Default Read Variable Permissions
 When the `enforceSpecificVariablePermission` process engine configuration is enabled, in order to read variables, the user needs to be granted the following permissions:
 
 In case of Tasks
@@ -650,18 +650,17 @@ In case of Process Definitions
 * Read History Variable (for historic variables)
 * Read Task Variable (for runtime task variables)
 
-## Application Permissions
+### Application Permissions
 
 The resource "Application" uniquely supports the **Access** permission.
-The **Access** permission controls whether a user has access to a Operaton web application or not. Out of the box, it can be granted for the following applications (resource ids):
+The **Access** permission controls whether a user has access to an Operaton web application or not. Out of the box, it can be granted for the following applications (resource ids):
 
 * `admin`
 * `cockpit`
 * `tasklist`
-* `optimize`
 * `*` (Any / All)
 
-## User Operation Log Permissions
+### User Operation Log Permissions
 
 The resource "User Operation Log Category" controls whether a user can access user operation log entries from the specified categories.
 Out of the box, it can be granted for the following categories (resource ids):
@@ -671,7 +670,7 @@ Out of the box, it can be granted for the following categories (resource ids):
 * `Operator`
 * `*` (Any / All)
 
-## Historic Instance Permissions
+### Historic Instance Permissions
 
 The resources control whether a user can read the history related to a specific instance.
 
@@ -691,7 +690,6 @@ The feature is disabled by default because of two reasons:
    More complex queries may degrade the performance.
 2. When enabled and an Identity Link is added to a Task, the respective User or Group is authorized
    to read the associated history (e. g. for the Task, Variable, or Identity Link History).
-   For Operaton versions $\leq$ 7.12, the history is not readable in this case.
 
 ### Historic Task Permissions
 
@@ -720,10 +718,10 @@ retrieve the entities related to the Historic Process Instance:
 * External Task Log Query
 * User Operation Log Query
 
-## System permissions
+### System permissions
 
 Permissions for the system resource are usually granted to operations engineers who supervise processes and applications and ensure they run smoothly from a technical perspective.
-Typically, those people do not need full access to the system like an administrator does. They must be able to access and change system information, including system properties, metrics, database information, telemetry, and license key data. Administrators will not need to have system permissions because their role already grants them access to all features. See also the <a href="#Administrators">Administrators</a> section.
+Typically, those people do not need full access to the system like an administrator does. They must be able to access and change system information, including system properties, metrics, database information, and telemetry. Administrators will not need to have system permissions because their role already grants them access to all features. See also the <a href="#administrators">Administrators</a> section.
 
 The following table gives an overview of the features that the system permissions grant access to.
 
@@ -798,24 +796,6 @@ The following table gives an overview of the features that the system permission
       <td>X</td>
     </tr>
     <tr>
-      <th>Get License Key</th>
-      <td>X</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Set License Key</th>
-      <td></td>
-      <td>X</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Delete License Key</th>
-      <td></td>
-      <td></td>
-      <td>X</td>
-    </tr>
-    <tr>
       <th>Register Process Application</th>
       <td></td>
       <td>X</td>
@@ -872,21 +852,21 @@ The following table gives an overview of the features that the system permission
   </tbody>
 </table>
 
-# Administrators
+## Administrators
 
 Operaton has no explicit concept of "administrator" beyond it being a user who has been granted all authorizations on all resources.
 
-## The "operaton-admin" Group
+### The "operaton-admin" Group
 
 When downloading the Operaton distribution, the invoice example application creates a group with id `operaton-admin` and grants all authorizations on all resources to this group.
 
-In absense of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton webapplication is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
+In the absence of the demo application, this task is performed by the [Operaton Admin Web Application](../../webapps/admin/user-management.md#initial-user-setup). If the Operaton web application is started for the first time and no user exists in the database, it asks you to perform the "initial setup". In this process, the `operaton-admin` group is created and granted all permissions on all resources.
 
 :::note[LDAP]
 The group "operaton-admin" is not created when using LDAP (since LDAP is only accessed in a read-only way). Also see the below section on the administrator authorization plugin.
 :::
 
-## The Administrator Authorization Plugin
+### The Administrator Authorization Plugin
 
 The administrator authorization plugin is a process engine plugin with the following functionality: when the process engine is started, it grants administrative access to a configured group or user. Effectively this means that it grants all permissions on all resources to the configured group or user.
 
@@ -911,7 +891,7 @@ The following is an example of how to configure the administrator authorization 
 The plugin will make sure that administrator authorizations (ALL permissions) are granted on all resources whenever the process engine is started.
 
 :::note
-  It is not necessary to configure all LDAP users and groups which should have administrator authorization. It is usually enough to configure a single user and use that user to log into the webapplication and create additional authorizations using the User Interface.
+  It is not necessary to configure all LDAP users and groups that should have administrator authorization. It is usually enough to configure a single user and use that user to log in to the web application and create additional authorizations using the user interface.
 :::
 
 Complete list of configuration properties:
@@ -931,33 +911,33 @@ Complete list of configuration properties:
   </tr>
 </table>
 
-# Configuration Options
+## Configuration Options
 
 This section explains available process engine configuration options related to authorization.
 
-## Enable Authorization Checks
+### Enable Authorization Checks
 
 Authorization checks can be globally enabled or disabled using the configuration option `authorizationEnabled`. The default setting for this configuration option is `false`.
 
-## Enable Authorization Checks for User Code
+### Enable Authorization Checks for User Code
 
 The configuration option `authorizationEnabledForCustomCode` controls whether authorization checks are performed for commands executed by delegation code (i.e., a Java Delegate). The default setting for this configuration option is `false`.
 
-## Check Revoke Authorizations
+### Check Revoke Authorizations
 
 The configuration option `authorizationCheckRevokes` controls whether authorization checks take into account authorizations of type `Revoke`.
 
 Available values are:
 
-* `always`: Always enables check for revoke authorizations. This mode is equal to the &lt; 7.5 behavior. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases. You are therefore strongly discouraged from using this mode.
+* `always`: Always enables check for revoke authorizations. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases. You are therefore strongly discouraged from using this mode.
 
 * `never`: Never checks for revoke authorizations. This mode has best performance and effectively disables the use of revoke authorizations. *Note*: It is strongly recommended to use this mode.
 
-* `auto` (**default value**): This mode only checks for revoke authorizations if at least one revoke authorization currently exits for the current user or one of the groups the user is a member of. To achieve this it is checked once per command whether potentially applicable revoke authorizations exist. Based on the outcome, the authorization check then uses revoke or not. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases.
+* `auto` (**default value**): This mode only checks for revoke authorizations if at least one revoke authorization currently exists for the current user or one of the groups the user is a member of. To achieve this it is checked once per command whether potentially applicable revoke authorizations exist. Based on the outcome, the authorization check then uses revoke or not. *NOTE:* Checking revoke authorizations is very expensive for resources with a high potential cardinality like tasks or process instances and can render authorized access to the process engine effectively unusable on most databases.
 
 Also see the [Performance Considerations](#performance-considerations) section on this page.
 
-# Java API example
+## Java API example
 
 An authorization is created between a user/group and a resource. It describes the user/group's permissions to access that resource. An authorization may express different permissions, such as the permission to **Read**, **Update**, and **Delete** the resource. (See Authorization for details).
 
@@ -976,7 +956,7 @@ auth.setResource("filter");
 auth.setResourceId("2313");
 // a resource can also be a process definition
 auth.setResource(Resources.PROCESS_INSTANCE);
-// the process defintion key is the resource id
+// the process definition key is the resource id
 auth.setResourceId("invoice");
 
 // finally the permissions to access that resource can be assigned:
@@ -1014,19 +994,19 @@ authProcessInstance.addPermission(Permissions.CREATE);
 authorizationService.saveAuthorization(authProcessDefinition);
 authorizationService.saveAuthorization(authProcessInstance);
 ```
-# Operaton Admin Webapp
+## Operaton Admin Webapp
 
-The Operaton Admin Webapplication provides an out of the box [UI for configuring Authorizations](../../webapps/admin/authorization-management.md).
+The Operaton Admin web application provides an out-of-the-box [UI for configuring Authorizations](../../webapps/admin/authorization-management.md).
 
-# Performance Considerations
+## Performance Considerations
 
 Authorizations are calculated by the database which is most efficient. Example: when performing a task query, the database query only returns the tasks for which the user has a READ authorization.
 
-## Performance of Checking Grant Authorizations
+### Performance of Checking Grant Authorizations
 
-When only Grant authorizations are used, the check is very efficient since the authorization table can be joined with the resource table (task table, process instance table,    etc...).
+When only Grant authorizations are used, the check is very efficient since the authorization table can be joined with the resource table (task table, process instance table, etc.).
 
-## Performance of Checking Revoke Authorizations
+### Performance of Checking Revoke Authorizations
 
 Revoke authorizations are expensive to check. The check needs to consider the precedence of authorizations. Example: a user level Grant is stronger than a group level Revoke. A sequence of nested SQL `CASE` statements and a subselect is used to account for the precedence. This has two downsides:
 
@@ -1037,5 +1017,5 @@ On these databases, revoke authorizations are effectively unusable.
 
 Also see the [Configuration Options](#check-revoke-authorizations) section on this page.
 
-[hist-inst-perm-config-flag]: ../../reference/deployment-descriptors/tags/process-engine.md#enable-historic-instance-permissions
+[hist-inst-perm-config-flag]: ../../reference/deployment-descriptors/tags/process-engine.mdx#enable-historic-instance-permissions
 [Removal-Time-based History Cleanup Strategy]: ../process-engine/history/history-cleanup.md#removal-time-based-strategy

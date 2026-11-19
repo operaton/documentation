@@ -7,11 +7,11 @@ sidebar_position: 140
 
 This page provides information about logging in Operaton.
 
-# SLF4J
+## SLF4J
 
 Most Operaton modules, including the Operaton engine, use [slf4j] as logging "facade". This allows users to direct logging output to the logging "backend" of their choice, such as [logback] or [log4j].
 
-## Preconfigured Logging with a Shared Process Engine
+### Preconfigured Logging with a Shared Process Engine
 
 When installing Operaton as a shared process engine in an application server, Operaton logging is pre-configured.
 
@@ -21,7 +21,7 @@ Both SLF4J API and the slf4j-jdk14 bridge are available in a shared classpath wh
 
 On Wildfly, logging is directed to the JBoss logging infrastructure. The SLF4J API is not available in the classpath of custom applications by default.
 
-## Adding a Logging Backend for Embedded Use
+### Adding a Logging Backend for Embedded Use
 
 When using the Operaton Maven modules in a custom application, only the [slf4j] API is pulled in transitively.
 If you do not provide any backend, nothing will actually be logged.
@@ -51,7 +51,7 @@ Add the logback dependency
 <dependency>
   <groupId>ch.qos.logback</groupId>
   <artifactId>logback-classic</artifactId>
-  <version>1.1.2</version>
+  <version>1.6.6</version>
 </dependency>
 ```
 
@@ -69,7 +69,7 @@ Add a file named `logback.xml`. Example configuration:
   </appender>
 
   <!-- Operaton-->
-  <logger name="org.camunda" level="info" />
+  <logger name="org.operaton" level="info" />
 
   <!-- common dependencies -->
   <logger name="org.apache.ibatis" level="info" />
@@ -91,7 +91,7 @@ LogFactory.useSlf4jLogging();
 
 somewhere in your setup code.
 
-## Process Data Context
+### Process Data Context
 
 In order to provide details on the current execution context of log statements,
 we set process execution-specific data in the [Mapped Diagnostic Context (MDC)](https://www.slf4j.org/manual.html#mdc).
@@ -101,7 +101,7 @@ In case of arising exceptions upon execution, the data is kept in the MDC until 
 i.e. the [JobExecutor](../user-guide/process-engine/the-job-executor.md) or the surrounding command, finished its logging.
 
 The keys at which the properties are accessible in the MDC can be defined in the
-[process engine configuration](../reference/deployment-descriptors/tags/process-engine.md#logging-context-parameters).
+[process engine configuration](../reference/deployment-descriptors/tags/process-engine.mdx#logging-context-parameters).
 
 In order to access the MDC data, you need to adjust the logging pattern of your logging configuration.
 An example using Logback could look as follows
@@ -121,12 +121,12 @@ An example using Logback could look as follows
 ```
 
 By adding the `context:[%X]` to your configuration, all values that are present in the MDC at the time the log statement is created will be displayed.
-Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](http://logback.qos.ch/manual/layouts.html#mdc).
+Please refer to the manual of your logging framework for further information on how to access the MDC, e.g. the [Logback documentation](https://logback.qos.ch/manual/layouts.html#mdc).
 
 
-# Logging Categories
+## Logging Categories
 
-## Process Engine
+### Process Engine
 
 The process engine logs on the following categories
 
@@ -176,7 +176,7 @@ The process engine logs on the following categories
     <td>
       command context logs including executing atomic operations and bpmn stack traces during exceptions<br/>
       You can override the default <code>DEBUG</code> log level for bpmn stack traces, see the
-      <a href="../reference/deployment-descriptors/tags/process-engine.md#logLevelBpmnStackTrace">Logging level parameters</a> section.
+      <a href="/docs/documentation/reference/deployment-descriptors/tags/process-engine#logLevelBpmnStackTrace">Logging level parameters</a> section.
     </td>
   </tr>
   <tr>
@@ -309,7 +309,7 @@ Here is an example of how the server log will look like:
 25-Nov-2019 15:17:17.076 FINE [thread-2] o.a.i.l.j.BaseJdbcLogger.debug ==> Parameters: 2(Integer), Dev-Department(String), DEV(String), development(String), 1(Integer)
 ```
 
-To enable the logging for a specific database entity, please provide the namespace of the MyBatis mapper ([all mappers](https://github.com/operaton/operaton/tree/master/engine/src/main/resources/org/operaton/bpm/engine/impl/mapping/entity)). Usually it is the full class name of that entity, e.g.:
+To enable the logging for a specific database entity, please provide the namespace of the MyBatis mapper ([all mappers](https://github.com/operaton/operaton/tree/main/engine/src/main/resources/org/operaton/bpm/engine/impl/mapping/entity)). Usually it is the full class name of that entity, e.g.:
 
 * `org.operaton.bpm.engine.impl.batch.BatchEntity`
 * `org.operaton.bpm.engine.impl.persistence.entity.JobEntity`
@@ -341,7 +341,7 @@ The server log will contain logs similar to:
 25-Nov-2019 15:45:27.706 FINE [Thread-6] o.c.c.l.BaseLogger.logDebug ENGINE-13006 Finishing command -------------------- AcquireJobsCmd ----------------------
 ```
 
-Find more information for Diagnosing the Job Executor in this blog post - [The Job Executor: What Is Going on in My Process Engine?](https://blog.camunda.com/post/2019/10/job-executor-what-is-going-on-in-my-process-engine/).
+Find more information for Diagnosing the Job Executor in this blog post - [The Job Executor: What Is Going on in My Process Engine?](https://camunda.com/blog/2019/10/job-executor-what-is-going-on-in-my-process-engine/.
 
 #### Diagnosing Deadlocks
 
@@ -382,7 +382,7 @@ Here is a sample of what traces the server log file will contain when increasing
 
 The snippet contains the start and of `RemoveExecutionVariablesCmd`, the flush summary of the operation, and the database statements of the variable instance.
 
-# Legacy: Java Util Logging
+## Legacy: Java Util Logging
 
 Some Operaton modules still use Java Util Logging directly.
 The use of Java Util Logging in these modules is considered deprecated and will be gradually migrated to [slf4j] in future releases.
@@ -398,7 +398,7 @@ List of modules still using Java Util Logging:
 * operaton-engine-rest
 * Wildfly Subsystems
 
-[slf4j]: http://www.slf4j.org/
-[log4j]: http://logging.apache.org/log4j/
-[logback]: http://logback.qos.ch/
-[slf4j-backends]: http://www.slf4j.org/manual.html#projectDep
+[slf4j]: https://www.slf4j.org/
+[log4j]: https://logging.apache.org/log4j/2.x/
+[logback]: https://logback.qos.ch/
+[slf4j-backends]: https://www.slf4j.org/manual.html#projectDep

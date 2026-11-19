@@ -20,3 +20,22 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
+
+.env
+
+# Local Typesense dev server (see docker/typesense)
+/docker/typesense/certs
+/docker/typesense/data
+
+# Local superpowers specs/plans (not committed)
+docs/superpowers/
+.devenv/specs/
+.devenv/plans/
+
+# lychee request cache (link check)
+.lycheecache
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

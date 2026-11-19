@@ -15,7 +15,7 @@ aliases: [/dmn/deploy/]
 
 In this step, we use Java Code to evaluate the decision table. Then we deploy the web application to Apache Tomcat and verify the result in Cockpit.
 
-# Evaluate the Decision Table
+### Evaluate the Decision Table
 
 To directly evaluate the decision table after deployment, add the following method to your Application class:
 
@@ -45,7 +45,7 @@ public class DinnerApplication extends ServletProcessApplication {
 }
 ```
 
-# Build the Web Application with Maven
+### Build the Web Application with Maven
 
 Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`. This will generate a WAR file named `dinner-dmn-0.1.0-SNAPSHOT.war` in the `target/` folder of your Maven project.
 
@@ -53,9 +53,9 @@ Select the `pom.xml` in the Package Explorer, perform a right-click and select `
 If the `dinner-dmn-0.1.0-SNAPSHOT.war` file is not visible after having performed the Maven build, you need to refresh the project (F5) in eclipse.
 :::
 
-# Deploy to Apache Tomcat
+### Deploy to Apache Tomcat
 
-In order to deploy the process application, copy-paste the `dinner-dmn-0.1.0-SNAPSHOT.war` from your Maven project to the `$CAMUNDA_HOME/server/apache-tomcat/webapps` folder.
+In order to deploy the process application, copy-paste the `dinner-dmn-0.1.0-SNAPSHOT.war` from your Maven project to the `$OPERATON_HOME/server/apache-tomcat/webapps` folder.
 
 Check the log file of the Apache Tomcat server. If you see the following log message, the deployment was successful:
 
@@ -78,33 +78,33 @@ ENGINE-08050 Process application Dinner App DMN successfully deployed
 </pre>
 
 
-# Verify the Deployment with Cockpit
+## Verify the Deployment with Cockpit
 
 Now, use Cockpit to check if the decision table is successfully deployed. Go to [http://localhost:8080/operaton/app/cockpit](http://localhost:8080/operaton/app/cockpit). Log in with *demo / demo*. Go to "Decisions" section. Your decision table *Dish* should be listed as deployed decision definition.
 
-![Example image](./img/cockpit-dish-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-dish-dmn.png)
 
 
-# Verify the Evaluation with Cockpit
+## Verify the Evaluation with Cockpit
 
 Click on the decision *Dish*. This opens a dialog where you see when the decision table was evaluated.
 
-![Example image](./img/cockpit-decision-overview-dish-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-decision-overview-dish-dmn.png)
 
 If you click on the id, you can see the historic data of the evaluation. The matched rules are highlighted and the input and output values are listed in the table below.
 
-![Example image](./img/cockpit-decision-history-dish-dmn.png)
+![Example image](/img/get-started/dmn/cockpit-decision-history-dish-dmn.png)
 
 Verify that the 5th rule was matched and the output value for the desired dish is "Stew".
 
-# Next Steps
+## Next Steps
 
 Congratulations, you have now successfully set up a project with your first DMN decision table.
 
 Next,
 
-* see how you can evaluate the decision using the [REST API](../../documentation/reference/rest/index.md),
-* learn more about DMN by reading the [DMN Reference](../../documentation/reference/dmn/index.md),
-* learn more about the [Decision API exposed by Operaton Process Engine](../../documentation/user-guide/process-engine/decisions/index.md),
-* check how you can invoke the decision from a [BPMN Business Rule Task](../../documentation/reference/bpmn20/tasks/business-rule-task.md),
+* see how you can evaluate the decision using the [REST API](https://docs.operaton.org/reference/latest/rest-api/#tag/Condition/operation/evaluateCondition),
+* learn more about DMN by reading the [DMN Reference](/docs/documentation/reference/dmn/),
+* learn more about the [Decision API exposed by Operaton Process Engine](/docs/documentation/user-guide/process-engine/decisions/),
+* check how you can invoke the decision from a [BPMN Business Rule Task](/docs/documentation/reference/bpmn20/tasks/business-rule-task/),
 * Bonus Step: [Decision Requirements Graph](drg.md)

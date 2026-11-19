@@ -15,20 +15,20 @@ menu:
 The Operaton DMN engine can be used as a library in a custom application. To achieve this,
 add the `operaton-engine-dmn` artifact to the classpath of the application and then
 configure and build a decision engine instance. This section provides the
-required maven coordinates to add the DMN engine as a dependency to your
+required Maven coordinates to add the DMN engine as a dependency to your
 project. It then shows how to configure and build a new DMN engine instance.
 
-# Maven Coordinates
+## Maven Coordinates
 
 The Operaton DMN engine is released to Maven Central.
 
-Start by importing the [`operaton-engine-dmn` BOM](../../../get-started/apache-maven.md#operaton-dmn-engine-bom)
+Start by importing the [`operaton-engine-dmn` BOM](/get-started/apache-maven.md#operaton-bom-bill-of-materials)
 to ensure correct dependency management.
 
-Next, include the [`operaton-engine-dmn`](../../../get-started/apache-maven.md#operaton-dmn)
+Next, include the [`operaton-engine-dmn`](/get-started/apache-maven.md#operaton-dmn)
 artifact in the `dependencies` section.
 
-# Building a DMN Engine
+## Building a DMN Engine
 
 To build a new DMN engine, create a DMN engine configuration.
 Configure it as needed and then build a new DMN engine from it.
@@ -45,12 +45,12 @@ DmnEngineConfiguration configuration = DmnEngineConfiguration
 DmnEngine dmnEngine = configuration.buildEngine();
 ```
 
-# Configuration of the DMN Engine
+## Configuration of the DMN Engine
 This section gives more insights of embedded DMN engine configuration. In case you want to use DMN engine as part of the BPMN engine, please refer to the [DMN Engine Configuration](../../user-guide/process-engine/decisions/configuration)  section of the [User Guide](../../user-guide/index.md) for the configuration in that scenario.
 
-## Decision Table Evaluation Listeners
+### Decision Table Evaluation Listeners
 
-The DMN engine configuration allows you add a custom decision table [evaluation listener](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.java).
+The DMN engine configuration allows you to add a custom decision table [evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html).
 A decision table evaluation listener is notified after a decision table has been evaluated. It receives an evaluation event which contains the result of the evaluation. You can decide if the listener should be notified before or after the default listeners.
 
 ```java
@@ -71,7 +71,7 @@ configuration.getCustomPostDecisionTableEvaluationListeners()
 ```
 
 A specialized evaluation listener is the
-[metric collector](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/spi/DmnEngineMetricCollector.java)
+[metric collector](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/spi/DmnEngineMetricCollector.html)
 , which records the number of executed decision elements. This metric can be used to monitor the workload of a decision engine.
 
 ```java
@@ -85,9 +85,9 @@ DmnEngineMetricCollector metricCollector = ...;
 // set the metric collector
 configuration.setEngineMetricCollector(metricCollector);
 ```
-## Decision Evaluation Listeners
+### Decision Evaluation Listeners
 
-The DMN engine configuration allows you add a custom [decision evaluation listener](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.java). A decision evaluation listener is
+The DMN engine configuration allows you to add a custom [decision evaluation listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionEvaluationListener.html). A decision evaluation listener is
 notified after a decision with all the required decisions has been evaluated. It receives an evaluation event
 which contains the result of the evaluation. You can decide if the
 listener should be notified before or after the default listeners.
@@ -109,7 +109,7 @@ configuration.getCustomPostDecisionEvaluationListeners()
   .add(myListener);
 ```
 
-# Customizing and Extending the DMN Engine
+## Customizing and Extending the DMN Engine
 
 :::warning[Use of Internal API]
 
@@ -117,16 +117,16 @@ Please be aware that these APIs are **not** part of the [public API](../../intro
 
 :::
 
-The [default DMN engine configuration](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.java)
+The [default DMN engine configuration](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/DefaultDmnEngineConfiguration.html)
  has further customization and extension points.
 
-## Customize DMN Transformation
+### Customize DMN Transformation
 
-It is possible to customize the transformation of DMN by providing a [DMN transformer](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnTransformer.java) or configuring the [default one](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/transform/DefaultDmnTransformer.java).
+It is possible to customize the transformation of DMN by providing a [DMN transformer](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnTransformer.html) or configuring the [default one](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/transform/DefaultDmnTransformer.html).
 
 ### Register DMN Transform Listeners
 
-The simplest customization is to provide a [transform listener](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnTransformListener.java). The Listener is notified after a DMN element is
+The simplest customization is to provide a [transform listener](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnTransformListener.html). The Listener is notified after a DMN element is
 transformed. The listener can modify the transformed object.
 
 ```java
@@ -146,11 +146,11 @@ configuration.getTransformer()
 ### Register DMN Element Transform Handler
 
 While the transform listener allows modifying of the transformed objects, it does not support instantiating custom subclasses.
-This can be achieved using a custom [transform handler](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnElementTransformHandler.java).
+This can be achieved using a custom [transform handler](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/transform/DmnElementTransformHandler.html).
 
 A transform handler is registered for a given [DMN model API] type like a `DecisionTable`.
 
-First, implement a transform handler which can transform a [decision table](https://github.com/operaton/operaton/blob/main/model-api/dmn-model/src/main/java/org/operaton/bpm/model/dmn/instance/DecisionTable.java).
+First, implement a transform handler which can transform a [decision table](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/model/dmn/instance/DecisionTable.html).
 
 ```java
 public  class MyDecisionTableHandler extends DmnElementTransformHandler<DecisionTable, MyDecisionTableImpl> {
@@ -245,7 +245,7 @@ hitPolicyHandlerRegistry
   .addHandler(HitPolicy.PRIORITY, null, new MyPriorityHitPolicyHandler());
 ```
 
-## Change default expression languages
+### Change default expression languages
 
 A [DMN decision table] has multiple expressions which are evaluated when the table is executed.
 The default expression language for every expression type can be configured.
@@ -284,12 +284,12 @@ implementation like Rhino or Nashorn, then `javascript` is available as well.
 It is also possible to use other script languages like `groovy`, `python` or `ruby`.
 Just make sure that the corresponding libraries are available on the classpath at runtime.
 
-## Customize Expression and Script Resolving
+### Customize Expression and Script Resolving
 
 The default DMN engine resolves the supported expression and script languages
 using different providers.
 
-To evaluate `JUEL` expressions, the DMN engine uses the [ElProvider](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/spi/el/ElProvider.java) configured in the
+To evaluate `JUEL` expressions, the DMN engine uses the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/el/ElProvider.html">ElProvider</a> configured in the
 DMN engine configuration. To use another implementation of the Unified Expression Language, replace this implementation.
 
 ```java
@@ -301,7 +301,7 @@ DefaultDmnEngineConfiguration configuration = (DefaultDmnEngineConfiguration) Dm
 configuration.setElProvider(new MyElProvider());
 ```
 
-To configure the `FEEL` engine used you can provide a custom [FeelEngineFactory](https://github.com/operaton/operaton/blob/main/engine-dmn/feel-api/src/main/java/org/operaton/bpm/dmn/feel/impl/FeelEngineFactory.java).
+To configure the `FEEL` engine used you can provide a custom <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/feel/impl/FeelEngineFactory.html">FeelEngineFactory</a>.
 
 ```java
 // with a default DMN engine configuration
@@ -312,7 +312,7 @@ DefaultDmnEngineConfiguration configuration = (DefaultDmnEngineConfiguration) Dm
 configuration.setFeelEngineFactory(new MyFeelEngineFactory());
 ```
 
-Script languages are resolved by the [DmnScriptEngineResolver](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/spi/el/DmnScriptEngineResolver.java). To customize the script engine resolving, provide an own implementation.
+Script languages are resolved by the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/el/DmnScriptEngineResolver.html">DmnScriptEngineResolver</a>. To customize the script engine resolving, provide an own implementation.
 
 ```java
 // with a default DMN engine configuration
@@ -323,23 +323,23 @@ DefaultDmnEngineConfiguration configuration = (DefaultDmnEngineConfiguration) Dm
 configuration.setScriptEngineResolver(new MyScriptEngineResolver());
 ```
 
-# Logging
+## Logging
 
 The DMN engine uses [SLF4J] as logging API. The `operaton-dmn-engine` artifact
 does not have a dependency to any of the existing [SLF4J] backends. This means that
-you can choose which backend you want to use. One example would be [LOGBack], or
+you can choose which backend you want to use. One example would be [Logback], or
 if you want to use Java util logging, you could use the `slf4j-jdk14` artifact.
 For more information on how to configure and use SLF4J, please refer to the
 [user manual].
 
 
-[evaluation listener]: <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.java">DmnDecisionTableEvaluationListener</a> Interface
-[DMN model API]: https://github.com/operaton/operaton-dmn-model
+[evaluation listener]: <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/delegate/DmnDecisionTableEvaluationListener.html">DmnDecisionTableEvaluationListener</a> Interface
+[DMN model API]: ../model-api/dmn-model-api/
 [data types]: ../../user-guide/dmn-engine/data-types.md
-[hit policies]: ../reference/dmn/decision-table/hit-policy.md
-[SLF4J]: http://www.slf4j.org/
-[LOGBack]: http://logback.qos.ch/
-[user manual]: http://www.slf4j.org/manual.html
-[DMN decision table]: ../reference/dmn/decision-table/index.md
-[DMN decision literal expression]: ../reference/dmn/decision-literal-expression/index.md
+[hit policies]: ../../reference/dmn/decision-table/hit-policy.md
+[SLF4J]: https://www.slf4j.org/
+[Logback]: https://logback.qos.ch/
+[user manual]: https://www.slf4j.org/manual.html
+[DMN decision table]: ../../reference/dmn/decision-table/index.md
+[DMN decision literal expression]: ../../reference/dmn/decision-literal-expression/index.md
 [expressions]: ../../user-guide/dmn-engine/expressions-and-scripts.md

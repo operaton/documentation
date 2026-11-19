@@ -24,7 +24,7 @@ There are different types of Delegation Code:
 You can create generic Delegation Code and configure this via the BPMN 2.0 XML using so called Field Injection.
 
 
-# Java Delegate
+## Java Delegate
 
 To implement a class that can be called during process execution, this class needs to implement the `org.operaton.bpm.engine.delegate.JavaDelegate`
 interface and provide the required logic in the `execute`
@@ -39,7 +39,7 @@ interface, which requires us to implement the `execute(DelegateExecution)`
 method. It's this operation that will be called by the engine and
 which needs to contain the business logic. Process instance
 information such as process variables and other information can be accessed and
-manipulated through the [DelegateExecution](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateExecution.java) interface (click on the link for a detailed Javadoc of its operations).
+manipulated through the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a> interface (click on the link for a detailed Javadoc of its operations).
 
 ```java
   public class ToUppercase implements JavaDelegate {
@@ -62,17 +62,17 @@ The classes that are referenced in the process definition (i.e., by using
 Only when a process execution arrives at the point in the process where the class is used for the
 first time, an instance of that class will be created. If the class cannot be found,
 a `ProcessEngineException` will be thrown. The reason for this is that the environment (and
-more specifically the classpath) when you are deploying is often different than the actual runtime
+more specifically the classpath) when you are deploying is often different from the actual runtime
 environment.
 
 
-# Activity Behavior
+## Activity Behavior
 
 Instead of writing a Java Delegate, it is also possible to provide a class that implements the `org.operaton.bpm.engine.impl.pvm.delegate.ActivityBehavior`
-interface. Implementations then have access to the more powerful `ActivityExecution` that for example also allows to influence the control flow of the process. However, note that this is not a very good practice and should be avoided as much as possible. So, it is advised to only use the `ActivityBehavior` interface for advanced use cases and if you know exactly what you're doing.
+interface. Implementations then have access to the more powerful `ActivityExecution` that, for example, also lets you influence the control flow of the process. However, note that this is not a very good practice and should be avoided as much as possible. So, it is advised to only use the `ActivityBehavior` interface for advanced use cases and if you know exactly what you're doing.
 
 
-# Field Injection
+## Field Injection
 
 It is possible to inject values into the fields of the delegated classes. The following types of injection are supported:
 
@@ -189,7 +189,7 @@ Alternatively, you can also set the expressions as an attribute instead of a chi
   For the same reasons as mentioned above, field injection should not be (usually) used with Spring beans, which are singletons by default. Otherwise, you may run into inconsistencies due to concurrent modification of the bean fields.
 :::
 
-# Delegate Variable Mapping
+## Delegate Variable Mapping
 
 To implement a class that delegates the input and output variable mapping for a call activity, this class needs to implement the `org.operaton.bpm.engine.delegate.DelegateVariableMapping`
 interface. The implementation must provide the methods `mapInputVariables(DelegateExecution, VariableMap)` and `mapOutputVariables(DelegateExecution, VariableScope)`.
@@ -217,7 +217,7 @@ The output variables can be directly set into the caller execution.
 The behavior of the class loading is similar to the class loading on [Java Delegates](../process-engine/delegation-code.md#java-delegate).
 
 
-# Execution Listener
+## Execution Listener
 
 Execution listeners allow you to execute external Java code or evaluate an expression when certain events occur during process execution. The events that can be captured are:
 
@@ -314,7 +314,7 @@ Execution listeners also support using a delegateExpression, similar to a servic
 ```
 
 
-# Task Listener
+## Task Listener
 
 A task listener is used to execute custom Java logic or an expression upon the occurrence of a certain task-related event. It can only be added in the process definition as a child element of a user task. Note that this also must happen as a child of the BPMN 2.0 extensionElements and in the Operaton namespace, since a task listener is a construct specifically for the Operaton engine.
 
@@ -326,7 +326,7 @@ A task listener is used to execute custom Java logic or an expression upon the o
   </userTask>
 ```
 
-## Task Listener Event Lifecycle
+### Task Listener Event Lifecycle
 
 The execution of Task Listeners is dependent on the order of firing of
 the following task-related events:
@@ -390,7 +390,7 @@ This would cancel the Task and cause a **delete** event to be fired.
 Under the above-mentioned conditions, users should be careful not to accidentally create a Task
 event loop.
 
-## Defining a Task Listener
+### Defining a Task Listener
 
 A task listener supports the following attributes:
 
@@ -422,7 +422,7 @@ A task listener supports the following attributes:
     <operaton:taskListener event="create" expression="${myObject.callMethod(task, task.eventName)}" />
     ```
 
-* **delegateExpression**: allows to specify an expression that resolves to an object implementing the TaskListener interface, similar to a service task.
+* **delegateExpression**: lets you specify an expression that resolves to an object implementing the TaskListener interface, similar to a service task.
 
     ```xml
     <operaton:taskListener event="create" delegateExpression="${myTaskListenerBean}" />
@@ -465,7 +465,7 @@ The execution of the user task will **not** be interrupted by this.
   </userTask>
 ```
 
-# Field Injection on Listener
+## Field Injection on Listener
 
 When using listeners configured with the class attribute, Field Injection can be applied. This is exactly the same mechanism as described for Java Delegates, which contains an overview of the possibilities provided by field injection.
 
@@ -531,7 +531,7 @@ The class `ExampleFieldInjectedExecutionListener` concatenates the 2 injected fi
 ```
 
 
-# Access Process Engine Services
+## Access Process Engine Services
 
 It is possible to access the public API services (`RuntimeService`, `TaskService`, `RepositoryService` ...) from the Delegation Code. The following is an example showing
 how to access the `TaskService` from a `JavaDelegate` implementation.
@@ -548,7 +548,7 @@ how to access the `TaskService` from a `JavaDelegate` implementation.
 ```
 
 
-# Throw BPMN Errors from Delegation Code
+## Throw BPMN Errors from Delegation Code
 
 It is possible to throw `BpmnError` from delegation code (Java Delegate, Execution and Task Listeners). This is done by using a provided Java exception class from within your Java code (e.g., in the JavaDelegate):
 
@@ -567,7 +567,7 @@ public class BookOutGoodsDelegate implements JavaDelegate {
 ```
 
 
-## Throw BPMN Errors from Listeners
+### Throw BPMN Errors from Listeners
 
 When implementing an error catch event, keep in mind that the `BpmnError` will be caught when they are thrown in normal flow of the following listeners:
 
@@ -592,7 +592,7 @@ Throwing a `BpmnError` in the delegation code behaves like modelling an error en
 :::
 
 
-# Set Business Key from Delegation Code
+## Set Business Key from Delegation Code
 
 The option to set a new value of business key to already running process instance is shown in the example below:
 
@@ -609,9 +609,9 @@ public class BookOutGoodsDelegate implements JavaDelegate {
 }
 ```
 
-# Exception codes
+## Exception codes
 
-You can throw a `<a class="javadocref" href="org/operaton/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>`
+You can throw a `<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/ProcessEngineException.html">ProcessEngineException</a>`
 from your delegation code and define your custom error code by passing it to the constructor or by
 calling `ProcessEngineException#setCode`.
 
@@ -650,13 +650,13 @@ to assign error codes to exceptions you cannot control via your Delegation Code.
 
 :::note[Heads-up!]
 * A custom error code you define via delegation code has precedence over a custom error code provided
-by a [Custom Code Provider](#custom-code-provider).
-* If your custom error code violates the [reserved code range](#reserved-code-range), it will be
+by a Custom Code Provider.
+* If your custom error code violates the reserved code range, it will be
 overridden with `0` unless you disable the built-in code provider.
 :::
 
 
 [script-sources]: ../process-engine/scripting.md#script-source
-[operaton-script]: ../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-script
+[operaton-script]: ../../reference/bpmn20/custom-extensions/extension-elements.md#script
 [timerEventDefinition]: ../../reference/bpmn20/events/timer-events.md#defining-a-timer
 [job-executor]: ../process-engine/the-job-executor.md

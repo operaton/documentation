@@ -11,14 +11,14 @@ menu:
 ---
 
 
-# Users Menu
+## User Menu
 
-![Example img](./img/admin-users.png)User Menu
+![Example img](/img/documentation/webapps/admin/admin-users.png)User Menu
 
 The Users menu allows you to add, edit and delete user profiles. Furthermore, you can manage group membership and change passwords.
 
 
-# My Profile
+## My Profile
 
 By clicking on your user name in the Users menu, you can access the My Profile menu. In the My Profile menu you can edit your personal account settings, such as:
 
@@ -29,11 +29,11 @@ By clicking on your user name in the Users menu, you can access the My Profile m
 You can also access the My Profile menu from any of the web applications by clicking on your user name at the top right and selecting *My Profile*.
 
 
-# Initial User Setup
+## Initial User Setup
 
-![Example img](./img/admin-initial-user-setup.png)Initial User Setup
+![Example img](/img/documentation/webapps/admin/admin-initial-user-setup.png)Initial User Setup
 
-If no administrator account is configured, a setup screen will be shown on first access of a process engine through Cockpit or Tasklist . This screen allows you to configure an initial user account with administrator rights.
+If no administrator account is configured, a setup screen will be shown on first access of a process engine through Cockpit or Tasklist. This screen allows you to configure an initial user account with administrator rights.
 Administrator users are not global but per engine. Thus, you will need to set up an admin user for each separate engine.
 
 If you installed the default Operaton webapps and demo content, Operaton was configured with several demo users. The default admin user can be accessed with the following credentials:
@@ -42,6 +42,6 @@ If you installed the default Operaton webapps and demo content, Operaton was con
 * Password: `demo`
 
 
-# Administrator Account
+## Administrator Account
 
-Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user- and groupmanagement, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](authorization-management.md) for more details.
+Users who belong to the group *operaton-admin* (default set by the invoice receipt demo process application) have administrator privileges. There must be at least one member in this group, otherwise the [initial setup screen](#initial-user-setup) appears. Besides user and group management, as administrator you are able to define authorization rules for a variety of resources. See the chapter on [Authorizations](authorization-management.md) for more details.

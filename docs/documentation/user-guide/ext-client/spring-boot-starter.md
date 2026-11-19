@@ -16,18 +16,18 @@ your `pom.xml` file:
 </dependency>
 ```
 
-Please check out our [External Task Client Spring Boot Starter Examples](https://github.com/operaton/operaton-bpm-examples/tree/{{<minor-version>}}#external-task-client-spring-boot).
+Please check out the current [external task worker example](https://github.com/operaton/operaton-examples/tree/main/examples/core-examples/external-task-worker).
 
 The Client can subscribe to one or more topic names that are defined in your BPMN process model.
 When the execution waits in an External Task, the Client executes your custom business logic.
 For instance, the customer's credit score is checked, and if successful, the External Task
 can be marked as completed and the execution proceeds.
 
-# Requirements
+## Requirements
 
 External Task Client Spring Boot Starter requires Java 17.
 
-## Topic Subscription
+### Topic Subscription
 
 The interface which allows implementing the custom business logic and interacting with the Engine is
 called `ExternalTaskHandler`. A subscription is identified by a topic name and configured with a
@@ -44,7 +44,7 @@ The annotation requires at least the topic name. However, you can apply more con
 either referencing the topic name in your `application.yml` file:
 
 ```yaml
-camunda.bpm.client:
+operaton.bpm.client:
   base-url: http://localhost:8080/engine-rest
   subscriptions:
     creditScoreChecker:
@@ -65,7 +65,7 @@ Or, by defining configuration attributes in the annotation:
 ```
 
 Please find the complete list of attributes in the
-<a class="javadocref" href="org/operaton/bpm/client/spring/annotation/ExternalTaskSubscription.html">Javadocs</a>.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/client/spring/annotation/ExternalTaskSubscription.html">Javadocs</a>.
 
 **Please Note:** A property defined in the `application.yml` file always overrides the respective attribute defined programmatically via annotation.
 
@@ -120,7 +120,7 @@ When not further configured, a topic subscription is automatically opened when t
 application starts, meaning the Client starts immediately to fetch External Tasks related to the topic name.
 
 There might be situations in which a topic subscription should not be opened immediately when the
-application starts. You can control this via the [`auto-open`](/#auto-open) flag.
+application starts. You can control this via the `auto-open` flag.
 
 The interface `SpringTopicSubscription` allows you to open or close a topic programmatically as soon
 as the subscription has been initialized. The initialization process is triggered as soon as the
@@ -158,7 +158,7 @@ public class SubscriptionInitializedListener
 }
 ```
 
-## Configuration
+### Configuration
 
 ### `application.yml` file
 
@@ -166,12 +166,12 @@ The central configuration point is the `application.yml` file.
 
 #### Client Bootstrapping
 
-Please make sure to configure the properties together with the prefix: `camunda.bpm.client`
+Please make sure to configure the properties together with the prefix: `operaton.bpm.client`
 
 An example configuration could look as follows:
 
 ```yaml
-camunda.bpm.client:
+operaton.bpm.client:
   base-url: http://localhost:8080/engine-rest
   worker-id: spring-boot-worker
   basic-auth:
@@ -184,9 +184,9 @@ Available properties:
 <table class="table desc-table">
   <thead>
     <tr>
-      <th>Property name</th>
-      <th>Description</th>
-      <th>Default value</th>
+      <th style={{width: '20%'}}>Property name</th>
+      <th style={{width: '60%'}}>Description</th>
+      <th style={{width: '20%'}}>Default value</th>
     </tr>
   </thead>
   <tbody>
@@ -309,12 +309,12 @@ Available properties:
 
 #### Topic Subscription
 
-The properties for topic subscriptions go under: `camunda.bpm.client.subscriptions`
+The properties for topic subscriptions go under: `operaton.bpm.client.subscriptions`
 
 The configuration properties can be applied for each topic name as follows:
 
 ```yaml
-camunda.bpm.client:
+operaton.bpm.client:
   # ADD CLIENT CONFIGURATION HERE
   subscriptions:
     creditScoreChecker:
@@ -330,9 +330,9 @@ Available properties:
 <table class="table desc-table">
   <thead>
     <tr>
-      <th>Property name</th>
-      <th>Description</th>
-      <th>Default value</th>
+      <th style={{width: '20%'}}>Property name</th>
+      <th style={{width: '60%'}}>Description</th>
+      <th style={{width: '20%'}}>Default value</th>
     </tr>
   </thead>
   <tbody>
@@ -537,7 +537,7 @@ client.serializationFormat=application/json
 Make sure to reference the respective placeholders defined above in your `application.yml` file:
 
 ```yaml
-camunda.bpm.client:
+operaton.bpm.client:
   base-url: ```${client.baseUrl}
   worker-id: ```${client.workerId}
   date-format: ```${client.dateFormat}
@@ -562,7 +562,7 @@ public class CustomClientConfiguration {
 }
 ```
 
-## Beans
+### Beans
 
 You can define handler beans, but more beans are defined internally, and they are beyond your control.
 However, these beans can be accessed via auto wiring.
@@ -597,7 +597,7 @@ Will result in the subscription bean name:
 creditScoreCheckerHandlerSubscription
 ```
 
-## Spring-only Module
+### Spring-only Module
 
 If you want to use Spring instead of Spring Boot, you can add the following Maven dependency
 to your `pom.xml` file:
@@ -612,4 +612,4 @@ to your `pom.xml` file:
 
 To bootstrap the Client, use the class annotation `@EnableExternalTaskClient`. You can find all
 configuration attributes in the
-<a class="javadocref" href="org/operaton/bpm/client/spring/annotation/EnableExternalTaskClient.html">Javadocs</a>.
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/client/spring/annotation/EnableExternalTaskClient.html">Javadocs</a>.

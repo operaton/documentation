@@ -14,7 +14,7 @@ menu:
 
 Gateways can also be used to model concurrency in a process. The most straightforward gateway to introduce concurrency in a process model is the Parallel Gateway, which allows forking into multiple paths of execution or joining multiple incoming paths of execution.
 
-<div data-bpmn-diagram="../bpmn/parallel-gateway"></div>
+<div data-bpmn-diagram="./bpmn/parallel-gateway"></div>
 
 The functionality of the parallel gateway is based on the incoming and outgoing sequence flow(s):
 
@@ -84,26 +84,26 @@ When these two tasks are completed, the second parallel gateway joins the two ex
 
 Note that a parallel gateway does not need to be 'balanced' (i.e., a matching number of incoming/outgoing sequence flows for corresponding parallel gateways). A parallel gateway will simply wait for all incoming sequence flows and create a concurrent path of execution for each outgoing sequence flow, not influenced by other constructs in the process model. So, the following process is legal in BPMN 2.0:
 
-<div data-bpmn-diagram="../bpmn/parallel-gateway-unbalanced"></div>
+<div data-bpmn-diagram="./bpmn/parallel-gateway-unbalanced"></div>
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
    </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#executionlistener">operaton:executionListener</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#executionlistener">operaton:executionListener</a>
     </td>
   </tr>
   <tr>
@@ -116,6 +116,6 @@ Note that a parallel gateway does not need to be 'balanced' (i.e., a matching nu
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
-*   [Parallel Gateways](http://operaton.org/bpmn/reference.html#gateways-parallel-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Parallel Gateways](https://camunda.com/bpmn/reference/#gateways-parallel-gateways) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

@@ -19,7 +19,7 @@ An event subprocess may not have any incoming or outgoing sequence flows. As an 
 
 The event subprocess is visualized as an embedded subprocess with a dotted outline.
 
-<div data-bpmn-diagram="../bpmn/subprocess_event"> </div>
+<div data-bpmn-diagram="./bpmn/subprocess_event"> </div>
 
 It is represented using XML in the same way as an embedded subprocess. Additionally, the attribute triggeredByEvent must have the value `true`:
 
@@ -36,11 +36,11 @@ It is represented using XML in the same way as an embedded subprocess. Additiona
 :::
 
 
-# Example
+## Example
 
 The following is an example of an event subprocess triggered using an Error Start Event. The event subprocess is located at the "process level", i.e., is scoped to the process instance:
 
-<div data-bpmn-diagram="../bpmn/event-subprocess"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess"></div>
 
 This is what the event subprocess looks like in XML:
 
@@ -56,11 +56,11 @@ This is what the event subprocess looks like in XML:
 
 As already stated, an event subprocess can also be added to an embedded subprocess. If it is added to an embedded subprocess, it becomes an alternative to a boundary event. Consider the two following process diagrams. In both cases the embedded subprocess throws an error event. Both times the error is caught and handled using a user task.
 
-<div data-bpmn-diagram="../bpmn/event-subprocess-alternative1"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess-alternative1"></div>
 
 as opposed to:
 
-<div data-bpmn-diagram="../bpmn/event-subprocess-alternative2"></div>
+<div data-bpmn-diagram="./bpmn/event-subprocess-alternative2"></div>
 
 In both cases the same tasks are executed. However, there are differences between both modeling options:
 
@@ -70,23 +70,23 @@ In both cases the same tasks are executed. However, there are differences betwee
 These two differences can help you decide whether a boundary event or an embedded subprocess is better suited for solving a particular process modeling / implementation problem.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -99,6 +99,6 @@ These two differences can help you decide whether a boundary event or an embedde
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
-*   [Event subprocess](http://operaton.org/bpmn/reference.html#activities-event-subprocess) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Event subprocess](https://camunda.com/bpmn/reference/#activities-event-subprocess) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

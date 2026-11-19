@@ -1,24 +1,17 @@
 ---
 
-title: 'Process Archive Configuration'
+title: '<process-archive />'
 sidebar_position: 40
-
-menu:
-  main:
-    name: "<process-archive />"
-    identifier: "descriptor-ref-process-archive"
-    parent: "descriptor-ref-tags"
-    description: "Define a Deployment."
 
 ---
 
 
-The process archive tag allows configuration of a process engine deployment and can be used in the [processes.xml](../descriptors/processes-xml.md) file.
+The process archive tag allows configuration of a process engine deployment and can be used in the [processes.xml](../processes-xml.md) file.
 
 See the [processes.xml](../../../user-guide/process-applications/the-processes-xml-deployment-descriptor.md) section of the [User Guide](../../../user-guide/index.md) for more details.
 
 
-# Example
+## Example
 
 The following example shows a process-archive XML snippet:
 
@@ -36,7 +29,7 @@ The following example shows a process-archive XML snippet:
 ```
 
 
-# Syntax Reference
+## Syntax Reference
 
 <table class="table table-striped">
   <tr>
@@ -56,7 +49,7 @@ The following example shows a process-archive XML snippet:
         <ul>
           <li><code>name</code>: Allows you to define the name of the process archive. The name will be used for the
             process engine deployment.</li>
-          <li><code>tenantId</code>: Allows you to define the tenant-id of the process archive. If a tenant-id is set then all containing resources will be deployed for the given tenant-id. See the User Guide for details about <a href="../user-guide/process-engine/multi-tenancy.md#single-process-engine-with-tenant-identifiers">Multi-Tenancy</a>.</li>
+          <li><code>tenantId</code>: Allows you to define the tenant-id of the process archive. If a tenant-id is set then all containing resources will be deployed for the given tenant-id. See the User Guide for details about <a href="/docs/documentation/user-guide/process-engine/multi-tenancy#single-process-engine-with-tenant-identifiers">Multi-Tenancy</a>.</li>
         </ul>
       </p>
       <p>
@@ -135,7 +128,7 @@ The following example shows a process-archive XML snippet:
 </table>
 
 
-# Configuration Properties
+## Configuration Properties
 
 The following is a list of all supported configuration properties.
 
@@ -176,7 +169,7 @@ The following is a list of all supported configuration properties.
     <td><code>isResumePreviousVersions</code></td>
     <td>boolean</td>
     <td>
-        If true, previous versions of the deployment are automatically resumed. See the <a href="../user-guide/process-applications/the-processes-xml-deployment-descriptor.md#process-application-deployment">Process Application Deployment</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
+        If true, previous versions of the deployment are automatically resumed. See the <a href="/docs/documentation/user-guide/process-applications/the-processes-xml-deployment-descriptor#process-application-deployment">Process Application Deployment</a> section of the <a href="/docs/documentation/user-guide/">User Guide</a> for more details.
       <p>
         <strong>Default value:</strong>
         true.
@@ -187,7 +180,7 @@ The following is a list of all supported configuration properties.
     <td><code>resumePreviousBy</code></td>
     <td>string</td>
     <td>
-        The mode to resume previous deployments of the process application. See the <a href="../user-guide/process-applications/the-processes-xml-deployment-descriptor.md#process-application-deployment">Process Application Deployment</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
+        The mode to resume previous deployments of the process application. See the <a href="/docs/documentation/user-guide/process-applications/the-processes-xml-deployment-descriptor#process-application-deployment">Process Application Deployment</a> section of the <a href="/docs/documentation/user-guide/">User Guide</a> for more details.
       <p>
         <strong>Default value:</strong>
         <code>process-definition-key</code>
@@ -211,7 +204,7 @@ The following is a list of all supported configuration properties.
         <p>
           <strong>Note:</strong>
         </p>
-        <p>It is not advised to use this setting when process elements are bound against resources of the same deployment. A binding is required when resources like a process definition from a call activity or an external script are referenced (see the <a href="../reference/bpmn20/subprocesses/call-activity.md#calledelement-binding">BPMN implementation reference</a>). For example, if a call activity uses the binding <code>deployment</code> and a certain process definition key, whether the process can be resolved depends on if it was deployed. Thus, it is recommended to use the binding <code>latest</code> or <code>version</code> when activating this setting.</p>
+        <p>It is not advised to use this setting when process elements are bound against resources of the same deployment. A binding is required when resources like a process definition from a call activity or an external script are referenced (see the <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity#calledelement-binding">BPMN implementation reference</a>). For example, if a call activity uses the binding <code>deployment</code> and a certain process definition key, whether the process can be resolved depends on whether it was deployed. Thus, it is recommended to use the binding <code>latest</code> or <code>version</code> when activating this setting.</p>
       </div>
     </td>
   </tr>
@@ -251,7 +244,7 @@ The following is a list of all supported configuration properties.
                  </pre>
              If the process archive(s) defined in (1) uses a path prefixed with <code>pa:</code>, like for instance <code>pa:opps/</code>,
              only the <code>opps/</code>-folder of sales-processes.jar is scanned. More precisely, a "pa-local path", is resolved
-             relative to the the parent directory of the META-INF-directory containing the defining processes.xml file.
+             relative to the parent directory of the META-INF-directory containing the defining processes.xml file.
              This implies that when using a pa-local path in (1), no processes from (2) are visible.
             </li>
           </ul>
@@ -260,14 +253,14 @@ The following is a list of all supported configuration properties.
   </tr>
   <tr>
     <td><code>additionalResourceSuffixes</code></td>
-    <td>comma-seperated list</td>
+    <td>comma-separated list</td>
     <td>
-      Specifies a list of additional suffixes which are considered as deployment resource if the
+      Specifies a list of additional suffixes that are considered deployment resources if the
       <code>isScanForProcessDefinitions</code> property is set to <code>true</code>. It can be used
-      to deploy additional resources beside process and case definitions, for example to add a
+      to deploy additional resources besides process and case definitions, for example to add a
       script to the deployment and reference it as an external source (see the documentation about
-      <a href="../user-guide/process-engine/scripting.md#script-source">script source</a> for more information). To specify multiple suffixes, a comma is
-      used as seperator, i.e., <code>py,groovy,rb</code>.
+      <a href="/docs/documentation/user-guide/process-engine/scripting#script-source">script source</a> for more information). To specify multiple suffixes, a comma is
+      used as separator, i.e., <code>py,groovy,rb</code>.
     </td>
   </tr>
 </table>

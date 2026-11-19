@@ -113,7 +113,7 @@ public void beforeShippingGoods(@Observes @BusinessProcessDefinition("shippingPr
 ```
 
 In the default configuration, event listeners are invoked synchronously and in the context of the same transaction.
-CDI transactional observers (only available in combination with JakartaEE / JavaEE / EJB), allow to control when the
+CDI transactional observers, which are only available in combination with JakartaEE / JavaEE / EJB, let you control when the
 event is handed to the observer method. Using transactional observers, we can for example assure that an observer is
 only notified if the transaction in which the event is fired succeeds:
 
@@ -128,13 +128,13 @@ public void onShipmentSuceeded(
 Note: `BusinessProcessEvent.getTask` will return an instance of `DelegateTask` (in case the event is a task event).
 If the listener is invoked after the transaction has completed, the `DelegateTask` object cannot be used for modifying variables.
 
-# The CDI Event Bridge in a process application
+## The CDI Event Bridge in a process application
 
 To use the CDI Event Bridge in combination with a multi application deployment and the shared process engine, the
-<a class="javadocref" href="org/operaton/bpm/engine/cdi/impl/event/CdiEventListener">CdiEventListener</a> needs to be added as a
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/cdi/impl/event/CdiEventListener.html">CdiEventListener</a> needs to be added as a
 [Process Application Execution Event Listener](../../user-guide/process-applications/process-application-event-listeners.md).
 
-Example configuration for [Servlet Process Application](../../user-guide/process-applications/the-process-application-class.md#the-servletprocessapplication):
+Example configuration for [Servlet Process Application](../../user-guide/process-applications/the-process-application-class.md#the-servletprocessapplication-and-jakartaservletprocessapplication):
 
 ```java
 @ProcessApplication
@@ -152,7 +152,7 @@ public class InvoiceProcessApplication extends ServletProcessApplication {
 }
 ```
 
-Example configuration for [EJB Process Application](../../user-guide/process-applications/the-process-application-class.md#the-ejbprocessapplication):
+Example configuration for [EJB Process Application](../../user-guide/process-applications/the-process-application-class.md#the-ejbprocessapplication-and-jakartaejbprocessapplication):
 
 ```java
 @Singleton

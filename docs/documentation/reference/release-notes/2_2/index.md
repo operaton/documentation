@@ -1,0 +1,483 @@
+---
+title: "2.2"
+sidebar_position: 22
+---
+
+# About release 2.2
+
+## New and Noteworthy
+
+### New Web Applications (webapps-neo) — Technical Preview
+
+Operaton 2.2 integrates a new, Preact-based implementation of the web applications
+(`webapps-neo`) into the main repository as a technical preview alongside the existing legacy
+web applications. It reuses the same backend Java logic as the legacy webapps and ships a first
+administrator setup screen for initial deployment.
+
+The initial integration was followed up with fixes to make the packaged distribution usable and
+to close security defects found while reviewing it against a real build: the SPA's own bundle
+was being blocked by the Content-Security-Policy, login for the new app id was rejected, CSP
+nonces were not scoped per request, error responses were missing security headers, and an
+authorization rule that should have denied `/api/admin/**` did not.
+
+This implements [PR #3296](https://github.com/operaton/operaton/pull/3296) and
+[PR #3515](https://github.com/operaton/operaton/pull/3515).
+
+The Tomcat and WildFly distributions now ship the new web apps as well, **disabled by default**;
+the legacy web apps remain the standard. Enable them with the system property
+`operaton.bpm.webapp.neo.enabled=true` or the environment variable
+`OPERATON_BPM_WEBAPP_NEO_ENABLED=true` (the same property as in the Spring Boot starter).
+When enabled, they are served at the server root (`http://localhost:8080/`); the legacy web apps
+stay at `/operaton/`. While disabled, `/` redirects to `/operaton/`.
+
+:::note Tomcat distribution: `ROOT` web app replaced
+The new web apps are deployed as `webapps/ROOT` in the Tomcat distribution, so Tomcat's default
+`ROOT` application is no longer shipped. If you deploy your own application as `ROOT` into the
+distribution, remove or replace the shipped `webapps/ROOT` when upgrading.
+:::
+
+In Spring Boot, the new web apps can also be served from a sub-path configured via
+`operaton.bpm.webapp.neo.application-path`.
+
+This implements [PR #3884](https://github.com/operaton/operaton/pull/3884),
+[PR #3905](https://github.com/operaton/operaton/pull/3905) and
+[PR #3678](https://github.com/operaton/operaton/pull/3678).
+
+---
+
+### `SKIP LOCKED` Job Acquisition
+
+This is a preview feature we publish to gather real feedback. There is no guarantee that the config
+properties, API or behavior won't change until the final release.
+
+The job executor can now acquire jobs using `FOR UPDATE SKIP LOCKED`, so that parallel nodes
+skip rows another node has already locked instead of blocking on them. In clustered setups this
+removes the contention that previously showed up as rejected job executions when many nodes
+polled the same set of due jobs. This is not an automatic performance improvement, as the feature
+puts more load on the database itself, so its value depends on database sizing, database type and 
+the quality of the network connection between Operaton and the database. 
+
+Activate it through `ProcessEngineConfiguration#setJobExecutorAcquireWithSkipLocked(true)`, or
+in Spring Boot:
+
+```yaml
+operaton:
+  bpm:
+    job-executor-acquire-with-skip-locked: true
+```
+
+Existing installations keep the previous acquisition behaviour until the property is set.
+
+Two details are worth knowing before switching it on:
+
+- Exclusive jobs keep their previous semantics. With SKIP LOCKED active, exclusive and
+  non-exclusive jobs are acquired in separate queries. Exclusive jobs are deliberately acquired
+  without SKIP LOCKED, because their contention-based serialization is what guarantees that
+  jobs of the same process instance are not executed in parallel. Expect the throughput gain on
+  non-exclusive jobs.
+- The statement is database-specific. Where the standard syntax does not apply, Operaton
+  ships a dedicated query: Oracle tolerates neither a subquery wrapper nor a row limit alongside
+  FOR UPDATE SKIP LOCKED, DB2 uses FOR UPDATE WITH RS USE AND KEEP UPDATE LOCKS SKIP LOCKED DATA, and SQL Server uses the UPDLOCK/READPAST hints instead. PostgreSQL, MySQL, MariaDB
+  and H2 use the standard form.
+
+This implements issue #264 (https://github.com/operaton/operaton/issues/264) via
+PR #326 (https://github.com/operaton/operaton/pull/326).
+
+---
+
+### Spring Boot 4.1 Upgrade
+
+Operaton 2.2 upgrades the Spring Boot baseline from **4.0.x** to **Spring Boot 4.1** (4.1.2 at release). This
+upgrade brings in the latest Spring Framework improvements, updated dependency baselines, and
+continued alignment with the Spring ecosystem's active release line.
+
+Existing Spring Boot applications built on Operaton 2.1 should migrate smoothly. Refer to the
+[Spring Boot 4.1 migration guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-4.1-Release-Notes)
+for any application-level adjustments.
+
+This implements [PR #2844](https://github.com/operaton/operaton/pull/2844),
+[PR #3913](https://github.com/operaton/operaton/pull/3913).
+
+---
+
+### WildFly 41 Upgrade & CDI 4.1 Compatibility
+
+Operaton 2.2 upgrades the WildFly distribution to **WildFly 41** and adapts the CDI integration
+to the **Jakarta CDI 4.1** standard API.
+
+Key improvements:
+
+- **`BeanManager` lookup via CDI 4.1 standard API**: The `BeanManager` is now resolved through
+  the Jakarta CDI 4.1 standard API (`CDI.current().getBeanManager()`), which works correctly
+  inside the WildFly module classloader. The previous approach relying on JNDI lookup could fail
+  in certain module isolation scenarios.
+
+- **Null-safe `CdiResolver`**: `CdiResolver` is now null-safe to prevent breaking the EL
+  resolver chain when CDI is not fully initialised or unavailable in a given context.
+
+- **Optional module dependencies**: The module descriptor now declares
+  `jakarta.faces.api` and `jakarta.enterprise.concurrent.api` as **optional** module
+  dependencies, so process application WARs that do not use JSF or Concurrent Utilities are not
+  forced to depend on those modules.
+
+- **No `jboss-deployment-structure.xml` required**: As a direct consequence of the CDI lookup
+  and optional-dependency changes, process application WARs no longer need a
+  `jboss-deployment-structure.xml` to control module visibility. Standard WAR packaging works
+  out of the box on WildFly 39+.
+
+This implements [PR #2781](https://github.com/operaton/operaton/pull/2781),  [PR #3153](https://github.com/operaton/operaton/pull/3153).
+
+---
+
+### Nullability Declarations in the Engine API
+
+Operaton 2.2 begins annotating engine internals with [JSpecify](https://jspecify.dev/)
+`@Nullable`/`@NullMarked` annotations, making the nullability contract of engine APIs explicit and
+tool-checkable (e.g. via IDE inspections or static analysis) instead of relying purely on
+Javadoc or convention.
+
+This is an incremental effort — annotations are being added class by class, package by package, starting
+with engine internals and going through to the public API. For background on the approach and rollout plan, see the forum announcement
+["Introducing declaration of nullability in the API"](https://forum.operaton.org/t/introducing-declaration-of-nullability-in-the-api/445)
+and the underlying [ADR "Null Safety Strategy for Operaton"](https://github.com/operaton/operaton/blob/main/docs/decisions/0001-null-safety-strategy-for-operaton.md).
+
+Annotations alone do not change behavior. As part of this work, however, two internal `Context` methods now throw
+instead of returning `null`. See [Changed internal API](#context-null-safety).
+
+This implements [PR #3590](https://github.com/operaton/operaton/pull/3590), [PR #3618](https://github.com/operaton/operaton/pull/3618), [PR #3634](https://github.com/operaton/operaton/pull/3634), [PR #3642](https://github.com/operaton/operaton/pull/3642), [PR #3658](https://github.com/operaton/operaton/pull/3658), [PR #3666](https://github.com/operaton/operaton/pull/3666).
+
+---
+
+### Root Process Instance ID Added to MDC
+
+The **root process instance ID** is now included in the MDC (Mapped Diagnostic Context) under
+the key `rootProcessInstanceId`. This makes it straightforward to correlate log output across
+call hierarchies that span multiple sub-process instances or called processes back to the
+top-level root instance, improving distributed tracing and log aggregation.
+
+This implements [PR #3114](https://github.com/operaton/operaton/pull/3114).
+
+---
+
+### Deadlock Detection for GraalJS Script Tasks
+
+Operaton 2.2 improves the robustness of the `DbSqlSession` concurrency handling by detecting
+deadlock conditions more reliably. The fix specifically addresses a scenario where GraalJS script
+task execution could trigger a deadlock that was previously not recognized as a concurrent
+modification exception, preventing proper retry handling.
+
+---
+
+### Task Authorization Query Performance
+
+Task list and task count queries that use authorization checks now use an `EXISTS` subquery
+instead of joining `ACT_RU_AUTHORIZATION` into the main result set.
+
+Under high load or with large authorization tables, the previous join approach could inflate the
+intermediate result set, causing slow task queries. The new `EXISTS` path short-circuits the
+authorization check as soon as a matching row is found.
+
+This resolves [PR #3152](https://github.com/operaton/operaton/pull/3152).
+
+---
+
+### MDC Logging: Process Definition Key from Stored Execution Property
+
+When the MDC logging context requires the process definition key, the engine now reads it from
+the already stored `ExecutionEntity#getProcessDefinitionKey()` property instead of resolving the
+full process definition via a database lookup, avoiding unnecessary database round-trips during
+logging.
+
+This resolves [PR #3109](https://github.com/operaton/operaton/pull/3109).
+
+---
+
+### Date Form Values Accepted Correctly
+
+A bug in the deprecated `DateFormType.convertFormValueToModelValue(Object)` path caused an error
+when a date entered in one task was reused as the default value of another task's form field: the
+converter received an already-converted `Date` object instead of a `String`, and rejected it.
+The converter now accepts `Date` values directly in addition to `String` values.
+
+This resolves [PR #3089](https://github.com/operaton/operaton/pull/3089).
+
+---
+
+### Attachment Delete Null Pointer Exception Fixed
+
+A `NullPointerException` that could occur when deleting a task attachment without an associated
+content byte array has been fixed.
+
+This resolves [PR #3088](https://github.com/operaton/operaton/pull/3088).
+
+---
+
+### FEEL Engine Switched to the Unshaded Artifact
+
+Operaton 2.2 replaces the shaded `feel-engine` classifier from `org.camunda.feel` with the
+plain, unshaded artifact, and manages its real dependency tree (Scala, fastparse, geny,
+sourcecode, jackson-module-scala) explicitly instead.
+
+The shaded jar relocated Scala and fastparse to `camundajar.impl.*`, but bundled Jackson and
+paranamer without relocation. This caused duplicate-class conflicts with applications' own
+Jackson dependency (flagged by Maven Enforcer's `banDuplicateClasses`), and classpath-order
+dependent version mixing when the bundled Jackson classes clashed with a differing
+`jackson-annotations` version on the classpath. With the unshaded artifact, FEEL deterministically
+uses the platform's Jackson, governed by the shared `jackson-bom` import.
+
+Applications embedding the engine no longer need to work around these conflicts; the WildFly and
+Tomcat distributions now ship proper modules/libraries for the additional third-party jars this
+change pulls in.
+
+This implements [PR #3342](https://github.com/operaton/operaton/pull/3342).
+
+---
+
+### Security: Pinned Vulnerable Transitive Netty and Jackson Versions
+
+Operaton 2.2 pins `netty-bom` (now at **4.2.19.Final**) and adds a `jackson-bom` (Jackson 3,
+`tools.jackson`) import (now at **3.1.8**), overriding vulnerable transitive versions
+managed by the Quarkus (Netty **4.2.15**, affected by CVE-2026-56745 and related
+advisories) and Spring Boot (Jackson 3 **3.1.4**, affected by CVE-2026-59889) dependency
+platforms. Both pins are temporary and documented as removable once the respective upstream
+BOMs ship a fixed version.
+
+This resolves [PR #3390](https://github.com/operaton/operaton/pull/3390).
+
+The REST API documentation page now bundles DOMPurify **3.4.17**, fixing
+[GHSA-cg2g-xh64-v4q7](https://github.com/advisories/GHSA-cg2g-xh64-v4q7) and
+[GHSA-mrv2-3pqr-j5jr](https://github.com/advisories/GHSA-mrv2-3pqr-j5jr)
+([PR #3933](https://github.com/operaton/operaton/pull/3933)).
+
+---
+
+### Quarkus Updated to 3.40 LTS
+
+The Quarkus platform dependency has been updated from the 3.33 LTS line to **3.40.1.1**, on
+the new Quarkus 3.40 LTS line. Quarkus applications using the Operaton extension should align
+their Quarkus platform version accordingly.
+
+This implements [PR #3386](https://github.com/operaton/operaton/pull/3386),
+[PR #3507](https://github.com/operaton/operaton/pull/3507),
+[PR #3849](https://github.com/operaton/operaton/pull/3849),
+[PR #3903](https://github.com/operaton/operaton/pull/3903).
+
+---
+
+### Docker Images for Java 17, 21 and 25
+
+The [Operaton Docker images](https://hub.docker.com/r/operaton/operaton) can now be built for
+a specific Java version. A new build argument `JAVA_VERSION` (`17`, `21` or `25`) selects the
+JDK. The default is `17`, so existing tags keep their content.
+
+Images for Java 21 and 25 carry a `-jdk21` or `-jdk25` tag suffix. Java 17 images are
+additionally tagged with `-jdk17`, which is identical to the tag without suffix:
+
+| Tag                | Java |
+|--------------------|------|
+| `<version>`        | 17   |
+| `<version>-jdk17`  | 17   |
+| `<version>-jdk21`  | 21   |
+| `<version>-jdk25`  | 25   |
+
+The suffix applies to snapshot tags as well, for example `SNAPSHOT-jdk25` or
+`2.1.6-SNAPSHOT-jdk21`. The CI workflows now build and test all three Java versions.
+
+To build an image yourself:
+
+```shell
+docker build --build-arg DISTRO=run --build-arg JAVA_VERSION=21 -t operaton/operaton:jdk21 .
+```
+
+This implements [PR #42](https://github.com/operaton/operaton-docker/pull/42) in the
+`operaton-docker` repository.
+
+## API
+
+### Database Schema
+
+Operaton 2.2 raises the database schema version from **7.24** to **7.25**. The tables, columns and indexes
+do not change: the upgrade scripts `<database>_engine_7.24_to_7.25.sql` only record the new version in
+`ACT_GE_SCHEMA_LOG`.
+
+Run the upgrade script for your database, or apply the Liquibase changelog, so that `ACT_GE_SCHEMA_LOG`
+reports the version that matches the engine. The scripts are part of the `operaton-sql-scripts-7.25.0.tar.gz`
+asset of the [2.2.0 GitHub release](https://github.com/operaton/operaton/releases/tag/v2.2.0). See
+[Database schema](../../../installation/database-schema.md) for the update procedure.
+
+### REST API
+
+No REST API contract changes in this milestone release.
+
+### New APIs
+
+No new public APIs in this milestone release.
+
+### Removed & Changed APIs
+
+No removed or changed public APIs. The following **internal** API has changed.
+
+#### Changed internal API: `Context.getProcessEngineConfiguration()` and `Context.getCommandContext()` {#context-null-safety}
+
+`org.operaton.bpm.engine.impl.context.Context.getProcessEngineConfiguration()` and
+`Context.getCommandContext()` now **throw an `IllegalStateException`** when no process engine configuration or
+command context is active on the current thread. Before 2.2 they returned `null`. Both are only active while an
+engine command executes, for example inside a `JavaDelegate`, a listener or a custom `Command`.
+
+Code that calls these methods outside a command, such as from a Spring controller or service running on an HTTP
+request thread, and checks for `null` now fails with:
+
+```
+java.lang.IllegalStateException: No process engine configuration active on thread Thread[...]
+java.lang.IllegalStateException: ENGINE-09025 Operation ... requires active command context. No command context active on thread Thread[...].
+```
+
+New methods cover the case where no active context is expected:
+
+- `Context.findProcessEngineConfiguration()` returns an `Optional<ProcessEngineConfigurationImpl>`
+- `Context.hasActiveProcessEngineConfiguration()` returns a `boolean`
+- `Context.findCommandContext()` returns an `Optional<CommandContext>`
+- `Context.hasActiveCommandContext()` returns a `boolean`
+
+```java
+// before 2.2
+ProcessEngineConfigurationImpl conf = Context.getProcessEngineConfiguration();
+if (conf != null) {
+  ...
+}
+
+// 2.2
+Context.findProcessEngineConfiguration().ifPresent(conf -> ...);
+if (Context.hasActiveCommandContext()) {
+  CommandContext commandContext = Context.getCommandContext();
+  ...
+}
+```
+
+In most cases, application code does not need `Context` at all. Use the public service API instead, such as
+`RuntimeService`, `TaskService` or the `DelegateExecution` passed to your delegate. Each service call already runs
+as its own transactional command and joins a command that is already running.
+
+This was introduced by [PR #3550](https://github.com/operaton/operaton/pull/3550) and reported in
+[#4038](https://github.com/operaton/operaton/issues/4038).
+
+:::warning Internal API
+Classes in packages containing the segment `.impl.` are internal. They are not part of the public API, and they can
+change or be removed in any release, including minor and patch releases, without prior deprecation. Using them
+from application code is discouraged.
+
+Starting with Operaton 2.3, this boundary will be enforced more strictly. We plan to declare the internal packages
+explicitly, so that build tools and IDEs can flag them, and to keep changing internal signatures as the nullability
+work continues. If you depend on internal classes today, please check whether a public API covers your use case. If
+none does, open an issue or start a thread on the [forum](https://forum.operaton.org/) so that we can consider
+providing one.
+:::
+
+### Usage of deprecated APIs
+
+It is **strongly recommended** to avoid using deprecated methods which are marked with the `@Deprecated(forRemoval = true)`
+annotation in the Java API.
+
+Deprecated methods within packages containing the segment `.impl.` are considered internal and should not be used by clients.
+**These methods are subject to removal without prior notice.**
+
+## Versions & Compatibility
+
+### Java
+
+Operaton requires **Java 17** as the minimum version.
+
+Operaton is tested and supported on **Java 17**, **Java 21**, and **Java 25**.
+
+### Camunda 7 Compatibility
+
+This release is feature complete and API-compatible with [**Camunda 7 CE 7.24**](https://docs.camunda.org/manual/7.24/).
+
+### Spring
+
+Operaton is based on:
+
+- **Spring Boot 4.1.2**
+- **Spring Framework 7.0.10**
+
+### Quarkus Extension
+
+The Operaton Quarkus extension is based on **Quarkus 3.40.1.1 LTS**.
+
+### Distributions
+
+The Tomcat distribution is based on **Tomcat 11.0.27**.
+
+The WildFly distribution is based on **WildFly 41.0.1.Final**.
+
+### Database Compatibility
+
+| Database   | Minimum version | Notes                             |
+|------------|-----------------|-----------------------------------|
+| PostgreSQL | 14              | PostgreSQL 13 EOL November 2025   |
+| MariaDB    | 10.11           | 10.11 is the current LTS branch   |
+| MySQL      | 8.4             | 8.4 is the current LTS branch     |
+
+Oracle (21), SQL Server 2022, and DB2 support is unchanged.
+
+### Standards Compliance
+
+Operaton is compliant with the following standards:
+
+- Jakarta EE 11
+- BPMN 2.0
+- DMN 1.3
+- CMMN 1.1
+
+### Scripting Languages
+
+Operaton supports the following scripting languages:
+
+| Language   | Engine             | Version  |
+|------------|--------------------|----------|
+| JavaScript | GraalVM JavaScript | 25.4.4.1.1 |
+| Groovy     | Groovy             | 5.1.3    |
+| Python     | Jython             | 2.7.4    |
+| Ruby       | GraalVM Ruby       | 9.1.17.0 |
+
+### Dependency Upgrades
+
+The following non-test dependencies have been upgraded since Operaton 2.1:
+
+| Dependency               | 2.1           | 2.2            |
+|--------------------------|---------------|----------------|
+| Spring Boot              | 4.0.6         | 4.1.2          |
+| Apache Tomcat            | 11.0.21       | 11.0.27        |
+| WildFly                  | 38.0.1.Final  | 41.0.1.Final   |
+| Jackson                  | 2.21.2        | 2.22.4         |
+| Groovy                   | 5.0.5         | 5.1.3          |
+| Quarkus                  | 3.33.1 (LTS)  | 3.40.1.1 (LTS) |
+| GraalVM JavaScript       | 25.0.3        | 25.4.4.1.1     |
+
+## Patch Releases
+
+### 2.2.2
+
+#### Security Vulnerabilities
+
+- **[fix(docker): require patched JRE versions](https://github.com/operaton/operaton-docker/pull/53)** — The [Docker images](https://hub.docker.com/r/operaton/operaton) now require a JRE that contains the fix for CVE-2026-114938: `17.0.21.1_p2-r0` for Java 17, `21.0.13.1_p2-r0` for Java 21 and `25.0.5.1_p2-r0` for Java 25. The build fails if Alpine provides an older JRE. (operaton-docker #53)
+
+#### Dependency Upgrades
+
+- Routine maintenance updates, among them Apache Tomcat `11.0.27` → `11.0.29` for the Tomcat distribution, Quarkus `3.40.1.1` → `3.40.1.2`, `netty` `4.2.20.Final` → `4.2.21.Final`, `logback` `1.6.6` → `1.6.7` and `resteasy-bom` `7.0.5.Final` → `7.0.6.Final`. (#4086, #4112, #4121)
+
+#### Bug Fixes
+
+- **[fix(engine-rest): replace broken docs links in OpenAPI descriptions](https://github.com/operaton/operaton/pull/4100)** — Links in the OpenAPI descriptions pointed to per-endpoint REST pages of the Camunda docs, which do not exist in the Operaton docs. They now point to the referenced operation within the REST API reference. Links to the authorization, message events, multi-tenancy, generated task forms and incident types pages are fixed as well, and the swapped GET/POST links in `POST /history/process-instance/count` are corrected. (#4100)
+- **[fix(engine-rest): correct parallel history cleanup docs link](https://github.com/operaton/operaton/pull/4099)** — The link to the parallel execution of history cleanup now points to the history cleanup page. (#4099)
+- **[fix(engine): reinitialize stale engine in ProcessEngineExtension](https://github.com/operaton/operaton/pull/4070)** — The JUnit 5 `ProcessEngineExtension` kept using a closed process engine when a test called `ProcessEngines.destroy()` and a later test registered a new engine with the same name. Tests that wait for the job executor could then time out, depending on the test class order. The extension now detects a replaced engine and reinitializes it. Fixes [#4052](https://github.com/operaton/operaton/issues/4052). (#4070)
+
+### 2.2.1
+
+#### Dependency Upgrades
+
+- Routine maintenance updates, among them `netty` `4.2.19.Final` → `4.2.20.Final`, `logback` `1.6.5` → `1.6.6`, `json-smart` `2.6.0` → `2.6.1`, `joda-time` `2.15.0` → `2.15.1`, the Oracle JDBC driver `23.26.3.0.0` → `23.26.4.0.0` and the SQL Server JDBC driver `13.6.1.jre11` → `13.6.2.jre11`.
+
+#### Bug Fixes
+
+- **[fix(engine-rest): fix broken docs links in generated REST API reference](https://github.com/operaton/operaton/pull/4005)** — Links in the generated REST API reference (history cleanup, input/output variable mappings, execution participation and others) point to the correct documentation pages again. (#4005)

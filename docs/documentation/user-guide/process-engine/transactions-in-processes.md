@@ -6,62 +6,62 @@ sidebar_position: 160
 ---
 
 
-The process engine is a piece of passive Java code which works in the Thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's http-thread-pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
+The process engine is a piece of passive Java code which works in the thread of the client. For instance, if you have a web application allowing users to start a new process instance and a user clicks on the corresponding button, some thread from the application server's HTTP thread pool will invoke the API method `runtimeService.startProcessInstanceByKey(...)`, thus *entering* the process engine and starting a new process instance. We call this "borrowing the client thread".
 
 On any such *external* trigger (i.e., start a process, complete a task, signal an execution), the engine runtime will advance in the process until it reaches wait states on each active path of execution. A wait state is a task which is performed *later*, which means that the engine persists the current execution to the database and waits to be triggered again. For example in case of a user task, the external trigger on task completion causes the runtime to execute the next bit of the process until wait states are reached again (or the instance ends). In contrast to user tasks, a timer event is not triggered externally. Instead it is continued by an *internal* trigger. That is why the engine also needs an active component, the [job executor](../process-engine/the-job-executor.md), which is able to fetch registered jobs and process them asynchronously.
 
 
-# Wait States
+## Wait States
 
  We talked about wait states as transaction boundaries where the process state is stored to the database, the thread returns to the client and the transaction is committed. The following BPMN elements are always wait states:
 
-[![](./img/bpmn-elements/receive-task.svg)](../../reference/bpmn20/tasks/receive-task.md)
-[![](./img/bpmn-elements/user-task.svg)](../../reference/bpmn20/tasks/user-task.md)
-[![](./img/bpmn-elements/message-event.svg) Message Event](../../reference/bpmn20/events/message-events.md)
-[![](./img/bpmn-elements/timer-event.svg) Timer Event](../../reference/bpmn20/events/timer-events.md)
-[![](./img/bpmn-elements/signal-event.svg) Signal Event](../../reference/bpmn20/events/signal-events.md)
+[![](/img/documentation/user-guide/process-engine/receive-task.svg)](../../reference/bpmn20/tasks/receive-task.md)
+[![](/img/documentation/user-guide/process-engine/user-task.svg)](../../reference/bpmn20/tasks/user-task.md)
+[![](/img/documentation/user-guide/process-engine/message-event.svg) Message Event](../../reference/bpmn20/events/message-events.md)
+[![](/img/documentation/user-guide/process-engine/timer-event.svg) Timer Event](../../reference/bpmn20/events/timer-events.md)
+[![](/img/documentation/user-guide/process-engine/signal-event.svg) Signal Event](../../reference/bpmn20/events/signal-events.md)
 
 The [Event Based Gateway](../../reference/bpmn20/gateways/event-based-gateway.md):
 
-![](./bpmn/event-based-gateway.bpmn)
+<img src="/img/documentation/user-guide/process-engine/event-based-gateway.png" width="150px"/>
 
-<div data-bpmn-diagram="../bpmn/event-based-gateway"></div>
+<div data-bpmn-diagram="./bpmn/event-based-gateway"></div>
 
 A special type of the [Service Task](../../reference/bpmn20/tasks/service-task.md): [External Task](../process-engine/external-tasks.md)
 
-<a href="../external-tasks">bpmn-symbol service-task</a>
+<a href="/docs/documentation/user-guide/process-engine/external-tasks">bpmn-symbol service-task</a>
 
 Keep in mind that [Asynchronous Continuations](#asynchronous-continuations) can add transaction boundaries to other tasks as well.
 
 
-# Transaction Boundaries
+## Transaction Boundaries
 
-The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occuring during its execution. This is illustrated in the following example:
+The transition from one such stable state to another stable state is always part of a single transaction, meaning that it succeeds as a whole or is rolled back on any kind of exception occurring during its execution. This is illustrated in the following example:
 
-![Example img](./img/transactions-1.png)Transaction Boundaries
+![Example img](/img/documentation/user-guide/process-engine/transactions-1.png)Transaction Boundaries
 
 We see a segment of a BPMN process with a user task, a service task and a timer event. The timer event marks the next wait state. Completing the user task and validating the address is therefore part of the same unit of work, so it should succeed or fail atomically. That means that if the service task throws an exception we want to roll back the current transaction, so that the execution tracks back to the user task and the user task is still present in the database. This is also the default behavior of the process engine.
 
 In **1**, an application or client thread completes the task. In that same thread the engine runtime is now executing the service task and advances until it reaches the wait state at the timer event (**2**). Then it returns the control to the caller (**3**) potentially committing the transaction (if it was started by the engine).
 
 
-# Asynchronous Continuations
+## Asynchronous Continuations
 
-## Why Asynchronous Continuations?
+### Why Asynchronous Continuations?
 
 In some cases the synchronous behavior is not desired. Sometimes it is useful to have custom control over transaction boundaries in a process.
 The most common motivation is the requirement to scope *logical units of work*. Consider the following process fragment:
 
-![Example img](./img/transactions-2.png)Asynchronous Continuations
+![Example img](/img/documentation/user-guide/process-engine/transactions-2.png)Asynchronous Continuations
 
-We are completing the user task, generating an invoice and then sending that invoice to the customer. It can be argued that the generation of the invoice is not part of the same unit of work: we do not want to roll back the completion of the usertask if generating an invoice fails.
+We are completing the user task, generating an invoice and then sending that invoice to the customer. It can be argued that the generation of the invoice is not part of the same unit of work: we do not want to roll back the completion of the user task if generating an invoice fails.
 Ideally, the process engine would complete the user task (**1**), commit the transaction and return
 control to the calling application (**2**). In a background thread (**3**), it would generate the invoice.
 This is the exact behavior offered by asynchronous continuations: they allow us to scope transaction
 boundaries in the process.
 
 
-## Configure Asynchronous Continuations
+### Configure Asynchronous Continuations
 
 Asynchronous Continuations can be configured *before* and *after* an activity. Additionally, a
 process instance itself may be configured to be started asynchronously.
@@ -92,9 +92,9 @@ when the execution listener class is not available on the node that instantiates
 ```
 
 
-## Asynchronous Continuations of Multi-Instance Activities
+### Asynchronous Continuations of Multi-Instance Activities
 
-A [multi-instance activity](../../reference/bpmn20/tasks/task-markers.md#multiple-instances) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
+A [multi-instance activity](../../reference/bpmn20/tasks/task-markers.md#multiple-instance) can be configured for asynchronous continuation like other activities. Declaring asynchronous continuation of a multi-instance activity makes the multi-instance body asynchronous, that means, the process continues asynchronously *before* the instances of that activity are created or *after* all instances have ended.
 
 Additionally, the inner activity can also be configured for asynchronous continuation using the `operaton:asyncBefore` and `operaton:asyncAfter` extension attributes on the `multiInstanceLoopCharacteristics` element:
 
@@ -109,12 +109,12 @@ Additionally, the inner activity can also be configured for asynchronous continu
 Declaring asynchronous continuation of the inner activity makes each instance of the multi-instance activity asynchronous. In the above example, all instances of the parallel multi-instance activity will be created but their execution will be deferred. This can be useful to take more control over the transaction boundaries of the multi-instance activity or to enable true parallelism in case of a parallel multi-instance activity.
 
 
-## Understand Asynchronous Continuations
+### Understand Asynchronous Continuations
 
 To understand how asynchronous continuations work, we first need to understand how an activity is
 executed:
 
-![Example img](./img/process-engine-activity-execution.png)Asynchronous Continuations
+![Example img](/img/documentation/user-guide/process-engine/process-engine-activity-execution.png)Asynchronous Continuations
 
 The above illustration shows how a regular activity which is entered and left by a sequence flow is
 executed:
@@ -129,7 +129,7 @@ executed:
 Asynchronous Continuations allow putting break points between the execution of the sequence flows
 and the execution of the activity:
 
-![Example img](./img/process-engine-async.png)
+![Example img](/img/documentation/user-guide/process-engine/process-engine-async.png)
 
 The above illustration shows where the different types of asynchronous continuations break the
 execution flow:
@@ -143,22 +143,22 @@ listeners.
 Asynchronous continuations directly relate to transaction boundaries: putting an asynchronous
 continuation before or after an activity creates a transaction boundary before or after the activity:
 
-![Example img](./img/process-engine-async-transactions.png)
+![Example img](/img/documentation/user-guide/process-engine/process-engine-async-transactions.png)
 
 What's more, asynchronous continuations are always executed by the [Job
 Executor](../process-engine/the-job-executor.md).
 
 
-# Rollback on Exception
+## Rollback on Exception
 
 We want to emphasize that in case of a non handled exception, the current transaction gets rolled back and the process instance is in the last wait state (save point). The following image visualizes that.
 
-![Example img](./img/transactions-3.png)Rollback
+![Example img](/img/documentation/user-guide/process-engine/transactions-3.png)Rollback
 
 If an exception occurs when calling `startProcessInstanceByKey` the process instance will not be saved to the database at all.
 
 
-# Reasoning for This Design
+## Reasoning for This Design
 
 The above sketched solution normally leads to discussion, as people expect the process engine to stop in case the task caused an exception. Also, other BPM suites often implement every task as a wait state. However, this approach has a couple of **advantages**:
 
@@ -173,16 +173,16 @@ However, there are consequences which you should keep in mind:
  * Parallel process paths are not executed in parallel in terms of Java Threads, the different paths are executed sequentially, since we only have and use one Thread.
  * Timers cannot fire before the transaction is committed to the database. Timers are explained in more detail later, but they are triggered by the only active part of the Process Engine where we use own Threads: The Job Executor. Hence they run in an own thread which receives the due timers from the database. However, in the database the timers are not visible before the current transaction is visible. So the following timer will never fire:
 
-![Example img](./img/NotWorkingTimerOnServiceTimeout.png)Not Working Timeout
+![Example img](/img/documentation/user-guide/process-engine/NotWorkingTimerOnServiceTimeout.png)Not Working Timeout
 
 
-# Transaction Integration
+## Transaction Integration
 
 The process engine can either manage transactions on its own ("Standalone" transaction management)
 or integrate with a platform transaction manager.
 
 
-## Standalone Transaction Management
+### Standalone Transaction Management
 
 If the process engine is configured to perform standalone transaction management, it always opens a
 new transaction for each command which is executed. To configure the process engine to use
@@ -204,7 +204,7 @@ systems.
 :::
 
 
-## Transaction Manager Integration
+### Transaction Manager Integration
 
 The process engine can be configured to integrate with a transaction manager (or transaction
 management systems). Out of the box, the process engine supports integration with Spring and JTA
@@ -231,7 +231,7 @@ integrate with
 [tx-spring]: ../spring-framework-integration/transactions.md
 [tx-jta]: ../cdi-java-ee-integration/jta-transaction-integration.md
 
-## Transactions and the Process Engine Context
+### Transactions and the Process Engine Context
 
 When a Process Engine Command is executed, the engine
 will create a Process Engine Context. The Context caches database
@@ -242,14 +242,14 @@ as soon as the Command returns. However, it should be noted that the
 current transaction may be committed at a later time.
 
 If a Process Engine Command is nested into another Command, i.e. a Command
-is executed within another command, the default behaviour is to reuse the
+is executed within another command, the default behavior is to reuse the
 existing Process Engine Context. This means that the nested Command will
 have access to the same cached entities and the changes made to them.
 
 When the nested Command is to be executed in a new transaction, a new Process
 Engine Context needs to be created for its execution. In this case, the nested
 Command will use a new cache for the database entities, independent of the
-previous (outer) Command cache. This means that, the changes in the cache of
+previous (outer) Command cache. This means that the changes in the cache of
 one Command are invisible to the other Command and vice versa. When the nested
 Command returns, the changes are flushed to the database independently of the
 Process Engine Context of the outer Command.
@@ -277,7 +277,7 @@ try {
 }
 ```
 
-# Optimistic Locking
+## Optimistic Locking
 
 The Operaton Engine can be used in multi threaded applications. In such a setting, when multiple threads interact with the process engine concurrently, it can happen that these threads attempt to do changes to the same data. For example: two threads attempt to complete the same User Task at the same time (concurrently). Such a situation is a conflict: the task can be completed only once.
 
@@ -285,7 +285,7 @@ Operaton Engine uses a well known technique called "Optimistic Locking" (or Opti
 
 This section is structured in two parts: The first part introduces Optimistic Locking as a concept. You can skip this section in case you are already familiar with Optimistic Locking as such. The second part explains the usage of Optimistic Locking in Operaton.
 
-## What is Optimistic Locking?
+### What is Optimistic Locking?
 
 Optimistic Locking (also Optimistic Concurrency Control) is a method for concurrency control, which is used in
 transaction based systems. Optimistic Locking is most efficient in situations in which data is read more frequently than it is changed. Many threads can read the same data objects at the same time without excluding each other. Consistency is then ensured by detecting conflicts and preventing updates in situations in which multiple threads attempt to change the same data objects concurrently. If such a conflict is detected, it is ensured that only one update succeeds and all others fail.
@@ -322,7 +322,7 @@ The above table shows a single row holding user data. The user has a unique Id (
 
 We now construct a situation in which 2 transactions attempt to update this entry, one attempting to change the address, the other one attempting to delete the user. The intended behavior is that once of the transactions succeeds and the other is aborted with an error indicating that a concurrency conflict was detected. The user can then decide to retry the transaction based on the latest state of the data:
 
-![Example img](./img/optimisticLockingTransactions.png)Transactions with Optimistic Locking
+![Example img](/img/documentation/user-guide/process-engine/optimisticLockingTransactions.png)Transactions with Optimistic Locking
 
 As you can see in the picture above, `Transaction 1` reads the user data, does something with the data, deletes the user and then commits.
 `Transaction 2` starts at the same time and reads the same user data, and also works on the data. When `Transaction 2` attempts to update the user address a conflict is detected (since `Transaction 1` has already deleted the user).
@@ -346,7 +346,7 @@ However, since pessimistic locks are exclusive, concurrency is reduced, degradin
 * [\[1\] Wikipedia: Optimistic concurrency control](https://en.wikipedia.org/wiki/Optimistic_concurrency_control)
 * [\[2\] Stackoverflow: Optimistic vs. Pessimistic Locking](http://stackoverflow.com/questions/129329/optimistic-vs-pessimistic-locking)
 
-## Optimistic Locking in Operaton
+### Optimistic Locking in Operaton
 
 Operaton uses Optimistic Locking for concurrency control. If a concurrency conflict is detected,
 an exception is thrown and the transaction is rolled back. Conflicts are detected when _UPDATE_ or _DELETE_ statements are executed.
@@ -384,7 +384,7 @@ For example
 
 The following model shows a parallel gateway, on which the `OptimisticLockingException` can occur.
 
-![Example img](./img/optimisticLockingParallel.png)Optimistic Locking in parallel gateway
+![Example img](/img/documentation/user-guide/process-engine/optimisticLockingParallel.png)Optimistic Locking in parallel gateway
 
 There are two user tasks after the opening parallel gateway. The closing parallel gateway, after the user tasks, merges the executions to one.
 In most cases, one of the user tasks will be completed first. Execution then waits on the closing parallel gateway until the second user task is completed.

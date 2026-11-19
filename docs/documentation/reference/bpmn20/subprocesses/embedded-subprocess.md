@@ -25,15 +25,15 @@ Using a subprocess does impose some constraints:
 
 A subprocess is visualized as a typical activity, i.e., a rounded rectangle. In case the subprocess is collapsed, only the name and a plus-sign are displayed, giving a high-level overview of the process:
 
-<div data-bpmn-diagram="../bpmn/subprocess"></div>
+<div data-bpmn-diagram="./bpmn/subprocess"></div>
 
 In case the subprocess is expanded, the steps of the subprocess are displayed within the subprocess boundaries:
 
-<div data-bpmn-diagram="../bpmn/subprocess_expanded"></div>
+<div data-bpmn-diagram="./bpmn/subprocess_expanded"></div>
 
 One of the main reasons to use a subprocess is to define a scope for an event. The following process model shows this: If we are spontaneously invited to dinner, we will cancel our cooking process. However, if we are already eating, we will not react to an invitation anymore. In more technical terms, the scope of the message event is the subprocess, so the message can only be received while the subprocess is active.
 
-<div data-bpmn-diagram="../bpmn/subprocess_attached"></div>
+<div data-bpmn-diagram="./bpmn/subprocess_attached"></div>
 
 A subprocess is defined by the subprocess element. All activities, gateways, events, etc. that are part of the subprocess need to be enclosed within this element.
 
@@ -48,23 +48,23 @@ A subprocess is defined by the subprocess element. All activities, gateways, eve
 ```
 
 
-# Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -77,6 +77,6 @@ A subprocess is defined by the subprocess element. All activities, gateways, eve
 </table>
 
 
-# Additional Resources
+### Additional Resources
 
-*   [Subprocesses](http://operaton.org/bpmn/reference.html#activities-subprocess) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Subprocesses](https://camunda.com/bpmn/reference/#activities-subprocess) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

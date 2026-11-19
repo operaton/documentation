@@ -2,7 +2,7 @@
 
 title: "Shared Engine Distribution"
 sidebar_position: 10
-description: "Install the Shared Process Engine and Web Applications inside an Application Server like Wildfly or Tomcat."
+description: "Install the Shared Process Engine and Web Applications inside an application server like WildFly or Tomcat."
 
 ---
 # Install the Shared Engine Distribution

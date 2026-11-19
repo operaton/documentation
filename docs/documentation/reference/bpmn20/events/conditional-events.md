@@ -20,7 +20,7 @@ See the [Trigger Conditional Events](#trigger-conditional-events) section for de
 
 In the following BPMN model, all supported conditional events are used.
 
-![Example img](./bpmn/event-conditional.svg)Conditional Events Overview
+![Example img](/img/documentation/reference/bpmn20/events/event-conditional.svg)Conditional Events Overview
 
 As you can see, an intermediate conditional event is like a wait until the condition is satisfied. In this example, if
 the processor becomes available and the condition is, for example, `${processorAvailable == true}`, the condition will be satisfied and the execution process continues to the next activity.
@@ -31,7 +31,7 @@ During the entire execution of the process instance, the application can be canc
 satisfied, the execution of the process instance will be interrupted by the event sub process.
 This will cancel the current processing of the application.
 
-# Condition
+## Condition
 
 To specify when a conditional event should be triggered, a `condition` element must be specified as a sub-element of `conditionalEventDefinition`.
 
@@ -63,7 +63,7 @@ The `conditionalEventDefinition` can, for example, look like this:
 The condition above is only evaluated if the variable `var1` is created or updated.
 The attributes are especially useful on non interrupting events, since these events can be triggered more than once!
 
-# Conditional Boundary Event
+## Conditional Boundary Event
 
 A conditional boundary event acts like an observer which is triggered if a specific condition is satisfied.
 
@@ -81,7 +81,7 @@ In the XML representation for non interrupting conditional events, the cancelAct
 </boundaryEvent>
 ```
 
-# Intermediate Conditional Catch Event
+## Intermediate Conditional Catch Event
 
 An intermediate conditional event is like a wait until the condition is true. When the execution arrives at the catching event activity,
 the condition is evaluated for the first time. If the condition is satisfied, the execution process continues to the next activity.
@@ -98,7 +98,7 @@ The specific sub-element type in this case is a conditionalEventDefinition eleme
 </intermediateCatchEvent>
 ```
 
-# Conditional Start Event
+## Conditional Start Event
 
 A conditional start event can be used to start a process by evaluating some condition. One process can have one or more conditional start events.
 
@@ -135,7 +135,7 @@ Optional: Adding `variableName` attribute to `conditionalEventDefinition` allows
 </startEvent>
 ```
 
-# Conditional Start Event for Event Sub Process
+## Conditional Start Event for Event Sub Process
 
 Similar to conditional boundary events, conditional start events for event sub process can be interrupting and non interrupting.
 
@@ -153,21 +153,21 @@ The XML representation of a conditional start event is the normal start event de
 </subProcess>
 ```
 
-# Trigger Conditional Events
+## Trigger Conditional Events
 
-## Triggering on Scope Instantiation
+### Triggering on Scope Instantiation
 
 When a BPMN scope is instantiated, the event conditions which are available in this scope
 are evaluated. This behavior is called *triggering on scope instantiation*.
 
 Consider the following process model:
 
-<div data-bpmn-diagram="../bpmn/event-conditional2" ></div>
+<div data-bpmn-diagram="./bpmn/event-conditional2" ></div>
 
 When a process instance is started, i.e., the process definition scope is instantiated, the condition of the sub process is evaluated before the none start
 event is executed. If fulfilled, it triggers immediately and the none start event never executes. The same applies to activities with conditional boundary events and intermediate conditional events.
 
-## Triggering via Variable API
+### Triggering via Variable API
 
 Besides the triggering on scope instantiation, conditional events can also be triggered when a process variable changes.
 That is the case if a variable is created, updated or deleted.
@@ -203,7 +203,7 @@ When set from delegation code, variable changes do not trigger conditional event
 
 In the following picture the different activity instance phases are displayed.
 
-![API Services](./img/activityInstanceState.png)
+![API Services](/img/documentation/reference/bpmn20/events/activityInstanceState.png)
 
  * `Starting` corresponds to the starting phase of the activity instance. At this time the input mappings and execution start listeners are called.
  * `Execute` corresponds to the executing phase of the activity instance.
@@ -214,11 +214,11 @@ For example, let us assume a variable is set in a start execution listener of an
 ### Top-Down Evaluation
 
 A variable change causes condition evaluation and event triggering in a *top-down* fashion.
-That means the evaluation starts at the the conditional events of the BPMN scope in which the variable was changed. It then step by step descends into the instances of nested BPMN scopes (e.g., embedded sub processes). This is done until a conditional event is triggered that interrupts the current scope instance (thereby cancelling all children) or until there are no more deeper nested scopes.
+That means the evaluation starts at the conditional events of the BPMN scope in which the variable was changed. It then step by step descends into the instances of nested BPMN scopes (e.g., embedded sub processes). This is done until a conditional event is triggered that interrupts the current scope instance (thereby cancelling all children) or until there are no more deeper nested scopes.
 
 For example see the following BPMN process model:
 
-<div data-bpmn-diagram="../bpmn/conditionalEventScopesHighestFirst" ></div>
+<div data-bpmn-diagram="./bpmn/conditionalEventScopesHighestFirst" ></div>
 
 If a variable is set in the context of the sub process instance, then the conditional boundary event of the sub process is evaluated first.
 If the condition is satisfied, then the execution is interrupted, otherwise the conditional boundary event of `UserTask B` is evaluated and
@@ -231,7 +231,7 @@ That means if a variable changes, only those conditional events are evaluated th
 
 See the following BPMN process model:
 
-<div data-bpmn-diagram="../bpmn/conditionalEventScopes" ></div>
+<div data-bpmn-diagram="./bpmn/conditionalEventScopes" ></div>
 
 If we have started the process above and `UserTask B` and `UserTask A` are active, then the [activity instance](../../../user-guide/process-engine/process-engine-concepts.md#activity-instances) hierarchy is:
 
@@ -242,14 +242,14 @@ If we have started the process above and `UserTask B` and `UserTask A` are activ
 
 If a variable is set in the context of the `SubProcess` instance, then only the conditional boundary event of `UserTask B` is evaluated. The boundary event of `UserTask A` cannot trigger as the variable is not *visible* in its context. The user guide section on [variable scopes and variable visibility](../../../user-guide/process-engine/variables.md#variable-scopes-and-variable-visibility) provides details on the general concept.
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#variablename">operaton:variableName</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#variableevents">operaton:variableEvents</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#variablename">operaton:variableName</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#variableevents">operaton:variableEvents</a>,
     </td>
   </tr>
   <tr>
@@ -264,6 +264,6 @@ If a variable is set in the context of the `SubProcess` instance, then only the 
   </tr>
 </table>
 
-# Additional Resources
+## Additional Resources
 
-* [Conditional Events](http://operaton.org/bpmn/reference.html#events-conditional) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Conditional Events](https://camunda.com/bpmn/reference/#events-conditional) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

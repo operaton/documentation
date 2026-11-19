@@ -17,7 +17,7 @@ Textareas are HTML `<textarea>` elements of the form
 ```
 
 
-# Binding a Textarea to a Process Variable
+## Binding a Textarea to a Process Variable
 
 A textarea input can be bound to a process variable using the `cam-variable-type` and
 `cam-variable-name` directives:
@@ -32,7 +32,7 @@ In the example above, the textarea is bound to the variable named `CUSTOMER_ADDR
 `String`.
 
 
-# Supported Variable Types for Textareas
+## Supported Variable Types for Textareas
 
 The textarea supports the same variable types as the single line text input `<input
 type="text"></input>`. See the section on [Supported Variable Types](../../../../reference/forms/embedded-forms/controls/inputs.md#supported-variable-types-for-text-inputs) for details.

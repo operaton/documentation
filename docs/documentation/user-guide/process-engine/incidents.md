@@ -26,7 +26,7 @@ Incidents are stored in the ACT_RU_INCIDENT database table.
 If you want to customize the incident handling behavior, it is possible to replace the default incident handlers in the process engine configuration and provide custom implementations (see below).
 
 
-# Incident Types
+## Incident Types
 
 There are different types of incidents. Currently the process engine supports the following incidents:
 
@@ -35,7 +35,7 @@ There are different types of incidents. Currently the process engine supports th
 
 It is possible to create custom incidents of any type with the Java API.
 
-# Creating and Resolving Custom Incidents
+## Creating and Resolving Custom Incidents
 
 An incident of any type can be created by calling `RuntimeService#createIncident` ...
 
@@ -52,10 +52,10 @@ Custom incidents must always be related to an existing Execution.
 
 An incident of any type, except for **failedJob** and **failedExternalTask**, can be resolved by calling `RuntimeService#resolveIncident`.
 
-Incidents can be restref page="createIncident" text="created" tag="Execution and restref page="resolveIncident" text="resolved" tag="Incident through the REST API as well.
+Incidents can be <RestRef operation="createIncident" text="created" tag="Execution" /> and <RestRef operation="resolveIncident" text="resolved" tag="Incident" /> through the REST API as well.
 
 
-# (De-)Activate Incidents
+## (De-)Activate Incidents
 
 
 The process engine allows you to configure  whether certain incidents should be raised or not, based on the incident type.
@@ -64,7 +64,7 @@ The following properties are available in the `org.operaton.bpm.engine.ProcessEn
   * `createIncidentOnFailedJobEnabled`: indicates whether Failed Job incidents should be raised or not.
 
 
-# Implement Custom Incident Handlers
+## Implement Custom Incident Handlers
 
 Incident Handlers are responsible for handling incidents of a certain type (see [Incident Types](#incident-types) ).
 
@@ -98,7 +98,7 @@ Please be aware that this API is **not** part of the [public API](../../introduc
 
 :::
 
-# Composite Incident Handlers
+## Composite Incident Handlers
 
 By default, an incident can only be handled by one handler with a same type.
 Composite incident handlers allow defining one main and multiple sub handlers. Only the result from the "main" incident handler will be returned.
@@ -120,4 +120,4 @@ All additional incident handlers will be added as sub handlers to the `Composite
 By default, the main handler is `DefaultIncidentHandler`. To override the main handler, create a `CompositeIncidentHandler` with your own main `IncidentHandler` and initialize the incident handlers in the engine configuration before setting up the engine.
 
 See javadoc for more details
-[Composite Incident Handler](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/incident/CompositeIncidentHandler.java).
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/incident/CompositeIncidentHandler.html">Composite Incident Handler</a>.

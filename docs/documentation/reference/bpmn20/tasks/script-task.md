@@ -27,7 +27,7 @@ A Script Task is defined by specifying the script and the scriptFormat.
 ```
 
 The value of the scriptFormat attribute must be a name that is compatible with JSR-223 (Scripting
-for the Java Platform). If you want to use a (JSR-223 compatible) scripting engine, you need to to
+for the Java Platform). If you want to use a (JSR-223 compatible) scripting engine, you need to
 add the corresponding jar to the classpath and use the appropriate name.
 
 The script source code has to be added as the text content of the `script` child element.
@@ -39,11 +39,11 @@ For general information about scripting in the process engine, please see the [S
 
 :::note[Supported Script Languages]
 
-Operaton should work with most of the JSR-223 compatible script engine implementations. We test integration for Groovy, JavaScript, JRuby and Jython. See the <a href="../introduction/third-party-libraries/index.md#process-engine">Third Party Dependencies</a> section of the <a href="../user-guide/index.md">User Guide</a> for more details.
+Operaton should work with most of the JSR-223 compatible script engine implementations. We test integration for Groovy, JavaScript, JRuby and Jython. See the [Scripting](../../../user-guide/process-engine/scripting.md) section of the [User Guide][user-guide] for more details.
 
 :::
 
-# Variables in Scripts
+## Variables in Scripts
 
 All process variables that are accessible through the execution that arrives in the Script Task can be used within the script. In the example below, the script variable `inputArray` is in fact a process variable (an array of integers).
 
@@ -69,9 +69,9 @@ It's also possible to set process variables in a script. Variables can be set by
 </script>
 ```
 
-## Enabling auto-storing of Script Variables
+### Enabling auto-storing of Script Variables
 
-By setting the property `autoStoreScriptVariables` to `true` in the process engine configuration, the process engine will automatically store all _global_ script variables as process variables. This was the default behavior in Operaton.0 and 7.1 but it only reliably works for the Groovy scripting language (see the [Set autoStoreScriptVariables][autostore-variables] section of the [Migration Guide](../../../update/index.md) for more information).
+By setting the property `autoStoreScriptVariables` to `true` in the process engine configuration, the process engine will automatically store all _global_ script variables as process variables. Note that this only reliably works for the Groovy scripting language.
 
 To use this feature, you have to
 
@@ -88,7 +88,7 @@ Note: the following names are reserved and cannot be used as variable names:
 `out`, `out:print`, `lang:import`, `context`, `elcontext`.
 
 
-# Script Results
+## Script Results
 
 The return value of a Script Task can be assigned to a previously existing or to a new process variable by specifying the process variable name as a literal value for the `operaton:resultVariable` attribute of a Script Task definition. Any existing value for a specific process variable will be overwritten by the result value of the script execution. When a result variable name is not specified, the script result value gets ignored.
 
@@ -101,29 +101,29 @@ The return value of a Script Task can be assigned to a previously existing or to
 In the above example, the result of the script execution (the value of the resolved expression `#{echo}`) is set to the process variable named `myVar` after the script completes.
 
 :::note[Result variables and multi-instance]
-Note that when you use <code>operaton:resultVariable</code> in a multi-instance construct, for example in a multi-instance subprocess, the result variable is overwritten every time the task completes, which may appear as random behavior. See <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a> for details.
+Note that when you use <code>operaton:resultVariable</code> in a multi-instance construct, for example in a multi-instance subprocess, the result variable is overwritten every time the task completes, which may appear as random behavior. See <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a> for details.
 :::
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resource">operaton:resource</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resource">operaton:resource</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>

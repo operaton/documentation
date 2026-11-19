@@ -12,15 +12,15 @@ menu:
 aliases: [reference/dmn/custom-extensions/operaton-attributes/]
 ---
 
-The following attributes are extension attributes for the `camunda` namespace `http://operaton.org/schema/1.0/dmn`.
+The following attributes are extension attributes for the `operaton` namespace `http://operaton.org/schema/1.0/dmn`.
 
-# historyTimeToLive
+## historyTimeToLive
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td>
-      The attribute specifies the history time to live (in days) for the decision definition. It is used within <a href="../user-guide/process-engine/history/history-cleanup.md">History cleanup</a>.
+      The attribute specifies the history time to live (in days) for the decision definition. It is used within <a href="/docs/documentation/user-guide/process-engine/history/history-cleanup">History cleanup</a>.
     </td>
   </tr>
   <tr>
@@ -45,7 +45,7 @@ The following attributes are extension attributes for the `camunda` namespace `h
   </tr>
 </table>
 
-# inputVariable
+## inputVariable
 
 <table class="table table-striped">
   <tr>
@@ -72,12 +72,12 @@ The following attributes are extension attributes for the `camunda` namespace `h
   <tr>
     <th>DMN 1.3 Elements</th>
     <td>
-      <a href="../reference/dmn/decision-table/input.md">Input</a>
+      <a href="/docs/documentation/reference/dmn/decision-table/input">Input</a>
     </td>
   </tr>
 </table>
 
-# versionTag
+## versionTag
 
 <table class="table table-striped">
   <tr>

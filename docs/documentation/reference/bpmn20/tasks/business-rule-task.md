@@ -13,7 +13,7 @@ menu:
 
 A Business Rule Task is used to synchronously execute one or more rules. It is also possible to call Java code or providing a work item for an external worker to complete asynchronously or invoking a logic which is implemented in form of webservices.
 
-# Using Operaton DMN Engine
+## Using Operaton DMN Engine
 
 You can use the Operaton DMN engine integration to evaluate a DMN decision. You have
 to specify the decision key to evaluate as the `operaton:decisionRef` attribute. Additionally,
@@ -50,7 +50,7 @@ an expression which will be evaluated on execution of the task.
     operaton:decisionRefVersion="${decisionVersion}" />
 ```
 
-The output of the decision, also called decision result, is not saved as process variable automatically. It has to pass into a process variable by using a [predefined](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#predefined-mapping-of-the-decision-result) or a [custom](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#custom-mapping-into-process-variables) mapping of the decision result.
+The output of the decision, also called decision result, is not saved as process variable automatically. It has to pass into a process variable by using a [predefined](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#predefined-mapping-of-the-decision-result) or a [custom](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#custom-mapping-to-process-variables) mapping of the decision result.
 
 In case of a predefined mapping, the `operaton:mapDecisionResult` attribute references the mapper to use. The result of the mapping is saved in the variable which is specified by the `operaton:resultVariable` attribute. If no predefined mapper is set then the `resultList` mapper is used by default.
 
@@ -67,18 +67,18 @@ See the [User Guide](../../../user-guide/process-engine/decisions/bpmn-cmmn.md#t
 The result variable should not have the name `decisionResult`, as the decision result itself is saved in a variable with this name. Otherwise, an exception is thrown while saving the result variable.
 :::
 
-# DecisionRef Tenant Id
+## DecisionRef Tenant Id
 
 When the Business Rule Task resolves the decision definition to be evaluated it must take multi tenancy into account.
 
-## Default Tenant Resolution
+### Default Tenant Resolution
 By default, the tenant id of the calling process definition is used to evaluate the decision definition.
 That is, if the calling process definition has no tenant id, then the Business Rule Task evaluates a decision definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling process definition has a tenant id, a decision definition with the provided key and the same tenant id is evaluated.
 
 Note that the tenant id of the calling process instance is not taken into account in the default behavior.
 
-## Explicit Tenant Resolution
+### Explicit Tenant Resolution
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
@@ -106,7 +106,7 @@ An expression also allows using the tenant id of the calling process instance in
 </businessRuleTask>
 ```
 
-# Using a Custom Rule Engine
+## Using a Custom Rule Engine
 
 You can integrate with other rule engines. To do so, you have to plug in your
 implementation of the rule task the same way as in a Service Task.
@@ -117,49 +117,49 @@ implementation of the rule task the same way as in a Service Task.
 ```
 
 
-# Using Delegate Code
+## Using Delegate Code
 
 Alternatively, a Business Rule Task can be implemented using Java Delegation just as a Service Task. For more
 information on this please see the [Service Tasks](service-task.md) documentation.
 
 
-# Implementing as an External Task
+## Implementing as an External Task
 
 In addition to the above, a Business Rule Task can be implemented via the [External Task](../../../user-guide/process-engine/external-tasks.md) mechanism where an external system polls the process engine for work to do. See the section on [Service Tasks](service-task.md#external-tasks) for more information about how to configure an external task.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionref">operaton:decisionRef</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionrefbinding">operaton:decisionRefBinding</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionreftenantid">operaton:decisionRefTenantId</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionrefversion">operaton:decisionRefVersion</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#decisionrefversiontag">operaton:decisionRefVersionTag</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#mapdecisionresult">operaton:mapDecisionResult</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#topic">operaton:topic</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#type">operaton:type</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#taskpriority">operaton:taskPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionref">operaton:decisionRef</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionrefbinding">operaton:decisionRefBinding</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionreftenantid">operaton:decisionRefTenantId</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionrefversion">operaton:decisionRefVersion</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#decisionrefversiontag">operaton:decisionRefVersionTag</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#mapdecisionresult">operaton:mapDecisionResult</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#topic">operaton:topic</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#type">operaton:type</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#taskpriority">operaton:taskPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -198,9 +198,8 @@ In addition to the above, a Business Rule Task can be implemented via the [Exter
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 * [Decisions](../../../user-guide/process-engine/decisions/index.md)
 * [Service Tasks](./service-task.md)
-* [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
-* [Demo using Drools on the Business Rule Task](https://github.com/operaton/operaton-consulting/tree/master/one-time-examples/order-confirmation-rules)
+* [Tasks](https://camunda.com/bpmn/reference/#activities-task) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

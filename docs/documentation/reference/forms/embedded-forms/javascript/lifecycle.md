@@ -14,7 +14,7 @@ It is possible to participate in the lifecycle of the form. See [Form Lifecycle 
 Events](../../../../reference/forms/embedded-forms/lifecycle.md) for more details.
 
 
-# Fetching Additional Variables
+## Fetching Additional Variables
 
 When loading the form, the values of all variables used in the form are fetched from the
 backend. This means that the form SDK only fetches those variables which are actually used in the
@@ -47,7 +47,7 @@ useful to declare additional variables programmatically:
 ```
 
 
-# Submitting Additional Variables
+## Submitting Additional Variables
 
 Similar to fetching additional variables using a script, it is also possible to add additional
 variables to the submit:
@@ -78,7 +78,7 @@ variables to the submit:
 ```
 
 
-# Implementing Custom Fields
+## Implementing Custom Fields
 
 The following is a small usage example which combines some of the features explained so far.
 It uses custom JavaScript to implement a custom interaction with a form field which does not

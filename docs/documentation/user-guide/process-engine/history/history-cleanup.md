@@ -78,7 +78,7 @@ The end time is persisted in the corresponding instance tables `ACT_HI_PROCINST`
 
 For process and decision instances in a hierarchy (e.g. a process instance that is started by another process instance via a BPMN Call Activity), the removal time of all instances is always equal to the removal time of the root instance.
 
-![Example img](./../img/history-cleanup-process-hierarchy.png)History Cleanup
+![Example img](/img/documentation/user-guide/process-engine/history/history-cleanup-process-hierarchy.png)History Cleanup
 
 The removal time is persisted in *all* history tables. So in case of a process instance, the removal time is present in `ACT_HI_PROCINST` as well as the corresponding secondary entries in `ACT_HI_ACTINST`, `ACT_HI_TASKINST` etc.
 
@@ -99,7 +99,7 @@ Strengths:
 
 Limitations:
 
-* Can only remove data for which a removal time is set. This is especially not the case for data which has been created with Operaton versions < 7.10.0.
+* Can only remove data for which a removal time is set.
 * Changing the TTL of a definition only applies to history data that is created in the future. It does not dynamically update the removal time of already written history data. However, it is possible to [Set a Removal Time via Batch Operations](../../process-engine/batch-operations.md#set-a-removal-time).
 * History data of case instances is not cleaned up.
 
@@ -117,7 +117,7 @@ Limitations:
 * End time is only stored in the instances tables (`ACT_HI_PROCINST`, `ACT_HI_CASEINST`, `ACT_HI_DECINST` and `ACT_HI_BATCH`). To delete data from all history tables, the cleanable instances are first fetched via a `SELECT` statement. Based on that, `DELETE` statements are made for each history table. These statements can involve joins. This is less efficient than removal-time-based history cleanup.
 * Instance hierarchies are not cleaned up atomically. Since the individual instances have different end times, they are going to be cleaned up at different times. In consequence, hierarchies can appear partially removed.
 * [Historic Instance Permissions](../../process-engine/authorization-service.md#historic-instance-permissions) are not cleaned up.
-* [History Cleanup Jobs](../../process-engine/history/history-cleanup.md#historycleanupjobs-in-the-historic-job-log) are not removed from the historic job log.
+* [History Cleanup Jobs](../../process-engine/history/history-cleanup.md#job-logs) are not removed from the historic job log.
 
 ## Cleanup internals
 
@@ -147,7 +147,7 @@ The history cleanup jobs can be found via the API method `HistoryService#findHis
 
 #### Required property
 
-The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via [process engine configuration](../../../reference/deployment-descriptors/tags/process-engine.md#enforceHistoryTimeToLive). To define a default TTL for process definitions and decision definitions if no other value is defined check [historyTimeToLive configuration](../../../reference/deployment-descriptors/tags/process-engine.md#historyTimeToLive).
+The history time to live is mandatory, any deployment or re-deployment of any model resource (BPMN, DMN, CMMN) that contains a historyTimeToLive of null will be prevented. Unless explicitly disabled via [process engine configuration](../../../reference/deployment-descriptors/tags/process-engine.mdx#enforceHistoryTimeToLive). To define a default TTL for process definitions and decision definitions if no other value is defined check [historyTimeToLive configuration](../../../reference/deployment-descriptors/tags/process-engine.mdx#historytimetolive).
 
 #### Process/decision/case definitions
 
@@ -174,12 +174,12 @@ Once deployed, TTL can be updated via Java API:
   processEngine.getRepositoryService().updateProcessDefinitionHistoryTimeToLive(processDefinitionId, 5);
 ```
 
-Setting the value to `null` clears the TTL. The same can be done via restref page="updateHistoryTimeToLiveByProcessDefinitionKeyAndTenantId" text="REST API" tag="Process-Definition.
+Setting the value to `null` clears the TTL. The same can be done via <RestRef operation="updateHistoryTimeToLiveByProcessDefinitionKeyAndTenantId" text="REST API" tag="Process-Definition" />.
 
 For decision and case definitions, TTL can be defined in a similar way.
 
 In case you want to provide an engine-wide default TTL for all process, decision and case definitions,
-use the ["historyTimeToLive" attribute](../../../reference/deployment-descriptors/tags/process-engine.md#historytimetolive)
+use the ["historyTimeToLive" attribute](../../../reference/deployment-descriptors/tags/process-engine.mdx#historytimetolive)
 of the process engine configuration. This value is applied as the default whenever new definitions without TTL are deployed. Note that it therefore does not change the TTL of already deployed definitions. Use the API method given above to change TTL in this case.
 
 #### Batches
@@ -233,7 +233,7 @@ history cleanup jobs. The property accepts values in the ISO-8601 date format. N
 
 #### Task metrics
 
-The process engine reports [runtime metrics](../../process-engine/metrics.md) to the database that can help draw conclusions about usage, load, and performance of the BPM platform.
+The process engine reports [runtime metrics](../../process-engine/metrics.md) to the database that can help draw conclusions about usage, load, and performance of Operaton.
 With every assignment of a user task, the related task worker is stored as a pseudonymized, fixed-length value in the `ACT_RU_TASK_METER_LOG` table together with a timestamp. Cleanup for this data needs to
 be configured explicitly if needed.
 
@@ -243,10 +243,6 @@ The property accepts values in the ISO-8601 date format. Note that only the nota
 ```xml
 <property name="taskMetricsTimeToLive">P540D</property>
 ```
-
-:::warning[Heads Up!]
-If you are an enterprise customer, your license agreement might require you to report some metrics annually. Please store task metrics from `ACT_RU_TASK_METER_LOG` for at least 18 months until they were reported.
-:::
 
 ### Cleanup window
 
@@ -348,4 +344,4 @@ related to the cleanup execution since the particular node ignores them.
 **Please Note:** The history cleanup configuration properties that are unrelated to the cleanup execution (e.g.,
 time to live, removal time strategy) still need to be defined among all nodes.
 
-[configuration-options]: ../../../reference/deployment-descriptors/tags/process-engine.md#history-cleanup-configuration-parameters
+[configuration-options]: ../../../reference/deployment-descriptors/tags/process-engine.mdx#history-cleanup-configuration-parameters

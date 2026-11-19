@@ -12,11 +12,11 @@ menu:
 
 ---
 
-The DMN engine [interface](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnEngine.java) exposes methods for parsing and evaluating DMN Decisions.
+The DMN engine <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnEngine.html">interface</a> exposes methods for parsing and evaluating DMN Decisions.
 
-# Parse Decisions
+## Parse Decisions
 
-Decisions can be parsed from an `InputStream` or transformed from a [DmnModelInstance](https://github.com/operaton/operaton/blob/main/model-api/dmn-model/src/main/java/org/operaton/bpm/model/dmn/DmnModelInstance.java).
+Decisions can be parsed from an `InputStream` or transformed from a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/model/dmn/DmnModelInstance.html">DmnModelInstance</a>.
 
 This example shows how to parse a decision from an input stream:
 
@@ -48,7 +48,7 @@ DmnModelInstance dmnModelInstance = Dmn.readModelFromFile(...);
 List<DmnDecision> decisions = dmnEngine.parseDecisions(dmnModelInstance);
 ```
 
-## The Decision Key
+### The Decision Key
 
 A DMN XML file can contain multiple decisions - grouped by the [decision requirements graph]. To distinguish the decisions,
 every decision must have an `id` attribute.
@@ -86,7 +86,7 @@ InputStream inputStream = ...
 DmnDecision decision = dmnEngine.parseDecision("second-decision", inputStream);
 ```
 
-## Parse Decision Requirements Graph
+### Parse Decision Requirements Graph
 
 In addition to parsing all contained decisions of a [decision requirements graph](../../reference/dmn/index.md) (DRG), the DMN engine can also parse the DRG itself from an `InputStream` or a `DmnModelInstance`.
 
@@ -106,9 +106,9 @@ Collection<DmnDecision> decisions = drg.getDecisions();
 
 The DRG is represented in the XML by the `definitions` element. The `id` of the DRG in the XML is called `key` in the context of the DMN engine.
 
-## Decision Tables only
+### Decision Tables only
 
-It is possible to check if a parsed decision is implemented as [decision table] by using the method <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecision.html#isDecisionTable()">isDecisionTable()</a>.
+It is possible to check if a parsed decision is implemented as [decision table] by using the method <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecision.html#isDecisionTable()">isDecisionTable()</a>.
 
 ```java
 // create a default DMN engine
@@ -131,9 +131,9 @@ if (decision.isDecisionTable()) {
 }
 ```
 
-# Evaluate Decisions
+## Evaluate Decisions
 
-To evaluate (or "execute") a decision, either pass an already transformed <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecision.html">DmnDecision</a> or use a DMN model instance or input stream in combination with a decision key.
+To evaluate (or "execute") a decision, either pass an already transformed <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecision.html">DmnDecision</a> or use a DMN model instance or input stream in combination with a decision key.
 
 As input to the evaluation, a set of input variables must be provided.
 
@@ -159,7 +159,7 @@ result = dmnEngine.evaluateDecision(decision, variables);
 result = dmnEngine.evaluateDecisionTable(decision, variables);
 ```
 
-## Pass Variables
+### Pass Variables
 
 To provide the input variables for a decision evaluation you can use a
 Java `Map<String, Object>`, resp. a `VariableMap` or a `VariableContext`.
@@ -169,8 +169,8 @@ The following example shows how to use a `VariableMap`.
 ```java
 // create the input variables
 VariableMap variables = Variables.createVariables()
-  .putValue("x", "camunda")
-  .putValue("y", 2015);
+  .putValue("x", "operaton")
+  .putValue("y", 2025);
 
 // evaluate the decision with the input variables
 result = dmnEngine.evaluateDecision(decision, variables);
@@ -179,9 +179,9 @@ result = dmnEngine.evaluateDecision(decision, variables);
 Alternatively, a `VariableContext` can be used.
 Use the `VariableContext` to support lazy-loading of variables.
 
-## Interpret the Decision Result
+### Interpret the Decision Result
 
-The evaluation of a DMN decision returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionResult.html">DmnDecisionResult</a>. If the decision is implemented as [decision table] then the result is a list of the
+The evaluation of a DMN decision returns a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecisionResult.html">DmnDecisionResult</a>. If the decision is implemented as [decision table] then the result is a list of the
 matching decision rule results. These results represent a mapping from an output name to an output value.
 
 If the decision is instead implemented as [decision literal expression] then the result is a list
@@ -189,7 +189,7 @@ which contains only one entry. This entry represents the expression value and is
 
 Assume the following example of making a decision to select a dish.
 
-![Example img](./img/dish-dmn.png)Select Dish
+![Example img](/img/documentation/user-guide/dmn-engine/dish-dmn.png)Select Dish
 
 The decision table returns the `desiredDish` as the output.
 
@@ -244,20 +244,20 @@ decisionResult.getSingleEntry();
 ```
 
 Note that the decision can also be evaluated using the
-<a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/DmnEngine.java##evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision, java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
+<a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnEngine.html#evaluateDecisionTable(org.operaton.bpm.dmn.engine.DmnDecision,java.util.Map)">evaluateDecisionTable()</a> method if it is implemented as [decision table]. In this case, evaluation returns a <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/DmnDecisionTableResult.html">DmnDecisionTableResult</a> which is semantically equal and provides the same methods as a
 `DmnDecisionResult`.
 
-## Decisions with Required Decisions
+### Decisions with Required Decisions
 
 If a decision has one or more [required decisions], then the required decisions are evaluated first. The results of this evaluations are passed as input for the evaluation of the decision.
 
 Assume the following example of making a decision to select beverages.
 
-![Example img](./img/beverages-dmn.png)Beverages Decision
+![Example img](/img/documentation/user-guide/dmn-engine/beverages-dmn.png)Beverages Decision
 
 The following [decision requirements diagram] shows that the `Beverages` decision requires the `Dish` decision (from the previous example).
 
-![Example img](./img/drd.png)Select beverages
+![Example img](/img/documentation/user-guide/dmn-engine/drd.png)Select beverages
 
 When the `Beverages` decision is evaluated then the DMN engine evaluates the `Dish` decision first.
 
@@ -281,7 +281,7 @@ DmnDecisionResult decisionResult = dmnEngine.evaluateDecision(decision, variable
 List<String> beverages = decisionResult.collectEntries("beverages");
 ```
 
-## Hit Policy of Required Decisions
+### Hit Policy of Required Decisions
 
 The [hit policy] of a required decision can affect the result that is passed as input to the requiring decision. If the required decision has a [COLLECT] hit policy with aggregator then the decision result (i.e. output value) is only the aggregated value.
 

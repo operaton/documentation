@@ -10,21 +10,21 @@ menu:
 
 ---
 
-After a process instance termination, its historic data still exists and can be accessed to restore a process instance, provided that the history level is set to FULL. 
+After a process instance termination, its historic data still exists and can be accessed to restore a process instance, provided that the history level is set to FULL.
 This can, for example, be useful when termination did not proceed in a desired way. Use cases for this API may be:
 
 * Restoring the last state of process instances that have been erroneously canceled
 * Restarting process instances after a termination caused by a wrong decision
 
-To perform such an operation the process engine offers *the process instance restart API*, that is entered via `RuntimeService.restartProcessInstances(...)`. This API allows to specify multiple instantiation instructions in one call by using a fluent builder.
+To perform such an operation, the process engine offers *the process instance restart API*, which is entered via `RuntimeService.restartProcessInstances(...)`. This API allows you to specify multiple instantiation instructions in one call by using a fluent builder.
 
-Note that these operations are also available via REST: restref page="restartProcessInstance" text="Restart Process Instance" tag="Process-Definition and restref page="restartProcessInstanceAsyncOperation" text="Restart Process Instance (async)" tag="Process-Definition
+Note that these operations are also available via REST: <RestRef operation="restartProcessInstance" text="Restart Process Instance" tag="Process-Definition" /> and <RestRef operation="restartProcessInstanceAsyncOperation" text="Restart Process Instance (async)" tag="Process-Definition" />.
 
-# Process Instance Restart by Example
+## Process Instance Restart by Example
 
 As an example, consider the following process model where the red dots mark active tasks:
 
-![Example img](./img/variables-3.png)Running Process Instance
+![Example img](/img/documentation/user-guide/process-engine/variables-3.png)Running Process Instance
 
 Let us assume that the process instance has been canceled externally by a worker using the following code:
 
@@ -43,7 +43,7 @@ runtimeService.restartProcessInstance(processInstance.getProcessDefinitionId())
 	.execute();
 ```
 
-The process instance has been restarted with the last set of variables. However, only global variables are set in the restarted process instance. 
+The process instance has been restarted with the last set of variables. However, only global variables are set in the restarted process instance.
 Local variables can be set manually, for example by calling `RuntimeService.setVariableLocal(...)`.
 
 :::note
@@ -54,11 +54,11 @@ Local variables can be set manually, for example by calling `RuntimeService.setV
 :::
 
 
-# Operational Semantics
+## Operational Semantics
 
 In the following, the exact semantics of the process instance restart feature are documented. Reading this section is recommended to fully understand the effects, power and limitations of this feature.
 
-## Instantiation Instruction Types
+### Instantiation Instruction Types
 
 The fluent process instance restart builder offers the following instructions to be submitted:
 
@@ -69,7 +69,7 @@ The fluent process instance restart builder offers the following instructions to
 For information about the instruction types, please refer to the similar
  [modification instruction types](../process-engine/process-instance-modification.md#modification-instruction-types) section.
 
-## Selecting process instances to restart
+### Selecting process instances to restart
 
 Process instances can be selected for restart by either providing a set of process instance ids
 or providing a historic process instance query. It is also possible to specify both, a list of process instance ids and a query.
@@ -120,7 +120,7 @@ runtimeService.restartProcessInstances(processDefinition.getId())
   .execute();
 ```
 
-## Skipping Listeners and Input/Output Mappings
+### Skipping Listeners and Input/Output Mappings
 
 It is possible to skip invocations of execution and task listeners as well as input/output mappings for the transaction that performs the restart. This can be useful when the restart is executed on a system that has no access to the involved process application deployments and their contained classes.
 
@@ -139,7 +139,7 @@ runtimeService.restartProcessInstances(processDefinition.getId())
   .execute();
 ```
 
-## Restarting a Process Instance With the Initial Set of Variables
+### Restarting a Process Instance With the Initial Set of Variables
 
 By default, a process instance is restarted with the last set of variables.
 To alternatively choose the initial set of variables, the `initialSetOfVariables` method is used.
@@ -158,9 +158,9 @@ runtimeService.restartProcessInstances(processDefinition.getId())
 ```
 
 
-The initial set of variables can not be set if the historic process instance has no unique start activity. In that case, no variables are taken over.
+The initial set of variables cannot be set if the historic process instance has no unique start activity. In that case, no variables are taken over.
 
-## Omitting the Business Key of a Historic Process Instance
+### Omitting the Business Key of a Historic Process Instance
 
 By default, a process instance is restarted with the same business key as the historic process instance.
 By using the method `withoutBusinessKey`, the business key of the restarted process instance is not set.
@@ -175,7 +175,7 @@ runtimeService.restartProcessInstances(processDefinition.getId())
   .withoutBusinessKey()
   .execute();
 ```
-## Execution
+### Execution
 
 The restart can either be executed synchronously (blocking) or asynchronously
 (non-blocking) by using a [batch](../process-engine/batch.md) .
@@ -230,9 +230,9 @@ Batch batch = runtimeService.restartProcessInstances(processDefinition.getId())
 
 Using a batch, the process instance restart is split into several jobs which
 are executed asynchronously. These batch jobs are executed by the job executor.
-See the [batch](../process-engine/batch.md) section for more 
-information. A batch is completed if all batch execution jobs are successfully 
-completed. However, in contrast to the synchronous execution, it is not guaranteed 
+See the [batch](../process-engine/batch.md) section for more
+information. A batch is completed if all batch execution jobs are successfully
+completed. However, in contrast to the synchronous execution, it is not guaranteed
 that either all or no process instances are restarted. As the restart is split into
 several independent jobs, every single job may fail or succeed.
 

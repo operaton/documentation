@@ -11,7 +11,7 @@ menu:
 ---
 
 
-# Versioning of Process Definitions
+## Versioning of Process Definitions
 
 Business Processes are by nature long running. The process instances will maybe last for weeks, or months. In the meantime the state of the process instance is stored to the database. But sooner or later you might want to change the process definition even if there are still running instances.
 
@@ -24,14 +24,14 @@ This is supported by the process engine:
 
 You can see different versions in the process definition table and the process instances are linked to this:
 
-![Example img](./img/versioning.png)Versioning
+![Example img](/img/documentation/user-guide/process-engine/versioning.png)Versioning
 
 :::note[Multi-Tenancy]
 If you are using [multi-tenancy with tenant identifiers](../process-engine/multi-tenancy.md#single-process-engine-with-tenant-identifiers) then each tenant has its own process definitions which have versions independent from other tenants. See the [multi-tenancy section](../process-engine/multi-tenancy.md#versioning-of-tenant-specific-definitions) for details.
 :::
 
 
-# Which Version Will be Used
+## Which Version Will be Used
 
 When you start a process instance
 
@@ -73,12 +73,12 @@ or
 The options are
 
 * latest: Use the latest version of the process definition (as with `startProcessInstanceByKey`).
-* deployment: Use the process definition in the version matching the version of the calling process. This works if they are deployed within one deployment - as they are then always versioned together (see [Process Application Deployment](../process-applications/the-processes-xml-deployment-descriptor.md#deployment-descriptor-process-application-deployment) for more details).
+* deployment: Use the process definition in the version matching the version of the calling process. This works if they are deployed within one deployment - as they are then always versioned together (see [Process Application Deployment](../process-applications/the-processes-xml-deployment-descriptor.md#process-application-deployment) for more details).
 * version: Specify the version hard coded in the XML.
 * versionTag: Specify the versionTag hard coded in the XML.
 
 
-# Key vs. ID of a Process Definition
+## Key vs. ID of a Process Definition
 
 You might have spotted that two different columns exist in the process definition table with different meanings:
 
@@ -90,7 +90,7 @@ You might have spotted that two different columns exist in the process definitio
 
 * Id: The id is the database primary key and an artificial key normally combined out of the key, the version and a generated id (note that the ID may be shortened to fit into the database column, so there is no guarantee that the id is built this way).
 
-# Version Tag
+## Version Tag
 
 It is possible to tag a process definition with a version tag attribute. This can be done by adding the
 [operaton:versionTag](../../reference/bpmn20/custom-extensions/extension-attributes.md#versiontag)
@@ -153,7 +153,7 @@ a given key. Adding a version tag filter to this query might provide an empty re
 doesn't contain the queried version tag.
 :::
 
-# Process Instance Migration
+## Process Instance Migration
 
 By default, when a new process version is deployed, process instances running on previous versions are not affected.
 [Process instance migration](../process-engine/process-instance-migration.md) can be used

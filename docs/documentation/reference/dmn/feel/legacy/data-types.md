@@ -7,22 +7,22 @@ sidebar_position: 20
 
 :::note[Heads Up!]
 This page provides information on the legacy FEEL Engine, that was used before the
-current <a href="../user-guide/dmn-engine/feel/index.md">Scala-based FEEL Engine</a>
+current <a href="/docs/documentation/user-guide/dmn-engine/feel/">Scala-based FEEL Engine</a>
 was integrated into Operaton.
 :::
 
 The Operaton DMN engine supports the following FEEL data types.
 
-# String
+## String
 
-![Example img](./../img/string-type.png)String" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/feel/legacy/string-type.png)String" class="no-lightbox
 
 FEEL supports Strings. They must be encapsulated in double quotes. They
 support only the equal [comparison] operator.
 
-# Numeric Types
+## Numeric Types
 
-![Example img](./../img/integer-type.png)Integer" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/feel/legacy/integer-type.png)Integer" class="no-lightbox
 
 FEEL supports numeric types like integer. In the Operaton DMN engine the
 following numeric types are available:
@@ -33,16 +33,16 @@ following numeric types are available:
 
 Numeric types support all [comparison] operators and [ranges].
 
-# Boolean
+## Boolean
 
-![Example img](./../img/boolean-type.png)Boolean" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/feel/legacy/boolean-type.png)Boolean" class="no-lightbox
 
 FEEL supports the boolean value `true` and `false`. The boolean type only
 supports the equal [comparison] operator.
 
-# Date
+## Date
 
-![Example img](./../img/date-type.png)Date" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/feel/legacy/date-type.png)Date" class="no-lightbox
 
 FEEL supports date types. In the Operaton DMN engine the following date types
 are available:

@@ -15,11 +15,11 @@ menu:
 
 Multi-Tenancy can be achieved in two different ways. One way is to use [one process engine per tenant](#one-process-engine-per-tenant). The other way is to use just one process engine and associate the data with [tenant identifiers](#single-process-engine-with-tenant-identifiers). The two ways differ from each other in the level of data isolation, the effort of maintenance and the scalability. A combination of both ways is also possible.
 
-# Single Process Engine With Tenant-Identifiers
+## Single Process Engine With Tenant-Identifiers
 
 Multi-Tenancy can be achieved with one process engine which uses tenant identifiers (i.e., tenant-ids). The data of all tenants is stored in one table (same database and schema). Isolation is provided by the means of a tenant identifier that is stored in a column.
 
-![Example img](./img/multi-tenancy-tenant-identifiers.png)One Process Engine with Tenant-Identifiers Architecture
+![Example img](/img/documentation/user-guide/process-engine/multi-tenancy-tenant-identifiers.png)One Process Engine with Tenant-Identifiers Architecture
 
 The tenant identifier is specified on the deployment and is propagated to all data that is created from the deployment (e.g., process definitions, process instances, tasks, etc.). To access the data for a specific tenant, the process engine allows to filter queries by a tenant identifier or specify a tenant identifier for a command (e.g., create a process instance). Additionally, the process engine provides transparent access restrictions in combination with the Identity Service that allows to omit the tenant identifier.
 
@@ -28,14 +28,11 @@ Note that transparent tenant separation is not implemented for all APIs. For exa
 It is also possible for all tenants to share the same process and decision definitions without deploying them for each tenant. Shared definitions can simplify management of the deployments in case of a larger amount of tenants.
 
 :::note[Examples]
-Find [examples on GitHub](https://github.com/operaton/operaton-bpm-examples) that show how to use tenant-identifiers with
-
-* [Embedded Process Engine](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-embedded)
-* [Shared Process Engine](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared)
+Find a current [multi-tenancy example](https://github.com/operaton/operaton-examples/tree/main/examples/advanced-features/multi-tenancy) on GitHub that shows tenant identifiers with a shared engine.
 :::
 
 
-## Deploy Definitions for a Tenant
+### Deploy Definitions for a Tenant
 
 To deploy definitions for a single tenant, the tenant identifier has to be set on the deployment. The given identifier is propagated to all definitions of the deployment so that they belong to the tenant.
 
@@ -43,7 +40,7 @@ If no tenant identifier is set then the deployment and its definitions belong to
 
 ### Specify the Tenant Identifier via Java API
 
-When a deployment is created using the Repository Service, the tenant identifier can be set on the <a class="javadocref" href="org/operaton/bpm/engine/repository/DeploymentBuilder.html">DeploymentBuilder</a>.
+When a deployment is created using the Repository Service, the tenant identifier can be set on the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/repository/DeploymentBuilder.html">DeploymentBuilder</a>.
 
 ```java
 repositoryService
@@ -93,7 +90,7 @@ When the [Automatic Resource Deployment](../spring-framework-integration/deploym
 
 When a definition is deployed for a tenant then it is assigned a version which is independent from definitions of other tenants. For example, if a new process definition is deployed for two tenants then both definitions are assigned the version `1`. The versioning within one tenant works like the [versioning of definitions](../process-engine/process-versioning.md) that belong to no tenant.
 
-## Query Data of a Tenant
+### Query Data of a Tenant
 
 The process engine queries of tenant-specific data (e.g., Deployment Query, Process Definition Query) allows to filter by one or more tenant identifiers. If no identifier is set then the result contains the data of all tenants.
 
@@ -143,7 +140,7 @@ List<ProcessDefinition> processDefinitions = repositoryService
   .list();
 ```
 
-## Run Commands for a Tenant
+### Run Commands for a Tenant
 
 When a definition is deployed for multiple tenants, a command can be ambiguous (e.g., start a process instance by key). If such a command is executed, a `ProcessEngineException` is thrown. To run the command successfully, the tenant identifier has to be passed to the command.
 
@@ -151,7 +148,7 @@ Note that the [transparent access restrictions](#transparent-access-restrictions
 
 ### Create a Process Instance
 
-To create an instance by key of a process definition which is deployed for multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="org/operaton/bpm/engine/runtime/ProcessInstantiationBuilder.html">ProcessInstantiationBuilder</a>.
+To create an instance by key of a process definition which is deployed for multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/runtime/ProcessInstantiationBuilder.html">ProcessInstantiationBuilder</a>.
 
 ```java
 runtimeService
@@ -162,7 +159,7 @@ runtimeService
 
 ### Correlate a Message
 
-The [Message API](../../reference/bpmn20/events/message-events.md#message-api) can be used to correlate a message to one or all tenants. In case a message can correlate to definitions or executions of multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="org/operaton/bpm/engine/runtime/MessageCorrelationBuilder.html">MessageCorrelationBuilder</a>. Otherwise, a `MismatchingMessageCorrelationException` is thrown.
+The [Message API](../../reference/bpmn20/events/message-events.md#message-api) can be used to correlate a message to one or all tenants. In case a message can correlate to definitions or executions of multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/runtime/MessageCorrelationBuilder.html">MessageCorrelationBuilder</a>. Otherwise, a `MismatchingMessageCorrelationException` is thrown.
 
 ```java
 runtimeService
@@ -181,7 +178,7 @@ runtimeService
 
 ### Send a Signal
 
-The [Signal API](../../reference/bpmn20/events/signal-events.md#signal-api) can be used to deliver a signal to one or all tenants. Pass the tenant identifier to the [SignalEventReceivedBuilder](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/runtime/SignalEventReceivedBuilder.java) to deliver the signal to a specific tenant. If no identifier is passed then the signal is delivered to all tenants.
+The [Signal API](../../reference/bpmn20/events/signal-events.md#signal-api) can be used to deliver a signal to one or all tenants. Pass the tenant identifier to the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/runtime/SignalEventReceivedBuilder.html">SignalEventReceivedBuilder</a> to deliver the signal to a specific tenant. If no identifier is passed then the signal is delivered to all tenants.
 
 ```java
 runtimeService
@@ -194,7 +191,7 @@ When a signal is thrown within a process (i.e., intermediate signal event or sig
 
 ### Create a Case Instance
 
-To create an instance by key of a case definition which is deployed for multiple tenants, the tenant identifier has to be passed to the [CaseInstanceBuilder](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/runtime/CaseInstanceBuilder.java).
+To create an instance by key of a case definition which is deployed for multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/runtime/CaseInstanceBuilder.html">CaseInstanceBuilder</a>.
 
 ```java
 caseService
@@ -205,7 +202,7 @@ caseService
 
 ### Evaluate a Decision Table
 
-To evaluate a decision table by key which is deployed for multiple tenants, the tenant identifier has to be passed to the [DecisionEvaluationBuilder](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/dmn/DecisionEvaluationBuilder.java).
+To evaluate a decision table by key which is deployed for multiple tenants, the tenant identifier has to be passed to the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/dmn/DecisionEvaluationBuilder.html">DecisionEvaluationBuilder</a>.
 
 ```java
 decisionService
@@ -214,7 +211,7 @@ decisionService
   .evaluate();
 ```
 
-## Transparent Access Restrictions for Tenants
+### Transparent Access Restrictions for Tenants
 
 When integrating Operaton into an application, it can be cumbersome to pass the tenant Id to each Operaton API call. Since such an application usually also has a concept of an "authenticated user", it is possible to set the list of tenant ids when setting the authentication:
 
@@ -334,16 +331,12 @@ The admin user or users who are a member of the admin group can access the data 
 
 Define admin users by making them a member of the group `operaton-admin` or with the help of the [Admin Authorization Plugin](../process-engine/authorization-service.md#the-administrator-authorization-plugin). The Admin Authorization Plugin allows granting admin privileges to a custom user or group.
 
-## Shared Definitions for all Tenants
+### Shared Definitions for all Tenants
 
 In section [Deploy Definitions for a Tenant](#deploy-definitions-for-a-tenant) it is explained how to deploy a Process Definition or a Decision Definition for a particular tenant. The result is that the definition is only visible to the tenant for whom it was deployed but not to other tenants. This is useful if tenants have different processes and decisions. However, there are also many situations where all tenants should share the same definitions. In such situations it is desirable to deploy a definition only once, in a way that it is visible to all tenants.
 Then, when a new instance is created by a particular tenant, it should  be only visible to that tenant (and administrators of course).
 This can be achieved by a usage pattern we call "Shared Definitions".
 By the term *usage pattern* we mean that it is not a feature of Operaton per se but rather a specific way to use it to achieve the desired behavior.
-
-:::note[Example]
-You can find an [example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions) on [GitHub](https://github.com/operaton/operaton-bpm-examples) that shows how to use shared definitions.
-:::
 
 ### Deploy a Shared Definition
 
@@ -379,7 +372,7 @@ repositoryService.createProcessDefinitionQuery()
 ### Instantiate a Shared Definition
 
 When creating (starting) a new process instance, the tenant id of the process definition is propagated to the process instance.
-Shared resources  do not have a tenant id which means that no tenant id is propagated automatically. To have the tenant id of the user who starts the process instances assigned  to the process instance, an implementation of the [TenantIdProvider](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/cfg/multitenancy/TenantIdProvider.java) SPI needs to be provided.
+Shared resources  do not have a tenant id which means that no tenant id is propagated automatically. To have the tenant id of the user who starts the process instances assigned  to the process instance, an implementation of the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/cfg/multitenancy/TenantIdProvider.html">TenantIdProvider</a> SPI needs to be provided.
 
 The `TenantIdProvider` receives a callback when an instance of a process definition, case definition or decision definition is created. It can then assign a tenant id to the newly created instance (or not).
 
@@ -429,7 +422,7 @@ public class CustomTenantIdProvider implements TenantIdProvider {
 }
 ```
 
-To use the `TenantIdProvider`, it must be set in the Process Engine Configuration, for example using the `camunda.cfg.xml`:
+To use the `TenantIdProvider`, it must be set in the Process Engine Configuration, for example using the `operaton.cfg.xml`:
 
 ```xml
 <beans>
@@ -451,28 +444,23 @@ So far, we have seen that shared resources are a useful pattern if tenants have 
 
 A common pattern of how to deal with this is to extract the tenant-specific behavior in a separate process which is then invoked using a call activity. Tenant specific decision logic (i.e., decision tables) using a business rules task are also common.
 
-To realize this, the call activity or business rule task needs to select the correct definition to invoke based on the tenant id of the current process instance. The [Shared Resources Example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions) shows how to achieve this.
+To realize this, the call activity or business rule task needs to select the correct definition to invoke based on the tenant id of the current process instance.
 
 See also:
 
-* [Shared Resources Example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/tenant-identifier-shared-definitions)
 * [Called Element Tenant Id](../../reference/bpmn20/subprocesses/call-activity.md#calledelement-tenant-id)
 * [Case Tenant Id](../../reference/bpmn20/subprocesses/call-activity.md#case-tenant-id) for call activities.
 * [Decision Ref Tenant Id](../../reference/bpmn20/tasks/business-rule-task.md#decisionref-tenant-id) for business rule tasks.
 
-# One Process Engine Per Tenant
+## One Process Engine Per Tenant
 
 Multi-Tenancy can be achieved by providing one process engine per tenant. Each process engine is configured to use a different data source which connects the data of the tenant. The data of the tenants can be stored in different databases, in one database with different schemas or in one schema with different tables.
 
-![Example img](./../../introduction/img/multi-tenancy-process-engine.png)One Process Engine per Tenant Architecture
+![Example img](/img/documentation/user-guide/process-engine/multi-tenancy-process-engine.png)One Process Engine per Tenant Architecture
 
 The process engines can run on the same server so that all share the same computational resources such as a data source (when isolating via schemas or tables) or a thread pool for asynchronous job execution.
 
-:::note[Tutorial]
-  You can see the [example](https://github.com/operaton/operaton-bpm-examples/tree/master/multi-tenancy/schema-isolation) how to implement multi-tenancy with data isolation by schemas.
-:::
-
-## Configure the Process Engines
+### Configure the Process Engines
 
 The process engines can be configured in a configuration file or via Java API. Each engine should have a name that is related to a tenant such that it can be identified based on the tenant. For example, each engine can be named after the tenant it serves. See the [Process Engine Bootstrapping](../process-engine/process-engine-bootstrapping.md) section for details.
 
@@ -485,7 +473,7 @@ If different tenants should work on entirely different databases, they have to u
 For schema- or table-based isolation, a single data source can be used which means that resources like a connection pool can be shared among multiple engines.
 To achieve this,
 
-* the configuration option [databaseTablePrefix](../../reference/deployment-descriptors/tags/process-engine.md#configuration-protperties) can be used to configure database access.
+* the configuration option [databaseTablePrefix](../../reference/deployment-descriptors/tags/process-engine.mdx#configuration-properties) can be used to configure database access.
 * consider switching on the setting `useSharedSqlSessionFactory`. The setting controls whether each process engine instance should parse and maintain a local copy of the mybatis mapping files or whether a single, shared copy can be used. Since the mappings require a lot of heap (>30MB), it is recommended to switch this on. This way only one copy needs to be allocated.
 
 :::warning[Considerations for useSharedSqlSessionFactory setting]
@@ -507,7 +495,7 @@ For background execution of processes and tasks, the process engine has a compon
 
 ### Example Configuration for Schema Isolation
 
-Multi-Tenancy settings can be applied in the various ways of configuring a process engine. The following is an example of a [bpm-platform.xml](../process-engine/process-engine-bootstrapping.md#configure-process-engine-in-bpm-platformxml) file that specifies engines for two tenants that share the same database but work on different schemas:
+Multi-Tenancy settings can be applied in the various ways of configuring a process engine. The following is an example of a [bpm-platform.xml](../process-engine/process-engine-bootstrapping.md#configure-process-engine-in-the-bpm-platformxml) file that specifies engines for two tenants that share the same database but work on different schemas:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -552,7 +540,7 @@ Multi-Tenancy settings can be applied in the various ways of configuring a proce
 ```
 
 
-## Deploy Definitions for a Tenant
+### Deploy Definitions for a Tenant
 
 When developing process applications, i.e., process definitions and supplementary code, some processes may be deployed to every tenant's engine while others are tenant-specific. The processes.xml deployment descriptor that is part of every process application offers this kind of flexibility by the concept of *process archives*. One application can contain any number of process archive deployments, each of which can be deployed to a different process engine with different resources. See the section on the [processes.xml deployment descriptor](../process-applications/the-processes-xml-deployment-descriptor.md) for details.
 
@@ -587,7 +575,7 @@ The following is an example that deploys different process definitions for two t
 ```
 
 
-## Access the Process Engine of a Tenant
+### Access the Process Engine of a Tenant
 
 To access a specific tenant's process engine at runtime, it has to be identified by its name. The Operaton engine offers access to named engines in various programming models:
 

@@ -13,7 +13,7 @@ menu:
 The JSON datatype supports writing JSON to Strings or Writers.
 
 
-# Writing to a String:
+## Writing to a String:
 
 ```java
 import static org.operaton.spin.Spin.JSON;
@@ -24,7 +24,7 @@ String json = jsonNode.toString();
 ```
 
 
-# Writing to a Writer
+## Writing to a Writer
 
 ```java
 import static org.operaton.spin.Spin.JSON;

@@ -8,8 +8,33 @@ layout: "single"
 
 This page provides an overview of the CMMN 1.1 elements and the current coverage of the process engine.
 
-The CMMN editor is disabled in recent versions of Camunda Modeler but can be enabled with a feature flag. For more context and information on how to enable this feature flag in Camunda Modeler, please see [this forum post](https://forum.operaton.org/t/how-to-access-cmmn-in-the-modeler/25127).
+The CMMN editor is hidden by default in Operaton Modeler, but it can be enabled with a flag.
 
+You can choose between two options to set the flag:
+
+#### Option 1. Pass the `--no-disable-cmmn` flag via the Command Line Interface
+
+When starting Operaton Modeler, pass `--no-disable-cmmn` via the command line.
+For example on Linux, run:
+
+```$ ./operaton-modeler --no-disable-cmmn```
+
+Likewise on Windows, you can start `Operaton Modeler.exe` from the command line with the flag, or you can create a shortcut to `Operaton Modeler.exe` and append `--no-disable-cmmn` to the `target` of the shortcut.
+
+#### Option 2. Define a flags.json file
+
+You can locally create a file called `flags.json`, which defines the flags that Operaton Modeler should pick up when starting. Save the following text content in the file:
+
+```
+{
+    "disable-cmmn": false
+}
+```
+
+The `flags.json` file needs to be saved either in your user-data-directory or application-data-directory.
+
+For the current list of supported flags, see the [Operaton Modeler flags source](https://github.com/operaton/operaton-modeler/blob/develop/client/src/util/Flags.js).
+ 
 # Coverage
 
 The elements marked in <span class="label label-warning">orange</span> are supported.
@@ -21,11 +46,11 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
     <div class="col-md-12">
       <h3>Grouping</h3>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/grouping-tasks/stage/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="case-plan-model-colored"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/grouping-tasks/stage/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="stage-collapsed-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
@@ -37,22 +62,22 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
     <div class="col-md-12">
       <h3>Tasks</h3>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/tasks/human-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/tasks/human-task"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="human-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
         <a href="#" class="cmmn-symbol" data-type="manual-task"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/tasks/process-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/tasks/process-task"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="process-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/tasks/case-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/tasks/case-task"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="case-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/tasks/decision-task/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/tasks/decision-task"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="decision-task-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
@@ -67,7 +92,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
     <div class="col-md-9">
       <h3>Event-Triggered Elements</h3>
       <div class="bpmn-symbol-container implemented">
-        <a href="../cmmn11/milestone/"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="/docs/documentation/reference/cmmn11/milestone"><span class="glyphicon glyphicon-eye-open"></span></a>
         <a href="#" class="cmmn-symbol" data-type="milestone-colored"></a>
       </div>
       <div class="bpmn-symbol-container">
@@ -105,34 +130,34 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
         <a href="#" class="cmmn-symbol" data-type="marker-planning-table"></a>
       </td>
       <td>
-        <a class="text" href="../cmmn11/sentry/">Entry Criterion</a>
+        <a class="text" href="/docs/documentation/reference/cmmn11/sentry">Entry Criterion</a>
         <a href="#" class="cmmn-symbol" data-type="marker-entry-criterion"></a>
       </td>
       <td>
-        <a class="text" href="../cmmn11/sentry/">Exit Criterion</a>
+        <a class="text" href="/docs/documentation/reference/cmmn11/sentry">Exit Criterion</a>
         <a href="#" class="cmmn-symbol" data-type="marker-exit-criterion"></a>
       </td>
       <td>
-        <a class="text" href="../cmmn11/markers/auto-complete/">AutoComplete</a>
+        <a class="text" href="/docs/documentation/reference/cmmn11/markers/auto-complete">AutoComplete</a>
         <a href="#" class="cmmn-symbol" data-type="marker-auto-complete"></a>
       </td>
       <td>
-        <a class="text" href="../cmmn11/markers/manual-activation-rule/">Manual Activation</a>
+        <a class="text" href="/docs/documentation/reference/cmmn11/markers/manual-activation-rule">Manual Activation</a>
         <a href="#" class="cmmn-symbol" data-type="marker-manual-activation"></a>
       </td>
       <td>
-        <a class="text" href="../cmmn11/markers/required-rule/">Required</a>
+        <a class="text" href="/docs/documentation/reference/cmmn11/markers/required-rule">Required</a>
         <a href="#" class="cmmn-symbol" data-type="marker-required"></a>
       </td>
       <td>
-        <a class="text" href="../cmmn11/markers/repetition-rule/">Repetition</a>
+        <a class="text" href="/docs/documentation/reference/cmmn11/markers/repetition-rule">Repetition</a>
         <a href="#" class="cmmn-symbol" data-type="marker-repetition"></a>
       </td>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><a href="../cmmn11/grouping-tasks/stage/">Case Plan Model</a></td>
+      <td><a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage">Case Plan Model</a></td>
       <td>
         <span class="glyphicon glyphicon-remove"></span>
       </td>
@@ -149,7 +174,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       <td></td>
     </tr>  
     <tr>
-      <td><a href="../cmmn11/grouping-tasks/stage/">Stage</a></td>
+      <td><a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage">Stage</a></td>
       <td>
         <span class="glyphicon glyphicon-remove"></span>
       </td>
@@ -173,7 +198,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       </td>
     </tr>
     <tr>
-      <td><a href="../cmmn11/tasks/">Task</a></td>
+      <td><a href="/docs/documentation/reference/cmmn11/tasks/">Task</a></td>
       <td>
         <span class="glyphicon glyphicon-remove"></span>
       </td>
@@ -195,7 +220,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       </td>
     </tr>
     <tr>
-      <td><a href="../cmmn11/milestone/">Milestone</a></td>
+      <td><a href="/docs/documentation/reference/cmmn11/milestone">Milestone</a></td>
       <td></td>
       <td>
         <span class="glyphicon glyphicon-ok"></span>

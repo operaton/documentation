@@ -7,7 +7,7 @@ menu:
     parent: "user-guide-introduction"
 ---
 
-The feature has been [removed][telemetry-removed] in Operaton`7.22.0+`.
+The telemetry feature has been removed.
 
 Documentation about diagnostics data can be found in the [User Guide](../user-guide/process-engine/diagnostics-data.md).
 

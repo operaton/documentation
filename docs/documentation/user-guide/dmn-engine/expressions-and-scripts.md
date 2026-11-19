@@ -16,7 +16,7 @@ Decision tables and decision literal expressions allow specifying different type
 This section describes which types of expressions exist.
 It lists which expression languages are supported and demonstrates how to change the used expression language for an expression.
 
-# Expressions in DMN
+## Expressions in DMN
 
 As shown in the [decision table] and [decision literal expression] reference, four types of expressions are supported:
 
@@ -67,15 +67,15 @@ elements `inputExpression`, `inputEntry`, `outputEntry` and `literalExpression`:
 </definitions>
 ```
 
-# Supported Expression Languages
+## Supported Expression Languages
 
 The Operaton DMN engine supports two expression languages out of the box:
 
 - `JUEL`: A Operaton-maintained [implementation][juel] of the Java [Unified Expression Language][EL]
 - `FEEL`: The Friendly Enough Expression Language of the [DMN 1.2] standard.
 
-Depending on the JDK you use, there may also be a `Javascript` implementation
-available like [Rhino] or [Nashhorn].
+Depending on the JDK you use, there may also be a `JavaScript` implementation
+available like [Rhino] or [Nashorn].
 
 You can also use every other script language which provides a [JSR-223]
 implementation. This includes `groovy`, `python` and `ruby`. To use these
@@ -122,7 +122,7 @@ to your project `pom.xml`:
     </dependency>
 ```
 
-# Default Expression Languages
+## Default Expression Languages
 
 The default expression languages of the different expression types in the
 DMN engine are as follows:
@@ -134,7 +134,7 @@ DMN engine are as follows:
 
 :::note[Legacy Behavior]
 You can find how to go back to the legacy behavior, where `JUEL` was used for input expressions,
-output entries and literal expressions [here](../../reference/deployment-descriptors/tags/process-engine.md#dmnFeelEnableLegacyBehavior).
+output entries and literal expressions [here](../../reference/deployment-descriptors/tags/process-engine.mdx#dmnFeelEnableLegacyBehavior).
 :::
 
 The default language can be changed by setting it directly in the DMN 1.3 XML as global expression language with the `expressionLanguage` attribute of
@@ -155,7 +155,7 @@ the `definitions` element:
 Additionally, it is possible to change the default expression language in the default DMN engine configuration as described in the [user guide][default EL].
 
 
-# Configuring the Expression Language
+## Configuring the Expression Language
 
 It is also possible to set the language for each expression individually using the `expressionLanguage` attribute:
 
@@ -203,11 +203,11 @@ the script engine before using it.
 
 [decision table]: ../../reference/dmn/decision-table/index.md
 [decision literal expression]: ../../reference/dmn/decision-literal-expression/index.md
-[juel]: http://juel.sourceforge.net/
+[juel]: https://juel.sourceforge.net/
 [EL]: https://jakarta.ee/specifications/expression-language/4.0/
-[DMN 1.2]: http://www.omg.org/spec/DMN/
-[Rhino]: https://developer.mozilla.org/de/docs/Rhino
-[Nashhorn]: https://blogs.oracle.com/nashorn/
+[DMN 1.2]: https://www.omg.org/spec/DMN/
+[Rhino]: https://rhino.github.io/
+[Nashorn]: https://openjdk.org/projects/nashorn/
 [JSR-223]: https://www.jcp.org/en/jsr/detail?id=223
 [default EL]: ../../user-guide/dmn-engine/embed.md#change-default-expression-languages
 [configure EL]: ../../user-guide/dmn-engine/embed.md#customize-expression-and-script-resolving

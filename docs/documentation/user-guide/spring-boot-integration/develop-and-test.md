@@ -11,11 +11,11 @@ menu:
 
 ---
 
-# Developing
+## Developing
 
-Spring Boot provides [Developer Tools](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.devtools) which feature options like automatic restart and live reload during the development of an application.
+Spring Boot provides [Developer Tools](https://docs.spring.io/spring-boot/reference/using/devtools.html) which feature options like automatic restart and live reload during the development of an application.
 
-## Spring Developer Tools and Classloading
+### Spring Developer Tools and Classloading
 
 An additional process engine plugin (`ApplicationContextClassloaderSwitchPlugin`) will be loaded in case your application is in a development mode:
 
@@ -24,22 +24,22 @@ An additional process engine plugin (`ApplicationContextClassloaderSwitchPlugin`
 
 The plugin ensures exchanging the application context classloader with the classloader used for the process engine to prevent issues during deserialization.
 
-# Testing
+## Testing
 
-Spring offers extensive support for automated [testing](https://docs.spring.io/spring/docs/current/spring-framework-reference/testing.html#testing-introduction).
+Spring offers extensive support for automated [testing](https://docs.spring.io/spring-framework/reference/testing/introduction.html).
 This is covered through dedicated mocking packages, test runners and annotations.
 When testing Spring and Spring Boot applications, a significant amount of time is
 required to load the `ApplicationContext`. That is why Spring caches an `ApplicationContext`
 after a test is finished. This allows for it to be reused in later tests with the same configuration.
 
-## Context Caching with Process Engines
+### Context Caching with Process Engines
 
 To use `ApplicationContext` caching with the Process Engine requires some additional configuration.
 This is because the Process Engine needs a statically defined name (if no name is defined, "default" is used),
 which leads to Spring attempting to create multiple `ApplicationContext`s with Process Engines with the
 same name. This will cause tests to behave incorrectly, or in the worst case, completely fail to load the `ApplicationContext`.
 
-## Using unique Process Engine/Application names
+### Using unique Process Engine/Application names
 
 To make context caching work properly with Process Engines and Process Applications,
 they need to have unique names for every different test configuration.
@@ -52,19 +52,19 @@ in your `@SpringBootTest` annotation:
 @SpringBootTest(
   // ...other parameters...
   properties = {
-    "camunda.bpm.generate-unique-process-engine-name=true",
+    "operaton.bpm.generate-unique-process-engine-name=true",
     // this is only needed if a SpringBootProcessApplication
     // is used for the test
-    "camunda.bpm.generate-unique-process-application-name=true",
+    "operaton.bpm.generate-unique-process-application-name=true",
     "spring.datasource.generate-unique-name=true",
     // additional properties...
   }
 )
 ```
 
-* The `camunda.bpm.generate-unique-process-engine-name=true` property will generate
+* The `operaton.bpm.generate-unique-process-engine-name=true` property will generate
 a unique name for the Process Engine (ex. 'processEngine2Sc4bg2s1g').
-* The `camunda.bpm.generate-unique-process-application-name=true` property will generate
+* The `operaton.bpm.generate-unique-process-application-name=true` property will generate
 a unique name for the Process Application (ex. 'processApplication2Sc4bg2s1g'). This is useful
 if you want to deploy and test a Process Application multiple times with multiple configurations.
 * The `spring.datasource.generate-unique-name=true` property will generate a new datasource for
@@ -80,18 +80,18 @@ If a static accessor needs to be used (e.g. processEngines.getProcessEngine(name
 @SpringBootTest(
   // other parameters
   properties = {
-    "camunda.bpm.process-engine-name=foo",
+    "operaton.bpm.process-engine-name=foo",
     // this is only needed if a SpringBootProcessApplication
     // is used for the test
-    "camunda.bpm.generate-unique-process-application-name=true",
+    "operaton.bpm.generate-unique-process-application-name=true",
     "spring.datasource.generate-unique-name=true",
     // additional properties
   }
 )
 ```
-Here, the `camunda.bpm.process-engine-name=foo` will set (a unique name) "foo" as the Process Engine name.
+Here, the `operaton.bpm.process-engine-name=foo` will set (a unique name) "foo" as the Process Engine name.
 
-## Operaton Assertions
+### Operaton Assertions
 
 The [Operaton Assertions](../testing/index.md#operaton-assertions) library is
 integrated with the Operaton Spring Boot Starter in
@@ -118,4 +118,4 @@ through the following initialization code in the test class:
 
 This needs to be done in addition to the _Unique Process
 Engine/Application names_ requirement described in the
-[section above](#using-unique-process-engine-application-names).
+[section above](#using-unique-process-engineapplication-names).

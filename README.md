@@ -1,33 +1,177 @@
-# This documentation is still in progress.
-
 # Operaton Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This repository contains the public documentation website for [Operaton](https://operaton.org/), built with [Docusaurus](https://docusaurus.io/).
 
-### Installation
+## Requirements
 
+- Node.js 18 or newer
+- npm
+
+## Install
+
+```bash
+npm ci
 ```
-$ yarn
-```
 
-### Local Development
+## Local Development
 
-```
-$ yarn start
-```
-
-or
-
-```
+```bash
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This starts a local development server. Most content and styling changes are reflected without restarting the server.
 
-### Build
+## Build
 
+```bash
+npm run build
 ```
-$ yarn build
+
+The static site is generated in the `build` directory.
+
+## Typecheck
+
+```bash
+npm run typecheck
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Run the typecheck and production build before opening a pull request.
+
+## Link check
+
+`.devenv/scripts/check-links.py` finds broken internal and external links in `docs/` and reports them
+with file and line. It also checks the links in the
+[REST API reference](https://docs.operaton.org/reference/latest/rest-api/): the descriptions in its
+OpenAPI spec, reported with the operation they belong to. It needs [lychee](https://lychee.cli.rs/installation/) (`brew install lychee`).
+
+```bash
+# Build, start a static server, check everything, stop the server
+.devenv/scripts/check-links.py check --serve
+
+# Same, but reuse an existing build/ instead of building again
+.devenv/scripts/check-links.py check --serve --no-build
+
+# Against a server you started with `npm run build && npm run serve`
+.devenv/scripts/check-links.py check --base-url http://localhost:3000
+
+# Only write the link map (file, line, URL; grouped internal/external)
+.devenv/scripts/check-links.py map --out links.json
+
+# Skip the REST API reference, write all broken links grouped by type to a text file
+.devenv/scripts/check-links.py check --serve --no-rest-api --report-txt broken-links.txt
+```
+
+Internal links need the static build (`npm run serve`); the dev server (`npm start`) answers every
+URL with 200 and is rejected. URL excludes and timeouts live in `lychee.toml`.
+The `Link Check` workflow runs on PRs, on manual dispatch and every second Friday; scheduled runs
+keep the issue "Broken links in documentation" (label `broken-links`) up to date. Every run uploads
+the `broken-links` artifact, a text file with all broken links grouped by type. Broken links do not
+fail the workflow while `FAIL_ON_BROKEN_LINKS` in `.github/workflows/link-check.yml` is `'false'`.
+
+## Local Search (Typesense) Setup
+
+The production site queries Typesense from the browser over HTTPS through
+the same-origin `/typesense` reverse proxy on `docs.operaton.org` (port `443`).
+The search API key embedded in the built site is a public, search-only key.
+To develop or test the search integration locally, run a local Typesense
+instance via Docker Compose.
+
+### 1. Configure an API key
+
+```bash
+echo "TYPESENSE_API_KEY=some-local-dev-key" > docker/typesense/.env
+```
+
+### 2. Start Typesense
+
+```bash
+cd docker/typesense
+docker compose up -d
+```
+
+Verify it's up:
+
+```bash
+curl -s http://localhost:8108/health
+# {"ok":true}
+```
+
+### 3. Point Docusaurus at the local server
+
+Create a `.env` file in the repository root (git-ignored):
+
+```bash
+TYPESENSE_API_KEY=some-local-dev-key
+TYPESENSE_HOST=localhost
+TYPESENSE_PORT=8108
+TYPESENSE_PROTOCOL=http
+TYPESENSE_PATH=
+```
+
+`docusaurus.config.ts` reads `TYPESENSE_HOST`, `TYPESENSE_PORT`,
+`TYPESENSE_PROTOCOL`, and `TYPESENSE_PATH` from the environment, defaulting to
+the production values (`docs.operaton.org`, `443`, `https`, `/typesense`)
+when unset. The empty `TYPESENSE_PATH=` override prevents the production
+proxy prefix from being added to local API requests.
+
+### 4. Populate the index and run the site
+
+Index some content into the `docusaurus` collection (for example with the
+same [`docsearch.config.json`](./docsearch.config.json) and the
+[`typesense-scraper`](https://github.com/celsiusnarhwal/typesense-scraper)
+tooling used in CI, pointed at your local dev server), then start Docusaurus
+as usual:
+
+```bash
+npm run start
+```
+
+### Optional: testing over HTTPS
+
+To test the search integration over HTTPS instead (e.g. if the production
+server's TLS setup ever changes), generate a self-signed certificate and
+layer on the TLS override:
+
+```bash
+./docker/typesense/generate-certs.sh
+docker compose -f docker-compose.yml -f docker-compose.tls.yml up -d
+```
+
+Since the certificate is self-signed, browsers will show a security warning
+for `https://localhost:8108` the first time — open that URL directly once and
+accept the exception, or add the certificate to your system/browser trust
+store.
+
+### Background: issue #161
+
+Search on the production site originally failed because `docusaurus.config.ts`
+was configured to connect over HTTPS while the Typesense server at
+`docs.operaton.org:8108` only ever served plain HTTP — the TLS handshake
+fails before any CORS headers can be returned, which browsers surface as a
+CORS error. The first fix switched the client config to `protocol: http` to
+match the server.
+
+That traded one broken state for another: `docs.operaton.org` is served over
+HTTPS, and browsers block an HTTPS page from making a plain-HTTP XHR request
+to anything ("mixed content"), regardless of whether the server would have
+answered correctly. Search still failed in a real browser — silently, with no
+network request even showing up in devtools, only a `Mixed Content` console
+error and an `ERR_NETWORK` from the Typesense client. A visible symptom of
+the same root cause: the "See all N results" footer in the search modal
+stayed stuck on the literal `{count}` placeholder, because `nbHits` never
+got populated. A direct `curl` against the production server (over HTTP,
+using the public search key) had confirmed the `docusaurus` collection was
+indexed correctly (15k+ documents) — that check bypasses the browser's
+mixed-content policy, so it didn't catch this.
+
+The actual fix: nginx on `docs.operaton.org` reverse-proxies `/typesense/` to
+the local Typesense container (`proxy_pass http://127.0.0.1:8108/`), so the
+browser talks to Typesense same-origin over HTTPS. `docusaurus.config.ts`
+defaults to `protocol: https`, `port: 443`, `path: /typesense` accordingly.
+Local dev keeps talking to the Docker Typesense instance directly — see
+`.env` above, which sets `TYPESENSE_PROTOCOL=http`, `TYPESENSE_PORT=8108`,
+and `TYPESENSE_PATH=` (empty, no proxy prefix) to override those defaults.
+The CI scraper step in `.github/workflows/deploy.yml` is unaffected: it runs
+on a GitHub Actions runner, not in a browser, so it keeps talking to
+`docs.operaton.org:8108` directly over plain HTTP — mixed content is a
+browser-only restriction.

@@ -32,10 +32,10 @@ Operaton distinguishes between read-only and writable user repositories. A read-
 
 To provide a custom identity provider implementation, the following interfaces can be implemented:
 
-* <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/identity/ReadOnlyIdentityProvider.java">org.operaton.bpm.engine.impl.identity.ReadOnlyIdentityProvider</a>
-* <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/identity/WritableIdentityProvider.java">org.operaton.bpm.engine.impl.identity.WritableIdentityProvider</a>
+* <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/identity/ReadOnlyIdentityProvider.html">org.operaton.bpm.engine.impl.identity.ReadOnlyIdentityProvider</a>
+* <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/identity/WritableIdentityProvider.html">org.operaton.bpm.engine.impl.identity.WritableIdentityProvider</a>
 
-# Custom Whitelist for User, Group and Tenant IDs
+## Custom Whitelist for User, Group and Tenant IDs
 
 User, Group and Tenant IDs can be matched against a Whitelist Pattern to determine if the provided ID is acceptable or not. The default (global) Regular Expression pattern to match against is **"[a-zA-Z0-9]+|operaton-admin"** i.e. any combination of alphanumeric values or _'operaton-admin'_.
 
@@ -55,21 +55,21 @@ The definition of different patterns for User, Group and Tenant IDs is possible 
 
 Note that if a certain pattern isn't defined (ex. the tenant whitelist pattern), the general pattern will be used, either the default one (`"[a-zA-Z0-9]+|operaton-admin"`) or one defined in the configuration file.
 
-# The Database Identity Service
+## The Database Identity Service
 
 The database identity service uses the process engine database for managing users and groups. This is the default identity service implementation used if no alternative identity service implementation is provided.
 
 The database identity service implements both `ReadOnlyIdentityProvider` and `WritableIdentityProvider` providing full CRUD functionality in Users, Groups and Memberships.
 
 
-# The LDAP Identity Service
+## The LDAP Identity Service
 
 The LDAP identity service provides read-only access to an LDAP-based user/group repository. The identity service provider is implemented as a [Process Engine Plugin](../process-engine/process-engine-plugins.md) and can be added to the process engine configuration. In that case it replaces the default database identity service.
 
 To use the LDAP identity service, the `operaton-identity-ldap.jar` library has to be added to the classloader of the process engine.
 
 :::note
-  Please import the [Operaton BOM](../../../get-started/apache-maven.md) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](/get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 ```xml
@@ -79,7 +79,7 @@ To use the LDAP identity service, the `operaton-identity-ldap.jar` library has t
 </dependency>
 ```
 
-## Activate the LDAP Plugin
+### Activate the LDAP Plugin
 
 The following is an example of how to configure the LDAP Identity Provider Plugin using Spring XML:
 
@@ -174,7 +174,7 @@ The following is an example of how to configure the LDAP Identity Provider Plugi
 Currently, the LDPA Identity Service doesn't support [multi-tenancy](../process-engine/multi-tenancy.md#single-process-engine-with-tenant-identifiers). That means it is not possible to get tenants from LDAP and the transparent multi-tenancy access restrictions don't work by default.
 :::
 
-## Configuration Properties of the LDAP Plugin
+### Configuration Properties of the LDAP Plugin
 
 The LDAP Identity Provider provides the following configuration properties:
 
@@ -283,7 +283,7 @@ The LDAP Identity Provider provides the following configuration properties:
   <tr>
     <td><code>acceptUntrustedCertificates</code></td>
     <td>
-      <p>Accept of untrusted certificates if LDAP server uses SSL. <strong>Warning:</strong> We strongly advise against using this property. Better install untrusted certificates to JDK key store.</p>
+      <p>Accepts untrusted certificates if the LDAP server uses SSL. <strong>Warning:</strong> We strongly advise against using this property. Better install untrusted certificates in the JDK keystore.</p>
     </td>
   </tr>
   <tr>
@@ -318,7 +318,7 @@ The LDAP Identity Provider provides the following configuration properties:
     <td><code>allowAnonymousLogin</code></td>
     <td>
       <p>
-        Allows to login anonymously without a password. <em>Default:</em> <code>false</code>
+        Allows users to log in anonymously without a password. <em>Default:</em> <code>false</code>
       </p>
       <p>
         <strong>Warning:</strong> We strongly advise against using this property. You should configure your LDAP
@@ -346,7 +346,7 @@ The LDAP Identity Provider provides the following configuration properties:
         <em>Default:</em> <code>false</code>
       </p>
       <p>
-        <strong>Note:</strong> The support of search result ordering is not be implemented by every LDAP server.
+        <strong>Note:</strong> Support for search result ordering is not implemented by every LDAP server.
         Make sure that your currently used LDAP Server implements the <a href="https://tools.ietf.org/html/rfc2891">RFC 2891</a>.
       </p>
     </td>
@@ -378,13 +378,13 @@ When a login attempt fails with an <code>AuthenticationException</code>, by defa
   </tr>
 </table>
 
-# The OAuth2 Identity Service
+## The OAuth2 Identity Service
 
 See the Spring Security OAuth2 Integration's [OAuth2 Identity Provider](../spring-boot-integration/spring-security.md#oauth2-identity-provider) documentation.
 
-# Throttle login attempts
+## Throttle login attempts
 
-A mechanism exists for preventing subsequent unsuccessful login attempts.The essence of it is that the user is not able to log in for a specific amount of time after unsuccessful login attempts.
+A mechanism exists for preventing subsequent unsuccessful login attempts. The essence of it is that the user is not able to log in for a specific amount of time after unsuccessful login attempts.
 The amount of time is calculated after each attempt but it is limited by maximum delay time.
 After a predefined number of unsuccessful attempts, the user will be locked and only an administrator has permissions to [unlock](../../webapps/admin/user-management.md) them.
 
@@ -395,12 +395,12 @@ The mechanism is configurable with the following properties and respective defau
 * `loginDelayMaxTime=60`
 * `loginDelayBase=3`
 
-For more information, please check the process engine's [login properties](../../reference/deployment-descriptors/tags/process-engine.md#login-parameters) section.
+For more information, please check the process engine's [login properties](../../reference/deployment-descriptors/tags/process-engine.mdx#login-parameters) section.
 
 Calculation of the delay is done via the formula: <code>baseTime * factor^(attempt-1)</code>.
-The behaviour with the default configuration will be:
-3 seconds delay after the first unsuccessful attempt, 6 seconds after the 2nd attempt, 12 seconds, 24 seconds, 48 seconds, 60 seconds, 60 seconds, etc. After the 10th attempt, if the user fails to login again, the user will be locked.
+The behavior with the default configuration will be:
+3 seconds delay after the first unsuccessful attempt, 6 seconds after the 2nd attempt, 12 seconds, 24 seconds, 48 seconds, 60 seconds, 60 seconds, etc. After the 10th attempt, if the user fails to log in again, the user will be locked.
 
-## LDAP specifics
+### LDAP specifics
 
 If you have a LDAP setup on your engine, you need to handle the throttling on the LDAP side. The login mechanism in your system will not be affected by the above properties.

@@ -20,7 +20,7 @@ the `JAXBContext`. Spin uses and caches the context to improve performance.
 
 The data format class to register a configurator for is `org.operaton.spin.impl.xml.dom.format.DomXmlDataFormat`.
 An instance of this class provides setter methods (for the entities mentioned above) that can be used to replace the
-default object mapper. Refer to the [JDK documentation](http://docs.oracle.com/javase/8/docs/api/) on what
+default object mapper. Refer to the [JDK documentation](https://docs.oracle.com/javase/8/docs/api/) on what
 configuration can be applied.
 
 ## Safe XML processing

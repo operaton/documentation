@@ -27,7 +27,7 @@ The following provides examples on how Operaton Spin can be used in the process 
 Further documentation about the usage of Spin can be found in the [Operaton Spin Dataformat Reference](../../reference/spin/index.md).
 
 
-# Expression Language Integration
+## Expression Language Integration
 
 The Spin entry functions can be used wherever the process engine allows expression language. The following BPMN snippet shows a conditional sequence flow expression based on the customer's post code:
 
@@ -54,7 +54,7 @@ If your variable is already an [XML variable value](#native-xml-variable-value) 
 ```
 
 
-# Scripting Integration
+## Scripting Integration
 
 The following example is a script implemented in JavaScript. The script makes use of the Spin API to extract the address object from the customer, add a city name and set it as a process variable:
 
@@ -74,7 +74,7 @@ The following example is a script implemented in JavaScript. The script makes us
 ```
 
 
-# Native XML Variable Value
+## Native XML Variable Value
 
 The native variable value for XML makes it possible to easily parse an XML string and wrap it inside an object without the need to have a class representing the XML. Suppose we want to save the XML inside a process variable for later use, we could do the following inside a JavaDelegate:
 
@@ -83,7 +83,7 @@ public class MyDelegate implements JavaDelegate {
 
   @Override
   public void execute(DelegateExecution execution) throws Exception {
-    String xml = "<customer xmlns=\"http:\\/\\/camunda.org/example\" name=\"Jonny\">"
+    String xml = "<customer xmlns=\"http:\\/\\/operaton.org/example\" name=\"Jonny\">"
           + "<address>"
             + "<street>12 High Street</street>"
             + "<postCode>1234</postCode>"
@@ -107,7 +107,7 @@ public class AddDataDelegate implements JavaDelegate {
     SpinXmlElement xmlElement = customer.getValue().append(Spin.XML("<creditLimit>1000.00</creditLimit>"));
     customer = SpinValues.xmlValue(xmlElement).create();
     execution.setVariable("customerJonny", customer);
-    //<?xml version="1.0" encoding="UTF-8"?><customer xmlns="http:\/\/camunda.org/example" name="Jonny"><address><street>12 High Street</street><postCode>1234</postCode></address><creditLimit xmlns="">1000.00</creditLimit></customer>
+    //<?xml version="1.0" encoding="UTF-8"?><customer xmlns="http:\/\/operaton.org/example" name="Jonny"><address><street>12 High Street</street><postCode>1234</postCode></address><creditLimit xmlns="">1000.00</creditLimit></customer>
   }
 }
 ```
@@ -116,7 +116,7 @@ When retrieving the XML value via `execution.getVariableTyped()` there are two o
 Retrieving the variable deserialized by calling either `getVariableTyped("name")` or `getVariableTyped("name", true)`  the `XmlValue` contains the wrapped DomXML object to represent the XML data. Calling `getVariableTyped("name", false)` results in `XmlValue` containing only the raw string, which is advantageous if you only need the string to pass it to, e.g., another API.
 
 
-# Serializing Process Variables
+## Serializing Process Variables
 
 A Java object can be serialized using Spin's built-in XML data format. Let us assume that there are two Java classes, `com.example.Customer` and `com.example.Address`. Spin's default XML format relies on JAXB which is why JAXB annotations like `@XmlRootElement`, `@XmlAttribute`, and `@XmlElement` can be used to configure the serialization process. Note though that these annotations are not required. The classes look as follows:
 

@@ -1,0 +1,11 @@
+# Optional override to test the search integration over HTTPS locally.
+# Not required to match production, which serves Typesense over plain HTTP.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.tls.yml up -d
+# Requires ./generate-certs.sh to have been run first.
+services:
+  typesense:
+    volumes:
+      - ./certs:/certs:ro
+    environment:
+      TYPESENSE_SSL_CERTIFICATE: /certs/cert.pem
+      TYPESENSE_SSL_CERTIFICATE_KEY: /certs/key.pem

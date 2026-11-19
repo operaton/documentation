@@ -1,0 +1,32 @@
+name: Maintenance
+
+on:
+  schedule:
+    - cron: '0 0 25 * *'
+  workflow_dispatch:
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Update all versions
+        run: python3 .devenv/scripts/update_versions.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v11
+        with:
+          message: 'docs: update version references'
+          default_author: github_actions

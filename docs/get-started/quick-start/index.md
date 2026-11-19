@@ -2,7 +2,7 @@
 
 title: 'Quick Start (Java / JS)'
 sidebar_position: 1
-description: "Learn how to model a BPMN 2.0 process using the Camunda Modeler, adding a Java or JavaScript Worker. Deploy it to the Operaton Platform."
+description: "Learn how to model a BPMN 2.0 process using the Operaton Modeler, adding a Java or JavaScript Worker. Deploy it to the Operaton Platform."
 
 ---
 # Get started with Operaton 
@@ -13,10 +13,10 @@ In this guide, you'll choose between implementing executable processes in Java o
 You will be guided through the following six steps:
 
 ## [Download and Installation](./install.md)
-Install the Operaton Platform and Camunda Modeler on your machine.
+Install the Operaton Platform and Operaton Modeler on your machine.
 
 ## [Executable Process](./service-task.md)
-Learn the basics of handling the Camunda Modeler, learn how to model and configure a fully executable process and learn how to integrate your own business logic.
+Learn the basics of handling the Operaton Modeler, learn how to model and configure a fully executable process and learn how to integrate your own business logic.
 
 ## [Deploy the Process](./deploy.md)
 Deploy the Process to Operaton and start your first process instance.
@@ -29,4 +29,3 @@ Learn how to make your Process more dynamic by adding Gateways to the Process.
 
 ## [Decision Automation](./decision-automation.md)
 Learn how to integrate DMN decision tables in the Process.
-

@@ -5,16 +5,16 @@ sidebar_position: 20
 description: "Manually install and configure the Full Distribution on a vanilla Apache Tomcat Server."
 
 ---
-# Install the Full Distribution on a Tomcat Application Server manually
+## Install the Full Distribution on a Tomcat Application Server manually
 
-This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](http://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download a [Tomcat distribution](https://downloads.operaton.cloud/release/operaton-bpm/tomcat/) to fetch the required Operaton modules.
+This section describes how you can install Operaton and its components on a vanilla [Apache Tomcat](https://tomcat.apache.org/), if you are not able to use the pre-packaged Tomcat distribution. In addition, download the matching Tomcat distribution from the [Operaton GitHub releases](https://github.com/operaton/operaton/releases) to fetch the required Operaton modules. Release assets are attached to version tags such as `v$PLATFORM_VERSION`; snapshot assets are published as GitHub prereleases with tags such as `2.2.0-SNAPSHOT`.
 
-:::note[Reading the Guide}
+:::note[Reading the Guide]
 Throughout this guide we will use a number of variables to denote common path names and constants:
 
 * `$TOMCAT_HOME` points to the main directory of the tomcat server.
 * `$TOMCAT_VERSION` denotes the version of Tomcat server.
-* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `7.0.0`.
+* `$PLATFORM_VERSION` denotes the version of Operaton you want to install or already have installed, e.g. `2.1.2`.
 * `$TOMCAT_DISTRIBUTION` represents the downloaded pre-packaged Operaton distribution for Tomcat, e.g. `operaton-bpm-tomcat-$PLATFORM_VERSION.zip` or `operaton-bpm-tomcat-$PLATFORM_VERSION.tar.gz`.
 
 :::
@@ -28,19 +28,19 @@ To resolve this, move the weld library away from the war and place it into the `
 
 The above workaround is not guaranteed to work for cases with bean references between WAR deployments (WAR A referencing a bean from WAR B).
 
-The following test scenarios fail on Tomcat 10:
+The following test scenarios fail on Tomcat 11:
 
-* [CallActivityContextSwitchTest](https://github.com/operaton/operaton-bpm-platform/blob/f37877b822dabcbf3cee5806bd5833d18cdcb543/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/context/CallActivityContextSwitchTest.java)
-* [CdiBeanCallActivityResolutionTest](https://github.com/operaton/operaton-bpm-platform/blob/f37877b822dabcbf3cee5806bd5833d18cdcb543/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/cdi/CdiBeanCallActivityResolutionTest.java)
+* [CallActivityContextSwitchTest](https://github.com/operaton/operaton/blob/main/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/context/CallActivityContextSwitchTest.java)
+* [CdiBeanCallActivityResolutionTest](https://github.com/operaton/operaton/blob/main/qa/integration-tests-engine/src/test/java/org/operaton/bpm/integrationtest/functional/cdi/CdiBeanCallActivityResolutionTest.java)
 :::
 
 
-# Setup
+## Setup
 
 Before you can install the Operaton components, you need to perform a number of required setup steps.
 
 
-## Create the Database Schema and Tables
+### Create the Database Schema and Tables
 
 In the default configuration of the distribution, the database schema and all required tables are automatically created in an H2 database when the engine starts up for the first time. If you do not want to use the H2 database, you have to
 
@@ -50,7 +50,7 @@ In the default configuration of the distribution, the database schema and all re
 When you create the tables manually, then you have to configure the engine to **not** create tables at startup by setting the `databaseSchemaUpdate` property to `false` (or, in case you are using Oracle, to `noop`). In Tomcat, this is done in the `bpm-platform.xml`, located in the `$TOMCAT_DISTRIBUTION\server\apache-tomcat-$VERSION\conf\` folder.
 
 
-## Add BPM Bootstrap Server Listener
+### Add BPM Bootstrap Server Listener
 
 Add the entry `org.operaton.bpm.container.impl.tomcat.TomcatBpmPlatformBootstrap` as Listener before the `GlobalResourcesLifecycleListener` in your `$TOMCAT_HOME/conf/server.xml`. This class is responsible for starting and stopping Operaton as Tomcat is started and stopped.
 
@@ -62,7 +62,7 @@ Add the entry `org.operaton.bpm.container.impl.tomcat.TomcatBpmPlatformBootstrap
 ```
 
 
-## Configure a JDBC Resource
+### Configure a JDBC Resource
 
 To configure a JDBC Resource you have to edit the file `$TOMCAT_HOME/conf/server.xml`. This could look like the following example for an H2 database:
 
@@ -92,7 +92,7 @@ For more information on the creation of JDBC datasources have a look at the docu
 [9.0](https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html).
 
 
-## Add Operaton Services
+### Add Operaton Services
 
 Copy the following blocks from `${TOMCAT_DISTRIBUTION}/server/apache-tomcat-${TOMCAT_VERSION}/conf/server.xml`
   into `${TOMCAT_HOME}/conf/server.xml`:
@@ -110,16 +110,16 @@ Copy the following blocks from `${TOMCAT_DISTRIBUTION}/server/apache-tomcat-${TO
 ```
 
 
-## Add Required Libraries
+### Add Required Libraries
 
 Copy all libraries from the `$TOMCAT_DISTRIBUTION/lib/` folder to the Tomcat library folder `$TOMCAT_HOME/lib`:
 
 Furthermore, you have to merge your corresponding JDBC driver into the folder `$TOMCAT_HOME/lib`.
 
 
-## Add bpm-platform.xml
+### Add bpm-platform.xml
 
-You have to add the file `bpm-platform.xml` to the folder `$TOMCAT_HOME/conf` or, optionally, you can configure the location through some available mechanisms, see [Configure location of the bpm-platform.xml file](../../../reference/deployment-descriptors/descriptors/bpm-platform-xml.md#configure-location-of-the-bpm-platform-xml-file):
+You have to add the file `bpm-platform.xml` to the folder `$TOMCAT_HOME/conf` or, optionally, you can configure the location through some available mechanisms, see [Configure location of the bpm-platform.xml file](../../../reference/deployment-descriptors/bpm-platform-xml.md#configure-location-of-the-bpm-platformxml-file):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -149,7 +149,7 @@ You have to add the file `bpm-platform.xml` to the folder `$TOMCAT_HOME/conf` or
 ```
 
 
-## Secure Tomcat
+### Secure Tomcat
 
 Follow the Tomcat Security Howto of your Tomcat version:
 [9.0](https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html),
@@ -159,34 +159,31 @@ In particular, go to `${TOMCAT_HOME}/webapps/` and remove the directories
 `ROOT`, `docs`, `examples`, `manager` and `host-manager`.
 
 
-# Optional Components
+## Optional Components
 
 This section describes how to install optional Operaton dependencies onto a Tomcat server. None of these are required to work with the core platform.
 
 
-## Cockpit, Tasklist and Admin
+### Cockpit, Tasklist and Admin
 
 The following steps are required to deploy the applications:
 
-1. Download the Operaton web application that contains both applications from our [Artifact Repository](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/).
-   Or switch to the private repository for the enterprise version (User and password from license required).
-    * For [Tomcat 10](https://artifacts.camunda.com/ui/native/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-jakarta-$PLATFORM_VERSION.war`.
-    * For [Tomcat 9](https://artifacts.camunda.com/ui/native/operaton-bpm/org/operaton/bpm/webapp/operaton-webapp-tomcat/), the name of the artifact is `$PLATFORM_VERSION/operaton-webapp-tomcat-$PLATFORM_VERSION.war`.
+1. Download the Operaton web application that contains the web applications from Maven Central.
+    * Releases are published as [`org.operaton.bpm.webapp:operaton-webapp`](https://repo.maven.apache.org/maven2/org/operaton/bpm/webapp/operaton-webapp/); the artifact is named `$PLATFORM_VERSION/operaton-webapp-$PLATFORM_VERSION.war`.
+    * Snapshots are published to Central's snapshot repository. Configure Maven with `https://central.sonatype.com/repository/maven-snapshots/` and use the same `org.operaton.bpm.webapp:operaton-webapp` artifact.
 2. Copy the war file to `$TOMCAT_HOME/webapps/operaton.war`.
    Optionally you may name it differently or extract it to a folder to deploy it to a different context path.
 3. Startup Tomcat.
 4. Access Cockpit and Tasklist via `/operaton/app/cockpit` and `/operaton/app/tasklist` or under the context path you configured.
 
 
-## REST API
+### REST API
 
 The following steps are required to deploy the REST API:
 
-1. Download the REST API web application archive from our [Artifact Repository](https://artifacts.camunda.com/artifactory/operaton-bpm/org/operaton/bpm/operaton-engine-rest/).
-    Or switch to the private repository for the enterprise version (User and password from license required).
-    Choose the correct version named `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
-    * For [Tomcat 10](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest-jakarta/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-jakarta-$PLATFORM_VERSION-tomcat.war`.
-    * For [Tomcat 9](https://artifacts.camunda.com/artifactory/public/org/operaton/bpm/operaton-engine-rest/), the name of the artifact is `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
+1. Download the REST API web application archive from Maven Central.
+    * Releases are published as [`org.operaton.bpm:operaton-engine-rest`](https://repo.maven.apache.org/maven2/org/operaton/bpm/operaton-engine-rest/); the Tomcat artifact is named `$PLATFORM_VERSION/operaton-engine-rest-$PLATFORM_VERSION-tomcat.war`.
+    * Snapshots are published to Central's snapshot repository. Configure Maven with `https://central.sonatype.com/repository/maven-snapshots/` and use the same `org.operaton.bpm:operaton-engine-rest` artifact with the `tomcat` classifier.
 2. Copy the war file to `$TOMCAT_HOME/webapps`.
    Optionally you may rename it or extract it to a folder to deploy it to a specific context like `/engine-rest`.
 3. Startup Tomcat.
@@ -195,7 +192,7 @@ The following steps are required to deploy the REST API:
 5. Enable authentication as described in the [REST API documentation](../../../reference/rest/overview/authentication.md)
 
 
-## Operaton Connect Plugin
+### Operaton Connect Plugin
 
 Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUTION/lib/` to the folder `$TOMCAT_HOME/lib/`:
 
@@ -222,7 +219,7 @@ In order to activate Operaton Connect functionality for a process engine, a proc
 ```
 
 
-## Operaton Spin
+### Operaton Spin
 
 Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUTION/lib/` to the folder `$TOMCAT_HOME/lib/`:
 
@@ -252,7 +249,7 @@ In order to activate Operaton Spin functionality for a process engine, a process
 ```
 
 
-## Groovy Scripting
+### Groovy Scripting
 
 Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUTION/lib/` to the folder `$TOMCAT_HOME/lib/`:
 
@@ -265,7 +262,7 @@ Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUT
 * `groovy-datetime-$GROOVY_VERSION.jar`
 
 
-## Freemarker Integration
+### Freemarker Integration
 
 Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUTION/lib/` to the folder `$TOMCAT_HOME/lib/`:
 
@@ -273,7 +270,7 @@ Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUT
 * `freemarker-2.3.31.jar`
 * `operaton-commons-utils-$PLATFORM_VERSION.jar`
 
-## GraalVM JavaScript Integration
+### GraalVM JavaScript Integration
 
 Add the following artifacts (if not existing) from the folder `$TOMCAT_DISTRIBUTION/lib/` to the folder `$TOMCAT_HOME/lib/`:
 

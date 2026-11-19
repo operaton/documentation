@@ -15,11 +15,11 @@ menu:
 In the last section of this tutorial we learn how to complete the BPMN 2.0 Process.
 
 
-# Complete the Process
+## Complete the Process
 
-## Add Prepare Pizza Task Form
+### Add Prepare Pizza Task Form
 
-![Example image](./img/prepare-pizza.png)
+![Example image](/img/get-started/archive/javaee7/prepare-pizza.png)
 
 If the user approves the pizza order the pizza has to be prepared. So we add a user task form in which the user can confirm that preparation of the pizza has been completed.
 
@@ -38,7 +38,7 @@ Go back to Eclipse and add a file named `preparepizza.xhtml` to the `src/main/we
          request parameters and cached in the CDI conversation scope.
     -->
 
-    <f:event type="preRenderView" listener="#{camundaTaskForm.startTaskForm()}" />
+    <f:event type="preRenderView" listener="#{operatonTaskForm.startTaskForm()}" />
   </f:metadata>
   <h:head>
     <title>Prepare Pizza</title>
@@ -46,7 +46,7 @@ Go back to Eclipse and add a file named `preparepizza.xhtml` to the `src/main/we
   <h:body>
     <h1>Please prepare pizza</h1>
     <h:form id="submitForm">
-      <h:commandButton id="submit_button" value="Done" action="#{camundaTaskForm.completeTask()}" />
+      <h:commandButton id="submit_button" value="Done" action="#{operatonTaskForm.completeTask()}" />
     </h:form>
   </h:body>
 </f:view>
@@ -55,13 +55,13 @@ Go back to Eclipse and add a file named `preparepizza.xhtml` to the `src/main/we
 
 A new conversation is started again before the view is rendered and the task is completed after the form has been submitted. The form only contains a single button.
 
-![Example image](./img/pizza-order-process-prepare-pizza.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-prepare-pizza.png)
 
-Open the process with Camunda Modeler. Click on the prepare pizza user task. In the properties view, set the `Form Key` property to `app:preparepizza.jsf`.
+Open the process with Operaton Modeler. Click on the prepare pizza user task. In the properties view, set the `Form Key` property to `app:preparepizza.jsf`.
 
-When you are done, save all resources, [perform a Maven build](deploy.md#build-the-process-application), and [redeploy](deploy.md#deploy-to-wildfly) the process application.
+When you are done, save all resources, [perform a Maven build](deploy#build-the-process-application), and [redeploy](deploy#deploy-to-wildfly) the process application.
 
-## Add Send Rejection Email Service Task
+### Add Send Rejection Email Service Task
 
 If the user disapproves the pizza order an email is sent to inform the customer. This will be simulated by a simple log output.
 
@@ -96,11 +96,11 @@ public class OrderBusinessLogic {
 }
 ```
 
-![Example image](./img/pizza-order-process-send-rejection-email.png)
+![Example image](/img/get-started/archive/javaee7/pizza-order-process-send-rejection-email.png)
 
-Open the process with Camunda Modeler. Click on the reject email service task. In the properties view, set the `Expression` property to `${orderBusinessLogic.rejectOrder(execution)}`.
+Open the process with Operaton Modeler. Click on the reject email service task. In the properties view, set the `Expression` property to `${orderBusinessLogic.rejectOrder(execution)}`.
 
-When you are done, save all resources, [perform a Maven build](deploy.md#build-the-process-application) and [redeploy](deploy.md#deploy-to-wildfly) the process application. You can now approve and reject an order in [Tasklist](http://localhost:8080/operaton/app/tasklist). The output of the `Send Rejection Email` task can be checked by looking into the logfile of the WildFly server. It should state that a rejection email has been sent:
+When you are done, save all resources, [perform a Maven build](deploy#build-the-process-application) and [redeploy](deploy#deploy-to-wildfly) the process application. You can now approve and reject an order in [Tasklist](http://localhost:8080/operaton/app/tasklist). The output of the `Send Rejection Email` task can be checked by looking into the logfile of the WildFly server. It should state that a rejection email has been sent:
 
 <pre class="console">
   Sending Email:

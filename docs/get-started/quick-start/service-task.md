@@ -9,17 +9,17 @@ description: 'Learn the basics of handling the Camunda Modeler, learn how to mod
 
 In this section, you'll learn how to create your first BPMN 2.0 process with the Camunda Modeler and how to execute automated steps. Start by opening up Camunda Modeler.
 
-# Create a new BPMN Diagram
+## Create a new BPMN Diagram
 
 Create a new BPMN diagram by clicking *File > New File > BPMN Diagram (Operaton Platform)*.
 
-![Example image](./img/modeler-new-bpmn-diagram.png)
+![Example image](/img/get-started/quick-start/modeler-new-bpmn-diagram.png)
 
 
-## Start with a Simple Process
+### Start with a Simple Process
 Start by modeling a simple process.
 
-![Example image](./img/modeler-step1.png)
+![Example image](/img/get-started/quick-start/modeler-step1.png)
 
 Double-click on the Start Event. A text box will open. Name the Start Event "Payment Retrieval Requested".
 
@@ -29,23 +29,23 @@ When editing Labels, you can add line breaks using `Shift + Enter`.
 
 Click on the start event. From its context menu, select the activity shape (rounded rectangle). It will be placed automatically on the canvas, and you can drag it to your preferred position. Name it *Charge Credit Card*. Change the activity type to *Service Task* by clicking on the activity shape and using the wrench button.
 
-![Example image](./img/modeler-step2.png)
+![Example image](/img/get-started/quick-start/modeler-step2.png)
 
 Add an End Event named *Payment Received*.
 
-![Example image](./img/modeler-step3.png)
+![Example image](/img/get-started/quick-start/modeler-step3.png)
 
 
-## Configure the Service Task
+### Configure the Service Task
 
-There are different ways to [execute service tasks](https://docs.operaton.org/manual/latest/reference/bpmn20/tasks/service-task/) using Operaton Platform. In this guide, we'll use the external [task pattern](https://docs.operaton.org/manual/latest/user-guide/process-engine/external-tasks/).
+There are different ways to [execute service tasks](https://docs.operaton.org/docs/documentation/reference/bpmn20/tasks/service-task/) using Operaton Platform. In this guide, we'll use the external [task pattern](https://docs.operaton.org/docs/documentation/user-guide/process-engine/external-tasks/).
 Open the Properties Panel within the Camunda Modeler and click on the Service Task you just created. Change the Implementation to `External` and use `charge-card` as the Topic.
 
-![Example image](./img/modeler-step4.png)
+![Example image](/img/get-started/quick-start/modeler-step4.png)
 
-## Configure Properties for Execution
+### Configure Properties for Execution
 
-![Example image](./img/modeler-step5.png)
+![Example image](/img/get-started/quick-start/modeler-step5.png)
 
 Because we're modeling an executable process, we should give it an *ID* and set the `isExecutable` property to `true`. On the right-hand side of the canvas, you find the properties panel. When you click on empty space on the modeling canvas, the properties panel will display the properties of the process itself.
 
@@ -55,11 +55,11 @@ Second, configure the Name of the process. Type *Payment Retrieval* in the prope
 
 Finally, make sure the box next to the *Executable* property is checked. If you don't check this box, the process definition is ignored by the process engine.
 
-## Save the BPMN Diagram
+### Save the BPMN Diagram
 
 When you're done, save your changes by clicking *File > Save File As..*. In the dialogue that appears, navigate to a folder of your choice and save the diagram as something like `payment.bpmn`.
 
-# Implement an external task worker
+## Implement an external task worker
 
 After modeling the process, we want to execute some business logic.
 
@@ -77,18 +77,18 @@ If you've never worked with Java before, we recommend using the JavaScript (Node
 If you prefer a different programming language, you can also use Operaton's [REST API](/docs/documentation/user-guide/process-engine/external-tasks/#rest-api) to access API operations via HTTP.
 :::
 
-## a) Using Java
+### a) Using Java
 
 In this section, you'll learn how to implement an external task worker in Java.
 
-### Prerequisites
+#### Prerequisites
 
 Make sure you have the following tools installed:
 
 * JDK 11
 * An IDE for Java projects (e.g. [Eclipse](https://eclipse.org/))
 
-### Create a new Maven project
+#### Create a new Maven project
 
 Start by creating a new Maven project in your IDE. If you're using Eclipse, you can follow these steps:
 
@@ -98,11 +98,11 @@ On the first page of the New Maven Project Wizard, select Create a simple projec
 
 On the second page (see screenshot), configure the Maven coordinates for the project. Since we are setting up a JAR Project, make sure to select Packaging: jar.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/quick-start/eclipse-new-project.png)
 
 When you're done, click Finish. Eclipse will set up a new Maven project. The project appears in the Project Explorer View.
 
-### Add Operaton External Task Client Dependency
+#### Add Operaton External Task Client Dependency
 
 The next step consists of setting up the Maven dependency to the external task client for your new process application.
 Your pom.xml file of your project should look like this:
@@ -117,7 +117,7 @@ Your pom.xml file of your project should look like this:
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<camunda.external-task-client.version>7.22.0</camunda.external-task-client.version>
+		<operaton.external-task-client.version>2.2.1</operaton.external-task-client.version>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
@@ -126,28 +126,28 @@ Your pom.xml file of your project should look like this:
 		<dependency>
 			<groupId>org.operaton.bpm</groupId>
 			<artifactId>operaton-external-task-client</artifactId>
-			<version>${camunda.external-task-client.version}</version>
+			<version>${operaton.external-task-client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.7.36</version>
+			<version>2.0.17</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>4.0.2</version>
+			<version>4.0.5</version>
 		</dependency>
 	</dependencies>
 </project>
 ```
 
-### Add the Java class
+#### Add the Java class
 
 Next, we will create a new ExternalTaskClient which subscribes to the `charge-card` topic.
 
 When the process engine encounters a service task that is configured to be externally handled, it creates an external task instance on which our handler will react.
-We are using [Long Polling](https://docs.operaton.org/manual/latest/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks) in the ExternalTaskClient to make the communication more efficient.
+We are using [Long Polling](https://docs.operaton.org/docs/documentation/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks) in the ExternalTaskClient to make the communication more efficient.
 
 Next, you need to create a package, e.g., *org.operaton.bpm.getstarted.chargecard* and add a Java class, e.g. *ChargeCardWorker*, to it.
 
@@ -195,7 +195,7 @@ public class ChargeCardWorker {
 }
 ```
 
-### Run the worker
+#### Run the worker
 
 You can run the Java application by right clicking on the class `ChargeCardWorker` and choosing `Run as Java`.
 
@@ -205,18 +205,18 @@ Note that the worker should remain running throughout the entirety of this quick
 Once your worker is running, you can [continue to deploy your process and start some instances](/docs/get-started/quick-start/deploy/).
 :::
 
-## b) Using JavaScript (NodeJS)
+### b) Using JavaScript (NodeJS)
 
 In this section, you'll learn how to implement an external task worker in NodeJS.
 
-### Prerequisites
+#### Prerequisites
 
 Make sure you have the following tools installed:
 
 * NodeJS $\geq$ v16 ([Download available here](https://nodejs.org/en/download/))
 * Editor for JavaScript files (e.g. [Atom](https://atom.io/))
 
-### Create a new NodeJS project
+#### Create a new NodeJS project
 
 ```sh
 mkdir charge-card-worker
@@ -224,7 +224,7 @@ cd ./charge-card-worker
 npm init -y
 ```
 
-### Update package.json to enable ES modules
+#### Update package.json to enable ES modules
 Add the following "type" field to your package.json file:
 
 ``` json
@@ -239,24 +239,24 @@ Add the following "type" field to your package.json file:
 }
 ```
 
-### Add Operaton External Task Client JS library
+#### Add Camunda External Task Client JS library
 
 ```sh
-npm install operaton-external-task-client-js
+npm install camunda-external-task-client-js
 npm install -D open
 ```
 
-### Implement the NodeJS script
+#### Implement the NodeJS script
 
 Next, we'll create a new ExternalTaskClient that subscribes to the `charge-card` topic.
 
 When the process engine encounters a service task that's configured to be externally handled, it creates an external task instance on which our handler will react.
-We use [Long Polling](https://docs.operaton.org/manual/latest/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks) in the ExternalTaskClient to make the communication more efficient.
+We use [Long Polling](https://docs.operaton.org/docs/documentation/user-guide/process-engine/external-tasks/#long-polling-to-fetch-and-lock-external-tasks) in the ExternalTaskClient to make the communication more efficient.
 
 Next, you need to create a new JavaScript file, e.g. `worker.js`, that looks like the following:
 
 ```javascript
-import { Client, logger } from 'operaton-external-task-client-js';
+import { Client, logger } from 'camunda-external-task-client-js';
 import open from 'open';
 
 // configuration for the Client:
@@ -286,7 +286,7 @@ client.subscribe('charge-card', async function({ task, taskService }) {
 
 ```
 
-### Run the NodeJS script
+#### Run the NodeJS script
 
 You can run the NodeJS script with:
 

@@ -14,7 +14,7 @@ menu:
 
 In order to understand how to provide a custom history backend, it is useful to first look at a more detailed view of the history architecture:
 
-![Example img](./../img/process-engine-history-architecture.png)History Architecture
+![Example img](/img/documentation/user-guide/process-engine/history/process-engine-history-architecture.png)History Architecture
 
 Whenever the state of a runtime entity is changed, the core execution component of the process engine fires History Events. In order to make this flexible, the actual creation of the History Events as well as populating the history events with data from the runtime structures is delegated to the History Event Producer. The producer is handed in the runtime data structures (such as an ExecutionEntity or a TaskEntity), creates a new History Event and populates it with data extracted from the runtime structures.
 
@@ -24,7 +24,7 @@ Once the event has reached the History Event Handler, it can be processed and st
 
 Exchanging the History Event Handler with a custom implementation allows users to plug in a custom History Backend. To do so, two main steps are required:
 
-* Provide a custom implementation of the [HistoryEventHandler](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/history/handler/HistoryEventHandler.java) interface.
+* Provide a custom implementation of the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/history/handler/HistoryEventHandler.html">HistoryEventHandler</a> interface.
 * Wire the custom implementation in the process engine configuration.
 
 :::note[Composite History Handling]
@@ -86,10 +86,8 @@ handles such history events. If the method returns `false`, the engine will not 
 any history events of this type again. This means that if your history level only wants to generate the history
 event for some instances of an event it must still return `true` if `entity` is `null`.
 
-Please have a look at this [complete example][2] to get a better overview.
-
 ### Removal time inheritance
-Historic instances inherit the [removal time](#removal-time) from the respective historic top-level
+Historic instances inherit the removal time from the respective historic top-level
 instance. If the custom history level is configured in a way, so that the historic top-level instance is not written,
 the removal time is not available.
 
@@ -115,5 +113,4 @@ public boolean isHistoryEventProduced(HistoryEventType eventType, Object entity)
 
 
 
-[1]: http://docs.operaton.org/latest/api-references/javadoc/org/operaton/bpm/engine/impl/history/event/HistoryEventTypes.html
-[2]: https://github.com/operaton/operaton-bpm-examples/tree/master/process-engine-plugin/custom-history-level
+[1]: https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/history/event/HistoryEventTypes.html

@@ -41,10 +41,10 @@ When referenced in a case plan, a milestone gets completed as soon as its entry 
       <milestone id="Milestone_1" name="A Milestone" />
     </casePlanModel>
   </case>
-</defintions>
+</definitions>
 ```
 
-In this case, the milestone will complete as soon as as the human task completes.
+In this case, the milestone will complete as soon as the human task completes.
 
 A milestone cannot have exit criteria.
 
@@ -75,7 +75,7 @@ milestoneInstance.isCompleted(); // true if milestone occurred
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>
     </td>
   </tr>
 </table>

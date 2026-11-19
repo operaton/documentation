@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "dev": "docusaurus start",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
@@ -15,19 +16,23 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
-    "@mdx-js/react": "^3.0.0",
-    "clsx": "^2.0.0",
-    "prism-react-renderer": "^2.3.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@docusaurus/core": "3.10.2",
+    "@docusaurus/preset-classic": "3.10.2",
+    "@mdx-js/react": "^3.1.1",
+    "bpmn-js": "^18.31.1",
+    "clsx": "^2.1.1",
+    "docusaurus-theme-search-typesense": "^0.27.0",
+    "dotenv": "^18.0.10",
+    "glob": "^13.0.6",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.0",
-    "@docusaurus/tsconfig": "3.8.0",
-    "@docusaurus/types": "3.8.0",
-    "typescript": "~5.6.2"
+    "@docusaurus/module-type-aliases": "3.10.2",
+    "@docusaurus/tsconfig": "3.10.2",
+    "@docusaurus/types": "3.10.2",
+    "typescript": "~7.0.2"
   },
   "browserslist": {
     "production": [
@@ -43,5 +48,14 @@
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "overrides": {
+    "typesense-docsearch-react": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "qs": "6.16.0",
+    "serialize-javascript": "7.1.1",
+    "uuid": "11.1.1"
   }
 }

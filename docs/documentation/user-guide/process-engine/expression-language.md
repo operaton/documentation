@@ -73,7 +73,7 @@ usage of EL.
   </tr>
   <tr>
     <td>
-      <a href="../process-engine/the-job-executor.md#specifying-priorities-in-bpmn-xml">
+      <a href="/docs/documentation/user-guide/process-engine/the-job-executor#priorities-in-bpmn-xml">
         All Flow Nodes, Process Definition
       </a>
     </td>
@@ -82,9 +82,9 @@ usage of EL.
 </table>
 
 
-# Usage of Expression Language
+## Usage of Expression Language
 
-## Delegation Code
+### Delegation Code
 
 Besides Java code, Operaton also supports the evaluation of expressions as delegation code. For
 general information about delegation code, see the corresponding
@@ -138,7 +138,7 @@ interface.
 ```
 
 
-## Conditions
+### Conditions
 
 To use conditional sequence flows or conditional events, expression language is usually used.
 For conditional sequence flows, a `conditionExpression` element of a sequence flow has to be used.
@@ -154,7 +154,7 @@ The following example shows usage of expression language as condition of a seque
 ```xml
   <sequenceFlow>
     <conditionExpression xsi:type="tFormalExpression">
-      ```${test == 'foo'}
+      ${test == 'foo'}
     </conditionExpression>
   </sequenceFlow>
 ```
@@ -168,7 +168,7 @@ For usage of expression language on conditional events, see the following exampl
 ```
 
 
-## inputOutput Parameters
+### inputOutput Parameters
 
 With the Operaton`inputOutput` extension element you can map an `inputParameter` or `outputParameter`
 with expression language.
@@ -185,14 +185,14 @@ a bean.
     <extensionElements>
       <operaton:inputOutput>
         <operaton:inputParameter name="x">
-          ```${myBean.calculateX()}
+          ${myBean.calculateX()}
         </operaton:inputParameter>
       </operaton:inputOutput>
     </extensionElements>
   </serviceTask>
 ```
 
-## External Task Error Handling
+### External Task Error Handling
 
 For External Tasks it is possible to define
 [operaton:errorEventDefinition](../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition)
@@ -200,7 +200,7 @@ elements which can be provided with a JUEL expression. The expression is evaluat
 `ExternalTaskService#handleFailure`. If the expression evaluates to `true`, a BPMN error is thrown which can be caught by an
 [Error Boundary Event](../../reference/bpmn20/events/error-events.md#error-boundary-event).
 
-In the scope of an External Task, expressions have access to the <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/externaltask/ExternalTask.java">ExternalTaskEntity</a> object via the key `externalTask` which provides getter methods for `errorMessage`, `errorDetails`, `workerId`, `retries` and more.
+In the scope of an External Task, expressions have access to the <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTaskEntity</a> object via the key `externalTask` which provides getter methods for `errorMessage`, `errorDetails`, `workerId`, `retries` and more.
 
 **Examples:**
 
@@ -226,16 +226,16 @@ How to match an error message:
 
 For further details on the functionality of error event definitions in the context of external tasks, consult the [External Tasks Guide](../process-engine/external-tasks.md#error-event-definitions).
 
-## Value
+### Value
 
 Different BPMN and CMMN elements allow to specify their content or an attribute value by an
 expression. Please see the corresponding sections for [BPMN][] and [CMMN][] in the references
 for more detailed examples.
 
 
-# Availability of Variables and Functions Inside Expression Language
+## Availability of Variables and Functions Inside Expression Language
 
-## Process Variables
+### Process Variables
 
 All process variables of the current scope are directly available inside an expression. So a
 conditional sequence flow can directly check a variable value:
@@ -243,12 +243,12 @@ conditional sequence flow can directly check a variable value:
 ```xml
   <sequenceFlow>
     <conditionExpression xsi:type="tFormalExpression">
-      ```${test == 'start'}
+      ${test == 'start'}
     </conditionExpression>
   </sequenceFlow>
 ```
 
-## Internal Context Variables
+### Internal Context Variables
 
 Depending on the current execution context, special built-in context variables are available while
 evaluating expressions:
@@ -264,7 +264,7 @@ evaluating expressions:
   <tbody>
     <tr>
       <td><code>execution</code></td>
-      <td><code><a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateExecution.java">DelegateExecution</a></code></td>
+      <td><code><a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateExecution.html">DelegateExecution</a></code></td>
       <td>
         Available in a BPMN execution context like a service task, execution listener or sequence
         flow.
@@ -272,17 +272,17 @@ evaluating expressions:
     </tr>
     <tr>
       <td><code>task</code></td>
-      <td><code><a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/delegate/DelegateTask.java">DelegateTask</a></code></td>
+      <td><code><a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateTask.html">DelegateTask</a></code></td>
       <td>Available in a task context like a task listener.</td>
     </tr>
     <tr>
       <td><code>externalTask</code></td>
-      <td><code><a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/externaltask/ExternalTask.java">ExternalTask</a></code></td>
-      <td>Available during an external task context activity (e.g. in <a href="../../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
+      <td><code><a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/externaltask/ExternalTask.html">ExternalTask</a></code></td>
+      <td>Available during an external task context activity (e.g. in <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#erroreventdefinition">operaton:errorEventDefinition</a> expressions).</td>
     </tr>
     <tr>
       <td><code>caseExecution</code></td>
-      <td><code><a class="javadocref" href="org/operaton/bpm/engine/delegate/DelegateCaseExecution.html">DelegateCaseExecution</a></code></td>
+      <td><code><a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/delegate/DelegateCaseExecution.html">DelegateCaseExecution</a></code></td>
       <td>Available in a CMMN execution context.</td>
     </tr>
     <tr>
@@ -306,7 +306,7 @@ event name of an execution listener.
 ```
 
 
-## External Context Variables With Spring and CDI
+### External Context Variables With Spring and CDI
 
 If the process engine is integrated with Spring or CDI, it is possible to access Spring and CDI
 beans inside of expressions. Please see the corresponding sections for [Spring][] and [CDI][]
@@ -324,7 +324,7 @@ With the expression attribute any method of a bean can be called.
 ```
 
 
-## Internal Context Functions
+### Internal Context Functions
 
 Special built-in context functions are available while evaluating expressions:
 
@@ -361,7 +361,7 @@ Special built-in context functions are available while evaluating expressions:
       <td><code>DateTime</code></td>
       <td>
         Returns a Joda-Time DateTime object of the current date. Please see the
-        <a href="http://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">Joda-Time</a>
+        <a href="https://joda-time.sourceforge.net/api-release/org/joda/time/DateTime.html">Joda-Time</a>
         documentation for all available functions.
       </td>
     </tr>
@@ -376,7 +376,7 @@ of the task.
 ```
 
 
-## Built-In Operaton Spin Functions
+### Built-In Operaton Spin Functions
 
 If the Operaton Spin process engine plugin is activated, the Spin functions `S`,
 `XML` and `JSON` are also available inside of an expression. See the [Data Formats section][spin-section] for a detailed explanation.
@@ -387,10 +387,10 @@ If the Operaton Spin process engine plugin is activated, the Spin functions `S`,
 
 
 [JakartaEL](https://jakarta.ee/specifications/expression-language/4.0/)
-[JUEL](http://juel.sourceforge.net/)
+[JUEL](https://juel.sourceforge.net/)
 [official documentation](https://jakarta.ee/specifications/expression-language/4.0/jakarta-expression-language-spec-4.0.html)
 [variables](#availability-of-variables-and-functions-inside-expression-language)
-[Spring](../spring-framework-integration/index.md#expression-resolving)
+[Spring](../spring-framework-integration/index.md)
 [CDI](../cdi-java-ee-integration/expression-resolving.md)
 [BPMN](../../reference/bpmn20/index.md)
 [CMMN](../../reference/cmmn11/index.md)

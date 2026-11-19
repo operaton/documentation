@@ -1,8 +1,22 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import 'dotenv/config';
 
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+import rehypeRegisterCustomIds from './src/plugins/rehype-register-custom-ids.js';
+import remarkBpmnDiagram from './src/plugins/remark-bpmn-diagram.js';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+// Defaults match the nginx reverse proxy at /typesense/ on the production
+// domain (see docker/typesense/README or the root README's Local Search
+// section) - the site is served over HTTPS, so the browser can't reach a
+// bare-HTTP endpoint on a different port (mixed content). Local dev overrides
+// all of these via .env to talk to the Docker Typesense instance directly.
+const typesenseApiKey = process.env.TYPESENSE_API_KEY?.trim();
+const typesenseHost = process.env.TYPESENSE_HOST?.trim() || 'docs.operaton.org';
+const typesensePort = Number(process.env.TYPESENSE_PORT) || 443;
+const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'https';
+const typesensePath = process.env.TYPESENSE_PATH?.trim() ?? '/typesense';
 
 const config: Config = {
   title: 'Operaton Documentation',
@@ -10,7 +24,7 @@ const config: Config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://docs.operaton.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -20,9 +34,23 @@ const config: Config = {
   organizationName: 'Operaton', // Usually your GitHub org/user name.
   projectName: 'Operaton', // Usually your repo name.
 
-  onBrokenLinks: 'throw', //'throw',
-  onBrokenMarkdownLinks: 'throw',//'warn',
+  onBrokenLinks: 'warn', //'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',//'throw'
+    }
+  },
 
+  // The BPMN copy plugin
+  plugins: [
+    './src/plugins/plugin-copy-bpmn.js',
+  ],
+
+  customFields: {
+    javaDocUrl: '/reference/latest/javadoc',
+    restApiDocSiteUrl: '',
+    restApiDocBasePath: '/reference/latest/rest-api'
+  },
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -37,22 +65,61 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          exclude: ['docs/documentation/introduction/third-party-libraries/camunda-bpm-platform-license-book.md'],
+          exclude: [
+            '**/_*.{js,jsx,ts,tsx,md,mdx,bpmn}'
+          ],
+
+          // The BPMN remark plugin
+          remarkPlugins: [remarkBpmnDiagram],
+          
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/operaton/documentation/blob/main/',
+          rehypePlugins: [rehypeRegisterCustomIds],
         },
         theme: {
           customCss: './src/css/custom.css',
-        },
+        }
       } satisfies Preset.Options,
     ],
   ],
+  themes: typesenseApiKey ? ['docusaurus-theme-search-typesense'] : [],
 
   themeConfig: {
     // Replace with your project's social card
     image: 'img/operaton-logo.svg',
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      },
+    },
+    ...(typesenseApiKey
+      ? {
+          typesense: {
+            typesenseCollectionName: 'docusaurus',
+
+            typesenseServerConfig: {
+              nodes: [
+                {
+                  host: typesenseHost,
+                  port: typesensePort,
+                  protocol: typesenseProtocol,
+                  path: typesensePath,
+                },
+              ],
+              apiKey: typesenseApiKey,
+              sendApiKeyAsQueryParam: false,
+            },
+
+            // Optional: Typesense search parameters: https://typesense.org/docs/0.24.0/api/search.html#search-parameters
+            typesenseSearchParameters: {},
+
+            // Optional
+            contextualSearch: true,
+          },
+        }
+      : {}),
     navbar: {
       title: 'Operaton',
       logo: {
@@ -78,7 +145,14 @@ const config: Config = {
           position: 'left',
           label: 'Security',
         },
-        // {to: '/blog', label: 'Blog', position: 'left'},
+        ...(typesenseApiKey
+          ? [
+              {
+                type: 'search' as const,
+                position: 'right' as const,
+              },
+            ]
+          : []),
         {
           href: 'https://github.com/operaton',
           label: 'GitHub',
@@ -133,7 +207,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Operaton. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Operaton. Built with <a href="https://docusaurus.io" target="_blank">Docusaurus</a>.`,
     },
     prism: {
       theme: prismThemes.github,

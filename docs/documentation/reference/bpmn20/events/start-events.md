@@ -24,7 +24,7 @@ The process engine supports different types of start events:
 The engine requires at least one start event to instantiate a process. There can be a maximum of one blank or timer start event per process definition. There can be multiple message or signal start events.
 
 
-# Asynchronous Instantiation
+## Asynchronous Instantiation
 
 A start event may be declared as asynchronous with `operaton:asyncBefore="true"`
 
@@ -35,30 +35,30 @@ A start event may be declared as asynchronous with `operaton:asyncBefore="true"`
 This will ensure that the process engine creates a process instance when the process is instantiated, but the execution of the initial activities is not done synchronously. Instead, a job is created and asynchronously processed by the [job executor](../../../user-guide/process-engine/the-job-executor.md). See the [Asynchronous Continuations](../../../user-guide/process-engine/transactions-in-processes.md#asynchronous-continuations) section of the [User Guide](../../../user-guide/index.md) for some background information.
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formhandlerclass">operaton:formHandlerClass</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formkey">operaton:formKey</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formref">operaton:formRef</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formrefbinding">operaton:formRefBinding</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#formrefversion">operaton:formRefVersion</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#initiator">operaton:initiator</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formhandlerclass">operaton:formHandlerClass</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formkey">operaton:formKey</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formref">operaton:formRef</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formrefbinding">operaton:formRefBinding</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#formrefversion">operaton:formRefVersion</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#initiator">operaton:initiator</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formdata">operaton:formData</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#formproperty">operaton:formProperty</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formdata">operaton:formData</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#formproperty">operaton:formProperty</a>,
     </td>
   </tr>
   <tr>

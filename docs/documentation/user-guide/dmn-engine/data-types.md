@@ -12,7 +12,7 @@ menu:
 
 ---
 
-A decision table allows to specify the types of inputs and outputs. When the
+A decision table lets you specify the types of inputs and outputs. When the
 DMN engine evaluates an input or an output, it checks if the type of the
 value matches the specified type. If the types do not match, the engine
 tries to transform the value into the specified type or throws an exception.
@@ -20,7 +20,7 @@ tries to transform the value into the specified type or throws an exception.
 The DMN engine supports basic types which can be extended by custom types.
 
 
-# Supported Data Types
+## Supported Data Types
 
 The following types are supported by the DMN engine:
 
@@ -66,15 +66,15 @@ The following types are supported by the DMN engine:
 </table>
 
 Each data type transformer produces a typed value which contains the value and
-additional type informations.
+additional type information.
 
 If the given type does not match one of the above types then the value is
 transformed into an untyped value by default.
 
-## Working with Dates
+### Working with Dates
 
 The DMN engine supports a `date` type which is a combination of date and time.
-By default, the data type transformer accept objects of the types:
+By default, the data type transformers accept objects of the types:
 
 * `java.util.Date`
 * Strings having the format `yyyy-MM-dd'T'HH:mm:ss`
@@ -84,7 +84,7 @@ By default, the data type transformer accept objects of the types:
 If you prefer another format or different representation of a date,
 implement a custom type and [replace the default transformer][data-type-transformer].
 
-# Setting the Data Type of an Input
+## Setting the Data Type of an Input
 
 The type of a decision table input is specified by the `typeRef` attribute on the
 `inputExpression` element.
@@ -102,7 +102,7 @@ The type of a decision table input is specified by the `typeRef` attribute on th
 </decision>
 ```
 
-# Setting the Data Type of an Output
+## Setting the Data Type of an Output
 
 The type of a decision table output is specified by the `typeRef` attribute on the `output`
 element.
@@ -117,7 +117,7 @@ element.
 </decision>
 ```
 
-# Setting the Data Type of a Variable
+## Setting the Data Type of a Variable
 
 The type of a decision literal expression result is specified by the `typeRef` attribute on the `variable`
 element.
@@ -129,7 +129,7 @@ element.
 </decision>
 ```
 
-# Implement a Custom Data Type
+## Implement a Custom Data Type
 
 :::warning[Use of Internal API]
 
@@ -142,7 +142,7 @@ types. For example, you can add a new type for time or change the
 transformation to support a different date format or localized boolean
 constants.
 
-To do this, implement a new [DmnDataTypeTransformer](https://github.com/operaton/operaton/blob/main/engine-dmn/engine/src/main/java/org/operaton/bpm/dmn/engine/impl/spi/type/DmnDataTypeTransformer.java). The transformation is processed in the `transform()` method and returns a typed value. If it cannot successfully transform a value, it must throw an `IllegalArgumentException`.
+To do this, implement a new [DmnDataTypeTransformer](https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/dmn/engine/impl/spi/type/DmnDataTypeTransformer.html). The transformation is processed in the `transform()` method and returns a typed value. If it cannot successfully transform a value, it must throw an `IllegalArgumentException`.
 
 ```java
 public class CustomDataTypeTransformer implements DmnDataTypeTransformer {

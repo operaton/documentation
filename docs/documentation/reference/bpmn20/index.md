@@ -7,207 +7,215 @@ sidebar_position: 20
 
 This page gives you an overview of the BPMN 2.0 elements and the current coverage of the process engine.
 
-:::note[BPMN - Business Process Model and Notation
+:::note[BPMN - Business Process Model and Notation]
 If you are unfamiliar with BPMN 2.0, you might want to check out the
-<a href="http://operaton.org/bpmn/tutorial.html">BPMN Tutorial</a> first.
+<a href="https://camunda.com/bpmn/">BPMN Tutorial</a> first.
 :::
 
-# Coverage
+## Coverage
 
 The elements marked in <span class="label label-warning label-implemented">orange</span> are supported.
 
-## Symbols
+### Symbols
 
-<div class="bpmn-symbols">
+
+<div class="bpmn-symbols" style={{border: '0px solid #000', paddingLeft: '16px'}}>
 
   <div class="row">
     <div class="col-md-12">
       <h3>Participants</h3>
-      <div >
+      <div style={{position: 'relative'}}>
         <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image01.svg" />
+            ![Pool Symbol](/img/documentation/reference/bpmn20/pool.svg)
         </div>
-        <div class="bpmn-symbol-container implemented">
-          <img src="/img/reference/bpmn20/image02.svg" />
+        <div style={{position: 'absolute', top: '0', left: '24px', zIndex: '2'}} class="bpmn-symbol-container implemented">
+        ![Lane Symbol](/img/documentation/reference/bpmn20/lane.svg)
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Subprocesses</h3>
+  </div>  
+  <!-- Subprocesses -->
+  <div class="row" style={{display:'flex', flexDirection: 'column'}}>
+    <h3>Subprocesses</h3>
+    <div class="col-md-12" style={{display:'flex', columnGap: '15px'}}>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image03.svg" />
-        <a href="../reference/bpmn20/subprocesses/embedded-subprocess.md">
+        ![Subprocess Symbol](/img/documentation/reference/bpmn20/subprocess.svg)
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/embedded-subprocess">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image04.svg" />
-        <a href="../reference/bpmn20/subprocesses/call-activity.md">
+        ![CallActivity Symbol](/img/documentation/reference/bpmn20/call_activity.svg)
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/call-activity">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image05.svg" />
-        <a href="../reference/bpmn20/subprocesses/event-subprocess.md">
+        ![Event Subprocess Symbol](/img/documentation/reference/bpmn20/event_subprocess.svg)
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/event-subprocess">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image06.svg" />
-        <a href="../reference/bpmn20/subprocesses/transaction-subprocess.md">
+        ![Transaction Symbol](/img/documentation/reference/bpmn20/transaction.svg)
+        <a href="/docs/documentation/reference/bpmn20/subprocesses/transaction-subprocess">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Tasks</h3>
+  </div>        
+
+  <!-- Tasks -->
+  <div class="row" style={{display:'flex', flexDirection: 'column'}}>
+    <h3>Tasks</h3>
+    <div class="col-md-12" style={{display:'flex', flexWrap: 'wrap', columnGap: '15px'}}>
+      
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image07.svg" />
-        <a href="../reference/bpmn20/tasks/service-task.md">
+        ![ServiceTask Symbol](/img/documentation/reference/bpmn20/service_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/service-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image08.svg" />
-        <a href="../reference/bpmn20/tasks/user-task.md">
+        ![UserTask Symbol](/img/documentation/reference/bpmn20/user_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/user-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image09.svg" />
-        <a href="../reference/bpmn20/tasks/script-task.md">
+        ![ScriptTask Symbol](/img/documentation/reference/bpmn20/script_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/script-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image10.svg" />
-        <a href="../reference/bpmn20/tasks/business-rule-task.md">
+        ![Business Rule Task Symbol](/img/documentation/reference/bpmn20/business_rule_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/business-rule-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image11.svg" />
-        <a href="../reference/bpmn20/tasks/manual-task.md">
+        ![Manual Task Symbol](/img/documentation/reference/bpmn20/manual_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/manual-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image12.svg" />
-        <a href="../reference/bpmn20/tasks/receive-task.md">
+        ![Receive Task Symbol](/img/documentation/reference/bpmn20/receive_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/receive-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container">
-        <img src="/img/reference/bpmn20/image13.svg" />
+        ![Undefined Task Symbol](/img/documentation/reference/bpmn20/undefined_task.svg)
       </div>
       <div class="bpmn-symbol-container implemented">
-      <img src="/img/reference/bpmn20/image14.svg" />
-        <a href="../reference/bpmn20/tasks/send-task.md">
+        ![Send Task Symbol](/img/documentation/reference/bpmn20/send_task.svg)
+        <a href="/docs/documentation/reference/bpmn20/tasks/send-task">
           <span class="glyphicon glyphicon-eye-open"></span>
         </a>
       </div>
       <div class="bpmn-symbol-container">
-      <img src="/img/reference/bpmn20/image15.svg" />
+        ![Instantiated Receive Task Symbol](/img/documentation/reference/bpmn20/instantiated_receive_task.svg)
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
+
+    <div class="row" style={{display:'flex', justifyContent: 'space-between'}}>
+    <div class="col-md-6" style={{}}>
       <h3>Gateways</h3>
-      <div class="bpmn-symbol-container implemented">
-      <img src="/img/reference/bpmn20/image16.svg" /> 
-        <a href="../reference/bpmn20/gateways/exclusive-gateway.md">
-          <span class="glyphicon glyphicon-eye-open"></span>
-        </a>
-      </div>
-      <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image17.svg" />
-        <a href="../reference/bpmn20/gateways/inclusive-gateway.md">
-          <span class="glyphicon glyphicon-eye-open"></span>
-        </a>
-      </div>
-      <div class="bpmn-symbol-container implemented">
-        <img src="/img/reference/bpmn20/image18.svg" />
-        <a href="../reference/bpmn20/gateways/parallel-gateway.md">
-          <span class="glyphicon glyphicon-eye-open"></span>
-        </a>
-      </div>
-      <div class="bpmn-symbol-container implemented">
-      <img src="/img/reference/bpmn20/image19.svg" />
-        <a href="../reference/bpmn20/gateways/event-based-gateway.md">
-          <span class="glyphicon glyphicon-eye-open"></span>
-        </a>
-      </div>
-      <div class="bpmn-symbol-container">
-      <img src="/img/reference/bpmn20/image20.svg" />
+      <div style={{display:'flex'}}>
+        <div class="bpmn-symbol-container implemented">
+            ![XOR Gateway Symbol](/img/documentation/reference/bpmn20/xor_gateway.svg)
+            <a href="/docs/documentation/reference/bpmn20/gateways/exclusive-gateway">
+            <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="bpmn-symbol-container implemented">
+            ![OR Gateway Symbol](/img/documentation/reference/bpmn20/or_gateway.svg)
+            <a href="/docs/documentation/reference/bpmn20/gateways/inclusive-gateway">
+            <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="bpmn-symbol-container implemented">
+            ![AND Gateway Symbol](/img/documentation/reference/bpmn20/and_gateway.svg)
+            <a href="/docs/documentation/reference/bpmn20/gateways/parallel-gateway">
+            <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="bpmn-symbol-container implemented">
+            ![Event Gateway Symbol](/img/documentation/reference/bpmn20/event_gateway.svg)
+            <a href="/docs/documentation/reference/bpmn20/gateways/event-based-gateway">
+            <span class="glyphicon glyphicon-eye-open"></span>
+            </a>
+        </div>
+        <div class="bpmn-symbol-container">
+            ![Complex Gateway Symbol](/img/documentation/reference/bpmn20/complex_gateway.svg)
+        </div>
       </div>
     </div>
     <div class="col-md-3">
       <h3>Data</h3>
       <div class="bpmn-symbol-container">
-      <img src="/img/reference/bpmn20/image21.svg" />
+        ![Data Object Symbol](/img/documentation/reference/bpmn20/data_object.svg)
       </div>
       <div class="bpmn-symbol-container">
-      <img src="/img/reference/bpmn20/image22.svg" />
+        ![Data Store Symbol](/img/documentation/reference/bpmn20/data_store.svg)
       </div>
     </div>
     <div class="col-md-3">
       <h3>Artifacts</h3>
       <div class="bpmn-symbol-container">
-      <img src="/img/reference/bpmn20/image23.svg" />
+        ![Text Annotation Symbol](/img/documentation/reference/bpmn20/text_annotation.svg)
       </div>
       <div class="bpmn-symbol-container">
-      <img src="/img/reference/bpmn20/image24.svg" />
+        ![Group Symbol](/img/documentation/reference/bpmn20/group_symbol.svg)
       </div>
     </div>
   </div>
 </div>
 
-## Events
+### Events
 
 In BPMN there are start events, intermediate events and end events. These three event types can be catching events or throwing events. Intermediate events can be used as boundary events on tasks, in which case they can be interrupting or non-interrupting. This gives you a lot of flexibility to use events in your processes.
 
-:::note[Understanding BPMN Events
+:::note[Understanding BPMN Events]
 To help understand the principle behavior of events in BPMN, we recommend to check the
-[Events: Basic Concepts](http://operaton.org/bpmn/reference.html#events-basic-concepts)
-chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html).
+[Events: Basic Concepts](https://camunda.com/bpmn/reference/#events-basic-concepts)
+chapter of the [BPMN Modeling Reference](https://camunda.com/bpmn/reference/).
 :::
 
-<table class="table table-responsive table-bordered bpmn-events">
+<table class="table table-responsive table-bordered bpmn-events" style={{width: '100%', fontSize:'13px'}}>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th colSpan="3" style={{textAlign:'center'}}>Start</th>
+      <th colSpan="4" style={{textAlign:'center'}}>Intermediate</th>
+      <th>End</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Normal</th>
+      <th>Event Subprocess</th>
+      <th>
+        Event Subprocess<br/>
+        non-interrupt
+      </th>
+      <th>catch</th>
+      <th>boundary</th>
+      <th>
+        boundary<br/>
+        non-interrupt
+      </th>
+      <th>throw</th>
+      <th></th>
+    </tr>
+  </thead>
   <tbody>
-    <tr>
-      <td>Type</td>
-      <td colspan="3">Start</td>
-      <td colspan="4">Intermediate</td>
-      <td>End</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>Normal</td>
-      <td>Event Subprocess</td>
-      <td>
-        Event Subprocess
-        <br/>
-        non-interrupt
-      </td>
-      <td>catch</td>
-      <td>boundary</td>
-      <td>
-        boundary
-        <br/>
-        non-interrupt
-      </td>
-      <td>throw</td>
-      <td></td>
-    </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/none-events.md">None</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/none-events">None</a></td>
       <td>
-      <img src="/img/reference/bpmn20/image25.svg" />
+        ![Non Start Event Symbol](/img/documentation/reference/bpmn20/none_start_event.svg)
       </td>
       <td></td>
       <td></td>
@@ -215,263 +223,264 @@ chapter of the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html
       <td></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image26.svg" />
+        ![Non Intermediate Event Symbol](/img/documentation/reference/bpmn20/none_intermediate_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image27.svg" />
+        ![Non End Event Symbol](/img/documentation/reference/bpmn20/none_end_event.svg)
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/message-events.md">Message</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/message-events">Message</a></td>
       <td>
-      <img src="/img/reference/bpmn20/image28.svg" />
+        ![Message Start Event Symbol](/img/documentation/reference/bpmn20/message_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image29.svg" />
+        ![Message Start Event Symbol](/img/documentation/reference/bpmn20/message_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image30.svg" />
+        ![Event Subprocess Message Start Event non-interrupting Symbol](/img/documentation/reference/bpmn20/event_subprocess_message_non_interrupting.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image31.svg" />   
+        ![Message Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image32.svg" />
+        ![Message Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image33.svg" />
+        ![Message Intermediate Non Interrupting Catch Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_non_interrupting_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image34.svg" />
+        ![Message Intermediate Throw Event Symbol](/img/documentation/reference/bpmn20/message_intermediate_throw_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image35.svg" />
+        ![Message Throw End Event Symbol](/img/documentation/reference/bpmn20/message_throw_end_event.svg)
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/timer-events.md">Timer</a></td>
-      <td>
-      <img src="/img/reference/bpmn20/image36.svg" />
+        <td><a href="/docs/documentation/reference/bpmn20/events/timer-events">Timer</a></td>
+        <td>
+            ![Timer Start Event Symbol](/img/documentation/reference/bpmn20/timer_start_event.svg)
+        </td>
+        <td>
+            ![Event Subprocess Timer Start Event Symbol](/img/documentation/reference/bpmn20/timer_start_event.svg)
+        </td>
+        <td>
+            ![Event Subprocess Timer Start Event Non Interrupting Symbol](/img/documentation/reference/bpmn20/event_subprocess_timer_non_interrupting.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image37.svg" />
+            ![Timer Intermediate Interrupting Event Symbol](/img/documentation/reference/bpmn20/timer_intermediate_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image38.svg" />
+            ![Timer Intermediate Interrupting Event Symbol](/img/documentation/reference/bpmn20/timer_intermediate_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image39.svg" /> 
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image40.svg" />
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image41.svg" />
+            ![Timer Intermediate None Interrupting Event Symbol](/img/documentation/reference/bpmn20/timer_intermediate_none_interrupting_event.svg)
       </td>
       <td></td>
-      <td></td>
+      <td></td>        
     </tr>
     <tr>
-      <td><a href="../reference/bpmn20/events/conditional-events.md">Conditional</a></td>
-      <td class="implemented">
-      <img src="/img/reference/bpmn20/image42.svg" />
-      </td>
-      <td class="implemented">
-      <img src="/img/reference/bpmn20/image43.svg" />
-      </td>
-      <td class="implemented">
-      <img src="/img/reference/bpmn20/image44.svg" />
-      </td>
-      <td class="implemented">
-      <img src="/img/reference/bpmn20/image45.svg" />
-      </td>
-      <td class="implemented">
-      <img src="/img/reference/bpmn20/image46.svg" />
-      </td>
-      <td class="implemented">
-      <img src="/img/reference/bpmn20/image47.svg" />
+        <td><a href="/docs/documentation/reference/bpmn20/events/conditional-events">Conditional</a></td>
+        <td class="implemented">
+            ![Conditional Start Event Symbol](/img/documentation/reference/bpmn20/conditional_start_event.svg)
+        </td>
+        <td class="implemented">
+            ![Conditional Start Event Symbol](/img/documentation/reference/bpmn20/conditional_start_event.svg)
+        </td>   
+        <td class="implemented">
+            ![Conditional Event Subprocess Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/event_subprocess_conditional_non_interrupting.svg)
+        </td>
+        <td class="implemented">
+            ![Conditional Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/conditional_intermediate_catch_event.svg)
+        </td>  
+        <td class="implemented">
+            ![Conditional Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/conditional_intermediate_catch_event.svg)
+        </td>  
+        <td class="implemented">
+            ![Conditional Intermediate Non Interrupting Event Symbol](/img/documentation/reference/bpmn20/conditional_intermediate_non_interrupting_event.svg)
+        </td>
+        <td></td>
+        <td></td>       
+    </tr>
+    <tr class="implemented">
+      <td><a href="/docs/documentation/reference/bpmn20/events/link-events">Link</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        ![Link Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/link_intermediate_catch_event.svg)
       </td>
       <td></td>
+      <td></td>
+      <td>
+        ![Link Intermediate Throw Event Symbol](/img/documentation/reference/bpmn20/link_intermediate_throw_event.svg)
+      </td>
       <td></td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/link-events.md">Link</a></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/signal-events">Signal</a></td>
       <td>
-      <img src="/img/reference/bpmn20/image48.svg" />
-      </td>
-      <td></td>
-      <td></td>
-      <td>
-      <img src="/img/reference/bpmn20/image49.svg" />
-      </td>
-      <td></td>
-    </tr>
-    <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/signal-events.md">Signal</a></td>
-      <td>
-      <img src="/img/reference/bpmn20/image50.svg" />
+        ![Signal Event Symbol](/img/documentation/reference/bpmn20/signal_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image51.svg" />
+        ![Signal Event Symbol](/img/documentation/reference/bpmn20/signal_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image52.svg" />
+      ![Event Subprocess Signal Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/event_subprocess_signal_non_interrupting_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image53.svg" />
+        ![Signal Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image54.svg" />
+        ![Signal Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image55.svg" />
+        ![Signal Intermediate Non Interrupting Catch Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_non_interrupting_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image56.svg" />  
+        ![Signal Intermediate Throw Event Symbol](/img/documentation/reference/bpmn20/signal_intermediate_throw_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image57.svg" />
+        ![Signal Throw End Event Symbol](/img/documentation/reference/bpmn20/signal_throw_end_event.svg)
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/error-events.md">Error</a></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/error-events">Error</a></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image58.svg" />
-      </td>
-      <td></td>
-      <td></td>
-      <td>
-      <img src="/img/reference/bpmn20/image59.svg" />
+        ![Error EventSubprocess StartEvent Symbol](/img/documentation/reference/bpmn20/error_event_subprocess_start_event.svg)
       </td>
       <td></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image60.svg" />
-      </td>
-    </tr>
-    <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/escalation-events.md">Escalation</a></td>
-      <td></td>
-      <td>
-      <img src="/img/reference/bpmn20/image61.svg" />
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image62.svg" />
+        ![Error Boundary Catch Event Symbol](/img/documentation/reference/bpmn20/error_boundary_catch_event.svg)
       </td>
       <td></td>
+      <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image63.svg" />
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image64.svg" />
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image65.svg" />
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image66.svg" />  
+        ![Error Throw End Event Symbol](/img/documentation/reference/bpmn20/error_throw_end_event.svg)
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/terminate-event.md">Termination</a></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/escalation-events">Escalation</a></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image67.svg" />
+        ![Escalation Event Subprocess Start Event Symbol](/img/documentation/reference/bpmn20/escalation_event_subprocess_start_event.svg)
+      </td>
+      <td>
+      ![Escalation Event Subprocess Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/escalation_event_subprocess_non_interrupting_start_event.svg)
+      </td>
+      <td></td>
+      <td>
+        ![Escalation Boundary Catch Event Symbol](/img/documentation/reference/bpmn20/escalation_boundary_catch_event.svg)
+      </td>
+      <td>
+        ![Escalation Boundary Catch Non Interrupting Event Symbol](/img/documentation/reference/bpmn20/escalation_boundary_catch_non_interrupting_event.svg)
+      </td>
+      <td>
+        ![Escalation Intermediate Throw Event Symbol](/img/documentation/reference/bpmn20/escalation_intermediate_throw_event.svg)
+      </td>
+      <td>
+        ![Escalation Throw End Event Symbol](/img/documentation/reference/bpmn20/escalation_throw_end_event.svg)
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/cancel-and-compensation-events.md">Compensation</a></td>
-      <td></td>
-      <td>
-      <img src="/img/reference/bpmn20/image68.svg" />
-      </td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/terminate-event">Termination</a></td>
       <td></td>
       <td></td>
-      <td>
-      <img src="/img/reference/bpmn20/image69.svg" />
-      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image70.svg" />
-      </td>
-      <td>
-      <img src="/img/reference/bpmn20/image71.svg" />
+        ![Termination End Event Symbol](/img/documentation/reference/bpmn20/termination_end_event.svg)
       </td>
     </tr>
     <tr class="implemented">
-      <td><a href="../reference/bpmn20/events/cancel-and-compensation-events.md">Cancel</a></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><a href="/docs/documentation/reference/bpmn20/events/cancel-and-compensation-events">Compensation</a></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image72.svg" />
+        ![Compensation Event Subprocess Startevent Symbol](/img/documentation/reference/bpmn20/compensation_event_subprocess_start_event.svg)
       </td>
       <td></td>
       <td></td>
       <td>
-      <img src="/img/reference/bpmn20/image73.svg" />
+        ![Compensation Boundary Interrupting Event Symbol](/img/documentation/reference/bpmn20/compensation_boundary_event.svg)
+      </td>
+      <td></td>
+      <td>
+        ![Compensation Intermediate Throw Event Symbol](/img/documentation/reference/bpmn20/compensation_intermediate_throw_event.svg)
+      </td>
+      <td>
+        ![Compensation End Event Symbol](/img/documentation/reference/bpmn20/compensation_end_event.svg)
+      </td>
+    </tr>
+    <tr class="implemented">
+      <td><a href="/docs/documentation/reference/bpmn20/events/cancel-and-compensation-events">Cancel</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        ![Cancel Boundary Symbol](/img/documentation/reference/bpmn20/cancel_boundary_event.svg)
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        ![Cancel End Event Symbol](/img/documentation/reference/bpmn20/cancel_end_event.svg)
       </td>
     </tr>
     <tr>
       <td>Multiple</td>
       <td>
-      <img src="/img/reference/bpmn20/image74.svg" />
+        ![Multiple Start Event Symbol](/img/documentation/reference/bpmn20/multiple_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image75.svg" />
+          ![Multiple Start Event Symbol](/img/documentation/reference/bpmn20/multiple_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image76.svg" />
+        ![Multiple Event Subprocess Non Interrupting Start Event Symbol](/img/documentation/reference/bpmn20/multiple_event_subprocess_non_interrupting_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image77.svg" />
+        ![Multiple Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_intermediate_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image78.svg" />
+        ![Multiple Intermediate Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_intermediate_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image79.svg" />
+        ![Multiple Boundary Non Interrupting Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_boundary_non_interrupting_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image80.svg" />
+        ![Multiple Intermediate Throw Event Symbol](/img/documentation/reference/bpmn20/multiple_intermediate_throw_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image81.svg" />
+        ![Multiple End Event Symbol](/img/documentation/reference/bpmn20/multiple_end_event.svg)
       </td>
     </tr>
+
     <tr>
       <td>Multiple Parallel</td>
       <td>
-      <img src="/img/reference/bpmn20/image82.svg" />
+          ![Multiple Parallel Start Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image83.svg" />
+            ![Multiple Parallel Start Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image84.svg" />
+        ![Multiple Parallel Start Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_non_interrupting_start_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image85.svg" />
+            ![Multiple Parallel Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image86.svg" />
+          ![Multiple Parallel Catch Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_catch_event.svg)
       </td>
       <td>
-      <img src="/img/reference/bpmn20/image87.svg" />
+        ![Multiple Parallel Intermediate Non Interrupting Event Symbol](/img/documentation/reference/bpmn20/multiple_parallel_intermediate_non_interrupting_event.svg)
       </td>
       <td></td>
       <td></td>
-    </tr>
+    </tr>    
   </tbody>
 </table>

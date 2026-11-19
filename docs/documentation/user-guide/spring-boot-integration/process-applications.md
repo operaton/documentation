@@ -12,7 +12,7 @@ menu:
 ---
 
 By default, the operaton-spring-boot-starter is configured to use the `SpringProcessEngineConfiguration` auto deployment feature.
-Since 1.2.0 you also have the possibility to do so via `SpringBootProcessApplication`. This disables the `SpringProcessEngineConfiguration`
+You also have the possibility to do so via `SpringBootProcessApplication`. This disables the `SpringProcessEngineConfiguration`
 auto-deploy feature and instead uses the required `META-INF/processes.xml` as an indicator for resource scanning.
 This also allows all `processes.xml` configuration features described [here] (../process-applications/the-processes-xml-deployment-descriptor.md).
 
@@ -28,7 +28,7 @@ public class MyApplication {
 }
 ```
 
-Some configuration can be done via Spring Boot configuration parameters. Check [the list of currently available parameters](../spring-boot-integration/configuration.md#operaton-bpm-application).
+Some configuration can be done via Spring Boot configuration parameters. Check [the list of currently available parameters](../spring-boot-integration/configuration.mdx#operaton-engine-properties).
 
 ## Using Deployment Callbacks
 

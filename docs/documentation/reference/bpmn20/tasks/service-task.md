@@ -15,7 +15,7 @@ menu:
 
 A Service Task is used to invoke services. In Operaton this is done by calling Java code or providing a work item for an external worker to complete asynchronously or invoking a logic which is implemented in form of webservices.
 
-# Calling Java Code
+## Calling Java Code
 
 There are four ways of declaring how to invoke Java logic:
 
@@ -52,17 +52,17 @@ Or an expression which calls a method or resolves to a value.
 ```
 
 For more information about expression language as delegation code, please see the corresponding
-[section](../../../user-guide/process-engine/expression-language.md#use-expression-language-as-delegation-code)
+[section](../../../user-guide/process-engine/expression-language.md#delegation-code)
 of the [User Guide](../../../user-guide/index.md).
 
 It is also possible to invoke logic which is implemented in form of webservices. `operaton:connector` is an extension that allows calling REST/SOAP APIs directly from the workflow. For more information about using connectors, please see the corresponding [section](../../../user-guide/process-engine/connectors.md#use-connectors) of the [User Guide](../../../user-guide/index.md)
 
-## Generic Java Delegates & Field Injection
+### Generic Java Delegates & Field Injection
 
 You can easily write generic Java Delegate classes which can be configured later on via the BPMN 2.0 XML in the Service Task. Please refer to the [Field Injection](../../../user-guide/process-engine/delegation-code.md#field-injection) section of the [User Guide](../../../user-guide/index.md) for details.
 
 
-## Service Task Results
+### Service Task Results
 
 The return value of a service execution (for a Service Task exclusively using expressions) can be assigned to an already existing or to a new process variable by specifying the process variable name as a literal value for the `operaton:resultVariable` attribute of a Service Task definition. Any existing value for a specific process variable will be overwritten by the result value of the service execution. When not specifying a result variable name, the service execution result value is ignored.
 
@@ -75,10 +75,10 @@ The return value of a service execution (for a Service Task exclusively using ex
 In the example above, the result of the service execution (the return value of the `doSomething()` method invocation on object `myService`) is set to the process variable named `myVar` after the service execution completes.
 
 :::warning[Result variables and multi-instance]
-Note that when you use <code>operaton:resultVariable</code> in a multi-instance construct, for example in a multi-instance subprocess, the result variable is overwritten every time the task completes, which may appear as random behavior. See <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a> for details.
+Note that when you use <code>operaton:resultVariable</code> in a multi-instance construct, for example in a multi-instance subprocess, the result variable is overwritten every time the task completes, which may appear as random behavior. See <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a> for details.
 :::
 
-# External Tasks
+## External Tasks
 
 In contrast to calling Java code, where the process engine synchronously invokes Java logic, it is possible to implement a Service Task outside of the process engine's boundaries in the form of an external task. When a Service Task is declared external, the process engine offers a work item to workers that independently poll the engine for work to do. This decouples the implementation of tasks from the process engine and allows to cross system and technology boundaries. See the [user guide on external tasks](../../../user-guide/process-engine/external-tasks.md) for details on the concept and the relevant API.
 
@@ -90,33 +90,33 @@ To declare a Service Task to be handled externally, the attribute `operaton:type
            operaton:topic="ShipmentProcessing" />
 ```
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#class">operaton:class</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#delegateexpression">operaton:delegateExpression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#expression">operaton:expression</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#resultvariable">operaton:resultVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#topic">operaton:topic</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#type">operaton:type</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#taskpriority">operaton:taskPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#class">operaton:class</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#delegateexpression">operaton:delegateExpression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#resultvariable">operaton:resultVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#topic">operaton:topic</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#type">operaton:type</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#taskpriority">operaton:taskPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#erroreventdefinition">operaton:errorEventDefinition</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#field">operaton:field</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#connector">operaton:connector</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#erroreventdefinition">operaton:errorEventDefinition</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#connector">operaton:connector</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -161,7 +161,7 @@ To declare a Service Task to be handled externally, the attribute `operaton:type
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
-* [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN Modeling Reference](http://operaton.org/bpmn/reference.html) section
+* [Tasks](https://camunda.com/bpmn/reference/#activities-task) in the [BPMN Modeling Reference](https://camunda.com/bpmn/reference/) section
 * [How to call a Webservice from BPMN](http://www.bpm-guide.de/2010/12/09/how-to-call-a-webservice-from-bpmn/). Please note that this article is outdated. However, it is still valid regarding how you would call a Web Service using the process engine.

@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Spring Web Application Project'
+title: 'Set Up a Spring Web Application Project'
 sidebar_position: 10
 
 menu:
@@ -15,7 +15,7 @@ menu:
 Now you are ready to set up your first process application project in Eclipse or the IDE of your choice, the following description uses Eclipse.
 
 
-# Set Up a Java Project
+## Set Up a Java Project
 
 We will start by setting up a Spring web application as an Apache Maven Project inside Eclipse. This consists of four steps:
 
@@ -26,15 +26,15 @@ We will start by setting up a Spring web application as an Apache Maven Project 
 
 In the following sections, we go through this process step by step.
 
-## Create a new Maven Project in Eclipse
+### Create a new Maven Project in Eclipse
 
 First, we set up a new Apache Maven based project in Eclipse. Let's call it *loanapproval-spring*. The screenshot below illustrates the settings we choose. As we are deploying a web application, make sure to select `Packaging: war`.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/archive/spring/eclipse-new-project.png)
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* view.
 
-## Add Operaton Platform & Spring Framework Dependencies
+### Add Operaton Platform & Spring Framework Dependencies
 
 The next step consists of setting up the Maven dependencies for the new project. Maven dependencies need to be added to the `pom.xml` file of the project. We add both the Operaton Platform and the Spring Framework dependencies:
 
@@ -47,7 +47,7 @@ The next step consists of setting up the Maven dependencies for the new project.
   <packaging>war</packaging>
 
   <properties>
-    <camunda.version>7.18.0</camunda.version>
+    <operaton.version>2.1.2</operaton.version>
     <spring.version>5.3.22</spring.version>
     <h2.version>2.1.214</h2.version>
     <slf4j.version>1.7.36</slf4j.version>
@@ -60,7 +60,7 @@ The next step consists of setting up the Maven dependencies for the new project.
       <dependency>
         <groupId>org.operaton.bpm</groupId>
         <artifactId>operaton-bom</artifactId>
-        <version>${camunda.version}</version>
+        <version>${operaton.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -130,7 +130,7 @@ The next step consists of setting up the Maven dependencies for the new project.
 </project>
 ```
 
-## Add web.xml File for Bootstrapping the Spring Container
+### Add web.xml File for Bootstrapping the Spring Container
 
 Next, we add a `web.xml` file for bootstrapping the spring container. In order to do so, first add a folder named `WEB-INF` to the (preexisting) `src/main/webapp` folder of your Maven project. Inside the `src/main/webapp/WEB-INF` folder, add a file named `web.xml`:
 
@@ -157,7 +157,7 @@ Next, we add a `web.xml` file for bootstrapping the spring container. In order t
 
 Now you can perform the first build. Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`
 
-## Add a Spring Application Context XML Configuration File
+### Add a Spring Application Context XML Configuration File
 
 Next, we add a Spring ApplicationContext configuration class to the project. Create a Java class called `LoanApplicationContext` in the package `org.operaton.bpm.getstarted.loanapproval`.
 
@@ -176,7 +176,7 @@ public class LoanApplicationContext {
 
 Congratulations, you have completed the project setup. Your project should now look as depicted in the screenshot to the left.
 
-![Example image](./img/project-layout-after-setup.png)
+![Example image](/img/get-started/archive/spring/project-layout-after-setup.png)
 
 You can now perform a full Maven build and deploy the project to a vanilla Apache Tomcat server. You should see the following log output:
 

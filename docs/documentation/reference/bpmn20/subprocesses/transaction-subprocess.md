@@ -26,7 +26,7 @@ A transaction can have three possible outcomes:
 
 The following diagram illustrates the three different outcomes:
 
-<div data-bpmn-diagram="../bpmn/business-transaction"></div>
+<div data-bpmn-diagram="./bpmn/business-transaction"></div>
 
 A transaction subprocess is represented in xml using the transaction element:
 
@@ -37,12 +37,12 @@ A transaction subprocess is represented in xml using the transaction element:
 ```
 
 :::note[Relation to ACID Transactions]
-It is important not to confuse the BPMN transaction subprocess with technical (ACID) transactions. The BPMN transaction subprocess is not a way to scope technical transactions. To understand transaction management in Operaton, read the <a href="../../../user-guide/process-engine/transactions-in-processes.md">Transactions in Processes</a> section of the <a href="../../../user-guide/index.md">User Guide</a>.
+It is important not to confuse the BPMN transaction subprocess with technical (ACID) transactions. The BPMN transaction subprocess is not a way to scope technical transactions. To understand transaction management in Operaton, read the <a href="/docs/documentation/user-guide/process-engine/transactions-in-processes">Transactions in Processes</a> section of the <a href="/docs/documentation/user-guide/">User Guide</a>.
 :::
 
 A BPMN transaction differs from a technical transaction in the following ways:
 
-*   While an ACID transaction is typically short lived, a BPMN transaction may take hours, days or even months to complete. (Consider a case where one of the activities grouped by a transaction is a usertask; typically, people have longer response times than applications. Or, in another situation, a BPMN transaction might wait for some business event to occur, like the fact that a particular order has been fulfilled.) Such operations usually take considerably longer to complete than updating a record in a database or storing a message using a transactional queue.
+*   While an ACID transaction is typically short lived, a BPMN transaction may take hours, days or even months to complete. (Consider a case where one of the activities grouped by a transaction is a user task; typically, people have longer response times than applications. Or, in another situation, a BPMN transaction might wait for some business event to occur, like the fact that a particular order has been fulfilled.) Such operations usually take considerably longer to complete than updating a record in a database or storing a message using a transactional queue.
 
 *   Because it is impossible to scope a technical transaction to the duration of a business activity, a BPMN transaction typically spans multiple ACID transactions.
 
@@ -63,25 +63,25 @@ To sum it up: while ACID transactions offer a generic solution to such problems 
 The BPMN specification requires that the process engine reacts to events issued by the underlying transaction protocol and, in case a transaction is canceled, if a cancel event occurs, in the underlying protocol. As an embeddable engine, the Operaton engine currently does not support this. (For some ramifications of this, see the paragraph on consistency below.)
 :::
 
-Consistency on top of ACID transactions and optimistic concurrency: A BPMN transaction guarantees consistency in the sense that either all activities compete successfully, or, if some activity cannot be performed, the effects of all other successful activities are compensated. So either way, we end up in a consistent state. However, it is important to recognize that in Operaton, the consistency model for BPMN transactions is superposed on top of the consistency model for process execution. The Operaton engine executes processes in a transactional way. Concurrency is addressed using optimistic locking. In the engine BPMN error, cancel and compensation events are built on top of the same ACID transactions and optimistic locking. For example, a cancel end event can only trigger compensation if it is actually reached. It is not reached if some undeclared exception is thrown by a service task before. The effects of a compensation handler can not be committed if some other participant in the underlying ACID transaction sets the transaction to the state rollback-only. Also, when two concurrent executions reach a cancel end event, compensation might be triggered twice and fail with an optimistic locking exception. All of this is to say that when implementing BPMN transactions in the core engine, the same set of rules apply as when implementing "ordinary" processes and subprocesses. So, to effectively guarantee consistency, it is important to implement processes in a way that takes the optimistic, transactional execution model into consideration. For further information, see the documentation on [optimistic locking](../../../user-guide/process-engine/transactions-in-processes.md#optimistic-locking).
+Consistency on top of ACID transactions and optimistic concurrency: A BPMN transaction guarantees consistency in the sense that either all activities complete successfully, or, if some activity cannot be performed, the effects of all other successful activities are compensated. So either way, we end up in a consistent state. However, it is important to recognize that in Operaton, the consistency model for BPMN transactions is superposed on top of the consistency model for process execution. The Operaton engine executes processes in a transactional way. Concurrency is addressed using optimistic locking. In the engine BPMN error, cancel and compensation events are built on top of the same ACID transactions and optimistic locking. For example, a cancel end event can only trigger compensation if it is actually reached. It is not reached if some undeclared exception is thrown by a service task before. The effects of a compensation handler cannot be committed if some other participant in the underlying ACID transaction sets the transaction to the state rollback-only. Also, when two concurrent executions reach a cancel end event, compensation might be triggered twice and fail with an optimistic locking exception. All of this is to say that when implementing BPMN transactions in the core engine, the same set of rules apply as when implementing "ordinary" processes and subprocesses. So, to effectively guarantee consistency, it is important to implement processes in a way that takes the optimistic, transactional execution model into consideration. For further information, see the documentation on [optimistic locking](../../../user-guide/process-engine/transactions-in-processes.md#optimistic-locking).
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#inputoutput">operaton:inputOutput</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#inputoutput">operaton:inputOutput</a>
     </td>
   </tr>
   <tr>
@@ -94,6 +94,6 @@ Consistency on top of ACID transactions and optimistic concurrency: A BPMN trans
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Transactions in Processes](../../../user-guide/process-engine/transactions-in-processes.md)

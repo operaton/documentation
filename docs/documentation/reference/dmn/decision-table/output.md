@@ -13,7 +13,7 @@ menu:
 aliases: [reference/dmn/decision-table/output/]
 ---
 
-![Example img](./img/output.png)Output" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output.png)Output" class="no-lightbox
 
 A decision table can have one or more outputs, also called output clauses. An
 output clause defines the id, label, name and type of a decision table output.
@@ -34,7 +34,7 @@ XML element.
 
 ```
 
-# Output Id
+## Output Id
 
 The output id is a unique identifier of the decision table output. It is used
 by Operaton to reference the output in the history of
@@ -45,9 +45,9 @@ set as the `id` attribute of the `output` XML element.
 <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
 ```
 
-# Output Label
+## Output Label
 
-![Example img](./img/output-label.png)Output Label" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-label.png)Output Label" class="no-lightbox
 
 An output label is a short description of the output. It is set on the `output`
 XML element in the `label` attribute. Note that the label is not required but
@@ -57,9 +57,9 @@ recommended, since it helps to understand the decision.
 <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
 ```
 
-# Output Name
+## Output Name
 
-![Example img](./img/output-name.png)Output Name" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-name.png)Output Name" class="no-lightbox
 
 The name of the output is used to reference the value of the output in the
 [decision table result]. It is specified by the `name` attribute on the
@@ -72,9 +72,9 @@ unique name.
 <output id="output1" label="Dish" name="desiredDish" typeRef="string" />
 ```
 
-# Output Type Definition
+## Output Type Definition
 
-![Example img](./img/output-type-definition.png)Output Type Definition" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/output-type-definition.png)Output Type Definition" class="no-lightbox
 
 The type of the output clause can be specified by the `typeRef` attribute on the
 `output` XML element. After an [output entry] is evaluated by the
@@ -93,7 +93,7 @@ type. For example, transform the output value `80%` of type String into a
 Double using a [custom data type](../../../user-guide/dmn-engine/data-types.md#implement-a-custom-data-type).
 
 
-[decision table result]: ../../../user-guide/dmn-engine/evaluate-decisions.md#interpret-the-dmndecisiontableresult
+[decision table result]: ../../../user-guide/dmn-engine/evaluate-decisions.md#interpret-the-decision-result
 [supported DT]: ../../../user-guide/dmn-engine/data-types.md#supported-data-types
 [output entry]: ./rule.md#output-entry-conclusion
 [custom data type]: ../../../user-guide/dmn-engine/data-types.md#implement-a-custom-data-type

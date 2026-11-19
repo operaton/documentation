@@ -34,10 +34,10 @@ A single deployment (process-archive) is declared. The process archive has the n
   * `isDeleteUponUndeploy`: this property controls whether the undeployment of the process application should entail that the process engine deployment is deleted from the database. The default setting is false. If this property is set to true, undeployment of the process application leads to the removal of the deployment (including process instances) from the database.
   * `isScanForProcessDefinitions`: if this property is set to true, the classpath of the process application is automatically scanned for deployable resources. Deployable resources must end in `.bpmn20.xml`, `.bpmn`, `.cmmn11.xml`, `.cmmn`, `.dmn11.xml` or `.dmn`.
 
-See [Deployment Descriptor Reference](../../reference/deployment-descriptors/descriptors/processes-xml.md) for complete documentation of the syntax of the `processes.xml` file.
+See [Deployment Descriptor Reference](../../reference/deployment-descriptors/processes-xml.md) for complete documentation of the syntax of the `processes.xml` file.
 
 
-# Empty processes.xml
+## Empty processes.xml
 
 The processes.xml may optionally be empty (left blank). In this case default values are used. The empty processes.xml corresponds to the following configuration:
 
@@ -59,14 +59,14 @@ The processes.xml may optionally be empty (left blank). In this case default val
 The empty processes.xml will scan for process definitions and perform a single deployment to the default process engine.
 
 
-# Location of the processes.xml File
+## Location of the processes.xml File
 
 The default location of the processes.xml file is `META-INF/processes.xml`. Operaton will parse and process all processes.xml files on the classpath of a process application. Composite process applications (WAR / EAR) may carry multiple subdeployments providing a META-INF/processes.xml file.
 
 In an apache maven based project, add the the processes.xml file to the `src/main/resources/META-INF` folder.
 
 
-# Custom Location for the processes.xml File
+## Custom Location for the processes.xml File
 
 If you want to specify a custom location for the processes.xml file, you need to use the `deploymentDescriptors` property of the `@ProcessApplication` annotation:
 
@@ -85,7 +85,7 @@ The provided path(s) must be resolvable through the `ClassLoader#getResourceAsSt
 Multiple distinct locations are supported.
 
 
-# Configure Process Engines in the processes.xml File
+## Configure Process Engines in the processes.xml File
 
 The processes.xml file can also be used for configuring one or multiple process engine(s). The following is an example of a configuration of a process engine inside a processes.xml file:
 
@@ -111,7 +111,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 The `<configuration>...</configuration>` property allows specifying the name of a process engine configuration class to be used when building the process engine.
 
-# Specify Tenant-Ids for Process Archives in the processes.xml File
+## Specify Tenant-Ids for Process Archives in the processes.xml File
 
 For [Multi-Tenancy with Tenant-Identifiers](../../user-guide/process-engine/multi-tenancy.md#single-process-engine-with-tenant-identifiers), you can specify a tenant-id of a process archive by setting the attribute `tenantId`. If a tenant-id is set then all containing resources will be deployed for the given tenant-id. The following is an example of a processes.xml file which contains one process archive with a tenant-id:
 
@@ -133,12 +133,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 Note that the processes.xml file can contain multiple process archives with different tenant-ids.
 
-# Process Application Deployment
+## Process Application Deployment
 
 When deploying a set of BPMN 2.0 files to the process engine, a process deployment is created. The process deployment is performed to the process engine database so that when the process engine is stopped and restarted, the process definitions can be restored from the database and execution can continue. When a process application performs a deployment, in addition to the database deployment it will create a registration for this deployment with the process engine. This is illustrated in the following figure:
 
 
-![Example img](./img/process-application-deployment.png)Process Application Deployment
+![Example img](/img/documentation/user-guide/process-applications/process-application-deployment.png)Process Application Deployment
 
 Deployment of the process application "invoice.war" is illustrated on the left hand side:
 
@@ -150,7 +150,7 @@ When the process application is undeployed, the registration for the deployment 
 
 The registration allows the process engine to load additional Java Classes and resources from the process application when executing the processes. In contrast to the database deployment, which can be restored whenever the process engine is restarted, the registration of the process application is kept as in-memory state. This in-memory state is local to an individual cluster node, allowing us to undeploy or redeploy a process application on a particular cluster node without affecting the other nodes and without having to restart the process engine. If the Job Executor is deployment aware, job execution will also stop for jobs created by this process application. However, as a consequence, the registration also needs to be re-created when the application server is restarted. This happens automatically if the process application takes part in the application server deployment lifecycle. For instance, ServletProcessApplications are deployed as ServletContextListeners and when the servlet context is started, it creates the deployment and registration with the process engine. The redeployment process is illustrated in the next figure:
 
-![Example img](./img/process-application-redeployment.png)Process Application Redeployment
+![Example img](/img/documentation/user-guide/process-applications/process-application-redeployment.png)Process Application Redeployment
 
 (a) Left hand side: invoice.bpmn has not changed:
 

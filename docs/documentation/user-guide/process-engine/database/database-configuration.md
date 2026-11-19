@@ -4,7 +4,7 @@ title: 'Database Configuration'
 sidebar_position: 20
 menu:
   main:
-    identifier: "user-guide-process-engine-database-configuraton"
+    identifier: "user-guide-process-engine-database-configuration"
     parent: "user-guide-process-engine-database"
 
 ---
@@ -16,7 +16,7 @@ There are two ways to configure the database that the Operaton engine will use. 
 * `jdbcUsername`: username to connect to the database.
 * `jdbcPassword`: password to connect to the database.
 
-Note that the engine uses [Apache MyBatis](http://www.mybatis.org/) internally for persistence.
+Note that the engine uses [Apache MyBatis](https://mybatis.org/mybatis-3/) internally for persistence.
 
 The data source that is constructed based on the provided JDBC properties will have the default MyBatis connection pool settings. The following attributes can optionally be set to tweak that connection pool (taken from the MyBatis documentation):
 
@@ -29,10 +29,9 @@ The data source that is constructed based on the provided JDBC properties will h
 
 ## Jdbc Batch Processing
 
-<a name="jdbcBatchProcessing"></a>Another configuration - `jdbcBatchProcessing` - sets if batch processing mode must be used when sending SQL statements to the database. When switched off, statements are executed one by one.
+Another configuration - [jdbcBatchProcessing](../../../../documentation/reference/deployment-descriptors/tags/process-engine.mdx#jdbcBatchProcessing) - sets if batch processing mode must be used when sending SQL statements to the database. When switched off, statements are executed one by one.
 Values: `true` (default), `false`.
 
-Known issues with batch processing:
 
 * batch processing is not working for Oracle versions earlier than 12.
 * when using batch processing on MariaDB and DB2, `jdbcStatementTimeout` is being ignored.
@@ -64,14 +63,14 @@ Alternatively, a `javax.sql.DataSource` implementation can be used (e.g., DBCP f
     ...
 ```
 
-Note that Operaton does not ship with a library that allows to define such a data source. So you have to make sure that the libraries (e.g., from DBCP) are on your classpath.
+Note that Operaton does not ship with a library that lets you define such a data source. So you have to make sure that the libraries (e.g., from DBCP) are on your classpath.
 
 The following properties can be set, regardless of whether you are using the JDBC or data source approach:
 
-* `databaseType`: It's normally not necessary to specify this property as it is automatically analyzed from the database connection meta data. Should only be specified in case automatic detection fails. Possible values: &#123;h2, mysql, oracle, postgres, mssql, db2, mariadb&#125;. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.
-* `databaseSchemaUpdate`: Allows to set the strategy to handle the database schema on process engine boot and shutdown.
+* `databaseType`: It's normally not necessary to specify this property as it is automatically analyzed from the database connection metadata. Should only be specified in case automatic detection fails. Possible values: \{h2, mysql, oracle, postgres, mssql, db2, mariadb\}. This setting will determine which create/drop scripts and queries will be used. See the 'supported databases' section for an overview of which types are supported.
+* `databaseSchemaUpdate`: Sets the strategy to handle the database schema on process engine boot and shutdown.
   * `true` (default): Upon building the process engine, a check is performed whether the Operaton tables exist in the database. If they don't exist, they are created. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
-  * `false`: Does not perform any checks and assumes that the Operaton table exist in the database. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
+  * `false`: Does not perform any checks and assumes that the Operaton tables exist in the database. It must be ensured that the version of the DB schema matches the version of the process engine library, unless performing a Rolling Update. Updates of the database schema have to be done manually as described in the [Update and Migration Guide](../../../update/index.md).
   * `create-drop`: Creates the schema when the process engine is being created and drops the schema when the process engine is being closed.
 
 :::note[Supported Databases]
@@ -80,21 +79,21 @@ The following properties can be set, regardless of whether you are using the JDB
 
 Here are some sample JDBC urls:
 
-* H2: `jdbc:h2:tcp://localhost/camunda`
-* MySQL: `jdbc:mysql://localhost:3306/camunda?autoReconnect=true&sendFractionalSeconds=false`
-* Oracle: `jdbc:oracle:thin:@localhost:1521:xe`
-* PostgreSQL: `jdbc:postgresql://localhost:5432/camunda`
-* DB2: `jdbc:db2://localhost:50000/camunda`
-* MSSQL: `jdbc:sqlserver://localhost:1433/camunda`
-* MariaDB: `jdbc:mariadb://localhost:3306/camunda`
+* H2: ```jdbc:h2:tcp://localhost/camunda```
+* MySQL: ```jdbc:mysql://localhost:3306/camunda?autoReconnect=true&sendFractionalSeconds=false```
+* Oracle: ```jdbc:oracle:thin:@localhost:1521:xe```
+* PostgreSQL: ```jdbc:postgresql://localhost:5432/camunda```
+* DB2: ```jdbc:db2://localhost:50000/camunda```
+* MSSQL: ```jdbc:sqlserver://localhost:1433/camunda```
+* MariaDB: ```jdbc:mariadb://localhost:3306/camunda```
 
 
 ## Additional Database Schema Configuration
 
 ### Business Key
 
-Since the release of Operaton.0.0-alpha9, the unique constraint for the business key is removed in the runtime and history tables and the database schema create and drop scripts.
-If you rely on the constraint, you can add it manually to your schema by issuing following sql statements:
+The unique constraint for the business key is not present in the runtime and history tables or in the database schema create and drop scripts.
+If you rely on the constraint, you can add it manually to your schema by issuing the following SQL statements:
 
 DB2
 
@@ -166,7 +165,7 @@ alter table ACT_HI_PROCINST add constraint ACT_UNIQ_HI_BUS_KEY UNIQUE (PROC_DEF_
 
 ## Isolation Level Configuration
 
-Most database management systems provide four different isolation levels to be set. For instance the levels defined by ANSI/USO SQL are (from low to high isolation):
+Most database management systems provide four different isolation levels. For instance, the levels defined by ANSI/ISO SQL are (from low to high isolation):
 
 * READ UNCOMMITTED
 * READ COMMITTED
@@ -177,6 +176,6 @@ The required isolation level to run Operaton with is **READ COMMITTED**, which m
 
 When initializing the engine, a check is performed in order to determine if the transaction isolation level set for the database is different from the recommended one. If it is, an exception will be thrown.
 
-This behaviour can be disabled by setting the `skipIsolationLevelCheck` flag to `true`. Doing this will prevent an exception from being thrown and a warning message will be logged instead.
+This behavior can be disabled by setting the `skipIsolationLevelCheck` flag to `true`. Doing this will prevent an exception from being thrown and a warning message will be logged instead.
 
-[See here](../../../reference/deployment-descriptors/tags/process-engine.md#configuration-properties) for more details about this and other properties.
+[See here](../../../reference/deployment-descriptors/tags/process-engine.mdx#configuration-properties) for more details about this and other properties.

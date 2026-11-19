@@ -19,7 +19,7 @@ If it is desired that operations are logged regardless whether they are performe
 
 ## Access the user operation log
 
-The user operation log can be accessed via the Java API. The history service can be used to execute a `UserOperationLogQuery` by calling `historyService.createUserOperationLogQuery().execute()`. The query can be restricted with various filtering options. The query is also restref page="queryUserOperationEntries" text="exposed in the REST API" tag="Historic-User-Operation-Log.
+The user operation log can be accessed via the Java API. The history service can be used to execute a `UserOperationLogQuery` by calling `historyService.createUserOperationLogQuery().execute()`. The query can be restricted with various filtering options. The query is also <RestRef operation="queryUserOperationEntries" text="exposed in the REST API" tag="Historic-User-Operation-Log" />.
 
 
 ## User operation log entries
@@ -29,9 +29,9 @@ The log consists of *operations* and *entries*. An operation corresponds to one 
 A user operation log entry has the following properties:
 
 * **Operation ID**: A generated id that uniquely identifies a performed operation. Multiple log entries that are part of one operation reference the same operation ID.
-* **Operation Type**: The name of the performed operation. Available operation types are listed in the interface [org.operaton.bpm.engine.history.UserOperationLogEntry](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/history/UserOperationLogEntry.java). Note that one operation can consist of multiple types, for example a cascading API operation is one user operation, but is split into multiple types of operations.
-* **Entity Type**: An identifier of the type of the entity that was addressed by the operation. Available entity types are listed in the class <a class="javadocref" href="org/operaton/bpm/engine/EntityTypes.html">org.operaton.bpm.engine.EntityTypes</a>. Like the operation type, one operation may address more than one type of entity.
-* **Category**: The name of the category the operation is associated with. Available categories are listed in the interface [org.operaton.bpm.engine.history.UserOperationLogEntry](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/history/UserOperationLogEntry.java). For example, all task related runtime operations like claiming and completing tasks fall into the category <a class="javadocref" href="https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/history/UserOperationLogEntry.java#CATEGORY_TASK_WORKER" text="TaskWorker"></a>.
+* **Operation Type**: The name of the performed operation. Available operation types are listed in the interface <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/UserOperationLogEntry.html">org.operaton.bpm.engine.history.UserOperationLogEntry</a>. Note that one operation can consist of multiple types, for example a cascading API operation is one user operation, but is split into multiple types of operations.
+* **Entity Type**: An identifier of the type of the entity that was addressed by the operation. Available entity types are listed in the class <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/EntityTypes.html">org.operaton.bpm.engine.EntityTypes</a>. Like the operation type, one operation may address more than one type of entity.
+* **Category**: The name of the category the operation is associated with. Available categories are listed in the interface <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/UserOperationLogEntry.html">org.operaton.bpm.engine.history.UserOperationLogEntry</a>. For example, all task related runtime operations like claiming and completing tasks fall into the category <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/history/UserOperationLogEntry.html#CATEGORY_TASK_WORKER" text="TaskWorker"></a>.
 * **Annotation**: An arbitrary text annotation set by a user for auditing reasons. Multiple log entries that belong to an operation have the same annotation.
 * **Entity IDs**: A job log entry contains the entity IDs that serve to identify the entities addressed by the operation. For example, an operation log entry on a task contains the id of the task as well as the id of the process instance the task belongs to. As a second example, a log entry for suspending all process instances of a process definition does not contain individual process instance IDs but only the process definition ID.
 * **User ID**: The ID of the user who performed the operation.
@@ -68,8 +68,8 @@ historyService.clearAnnotationForOperationLogById(operationId);
 
 **Please note:** Annotations are present on all entries that belong to an operation log.
 
-Please also see the REST API reference for restref page="setAnnotationUserOperationLog" text="setting" tag="Historic-User-Operation-Log and
-restref page="clearAnnotationUserOperationLog" text="clearing" tag="Historic-User-Operation-Log annotations.
+Please also see the REST API reference for <RestRef operation="setAnnotationUserOperationLog" text="setting" tag="Historic-User-Operation-Log" /> and
+<RestRef operation="clearAnnotationUserOperationLog" text="clearing" tag="Historic-User-Operation-Log" /> annotations.
 
 ## Glossary of operations logged in the user operation log
 

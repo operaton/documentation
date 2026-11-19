@@ -15,7 +15,7 @@ menu:
 In the last section of this tutorial we learn how to use a shared process engine.
 
 
-# Alternative Configuration: Using Shared Process Engine
+## Alternative Configuration: Using Shared Process Engine
 
 So far, we explored how to set up an embedded process engine inside a web application using the
 Spring Framework. You can also use the Spring Framework to develop applications that use a shared
@@ -132,13 +132,13 @@ public class LoanApplicationContext {
 }
 ```
 
-We also removed `Starter` bean as we are going to use Tasklist to manually start the process.
+We also removed the `Starter` bean as we are going to use Tasklist to manually start the process.
 If you like, you can also remove the class itself as it is not used anymore.
 
-After Maven build and redeploy, process definitions will be automatically deployed. Then you
-can go to Tasklist, login with `demo/demo` credentials, click on `Start process` and start
+After a Maven build and redeploy, process definitions will be automatically deployed. Then you
+can go to Tasklist, log in with `demo/demo` credentials, click on `Start process` and start
 the `Loan approval` process.
-You will see in Tomcat logfile:
+You will see this in the Tomcat log file:
 <pre class="console">
 Spring Bean invoked
 </pre>

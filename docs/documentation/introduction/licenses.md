@@ -11,42 +11,26 @@ menu:
 ---
 
 
-# Operaton
+## Operaton
 
 Operaton is a Java-based framework.
 
 If you are using Operaton, the entire software is provided under various open source licenses (mainly Apache 2.0 and MIT). Which components are published under an open source license is clearly stated in the licensing header of a source file or a LICENSE file present in the root directory of the software source code repository.
 
 
-## Third-Party Libraries
+### Third-Party Libraries
 
 Operaton includes libraries developed by third parties. See the following resources:
 
 * [Third-Party Libraries][third-party-libraries]: An overview of the dependencies Operaton distributes. Additionally, this page points out particularly important third-party licenses to be aware of.
-* [HTML License Book Operaton](./third-party-libraries/index.md#operaton-bpm-platform-license-book): A list of all dependencies Operaton distributes with the Operaton 7 artifacts, including their licenses and notices.
-* [Plain text license book Operaton][license-book]: A plain text version of the license book.
+* [Operaton releases](https://github.com/operaton/operaton/releases/latest): The distribution archives include the generated license book for bundled dependencies, including their licenses and notices.
 
 [third-party-libraries]: ./third-party-libraries/index.md
-<!--
-[license-book]: https://artifacts.Operaton.com/artifactory/Operaton-bpm/org/Operaton/bpm/license-book/{{< minor-version >}}.0/license-book-{{< minor-version >}}.0.txt
--->
 
 
-# Camunda Modeler
+## GPL Cooperation Commitment
 
-The Camunda Modeler is a desktop modeling application.
-
-## License
-
-[License information](https://docs.camunda.io/docs/reference/licenses/#camunda-modeler) for Camunda Modeler has moved to [docs.camunda.io](https://docs.camunda.io/).
-
-## Third-Party Libraries
-
-[Third-Party libraries](https://docs.camunda.io/docs/reference/dependencies/) for Camunda Modeler have moved to [docs.camunda.io](https://docs.camunda.io/).
-
-# GPL Cooperation Commitment
-
-## Our Commitment
+### Our Commitment
 
 Before filing or continuing to prosecute any legal proceeding or claim (other than a Defensive Action) arising from termination of a Covered License, Operaton commits to extend to the person or entity (“you”) accused of violating the Covered License the following provisions regarding cure and reinstatement, taken from GPL version 3. As used here, the term ‘this License’ refers to the specific Covered License being enforced.
 
@@ -58,7 +42,7 @@ Operaton intends this Commitment to be irrevocable, and binding and enforceable 
 
 Operaton may modify this Commitment by publishing a new edition on this page or a successor location.
 
-## Definitions
+### Definitions
 
 ‘Covered License’ means the GNU General Public License, version 2 (GPLv2), the GNU Lesser General Public License, version 2.1 (LGPLv2.1), or the GNU Library General Public License, version 2 (LGPLv2), all as published by the Free Software Foundation.
 
@@ -68,6 +52,6 @@ Operaton may modify this Commitment by publishing a new edition on this page or 
 
 This work is available under a [Creative Commons Attribution-ShareAlike 4.0 International license](https://creativecommons.org/licenses/by-sa/4.0/).
 
-# Contact
+## Contact
 
 If you have a question specifically about the licensing or distribution of Operaton’s software and it has not been answered by this page, please contact the Open Source Compliance team at [foss@Operaton.org](mailto:foss@Operaton.org).

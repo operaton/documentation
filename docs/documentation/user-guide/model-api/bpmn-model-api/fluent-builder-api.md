@@ -11,7 +11,7 @@ menu:
 ---
 
 To create simple BPMN processes we provide a fluent builder API. With this API you can easily create basic
-processes in a few lines of code. In the [generate process fluent api](https://github.com/operaton/operaton-bpm-examples/tree/master/bpmn-model-api/generate-process-fluent-api) quickstart we
+processes in a few lines of code. In the [generate process fluent API](https://github.com/operaton/operaton-examples/tree/main/examples/advanced-features/bpmn-model-api-generate) quickstart we
 demonstrate how to create a rather complex process with 5 tasks and 2 gateways within less than 50 lines of code.
 
 The fluent builder API is not nearly complete but provides you with the following basic elements:
@@ -28,7 +28,7 @@ The fluent builder API is not nearly complete but provides you with the followin
 * subprocess
 
 
-# Create a Process With the Fluent Builder API
+## Create a Process With the Fluent Builder API
 
 To create an empty model instance with a new process the method `Bpmn.createProcess()` is used. After this,
 you can add as many tasks and gateways as you like. At the end you must call `done()` to return the generated
@@ -155,7 +155,7 @@ process building or you can detach it and create flow elements of the subprocess
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .subProcess()
-    .camundaAsync()
+    .operatonAsync()
     .embeddedSubProcess()
       .startEvent()
       .userTask()
@@ -175,30 +175,30 @@ modelInstance = Bpmn.createProcess()
 
 SubProcess subProcess = (SubProcess) modelInstance.getModelElementById("subProcess");
 subProcess.builder()
-  .camundaAsync()
+  .operatonAsync()
   .embeddedSubProcess()
     .startEvent()
     .userTask()
     .endEvent();
 ```
 
-The example below shows how to create a throwing signal event definition and define the payload that this signal will contain. By using the `camundaIn` methods, it is possible to define which process variables will be included in the signal payload, define an expression that will be resolved in the signal-catching process instances, or declare that all of the process variables in the signal-throwing process instance should be passed. It is also possible to define a business key that will be assigned to the signal-catching process instances.
+The example below shows how to create a throwing signal event definition and define the payload that this signal will contain. By using the `operatonIn` methods, it is possible to define which process variables will be included in the signal payload, define an expression that will be resolved in the signal-catching process instances, or declare that all of the process variables in the signal-throwing process instance should be passed. It is also possible to define a business key that will be assigned to the signal-catching process instances.
 
 ```java
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .intermediateThrowEvent("throw")
     .signalEventDefinition("signal")
-      .camundaInSourceTarget("source", "target1")
-      .camundaInSourceExpressionTarget("${'sourceExpression'}", "target2")
-      .camundaInAllVariables("all", true)
-      .camundaInBusinessKey("aBusinessKey")
+      operatonInSourceTarget("source", "target1")
+      operatonInSourceExpressionTarget("${'sourceExpression'}", "target2")
+      operatonInAllVariables("all", true)
+      operatonInBusinessKey("aBusinessKey")
       .throwEventDefinitionDone()
   .endEvent()
   .done();
 ```
 
-# Extend a Process With the Fluent Builder API
+## Extend a Process With the Fluent Builder API
 
 With the fluent builder API you can not only create processes, you can also extend existing processes.
 
@@ -232,33 +232,33 @@ userTask.builder()
   .connectTo(serviceTask.getId());
 ```
 
-# Common Model Patterns
+## Common Model Patterns
 
-## Controlling Transaction Boundaries
+### Controlling Transaction Boundaries
 
-The transaction boundaries of a process created with the fluent builder API can be controlled using the `camundaAsyncBefore()` and `camundaAsyncAfter()` methods offered for various process constructs.
+The transaction boundaries of a process created with the fluent builder API can be controlled using the `operatonAsyncBefore()` and `operatonAsyncAfter()` methods offered for various process constructs.
 
 ```java
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .serviceTask("servicetask")
-    .camundaAsyncBefore()
+    .operatonAsyncBefore()
   .userTask("task")
-    .camundaAsyncAfter()
+    operatonAsyncAfter()
   .done();
 ```
 
 The service task in the example above will have a transaction boundary before its execution and the user task will have a transaction boundary after its completion.
 
-If an activity has [multi-instance characteristics][multi-instance], the  `camundaAsyncBefore()` and `camundaAsyncAfter()` methods apply to the multi-instance body as a whole. The transaction boundaries of the individual occurrences (instances) of the multi-instance can be controlled with similar methods, called from **within** the multi-instance builder.
+If an activity has [multi-instance characteristics][multi-instance], the  `operatonAsyncBefore()` and `operatonAsyncAfter()` methods apply to the multi-instance body as a whole. The transaction boundaries of the individual occurrences (instances) of the multi-instance can be controlled with similar methods, called from **within** the multi-instance builder.
 
 ```java
 BpmnModelInstance modelInstance = Bpmn.createProcess()
   .startEvent()
   .serviceTask("servicetask")
-    .camundaAsyncBefore() // multi-instance body
+    .operatonAsyncBefore() // multi-instance body
     .multiInstance()
-      .camundaAsyncBefore() // every instance
+      .operatonAsyncBefore() // every instance
       .parallel()
     .multiInstanceDone()
   .endEvent()
@@ -266,7 +266,7 @@ BpmnModelInstance modelInstance = Bpmn.createProcess()
 ```
 
 
-# Generation of Diagram Interchange
+## Generation of Diagram Interchange
 
 To render the process, BPMN diagram elements are necessary. The fluent builder generates
 BPMN Shapes and BPMN Edges and places them automatically for flow nodes and sequence flows.
@@ -336,4 +336,4 @@ overlapping elements in the diagram.
 
 Branches of gateways are placed one below the other. Auto layout is not provided, therefore the elements of different branches may overlap.
 
-[multi-instance]: ../../../../documentation/reference/bpmn20/tasks/task-markers.md#multiple-instance
+[multi-instance]: ../../../reference/bpmn20/tasks/task-markers.md#multiple-instance

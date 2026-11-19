@@ -36,7 +36,7 @@ The history level controls the amount of data the process engine provides via th
     * Historic External Task Log CREATED, DELETED, FAILED, SUCCESSFUL: fired as an external task has been created, deleted or an external task execution has been reported to fail or succeed.
 * `AUTO`: The level `auto` is useful if you are planning to run multiple engines on the same database. In that case, all engines have to use the same history level. Instead of manually keeping your configurations in sync, use the level `auto` and the engine determines the level already configured in the database automatically. If none is found, the default value `audit` is used. Keep in mind: If you are planning to use custom history levels, you have to register the custom levels for every configuration, otherwise an exception is thrown.
 
-If you need to customize the amount of history events logged, you can provide a custom implementation [HistoryEventProducer](https://github.com/operaton/operaton/blob/main/engine/src/main/java/org/operaton/bpm/engine/impl/history/producer/HistoryEventProducer.java) and wire it in the process engine configuration.
+If you need to customize the amount of history events logged, you can provide a custom implementation <a class="javadocref" href="https://docs.operaton.org/reference/latest/javadoc/org/operaton/bpm/engine/impl/history/producer/HistoryEventProducer.html">HistoryEventProducer</a> and wire it in the process engine configuration.
 
 In case of specific needs, you can also create a [custom history level](../history/custom-implementation.md#implement-a-custom-history-level).
 
@@ -51,7 +51,7 @@ ProcessEngine processEngine = ProcessEngineConfiguration
   .buildProcessEngine();
 ```
 
-It can also be set using Spring XML or a deployment descriptor (bpm-platform.xml, processes.xml). When using the Operaton Wildfly Subsystem, the property can be set through Wildfly configuration (standalone.xml, domain.xml).
+It can also be set using Spring XML or a deployment descriptor (bpm-platform.xml, processes.xml). When using the Operaton WildFly Subsystem, the property can be set through WildFly configuration (standalone.xml, domain.xml).
 
 ```xml
 <property name="history">audit</property>
@@ -349,7 +349,7 @@ historyService.createHistoricProcessInstanceReport()
 
 Retrieves a report of completed tasks. For the task report there are two possible report types: count and duration.
 
-If you use the method `countByProcessDefinitionKey` or `countByTaskName` in the end of your report query, the report contains a list of completed task counts where an entry contains the task name, the definition key of the task, the process definition id, the process definition key, the process definition name and the count of how many tasks were completed for the specified key in a given period. The methods `countByProcessDefinitionKey` and `countByTaskName` then group the count reports according the criterion 'definition key' or 'task name'. To retrieve a task count report grouped by the task name, one could execute the following query:
+If you use the method `countByProcessDefinitionKey` or `countByTaskName` in the end of your report query, the report contains a list of completed task counts where an entry contains the task name, the definition key of the task, the process definition id, the process definition key, the process definition name and the count of how many tasks were completed for the specified key in a given period. The methods `countByProcessDefinitionKey` and `countByTaskName` then group the count reports according to the criterion 'definition key' or 'task name'. To retrieve a task count report grouped by the task name, one could execute the following query:
 
 ```java
 historyService

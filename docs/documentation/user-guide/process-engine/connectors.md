@@ -11,7 +11,7 @@ menu:
 ---
 
 
-With the dependency [operaton-connect](https://github.com/operaton/operaton/tree/master/connect), the process engine supports simple
+With the dependency [operaton-connect](https://github.com/operaton/operaton/tree/main/connect), the process engine supports simple
 connectors. Currently the following connector implementations exist:
 
 <table class="table">
@@ -29,10 +29,10 @@ connectors. Currently the following connector implementations exist:
   </tr>
 </table>
 
-It is also possible to implement your own custom connector in camunda. For more information about extending connectors please visit the [Connector reference](../../reference/connect/extending-connect.md).
+It is also possible to implement your own custom connector in operaton. For more information about extending connectors please visit the [Connector reference](../../reference/connect/extending-connect.md).
 
 
-# Configure Operaton Connect
+## Configure Operaton Connect
 
 As Operaton Connect is available only partially when using the process engine (check the list below). With a pre-built distribution, Operaton Connect is already preconfigured.
 
@@ -43,14 +43,14 @@ The following `connect` artifacts exist:
 * `operaton-engine-plugin-connect`: a process engine plugin to add Connect to Operaton.
 
 
-# Maven Coordinates
+## Maven Coordinates
 
 :::note
-  Please import the [Operaton BOM](../../..//get-started/apache-maven.md) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](/get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 
-## operaton-connect-core
+### operaton-connect-core
 
 `operaton-connect-core` contains the core classes of Connect. Additionally, the HTTP and SOAP connectors can be added with the dependencies `operaton-connect-http-client` and `operaton-connect-soap-http-client`. These artifacts will transitively pull in their dependencies, like Apache HTTP client. For integration with the engine, the artifact `operaton-engine-plugin-connect` is needed. Given that the BOM is imported, the Maven coordinates are as follows:
 
@@ -83,7 +83,7 @@ The following `connect` artifacts exist:
 ```
 
 
-## operaton-connect-connectors-all
+### operaton-connect-connectors-all
 
 This artifact contains the HTTP and SOAP connectors as well as their dependencies. To avoid conflicts with other versions of these dependencies, the dependencies are relocated to different packages. `operaton-connect-connectors-all` has the following Maven coordinates:
 
@@ -95,7 +95,7 @@ This artifact contains the HTTP and SOAP connectors as well as their dependencie
 ```
 
 
-## Configure the Process Engine Plugin
+### Configure the Process Engine Plugin
 
 `operaton-engine-plugin-connect` contains a class called `org.operaton.connect.plugin.impl.ConnectProcessEnginePlugin` that can be registered with a process engine using the [plugin mechanism](../process-engine/process-engine-plugins.md). For example, a `bpm-platform.xml` file with the plugin enabled would look as follows:
 
@@ -122,11 +122,11 @@ This artifact contains the HTTP and SOAP connectors as well as their dependencie
 :::
 
 
-# Use Connectors
+## Use Connectors
 
-To use a connector, you have to add the Operaton extension element [connector](../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-connector). The connector is configured by a unique [connectorId](../../reference/bpmn20/custom-extensions/extension-elements.md#operaton-connectorid), which specifies the used connector implementation. The ids of the currently supported connectors can be found at the beginning of this section. Additionally, an [input/output mapping](../process-engine/variables.md#input-output-variable-mapping) is used to configure the connector. The required input parameters and the available output parameters depend on the connector implementation. Additional input parameters can also be provided to be used within the connector.
+To use a connector, you have to add the Operaton extension element [connector](../../reference/bpmn20/custom-extensions/extension-elements.md#connector). The connector is configured by a unique [connectorId](../../reference/bpmn20/custom-extensions/extension-elements.md#connectorid), which specifies the used connector implementation. The ids of the currently supported connectors can be found at the beginning of this section. Additionally, an [input/output mapping](../process-engine/variables.md#inputoutput-variable-mapping) is used to configure the connector. The required input parameters and the available output parameters depend on the connector implementation. Additional input parameters can also be provided to be used within the connector.
 
-As an example, a shortened configuration of the Operaton SOAP connector implementation is shown. A complete [example](https://github.com/operaton/operaton-bpm-examples/tree/master/servicetask/soap-service) can be found in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples) on GitHub.
+As an example, a shortened configuration of the Operaton SOAP connector implementation is shown. A current [connector example](https://github.com/operaton/operaton-examples/tree/main/examples/platform-integration/integration-connectors) can be found in the Operaton examples repository on GitHub.
 
 ```xml
 <serviceTask id="soapRequest" name="Simple SOAP Request">
@@ -155,4 +155,4 @@ As an example, a shortened configuration of the Operaton SOAP connector implemen
 </serviceTask>
 ```
 
-A full [example](https://github.com/operaton/operaton-bpm-examples/tree/master/servicetask/rest-service) of the REST connector can also be found in the [Operaton examples repository](https://github.com/operaton/operaton-bpm-examples) on GitHub.
+A current [connector example](https://github.com/operaton/operaton-examples/tree/main/examples/platform-integration/integration-connectors) can also be found in the Operaton examples repository on GitHub.

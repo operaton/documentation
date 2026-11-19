@@ -15,7 +15,7 @@ These three standards are defined by the [Object Management Group][OMG] with act
 
 Operaton provides open source implementations of execution and [modeling tools][modelers].
 
-# BPMN
+## BPMN
 
 Business Process Model and Notation (BPMN) is a standard for Workflow and Process Automation.
 Operaton supports the 2.0 version of BPMN.
@@ -27,7 +27,7 @@ Operaton supports the 2.0 version of BPMN.
 * Implementing BPMN Processes: [BPMN Implementation Reference]
 * Executing BPMN: [Process Engine]
 
-# CMMN
+## CMMN
 
 Case Management Model and Notation (CMMN) is a standard for Case Management.
 Operaton supports the 1.1 version of CMMN.
@@ -35,7 +35,7 @@ Operaton supports the 1.1 version of CMMN.
 * Implementing CMMN Cases: [CMMN Implementation Reference]
 * Executing CMMN: [Process Engine]
 
-# DMN
+## DMN
 
 Decision Model and Notation (DMN) is a standard for Business Decision Management.
 Operaton supports the 1.1 version of DMN.
@@ -49,13 +49,13 @@ Operaton supports the 1.1 version of DMN.
 
 [OMG]: http://www.omg.org/
 [modelers]: ../modeling-bpmn/index.md
-[BPMN Modeling Tutorial]: https://operaton.org/bpmn/tutorial/
-[BPMN Modeling Reference]: https://operaton.org/bpmn/reference/
-[Quick Start (Java / JS)]: ../../get-started/quick-start/index.md
+[BPMN Modeling Tutorial]: https://camunda.com/bpmn/
+[BPMN Modeling Reference]: https://camunda.com/bpmn/reference/
+[Quick Start (Java / JS)]: /docs/get-started/quick-start/
 [BPMN Implementation Reference]: ../reference/bpmn20/index.md
 [CMMN Implementation Reference]: ../reference/cmmn11/index.md
-[DMN Getting Started]: ../../get-started/dmn/index.md
+[DMN Getting Started]: /docs/get-started/dmn/
 [DMN Implementation Reference]: ../reference/dmn/index.md
-[DMN Modeling Tutorial]: https://operaton.org/dmn/tutorial/
+[DMN Modeling Tutorial]: https://camunda.com/dmn/
 [Process Engine]: ../user-guide/process-engine/index.md
 [DMN Engine]: ../user-guide/dmn-engine/index.md

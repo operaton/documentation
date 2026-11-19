@@ -10,7 +10,7 @@ menu:
 
 ---
 
-These buttons can be used to trigger error and escalation events in user tasks. They will submit all entered values and activate the corresponding boundary event. To learn more about error and escalation events, see our section about [events](https://docs.operaton.org/manual/latest/reference/bpmn20/events/).
+These buttons can be used to trigger error and escalation events in user tasks. They will submit all entered values and activate the corresponding boundary event. To learn more about error and escalation events, see our section about [events](https://docs.operaton.org/docs/documentation/reference/bpmn20/events/).
 
 ## Error
 

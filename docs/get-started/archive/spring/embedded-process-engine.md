@@ -15,7 +15,7 @@ menu:
 Now that you have set up the project with the correct Maven dependencies, we can start configuring the process engine.
 
 
-# Configure an Embedded Process Engine
+## Configure an Embedded Process Engine
 
 Add the following Spring beans to the `LoanApplication` class as follows:
 
@@ -110,7 +110,7 @@ public class LoanApplicationContext {
 
 This bootstraps a process engine with an in-memory H2 database and makes the engine as well as its API services available as Spring beans.
 
-After you added the beans to the application context, perform a full Maven build and redeploy the application. In the logfile of the Apache Tomcat server you should be able to see the initialization of the process-engine:
+After you added the beans to the application context, perform a full Maven build and redeploy the application. In the log file of the Apache Tomcat server you should be able to see the initialization of the process-engine:
 
 <pre class="console">
 INFO org.operaton.commons.logging.BaseLogger.logInfo

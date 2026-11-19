@@ -12,9 +12,9 @@ menu:
 ---
 
 
-The following elements are extension elements for the `camunda` namespace `http://operaton.org/schema/1.0/cmmn`.
+The following elements are extension elements for the `operaton` namespace `http://operaton.org/schema/1.0/cmmn`.
 
-# caseExecutionListener
+## caseExecutionListener
 
 <table class="table table-striped">
   <tr>
@@ -34,21 +34,21 @@ The following elements are extension elements for the `camunda` namespace `http:
     <td></td>
     <td><code>class</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#class">operaton:class</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#class">operaton:class</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>expression</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#expression">operaton:expression</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#expression">operaton:expression</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>delegateExpression</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#delegateexpression">operaton:delegateExpression</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#delegateexpression">operaton:delegateExpression</a>
     </td>
   </tr>
   <tr>
@@ -67,29 +67,29 @@ The following elements are extension elements for the `camunda` namespace `http:
     <th>Parent elements</th>
     <td colspan="2">
       Case,
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>,
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>,
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>,
-      <a href="../reference/cmmn11/grouping-tasks/stage.md">Stage</a>,
-      <a href="../reference/cmmn11/milestone.md">Milestone</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage">Stage</a>,
+      <a href="/docs/documentation/reference/cmmn11/milestone">Milestone</a>,
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#field">operaton:field</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
 
-# expression
+## expression
 
 <table class="table table-striped">
 <tr>
   <th>Description</th>
   <td colspan="2">
-    Defines an expression to inject in delegated classes (see <a href="../user-guide/process-engine/delegation-code.md#field-injection">Field Injection</a>).
+    Defines an expression to inject in delegated classes (see <a href="/docs/documentation/user-guide/process-engine/delegation-code#field-injection">Field Injection</a>).
   </td>
 </tr>
 <tr>
@@ -113,7 +113,7 @@ The following elements are extension elements for the `camunda` namespace `http:
 <tr>
   <th>Parent elements</th>
   <td colspan="2">
-    <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#field">operaton:field</a>
+    <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#field">operaton:field</a>
   </td>
 </tr>
 <tr>
@@ -124,13 +124,13 @@ The following elements are extension elements for the `camunda` namespace `http:
 </tr>
 </table>
 
-# field
+## field
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Defines the value to inject in delegated classes (see <a href="../user-guide/process-engine/delegation-code.md#field-injection">Field Injection</a>).
+      Defines the value to inject in delegated classes (see <a href="/docs/documentation/user-guide/process-engine/delegation-code#field-injection">Field Injection</a>).
     </td>
   </tr>
   <tr>
@@ -159,26 +159,26 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>,
       operaton:caseExecutionListener
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#expression">operaton:expression</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#string">operaton:string</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#expression">operaton:expression</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#string">operaton:string</a>
     </td>
   </tr>
 </table>
 
-# in
+## in
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td colspan="2">
-      This element specifies variables which should be passed to the sub instance (process instance or case instance), see <a href="../reference/cmmn11/tasks/process-task.md#exchange-variables">passing variables to called process</a> or <a href="../reference/cmmn11/tasks/case-task.md#exchange-variables">passing variables to called case</a> for more information.
+      This element specifies variables which should be passed to the sub instance (process instance or case instance), see <a href="/docs/documentation/reference/cmmn11/tasks/process-task#exchange-variables">passing variables to called process</a> or <a href="/docs/documentation/reference/cmmn11/tasks/case-task#exchange-variables">passing variables to called case</a> for more information.
     </td>
   </tr>
   <tr>
@@ -238,8 +238,8 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>,
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>
     </td>
   </tr>
   <tr>
@@ -251,13 +251,13 @@ The following elements are extension elements for the `camunda` namespace `http:
 </table>
 
 
-# out
+## out
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td colspan="2">
-      This element specifies variables which should be passed back from the sub instance (process instance or case instance), see <a href="../reference/cmmn11/tasks/process-task.md#exchange-variables">passing variables to called process</a> or <a href="../reference/cmmn11/tasks/case-task.md#exchange-variables">passing variables to called case</a> for more information.
+      This element specifies variables which should be passed back from the sub instance (process instance or case instance), see <a href="/docs/documentation/reference/cmmn11/tasks/process-task#exchange-variables">passing variables to called process</a> or <a href="/docs/documentation/reference/cmmn11/tasks/case-task#exchange-variables">passing variables to called case</a> for more information.
     </td>
   </tr>
   <tr>
@@ -303,8 +303,8 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>,
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>
     </td>
   </tr>
   <tr>
@@ -315,7 +315,7 @@ The following elements are extension elements for the `camunda` namespace `http:
   </tr>
 </table>
 
-# script
+## script
 
 <table class="table table-striped">
   <tr>
@@ -335,7 +335,7 @@ The following elements are extension elements for the `camunda` namespace `http:
     <td></td>
     <td><code>resource</code></td>
     <td>
-      equivalent to <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#resource">
+      equivalent to <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#resource">
       operaton:resource</a>
     </td>
   </tr>
@@ -354,7 +354,7 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>,
       operaton:caseExecutionListener
     </td>
   </tr>
@@ -367,13 +367,13 @@ The following elements are extension elements for the `camunda` namespace `http:
 </table>
 
 
-# string
+## string
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Defines a String value to inject in delegated classes (see <a href="../user-guide/process-engine/delegation-code.md#field-injection">Field Injection</a>).
+      Defines a String value to inject in delegated classes (see <a href="/docs/documentation/user-guide/process-engine/delegation-code#field-injection">Field Injection</a>).
     </td>
   </tr>
   <tr>
@@ -397,7 +397,7 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#field">operaton:field</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#field">operaton:field</a>
     </td>
   </tr>
   <tr>
@@ -408,7 +408,7 @@ The following elements are extension elements for the `camunda` namespace `http:
   </tr>
 </table>
 
-# taskListener
+## taskListener
 
 <table class="table table-striped">
   <tr>
@@ -428,21 +428,21 @@ The following elements are extension elements for the `camunda` namespace `http:
     <td></td>
     <td><code>class</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#class">operaton:class</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#class">operaton:class</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>expression</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#expression">operaton:expression</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#expression">operaton:expression</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>delegateExpression</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#delegateexpression">operaton:delegateExpression</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#delegateexpression">operaton:delegateExpression</a>
     </td>
   </tr>
   <tr>
@@ -460,19 +460,19 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#field">operaton:field</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
 
-# variableListener
+## variableListener
 
 <table class="table table-striped">
   <tr>
@@ -492,21 +492,21 @@ The following elements are extension elements for the `camunda` namespace `http:
     <td></td>
     <td><code>class</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#class">operaton:class</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#class">operaton:class</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>expression</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#expression">operaton:expression</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#expression">operaton:expression</a>
     </td>
   </tr>
   <tr>
     <td></td>
     <td><code>delegateExpression</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#delegateexpression">operaton:delegateExpression</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#delegateexpression">operaton:delegateExpression</a>
     </td>
   </tr>
   <tr>
@@ -525,35 +525,35 @@ The following elements are extension elements for the `camunda` namespace `http:
     <th>Parent elements</th>
     <td colspan="2">
       Case Plan Model,
-      <a href="../reference/cmmn11/grouping-tasks/stage.md">Stage</a>,
-      <a href="../reference/cmmn11/tasks/human-task.md">Human Task</a>,
-      <a href="../reference/cmmn11/tasks/process-task.md">Process Task</a>,
-      <a href="../reference/cmmn11/tasks/case-task.md">Case Task</a>
+      <a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage">Stage</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/human-task">Human Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/process-task">Process Task</a>,
+      <a href="/docs/documentation/reference/cmmn11/tasks/case-task">Case Task</a>
     </td>
   </tr>
   <tr>
     <th>Child elements</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#field">operaton:field</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#script">operaton:script</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#field">operaton:field</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#script">operaton:script</a>
     </td>
   </tr>
 </table>
 
-# variableOnPart
+## variableOnPart
 
 <table class="table table-striped">
   <tr>
     <th>Description</th>
     <td colspan="2">
-      Add variableOnPart to sentry. see <a href="../reference/cmmn11/sentry.md#variableonpart">variableOnPart</a>.
+      Add variableOnPart to sentry. see <a href="/docs/documentation/reference/cmmn11/sentry#variableonpart">variableOnPart</a>.
     </td>
   </tr>
   <tr>
     <th>Attributes</th>
     <td><code>variableName</code></td>
     <td>
-      see <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#variablename">operaton:variableName</a>
+      see <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#variablename">operaton:variableName</a>
     </td>
   </tr>
   <tr>
@@ -565,18 +565,18 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent element</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/sentry.md">Sentries</a>
+      <a href="/docs/documentation/reference/cmmn11/sentry">Sentries</a>
     </td>
   </tr>
   <tr>
     <th>Child element</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variableevent">operaton:variableEvent</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variableevent">operaton:variableEvent</a>
     </td>
   </tr>
 </table>
 
-# variableEvent
+## variableEvent
 
 <table class="table table-striped">
   <tr>
@@ -594,7 +594,7 @@ The following elements are extension elements for the `camunda` namespace `http:
   <tr>
     <th>Parent element</th>
     <td colspan="2">
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variableonpart">VariableOnPart</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variableonpart">VariableOnPart</a>
     </td>
   </tr>
 </table>

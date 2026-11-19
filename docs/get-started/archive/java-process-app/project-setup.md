@@ -1,6 +1,6 @@
 ---
 
-title: 'Setup a Java Project for BPMN 2.0'
+title: 'Set Up a Java Project for BPMN 2.0'
 sidebar_position: 20
 
 menu:
@@ -14,15 +14,11 @@ menu:
 
 Now you are ready to set up your first process application project in the IDE of your choice, the following description uses Eclipse.
 
-# Create a new Maven Project
-
-:::note[Fancy to save work and use a project template instead?]
-You don't have to setup the project manually but can also use a Maven Archetype (which is like a project template), see [Maven Archetypes](../../../documentation/user-guide/process-applications/maven-archetypes.md) for details. The archetype will create a project according to our best practices.
-:::
+## Create a new Maven Project
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 
-![Example image](./img/eclipse-new-project.png)
+![Example image](/img/get-started/archive/java-process-app/eclipse-new-project.png)
 
 On the first page of the *New Maven Project Wizard* select *Create a simple project (skip archetype selection)*. Click Next.
 
@@ -30,7 +26,7 @@ On the second page (see screenshot), configure the Maven coordinates for the pro
 
 When you are done, click Finish. Eclipse sets up a new Maven project. The project appears in the *Project Explorer* View.
 
-# Add Operaton Maven Dependencies
+## Add Operaton Maven Dependencies
 
 The next step consists of setting up the Maven dependencies for your new process application. Add the following dependencies to the `pom.xml` file of your project:
 
@@ -45,7 +41,7 @@ The next step consists of setting up the Maven dependencies for your new process
   <packaging>war</packaging>
 
   <properties>
-    <camunda.version>7.18.0</camunda.version>
+    <operaton.version>2.1.2</operaton.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
@@ -55,7 +51,7 @@ The next step consists of setting up the Maven dependencies for your new process
       <dependency>
         <groupId>org.operaton.bpm</groupId>
         <artifactId>operaton-bom</artifactId>
-        <version>${camunda.version}</version>
+        <version>${operaton.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -95,7 +91,7 @@ The next step consists of setting up the Maven dependencies for your new process
 
 Now you can perform the first build. Select the `pom.xml` in the Package Explorer, perform a right-click and select `Run As / Maven Install`.
 
-# Add a Process Application Class
+## Add a Process Application Class
 
 Next, you need to create a package, e.g., `org.operaton.bpm.getstarted.loanapproval` and add a Process Application class to it. The Process Application class constitutes the interface between your application and the process engine.
 
@@ -112,7 +108,7 @@ public class LoanApprovalApplication extends ServletProcessApplication {
 ```
 
 
-# Add a META-INF/processes.xml Deployment Descriptor
+## Add a META-INF/processes.xml Deployment Descriptor
 
 The last step to set up the process application is to add the `META-INF/processes.xml` deployment descriptor file. This file allows us to provide a declarative configuration of the deployment(s) this process application makes to the process engine.
 
@@ -137,7 +133,7 @@ This file needs to be added to the `src/main/resources/META-INF` folder of the M
 ```
 
 :::note[Empty META-INF/processes.xml]
-You can leave the `META-INF/processes.xml` file empty. In that case, default values are used. See the [Empty Processes.xml](../../../documentation/user-guide/process-applications/the-processes-xml-deployment-descriptor.md#empty-processes-xml) section of the [User Guide](../../../documentation/user-guide/index.md) for more information
+You can leave the `META-INF/processes.xml` file empty. In that case, default values are used. See the [Empty Processes.xml](/docs/documentation/user-guide/process-applications/the-processes-xml-deployment-descriptor/#empty-processesxml) section of the [User Guide](/docs/documentation/user-guide) for more information
 :::
 
 At this point you have successfully set up the process application and you can start modeling the first process.

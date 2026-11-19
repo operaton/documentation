@@ -13,7 +13,7 @@ menu:
 aliases: [reference/dmn/decision-table/input/]
 ---
 
-![Input](./img/input.png)
+![Input](/img/documentation/reference/dmn/decision-table/input.png)
 
 A decision table can have one or more inputs, also called input clauses. An
 input clause defines the id, label, expression and type of a decision table
@@ -40,7 +40,7 @@ XML element.
 </definitions>
 ```
 
-# Input Id
+## Input Id
 
 The input id is a unique identifier of the decision table input. It is used by
 Operaton to reference the input in the history of evaluated
@@ -55,9 +55,9 @@ the `id` attribute of the `input` XML element.
 </input>
 ```
 
-# Input Label
+## Input Label
 
-![Example img](./img/input-label.png)Input Label" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-label.png)Input Label" class="no-lightbox
 
 An input label is a short description of the input. It is set on the `input`
 XML element in the `label` attribute. Note that the label is not required but
@@ -71,9 +71,9 @@ recommended, since it helps to understand the decision.
 </input>
 ```
 
-# Input Expression
+## Input Expression
 
-![Example img](./img/input-expression.png)Input Expression" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-expression.png)Input Expression" class="no-lightbox
 
 An input expression specifies how the value of the input clause is generated.
 It is an expression which will be evaluated by the DMN engine. It is usually
@@ -89,9 +89,9 @@ expression is set inside a `text` element that is a child of the
 </input>
 ```
 
-# Input Type Definition
+## Input Type Definition
 
-![Example img](./img/input-type-definition.png)Input Type Definition" class="no-lightbox
+![Example img](/img/documentation/reference/dmn/decision-table/input-type-definition.png)Input Type Definition" class="no-lightbox
 
 The type of the input clause can be specified by the `typeRef` attribute on the
 `inputExpression` XML element. After the input expression is evaluated by the
@@ -110,7 +110,7 @@ Note that the type is not required but recommended, since it helps to understand
 the possible input values and provides a type safety to be aware of unexpected
 input values.
 
-# Input Expression Language
+## Input Expression Language
 
 The expression language of the input expression can be specified by the
 `expressionLanguage` attribute on the `inputExpression` XML element. The
@@ -142,7 +142,7 @@ is used instead. The default expression language for input expressions is FEEL.
 Please refer to the [User Guide][default EL] to read more about expression
 languages.
 
-# Input Variable Name
+## Input Variable Name
 
 When the input expression is evaluated then the return value is stored in a variable.
 The name of the variable can be specified by the `operaton:inputVariable`
@@ -150,7 +150,7 @@ The name of the variable can be specified by the `operaton:inputVariable`
 name is `cellInput`.
 
 To use the attribute you have to define the Operaton DMN namespace
-`xmlns:operaton="http://operaton.org/schema/1.0/dmn` in the XML.
+`xmlns:operaton="http://operaton.org/schema/1.0/dmn"` in the XML.
 
 ```xml
 <definitions id="definitions"

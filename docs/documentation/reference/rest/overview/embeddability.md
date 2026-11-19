@@ -13,33 +13,24 @@ menu:
 
 The REST API is an artifact of its own, which means that it can be embedded in any other JAX-RS application independently of the engine.
 
-# Prerequisites
+## Prerequisites
 
-The REST API classes are tested with [RESTEasy](http://www.jboss.org/resteasy/) and [Jersey](http://jersey.java.net/) as the JAX-RS implementation.
-Furthermore, the engine classes and Jackson's `com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider` artifact (as well as transitive Jackson dependencies) have to be on the classpath.
+The REST API classes are tested with [RESTEasy](https://resteasy.dev/) and [Jersey](https://eclipse-ee4j.github.io/jersey/) as the JAX-RS implementation.
+Furthermore, the engine classes and Jackson's `com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider` artifact (as well as transitive Jackson dependencies) have to be on the classpath.
 
 
-# Required Steps
+## Required Steps
 
 **Step 1:** Add the REST API to your project as a Maven dependency.
 
 :::note
-  Please import the [Operaton BOM](../../../../get-started/apache-maven.md) to ensure correct versions for every Operaton project.
+  Please import the [Operaton BOM](/get-started/apache-maven.md) to ensure correct versions for every Operaton project.
 :::
 
 ```xml
 <dependency>
   <groupId>org.operaton.bpm</groupId>
   <artifactId>operaton-engine-rest</artifactId>
-  <classifier>classes</classifier>
-</dependency>
-```
-For Jakarta EE 9+ containers (like WildFly 27+), use the following dependency instead:
-
-```xml
-<dependency>
-  <groupId>org.operaton.bpm</groupId>
-  <artifactId>operaton-engine-rest-jakarta</artifactId>
   <classifier>classes</classifier>
 </dependency>
 ```
@@ -70,10 +61,10 @@ public class MyApplication extends Application {
 To restrict the exposed REST resources to specific types (e.g., only process-definition-related methods), a subclass of `org.operaton.bpm.engine.rest.impl.AbstractProcessEngineRestServiceImpl` can be implemented and registered with the JAX-RS application. Such a subclass can control which resources get exposed by offering JAX-RS-annotated methods. See the sources of `NamedProcessEngineRestServiceImpl` and `DefaultProcessEngineRestServiceImpl` for an example. **Note**: The path to a subresource should always match the path defined in the subresource's interface.
 
 The configuration class `JacksonConfigurator` is required to correctly configure the serialization of date fields.
-You may also have to add the following Jackson providers: `com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider`,
+You may also have to add the following Jackson providers: `com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider`,
 `org.operaton.bpm.engine.rest.exception.JsonMappingExceptionHandler` and `org.operaton.bpm.engine.rest.exception.JsonParseExceptionHandler`.
 Depending on the runtime environment, this may not be necessary.
-On Wildfly, these should be automatically added as an implicit module dependency.
+On WildFly, these should be automatically added as an implicit module dependency.
 
 For proper exception responses of the format as described in the [Introduction](../../../reference/rest/overview/index.md),
 it is necessary to include `RestExceptionHandler`. `ProcessEngineExceptionHandler` is used to translate any exception thrown by the

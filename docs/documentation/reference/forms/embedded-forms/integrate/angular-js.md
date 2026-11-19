@@ -11,7 +11,7 @@ menu:
 ---
 
 
-# Including the Angular Distribution
+## Including the Angular Distribution
 
 Make sure you include the AngularJS build of the Forms SDK:
 
@@ -21,7 +21,7 @@ Make sure you include the AngularJS build of the Forms SDK:
 ```
 
 
-# Loading the Forms Module
+## Loading the Forms Module
 
 Add the Forms SDK as module dependency to your application
 module:
@@ -31,7 +31,7 @@ angular.bootstrap(window.document, ['cam.embedded.forms', ...]);
 ```
 
 
-# Angular Directives & Compilation
+## Angular Directives & Compilation
 
 If the form is loaded from a URL, the SDK makes sure that it is properly compiled and linked to the current Angular scope. This allows using Angular directives in forms loaded dynamically at runtime.
 

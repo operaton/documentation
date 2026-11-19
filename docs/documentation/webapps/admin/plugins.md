@@ -21,40 +21,40 @@ For further details about the concepts behind plugins, please read the [Cockpit 
 
 :::warning[Difference between Cockpit and Admin plugins:]
   * To publish the plugin with Admin, its class name must be put into a file called ```org.operaton.bpm.admin.plugin.spi.AdminPlugin``` that resides in the directory ```META-INF/services```.
-  * The plugin mechanism of Admin does not allow to provide additional SQL queries by using [MyBatis](http://www.mybatis.org/) mappings.
+  * The plugin mechanism of Admin does not allow providing additional SQL queries by using [MyBatis](https://mybatis.org/mybatis-3/) mappings.
 :::
 
 
-# Plugin Points
+## Plugin Points
 
 Here you can see the various points at which you are able to add your own plugins.
 
-## Route
+### Route
 **Name:** `admin.route`
 
 This plugin points properties contain the attribute `path`, which stands for the hashRoute for this page. This will be rendered when the user navigates in the browser to the url, e.g. `#/my-path`.
 
-```Javascript
+```javascript
 properties: {
   path: "/my-path"
 }
 ```
 
-## Dashboard
+### Dashboard
 
 **Name:** `admin.dashboard.section`
 
-![Example img](./img/admin-start-page-view.png)Dashboard
+![Example img](/img/documentation/webapps/admin/admin-start-page-view.png)Dashboard
 
 With Operaton.5, the Admin webapp gets a dashboard based on plugins similar to the [Cockpit dashboard ones](../cockpit/extend/plugins.md#dashboard).
 
 This plugin points properties contain the attributes `label` and `pagePath`, which are the heading of the new Section as well as the linked sub-page of the heading. If `pagePath` is `undefined`, the label will not be rendered as a link.
 
-```Javascript
+```javascript
 properties: {
   label: "My Plugin",
   pagePath: '#/myPage'
 }
 ```
 
-You can find examples of [Admin dashboard plugins here](https://github.com/operaton/operaton/tree/master/webapps/frontend/ui/admin/plugins/base/app/views/dashboard).
+You can find examples of [Admin dashboard plugins here](https://github.com/operaton/operaton/tree/main/webapps/frontend/ui/admin/plugins/base/app/views/dashboard).

@@ -19,7 +19,7 @@ Note that only one sequence flow is selected when using the exclusive gateway. I
 If no sequence flow can be selected (no condition evaluates to 'true') this will result in a runtime exception, unless you have a default flow defined. One default flow can be set on the gateway itself in case no other condition matches - like an 'else' in programming languages.
 
 
-<div data-bpmn-diagram="../bpmn/exclusive-gateway"></div>
+<div data-bpmn-diagram="./bpmn/exclusive-gateway"></div>
 
 
 Note that a gateway without an icon inside it defaults to an exclusive gateway, even if we recommend to use the X within the gateway if your BPMN tool gives you that option.
@@ -43,23 +43,23 @@ The XML representation of an exclusive gateway is straightforward: one line defi
 ```
 
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-elements.md#executionlistener">operaton:executionListener</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#failedjobretrytimecycle">operaton:failedJobRetryTimeCycle</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-elements#executionlistener">operaton:executionListener</a>
     </td>
   </tr>
   <tr>
@@ -72,7 +72,7 @@ The XML representation of an exclusive gateway is straightforward: one line defi
 </table>
 
 
-# Additional Resources
+## Additional Resources
 
 *   [Conditional and Default Sequence Flows](../gateways/sequence-flow.md)
-*   [Exclusive Gateways](http://operaton.org/bpmn/reference.html#gateways-data-based-exclusive-gateways) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+*   [Exclusive Gateways](https://camunda.com/bpmn/reference/#gateways-data-based-exclusive-gateways) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)

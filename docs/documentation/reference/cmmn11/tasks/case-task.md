@@ -41,11 +41,11 @@ Note: The default value for the attribute `isBlocking` is `true`. To define a no
 <caseTask id="checkCreditCase" name="Check credit" caseRef="checkCreditCase" isBlocking="false" />
 ```
 
-# Transactional Behavior
+## Transactional Behavior
 
 The activation of the case task as well as the creation and execution of the case instance are performed in the same transaction.
 
-# Case Binding
+## Case Binding
 
 By default, the case task always creates a new case instance of the latest case definition with the specified key. To specify a different version of a case, it is possible to define a binding with the Operaton custom attribute `caseBinding`. The following values are allowed for the attribute `caseBinding`:
 
@@ -65,27 +65,27 @@ The following is an example of a case task that calls the `checkCreditCase` case
 
 Note: It is also possible to use an expression for the attribute `caseVersion` that must resolve to an integer at runtime.
 
-# Case Tenant Id
+## Case Tenant Id
 
 When the case task resolves the case definition to be called it must take into account multi tenancy.
 
-## Default Tenant Resolution
+### Default Tenant Resolution
 By default, the tenant id of the calling case definition is used to resolve the called case definition.
 That is, if the calling case definition has no tenant id, then the case task resolves a case definition using the provided key, binding and without a tenant id (tenant id = null).
 If the calling case definition has a tenant id, a case definition with the provided key and the same tenant id is resolved.
 
 Note that the tenant id of the calling case instance is not taken into account in the default behavior.
 
-## Explicit Tenant Resolution
+### Explicit Tenant Resolution
 
 In some situations it may be useful to override this default behavior and specify the tenant id explicitly.
 
-The `operaton:caseTenantId` attribute allows to explicitly specify a tenant id:
+The `operaton:caseTenantId` attribute lets you explicitly specify a tenant id:
 
 ```xml
 <caseTask id="checkCreditCase" caseRef="checkCreditCase"
   operaton:caseTenantId="TENANT_1">
-</casetask>
+</caseTask>
 ```
 
 If the tenant id is not known at design time, an expression can be used as well:
@@ -104,9 +104,9 @@ An expression also allows using the tenant id of the calling case instance inste
 </caseTask>
 ```
 
-# Exchange Variables
+## Exchange Variables
 
-The Operaton custom extensions elements `in` and `out` allow to exchange variables between the case task (in a case instance) and the case instance that it creates: `in` elements of a case task map variables of the calling case to input variables of the launched case instance and `out` mappings of a case task map output variables of the called case instance to variables of the calling case, e.g.,:
+The Operaton custom extension elements `in` and `out` let you exchange variables between the case task (in a case instance) and the case instance that it creates: `in` elements of a case task map variables of the calling case to input variables of the launched case instance and `out` mappings of a case task map output variables of the called case instance to variables of the calling case, e.g.,:
 
 ```xml
 <caseTask id="checkCreditCase" name="Check credit" caseRef="checkCreditCase">
@@ -145,7 +145,7 @@ Furthermore, the case task can be configured to pass all variables to the called
 </caseTask>
 ```
 
-Note: The variables keeps their names.
+Note: The variables keep their names.
 
 It is possible, at runtime, to decide which variables are mapped into the called case instance. This can be declared with the `local` attribute on the `operaton:in` element as follows:
 
@@ -170,7 +170,7 @@ caseService
 With `local="true"` for the `in` mapping, only `var2` is mapped into the called case instance.
 
 
-# Pass Business Key
+## Pass Business Key
 
 In addition to [exchanging variables](#exchange-variables), it is possible to pass a business key to the called case instance as well. Since a business key is immutable, this is one way mapping. It is not possible to have output mapping for a business key.
 
@@ -194,24 +194,24 @@ If the business key of the called case instance should be different from the bus
 </caseTask>
 ```
 
-# Operaton Extensions
+## Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#casebinding">operaton:caseBinding</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#casetenantid">operaton:caseTenantId</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-attributes.md#caseversion">operaton:caseVersion</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#casebinding">operaton:caseBinding</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#casetenantid">operaton:caseTenantId</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-attributes#caseversion">operaton:caseVersion</a>
     </td>
   </tr>
   <tr>
     <th>Extension Elements</th>
     <td>
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#in">operaton:in</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#out">operaton:out</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#caseexecutionlistener">operaton:caseExecutionListener</a>,
-      <a href="../reference/cmmn11/custom-extensions/operaton-elements.md#variablelistener">operaton:variableListener</a>
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#in">operaton:in</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#out">operaton:out</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#caseexecutionlistener">operaton:caseExecutionListener</a>,
+      <a href="/docs/documentation/reference/cmmn11/custom-extensions/operaton-elements#variablelistener">operaton:variableListener</a>
     </td>
   </tr>
   <tr>

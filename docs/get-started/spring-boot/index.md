@@ -11,6 +11,6 @@ This tutorial guides you through your first steps of using Operaton Platform in 
 
 **Target Audience**:
 In this tutorial we assume that you are familiar with the basics of Java web application development and [Spring Boot](https://spring.io/projects/spring-boot/).
-We also assume that you have installed an Eclipse distribution and the Camunda Modeler.
+We also assume that you have installed an Eclipse distribution and the Operaton Modeler.
 
 You will be guided through the following steps:

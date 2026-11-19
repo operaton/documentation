@@ -14,7 +14,7 @@ menu:
 In addition to the various types of tasks, we can mark tasks as loops, multiple instances or compensations. Markers can be combined with task types.
 
 
-# Multiple Instance
+## Multiple Instance
 
 A multi-instance activity is a way of defining repetition for a certain step in a business process. In programming concepts, a multi-instance matches the `for each` construct: it allows execution of a certain step or even a complete subprocess for each item in a given collection, sequentially or in parallel.
 
@@ -35,7 +35,7 @@ A Gateway or Event can not become multi-instance.
 
 If an activity is multi-instance, this is indicated by three short lines at the bottom of the activity. Three vertical lines indicate that the instances will be executed in <strong>parallel</strong>, while three horizontal lines indicate **sequential** execution.
 
-<div data-bpmn-diagram="../bpmn//multiple-instance"></div>
+<div data-bpmn-diagram="./bpmn//multiple-instance"></div>
 
 As required by the specification, each parent execution of the created executions for each instance will have the following variables:
 
@@ -79,7 +79,7 @@ Expressions that resolve to a positive number are also possible:
 Another way to define the number of instances is to specify the name of a process variable which is a collection using the `loopDataInputRef` child element. For each item in the collection, an instance will be created. Optionally, it is possible to set that specific item of the collection for the instance using the inputDataItem child element. This is shown in the following XML example:
 
 ```xml
-<userTask id="miTasks" name="My Task ```${loopCounter}" operaton:assignee="${assignee}">
+<userTask id="miTasks" name="My Task ${loopCounter}" operaton:assignee="${assignee}">
   <multiInstanceLoopCharacteristics isSequential="false">
     <loopDataInputRef>assigneeList</loopDataInputRef>
     <inputDataItem name="assignee" />
@@ -113,18 +113,18 @@ A multi-instance activity ends when all instances are finished. However, it is p
 In this example, parallel instances will be created for each element of the assigneeList collection. However, when 60% of the tasks are completed, the other tasks are deleted and the process continues.
 
 
-## Operaton Extensions
+### Operaton Extensions
 
 <table class="table table-striped">
   <tr>
     <th>Attributes</th>
     <td>
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#collection">operaton:collection</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#elementvariable">operaton:elementVariable</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncbefore">operaton:asyncBefore</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#asyncafter">operaton:asyncAfter</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#exclusive">operaton:exclusive</a>,
-      <a href="../reference/bpmn20/custom-extensions/extension-attributes.md#jobpriority">operaton:jobPriority</a>
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#collection">operaton:collection</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#elementvariable">operaton:elementVariable</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncbefore">operaton:asyncBefore</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#asyncafter">operaton:asyncAfter</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#exclusive">operaton:exclusive</a>,
+      <a href="/docs/documentation/reference/bpmn20/custom-extensions/extension-attributes#jobpriority">operaton:jobPriority</a>
     </td>
   </tr>
   <tr>
@@ -141,26 +141,26 @@ In this example, parallel instances will be created for each element of the assi
 </table>
 
 
-## Boundary Events and Multi-Instance
+### Boundary Events and Multi-Instance
 
 Since a multi-instance is a regular activity, it is possible to define a boundary event on its boundary. In case of an interrupting boundary event, when the event is caught, all instances that are still active will be destroyed. For example, take the following multi-instance subprocess:
 
-<div data-bpmn-diagram="../bpmn/multiple-instance-boundary"></div>
+<div data-bpmn-diagram="./bpmn/multiple-instance-boundary"></div>
 
 Here all instances of the subprocess will be destroyed when the timer fires, regardless of how many instances there are or which inner activities are currently not completed yet.
 
 
-## Loops
+### Loops
 
 The loop marker is not natively supported yet by the engine. For Multiple Instance, the number of repetitions is known in advance - which makes it a bad candidate for loops anyway, as it defines a completion condition that may already be sufficient in some cases.
 
 To get around this limitation, the solution is to explicitly model the loop in your BPMN process:
 
-<div data-bpmn-diagram="../bpmn/loop-alternative"></div>
+<div data-bpmn-diagram="./bpmn/loop-alternative"></div>
 
 Be assured that we have the loop marker in our backlog to be added to the engine.
 
-## JSON Collections with Multi-Instance Collections
+### JSON Collections with Multi-Instance Collections
 
 JSON Arrays created with [Operaton SPIN](../index.md) can be used as a collection for multi-instance activities.
 Consider the following JavaScript example that initializes execution variable `collection`:
@@ -183,11 +183,11 @@ We can now use `collection` variable in multi-instance activity's `operaton:coll
 This uses the SPIN's JSON `.prop()` and `.elements()` to return the JSON array.  Set the multi-instance activity's `elementVariable` to a variable name that
 will contain the array item. To access the value of the element, you can use `.value()` in your element variable.
 
-# Compensation
+## Compensation
 
 If an activity is used for compensating the effects of another activity, it can be declared to be a compensation handler. Compensation handlers are not contained in the regular flow and are only executed when a compensation event is thrown.
 
-<div data-bpmn-diagram="../bpmn/compensation-marker"></div>
+<div data-bpmn-diagram="./bpmn/compensation-marker"></div>
 
 Notice the compensation handler icon in the bottom center area of the "cancel hotel reservation" service task.
 
@@ -202,7 +202,7 @@ To declare an activity to be a compensation handler, we need to set the attribut
 ```
 
 
-# Additional Resources
+## Additional Resources
 
-* [Tasks](http://operaton.org/bpmn/reference.html#activities-task) in the [BPMN 2.0 Modeling Reference](http://operaton.org/bpmn/reference.html)
+* [Tasks](https://camunda.com/bpmn/reference/#activities-task) in the [BPMN 2.0 Modeling Reference](https://camunda.com/bpmn/reference/)
 * [Transaction Subprocess](../subprocesses/transaction-subprocess.md)

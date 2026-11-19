@@ -7,8 +7,8 @@ sidebar_position: 50
 
 # Extension Reference
 
-Camunda extends BPMN with custom Extension Elements and Attributes.
+Operaton extends BPMN with custom extension elements and attributes.
 
-* [Extension Elements](./extension-elements.md) Reference of Camunda Extension Attributes for BPMN.
+* [Extension Elements](./extension-elements.md) Reference of Operaton extension elements for BPMN.
 
-* [Extension Attributes](./extension-attributes.md) Reference of Camunda Extension Attributes for BPMN.
+* [Extension Attributes](./extension-attributes.md) Reference of Operaton extension attributes for BPMN.

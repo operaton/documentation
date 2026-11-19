@@ -2,26 +2,33 @@ name: Deploy Docusaurus Website
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7.0.1
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Operaton site
+        env:
+          TYPESENSE_API_KEY: ${{ secrets.TYPESENSE_API_KEY }}
         run: |
-          npm run build || echo "Build failed, proceeding anyway if build/ exists"
+          npm run build
+          .github/script/release-assets.sh
 
       - name: Check if build directory exists
         run: |
@@ -42,3 +49,27 @@ jobs:
           rsync -avz --delete ./build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_PATH }}
         env:
           RSYNC_RSH: ssh -p ${{ secrets.SSH_PORT }}
+
+      - name: Create symlink to latest release
+        run: |
+          TAG_NAME=$(gh api repos/operaton/operaton/releases/latest --jq .tag_name)
+          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "ln -sfn ${{ secrets.SSH_PATH }}/reference/${TAG_NAME} ${{ secrets.SSH_PATH }}/reference/latest"
+
+      - name: Run DocSearch Scraper
+        uses: celsiusnarhwal/typesense-scraper@v2
+        with:
+          # The secret containing your Typesense API key. Required.
+          api-key: ${{ secrets.TYPESENSE_API_KEY }}
+
+          # The hostname or IP address of your Typesense server. Required.
+          host: docs.operaton.org
+
+          # The port on which your Typesense server is listening. Optional. Default: 8108.
+          port: 8108
+
+          # The protocol to use when connecting to your Typesense server. Optional. Default: http.
+          protocol: http
+
+          # The path to your DocSearch config file. Optional. Default: docsearch.config.json.
+          config: docsearch.config.json

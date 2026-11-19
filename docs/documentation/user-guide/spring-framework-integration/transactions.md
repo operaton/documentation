@@ -12,9 +12,9 @@ menu:
 
 ---
 
-# Transaction Integration by Example
+## Transaction Integration by Example
 
-The following explains the [SpringTransactionIntegrationTest](https://github.com/operaton/operaton/blob/{{< minor-version >}}.0/engine-spring/core/src/test/java/org/operaton/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest.java) of the core codebase step by step. Below is the Spring configuration file that we use in this example (you can find it in [SpringTransactionIntegrationTest-context.xml](https://github.com/operaton/operaton/blob/{{< minor-version >}}.0/engine-spring/core/src/test/resources/org/operaton/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest-context.xml)). The section shown below contains the `dataSource`, `transactionManager`, `processEngine` and the process engine services.
+The following explains the [SpringTransactionIntegrationTest](https://github.com/operaton/operaton/blob/main/engine-spring/src/test/java/org/operaton/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest.java) of the core codebase step by step. Below is the Spring configuration file that we use in this example (you can find it in [SpringTransactionIntegrationTest-context.xml](https://github.com/operaton/operaton/blob/main/engine-spring/src/test/resources/org/operaton/bpm/engine/spring/test/transaction/SpringTransactionIntegrationTest-context.xml)). The section shown below contains the `dataSource`, `transactionManager`, `processEngine` and the process engine services.
 
 When passing the DataSource to the `SpringProcessEngineConfiguration` (using property "dataSource"), the Operaton engine uses a `org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy` internally, which wraps the passed DataSource. This is done to make sure the SQL connections retrieved from the DataSource and the Spring transactions play well together. This implies that it's no longer needed to proxy the dataSource yourself in Spring configuration, although it's still allowed to pass a `TransactionAwareDataSourceProxy` into the `SpringProcessEngineConfiguration`. In this case no additional wrapping will occur.
 
@@ -134,7 +134,7 @@ public class UserBean {
 }
 ```
 
-# Using Inner Spring Transactions
+## Using Inner Spring Transactions
 
 When engine API calls are executed in the Spring context, Spring doesn't
 make it transparent to the Process Engine when nested API calls need to
@@ -155,7 +155,7 @@ The Process Engine Context must be declared whenever a Spring
 `Propagation.REQUIRES_NEW` inner transaction is defined in an already
 running transaction.
 
-## Example
+### Example
 
 In the following code-snippet, we can see a Spring `Propagation.REQUIRED`
 transaction, defined on the `execute` method, and a Spring `Propagation.REQUIRES_NEW`

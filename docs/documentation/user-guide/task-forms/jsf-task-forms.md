@@ -10,7 +10,7 @@ menu:
 
 ---
 
-# Adding JSF Forms to your Process Application
+## Adding JSF Forms to your Process Application
 
 :::note[Heads-up!]
 The required CDI beans for this functionality are currently not available in [Quarkus applications](../quarkus-integration/cdi-integration.md#task-form-beans) out of the box.
@@ -19,11 +19,9 @@ The required CDI beans for this functionality are currently not available in [Qu
 If you add JSF forms as described below, you can easily use them as <br/>
 [external task forms](../task-forms/index.md#external-task-forms).
 
-A working example can be found in the [examples repository](https://github.com/operaton/operaton-bpm-examples/tree/master/usertask/task-form-external-jsf).
-
 The BPMN process used for this example is shown in the image below:
 
-![Example img](./img/task-form-process.png)Task Form Process
+![Example img](/img/documentation/user-guide/task-forms/task-form-process.png)Task Form Process
 
 In this process model we added so called form keys to
 
@@ -47,7 +45,7 @@ This is how the forms are referenced in the BPMN 2.0 XML with the `operaton:form
 ```
 
 
-# Creating Simple User Task Forms
+## Creating Simple User Task Forms
 
 Create a JSF page in `src/main/webapp/WEB-INF` representing a form used for User Tasks. A very simple task form is shown below:
 
@@ -85,9 +83,9 @@ Create a JSF page in `src/main/webapp/WEB-INF` representing a form used for User
 Note that you need `operaton-engine-cdi` in order to have the `camundaTaskForm` bean available.
 
 
-# How does this work?
+## How does this work?
 
-If the user clicks on "Start to work on task" ![Example img](./img/start-task-button.png)Start Task Button in the tasklist, he will follow a link to this form, including the taskId and the callback URL (the URL to access the central tasklist) as GET-Parameters. Accessing this form will trigger the special CDI bean `camundaTaskForm` which
+If the user clicks on "Start to work on task" ![Example img](/img/documentation/user-guide/task-forms/start-task-button.png)Start Task Button in the tasklist, he will follow a link to this form, including the taskId and the callback URL (the URL to access the central tasklist) as GET-Parameters. Accessing this form will trigger the special CDI bean `camundaTaskForm` which
 
  *   starts a conversation,
  *   remembers the callback URL
@@ -114,7 +112,7 @@ Submit the form by calling the `camundaTaskForm` bean again, which:
 Note that the command button doesn't have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the `completeTask` button. This will work because of the conversation running in the background.
 
 
-# Access Process Variables
+## Access Process Variables
 
 In the forms you can access your own CDI beans as usual and also access the Operaton CDI beans. This makes it easy to access process variables, e.g., via the `processVariables` CDI bean:
 
@@ -124,7 +122,7 @@ In the forms you can access your own CDI beans as usual and also access the Oper
   <table>
     <tr>
       <td>
-        Process variable <strong>x</strong> (given in in the start form):
+        Process variable <strong>x</strong> (given in the start form):
       </td>
       <td>
         <h:outputText value="#{processVariables['x']}" />
@@ -151,7 +149,7 @@ In the forms you can access your own CDI beans as usual and also access the Oper
 
 This is rendered to a simple form:
 
-![Example img](./img/variablesTaskFormExample.png)Varibales Task Form Example
+![Example img](/img/documentation/user-guide/task-forms/variablesTaskFormExample.png)Variables Task Form Example
 
 The same mechanism can be used to start a new process instance:
 
@@ -202,9 +200,9 @@ The same mechanism can be used to start a new process instance:
 </html>
 ```
 
-![Example img](./img/startFormExample.png)Start Form Example
+![Example img](/img/documentation/user-guide/task-forms/startFormExample.png)Start Form Example
 
-If the user clicks on "Start a process instance" ![Example img](./img/start-process-button.png)Start Process Button in the tasklist and chooses the process your start form is assigned to, he will follow a link to this form, including the processDefinitionKey and the callback URL (the URL to access the central tasklist) as GET-Parameters. Accessing this form will trigger the special CDI bean `camundaTaskForm` which:
+If the user clicks on "Start a process instance" ![Example img](/img/documentation/user-guide/task-forms/start-process-button.png)Start Process Button in the tasklist and chooses the process your start form is assigned to, he will follow a link to this form, including the processDefinitionKey and the callback URL (the URL to access the central tasklist) as GET-Parameters. Accessing this form will trigger the special CDI bean `camundaTaskForm` which:
 
 *   Starts a conversation
 *   Remembers the callback URL to the centralized tasklist
@@ -230,13 +228,13 @@ Submitting the start form now:
 Note that the command button doesn't have to be on the same form, you might have a whole wizard containing multiple forms in a row before having the `completeProcessInstanceForm` button. This will work because of the conversation running in the background.
 
 
-# Styling your Task Forms
+## Styling your Task Forms
 
-We use [Twitter Bootstrap](http://getbootstrap.com/) in our tasklist - so best add this to your Process Application as well and you can easily polish your UI:
+We use [Bootstrap](https://getbootstrap.com/) in our tasklist - so best add this to your Process Application as well and you can easily polish your UI:
 
-![Example img](./img/tasklist-forms-layouted-start.png)Tasklist Start Forms layouted
+![Example img](/img/documentation/user-guide/task-forms/tasklist-forms-layouted-start.png)Tasklist Start Forms layouted
 
-To include CSS and Javascript libraries in your project you can add them to your maven project as dependencies.
+To include CSS and JavaScript libraries in your project you can add them to your Maven project as dependencies.
 
 ```xml
 <dependencies>
@@ -246,7 +244,7 @@ To include CSS and Javascript libraries in your project you can add them to your
   <dependency>
     <groupId>org.webjars</groupId>
     <artifactId>bootstrap</artifactId>
-    <version>3.1.1</version>
+    <version>5.3.7</version>
   </dependency>
 
 </dependencies>
@@ -260,10 +258,10 @@ To use them, add tags like the following ones to your JSF page. If you have seve
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
   <!-- CSS Stylesheets -->
-  <h:outputStylesheet library="webjars/bootstrap/3.1.1/css" name="bootstrap.css"/>
+  <h:outputStylesheet library="webjars/bootstrap/5.3.7/css" name="bootstrap.css"/>
   <h:outputStylesheet library="css" name="style.css"/>
 
-  <!-- Javascript Libraries -->
-  <h:outputScript type="text/javascript" library="webjars/bootstrap/3.1.1/js" name="bootstrap.js" />
+  <!-- JavaScript Libraries -->
+  <h:outputScript type="text/javascript" library="webjars/bootstrap/5.3.7/js" name="bootstrap.js" />
 </h:head>
 ```
