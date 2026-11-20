@@ -464,7 +464,8 @@ The following non-test dependencies have been upgraded since Operaton 2.1:
 
 #### Dependency Upgrades
 
-- Routine maintenance updates, among them Apache Tomcat `11.0.27` → `11.0.29` for the Tomcat distribution, Quarkus `3.40.1.1` → `3.40.1.2`, `netty` `4.2.20.Final` → `4.2.21.Final`, `logback` `1.6.6` → `1.6.7` and `resteasy-bom` `7.0.5.Final` → `7.0.6.Final`. (#4086, #4112, #4121)
+- Spring Boot `4.1.2` → `4.1.3` and Spring Framework `7.0.10` → `7.0.11`. (#4153)
+- Routine maintenance updates, among them Apache Tomcat `11.0.27` → `11.0.29` for the Tomcat distribution, Quarkus `3.40.1.1` → `3.40.1.2`, `netty` `4.2.20.Final` → `4.2.21.Final`, `logback` `1.6.6` → `1.6.8` and `resteasy-bom` `7.0.5.Final` → `7.0.6.Final`. (#4086, #4112, #4121, #4153)
 
 #### Bug Fixes
 
