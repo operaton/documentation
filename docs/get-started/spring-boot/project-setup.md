@@ -60,8 +60,8 @@ We also use `spring-boot-maven-plugin`, which packages the Spring Boot applicati
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
     <maven.compiler.release>17</maven.compiler.release>
-    <spring-boot.version>4.1.2</spring-boot.version>
-    <operaton.version>2.2.1</operaton.version>
+    <spring-boot.version>4.1.3</spring-boot.version>
+    <operaton.version>2.2.2</operaton.version>
   </properties>
 
   <dependencyManagement>
