@@ -24,7 +24,7 @@ Browse, inspect, suspend and delete deployed BPMN process definitions.
 
 ## Deployments
 
-Deploy and manage BPMN, DMN, CMMN and form resources.
+Deploy and manage BPMN and DMN resources.
 
 - Create a deployment from uploaded resources.
 - List and count deployments.
@@ -95,8 +95,9 @@ Query the history of process data.
 
 ## Decisions
 
-Inspect and evaluate DMN decisions.
+Deploy, inspect and evaluate DMN decisions.
 
+- Deploy a DMN decision table.
 - List decision definitions and get a decision definition by key.
 - Get the DMN XML of a decision definition.
 - Evaluate a decision with input variables.

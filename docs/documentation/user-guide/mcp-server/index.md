@@ -8,7 +8,7 @@ sidebar_position: 170
 
 The [Operaton MCP server](https://github.com/operaton/operaton-mcp) connects AI assistants to the Operaton process engine. It implements the [Model Context Protocol (MCP)](https://modelcontextprotocol.io), an open protocol through which AI assistants such as Claude call external tools.
 
-The server exposes more than 300 operations of the [Operaton REST API](../../reference/rest/index.md) as MCP tools. An assistant can use them to deploy processes and decisions, start and inspect process instances, work on user tasks, handle failed jobs and incidents, query history and migrate process instances between definition versions.
+The server exposes more than 100 operations of the [Operaton REST API](../../reference/rest/index.md) as MCP tools. An assistant can use them to deploy processes and decisions, start and inspect process instances, work on user tasks, handle failed jobs and incidents, query history and migrate process instances between definition versions.
 
 ## How It Works
 
