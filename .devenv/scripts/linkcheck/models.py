@@ -1,7 +1,7 @@
 """Data types shared by the link checker modules."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 INTERNAL = "internal"
 EXTERNAL = "external"
@@ -17,6 +17,7 @@ class Link:
     raw: str   # destination exactly as written
     html: bool = False  # from a raw HTML/JSX attribute: Docusaurus does not rewrite .md there
     source_url: str = ""  # page the link is on when it is not a repo file (REST API); line is 0 then
+    text: str = field(default="", compare=False)  # link text as shown to readers, "" if unknown
 
 
 @dataclass(frozen=True)

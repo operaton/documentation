@@ -11,8 +11,8 @@ from linkcheck.report import (collect_failures, format_annotations, format_conso
 NOW = datetime(2026, 10, 30, 4, 0, tzinfo=timezone.utc)
 
 
-def rl(kind, file, line, raw, url, reason=""):
-    return ResolvedLink(Link(file, line, raw), kind, url, reason)
+def rl(kind, file, line, raw, url, reason="", text=""):
+    return ResolvedLink(Link(file, line, raw, text=text), kind, url, reason)
 
 
 EXT = rl(EXTERNAL, "docs/b.md", 3, "https://a.org", "https://a.org")
@@ -67,7 +67,7 @@ class TestUnmatchedFormat(unittest.TestCase):
         md = format_markdown([self.failure], checked={"internal": 0, "external": 1}, repo="o/d",
                              sha="s", run_url=None, now=NOW)
         self.assertNotIn("blob/s/", md)
-        self.assertIn("| (source unknown) |  | https://x.org/ | 404 |", md)
+        self.assertIn("| (source unknown) |  |  | https://x.org/ | 404 |", md)
 
 
 class TestFormat(unittest.TestCase):
@@ -91,7 +91,8 @@ class TestFormat(unittest.TestCase):
         self.assertIn("**2 broken links**", md)
         self.assertIn("### Internal", md)
         self.assertIn("### External", md)
-        self.assertIn("| [docs/a.md](https://github.com/operaton/documentation/blob/abc123/docs/a.md#L5) | 5 | gone.md | unresolved-md |", md)
+        self.assertIn("| [docs/a.md](https://github.com/operaton/documentation/blob/abc123/docs/a.md#L5) | 5 |  | gone.md | unresolved-md |", md)
+        self.assertIn("| Page | Line | Text | URL | Status |", md)
         self.assertIn("https://github.com/operaton/documentation/actions/runs/1", md)
         self.assertIn("2026-10-30 04:00 UTC", md)
 
@@ -100,6 +101,18 @@ class TestFormat(unittest.TestCase):
         md = format_markdown([f], checked={"internal": 0, "external": 1}, repo="o/d", sha="s",
                              run_url=None, now=NOW)
         self.assertIn("https://a.org/?x=a\\|b", md)
+
+    def test_markdown_shows_link_text(self):
+        f = Failure(rl(EXTERNAL, "docs/a.md", 1, "https://a.org/", "https://a.org/", text="`npm` *pkg* | x"), "404")
+        md = format_markdown([f], checked={"internal": 0, "external": 1}, repo="o/d", sha="s",
+                             run_url=None, now=NOW)
+        self.assertIn("| 1 | \\`npm\\` \\*pkg\\* \\| x | https://a.org/ | 404 |", md)
+
+    def test_markdown_shortens_long_link_text(self):
+        f = Failure(rl(EXTERNAL, "docs/a.md", 1, "https://a.org/", "https://a.org/", text="w" * 200), "404")
+        md = format_markdown([f], checked={"internal": 0, "external": 1}, repo="o/d", sha="s",
+                             run_url=None, now=NOW)
+        self.assertIn("| " + "w" * 79 + "… | https://a.org/ |", md)
 
     def test_markdown_all_ok(self):
         md = format_markdown([], checked={"internal": 10, "external": 5}, repo="o/d", sha="s",
@@ -141,7 +154,7 @@ class TestRestApiSource(unittest.TestCase):
     def test_markdown_links_to_rest_api_page(self):
         md = format_markdown([self.failure], checked={"internal": 1, "external": 0}, repo="o/d",
                              sha="s", run_url=None, now=NOW)
-        self.assertIn(f"| [REST API GET /task]({REST_PAGE}) |  | https://docs.operaton.org/manual/x/ |", md)
+        self.assertIn(f"| [REST API GET /task]({REST_PAGE}) |  |  | https://docs.operaton.org/manual/x/ |", md)
 
     def test_annotation_without_file(self):
         self.assertEqual(format_annotations([self.failure]),

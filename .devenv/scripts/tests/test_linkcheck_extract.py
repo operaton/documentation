@@ -103,6 +103,36 @@ class TestExtractText(unittest.TestCase):
         self.assertEqual(extract_text("[a](b.md)", "docs/q.md"), [Link("docs/q.md", 1, "b.md")])
 
 
+def texts(text):
+    return [(link.raw, link.text) for link in extract_text(text, "docs/x.md")]
+
+
+class TestLinkText(unittest.TestCase):
+    def test_inline(self):
+        self.assertEqual(texts("See [the npm package](https://npmjs.com/x) here"),
+                         [("https://npmjs.com/x", "the npm package")])
+
+    def test_inline_code_kept(self):
+        self.assertEqual(texts("[`@operaton/mcp`](https://npmjs.com/x)"), [("https://npmjs.com/x", "`@operaton/mcp`")])
+
+    def test_nested_image(self):
+        self.assertEqual(texts("[![Logo](img.png) Home](https://a.org/)"),
+                         [("img.png", "Logo"), ("https://a.org/", "![Logo](img.png) Home")])
+
+    def test_reference_definition(self):
+        self.assertEqual(texts("[docs]: https://a.org/"), [("https://a.org/", "docs")])
+
+    def test_autolink(self):
+        self.assertEqual(texts("<https://a.org/>"), [("https://a.org/", "https://a.org/")])
+
+    def test_html_anchor_and_image(self):
+        self.assertEqual(texts('<a href="https://a.org/"><b>Site</b></a> <img src="i.png" alt="Pic"/>'),
+                         [("https://a.org/", "Site"), ("i.png", "Pic")])
+
+    def test_text_not_part_of_equality(self):
+        self.assertEqual(Link("docs/x.md", 1, "a", text="t"), Link("docs/x.md", 1, "a"))
+
+
 class TestExtractFiles(unittest.TestCase):
     def test_iter_and_extract(self):
         with tempfile.TemporaryDirectory() as tmp:

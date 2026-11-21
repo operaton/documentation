@@ -55,9 +55,9 @@ def extract_spec(spec: dict, page_url: str = DEFAULT_PAGE_URL) -> List[Link]:
     """Links in descriptions and documentation URLs, resolved against the Redoc page URL."""
     links: List[Link] = []
 
-    def add(raw: str, path: List[str]) -> None:
+    def add(raw: str, path: List[str], text: str = "") -> None:
         label, source = _location(path, page_url, spec)
-        links.append(Link(label, 0, urljoin(page_url, raw), source_url=source))
+        links.append(Link(label, 0, urljoin(page_url, raw), source_url=source, text=text))
 
     def walk(node: Any, path: List[str], parent: Optional[str]) -> None:
         if isinstance(node, dict):
@@ -66,7 +66,7 @@ def extract_spec(spec: dict, page_url: str = DEFAULT_PAGE_URL) -> List[Link]:
                     continue
                 if key == "description" and isinstance(value, str):
                     for link in extract_text(value, ""):
-                        add(link.raw, path)
+                        add(link.raw, path, link.text)
                 elif key == "url" and parent in URL_PARENTS and isinstance(value, str):
                     add(value, path)
                 else:

@@ -49,7 +49,9 @@ def parse_report(data: dict) -> Dict[str, str]:
     for key in FAILURE_MAPS:
         for entries in (data.get(key) or {}).values():
             for entry in entries:
-                failures[entry["url"]] = _status_label(entry.get("status") or {})
+                # A remapped URL (lychee.toml `remap`) is reported under the URL written in the docs.
+                url = ((entry.get("remap") or {}).get("original") or {}).get("url") or entry["url"]
+                failures[url] = _status_label(entry.get("status") or {})
     return failures
 
 
