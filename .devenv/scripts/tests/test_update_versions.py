@@ -175,3 +175,60 @@ class TestApplyReplacements(unittest.TestCase):
 
             self.assertEqual(archive_file.read_text(), "<operaton.version>1.0.0</operaton.version>")
             self.assertEqual(active_file.read_text(), "<operaton.version>2.2.0</operaton.version>")
+
+
+CONTAINER_VERSIONS = {"tomcat": "11.0.29", "wildfly": "41.0.1.Final", "spring-boot": "4.1.3", "quarkus": "3.40.1.2"}
+
+
+class TestContainerDocLinks(unittest.TestCase):
+    def test_parse_pom_properties(self):
+        pom = "<properties>\n<version.tomcat>11.0.29</version.tomcat>\n<version.wildfly> 41.0.1.Final </version.wildfly>\n</properties>"
+        self.assertEqual(uv.parse_pom_properties(pom), {"version.tomcat": "11.0.29", "version.wildfly": "41.0.1.Final"})
+
+    @patch("update_versions._github_get")
+    def test_get_container_versions_merges_root_and_parent_pom(self, mock_get):
+        import base64
+        poms = {
+            "pom.xml": "<version.quarkus>3.40.1.2</version.quarkus><version.spring-boot>4.1.3</version.spring-boot>",
+            "parent/pom.xml": "<version.wildfly>41.0.1.Final</version.wildfly><version.tomcat>11.0.29</version.tomcat>",
+        }
+        mock_get.side_effect = lambda path: {"content": base64.b64encode(
+            poms[path.split("/contents/")[1].split("?")[0]].encode()).decode()}
+        self.assertEqual(uv.get_container_versions("v2.2.2"), CONTAINER_VERSIONS)
+
+    @patch("update_versions._github_get")
+    def test_get_container_versions_fails_on_missing_property(self, mock_get):
+        mock_get.return_value = {"content": ""}
+        with self.assertRaises(RuntimeError):
+            uv.get_container_versions("v2.2.2")
+
+    def test_replaces_version_segments(self):
+        text = (
+            "https://tomcat.apache.org/tomcat-9.0-doc/config/valve.html\n"
+            "https://docs.wildfly.org/23/Admin_Guide.html\n"
+            "https://docs.spring.io/spring-boot/3.5/reference/web/servlet.html\n"
+            "https://docs.spring.io/spring-boot/3.5.0/api/java/x.html\n"
+            "https://quarkus.io/version/3.27/guides/rest\n"
+            "https://docs.spring.io/spring-boot/appendix/application-properties/index.html\n"
+        )
+        updated, changes = uv._apply_replacements_to_text(
+            text, uv._build_container_doc_replacements(CONTAINER_VERSIONS))
+        self.assertEqual(updated, (
+            "https://tomcat.apache.org/tomcat-11.0-doc/config/valve.html\n"
+            "https://docs.wildfly.org/41/Admin_Guide.html\n"
+            "https://docs.spring.io/spring-boot/4.1/reference/web/servlet.html\n"
+            "https://docs.spring.io/spring-boot/4.1/api/java/x.html\n"
+            "https://quarkus.io/version/3.40/guides/rest\n"
+            "https://docs.spring.io/spring-boot/appendix/application-properties/index.html\n"
+        ))
+        self.assertEqual(len(changes), 4)
+
+    def test_replaces_supported_container_list_items(self):
+        text = "* Apache Tomcat 10.1\n* WildFly Application Server 33\n* Apache Tomcat\nApache Tomcat 9.0 is old.\n"
+        updated, _ = uv._apply_replacements_to_text(
+            text, uv._build_container_doc_replacements(CONTAINER_VERSIONS))
+        self.assertEqual(updated,
+                         "* Apache Tomcat 11.0\n* WildFly Application Server 41\n* Apache Tomcat\nApache Tomcat 9.0 is old.\n")
+
+    def test_container_doc_files_exist(self):
+        self.assertTrue(all(f.exists() for f in uv.CONTAINER_DOC_FILES))
