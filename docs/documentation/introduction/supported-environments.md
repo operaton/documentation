@@ -43,7 +43,7 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
 
 * MySQL 8.4
 * MariaDB 10.11
-* Oracle 19c / 21c / 23ai
+* Oracle 19c / 21c / 26ai
 * IBM DB2 11.5 / 12.1 (excluding IBM z/OS for all versions)
 * PostgreSQL 14 / 15 / 16
 * Amazon Aurora PostgreSQL compatible with PostgreSQL 14 / 15
@@ -54,6 +54,14 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
   * Azure SQL Managed Instance
   * Azure SQL Database
 * H2 2.5 (not recommended for [Cluster Mode](./architecture.md#clustering-model) - see [Deployment Note](../user-guide/process-engine/deployments.md))
+
+:::note[End of Vendor Support]
+Database versions are removed from this list with the first Operaton minor release after their vendor's end of support:
+
+* IBM DB2 11.5: 30 April 2027
+* Microsoft SQL Server 2017: 12 October 2027
+* Oracle 19c: 31 December 2029 (end of Premier Support)
+:::
 
 ### Database Clustering & Replication
 
