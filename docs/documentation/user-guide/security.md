@@ -360,11 +360,11 @@ Setting up the session timeout is usually done via `web.xml` deployment descript
 
 ### Cookies domain
 
-The session cookies domain is configured in web server specific configuration. If you want to set such kind of cookies please consult the manual of your web server for details, e.g. for Tomcat check this [docs](https://tomcat.apache.org/tomcat-9.0-doc/config/context.html#Common_Attributes).
+The session cookies domain is configured in web server specific configuration. If you want to set such kind of cookies please consult the manual of your web server for details, e.g. for Tomcat check this [docs](https://tomcat.apache.org/tomcat-11.0-doc/config/context.html#Common_Attributes).
 
 ### Maximum POST size in server (REST API)
 
-Restriction of the maximum size in bytes of the POST requests is specific to your web server. Please consult the manual of your web server for details, e.g. for Tomcat server, check this [documentation page](https://tomcat.apache.org/tomcat-9.0-doc/config/http.html#Common_Attributes).
+Restriction of the maximum size in bytes of the POST requests is specific to your web server. Please consult the manual of your web server for details, e.g. for Tomcat server, check this [documentation page](https://tomcat.apache.org/tomcat-11.0-doc/config/http.html#Common_Attributes).
 
 ### Securing Cookies (Web Applications)
 
@@ -402,19 +402,19 @@ The exact configuration and the defaults differ among application servers.
 
 Please find below external documentation on how to configure your application server correctly:
 
-* Tomcat 9.0+
+* Apache Tomcat
     * Official Documentation
-        * [Security Considerations](https://tomcat.apache.org/tomcat-9.0-doc/security-howto.html#Valves)
-        * [Error Reporter Valve](https://tomcat.apache.org/tomcat-9.0-doc/config/valve.html#Error_Report_Valve)
+        * [Security Considerations](https://tomcat.apache.org/tomcat-11.0-doc/security-howto.html#Valves)
+        * [Error Report Valve](https://tomcat.apache.org/tomcat-11.0-doc/config/valve.html#Error_Report_Valve)
     * Alternative Resources
         * [Securing Tomcat](https://wiki.owasp.org/index.php/Securing_tomcat)
-* Wildfly 12.0+: Official Documentation
-    * [Servlet Container Configuration](https://docs.jboss.org/author/display/WFLY/Undertow%20subsystem%20configuration.html#108626010_Undertowsubsystemconfiguration-Servletcontainerconfiguration)
-    * [Model Reference](https://wildscribe.github.io/WildFly/12.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
-* JBoss EAP 7.0+: Official Documentation
-    * [Servlet Container Configuration](https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/7.0/html/configuration_guide/reference_material)
-    * [Model Reference](https://wildscribe.github.io/JBoss%20EAP/7.0/subsystem/undertow/servlet-container/index.html#attr-stack-trace-on-error)
-* Operaton Run/Spring Boot 2.3+
-    * Official Documentation
-        * [Javadocs about ErrorProperties.IncludeStacktrace](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/api/org/springframework/boot/autoconfigure/web/ErrorProperties.IncludeStacktrace.html)
-        * [Common application properties](https://docs.spring.io/spring-boot/appendix/application-properties/index.html)
+* WildFly: Official Documentation
+    * [Servlet Container Configuration](https://docs.wildfly.org/41/Admin_Guide.html#servlet-container-configuration) (attribute `stack-trace-on-error`)
+* Operaton Run/Spring Boot: Official Documentation
+    * [Error Handling](https://docs.spring.io/spring-boot/4.1/reference/web/servlet.html#web.servlet.spring-mvc.error-handling)
+    * [Javadocs about ErrorProperties.IncludeAttribute](https://docs.spring.io/spring-boot/4.1/api/java/org/springframework/boot/autoconfigure/web/ErrorProperties.IncludeAttribute.html)
+    * [Common application properties](https://docs.spring.io/spring-boot/4.1/appendix/application-properties/index.html#application-properties.web.spring.web.error.include-stacktrace) (`spring.web.error.include-stacktrace`)
+* Quarkus: Official Documentation
+    * [HTTP Reference](https://quarkus.io/version/3.40/guides/http-reference)
+    * [Exception Mapping in Quarkus REST](https://quarkus.io/version/3.40/guides/rest#exception-mapping)
+    * [Configuration property `quarkus.http.unhandled-error-content-type-default`](https://quarkus.io/version/3.40/guides/all-config#quarkus-vertx-http_quarkus-http-unhandled-error-content-type-default)

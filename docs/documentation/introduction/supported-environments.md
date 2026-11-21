@@ -32,10 +32,10 @@ Run Operaton in every Java-runnable environment. Operaton is supported with our 
 
 ### Container-Managed Process Engine and Operaton Cockpit, Tasklist, Admin
 
-* Apache Tomcat 9.0 / 10.1
-* JBoss EAP 7.4 / 8.0
-* WildFly Application Server 23.0 / 26.0 / 33.0
-  see [Installation guide](../installation/full/wildfly/index.md))
+* Apache Tomcat 11.0
+  (see [Installation guide](../installation/full/tomcat/index.md))
+* WildFly Application Server 41
+  (see [Installation guide](../installation/full/wildfly/index.md))
 
 ## Databases
 

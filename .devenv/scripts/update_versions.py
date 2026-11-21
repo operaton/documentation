@@ -5,6 +5,11 @@ Fetches the latest Operaton release from GitHub, resolves third-party
 dependency versions via the release SBOM (CycloneDX JSON) or Maven Central,
 then performs regex-based replacements across all active docs.
 
+Supported Tomcat/WildFly versions and links to the Tomcat, WildFly, Spring Boot
+and Quarkus documentation on the pages in CONTAINER_DOC_FILES follow the
+container versions of the release,
+read from the version.* properties of its pom.xml and parent/pom.xml.
+
 SBOM: The distribution zip (operaton-bpm-X.Y.Z.zip) contains sbom.cdx.json
 at its root. This file is extracted and parsed. Falls back to Maven Central
 only if the zip or sbom.cdx.json cannot be found.
@@ -19,6 +24,7 @@ Environment variables:
     GITHUB_TOKEN   Optional GitHub personal-access token.
 """
 
+import base64
 import importlib.util
 import json
 import os
@@ -258,12 +264,15 @@ def _apply_replacements_to_text(text: str, replacements: list["Replacement"]) ->
 
 def update_docs(replacements: list["Replacement"], dry_run: bool = False) -> int:
     """Walk active docs, apply replacements. Returns count of changed files."""
+    files = [f for f in sorted(DOCS_DIR.rglob("*.md"))
+             if not f.is_relative_to(ARCHIVE_DIR) and not f.is_relative_to(SUPERPOWERS_DIR)]
+    return update_files(files, replacements, dry_run=dry_run)
+
+
+def update_files(files: list[Path], replacements: list["Replacement"], dry_run: bool = False) -> int:
+    """Apply replacements to the given files. Returns count of changed files."""
     changed = 0
-    for md_file in sorted(DOCS_DIR.rglob("*.md")):
-        if md_file.is_relative_to(ARCHIVE_DIR):
-            continue
-        if md_file.is_relative_to(SUPERPOWERS_DIR):
-            continue
+    for md_file in files:
         original = md_file.read_text(encoding="utf-8")
         updated, changes = _apply_replacements_to_text(original, replacements)
         if updated != original:
@@ -278,6 +287,72 @@ def update_docs(replacements: list["Replacement"], dry_run: bool = False) -> int
                 md_file.write_text(updated, encoding="utf-8")
                 print(f"  Updated {rel}: {', '.join(changes)}")
     return changed
+
+
+# ── Container documentation links ─────────────────────────────────────────────
+
+# Pages whose container versions and links to the Tomcat, WildFly, Spring Boot and Quarkus
+# documentation follow the latest Operaton release. Other pages may name a version on purpose.
+CONTAINER_DOC_FILES = [
+    DOCS_DIR / "documentation" / "introduction" / "supported-environments.md",
+    DOCS_DIR / "documentation" / "user-guide" / "security.md",
+]
+
+# (key, property in the Operaton root or parent pom.xml)
+CONTAINER_POM_PROPERTIES = [
+    ("tomcat",      "version.tomcat"),
+    ("wildfly",     "version.wildfly"),
+    ("spring-boot", "version.spring-boot"),
+    ("quarkus",     "version.quarkus"),
+]
+OPERATON_POM_FILES = ("pom.xml", "parent/pom.xml")
+_POM_PROPERTY_RE = re.compile(r"<(version\.[\w.-]+)>\s*([^<\s]+)\s*</\1>")
+
+
+def parse_pom_properties(content: str) -> dict[str, str]:
+    """Return the <version.*> properties of a pom.xml."""
+    return {m.group(1): m.group(2) for m in _POM_PROPERTY_RE.finditer(content)}
+
+
+def get_container_versions(tag: str) -> dict[str, str]:
+    """Return the container versions of an Operaton release, read from its pom.xml files."""
+    properties: dict[str, str] = {}
+    for path in OPERATON_POM_FILES:
+        data = _github_get(f"/repos/{REPO}/contents/{path}?ref={tag}")
+        properties.update(parse_pom_properties(base64.b64decode(data["content"]).decode()))
+    versions = {}
+    for key, prop in CONTAINER_POM_PROPERTIES:
+        if prop not in properties:
+            raise RuntimeError(f"<{prop}> not found in {', '.join(OPERATON_POM_FILES)} at {tag}")
+        versions[key] = properties[prop]
+    return versions
+
+
+def _major(version: str) -> str:
+    return version.split(".")[0]
+
+
+def _major_minor(version: str) -> str:
+    return ".".join(version.split(".")[:2])
+
+
+def _build_container_doc_replacements(versions: dict[str, str]) -> list["Replacement"]:
+    """Supported container list items and version segments in documentation URLs."""
+    return [
+        Replacement("supported Tomcat version",
+            re.compile(r"^(\* Apache Tomcat )\d+\.\d+([ \t]*)$", re.MULTILINE), _major_minor(versions["tomcat"])),
+        Replacement("supported WildFly version",
+            re.compile(r"^(\* WildFly Application Server )\d+([ \t]*)$", re.MULTILINE), _major(versions["wildfly"])),
+        Replacement("Tomcat documentation link",
+            re.compile(r"(tomcat\.apache\.org/tomcat-)\d+\.\d+(-doc/)"), _major_minor(versions["tomcat"])),
+        Replacement("WildFly documentation link",
+            re.compile(r"(docs\.wildfly\.org/)\d+(/)"), _major(versions["wildfly"])),
+        Replacement("Spring Boot documentation link",
+            re.compile(r"(docs\.spring\.io/spring-boot/)\d+\.\d+(?:\.\d+)?(/)"),
+            _major_minor(versions["spring-boot"])),
+        Replacement("Quarkus documentation link",
+            re.compile(r"(quarkus\.io/version/)\d+\.\d+(/)"), _major_minor(versions["quarkus"])),
+    ]
 
 
 # ── Script Loading ────────────────────────────────────────────────────────────
@@ -335,6 +410,14 @@ def main(dry_run: bool = False) -> None:
     print(f"\nUpdating docs (dry_run={dry_run})…")
     changed = update_docs(replacements, dry_run=dry_run)
     print(f"\n{changed} file(s) {'would be ' if dry_run else ''}updated.")
+
+    print("\nResolving container versions…")
+    container_versions = get_container_versions(release_data["tag_name"])
+    for key, v in container_versions.items():
+        print(f"  {key} → {v}")
+    changed = update_files(CONTAINER_DOC_FILES, _build_container_doc_replacements(container_versions),
+                           dry_run=dry_run)
+    print(f"{changed} file(s) with container documentation links {'would be ' if dry_run else ''}updated.")
 
     print("\nUpdating Spring Boot compatibility table…")
     sb = _load_script("update_spring_boot_version_table",
