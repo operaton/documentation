@@ -172,7 +172,7 @@ The elements marked in <span class="label label-warning">orange</span> are suppo
       <td></td>
       <td></td>
       <td></td>
-    </tr>  
+    </tr>
     <tr>
       <td><a href="/docs/documentation/reference/cmmn11/grouping-tasks/stage">Stage</a></td>
       <td>
