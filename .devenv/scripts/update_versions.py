@@ -372,16 +372,20 @@ DATABASE_PROFILES = [
     ("postgresql", "postgresql", r"PostgreSQL"),
     ("sqlserver",  "sqlserver",  r"Microsoft SQL Server"),
 ]
+# Oracle images are tagged with the internal major version; 23 is marketed as 26ai since 23.26.
+ORACLE_RELEASE_NAMES = {23: "26ai"}
 _PROFILE_RE = re.compile(r"<profile>\s*<id>([^<]+)</id>(.*?)</profile>", re.DOTALL)
 _TC_URL_RE = re.compile(r"<database\.tc\.url>\s*operaton\w+:([^<\s]+)\s*</database\.tc\.url>")
 _VERSION_LIST = r"\d[\w.]*(?: / \d[\w.]*)*"
 
 
 def _database_version_label(key: str, tag: str) -> str:
-    """Docs label of a testcontainers image tag, e.g. oracle 21-faststart → 21c, db2 12.1.2.0 → 12.1."""
+    """Docs label of a testcontainers image tag, e.g. oracle 21-faststart → 21c, 23-faststart → 26ai."""
     version = re.match(r"[\d.]+", tag).group(0)
     if key == "oracle":
         major = int(_major(version))
+        if major in ORACLE_RELEASE_NAMES:
+            return ORACLE_RELEASE_NAMES[major]
         return f"{major}ai" if major >= 23 else f"{major}c"
     if key == "db2":
         return _major_minor(version)
@@ -428,7 +432,8 @@ def update_database_versions_text(text: str, versions: dict[str, str]) -> tuple[
         return match.group(1) + " / ".join(sorted(listed + [versions[key]], key=_version_key))
 
     for key, _, prefix in DATABASE_PROFILES:
-        pattern = re.compile(rf"^(\* {prefix} +)({_VERSION_LIST})", re.MULTILINE)
+        # Only list items whose versions end the line or precede a remark in parentheses.
+        pattern = re.compile(rf"^(\* {prefix} +)({_VERSION_LIST})(?=[ \t]*(?:\(|$))", re.MULTILINE)
         text = pattern.sub(lambda m, k=key: ensure(m, k), text)
 
     def replace_h2(match: re.Match) -> str:

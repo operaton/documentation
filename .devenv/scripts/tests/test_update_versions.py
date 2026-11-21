@@ -255,23 +255,27 @@ class TestSupportedDatabases(unittest.TestCase):
     def test_parse_database_versions(self):
         self.assertEqual(uv.parse_database_versions(DATABASE_POM), DATABASE_VERSIONS)
 
-    def test_oracle_23_is_ai(self):
+    def test_oracle_23_is_26ai(self):
         pom = DATABASE_POM.replace("operatonoracle:21-faststart", "operatonoracle:23-faststart")
-        self.assertEqual(uv.parse_database_versions(pom)["oracle"], "23ai")
+        self.assertEqual(uv.parse_database_versions(pom)["oracle"], "26ai")
 
     def test_parse_fails_on_missing_profile(self):
         with self.assertRaises(RuntimeError):
             uv.parse_database_versions(DATABASE_POM.replace("<id>mariadb</id>", "<id>maria</id>"))
 
     def test_adds_missing_versions_and_keeps_others(self):
-        text = ("* MySQL 8.0\n* MariaDB 10.11\n* Oracle 19c / 23ai\n"
+        text = ("* MySQL 8.0\n* MariaDB 10.11\n* Oracle 19c / 26ai\n"
                 "* IBM DB2 11.5 (excluding IBM z/OS)\n* PostgreSQL 14 / 15 / 16\n"
                 "* Amazon Aurora PostgreSQL compatible with PostgreSQL 14 / 15\n"
                 "* Microsoft SQL Server 2017 / 2019 / 2022 (see note)\n* H2 2.3 (not recommended)\n")
         updated, changes = uv.update_database_versions_text(text, DATABASE_VERSIONS)
         self.assertEqual(updated, (
-            "* MySQL 8.0 / 8.4\n* MariaDB 10.11\n* Oracle 19c / 21c / 23ai\n"
+            "* MySQL 8.0 / 8.4\n* MariaDB 10.11\n* Oracle 19c / 21c / 26ai\n"
             "* IBM DB2 11.5 / 12.1 (excluding IBM z/OS)\n* PostgreSQL 14 / 15 / 16\n"
             "* Amazon Aurora PostgreSQL compatible with PostgreSQL 14 / 15\n"
             "* Microsoft SQL Server 2017 / 2019 / 2022 (see note)\n* H2 2.5 (not recommended)\n"))
         self.assertEqual(changes, ["mysql 8.4", "oracle 21c", "db2 12.1", "h2 2.5"])
+
+    def test_ignores_end_of_support_notes(self):
+        text = "* IBM DB2 11.5: 30 April 2027\n* Microsoft SQL Server 2017: 12 October 2027\n* Oracle 19c: 31 December 2029\n"
+        self.assertEqual(uv.update_database_versions_text(text, DATABASE_VERSIONS), (text, []))
