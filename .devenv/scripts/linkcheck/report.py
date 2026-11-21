@@ -12,6 +12,7 @@ SECTIONS = (("Internal", (INTERNAL, UNRESOLVED)), ("External", (EXTERNAL,)))
 SECTION_ORDER = {INTERNAL: 0, UNRESOLVED: 0, EXTERNAL: 1}
 UNKNOWN_SOURCE = "(source unknown)"
 NOTE_RESERVE = 200  # room for the "+N more" note
+TEXT_LIMIT = 80  # longer link texts are shortened in the markdown table
 
 
 def collect_failures(resolved: Iterable[ResolvedLink], statuses: Dict[str, str]) -> List[Failure]:
@@ -73,6 +74,13 @@ def _cell(text: str) -> str:
     return text.replace("|", "\\|").replace("\n", " ")
 
 
+def _text_cell(text: str) -> str:
+    if len(text) > TEXT_LIMIT:
+        text = text[:TEXT_LIMIT - 1].rstrip() + "…"
+    # Keep markdown in link texts (e.g. `code`, **bold**, ![img]) from rendering in the table.
+    return _cell(re.sub(r"([\\`*_\[\]<>])", r"\\\1", text))
+
+
 def _row(f: Failure, repo: str, sha: str) -> str:
     link = f.resolved.link
     if link.source_url:
@@ -82,7 +90,7 @@ def _row(f: Failure, repo: str, sha: str) -> str:
     else:
         page = f"[{link.file}](https://github.com/{repo}/blob/{sha}/{link.file}#L{link.line})"
         line = str(link.line)
-    return f"| {page} | {line} | {_cell(link.raw)} | {_cell(f.status)} |\n"
+    return f"| {page} | {line} | {_text_cell(link.text)} | {_cell(link.raw)} | {_cell(f.status)} |\n"
 
 
 def _budgets(needs: List[int], available: int) -> List[int]:
@@ -116,7 +124,7 @@ def format_markdown(failures: List[Failure], *, checked: Dict[str, int], repo: s
     for title, kinds in SECTIONS:
         rows = [_row(f, repo, sha) for f in failures if f.resolved.kind in kinds]
         if rows:
-            block = f"\n### {title}\n\n| Page | Line | URL | Status |\n|---|---|---|---|\n"
+            block = f"\n### {title}\n\n| Page | Line | Text | URL | Status |\n|---|---|---|---|---|\n"
             sections.append((block, rows))
     needs = [len(block) + sum(len(r) for r in rows) for block, rows in sections]
     budgets = _budgets(needs, limit - len(out) - NOTE_RESERVE)

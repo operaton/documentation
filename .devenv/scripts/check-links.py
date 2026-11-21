@@ -76,7 +76,7 @@ def _rel_files(repo_root: Path, paths: Optional[List[str]]) -> Optional[Set[str]
 
 
 def _entry(r: ResolvedLink) -> dict:
-    entry = {"file": r.link.file, "line": r.link.line, "raw": r.link.raw, "url": r.url}
+    entry = {"file": r.link.file, "line": r.link.line, "text": r.link.text, "raw": r.link.raw, "url": r.url}
     if r.reason:
         entry["reason"] = r.reason
     return entry

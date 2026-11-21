@@ -12,7 +12,9 @@ FENCE_RE = re.compile(r"^\s*(`{3,}(?=[^`]*$)|~{3,})")
 # A definition is the destination plus an optional title, nothing else on the line.
 REF_DEF_RE = re.compile(
     r"""^\s{0,3}\[([^\]]+)\]:\s*(<[^<>]*>|[^<\s]\S*)\s*("[^"]*"|'[^']*'|\([^)]*\))?\s*$""")
-ATTR_RE = re.compile(r"""\b(?:href|src)\s*=\s*(["'])(.*?)\1""")
+ATTR_RE = re.compile(r"""\b(href|src)\s*=\s*(["'])(.*?)\2""")
+ALT_RE = re.compile(r"""\balt\s*=\s*(["'])(.*?)\1""")
+TAG_RE = re.compile(r"<[^>]*>")
 AUTOLINK_RE = re.compile(r"(?<!\]\()<(https?://[^>\s]+)>")
 INLINE_CODE_RE = re.compile(r"(`+)(.+?)\1")
 COMMENT_RE = re.compile(r"<!--.*?-->")
@@ -51,23 +53,58 @@ def parse_destination(text: str, start: int) -> str:
     return text[i:j]
 
 
-def _links_in_line(line: str) -> List[Tuple[str, bool]]:
-    """(destination, is_html_attribute) pairs in order of appearance."""
+def _clean_text(text: str) -> str:
+    return " ".join(TAG_RE.sub(" ", text).split())
+
+
+def bracket_text(line: str, close: int, original: str) -> str:
+    """Text of the [...] that ends at line[close] (the ']'), taken from the original line.
+
+    `line` is the scanned line (inline code blanked), `original` the line as written, same length.
+    """
+    depth = 0
+    for i in range(close - 1, -1, -1):
+        c = line[i]
+        if c == "]":
+            depth += 1
+        elif c == "[":
+            if depth == 0:
+                return _clean_text(original[i + 1:close])
+            depth -= 1
+    return ""
+
+
+def _html_text(line: str, match: re.Match, original: str) -> str:
+    """Text of an <a href> (up to </a> on the same line) or the alt text of an <img src>."""
+    tag_start = line.rfind("<", 0, match.start())
+    tag_end = line.find(">", match.end())
+    if tag_start == -1 or tag_end == -1:
+        return ""
+    if match.group(1) == "src":
+        alt = ALT_RE.search(original, tag_start, tag_end)
+        return _clean_text(alt.group(2)) if alt else ""
+    close = line.lower().find("</a", tag_end)
+    return _clean_text(original[tag_end + 1:close if close != -1 else len(original)])
+
+
+def _links_in_line(line: str, original: Optional[str] = None) -> List[Tuple[str, bool, str]]:
+    """(destination, is_html_attribute, link text) in order of appearance."""
+    original = line if original is None else original
     ref = REF_DEF_RE.match(line)
     if ref and not ref.group(1).startswith("^"):
         dest = ref.group(2)
-        return [(dest[1:-1] if dest.startswith("<") else dest, False)]
-    found: List[Tuple[int, str, bool]] = []
+        return [(dest[1:-1] if dest.startswith("<") else dest, False, _clean_text(ref.group(1)))]
+    found: List[Tuple[int, str, bool, str]] = []
     for m in re.finditer(r"\]\(", line):
         raw = parse_destination(line, m.end())
         if raw:
-            found.append((m.start(), raw, False))
+            found.append((m.start(), raw, False, bracket_text(line, m.start(), original)))
     for m in ATTR_RE.finditer(line):
-        if m.group(2):
-            found.append((m.start(), m.group(2), True))
+        if m.group(3):
+            found.append((m.start(), m.group(3), True, _html_text(line, m, original)))
     for m in AUTOLINK_RE.finditer(line):
-        found.append((m.start(), m.group(1), False))
-    return [(raw, html) for _, raw, html in sorted(found, key=lambda item: item[0])]
+        found.append((m.start(), m.group(1), False, m.group(1)))
+    return [(raw, html, text) for _, raw, html, text in sorted(found, key=lambda item: item[0])]
 
 
 def extract_text(text: str, rel_path: str) -> List[Link]:
@@ -103,8 +140,10 @@ def extract_text(text: str, rel_path: str) -> List[Link]:
         if start != -1:
             line = line[:start]
             in_comment = True
+        original = line
         line = INLINE_CODE_RE.sub(_blank, line)
-        links.extend(Link(rel_path, lineno, raw, html) for raw, html in _links_in_line(line))
+        links.extend(Link(rel_path, lineno, raw, html, text=text)
+                     for raw, html, text in _links_in_line(line, original))
     return links
 
 

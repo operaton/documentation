@@ -9,6 +9,12 @@ user_agent = "Mozilla/5.0 (compatible; operaton-docs-linkcheck; +https://github.
 # 429 = rate limited, not broken.
 accept = ["100..=103", "200..=299", "429"]
 
+# npmjs.com answers 403 to automated requests; check package pages via the registry API instead.
+# Failures are reported under the original URL.
+remap = [
+  '^https://(www\.)?npmjs\.com/package/(@[^/?#]+/[^/?#]+|[^@/?#][^/?#]*).*$ https://registry.npmjs.org/$2',
+]
+
 # Regular expressions. Sample URLs in the docs and hosts that block automated checks.
 exclude = [
   '^https?://localhost:8080',

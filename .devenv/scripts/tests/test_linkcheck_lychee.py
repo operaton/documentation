@@ -38,6 +38,13 @@ class TestHelpers(unittest.TestCase):
         data = {"error_map": {"f": [{"url": "https://a.org/", "status": {"text": "Rejected", "code": 403}}]}}
         self.assertEqual(parse_report(data), {"https://a.org/": "403 Rejected"})
 
+    def test_parse_report_uses_original_url_of_remap(self):
+        entry = {"url": "https://registry.npmjs.org/@o/x", "status": {"text": "404 Not Found", "code": 404},
+                 "remap": {"original": {"url": "https://www.npmjs.com/package/@o/x"},
+                           "new": {"url": "https://registry.npmjs.org/@o/x"}}}
+        data = {"error_map": {"/tmp/links.html": [entry]}}
+        self.assertEqual(parse_report(data), {"https://www.npmjs.com/package/@o/x": "404 Not Found"})
+
     def test_parse_report_accepts_legacy_fail_map(self):
         data = {"fail_map": {"f": [{"url": "https://a.org/", "status": {"text": "404 Not Found", "code": 404}}]}}
         self.assertEqual(parse_report(data), {"https://a.org/": "404 Not Found"})
