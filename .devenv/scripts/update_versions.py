@@ -9,6 +9,8 @@ Supported Tomcat/WildFly versions and links to the Tomcat, WildFly, Spring Boot
 and Quarkus documentation on the pages in CONTAINER_DOC_FILES follow the
 container versions of the release,
 read from the version.* properties of its pom.xml and parent/pom.xml.
+The supported databases list names at least the database versions the
+release's CI tests with (database/pom.xml profiles).
 
 SBOM: The distribution zip (operaton-bpm-X.Y.Z.zip) contains sbom.cdx.json
 at its root. This file is extracted and parsed. Falls back to Maven Central
@@ -355,6 +357,103 @@ def _build_container_doc_replacements(versions: dict[str, str]) -> list["Replace
     ]
 
 
+# ── Supported databases ───────────────────────────────────────────────────────
+
+SUPPORTED_ENVIRONMENTS_FILE = DOCS_DIR / "documentation" / "introduction" / "supported-environments.md"
+OPERATON_DATABASE_POM = "database/pom.xml"
+
+# (key, database/pom.xml profile, list item prefix in the supported environments page).
+# The list item must name the version the CI tests with; other versions listed stay.
+DATABASE_PROFILES = [
+    ("mysql",      "mysql",      r"MySQL"),
+    ("mariadb",    "mariadb",    r"MariaDB"),
+    ("oracle",     "oracle",     r"Oracle"),
+    ("db2",        "db2",        r"IBM DB2"),
+    ("postgresql", "postgresql", r"PostgreSQL"),
+    ("sqlserver",  "sqlserver",  r"Microsoft SQL Server"),
+]
+_PROFILE_RE = re.compile(r"<profile>\s*<id>([^<]+)</id>(.*?)</profile>", re.DOTALL)
+_TC_URL_RE = re.compile(r"<database\.tc\.url>\s*operaton\w+:([^<\s]+)\s*</database\.tc\.url>")
+_VERSION_LIST = r"\d[\w.]*(?: / \d[\w.]*)*"
+
+
+def _database_version_label(key: str, tag: str) -> str:
+    """Docs label of a testcontainers image tag, e.g. oracle 21-faststart → 21c, db2 12.1.2.0 → 12.1."""
+    version = re.match(r"[\d.]+", tag).group(0)
+    if key == "oracle":
+        major = int(_major(version))
+        return f"{major}ai" if major >= 23 else f"{major}c"
+    if key == "db2":
+        return _major_minor(version)
+    return version
+
+
+def parse_database_versions(pom: str) -> dict[str, str]:
+    """Database versions the CI tests with: testcontainers image tags of the profiles, and H2."""
+    tags = {}
+    for profile_id, body in _PROFILE_RE.findall(pom):
+        m = _TC_URL_RE.search(body)
+        if m:
+            tags[profile_id.strip()] = m.group(1)
+    versions = {}
+    for key, profile, _ in DATABASE_PROFILES:
+        if profile not in tags:
+            raise RuntimeError(f"No <database.tc.url> in profile '{profile}' of {OPERATON_DATABASE_POM}")
+        versions[key] = _database_version_label(key, tags[profile])
+    h2 = parse_pom_properties(pom).get("version.h2")
+    if not h2:
+        raise RuntimeError(f"<version.h2> not found in {OPERATON_DATABASE_POM}")
+    versions["h2"] = _major_minor(h2)
+    return versions
+
+
+def get_database_versions(tag: str) -> dict[str, str]:
+    data = _github_get(f"/repos/{REPO}/contents/{OPERATON_DATABASE_POM}?ref={tag}")
+    return parse_database_versions(base64.b64decode(data["content"]).decode())
+
+
+def _version_key(label: str) -> tuple:
+    return tuple(int(n) for n in re.findall(r"\d+", label))
+
+
+def update_database_versions_text(text: str, versions: dict[str, str]) -> tuple[str, list[str]]:
+    """Add the CI-tested version to each database list item; H2 (bundled driver) is replaced."""
+    changes = []
+
+    def ensure(match: re.Match, key: str) -> str:
+        listed = match.group(2).split(" / ")
+        if versions[key] in listed:
+            return match.group(0)
+        changes.append(f"{key} {versions[key]}")
+        return match.group(1) + " / ".join(sorted(listed + [versions[key]], key=_version_key))
+
+    for key, _, prefix in DATABASE_PROFILES:
+        pattern = re.compile(rf"^(\* {prefix} +)({_VERSION_LIST})", re.MULTILINE)
+        text = pattern.sub(lambda m, k=key: ensure(m, k), text)
+
+    def replace_h2(match: re.Match) -> str:
+        if match.group(2) != versions["h2"]:
+            changes.append(f"h2 {versions['h2']}")
+        return match.group(1) + versions["h2"]
+
+    text = re.sub(r"^(\* H2 +)(\d+\.\d+)", replace_h2, text, flags=re.MULTILINE)
+    return text, changes
+
+
+def update_supported_databases(versions: dict[str, str], dry_run: bool = False) -> bool:
+    original = SUPPORTED_ENVIRONMENTS_FILE.read_text(encoding="utf-8")
+    updated, changes = update_database_versions_text(original, versions)
+    if updated == original:
+        return False
+    rel = SUPPORTED_ENVIRONMENTS_FILE.relative_to(REPO_ROOT)
+    if dry_run:
+        print(f"  [dry-run] Would update {rel}: {', '.join(changes)}")
+    else:
+        SUPPORTED_ENVIRONMENTS_FILE.write_text(updated, encoding="utf-8")
+        print(f"  Updated {rel}: {', '.join(changes)}")
+    return True
+
+
 # ── Script Loading ────────────────────────────────────────────────────────────
 
 def _load_script(name: str, path: Path) -> object:
@@ -418,6 +517,13 @@ def main(dry_run: bool = False) -> None:
     changed = update_files(CONTAINER_DOC_FILES, _build_container_doc_replacements(container_versions),
                            dry_run=dry_run)
     print(f"{changed} file(s) with container documentation links {'would be ' if dry_run else ''}updated.")
+
+    print("\nResolving tested database versions…")
+    database_versions = get_database_versions(release_data["tag_name"])
+    for key, v in database_versions.items():
+        print(f"  {key} → {v}")
+    if not update_supported_databases(database_versions, dry_run=dry_run):
+        print("Supported databases are up to date.")
 
     print("\nUpdating Spring Boot compatibility table…")
     sb = _load_script("update_spring_boot_version_table",

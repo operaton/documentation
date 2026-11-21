@@ -232,3 +232,46 @@ class TestContainerDocLinks(unittest.TestCase):
 
     def test_container_doc_files_exist(self):
         self.assertTrue(all(f.exists() for f in uv.CONTAINER_DOC_FILES))
+
+
+DATABASE_POM = """
+<properties><version.h2>2.5.252</version.h2></properties>
+<profiles>
+  <profile><id>db2</id><properties><database.tc.url>operatondb2:12.1.2.0</database.tc.url></properties></profile>
+  <profile><id>db2-115</id><properties><version.db2>11.5</version.db2></properties></profile>
+  <profile><id>mariadb</id><properties><database.tc.url>operatonmariadb:10.11</database.tc.url></properties></profile>
+  <profile><id>mysql</id><properties><database.tc.url>operatonmysql:8.4</database.tc.url></properties></profile>
+  <profile><id>oracle</id><properties><database.tc.url>operatonoracle:21-faststart</database.tc.url></properties></profile>
+  <profile><id>postgresql</id><properties><database.tc.url>operatonpostgresql:14</database.tc.url></properties></profile>
+  <profile><id>sqlserver</id><properties><database.tc.url>operatonsqlserver:2022-latest</database.tc.url></properties></profile>
+  <profile><id>sqlserver-2017</id><properties><database.tc.url>operatonsqlserver:2017</database.tc.url></properties></profile>
+</profiles>
+"""
+DATABASE_VERSIONS = {"mysql": "8.4", "mariadb": "10.11", "oracle": "21c", "db2": "12.1",
+                     "postgresql": "14", "sqlserver": "2022", "h2": "2.5"}
+
+
+class TestSupportedDatabases(unittest.TestCase):
+    def test_parse_database_versions(self):
+        self.assertEqual(uv.parse_database_versions(DATABASE_POM), DATABASE_VERSIONS)
+
+    def test_oracle_23_is_ai(self):
+        pom = DATABASE_POM.replace("operatonoracle:21-faststart", "operatonoracle:23-faststart")
+        self.assertEqual(uv.parse_database_versions(pom)["oracle"], "23ai")
+
+    def test_parse_fails_on_missing_profile(self):
+        with self.assertRaises(RuntimeError):
+            uv.parse_database_versions(DATABASE_POM.replace("<id>mariadb</id>", "<id>maria</id>"))
+
+    def test_adds_missing_versions_and_keeps_others(self):
+        text = ("* MySQL 8.0\n* MariaDB 10.11\n* Oracle 19c / 23ai\n"
+                "* IBM DB2 11.5 (excluding IBM z/OS)\n* PostgreSQL 14 / 15 / 16\n"
+                "* Amazon Aurora PostgreSQL compatible with PostgreSQL 14 / 15\n"
+                "* Microsoft SQL Server 2017 / 2019 / 2022 (see note)\n* H2 2.3 (not recommended)\n")
+        updated, changes = uv.update_database_versions_text(text, DATABASE_VERSIONS)
+        self.assertEqual(updated, (
+            "* MySQL 8.0 / 8.4\n* MariaDB 10.11\n* Oracle 19c / 21c / 23ai\n"
+            "* IBM DB2 11.5 / 12.1 (excluding IBM z/OS)\n* PostgreSQL 14 / 15 / 16\n"
+            "* Amazon Aurora PostgreSQL compatible with PostgreSQL 14 / 15\n"
+            "* Microsoft SQL Server 2017 / 2019 / 2022 (see note)\n* H2 2.5 (not recommended)\n"))
+        self.assertEqual(changes, ["mysql 8.4", "oracle 21c", "db2 12.1", "h2 2.5"])
