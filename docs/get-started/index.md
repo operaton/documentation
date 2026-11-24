@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # Get started with Operaton
 
-There are different ways to get started with Operaton. Choose from the following guides:
+There are different ways to get started with Operaton. The easiest way is [start.operaton.org](https://start.operaton.org), which lets you try out Operaton right in your browser. For a deeper dive, choose from the following guides:
 
 ## [Quick Start (Java / JS)](./quick-start/index.md)
 
