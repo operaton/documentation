@@ -169,6 +169,12 @@ const config: Config = {
             ]
           : []),
         {
+          href: 'https://docs.operaton.org/reference/latest/rest-api/',
+          label: 'API Documentation',
+          position: 'right',
+          target: '_blank',
+        },
+        {
           href: 'https://github.com/operaton',
           label: 'GitHub',
           position: 'right',
