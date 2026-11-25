@@ -189,7 +189,7 @@ which contains only one entry. This entry represents the expression value and is
 
 Assume the following example of making a decision to select a dish.
 
-![Example img](/img/documentation/user-guide/dmn-engine/dish-dmn.png)Select Dish
+![Example img](../../../assets/documentation/user-guide/dmn-engine/dish-dmn.png)Select Dish
 
 The decision table returns the `desiredDish` as the output.
 
@@ -253,11 +253,11 @@ If a decision has one or more [required decisions], then the required decisions 
 
 Assume the following example of making a decision to select beverages.
 
-![Example img](/img/documentation/user-guide/dmn-engine/beverages-dmn.png)Beverages Decision
+![Example img](../../../assets/documentation/user-guide/dmn-engine/beverages-dmn.png)Beverages Decision
 
 The following [decision requirements diagram] shows that the `Beverages` decision requires the `Dish` decision (from the previous example).
 
-![Example img](/img/documentation/user-guide/dmn-engine/drd.png)Select beverages
+![Example img](../../../assets/documentation/user-guide/dmn-engine/drd.png)Select beverages
 
 When the `Beverages` decision is evaluated then the DMN engine evaluates the `Dish` decision first.
 

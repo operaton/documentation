@@ -24,7 +24,7 @@ This is supported by the process engine:
 
 You can see different versions in the process definition table and the process instances are linked to this:
 
-![Example img](/img/documentation/user-guide/process-engine/versioning.png)Versioning
+![Example img](../../../assets/documentation/user-guide/process-engine/versioning.png)Versioning
 
 :::note[Multi-Tenancy]
 If you are using [multi-tenancy with tenant identifiers](../process-engine/multi-tenancy.md#single-process-engine-with-tenant-identifiers) then each tenant has its own process definitions which have versions independent from other tenants. See the [multi-tenancy section](../process-engine/multi-tenancy.md#versioning-of-tenant-specific-definitions) for details.

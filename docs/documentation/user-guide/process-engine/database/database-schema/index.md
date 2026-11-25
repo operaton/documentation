@@ -37,7 +37,7 @@ match the service API.
 The main tables of the process engines are the entities of process definitions, executions, tasks, variables and
 event subscriptions. Their relationship is shown in the following UML model.
 
-![Example img](/img/documentation/user-guide/process-engine/database/database-schema.png)Database Schema
+![Example img](../../../../../assets/documentation/user-guide/process-engine/database/database-schema.png)Database Schema
 
 
 ## Process Definitions (ACT_RE_PROCDEF)
@@ -119,29 +119,29 @@ The following Entity Relationship Diagrams visualize the database tables, groupe
 
 ## Engine BPMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_725_bpmn.svg)BPMN Tables
+![Example img](../../../../../assets/documentation/user-guide/process-engine/database/erd_725_bpmn.svg)BPMN Tables
 
 
 ## Engine DMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_725_dmn.svg)DMN Tables
+![Example img](../../../../../assets/documentation/user-guide/process-engine/database/erd_725_dmn.svg)DMN Tables
 
 
 ## Engine CMMN
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_725_cmmn.svg)CMMN Tables
+![Example img](../../../../../assets/documentation/user-guide/process-engine/database/erd_725_cmmn.svg)CMMN Tables
 
 
 ## History
 
 To allow different configurations and to keep the tables more flexible, the history tables contain no foreign key constraints. The dashed lines show the logical link between decision instances and their inputs and outputs.
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_725_history.svg)History Tables
+![Example img](../../../../../assets/documentation/user-guide/process-engine/database/erd_725_history.svg)History Tables
 
 
 ## Identity
 
-![Example img](/img/documentation/user-guide/process-engine/database/erd_725_identity.svg)Identity Tables
+![Example img](../../../../../assets/documentation/user-guide/process-engine/database/erd_725_identity.svg)Identity Tables
 
 # Quick Reference: All Tables
 

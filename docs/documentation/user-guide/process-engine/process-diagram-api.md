@@ -15,7 +15,7 @@ A BPMN process diagram is a formidable place to visualize information around you
 
 In our web applications [Cockpit](../../webapps/cockpit/index.md) and [Tasklist](../../webapps/tasklist/index.md), we use [bpmn.io](https://bpmn.io/), a toolkit for rendering BPMN 2.0 process models directly in the browser. It allows adding additional information to the diagram and includes ways for user interaction. Although bpmn.io is still under development, its API is rather stable.
 
-![Example img](/img/documentation/user-guide/process-engine/process-diagram-bpmn-js.png)Process Diagram Rendering
+![Example img](../../../assets/documentation/user-guide/process-engine/process-diagram-bpmn-js.png)Process Diagram Rendering
 
 
 ## bpmn.io Diagram Renderer

@@ -23,7 +23,7 @@ DMN is a modeling language for *decisions*, whereas BPMN is a language for *proc
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 
-![Example image](/img/get-started/dmn/eclipse-new-project.png)
+![Example image](../../assets/get-started/dmn/eclipse-new-project.png)
 
 On the first page of the *New Maven Project Wizard* select *Create a simple project (skip archetype selection)*. Click Next.
 

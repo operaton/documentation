@@ -32,7 +32,7 @@ In the following sections, we go through this process step by step.
 
 First, we set up a new Apache Maven based project. Let's call it *loan-approval-spring-boot*. The screenshot below illustrates the settings we choose in IntelliJ IDEA.
 
-![Example image](/img/get-started/spring-boot/idea-new-project.png)
+![Example image](../../assets/get-started/spring-boot/idea-new-project.png)
 
 * Name: `LoanApprovalSpringBoot`
 * Build system: Maven
@@ -156,7 +156,7 @@ public class WebappExampleProcessApplication {
 
 Now you can perform the first build. Select the _Maven_ view, open the _Lifecycle_ and double-click on _verify_.
 
-![IDEA Maven](/img/get-started/spring-boot/idea-run-maven-verify.png)
+![IDEA Maven](../../assets/get-started/spring-boot/idea-run-maven-verify.png)
 
 
 Our first Operaton Spring Boot application is ready now. As a result of the build, you will have a JAR file in your `target` folder. This JAR is a Spring Boot application,
