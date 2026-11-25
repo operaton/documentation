@@ -37,6 +37,35 @@ npm run typecheck
 
 Run the typecheck and production build before opening a pull request.
 
+## Images
+
+Documentation images live in `docs/assets/`, next to the content, so they are versioned with the docs.
+Reference them with a path relative to the Markdown file:
+
+```markdown
+![Example img](../../assets/documentation/user-guide/example.png)
+```
+
+For HTML attributes such as `width`, use JSX with `require`, since relative paths in a plain `src` are not resolved:
+
+```jsx
+<img src={require('../../assets/documentation/user-guide/example.png').default} width="150px"/>
+```
+
+`static/img/` only holds site-wide assets such as the logo and favicon.
+
+## Versioning
+
+The docs in `docs/` describe the upcoming release. To freeze them for a release, run:
+
+```bash
+npm run docusaurus docs:version 2.2
+```
+
+This copies `docs/` to `versioned_docs/version-2.2/` and adds the version to `versions.json`. The newest version is
+then served at `/docs/`, the content of `docs/` at `/docs/next/`, and the navbar shows a version dropdown.
+BPMN diagrams of a version are served at `/bpmn/version-2.2/`.
+
 ## Link check
 
 `.devenv/scripts/check-links.py` finds broken internal and external links in `docs/` and reports them

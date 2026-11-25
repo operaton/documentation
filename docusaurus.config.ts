@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import fs from 'fs';
 
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
@@ -17,6 +18,12 @@ const typesenseHost = process.env.TYPESENSE_HOST?.trim() || 'docs.operaton.org';
 const typesensePort = Number(process.env.TYPESENSE_PORT) || 443;
 const typesenseProtocol = process.env.TYPESENSE_PROTOCOL?.trim() || 'https';
 const typesensePath = process.env.TYPESENSE_PATH?.trim() ?? '/typesense';
+
+// Released documentation versions, created with `npm run docusaurus docs:version <version>`.
+// The newest one is served at /docs/, the work in progress in docs/ at /docs/next/.
+const docsVersions: string[] = fs.existsSync('./versions.json')
+  ? JSON.parse(fs.readFileSync('./versions.json', 'utf8'))
+  : [];
 
 const config: Config = {
   title: 'Operaton Documentation',
@@ -127,6 +134,14 @@ const config: Config = {
         src: 'img/operaton-logo.svg',
       },
       items: [
+        ...(docsVersions.length > 0
+          ? [
+              {
+                type: 'docsVersionDropdown' as const,
+                position: 'right' as const,
+              },
+            ]
+          : []),
         {
           type: 'docSidebar',
           sidebarId: 'getStarted',
