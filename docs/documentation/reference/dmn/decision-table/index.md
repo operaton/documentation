@@ -5,7 +5,7 @@ sidebar_position: 10
 
 ---
 
-![Dish table](/img/documentation/reference/dmn/decision-table/dish-table.png)
+![Dish table](../../../../assets/documentation/reference/dmn/decision-table/dish-table.png)
 
 A decision table represents decision logic which can be depicted as a table in
 DMN 1.3. It consists of [inputs], [outputs] and [rules].
@@ -25,7 +25,7 @@ A decision table is represented by a `decisionTable` element inside a
 
 ## Decision Name
 
-![Decision Name](/img/documentation/reference/dmn/decision-table/decision-name.png)
+![Decision Name](../../../../assets/documentation/reference/dmn/decision-table/decision-name.png)
 
 The name describes the decision for which the decision table provides the
 decision logic. It is set as the `name` attribute on the `decision` element.
@@ -42,7 +42,7 @@ It can be changed via the Properties Panel after selecting the respective
 
 ## Decision Id
 
-![Decision Id](/img/documentation/reference/dmn/decision-table/decision-id.png)
+![Decision Id](../../../../assets/documentation/reference/dmn/decision-table/decision-id.png)
 
 The id is the technical identifier of the decision. It is set in the `id`
 attribute on the `decision` element.

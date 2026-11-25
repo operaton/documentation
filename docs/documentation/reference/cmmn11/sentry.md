@@ -118,7 +118,7 @@ A variable event that occurs in the scope of the execution triggers the sentry w
 Consider the below example in which there are two human tasks. `HumanTask1` is defined inside the case model and the `HumanTask_2` is defined inside the stage.
 Each human task is attached to an entry criterion sentry and both sentries are evaluated when the update event for the variable `foo` occurs.
 
-![Example img](/img/documentation/reference/cmmn11/variableOnPart.png)
+![Example img](../../../assets/documentation/reference/cmmn11/variableOnPart.png)
 
 Scenario 1:
 

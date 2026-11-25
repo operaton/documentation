@@ -13,7 +13,7 @@ menu:
 
 ## Tenants Menu
 
-![Example img](/img/documentation/webapps/admin/admin-tenants.png)Tenants Menu
+![Example img](../../../assets/documentation/webapps/admin/admin-tenants.png)Tenants Menu
 
 The Tenants menu lets you add, edit, and delete tenants. In addition, you can view which user or group is a
 member of a tenant.

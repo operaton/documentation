@@ -46,7 +46,7 @@ def build_map(repo_root: Path, base_url: str, spec: Optional[dict]) -> List[Reso
     links = extract.extract_files(repo_root, extract.iter_doc_files(repo_root / "docs"))
     if spec is not None:
         links += openapi.extract_spec(spec)
-    return resolve.resolve_all(links, routes.load_routes(repo_root), base_url)
+    return resolve.resolve_all(links, routes.load_routes(repo_root), base_url, repo_root)
 
 
 def select(resolved: List[ResolvedLink], scope: str, files: Optional[Set[str]]) -> List[ResolvedLink]:

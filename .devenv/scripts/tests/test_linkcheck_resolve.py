@@ -130,6 +130,25 @@ class TestResolve(unittest.TestCase):
         r = resolve_link(Link("docs/documentation/_partial.md", 1, "#a"), ROUTES, BASE)
         self.assertEqual(r.kind, SKIPPED)
 
+    def test_relative_asset_on_disk_is_bundled(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            asset = Path(tmp) / "docs/assets/documentation/a.png"
+            asset.parent.mkdir(parents=True)
+            asset.write_bytes(b"")
+            r = resolve_link(Link(SRC, 7, "../../../assets/documentation/a.png"), ROUTES, BASE, Path(tmp))
+            self.assertEqual((r.kind, r.reason), (SKIPPED, "bundled file"))
+
+    def test_relative_asset_missing_on_disk_is_unresolved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            r = resolve_link(Link(SRC, 7, "../../../assets/documentation/b.png"), ROUTES, BASE, Path(tmp))
+            self.assertEqual((r.kind, r.url, r.reason),
+                             (UNRESOLVED, "docs/assets/documentation/b.png", "missing-asset"))
+
+    def test_relative_non_asset_missing_on_disk_uses_browser_semantics(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            r = resolve_link(Link(SRC, 7, "../../user-guide/history/"), ROUTES, BASE, Path(tmp))
+            self.assertEqual((r.kind, r.url), (INTERNAL, BASE + "/docs/documentation/user-guide/history/"))
+
     def test_md_link_from_partial_resolves_against_partial_dir(self):
         r = resolve_link(Link("docs/documentation/user-guide/_p.md", 1, "history.md"), ROUTES, BASE)
         self.assertEqual((r.kind, r.url), (INTERNAL, BASE + "/docs/documentation/user-guide/history"))

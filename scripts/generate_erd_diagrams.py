@@ -17,7 +17,7 @@ from erd_build import extract_header, build_subdiagram
 REPO_ROOT = Path(__file__).parent.parent
 SCHEMA_PATH = REPO_ROOT / "docs/documentation/reference/db-schema/schema.mermaid"
 SCHEMA_VERSION = "725"
-OUT_DIR = REPO_ROOT / "static/img/documentation/user-guide/process-engine/database"
+OUT_DIR = REPO_ROOT / "docs/assets/documentation/user-guide/process-engine/database"
 
 
 def main():

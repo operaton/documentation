@@ -7,7 +7,7 @@ sidebar_position: 60
 
 ## Deployment View
 
-![Example img](/img/documentation/webapps/cockpit/cockpit-deployments-page.png)Cockpit Deployment View
+![Example img](../../../assets/documentation/webapps/cockpit/cockpit-deployments-page.png)Cockpit Deployment View
 
 The Cockpit deployment view shows an overview of all deployments, their resources, and the content of these resources. It lets you delete existing deployments, redeploy old resources, and create new deployments. The content of resources within deployments can be displayed. It is also possible to download individual resources from this view.
 
