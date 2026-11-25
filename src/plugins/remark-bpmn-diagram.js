@@ -82,9 +82,14 @@ function processPath(relativePath, fullFilePath) {
   // Handle both Windows and Unix paths
   const normalizedFilePath = fullFilePath.replace(/\\/g, '/');
   
+  // Versioned docs keep their version folder, e.g. version-2.2/documentation/...,
+  // matching the /bpmn/version-2.2/... path the copy plugin serves them under
+  const versionedIndex = normalizedFilePath.indexOf('/versioned_docs/');
   // Find the docs/ part
   const docsIndex = normalizedFilePath.indexOf('/docs/');
-  if (docsIndex !== -1) {
+  if (versionedIndex !== -1) {
+    docRelativePath = normalizedFilePath.substring(versionedIndex + 16); // +16 for '/versioned_docs/'
+  } else if (docsIndex !== -1) {
     // Get everything after /docs/
     docRelativePath = normalizedFilePath.substring(docsIndex + 6); // +6 for '/docs/'
   } else {

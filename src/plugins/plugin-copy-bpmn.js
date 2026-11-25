@@ -34,24 +34,29 @@ async function findBpmnFiles(dir) {
 
 module.exports = function pluginCopyBpmn(context) {
   const docsDir = path.join(context.siteDir, 'docs');
+  // Versioned docs live in versioned_docs/version-<x>/ and are served at /bpmn/version-<x>/
+  const versionedDocsDir = path.join(context.siteDir, 'versioned_docs');
+  const sourceDirs = [docsDir, versionedDocsDir];
   
   return {
     name: 'docusaurus-plugin-copy-bpmn',
 
     // Copy BPMN files after build
     async postBuild({ outDir }) {
-      const bpmnFiles = await findBpmnFiles(docsDir);
-      
       let copied = 0;
-      for (const srcFile of bpmnFiles) {
-        const relativePath = path.relative(docsDir, srcFile);
-        const destFile = path.join(outDir, 'bpmn', relativePath);
-        
-        try {
-          await copyFile(srcFile, destFile);
-          copied++;
-        } catch (err) {
-          console.error(`[copy-bpmn] Failed to copy ${relativePath}:`, err.message);
+      for (const sourceDir of sourceDirs) {
+        const bpmnFiles = await findBpmnFiles(sourceDir);
+
+        for (const srcFile of bpmnFiles) {
+          const relativePath = path.relative(sourceDir, srcFile);
+          const destFile = path.join(outDir, 'bpmn', relativePath);
+
+          try {
+            await copyFile(srcFile, destFile);
+            copied++;
+          } catch (err) {
+            console.error(`[copy-bpmn] Failed to copy ${relativePath}:`, err.message);
+          }
         }
       }
       
@@ -67,20 +72,22 @@ module.exports = function pluginCopyBpmn(context) {
       return {
         devServer: {
           setupMiddlewares: (middlewares, devServer) => {
-            // Serve BPMN files from docs/ at /bpmn/ path during dev
+            // Serve BPMN files from docs/ and versioned_docs/ at /bpmn/ path during dev
             devServer.app.get('/bpmn/*', async (req, res, next) => {
               const requestedPath = req.path.replace('/bpmn/', '');
-              const filePath = path.join(docsDir, requestedPath);
-              
-              try {
-                const stat = await fs.stat(filePath);
-                if (stat.isFile() && filePath.endsWith('.bpmn')) {
-                  res.type('application/xml');
-                  res.sendFile(filePath);
-                  return;
+
+              for (const sourceDir of sourceDirs) {
+                const filePath = path.join(sourceDir, requestedPath);
+                try {
+                  const stat = await fs.stat(filePath);
+                  if (stat.isFile() && filePath.endsWith('.bpmn')) {
+                    res.type('application/xml');
+                    res.sendFile(filePath);
+                    return;
+                  }
+                } catch (err) {
+                  // File not found, try the next source directory
                 }
-              } catch (err) {
-                // File not found, continue to next middleware
               }
               next();
             });
