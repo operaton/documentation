@@ -2,7 +2,8 @@
 from __future__ import annotations
 
 import posixpath
-from typing import Dict, Iterable, List
+from pathlib import Path
+from typing import Dict, Iterable, List, Optional
 from urllib.parse import unquote, urljoin, urlsplit
 
 from .models import EXTERNAL, INTERNAL, SKIPPED, UNRESOLVED, Link, ResolvedLink
@@ -14,6 +15,7 @@ PROD_ONLY_PREFIXES = ("/reference/",)
 SKIP_PREFIXES = ("mailto:", "tel:", "javascript:", "data:")
 DOC_SUFFIXES = (".md", ".mdx")
 DOCS_DIR = "docs"
+ASSET_SUFFIXES = (".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp")
 
 
 def _md_candidates(link_file: str, path: str) -> List[str]:
@@ -24,7 +26,8 @@ def _md_candidates(link_file: str, path: str) -> List[str]:
     return [posixpath.normpath(posixpath.join(posixpath.dirname(link_file), path))]
 
 
-def resolve_link(link: Link, routes: Dict[str, str], base_url: str) -> ResolvedLink:
+def resolve_link(link: Link, routes: Dict[str, str], base_url: str,
+                 repo_root: Optional[Path] = None) -> ResolvedLink:
     base = base_url.rstrip("/")
     raw = link.raw.strip()
 
@@ -67,10 +70,19 @@ def resolve_link(link: Link, routes: Dict[str, str], base_url: str) -> ResolvedL
         if path.startswith(PROD_ONLY_PREFIXES):
             return made(EXTERNAL, PROD_URL + raw)
         return made(INTERNAL, base + raw)
+    if repo_root is not None and not link.html:
+        # Docusaurus bundles relative links to files (images in docs/assets/) under a hashed URL,
+        # so the file on disk is what has to exist.
+        target = posixpath.normpath(posixpath.join(posixpath.dirname(link.file), plain))
+        if (repo_root / target).is_file():
+            return made(SKIPPED, reason="bundled file")
+        if posixpath.splitext(plain)[1].lower() in ASSET_SUFFIXES:
+            return made(UNRESOLVED, target, "missing-asset")
     if page is None:
         return made(SKIPPED, reason="relative link in file without route")
     return made(INTERNAL, urljoin(base + page, raw))
 
 
-def resolve_all(links: Iterable[Link], routes: Dict[str, str], base_url: str) -> List[ResolvedLink]:
-    return [resolve_link(link, routes, base_url) for link in links]
+def resolve_all(links: Iterable[Link], routes: Dict[str, str], base_url: str,
+                repo_root: Optional[Path] = None) -> List[ResolvedLink]:
+    return [resolve_link(link, routes, base_url, repo_root) for link in links]

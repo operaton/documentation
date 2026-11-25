@@ -18,7 +18,7 @@ Now you are ready to set up your first process application project in the IDE of
 
 In Eclipse, go to `File / New / Other ...`. This opens the *New Project Wizard*. In the *New Project Wizard* select `Maven / Maven Project`. Click Next.
 
-![Example image](/img/get-started/archive/java-process-app/eclipse-new-project.png)
+![Example image](../../../assets/get-started/archive/java-process-app/eclipse-new-project.png)
 
 On the first page of the *New Maven Project Wizard* select *Create a simple project (skip archetype selection)*. Click Next.
 

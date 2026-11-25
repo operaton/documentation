@@ -12,7 +12,7 @@ menu:
 ---
 
 
-![Example img](/img/documentation/webapps/cockpit/dmn/cockpit-decision-requirements-definition-instance-view.png)Decision Requirements Definition Instance View
+![Example img](../../../../assets/documentation/webapps/cockpit/dmn/cockpit-decision-requirements-definition-instance-view.png)Decision Requirements Definition Instance View
 
 On the decision requirements definition instance view, you can find a diagram of the deployed decision requirements definition.
 Use the mouse to navigate through the diagram. Turn the mouse wheel to zoom in and out.
@@ -32,7 +32,7 @@ Click the deployment ID to go to the [deployment view](../deployment-view.md).
 
 You can maximize the table view or the detailed information panel by clicking the <button class="btn btn-xs"><i class="glyphicon glyphicon-resize-full"></i></button> button or the <button class="btn btn-xs"><i class="glyphicon glyphicon-menu-up"></i></button> button at the bottom left of the table view.
 
-![Example img](/img/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-decision-instance-instances-tab.png)Decision Instances Tab
+![Example img](../../../../assets/documentation/webapps/cockpit/dmn/cockpit-decision-definition-requirement-decision-instance-instances-tab.png)Decision Instances Tab
 
 In the lower panel, you can see a list of all decision instances for this decision requirements definition instance. You can also search for decision instances that match certain search criteria. To do so, click in the search box and select the parameters to search for. You can also begin typing to find the required parameter faster. You have to specify the value of the selected property to perform the search and you can combine multiple search pills to narrow down the search results.
 
