@@ -14,10 +14,26 @@ menu:
 |--------------------|----------------|
 | 1.0, 1.1, 2.0, 2.1 | 7.24           |
 | 2.2                | 7.25           |
+| 2.3                | 7.26           |
 
 Schema 7.25 has the same tables, columns and indexes as 7.24. The upgrade only records the new version in
 [`ACT_GE_SCHEMA_LOG`](general.md#act_ge_schema_log). To check the schema version of a database, read the latest
 entry of that table.
+
+Schema 7.26 adds the indexes `ACT_IDX_TASK_PARENT_TASK_ID` on [`ACT_RU_TASK`](runtime.md#act_ru_task) and
+`ACT_IDX_HI_TASK_PARENT_TASK_ID` on [`ACT_HI_TASKINST`](history.md#act_hi_taskinst). On large tables the upgrade
+can take a while. Note when upgrading to 7.26:
+
+- PostgreSQL builds the indexes with `create index concurrently`, which cannot run inside a transaction. Run the
+  upgrade script with autocommit, not in a single transaction (e.g. not with `psql --single-transaction`).
+  A failed concurrent build leaves an `INVALID` index that a re-run skips. Check with
+  `select indexrelid::regclass from pg_index where not indisvalid;`, drop such an index and re-run the script.
+- MySQL and MariaDB build the indexes online (`algorithm=inplace lock=none`).
+- Oracle and SQL Server build the indexes without the `ONLINE` option, because it is only available in the
+  Enterprise editions. Writes to the table are blocked while an index is built. SQL Server already had
+  `ACT_IDX_TASK_PARENT_TASK_ID`, so only the history index is added there.
+- The upgrade is not run as one transaction. If it fails part way, drop the indexes that were already created
+  before re-running it on Oracle, SQL Server, MySQL and DB2 (PostgreSQL, MariaDB and H2 skip existing indexes).
 
 ---
 
